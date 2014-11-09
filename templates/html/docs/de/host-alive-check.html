@@ -1,0 +1,21 @@
+<h1>%%site.help.doc.host-alive-check%%</h1>
+
+<h2>Der Host lebt</h2>
+
+<div>
+<p>
+Stellen Sie sich vor, Sie haben einen Host mit sehr vielen Services konfiguriert, der dazu noch von verschiedenen Standorten aus überwacht wird. Würde der gesamte Server ausfallen, dann kann es recht schnell passieren, dass Sie mit E-Mail und SMS Benachrichtigungen regelrecht bombadiert werden. Um das zu vermeiden, gibt es die Möglichkeit, einen oder auch mehrere Services eines Hosts als Host-Alive-Check zu markieren.
+</p>
+
+<p>
+Das bedeutet, dass wenn sich ein Service, der als Host-Alive-Check konfiguriert ist, im Status <i>CRITICAL</i>, <i>UNKNOWN</i> oder sogar im Status <i>INFO</i> befindet, dass Sie nur für diesen einen Service eine Benachrichtigung erhalten und sonst für keine weiteres Services.
+</p>
+
+<p>
+Für Host-Alive-Checks eignen sich insbesondere Ping-Checks, da Pings häufig selbst dann noch funktionieren, wenn ein Server unter enormer Last steht.
+</p>
+
+<p>
+Um einen Service als Host-Alive-Check zu konfigurieren, müssen Sie lediglich im Formularfeld zur Konfiguration von Service einen Haken bei <i>Host-Alive-Check</i> setzen. Host-Alive-Checks eigenen sich auch besonders um Hosts über Abhängigkeiten und Vererbung miteinander zu verketten.
+</p>
+</div>

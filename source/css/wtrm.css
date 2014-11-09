@@ -1,0 +1,139 @@
+.wtrm-outer-box {
+    width: 800px;
+    padding: 0 20px;
+}
+.wtrm-outer {
+}
+.wtrm-inner {
+    width: 600px;
+}
+.wtrm-action {
+    color: #348e91 !important;
+}
+.wtrm-check {
+    color: #845a9f !important;
+}
+.wtrm-action i, .wtrm-check i {
+    color: #C42A61 !important;
+}
+.wtrm-action:hover, .wtrm-check:hover {
+    color: #ffffff;
+}
+.wtrm-steps {
+    list-style-type: none;
+    margin: 20px 0;
+}
+.wtrm-step {
+    font-size: 13px;
+    display: block;
+    margin: 4px 0;
+    padding: 12px 10px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+    cursor: move;
+    position: relative;
+    overflow: hidden;
+}
+.wtrm-step-image {
+    right: 8px;
+    top: 6px;
+    position: absolute;
+}
+.wtrm-step-image span {
+    margin-left: 10px;
+    opacity: .4;
+    cursor: pointer;
+}
+.wtrm-step span .hicons.sort {
+    cursor: move;
+}
+.wtrm-step:hover span .hicons.sort, .wtrm-step-image span:hover {
+    opacity: 1;
+}
+.wtrm-step-num {
+    color: #911a1a;
+    font-weight: normal;
+    margin-bottom: 6px;
+}
+.wtrm-step-command {
+}
+.wtrm-step-command b {
+    font-style: italic;
+    font-weight: bold;
+}
+.wtrm-step-command i {
+    color: #C42A61;
+    font-weight: bold;
+}
+.wtrm-step-result span {
+    font-size: 13px;
+    line-height: 13px;
+    display: inline-block;
+    vertical-align: top;
+    padding: 4px 10px;
+    margin: 2px 4px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color: #ffffff;
+    text-shadow: 1px 1px 1px #888888;
+}
+.wtrm-step-result-ok {
+    background: #5bb75b;
+    background: -moz-linear-gradient(top, #62c462, #51a351);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
+    background: -webkit-linear-gradient(top, #62c462, #51a351);
+    background: -o-linear-gradient(top, #62c462, #51a351);
+    background: linear-gradient(to bottom, #62c462, #51a351);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#62c462',endColorstr='#51a351',GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.wtrm-step-result-error {
+    background: #ca2632;
+    background: -moz-linear-gradient(top, #ca656c, #ca121f);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#ca656c), to(#ca121f));
+    background: -webkit-linear-gradient(top, #ca656c, #ca121f);
+    background: -o-linear-gradient(top, #ca656c, #ca121f);
+    background: linear-gradient(to bottom, #ca656c, #ca121f);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ca656c',endColorstr='#ca121f',GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.wtrm-step-result-took {
+    background: #49afcd;
+    background: -moz-linear-gradient(top, #5bc0de, #2f96b4);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de), to(#2f96b4));
+    background: -webkit-linear-gradient(top, #5bc0de, #2f96b4);
+    background: -o-linear-gradient(top, #5bc0de, #2f96b4);
+    background: linear-gradient(to bottom, #5bc0de, #2f96b4);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5bc0de',endColorstr='#2f96b4',GradientType=0);
+}
+.wtrm-step-result-time {
+    background: #faa732;
+    background: -moz-linear-gradient(top, #fbb450, #f89406);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#f89406));
+    background: -webkit-linear-gradient(top, #fbb450, #f89406);
+    background: -o-linear-gradient(top, #fbb450, #f89406);
+    background: linear-gradient(to bottom, #fbb450, #f89406);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbb450',endColorstr='#f89406',GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.wtrm-step-result-table {
+    width: 250px;
+    float: left;
+}
+.wtrm-step-result-table th, .wtrm-step-result-table td {
+    vertical-align: top;
+}
+.wtrm-step-result-image {
+    width: 280px;
+    height: 140px;
+    float: right;
+    border: 1px solid #ededed;
+    overflow: hidden;
+}
+.wtrm-step-result-image img {
+    width: 100%;
+    cursor: pointer;
+}

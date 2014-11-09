@@ -1,0 +1,93 @@
+<h1>%%site.help.doc.contacts-and-notifications%%</h1>
+
+<h2>Kontakte im Detail</h2>
+
+<div>
+<p>
+Haben Sie den Wunsch benachrichtig zu werden, wenn sich der Status eines Services verschlechtert, so können Sie dies über die Kontakte und Kontaktgruppen regeln. Dabei haben Sie die Möglichkeit sehr genau zu sein und klar zu definieren, für welche Services, zu welchem Zeitpunkt und auch für welches Level eines Status Sie benachrichtigt werden möchten.
+</p>
+
+<p>
+Eine Kontaktgruppe ist dafür da, um Kontakte, Hosts und sogar einzelne Services zu verbinden. Konatkte erhalten nur eine Benachrichtigung für Hosts und Services, mit denen Sie gemeinsam in einer Kontaktgruppe konfiguriert sind.
+</p>
+
+<p>
+Ein Kontakt ist mit einer Visitenkarte vergleichbar, bestehend aus einem Namen und diverser Kontaktmöglichkeiten, wie eine Mobilfunknummer und einer E-Mail-Adresse. Ein Kontakt muss nur ein einziges Mal eingerichtet werden und kann dann allen möglichen Kontaktgruppen zugeordnet werden.
+</p>
+
+<p>
+Zunächst einmal ist es notwendig, dass Kontakte konfiguriert werden, damit diese später den einzelnen Kontaktgruppen hinzugefügt werden können. Hierfür klicken Sie einfach auf den Link Kontakte in der linken Navigationsleiste und danach auf "Einen neuen Kontakt hinzufügen".
+</p>
+
+<img class="image" src="/public/img/docs/contacts-and-notifications-1.png" alt="" />
+
+<p>
+<b>Bitte beachten Sie</b> den Teil für die Timeperiods... diese Box erscheint erst, wenn ein Kontakt mit den Grundeinstellungen angelegt wurde. In diesem Teil wird der Zeitraum eingerichtet, in dem der Kontakt über Ereignisse benachrichtigt wird.
+</p>
+ 
+<p>
+Kommen wir nun zu den bereits erwähnten Zeitbereichen, die im Formular zu sehen sind. Es gibt diverse vordefinierte Zeitbereiche, die ich kurz erwähnen möchte:
+</p>
+
+<ul>
+    <li>24x7 (Rund um die Uhr)</li>
+    <li>Arbeitszeit (Montag bis Freitag von 9 bis 17 Uhr)</li>
+    <li>Ausserhalb der Arbeitszeit (alle anderen Zeiten, die nicht von "Arbeitszeit" erfasst werden)</li>
+</ul>
+
+<p>
+<b>Eine kleine Info:</b> Falls diese Zeitbereiche nicht auf Ihre Geschäftszeiten passen, so können Sie auch eigene Zeitpläne (Timeperiods) festlegen.
+</p>
+
+<img class="image" src="/public/img/docs/contacts-and-notifications-2.png" alt="" />
+
+<p>
+Weiterhin haben Sie die Möglichkeit, festzulegen, welche Form der Benachrichtigung für diesen Zeitraum aktiv ist:
+</p>
+
+<ul>
+    <li>Benachrichtigungs per E-Mail und SMS</li>
+    <li>Nur Benachrichtigungen per E-Mail</li>
+    <li>Nur Benachrichtigungen per SMS</li>
+    <li>Ausschließen</li>
+</ul>
+
+<p>
+Dabei ist zu beachten, dass die Auswahl "Ausschließen" eine höhere Priorität als alle anderen Zeitbereiche hat. So haben Sie zum Beispiel die Möglichkeit Feiertage oder Urlaubstage auszuschließen.
+</p>
+</div>
+
+<h2>Eskalationsstufen</h2>
+
+<div>
+<p>
+Eskalationsstufen können sehr hilfreich sein, wenn Sie bei kritischen Ereignissen benachrichtigt werden möchten, die in einem angemessenen Zeitraum nicht behoben werden.
+</p>
+
+<p>
+Bei Bloonix haben Eskalationsstufen keine feste Zeitgrenze, sondern richten sich nach der Anzahl der bereits gesendeten Benachrichtigungen. So kann man zum Beispiel für Kontakte und Bereitschaftspläne Eskalationsstufen nur in der Form von <i>permanent aktiv</i> bis <i>nach X Benachrichtigungen</i> angeben.
+</p>
+
+<p>
+<i>Permanent aktiv</i> oder <i>nach 0 Benachrichtigungen</i> bedeuted, dass der entsprechende Kontakt immer benachrichtigt wird. <i>Nach 5 Benachrichtigungen</i> bedeuted demnach, dass ein Kontakt ab der 5. Benachrichtigung ebenfalls per E-Mail und/oder SMS benachrichtigt wird. Insofern könnte man je nach Benachrichtigungsintervall zeitlich ungefähr berechnen, wann ein Kontakt mit einer höheren Eskalationsstufe benachrichtigt wird.
+Ist zum Beispiel ein Kontakt mit einer Eskalationsstufe von 5 eingerichtet und der ausgefallene Service mit einem Benachrichtigungsintervall von 30 Minuten, so würde der Kontakt ungefähr nach 2 1/2 Stunden informiert werden.
+</p>
+</div>
+
+<h2>Kontaktgruppen</h2>
+
+<div>
+<p>
+Sind die Kontakte eingerichtet, so können Sie Kontakte mit Hosts und einzelnen Services verbinden. Bitte beachten Sie, dass wenn Sie einen Host einer Kontaktgruppe zuordnen, dann beinhaltet dies automatisch auch alle Services. Sie müssen also nicht noch zusätzlich Services einer Kontaktgruppe zuordnen, wenn bereits der Host der Kontaktgruppe zugeordnet ist.
+</p>
+
+<p>
+In der folgenden Grafik können Sie beispielhaft sehen, dass die Hosts test1 bis test3 der Gruppe Administration zugeordnet sind.
+</p>
+
+<img class="image" src="/public/img/docs/add-hosts-to-contactgroup-1.png" alt="" />
+
+<p>
+Über die obere Nagigationsleiste gelangen Sie zu den Formularen, um auch Kontakte und einzelne Services einer Kontaktgruppe zuzuordnen oder zu entfernen.
+</p>
+</div>

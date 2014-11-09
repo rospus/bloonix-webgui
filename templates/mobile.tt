@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="[% meta.lang %]">
+<!--
+
+    COOL ADMINS USES
+     _    __ _____ _____ __  __ __ __   __           
+    | |__|  |     |     |  \|  |__|\  \/  /
+    |  . |  |  |  |  |  |      |  | >    <
+    |____|__|_____|_____|__|\__|__|/__/\__\
+
+    http://bit.ly/1hLDpTl
+
+-->
+<head>
+<title>Bloonix Monitoring</title>
+<meta charset="UTF-8" />
+<meta name="author" content="Bloonix Online Services" />
+<meta name="description" content="Bloonix is a real time system monitoring solution." />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<link rel="shortcut icon" href="/public/img/favicon.ico" />
+<link rel="stylesheet" href="/public/jquery/jquery-ui-1.10.4.custom.min.css" />
+<script src="/public/js/jquery.min.js?v=1"></script>
+<link rel="stylesheet" href="/public/css/jquery-mobile.min.css?v=1" />
+<script src="/public/js/highcharts.min.js?v=1"></script>
+<script src="/public/js/bloonix-mobile.src.js?v=1"></script>
+<link rel="stylesheet" href="/public/css/bloonix-mobile.min.css?v=1" media="screen" />
+<script>$(document).ready(function(){new Bloonix().init()});</script>
+</head>
+<body>
+</body>
+</html>

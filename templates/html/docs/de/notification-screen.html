@@ -1,0 +1,63 @@
+<h1>%%site.help.doc.notification-screen%%</h1>
+
+<h2>Der Notification Screen</h2>
+<div>
+<p>
+Mit dem Notification Screen haben Sie die Möglichkeit, die für einen Benutzer konfigurierten Hosts mit einem Status zu sehen. Diese Übersicht eignet sich besonders für große Wandmonitore in Ihrem Büro. Dort haben Sie dann zu jeder Zeit den Status Ihrer Hosts und Services im Blickfeld und können deutlich schneller reagieren, wenn etwas ausfällt.
+</p>
+<img class="image" src="/public/img/docs/notification-screen-1.png" alt="" />
+<p>
+<b>Es wird empfohlen,</b> für den Notification Screen einen oder mehrere Benutzer zu erstellen, die nur lesenden Zugriff auf die gesamte WebGUI haben. Um so einen Benutzer anzulegen, müssen Sie den Benutzer mit folgenden Rechten konfigurieren:
+</p>
+<ul>
+    <li>Der Benutzer muss die Rolle <i>user</i> erhalten</li>
+    <li>Der Benutzer darf keine Kontakte verwalten</li>
+    <li>Auf Wunsch erlauben Sie den Login des Benutzers nur von bestimmten IPs</li>
+    <li>Wenn der Benutzer zu Gruppen hinzugefügt wird, dann ohne die Berechtigung Services anzulegen, zu ändern oder zu löschen können</li>
+</ul>
+</div>
+
+<h2>Notification Screen und Charts ohne Login abrufen</h2>
+
+<div>
+<h3>Notification Screen ohne Login abrufen</h3>
+<p>
+Im Formular zur Konfiguration der Benutzer haben Sie die Möglichkeit, einen <b>Authenfication-Key</b> zu erstellen. Mit diesem Key kann der Notification Screen abgerufen werden, ohne sich einloggen zu müssen.
+</p>
+
+<img class="image noscale" src="/public/img/docs/authentificaton-key-1.png" alt="" />
+
+<p>
+Mit dieser Einstellung können Sie den Notification Screen nun wie folgt aufrufen:
+</p>
+
+<pre>
+https://gui.bloonix.de/screen/?username=test@bloonix.de;authkey=yOH1doaktzMjrMza69JcQwxrfKeRGP
+</pre>
+
+<h3>Charts ohne Login abrufen</h3>
+<p>
+Mit dem <b>Authenfication-Key</b> können Sie ebenfalls Charts abrufen ohne sich einloggen zu müssen. Hierfür sind nur wenige Schritte notwendig:
+</p>
+
+<ul>
+    <li>Suchen Sie sich in der Chart-Übersicht einen oder mehrere Charts aus</li>
+    <li>Wählen Sie die Chart-Einstellungen aus (wieivel Charts nebeneinander etc.)</li>
+    <li>Speichern Sie die Charts unter einem Namen ab</li>
+    <li>Merken Sie sich die Chart ID</li>
+</ul>
+
+<img class="image noscale" src="/public/img/docs/chart-view-selection-1.png" alt="" />
+
+<p>
+Anhand des Beispiels in der Grafik verwenden wir nun die Charts, welche unter dem Namen <i>CPU-Charts</i> mit der ID <i>21</i> abgespeichert sind. Diese Charts können Sie nun wie folgt abrufen:
+</p>
+
+<pre>
+https://gui.bloonix.de/screen/charts/?username=test@bloonix.de;authkey=yOH1doaktzMjrMza69JcQwxrfKeRGP;id=21
+</pre>
+
+<p>
+Die ID <i>21</i> wird einfach als Query-String <i>id=21</i> angehangen und der Pfad lautet <i>/screen/charts</i>.
+</p>
+</div>

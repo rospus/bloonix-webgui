@@ -1,0 +1,128 @@
+<h1>%%site.help.doc.users-and-groups%%</h1>
+
+<h2>Gruppen</h2>
+
+<div>
+<p>
+Mit der Benutzer- und Gruppenverwaltung können Sie genauestens festlegen, welche Benutzer welche Hosts und Services sehen, die Konfiguration ändern oder sogar löschen dürfen. Die Rechte lassen sich soweit runterschrauben, sodass ein Benutzer nur noch über Leserechte in der gesamten WebGUI verfügt.
+</p>
+
+<p>
+Benutzer- und Gruppen lassen sich im Administrationsbereich konfigurieren. Die einzelnen Optionen für Benutzer und Gruppen sind in den Formularen gut erklärt.
+</p>
+
+<p>
+Wenn Sie einen Benutzer einer Gruppe hinzufügen, dann können Sie auch gleichzeitig festlegen, welche Rechte der Benutzer in Bezug auf die Hosts und Services in der Gruppe besitzt. Folgende Rechte können konfiguriert werden:
+</p>
+
+<ul>
+    <li>Neue Services anlegen</li>
+    <li>Services ändern</li>
+    <li>Services löschen</li>
+    <li>Hosts ändern</li>
+</ul>
+
+<p>
+Die Rechte geben einem Benutzer das Recht, für Hosts, die sich ebenfalls in der Gruppe befinden, neue Services anzulegen, zu ändern oder zu löschen. Das Recht "Hosts ändern" betrifft Änderungen wie zum Beispiel Wartungsarbeiten einzutragen, einen Host zu deaktivieren oder Benachrichtigungen ein- oder auszuschalten.
+</p>
+</div>
+
+<h2>Benutzer</h2>
+
+<div>
+<p>
+Die Benutzerverwaltung von Bloonix ist sehr einfach gehalten. Es gibt auf der einen Seite Hosts, Services und Kontakte. Auf der anderen Seite haben Sie Benutzer, die diese einzelnen Resourcen verwalten und deren Status einsehen dürfen.
+</p>
+
+<p>
+Folgende Parameter stehen Ihnen zur Einrichtung von Benutzern zur Verfügung:
+</p>
+
+<h3>Benutzername</h3>
+
+<p>
+Hier wird der eindeutige Benutzername angegeben, mit dem sich der Benutzer einloggt. Dieser Name muss in Form einer E-Mail-Adresse angegeben werden.
+</p>
+
+<h3>Telefon</h3>
+
+<p>
+Hier können Sie die Festnetz- oder Mobilfunknummer des Benutzers eintragen. Die Rufnummer kann in dringenden Notfällen von Kollegen oder auch vom Bloonix-Support verwendet werden.
+</p>
+
+<h3>Zeitzone</h3>
+
+<p>
+Die Zeitzone des Benutzers ist wichtig zur richtigen Anzeige von Datum und Uhrzeit im gesamten Interface. Bitte beachten Sie, dass Datum und Uhrzeit von Charts die Browsereinstellung verwenden, da die Zeit direkt im Browser umgewandelt wird.
+</p>
+
+<h3>Rolle</h3>
+
+<p>
+Mit der Rolle bestimmen Sie, welche Berechtigungen ein Benutzer hat. Es gibt insgesamt drei Rollen in der Bloonix Applikation:
+</p>
+
+<table class="default-table">
+    <tr>
+        <th>Rolle</th>
+        <th>&nbsp;</th>
+        <th>Wert</th>
+    </tr>
+    <tr>
+        <td class="line2">operator</td>
+        <td class="line2">Operator</td>
+        <td class="line2">Der Operator ist ein Power-User und darf Benutzer- und Gruppen verwalten.</td>
+    </tr>
+    <tr>
+        <td class="line1">user</td>
+        <td class="line1">Benutzer</td>
+        <td class="line1">Die Rolle <i>user</i> ist für alle sonstigen Benutzer. Diese Benutzer haben keinen Zugriff auf den Administrationsbereich.</td>
+    </tr>
+</table>
+
+<h3>Verwaltung von Kontakten</h3>
+
+<p>
+Über das Rollensystem hinaus kann hier konfiguriert werden, ob der Benutzer Kontakte verwalten darf.
+</p>
+
+<h3>Passwort</h3>
+
+<p>
+Das Passwort wird verschlüsselt in der Datenbank abgespeichert und kann nicht eingesehen werden. Sollte der Benutzer sein Passwort vergessen, so bleibt nur der Weg ihm ein neues Passwort zu vergeben.
+</p>
+
+<h3>Passwort geändert</h3>
+
+<p>
+Mit diesem Parameter kann das Ändern eines initialen Passwörts erzwungen werden. Wenn zum Beispiel ein neuer Benutzer eingerichtet wurde oder ein Benutzer sein Passwort vergessen hat und ihm ein neues Passwort eingerichtet wurde, dann können Sie den Benutzer erneut dazu auffordern, sein Passwort beim nächsten Zugriff auf die Weboberfläche zu ändern.
+</p>
+
+<h3>Authentication-Key</h3>
+
+<p>
+Mit dem Authentication-Key haben Benutzer die Möglichkeit, den Benachrichtigungsbildschirm abzurufen, ohne dabei eingeloggt zu sein. Über diesen Key hat der Benutzer nur auf den Benachrichtigungsbildschirm Zugriff!
+</p>
+
+<p>
+Für weitere Möglichkeiten zur Nutzung lesen Sie das folgende Dokument: <a data-id="notification-screen">%%site.help.doc.notification-screen%%</a>
+</p>
+
+<h3>Gesperrt</h3>
+
+<p>
+Mit diesem Parameter können Sie einen Benutzeraccount deaktivieren. Eingeloggte Benutzer werden beim nächsten Zugriff auf die Weboberfläche zum Login umgeleitet.
+</p>
+
+<h3>Erlaubter IP-Zugriff</h3>
+
+<p>
+Falls Sie den Wunsch haben, einen Benutzerzugang zusätzlich abzusichern, so können Sie für jeden Benutzer IP-Adressen in dieses Feld eintragen, von denen sich ein Benutzer in der Weboberfläche einloggen darf. Diese Option ist besonders für Benutzer sinnvoll, die über die Rolle <i>operator</i> verfügen.
+</p>
+
+<h3>Kommentar</h3>
+
+<p>
+Ein einfaches Kommentarfeld. Das Kommentarfeld ist für den Benutzer selbst nicht einsehbar.
+</p>
+</div>

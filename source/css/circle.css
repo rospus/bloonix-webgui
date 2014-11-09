@@ -1,0 +1,28 @@
+.circle {
+    display: inline-block;
+    background: black;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    padding: 4px 4px 2px 4px;
+    margin: 0;
+    line-height: 16px;
+}
+.circle-small {
+    padding: 2px 2px 0 2px;
+}
+.circle.green {
+    background-color: #5ec15e;
+}
+.circle.blue {
+    background-color: #38a8c8;
+}
+.circle.yellow {
+    background-color: #edc951;
+}
+.circle.red {
+    background-color: #cc333f;
+}
+.circle.orange {
+    background-color: #eb6841;
+}

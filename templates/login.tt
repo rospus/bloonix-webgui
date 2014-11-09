@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title><% title %></title>
+<link rel="shortcut icon" href="/public/img/favicon.ico" />
+<script src="/public/js/jquery.min.js"></script>
+<meta charset="UTF-8" />
+<style type="text/css">
+@import url("//fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900|Roboto+Condensed:400,700|Roboto+Slab:400,700,300,100");
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: url(/public/img/teaser.jpg) no-repeat;
+    background-size: 100% 100%;
+    font-family: "Roboto",Arial,sans-serif;
+}
+img {
+    border: none;
+}
+.overlay1 {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.6);
+}
+.overlay2 {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: url(/public/img/overlay-dot.png) repeat;
+    position: relative;
+}
+.logo {
+    width: 208px;
+    height: 50px;
+    padding: 30px;
+}
+.centered {
+    width: 800px;
+    height: 410px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -400px;
+    margin-top: -205px;
+    background: rgba(0,0,0,0.1);
+}
+.content {
+    position: relative;
+    width: 800px;
+    height: 410px;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    color: #ffffff;
+    font-size: 50px;
+    margin: 0;
+    padding: 10px 0 16px 0;
+    text-align: center;
+    font-weight: 900;
+    letter-spacing: -2px;
+}
+.center {
+    text-align: center;
+    vertical-align: middle;
+}
+.login-box, .forgot-box {
+    margin: 0;
+    padding: 0;
+
+}
+.forgot-box, #failed, #success {
+    display: none;
+}
+#failed, #success {
+    width: 500px;
+    margin: 20px auto;
+    font-size: 34px;
+    text-align: center;
+}
+#failed {
+    color: #ff0000;
+}
+#success {
+    color: #7DE49E;
+}
+.attention {
+    width: 500px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: #ff0000;
+    font-size: 20px;
+    letter-spacing: 0;
+    text-align: right;
+}
+.switch {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: #ffffff;
+    font-size: 20px;
+    letter-spacing: 0;
+}
+.switch a {
+    cursor: pointer;
+}
+table {
+    margin: 0 auto;
+    padding: 0;
+    border-collapse: collapse;
+}
+table th {
+    letter-spacing: -2px;
+    font-weight: normal;
+    vertical-align: middle;
+    text-align: right;
+    color: #ffffff;
+    font-size: 36px;
+    padding: 10px;
+}
+table td {
+    font-weight: normal;
+    vertical-align: middle;
+    text-align: left;
+    padding: 16px 10px 0 10px;
+}
+input[type=text] {
+    transition: all ease-in-out .40s;
+    -o-transition: all ease-in-out .40s;
+    -webkit-transition: all ease-in-out .40s;
+    -moz-transition: all ease-in-out .40s;
+}
+input {
+    width: 400px;
+    margin: 0 0 15px 0;
+    padding: 16px 10px;
+    border: 2px solid #ffffff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #555555;
+}
+input:focus {
+    border: 2px solid #3CCCE0;
+    outline: none;
+}
+button {
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    display: inline-block;
+    margin: 6px 0;
+    padding: 20px 44px;
+    line-height: 16px;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: #3CCCE0;
+    color: #ededed;
+}
+button:hover {
+    background-color: #4BAFBD;
+    color: #ffffff;
+}
+button:active {
+    background-color: #1C93A3;
+    color: #ffffff;
+}
+p {
+    text-align: center;
+}
+</style>
+</head>
+<body>
+<!--[if IE]>
+<div style="color: #ffffff; text-align: center; padding-top: 20px; font-size: 1.6em;">
+Your browser is not supported and might not work!
+<br /><br />
+We recommend using the latest version of
+<br /><br />
+Chrome, Safari, Opera or Firefox!
+</div>
+<![endif]-->
+<div class="overlay1">
+<div class="overlay2">
+<div class="logo"><a target="_blank" href="https://www.bloonix.de/"><img src="/public/img/bloonix-logo-login.png" alt="www.bloonix.de" /></a></div>
+<div class="centered">
+<div class="content">
+
+<div class="login-box" id="user-login-box">
+<h1><%= $c->lang->get('site.login.welcome') %></h1>
+<form id="login" name="Login" action="/login/" method="POST">
+<input id="redirect" type="hidden" name="redirect" value="" />
+<table>
+<tr>
+<th><%= $c->lang->get('site.login.username') %></th>
+<td><input placeholder="<%= $c->lang->get('site.login.username') %>" name="username" type="text" maxlength="100" value="" id="username" /></td>
+</tr><tr>
+<th><%= $c->lang->get('site.login.password') %></th>
+<td><input placeholder="<%= $c->lang->get('site.login.password') %>" name="password" type="password" maxlength="100" value="" id="password" /></td>
+</tr><tr>
+</tr>
+</table>
+<div class="center">
+<button type="submit" name="<%= $c->lang->get('action.login') %>" id="submit"><%= $c->lang->get('action.login') %></button>
+</div>
+</form>
+<div class="switch"><a onclick="forgotPasswordBox()"><%= $c->lang->get('site.login.forgot_password') %></a></div>
+% if ($stash->{error}) {
+<div class="attention">
+% foreach my $str ($stash->for("error")) {
+<%= $str %>
+% }
+</div>
+% }
+</div>
+
+<div class="forgot-box" id="forgot-password-box">
+<h1><%= $c->lang->get('site.login.request_password') %></h1>
+<form id="forgot-password-form" action="/login/" method="POST">
+<p><input placeholder="<%= $c->lang->get('site.login.username') %>" name="req_new_pwd" type="text" maxlength="100" value="" /></p>
+<p><button type="submit" name="<%= $c->lang->get('action.submit') %>"><%= $c->lang->get('action.submit') %></button></p>
+</form>
+<div class="switch"><a onclick="userLoginBox()"><%= $c->lang->get('site.login.want_to_login') %></a></div>
+</div>
+
+<div id="failed">
+<div class="attention"><%= $c->lang->get('site.login.request_failed') %></div>
+</div>
+<div id="success">
+<div class="information"><%= $c->lang->get('site.login.request_success') %></div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<script> 
+function forgotPasswordBox() {
+    $("#forgot-password-form input").val("");
+    $("#user-login-box").hide();
+    $("#success").hide();
+    $("#failed").hide();
+    $("#forgot-password-form").show();
+    $("#forgot-password-box").fadeIn(400);
+}
+function userLoginBox() {
+    $("#forgot-password-box").hide();
+    $("#success").hide();
+    $("#failed").hide();
+    $("#user-login-box").fadeIn(400);
+}
+$(document).ready(function() {
+    $("#username").focus();
+
+    $("#forgot-password-form").submit(function(event) {
+        var value = $("#forgot-password-form input").val();
+        event.preventDefault();
+        $.ajax({
+            url: "/login/",
+            data: { req_new_pwd: value },
+            type: "post",
+            processData: true,
+            error: function() {
+                $("#forgot-password-form").hide();
+                $("#failed").show(400);
+            },
+            success: function() {
+                $("#forgot-password-form").hide();
+                $("#success").show(400);
+            }
+        });
+    });
+
+    $("#redirect").val(window.location.hash);
+});
+</script>
+</body>
+</html>

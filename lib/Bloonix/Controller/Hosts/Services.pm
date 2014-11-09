@@ -1,0 +1,222 @@
+package Bloonix::Controller::Hosts::Services;
+
+use strict;
+use warnings;
+
+sub startup {
+    my ($self, $c) = @_;
+
+    $c->route->map("/hosts/:id/services/options/:plugin_id")->to("options");
+    $c->route->map("/hosts/:id/services/create")->to("create");
+    $c->route->map("/hosts/:id/services/:service_id")->to("view");
+    $c->route->map("/hosts/:id/services/:service_id/options")->to("options");
+    $c->route->map("/hosts/:id/services/:service_id/update")->to("update");
+    $c->route->map("/hosts/:id/services/:service_id/delete")->to("delete");
+
+    $c->route->map("/services/options/:plugin_id")->to("options");
+    $c->route->map("/services/create")->to("create");
+    $c->route->map("/services/:service_id")->to("view");
+    $c->route->map("/services/:service_id/options")->to("options");
+    $c->route->map("/services/:service_id/update")->to("update");
+    $c->route->map("/services/:service_id/delete")->to("delete");
+}
+
+sub auto {
+    my ($self, $c, $opts) = @_;
+
+    my $host = $c->stash->object;
+    $c->stash->object({ host => $host });
+
+    if ($opts && $opts->{service_id}) {
+        my $service = $c->model->database->service->by_host_and_service_id(
+            host_id => $opts->{id},
+            id => $opts->{service_id}
+        );
+
+        if (!$service) {
+            $c->plugin->error->object_does_not_exists;
+            return undef;
+        }
+
+        $c->stash->object->{service} = $service;
+        $c->stash->object->{host} = $c->model->database->host->get($service->{host_id});
+        $c->stash->object->{plugin} = $c->model->database->plugin->get($service->{plugin_id});
+    }
+
+    if ($opts->{plugin_id}) {
+        my $plugin = $c->model->database->plugin->find(
+            condition => [
+                id => $opts->{plugin_id},
+                company_id => [ 1, $c->user->{company_id} ]
+            ]
+        );
+
+        if (!$plugin) {
+            $c->plugin->error->object_does_not_exists;
+            return undef;
+        }
+
+        $c->stash->object->{plugin} = $plugin;
+    }
+
+    return 1;
+}
+
+sub options {
+    my ($self, $c, $opts) = @_;
+
+    $c->model->database->user_group->can_update_service(
+        $c->user->{id}, $opts->{id}
+    ) or return $c->plugin->error->no_privileges_on_action(modify => "service");
+
+    if ($c->stash->object->{service}->{host_template_id}) {
+        $c->model->database->service->set_small;
+    } else {
+        $c->model->database->service->set(
+            $c->stash->object->{plugin},
+            $c->stash->object->{service} ? "update" : "create"
+        );
+    }
+
+    if ($opts && $opts->{service_id}) {
+        my $service = $c->stash->object->{service};
+        $service->{command_options} = $c->json->decode($service->{command_options});
+        if ($service->{location_options}) {
+            $service->{location_options} = $c->json->decode($service->{location_options});
+
+            my $locations_form_parameter = join("_",
+                $service->{location_options}->{check_type}, 
+                "locations"
+            );
+
+            $service->{location_options}->{$locations_form_parameter} = delete $service->{location_options}->{locations};
+        }
+        if ($service->{agent_options}) {
+            $service->{agent_options} = $c->json->decode($service->{agent_options});
+        } else {
+            $service->{agent_options} = {};
+        }
+
+        $c->stash->data(values => $c->stash->object->{service});
+    } else {
+        $c->stash->data(values => $c->model->database->service->validator->defaults);
+        $c->stash->data->{values}->{agent_options} = {};
+    }
+
+    $c->stash->data(options => $c->model->database->service->validator->options);
+    $c->view->render->json;
+}
+
+sub view {
+    my ($self, $c, $opts) = @_;
+
+    $c->stash->data(
+        $c->model->database->service->by_service_id($opts->{service_id})
+    );
+
+    $c->view->render->json;
+}
+
+sub create {
+    my ($self, $c, $opts) = @_;
+
+    $c->plugin->token->check
+        or return;
+
+    my $count_services = $c->model->database->service->count_by_company_id($c->user->{company_id});
+
+    if ($c->user->{max_services} != 0 && $count_services >= $c->user->{max_services}) {
+        return $c->plugin->error->no_more_services_available($c->user->{max_services});
+    }
+
+    $c->model->database->user_group->can_create_service(
+        $c->user->{id}, $opts->{id}
+    ) or return $c->plugin->error->no_privileges_on_action(create => "service");
+
+    my $data = $c->plugin->service->validate
+        or return;
+
+    my $service = $c->model->database->service->create_new_service($data)
+        or return $c->plugin->error->action_failed;
+
+    $service->{command_options} = $c->json->decode($service->{command_options});
+
+    if ($service->{location_options}) {
+        $service->{location_options} = $c->json->decode($service->{location_options});
+    }
+
+    $c->plugin->log_action->create(
+        target => "service",
+        data => $service
+    );
+
+    $c->stash->data($service);
+    $c->view->render->json;
+}
+
+sub update {
+    my ($self, $c, $opts) = @_;
+
+    $c->plugin->token->check
+        or return 1;
+
+    $c->model->database->user_group->can_update_service(
+        $c->user->{id}, $opts->{id}
+    ) or return $c->plugin->error->no_privileges_on_action(modify => "service");
+
+    my $host = $c->stash->object->{host};
+    my $service = $c->stash->object->{service};
+    my $data = $c->plugin->service->validate($service)
+        or return;
+
+    $c->model->database->service->update_service($service->{id}, $service->{service_parameter_id}, $data)
+        or return $c->plugin->error->action_failed;
+
+    $service = $c->model->database->service->by_service_id($service->{id});
+    $service->{command_options} = $c->json->decode($service->{command_options});
+
+    if ($service->{location_options}) {
+        $service->{location_options} = $c->json->decode($service->{location_options});
+    }
+
+    $c->plugin->log_action->update(
+        target => "service", 
+        old => $c->stash->object->{service},
+        data => $service
+    );
+
+    $c->stash->data($service);
+    $c->view->render->json;
+}
+
+sub delete {
+    my ($self, $c, $opts) = @_;
+
+    $c->plugin->token->check
+        or return 1;
+
+    if ($c->stash->object->{service}->{host_template_id}) {
+        return $c->plugin->error->cannot_delete_host_template_object;
+    }
+
+    $c->model->database->user_group->can_delete_service(
+        $c->user->{id}, $opts->{id}
+    ) or return $c->plugin->error->no_privileges_on_action(delete => "service");
+
+    # DELETE CASCADE should also delete the service
+    $c->model->database->service_parameter->delete(
+        $c->stash->object->{service}->{service_parameter_id}
+    ) or return $c->plugin->error->action_failed;
+
+    #$c->model->database->service->delete($opts->{service_id})
+    #    or return $c->plugin->error->action_failed;
+
+    $c->plugin->log_action->delete(
+        target => "service",
+        data => $c->stash->object->{service}
+    );
+
+    $c->view->render->json;
+}
+
+1;

@@ -1,0 +1,157 @@
+.cicons, .flagicons {
+    margin: 2px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-image: url(/public/img/cicons.png);
+    display: inline-block;
+    vertical-align: top;
+}
+.cicons {
+    width: 16px;
+    height: 16px;
+}
+.flagicons {
+    width: 16px;
+    height: 11px;
+}
+.cicons.boxes {
+    background-position: -96px -176px;
+}
+.cicons.robot {
+    background-position: -112px -176px;
+}
+.cicons.host {
+    background-position: -80px -144px;
+}
+.cicons.data-add {
+    background-position: -16px -144px;
+}
+.cicons.clock {
+    background-position: -64px -96px;
+}
+.cicons.group {
+    background-position: -96px -112px;
+}
+.cicons.group-add {
+    background-position: -48px -112px;
+}
+.cicons.nomute {
+    background-position: -96px -128px;
+}
+.cicons.mute {
+    background-position: -112px -128px;
+}
+.cicons.active, .cicons.enabled, .cicons.ok {
+    background-position: -32px -80px;
+}
+.cicons.inactive, .cicons.disabled, .cicons.nok {
+    background-position: -80px -80px;
+}
+.cicons.info {
+    background-position: 0 -160px;
+}
+.cicons.handy {
+    background-position: -32px -240px;
+}
+.cicons.arrow-left-blue {
+    background-position: 0 0;
+}
+.cicons.arrow-right-blue {
+    background-position: -32px 0;
+}
+.cicons.arrow-right-orange {
+    background-position: -32px -16px;
+}
+.cicons.add {
+    background-position: 0 -80px;
+}
+.cicons.remove, .cicons.delete {
+    background-position: -48px -80px;
+}
+.cicons.template {
+    background-position: -80px -176px;
+}
+.cicons.template2 {
+    background-position: -64px -240px;
+}
+.cicons.alarm {
+    background-position: -32px -96px;
+}
+.cicons.noalarm {
+    background-position: -48px -96px;
+}
+.cicons.attention {
+    background-position: -80px -192px;
+}
+.cicons.lightning {
+    background-position: -96px -192px;
+}
+.cicons.light-on {
+    background-position: -96px -208px;
+}
+.cicons.configure {
+    background-position: -32px -128px;
+}
+.cicons.atom {
+    background-position: 0 -240px;
+}
+.cicons.sending {
+    background-position: -64px -128px;
+}
+.cicons.nosending {
+    background-position: -80px -128px;
+}
+.cicons.chart-silver {
+    background-position: 0 -176px;
+}
+.cicons.desktop {
+    background-position: -48px -160px;
+}
+.cicons.console {
+    background-position: -64px -160px;
+}
+.cicons.person {
+    background-position: 0 -112px;
+}
+.cicons.person-add {
+    background-position: -16px -112px;
+}
+.cicons.person-configure {
+    background-position: -32px -112px;
+}
+.cicons.company {
+    background-position: -112px -96px;
+}
+.cicons.key {
+    background-position: -16px -192px;
+}
+.cicons.exit-red {
+    background-position: 0 -96px;
+}
+.cicons.exit-blue {
+    background-position: -16px -96px;
+}
+.cicons.tab-right {
+    background-position: -32px -208px;
+}
+.cicons.report {
+    background-position: -32px -176px;
+}
+.cicons.data {
+    background-position: 0 -144px;
+}
+.cicons.event {
+    background-position: -48px -240px;
+}
+.cicons.chart {
+    background-position: -16px -176px;
+}
+.cicons.report2 {
+    background-position: -32px -176px;
+}
+.flagicons.de {
+    background-position: -128px 0;
+}
+.flagicons.en {
+    background-position: -128px -11px;
+}

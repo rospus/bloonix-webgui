@@ -1,0 +1,62 @@
+<h1>%%site.help.doc.add-new-host%%</h1>
+
+<h2>Grundlegendes</h2>
+
+<div>
+<p>
+Zur Einrichtung eines neuen Hosts sind mehrere Schritte notwendig, die im Einzelnen beschrieben werden.
+</p>
+
+<p>
+Zunächst erhalten Sie eine kleine Übersicht, welche Schritte Sie durchführen müssen:
+</p>
+
+<ol>
+    <li>Im Bereich <i>MONITORING ⇒ Hosts</i> muss der Host angelegt werden.</li>
+    <li>Der Host muss einer Gruppe und sollte auch einer Kontaktgruppe hinzugefügt werden.</li>
+    <li>Es müssen Services für den Host angelegt werden.</li>
+    <li>Die Installation des Bloonix-Agenten ist notwendig, falls Sie die Systemvitals Ihres Hosts überwachen möchten.</li>
+</ol>
+</div>
+
+<h2>Die Einrichtung im Detail</h2>
+
+<div>
+<h3>Zu 1.</h3>
+
+<p>
+Den neuen Host können Sie im Bereich <i>MONITORING ⇒ Hosts</i> anlegen. Oben Rechts befindet sich ein Plus-Icon, um zum Formular zu gelangen, mit dem Sie einen neuen Host anlegen können.
+</p>
+
+<img class="image" src="/public/img/docs/add-new-host-1.png" alt="" />
+
+<p>
+Dort angelangt, füllen Sie das Formular mit allen notwendigen Daten aus. Am wichtigsten hierbei sind der Hostname, die IP-Adresse und eine kleine Beschreibung des Hosts. Das Passwort, welches die Bloonix-Agenten zur Authentifizierung verwenden müssen, sollte bereits mit einem zufälligen Passwort generiert worden sein. Sind alle Felder ausgefüllt, so können Sie den Host anlegen.
+</p>
+
+<h3>Zu 2.</h3>
+
+<p>
+Im gleichen Formular zur Anlegung eines Hosts können Sie auch gleichzeitig eine Gruppe und eine Kontaktgruppe auswählen, in die der Host nach dem Anlegen hinzugefügt werden soll. Es ist wichtig, dass der Host einer Gruppe zugeordnet wird, da er ansonsten für die Benutzer nicht im Bereich <i>MONITORING</i> sichtbar ist. Über die Kontaktgruppen wird geregelt, welche Kontakte eine Benachrichtigung per E-Mail oder SMS bei kritischen Ereignissen eines Hosts erhalten.
+</p>
+
+<h3>Zu 3.</h3>
+
+<p>
+Alles, was dem Host jetzt noch fehlt, sind Services, die überwacht werden sollen. Klicken Sie hierzu in den Bereich <i>MONITORING</i> und wählen Sie den eben angelegten Host aus. In der linken Navigationsleiste öffnet sich ein Menü speziell für diesen Host. Klicken Sie dort auf <i>Services</i> und wählen Sie aus, ob Sie einen neuen Service aus einem vordefiniertem Template einrichten möchten oder einfach nur einen neuen Service ohne Template.
+</p>
+
+<p>
+Weitere Informationen zur Einrichtung von Services finden Sie im Dokument: <a data-id="add-new-service">%%site.help.doc.add-new-service%%</a>
+</p>
+
+<h3>Zu 4.</h3>
+
+<p>
+Ist der Host mit den Services nun in der WebGUI konfiguriert, so können Sie den Bloonix-Agenten auf Ihrem Server installieren, vorausgesetzt natürlich, Sie möchten die Systemvitals Ihres Servers überwachen. Eine Anleitung zur Installation des Agenten finden Sie hier: <a data-id="bloonix-agent-installation">%%site.help.doc.bloonix-agent-installation%%</a>
+</p>
+
+<p>
+Bitte beachten Sie, dass Sie zur Einrichtung von Hosts und Services und des Bloonix-Agenten jederzeit den Support von Bloonix kostenfrei beauftragen können, wenn Sie als Produkt den Cloud-Service von Bloonix in Anspruch nehmen.
+</p>
+</div>

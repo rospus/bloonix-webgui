@@ -1,0 +1,24 @@
+bloonix-webgui (0.4) released at 2014-11-08
+
+    * Fixed missed /plugins/search route.
+    * Fixed the width of the table of search results
+      of /plugins/search.
+    * Fixed volatile handling.
+
+bloonix-webgui (0.3) released at 2014-11-03
+
+    * Feature force_check for services implemented.
+    * Auto-close different info boxes with "update success"
+      messages after 4 seconds.
+    * Updated the license information.
+
+bloonix-webgui (0.2) released at 2014-10-23
+
+    * Fixed lang redirect errors.
+    * Fixed error messages in dashlets if no data are available.
+    * Removed some images.
+    * Replaced the logo of Bloonix.
+
+bloonix-webgui (0.1) released at 2014-08-25
+
+    * Initial public release

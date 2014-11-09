@@ -1,0 +1,106 @@
+Copyright (C) 2010-2014 by Jonny Schulz. All rights reserved.
+
+The Bloonix-WebGUI is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+* Separate licenses for images
+
+All images (gif, png, jpg) are copyright protected.
+It is not allowed to modify the images.
+The usage of all images is only allowed within the Bloonix-WebGUI.
+
+If you want to create derivative works of Bloonix then you have to delete
+or replace the images or buy an own license!
+
+
+* Separate licenses, 3. party software
+
+Parts of the software are provided under separate licenses, as follows:
+
+    * D3.js
+
+        URL: http://d3js.org/
+        LICENSE: BSD - https://github.com/mbostock/d3/blob/master/LICENSE
+
+    * topojson
+
+        URL: https://github.com/mbostock/topojson/
+        LICENSE: BSD - https://github.com/mbostock/topojson/blob/master/LICENSE
+
+    * Flot
+
+        URL: http://www.flotcharts.org/
+        LICENSE: MIT - https://github.com/flot/flot/blob/master/LICENSE.txt
+
+    * datamaps
+
+        URL: http://datamaps.github.io/
+        LICENSE: MIT - https://github.com/markmarkoh/datamaps/blob/master/LICENSE
+
+    * Highcharts, Highmaps
+
+        URL: http://www.highcharts.com/
+        LICENSE: http://shop.highsoft.com/
+
+        Highcharts and Highmaps are not used by default in the Bloonix software.
+        If you want to use Highcharts and Highmaps you have to buy a license separately.
+        If you don't want to use Highcharts and Highmaps then Flot, D3.js, topojson and
+        datamaps are used by default and are pre-configured.
+
+        Please contact the Bloonix support for more information.
+        E-Mail: support@bloonix.de
+        URL: https://www.bloonix.de/contact/
+
+    * InfoVis
+
+        URL: http://philogb.github.io/jit/
+        LICENSE: MIT - https://github.com/philogb/jit/blob/master/LICENSE
+
+    * jQuery
+
+        URL: http://jquery.com
+        LICENSE: MIT - https://jquery.org/license/
+
+    * jQuery Plugin Timepicker
+
+        URL: http://plugins.jquery.com/tag/timepicker/
+        LICENSE: MIT - http://plugins.jquery.com/jt.timepicker/
+
+    * jQuery Hex Color Picker
+
+        URL: http://booneputney.com/jquery-hex-colorpicker.html
+        LICENSE: MIT - https://github.com/boonep/jquery-hex-colorpicker/blob/master/MIT-LICENSE.txt
+
+    * Glyphicons, GlyphiconsHalflings
+
+        URL: http://glyphicons.com/
+        LICENSE: MIT - http://glyphicons.com/license/
+
+        Bloonix has a Glyphicons PRO License. The usage of the icons is only allowed within
+        the Bloonix-WebGUI software! You are not allowed to use the icons for own purposes!
+
+    * world-flags-sprite
+
+        URL: https://github.com/lafeber/world-flags-sprite/blob/master/LICENSE
+        LICENSE: MIT - https://github.com/lafeber/world-flags-sprite/blob/master/LICENSE
+
+    * phantomjs
+
+        URL: http://phantomjs.org/
+        LICENSE: BSD - https://github.com/ariya/phantomjs/blob/master/LICENSE.BSD
+
+Note:
+
+The javascript code of D3.js, topojson, Flot, datamaps are compressed in the file /public/js/other.min.js.
+The javascript code of InfoVis and jQuery Timepicker are compressed in the file /public/js/misc.min.js.

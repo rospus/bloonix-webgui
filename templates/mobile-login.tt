@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>[% title %]</title>
+<link rel="shortcut icon" href="/public/img/favicon.ico" />
+<link rel="stylesheet" href="/public/jquery/jquery-ui-1.10.4.custom.min.css" />
+<script src="/public/js/jquery.min.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<style type="text/css">
+@import url("//fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900|Roboto+Condensed:400,700|Roboto+Slab:400,700,300,100");
+html,body,table,tr,th,td,div,p,ul,ol,li,form,pre,a,img,h1,h2,h3,h4,h5,h6,button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-weight: 300;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    color: #101010;
+    background-color: #ffffff;
+    font-family: "Roboto",Arial,sans-serif;
+}
+header {
+    text-align: center;
+    padding: 20px 0 0 0;
+}
+h1 {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 10px 0 20px 0;
+}
+.logo {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+.logo img {
+    width: 100%;
+}
+.content {
+    width: 70%;
+    margin: 10px auto 0 auto;
+    text-align: center;
+}
+.content p {
+    margin: 4px 0;
+}
+input[type=text] {
+    transition: all ease-in-out .40s;
+    -o-transition: all ease-in-out .40s;
+    -webkit-transition: all ease-in-out .40s;
+    -moz-transition: all ease-in-out .40s;
+}
+input {
+    width: 200px;
+    margin: 0 auto;
+    padding: 8px 10px;
+    border: 1px solid #c1c1c1;
+    outline: none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    line-height: 15px;
+    font-size: 15px;
+    color: #101010;
+    background-color: #ffffff;
+    display: block;
+}
+input:focus {
+    border: 1px solid #116C77;
+    outline: none;
+}
+button {
+    width: 222px;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #116C77;
+    display: block;
+    margin: 0 auto;
+    padding: 9px 0;
+    line-height: 15px;
+    font-size: 15px;
+    background-color: #116C77;
+    color: #f1f1f1;
+    outline: none;
+}
+button:hover {
+    background-color: #238692;
+    border: 1px solid #238692;
+    color: #ffffff;
+}
+button:active {
+    background-color: #0A5B64;
+    border: 1px solid #0A5B64;
+    color: #ffffff;
+}
+::-webkit-input-placeholder {
+    color: #bbbbbb;
+}
+:-moz-placeholder {
+    color: #bbbbbb;
+}
+::-moz-placeholder {
+    color: #bbbbbb;
+}
+:-ms-input-placeholder {
+    color: #bbbbbb;
+}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">
+<img src="/public/img/bloonix-shape-800x756-black.png" alt="Bloonix" />
+<br/>
+</div>
+</header>
+<div class="content">
+<h1>Welcome to Bloonix.<br/>Please log in.</h1>
+<form action="/login" method="POST" autocomplete="off">
+<p><input placeholder="[% lang.get('site.login.username') %]" name="username" type="text" maxlength="100" value="" id="username" autocomplete="off"/></p>
+<p><input placeholder="[% lang.get('site.login.password') %]" name="password" type="password" maxlength="100" value="" id="password" /></p>
+<p><button type="submit" name="[% lang.get('action.login') %]" id="submit">[% lang.get('action.login') %]</button></p>
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<h1>%%site.help.doc.web-transactions%%</h1>
+
+<h2>Was sind Web-Transactions</h2>
+
+<div>
+<p>
+Mit den Web-Transactions haben Sie die Möglichkeit, Endbenutzer auf Ihrer Webseite zu simulieren. Stellen Sie sich beispielhaft vor, wie ein Benutzer einen Webshop besucht, nach Artikeln sucht, Artikel in den Warenkorb legt und diese letztendlich nach Ausfüllung eines Formulars bestellt. Dieser Workflow lässt sich über die Web-Transactions simulieren. Auf diese Weise haben Webseitenbetreiber die Möglichkeit Ihren Webshop auf eine Weise zu überwachen, wie es mit gewöhnlichen Checks kaum möglich ist.
+</p>
+</div>
+
+<h2>Wie funktionieren Web-Transactions</h2>
+
+<div>
+<p>
+Die Web-Transactions werden über einen <i>Headless Browser</i>, basierend auf WebKit, simuliert. Dafür ist es notwendig, Regelsätze zu definieren, mit denen Step für Step Benutzeraktionen durchgeführt werden. 
+</p>
+
+<p>
+Nehmen wir uns als Beispiel die Login-Seite der Bloonix-WebGUI, in die wir uns einloggen möchten. Hierzu schauen wir uns zunächst das HTML-Formular der Login-Seite an:
+</p>
+
+<pre>
+&lt;form action="/login" method="POST"&gt;
+&lt;input type="text" name="username" value="" /&gt;
+&lt;input type="text" name="password" value="" /&gt;
+&lt;button type="submit" id="submit"&gt;Login&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+
+<p>
+Die Regelsätze zum Login müssten dann wie folgt lauten:
+</p>
+
+<ol>
+    <li>Besuche die Webseite <i>https://gui.bloonix.de/login</i></li>
+    <li>Gebe den Wert <i>mein@benutzer.test</i> in das Formularfeld <i>username</i> ein</li>
+    <li>Gebe den Wert <i>geheim</i> in das Formularfeld <i>password</i> ein</li>
+    <li>Klicke auf den Button mit der ID <i>#submit</i></li>
+    <li>Warte bis das Element <i>#content</i> geladen ist</li>
+</ol>
+
+<p>
+Das Element <i>#content</i> ist ein eindeutiges Element, welches im Login-Formular nicht existiert. Es wird also solange gewartet, bis die Startseite der WebGUI geladen wurde, denn dort existiert das Element.
+</p>
+</div>
+
+<h2>Die Einrichtung im Detail</h2>
+
+<div>
+<p>
+Zur Einrichtung der Web-Transactions gelangen Sie wie folgt:
+</p>
+
+<img class="image" src="/public/img/docs/add-new-service-1.png" alt="" />
+
+<p>
+Bei den Plugins angelangt klicken Sie dann das Plugin <i>WebTransactions</i> an.
+</p>
+
+<img class="image" src="/public/img/docs/select-wtrm-plugin-1.png" alt="" />
+
+<p>
+Dort angelangt können Sie nun den Workflow einrichten. Als Beispiel verwenden wir den obigen Workflow, um uns in die WebGUI von Bloonix einzuloggen.
+</p>
+
+<h3>1. Besuche die Webseite <i>https://gui.bloonix.de/login</i></h3>
+<img class="image noscale noauto" src="/public/img/docs/wtrm-step-1.png" alt="" />
+<img class="image noscale noauto" src="/public/img/docs/wtrm-step-2.png" alt="" />
+<img class="image noscale noauto" src="/public/img/docs/wtrm-step-3.png" alt="" />
+
+<h3>2. Gebe den Wert <i>mein@benutzer.test</i> in das Formularfeld <i>username</i> ein</h3>
+<img class="image noscale noauto" src="/public/img/docs/wtrm-step-4.png" alt="" />
+<img class="image noscale noauto" src="/public/img/docs/wtrm-step-5.png" alt="" />
+<img class="image noscale noauto" src="/public/img/docs/wtrm-step-6.png" alt="" />
+
+<h3>3. Gebe den Wert <i>geheim</i> in das Formularfeld <i>password</i> ein</h3>
+<img class="image noscale noauto" src="/public/img/docs/wtrm-step-7.png" alt="" />
+<img class="image noscale noauto" src="/public/img/docs/wtrm-step-8.png" alt="" />
+<img class="image noscale noauto" src="/public/img/docs/wtrm-step-9.png" alt="" />
+
+<h3>4. Klicke auf den Button mit der ID <i>#submit</i></h3>
+<img class="image noscale noauto" src="/public/img/docs/wtrm-step-10.png" alt="" />
+<img class="image noscale noauto" src="/public/img/docs/wtrm-step-11.png" alt="" />
+<img class="image noscale noauto" src="/public/img/docs/wtrm-step-12.png" alt="" />
+
+<h3>5. Warte bis das Element <i>#content</i> geladen ist</h3>
+<img class="image noscale noauto" src="/public/img/docs/wtrm-step-13.png" alt="" />
+<img class="image noscale noauto" src="/public/img/docs/wtrm-step-14.png" alt="" />
+<img class="image noscale noauto" src="/public/img/docs/wtrm-step-15.png" alt="" />
+
+<h3>Nun klicken Sie auf den Button <i>Check it!</i>, um den Workflow zu testen.</h3>
+<img class="image noscale noauto" src="/public/img/docs/wtrm-step-16.png" alt="" />
+
+<p>
+Ist der Workflow fertig, dann können Sie den Workflow als Service-Check anlegen.
+</p>
+</div>
+
+<h2>Das Web-Transaction Dashboard</h2>
+
+<div>
+<p>
+Ist der Service-Check angelegt, so können Sie nun das Web-Transaction-Dashboard aufrufen, um die Ergebnisse der Prüfungen einzusehen.
+Zum Dashboard gelangen Sie wie folgt:
+</p>
+
+<img class="image noscale noauto" src="/public/img/docs/wtrm-step-17.png" alt="" />
+<img class="image" src="/public/img/docs/wtrm-step-18.png" alt="" />
+</div>

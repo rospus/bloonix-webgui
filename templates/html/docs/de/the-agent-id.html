@@ -1,0 +1,46 @@
+<h1>%%site.help.doc.the-agent-id%%</h1>
+
+<h2>Von welchem Standort aus soll der Check ausgeführt werden?</h2>
+
+<div>
+<p>
+Mit den Standort-Checks haben Sie die Möglichkeit festzulegen, welcher Bloonix-Agent an welchem Standort Ihren Service prüfen soll.
+</p>
+
+<p>
+Bloonix selbst bietet zum Beispiel diverse Standorte in Deutschland an, um Ihre Webservices per HTTP zu prüfen. Sie könnten diese Services aber genauso von eigenen Servern testen lassen, wenn dort ein Bloonix-Agent läuft und für die entsprechenden Services konfiguriert ist.
+</p>
+
+<p>
+Es gibt auch Service-Checks, für die Sie definitiv einen Bloonix-Agenten auf Ihrem Server installieren müssen. Da wären zum Beispiel Prüfungen, die weder über SNMP abgefragt werden können oder die über keine eigene Netzwerkverkverbindung verfügen. Es gibt aber auch Services, dessen Ports Sie eventuell nicht für das Internet erreichbar machen möchten. Für diese Service-Checks, besipielweise zur Überwachung der CPU-Last, der Load Average, des Hauptspeichers, der Festplattenkapazität, der MySQL oder PostgreSQL Datenbank etc., ist die Installation des Bloonix-Agenten auf Ihrem Server notwendig.
+</p>
+
+<p>
+Bei der Einrichtung von Services in der Weboberfläche gibt es drei mögliche Optionen zur Auswahl des Standorts: <i>localhost</i>, <i>intranet</i> und <i>remote</i>.
+</p>
+
+<h3>localhost</h3>
+<p>
+Mit der Option <i>localhost</i> wird der Check lokal auf Ihrem Server ausgeführt.
+Hierzu ist es notwendig, dass der Bloonix-Agent auf Ihrem Server installiert ist.
+Diese Option ist besonders sinnvoll, wenn Sie die Systemvitals, wie zum Beispiel die
+CPU, den Hauptspeicher oder auch die Festplatten überwachen möchten.
+</p>
+
+<h3>intranet</h3>
+<p>
+Mit der Option <i>intranet</i> ist ihr lokales Netzwerk gemeint. Hierfür ist es notwendig,
+dass Sie den Bloonix-Agenten in Ihrem lokalen Netzwerk auf einem zentralen Server installieren.
+Von diesem Server aus werden die Checks ausgeführt. Diese Option ist sinnvoll, wenn Ihre Server
+Services bereitstellen, welche nicht über eine Internetanbindung erreichbar sind, aber dennoch
+von einem anderen Server aus überprüft werden sollen. Das können zum Beispiel Router, Switches
+etc. sein.
+</p>
+
+<h3>remote</h3>
+<p>
+Mit der Option <i>remote</i> wird der Check von einem externen Bloonix-Server ausgeführt. Dies ist besonders für
+Internetservices sinnvoll. Zum Beispiel können Sie über einen externen Check die Funktionalität Ihres Webservers bzw.
+Ihrer Webseiten überprüfen.
+</p>
+</div>
