@@ -17187,6 +17187,9 @@ Bloonix.initHostView = function() {
         .addClass("b2x-right")
         .appendTo("#content");
     Utils.create("div")
+        .addClass("loading")
+        .appendTo("#b2x-right");
+    Utils.create("div")
         .addClass("clear")
         .appendTo("#content");
 };
@@ -17198,6 +17201,7 @@ Bloonix.loadHost = function(hostId) {
     Bloonix.viewHost(host);
     Bloonix.viewServices(host, services);
     Bloonix.showHostSubNavigation("host", hostId, host.hostname);
+    $("#b2x-right").find(".loading").remove();
 };
 
 Bloonix.viewHost = function(host) {
