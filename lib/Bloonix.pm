@@ -25,7 +25,6 @@ package Bloonix;
 use strict;
 use warnings;
 use base qw(Bloonix::Heaven);
-use Data::Dumper;
 use Params::Validate qw();
 use Sys::Hostname;
 

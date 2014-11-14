@@ -1,3 +1,8 @@
+bloonix-webgui (0.5) released at 2014-XX-XX
+
+    * Added preset 14d, 30d, 60d, 90d to the chart selection.
+    * Modified the mail format for uses that logged in.
+
 bloonix-webgui (0.4) released at 2014-11-08
 
     * Fixed missed /plugins/search route.

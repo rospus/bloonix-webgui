@@ -7,7 +7,7 @@ use Time::HiRes;
 sub auto {
     my ($self, $c) = @_;
 
-    $c->version->{js} = 65;
+    $c->version->{js} = 66;
 
     my $addr = $c->req->remote_addr || "n/a";
     my $lang = $c->req->cookie("lang");
@@ -387,7 +387,12 @@ sub login {
                         from => $c->config->{email}->{from},
                         to => $c->config->{email}->{to},
                         subject => sprintf($c->config->{email}->{subject}, "User logged in: $uname"),
-                        message => "The user $uname logged in successfully."
+                        message => join("\n",
+                            "Login: success",
+                            "User: $username",
+                            "IP-Address: $ipaddr",
+                            "Time: $time"
+                        )
                     );
                 }
 
@@ -421,8 +426,8 @@ sub login {
                 to => $c->config->{email}->{to},
                 subject => sprintf($c->config->{email}->{subject}, "WARNING ($hostname)! FAILED LOGIN from $ipaddr"),
                 message => join("\n",
+                    "Login: failed",
                     "User: $username",
-                    "Password: length ".length($password),
                     "IP-Address: $ipaddr",
                     "Time: $time"
                 )
