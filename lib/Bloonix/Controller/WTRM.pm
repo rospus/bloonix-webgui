@@ -9,17 +9,7 @@ sub new {
     my ($class, $c) = @_;
     my $self = bless { }, $class;
 
-    $self->{rest} = Bloonix::REST->new(
-        proto => "https",
-        host => "agent02.bloonix.de",
-        mode => "failover",
-        timeout => 30,
-        utf8 => "yes",
-        ssl_options => {
-            ssl_verify_mode => 1,
-            ssl_ca_path => "/etc/ssl/certs"
-        },
-    );
+    $self->{rest} = Bloonix::REST->new($c->config->{wtrm_api});
 
     return $self;
 }
@@ -48,6 +38,7 @@ sub quick {
 
 sub test {
     my ($self, $c, $opts) = @_;
+    my $wtrm_api_key = $c->config->{wtrm_api_key};
 
     my $data = $c->req->jsondata;
     $c->log->notice("execute wtrm workflow");
@@ -65,8 +56,8 @@ sub test {
     }
 
     my $path = $opts && $opts->{quick}
-        ? "/ohGoh7Ioz5Yoogh0Eep8ohvaoJu4eeLeigh6rohtabiy4oa8ooM1ahquaehaiSah/quick"
-        : "/ohGoh7Ioz5Yoogh0Eep8ohvaoJu4eeLeigh6rohtabiy4oa8ooM1ahquaehaiSah/test";
+        ? "/$wtrm_api_key/quick"
+        : "/$wtrm_api_key/test";
 
     local $SIG{__DIE__} = sub {};
     my $result = $self->rest->post(path => $path, data => $data)
@@ -79,10 +70,11 @@ sub test {
 
 sub result {
     my ($self, $c, $opts) = @_;
+    my $wtrm_api_key = $c->config->{wtrm_api_key};
 
     local $SIG{__DIE__} = sub {};
     my $result = $self->rest->get(
-        path => "/ohGoh7Ioz5Yoogh0Eep8ohvaoJu4eeLeigh6rohtabiy4oa8ooM1ahquaehaiSah/result",
+        path => "/$wtrm_api_key/result",
         data => $opts
     ) or return $c->plugin->error->action_failed;
 
