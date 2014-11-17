@@ -475,11 +475,11 @@ sub logout {
         -value   => $c->user->{sid},
         -expires => "-1m"
     );
-    $c->res->cookie(
-        -name    => "lang",
-        -value   => "deleted",
-        -expires => "-1m"
-    );
+    #$c->res->cookie(
+    #    -name    => "lang",
+    #    -value   => "deleted",
+    #    -expires => "-1m"
+    #);
 
     if ($c->req->is_json) {
         return $c->view->render->json;

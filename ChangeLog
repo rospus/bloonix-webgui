@@ -1,8 +1,12 @@
-bloonix-webgui (0.5) released at 2014-XX-XX
+bloonix-webgui (0.5) released at 2014-11-17
 
     * Added preset 14d, 30d, 60d, 90d to the chart selection.
     * Modified the mail format for uses that logged in.
     * Added a loading div to the service table within the host view.
+    * Removed a test key to the wtrm configuration and replaced it
+      with variables.
+    * Fixed lang issues... the cookie is not deleted any more if
+      the user logged out.
 
 bloonix-webgui (0.4) released at 2014-11-08
 
