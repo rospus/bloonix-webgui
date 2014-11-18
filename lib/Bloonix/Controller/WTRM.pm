@@ -9,7 +9,9 @@ sub new {
     my ($class, $c) = @_;
     my $self = bless { }, $class;
 
-    $self->{rest} = Bloonix::REST->new($c->config->{wtrm_api});
+    if ($c->config->{wtrm_api}) {
+        $self->{rest} = Bloonix::REST->new($c->config->{wtrm_api});
+    }
 
     return $self;
 }
@@ -38,8 +40,12 @@ sub quick {
 
 sub test {
     my ($self, $c, $opts) = @_;
-    my $wtrm_api_key = $c->config->{wtrm_api_key};
 
+    if (!$self->rest) {
+        return $c->plugin->error->service_not_available;
+    }
+
+    my $wtrm_api_key = $c->config->{wtrm_api_key};
     my $data = $c->req->jsondata;
     $c->log->notice("execute wtrm workflow");
     $c->log->dump(notice => $data);

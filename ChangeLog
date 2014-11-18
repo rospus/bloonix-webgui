@@ -1,3 +1,7 @@
+bloonix-webgui (0.6) released at 2014-11-18
+
+    * Fixed missing wtrm configuration.
+
 bloonix-webgui (0.5) released at 2014-11-17
 
     * Added preset 14d, 30d, 60d, 90d to the chart selection.

@@ -66,6 +66,7 @@ nav.sub.contactgroup_service_members: Services in der Kontaktgruppe
 err-400: Der Login ist fehlgeschlagen. Bitte versuchen Sie es erneut!
 err-405: Ihre Session ist abgelaufen!
 err-410: Die angeforderte Seite wurde nicht gefunden!
+err-411: Der Dienst ist nicht verfügbar!
 err-415: Nicht authorisierter Zugriff!
 err-416: Sie haben nicht genügend Rechte für diese Operation!
 err-417: Sie haben nicht genügend Rechte um ein Objekt zu erstellen!

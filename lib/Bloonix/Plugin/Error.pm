@@ -24,6 +24,11 @@ sub site_does_not_exists {
     $self->_error("err-410");
 }
 
+sub service_not_available {
+    my $self = shift;
+    $self->_error("err-411");
+}
+
 sub noauth_access {
     my $self = shift;
     $self->_error("err-415");

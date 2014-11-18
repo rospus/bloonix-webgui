@@ -66,6 +66,7 @@ nav.sub.contactgroup_service_members: Services in contact group
 err-400: Bad login! Try it again!
 err-405: Your session is expired!
 err-410: The requested URL was not found!
+err-411: The service is not available!
 err-415: Unauthorized access!
 err-416: You do not have enough access privileges for this operation!
 err-417: You do not have enough privileges to create an object!
