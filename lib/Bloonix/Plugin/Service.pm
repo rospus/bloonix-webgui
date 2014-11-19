@@ -165,7 +165,7 @@ sub validate_location_options {
                     }
                 }
 
-                if (@{$safe_location_options{locations}} < 3) {
+                if ($safe_location_options{locations} eq "ARRAY" && @{$safe_location_options{locations}} < 3) {
                     push @errors, "command_options:$parameter";
                 }
             } else {
