@@ -610,7 +610,12 @@ Table.prototype.createColumn = function(tr, row, col) {
                 }
 
                 if (obj.title) {
-                    icon.attr("title", Utils.escape(obj.title));
+                    if (typeof obj.title == "function") {
+                        var t = obj.title(row);
+                        icon.attr("title", t);
+                    } else {
+                        icon.attr("title", Utils.escape(obj.title));
+                    }
                     icon.tooltip();
                 }
 

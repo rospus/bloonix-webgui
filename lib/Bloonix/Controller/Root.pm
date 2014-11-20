@@ -7,7 +7,7 @@ use Time::HiRes;
 sub auto {
     my ($self, $c) = @_;
 
-    $c->version->{js} = 69;
+    $c->version->{js} = 70;
 
     my $addr = $c->req->remote_addr || "n/a";
     my $lang = $c->req->cookie("lang");

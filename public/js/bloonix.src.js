@@ -1485,7 +1485,7 @@ var Lang = {
       "text.min_length" : "Min length: <b>%s</b>",
       "schema.group.text.settings" : "Group settings",
       "schema.host.text.report_title" : "Report for host %s",
-      "schema.service.info.inherits_from_host_template" : "This service is inherited from a host template.",
+      "schema.service.info.inherits_from_host_template" : "This service is inherited from host template '%s'.",
       "schema.host.attr.hostname" : "Hostname",
       "schema.group.text.may_create_services" : "May create services",
       "schema.host.attr.sysgroup" : "System group",
@@ -2454,7 +2454,7 @@ var Lang = {
       "text.min_length" : "Mindestlänge %s",
       "schema.group.text.settings" : "Einstellungen der Gruppe",
       "schema.host.text.report_title" : "Bericht für Host %s",
-      "schema.service.info.inherits_from_host_template" : "Dieser Service wird von einem Host Template vererbt.",
+      "schema.service.info.inherits_from_host_template" : "Dieser Service wird von Host Template '%s' vererbt.",
       "schema.host.attr.hostname" : "Hostname",
       "schema.group.text.may_create_services" : "Darf Services erstellen",
       "schema.host.attr.sysgroup" : "Systemgruppe",
@@ -7005,7 +7005,12 @@ Table.prototype.createColumn = function(tr, row, col) {
                 }
 
                 if (obj.title) {
-                    icon.attr("title", Utils.escape(obj.title));
+                    if (typeof obj.title == "function") {
+                        var t = obj.title(row);
+                        icon.attr("title", t);
+                    } else {
+                        icon.attr("title", Utils.escape(obj.title));
+                    }
                     icon.tooltip();
                 }
 
@@ -18069,7 +18074,9 @@ Bloonix.listServices = function(o) {
         icons.push({
             check: function(row) { return row.host_template_name ? true : false },
             icon: "cicons template2",
-            title: Text.get("schema.service.info.inherits_from_host_template")
+            title: function(row) {
+                return Text.get("schema.service.info.inherits_from_host_template", Utils.escape(row.host_template_name));
+            }
         });
 
         this.table = new Table({

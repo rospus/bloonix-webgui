@@ -350,7 +350,9 @@ Bloonix.listServices = function(o) {
         icons.push({
             check: function(row) { return row.host_template_name ? true : false },
             icon: "cicons template2",
-            title: Text.get("schema.service.info.inherits_from_host_template")
+            title: function(row) {
+                return Text.get("schema.service.info.inherits_from_host_template", Utils.escape(row.host_template_name));
+            }
         });
 
         this.table = new Table({

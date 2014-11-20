@@ -904,7 +904,7 @@ schema.service.info.host_alive_check: This is a host-alive-check.
 schema.service.info.has_result: This service check has advanced status information. Click me :-)
 schema.service.info.inactive: The service is inactive.
 schema.service.info.notification_disabled: Notifications are disabled of the service.
-schema.service.info.inherits_from_host_template: This service is inherited from a host template.
+schema.service.info.inherits_from_host_template: This service is inherited from host template '%s'.
 schema.service.desc.agent_tooltip: <h3>Installation of the Bloonix-Agent</h3>
  <p>
  This check is executed on your server and requires that you install the Bloonix-Agent
