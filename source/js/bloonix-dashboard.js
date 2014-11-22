@@ -265,9 +265,8 @@ Bloonix.dashboard = function(o) {
             dashlets = this.dashlets;
 
         $.each(this.config, function(i, c) {
-            var pos = c.pos > 3 ? c.pos - 3 : c.pos,
-                dashlet = dashlets[c.name],
-                box = self.createDashlet(pos, c.name, c.width, c.height, c.opts);
+            var pos = c.pos > 3 ? c.pos - 3 : c.pos;
+            self.createDashlet(pos, c.name, c.width, c.height, c.opts);
         });
     };
 
@@ -404,6 +403,17 @@ Bloonix.dashboard = function(o) {
             .appendTo(dashlet.outer);
 
         this.addLoadingBox(dashlet.content);
+        this.addDashletOptions(dashlet, name);
+        this.resizeDashlets(dashlet);
+        this.boxes.push(dashlet);
+        this.reload[id] = dashlet;
+        dashlets[name].callback(dashlet, { animation: true });
+        return dashlet;
+    };
+
+    object.addDashletOptions = function(dashlet, name) {
+        var self = this,
+            dashlets = this.dashlets;
 
         var icons = [
             {
@@ -436,16 +446,10 @@ Bloonix.dashboard = function(o) {
             });
         }
 
-        Bloonix.createHoverBoxIcons({
+        dashlet.hoverBoxIcons = Bloonix.createHoverBoxIcons({
             container: dashlet.outer,
             icons: icons
         });
-
-        this.resizeDashlets(dashlet);
-        this.boxes.push(dashlet);
-        this.reload[id] = dashlet;
-        dashlets[name].callback(dashlet, { animation: true });
-        return dashlet;
     };
 
     object.resizeDashlet = function(dashlet) {
@@ -655,6 +659,8 @@ Bloonix.dashboard = function(o) {
             dashlet.box = box;
             dashlet.callback(box, this.dashletOptions);
             this.safeDashboard();
+            box.hoverBoxIcons.destroy();
+            this.addDashletOptions(box, name);
         } else {
             this.createDashlet(1, name, 3, 3, opts);
             this.resizeDashlets();
@@ -812,6 +818,7 @@ Bloonix.dashboard = function(o) {
                 overlay.close();
                 self.replaceOrAddDashlet(box, name, {
                     chart_id: opts.chart_id,
+                    service_id: opts.service_id,
                     preset: value
                 });
             };

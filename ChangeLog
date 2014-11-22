@@ -1,7 +1,8 @@
-bloonix-webgui (0.7) released at 2014-XX-XX
+bloonix-webgui (0.7) released at 2014-11-22
 
     * Fixed undefined value.
     * Template name is shown if the icon is hovered.
+    * Fixed dashlet configure button.
 
 bloonix-webgui (0.6) released at 2014-11-18
 

@@ -194,6 +194,12 @@ Bloonix.createHoverBoxIcons = function(o) {
             hicon.click(function() { Bloonix.route.to(icon.route) });
         }
     });
+
+    o.destroy = function() {
+        chartBoxIcons.remove();
+    };
+
+    return o;
 };
 
 Bloonix.get = function(url, data) {
