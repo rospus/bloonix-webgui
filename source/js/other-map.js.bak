@@ -1,20 +1,9 @@
 Bloonix.other.mapChart = function(o) {
-    var data = {},
-        colors = {},
-        region = {};
-
-    var fillColor = {
-        UNKNOWN: "#eb6841",
-        CRITICAL: "#cc333f",
-        WARNING: "#edc951",
-        INFO: "#339ab8",
-        OK: "#5fbf5f",
-        defaultFill: "#c9c9c9"
-    };
+    var data = {};
 
     $.each(o.data, function(k, v) {
         var country = k.toLowerCase(),
-            color = "OK";
+            fillKey = "OK";
 
         if (v.UNKNOWN > 0) {
             fillKey = v.UNKNOWN;
@@ -26,58 +15,49 @@ Bloonix.other.mapChart = function(o) {
             fillKey = "INFO";
         }
 
-        colors[country] = fillColor[color];
-
-        data[country] = {
-            UNKNOWN: v.UNKNOWN,
-            CRITICAL: v.CRITICAL,
-            WARNING: v.WARNING,
-            INFO: v.INFO,
-            OK: v.OK
+        data[Bloonix.other.mapCodes[country]] = {
+            fillKey: fillKey,
+            numberOfThings: {
+                UNKNOWN: v.UNKNOWN,
+                CRITICAL: v.CRITICAL,
+                WARNING: v.WARNING,
+                INFO: v.INFO,
+                OK: v.OK
+            }
         };
     });
 
-    $("#"+ o.chart.container).html("").vectorMap({
-        map: "world_en",
-        backgroundColor: "#ffffff",
-        borderColor: "#ffffff",
-        borderOpacity: 1,
-        borderWidth: 1,
-        color: "#c9c9c9",
-        colors: colors,
-        enableZoom: true,
-        hoverColor: '#68a4a3',
-        hoverOpacity: null,
-        normalizeFunction: 'linear',
-        //scaleColors: ['#b6d6ff', '#005ace'],
-        selectedColor: null,
-        selectedRegion: null,
-        showTooltip: true,
-        onRegionClick: function(element, code, region) {
-            $("#"+ o.chart.container).html("");
-            $(".map-tooltip").remove();
-            Bloonix.route.to("monitoring/hosts", { query: "c:"+ code.toUpperCase() });
+    $("#"+ o.chart.container).html("");
+
+    var map = new Datamap({
+        element: document.getElementById(o.chart.container),
+        fills: {
+            UNKNOWN: "#eb6841",
+            CRITICAL: "#cc333f",
+            WARNING: "#edc951",
+            INFO: "#339ab8",
+            OK: "#5fbf5f",
+            defaultFill: "#c9c9c9"
         },
-        onLabelShow: function(element, label, code) {
-            label.css({ "z-index": "10005", position: "fixed" });
-            var mapData;
-
-            if (data[code]) {
-                mapData = data[code];
-            } else {
-                mapData = { OK: 0, INFO: 0, WARNING: 0, CRITICAL: 0, UNKNOWN: 0 };
+        data: data,
+        geographyConfig: {
+            highlightOnHover: true,
+            highlightFillColor: "#68a4a3",
+            highlightBorderColor: '#ffffff',
+            highlightBorderWidth: 1,
+            popupTemplate: function(geo, data) {
+                if (!data) {
+                    data = { numberOfThings: { OK: 0, INFO: 0, WARNING: 0, CRITICAL: 0, UNKNOWN: 0 } };
+                }
+                return '<div class="map-tooltip"><span class="f32"><span class="flag '
+                    + Bloonix.other.mapCodes[geo.id] +'"></span></span> '+ geo.properties.name
+                    +'<br/><b>Unknown: </b>'+ data.numberOfThings.UNKNOWN
+                    +'<br/><b>Critical: </b>'+ data.numberOfThings.CRITICAL
+                    +'<br/><b>Warning: </b>'+ data.numberOfThings.WARNING
+                    +'<br/><b>Info: </b>'+ data.numberOfThings.INFO
+                    +'<br/><b>Ok: </b>'+ data.numberOfThings.OK
+                    +'</div>';
             }
-
-            var div = '<div class="map-tooltip"><span class="f32"><span class="flag '
-                + code +'"></span></span> '+ Bloonix.other.mapRegions[code]
-                +'<br/><b>Unknown: </b>'+ mapData.UNKNOWN
-                +'<br/><b>Critical: </b>'+ mapData.CRITICAL
-                +'<br/><b>Warning: </b>'+ mapData.WARNING
-                +'<br/><b>Info: </b>'+ mapData.INFO
-                +'<br/><b>Ok: </b>'+ mapData.OK
-                +'</div>';
-
-            label.html(div);
         }
     });
 };
@@ -316,189 +296,4 @@ Bloonix.other.mapCodes = {
     "YE": "YEM", "ye": "YEM", "YEM": "ye",
     "ZM": "ZMB", "zm": "ZMB", "ZMB": "zm",
     "ZW": "ZWE", "zw": "ZWE", "ZWE": "zw"
-};
-
-Bloonix.other.mapRegions = {
-    "ae": "United Arab Emirates",
-    "af": "Afghanistan",
-    "ag": "Antigua and Barbuda",
-    "al": "Albania",
-    "am": "Armenia",
-    "ao": "Angola",
-    "ar": "Argentina",
-    "at": "Austria",
-    "au": "Australia",
-    "az": "Azerbaijan",
-    "ba": "Bosnia and Herzegovina",
-    "bb": "Barbados",
-    "bd": "Bangladesh",
-    "be": "Belgium",
-    "bf": "Burkina Faso",
-    "bg": "Bulgaria",
-    "bi": "Burundi",
-    "bj": "Benin",
-    "bn": "Brunei Darussalam",
-    "bo": "Bolivia",
-    "br": "Brazil",
-    "bs": "Bahamas",
-    "bt": "Bhutan",
-    "bw": "Botswana",
-    "by": "Belarus",
-    "bz": "Belize",
-    "ca": "Canada",
-    "cd": "Congo",
-    "cf": "Central African Republic",
-    "cg": "Congo",
-    "ch": "Switzerland",
-    "ci": "Cote d'Ivoire",
-    "cl": "Chile",
-    "cm": "Cameroon",
-    "cn": "China",
-    "co": "Colombia",
-    "cr": "Costa Rica",
-    "cu": "Cuba",
-    "cv": "Cape Verde",
-    "cy": "Cyprus",
-    "cz": "Czech Republic",
-    "de": "Germany",
-    "dj": "Djibouti",
-    "dk": "Denmark",
-    "dm": "Dominica",
-    "do": "Dominican Republic",
-    "dz": "Algeria",
-    "ec": "Ecuador",
-    "ee": "Estonia",
-    "eg": "Egypt",
-    "er": "Eritrea",
-    "es": "Spain",
-    "et": "Ethiopia",
-    "fi": "Finland",
-    "fj": "Fiji",
-    "fk": "Falkland Islands",
-    "fr": "France",
-    "ga": "Gabon",
-    "gb": "United Kingdom",
-    "gd": "Grenada",
-    "ge": "Georgia",
-    "gf": "French Guiana",
-    "gh": "Ghana",
-    "gl": "Greenland",
-    "gm": "Gambia",
-    "gn": "Guinea",
-    "gq": "Equatorial Guinea",
-    "gr": "Greece",
-    "gt": "Guatemala",
-    "gw": "Guinea-Bissau",
-    "gy": "Guyana",
-    "hn": "Honduras",
-    "hr": "Croatia",
-    "ht": "Haiti",
-    "hu": "Hungary",
-    "id": "Indonesia",
-    "ie": "Ireland",
-    "il": "Israel",
-    "in": "India",
-    "iq": "Iraq",
-    "ir": "Iran",
-    "is": "Iceland",
-    "it": "Italy",
-    "jm": "Jamaica",
-    "jo": "Jordan",
-    "jp": "Japan",
-    "ke": "Kenya",
-    "kg": "Kyrgyz Republic",
-    "kh": "Cambodia",
-    "km": "Comoros",
-    "kn": "Saint Kitts and Nevis",
-    "kp": "North Korea",
-    "kr": "South Korea",
-    "kw": "Kuwait",
-    "kz": "Kazakhstan",
-    "la": "Lao People's Democratic Republic",
-    "lb": "Lebanon",
-    "lc": "Saint Lucia",
-    "lk": "Sri Lanka",
-    "lr": "Liberia",
-    "ls": "Lesotho",
-    "lt": "Lithuania",
-    "lv": "Latvia",
-    "ly": "Libya",
-    "ma": "Morocco",
-    "md": "Moldova",
-    "mg": "Madagascar",
-    "mk": "Macedonia",
-    "ml": "Mali",
-    "mm": "Myanmar",
-    "mn": "Mongolia",
-    "mr": "Mauritania",
-    "mt": "Malta",
-    "mu": "Mauritius",
-    "mv": "Maldives",
-    "mw": "Malawi",
-    "mx": "Mexico",
-    "my": "Malaysia",
-    "mz": "Mozambique",
-    "na": "Namibia",
-    "nc": "New Caledonia",
-    "ne": "Niger",
-    "ng": "Nigeria",
-    "ni": "Nicaragua",
-    "nl": "Netherlands",
-    "no": "Norway",
-    "np": "Nepal",
-    "nz": "New Zealand",
-    "om": "Oman",
-    "pa": "Panama",
-    "pe": "Peru",
-    "pf": "French Polynesia",
-    "pg": "Papua New Guinea",
-    "ph": "Philippines",
-    "pk": "Pakistan",
-    "pl": "Poland",
-    "pt": "Portugal",
-    "py": "Paraguay",
-    "qa": "Qatar",
-    "re": "Reunion",
-    "ro": "Romania",
-    "rs": "Serbia",
-    "ru": "Russian Federationß",
-    "rw": "Rwanda",
-    "sa": "Saudi Arabia",
-    "sb": "Solomon Islands",
-    "sc": "Seychelles",
-    "sd": "Sudan",
-    "se": "Sweden",
-    "si": "Slovenia",
-    "sk": "Slovakia",
-    "sl": "Sierra Leone",
-    "sn": "Senegal",
-    "so": "Somalia",
-    "sr": "Suriname",
-    "st": "Sao Tome and Principe",
-    "sv": "El Salvador",
-    "sy": "Syrian Arab Republic",
-    "sz": "Swaziland",
-    "td": "Chad",
-    "tg": "Togo",
-    "th": "Thailand",
-    "tj": "Tajikistan",
-    "tl": "Timor-Leste",
-    "tm": "Turkmenistan",
-    "tn": "Tunisia",
-    "tr": "Turkey",
-    "tt": "Trinidad and Tobago",
-    "tw": "Taiwan",
-    "tz": "Tanzania",
-    "ua": "Ukraine",
-    "ug": "Uganda",
-    "us": "United States of America",
-    "uy": "Uruguay",
-    "uz": "Uzbekistan",
-    "ve": "Venezuela",
-    "vn": "Vietnam",
-    "vu": "Vanuatu",
-    "ye": "Yemen",
-    "za": "South Africa",
-    "zm": "Zambia",
-    "zw": "Zimbabwe"
 };

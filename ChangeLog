@@ -1,6 +1,7 @@
 bloonix-webgui (0.8) released at 2014-XX-XX
 
     * New doc: how does bloonix checks hosts and services
+    * Replaced d3js, datamaps and topojson with jqvmap.
 
 bloonix-webgui (0.7) released at 2014-11-22
 

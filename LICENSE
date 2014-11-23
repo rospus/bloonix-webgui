@@ -28,25 +28,15 @@ or replace the images or buy an own license!
 
 Parts of the software are provided under separate licenses, as follows:
 
-    * D3.js
-
-        URL: http://d3js.org/
-        LICENSE: BSD - https://github.com/mbostock/d3/blob/master/LICENSE
-
-    * topojson
-
-        URL: https://github.com/mbostock/topojson/
-        LICENSE: BSD - https://github.com/mbostock/topojson/blob/master/LICENSE
-
     * Flot
 
         URL: http://www.flotcharts.org/
         LICENSE: MIT - https://github.com/flot/flot/blob/master/LICENSE.txt
 
-    * datamaps
+    * jqvmap
 
-        URL: http://datamaps.github.io/
-        LICENSE: MIT - https://github.com/markmarkoh/datamaps/blob/master/LICENSE
+        URL: http://jqvmap.com/
+        LICENSE: MIT - https://github.com/manifestinteractive/jqvmap/blob/stable/LICENSE
 
     * Highcharts, Highmaps
 

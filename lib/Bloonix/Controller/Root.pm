@@ -28,6 +28,7 @@ sub auto {
     $c->stash->{meta}->{hostname} = $c->req->server_name;
     $c->stash->{meta}->{ipaddr} = $addr;
     $c->stash->{meta}->{chart_library} = $c->config->{webapp}->{chart_library};
+    $c->stash->{meta}->{debug_bloonix_js} = $c->req->param("debug_bloonix_js");
 
     if ($c->req->is_json) {
         $c->view->render->json;
