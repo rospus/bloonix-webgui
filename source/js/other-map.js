@@ -37,7 +37,8 @@ Bloonix.other.mapChart = function(o) {
         };
     });
 
-    $("#"+ o.chart.container).html("").vectorMap({
+    $(".jqvmap-label").remove();
+    $("#"+ o.chart.container).html("").off().vectorMap({
         map: "world_en",
         backgroundColor: "#ffffff",
         borderColor: "#ffffff",
@@ -54,8 +55,8 @@ Bloonix.other.mapChart = function(o) {
         selectedRegion: null,
         showTooltip: true,
         onRegionClick: function(element, code, region) {
-            $("#"+ o.chart.container).html("");
-            $(".map-tooltip").remove();
+            $("#"+ o.chart.container).html("").off();
+            $(".jqvmap-label").remove();
             Bloonix.route.to("monitoring/hosts", { query: "c:"+ code.toUpperCase() });
         },
         onLabelShow: function(element, label, code) {
