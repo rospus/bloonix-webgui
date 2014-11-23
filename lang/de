@@ -339,6 +339,7 @@ site.login.choose_your_language: Wählen Sie Ihre Sprache
 
 site.help.title: Die Bloonix Hilfe
 site.help.doc.bloonix-webgui: Grundlegendes zur Bloonix-WebGUI
+site.help.doc.how-does-bloonix-checks-your-hosts-and-services: Wie überwacht Bloonix Ihre Hosts und Services
 site.help.doc.add-new-host: Einen neuen Host anlegen
 site.help.doc.host-parameter: Host Parameter im Detail
 site.help.doc.host-variables: Host Variablen
@@ -346,7 +347,6 @@ site.help.doc.device-classes: Bauklasse von Hosts
 site.help.doc.add-new-service: Einen neuen Service anlegen
 site.help.doc.service-parameter: Service Parameter im Detail
 site.help.doc.host-alive-check: Was ist ein Host-Alive-Check?
-site.help.doc.the-agent-id: Standort-Checks im Detail
 site.help.doc.web-transactions: Web-Transactions
 site.help.doc.host-templates: Host Templates einrichten und verwalten
 site.help.doc.host-and-service-dependencies: Abhängigkeiten zwischen Hosts und Services

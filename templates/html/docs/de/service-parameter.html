@@ -42,7 +42,37 @@ Ein passiver Check ist ein Check, der nicht von Bloonix selbst geprüft wird, so
 <h2>Formularfeld: %%schema.service.attr.agent_id%%</h2>
 <div>
 <p>
-Mit diesem Paramter können Sie den Standort auswählen, von dem der Service aus geprüft wird. Weitere Informationen zur Standortprüfung finden Sie im folgenden Dokument: <a data-id="the-agent-id">%%site.help.doc.the-agent-id%%</a>
+Jeder Service-Check, der in der WebGUI von Bloonix eingerichtet wird, wird mit einer sogenannten Agenten-Lokation versehen. Diese Lokation bestimmt, welcher Bloonix-Agent für die Überwachung des Service verantwortlich ist. Es gibt insgesamt drei mögliche Optionen zur Auswahl des Standorts: <i>localhost</i>, <i>intranet</i> und <i>remote</i>.
+</p>
+
+<h3>localhost</h3>
+<p>
+Mit der Option <i>localhost</i> soll der Check lokal auf Ihrem Server ausgeführt werden.
+Installieren Sie hierzu den Bloonix-Agent auf Ihrem Server. Diese Option ist besonders
+sinnvoll, wenn Sie die Systemvitals, wie zum Beispiel die CPU, den Hauptspeicher oder
+auch die Festplatten überwachen möchten.
+</p>
+
+<h3>intranet</h3>
+<p>
+Mit der Option <i>intranet</i> ist ihr lokales Netzwerk gemeint. Installieren Sie hierzu den
+Bloonix-Agenten in Ihrem lokalen Netzwerk auf einem zentralen Server. Von diesem Server aus
+sollen die Checks ausgeführt werden. Diese Option ist sinnvoll, wenn Sie Hosts haben,
+auf denen entweder der Bloonix-Agent nicht installiert werden kann oder die Services über
+SNMP in Ihrem lokalen Netzwerk überwacht werden sollten. Das können zum Beispiel Router, Switches
+etc. sein.
+</p>
+
+<h3>remote</h3>
+<p>
+Mit der Option <i>remote</i> soll der Check von einem externen Server ausgeführt werden, also
+ein Server, der nicht in Ihrem lokalen Netzwerk steht. Dies ist besonders für Internetservices
+sinnvoll. Zum Beispiel können Sie über einen externen Check die Funktionalität Ihres Webservers,
+Mailservers oder auch DNS-Servers überprüfen.
+</p>
+
+<p>
+Für weitere Informationen lesen Sie unbedingt das Dokument <a data-id="how-does-bloonix-checks-your-hosts-and-services">%%site.help.doc.how-does-bloonix-checks-your-hosts-and-services%%</a>.
 </p>
 </div>
 

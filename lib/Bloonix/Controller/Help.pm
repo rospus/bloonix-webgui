@@ -16,6 +16,7 @@ sub new {
 
     $self->{docs} = [
         "bloonix-webgui",
+        "how-does-bloonix-checks-your-hosts-and-services",
         "add-new-host",
         "host-parameter",
         "host-variables",
@@ -24,7 +25,6 @@ sub new {
         "add-new-service",
         "service-parameter",
         "host-alive-check",
-        "the-agent-id",
         "web-transactions",
         "host-and-service-dependencies",
         "scheduled-downtimes",
