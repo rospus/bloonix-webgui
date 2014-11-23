@@ -777,7 +777,7 @@ schema.event.text.host_service: Host / Service
 
 schema.service.attr.id: Service ID
 schema.service.attr.ref_id: ID
-schema.service.attr.agent_id: Standort
+schema.service.attr.agent_id: Standort des Agenten
 schema.service.attr.service_name: Servicename
 schema.service.attr.command: Kommando
 schema.service.attr.command_options: Check Einstellungen

@@ -1239,7 +1239,7 @@ var Lang = {
       "schema.host.attr.id" : "Host ID",
       "site.wtrm.command.checkIfElementHasValue" : "Check if the input field or textarea with element <b>%s</b> contains <b>%s</b>",
       "schema.contact.text.list" : "Overview of all contacts",
-      "schema.service.attr.agent_id" : "Location",
+      "schema.service.attr.agent_id" : "Agent location",
       "text.click_me" : "Click me",
       "schema.service.desc.default_check_type_title" : "Default checkpoint",
       "schema.user_chart.text.user_chart" : "Chart editor",
@@ -2208,7 +2208,7 @@ var Lang = {
       "schema.host.attr.id" : "Host ID",
       "site.wtrm.command.checkIfElementHasValue" : "Check if the input field or textarea with element <b>%s</b> contains <b>%s</b>",
       "schema.contact.text.list" : "Übersicht über alle Kontakte",
-      "schema.service.attr.agent_id" : "Standort",
+      "schema.service.attr.agent_id" : "Standort des Agenten",
       "text.click_me" : "Klick mich",
       "schema.service.desc.default_check_type_title" : "Standard Messpunkt",
       "schema.user_chart.text.user_chart" : "User charts",
@@ -15744,9 +15744,9 @@ Bloonix.createServiceForm = function(o) {
     object.createLocationFormElements = function() {
         var plugin = this.plugin;
 
-        if (plugin.netaccess != "1") {
-            return;
-        }
+        //if (plugin.netaccess != "1") {
+        //    return;
+        //}
 
         this.createLocationBoxes();
         this.createLocationContainer();
@@ -15774,6 +15774,10 @@ Bloonix.createServiceForm = function(o) {
         var self = this,
             plugin = this.plugin;
 
+        var agent_ids = plugin.netaccess != "1"
+            ? [ "localhost" ]
+            : this.options.agent_id;
+
         this.locationDefault = this.values.agent_id || plugin.prefer;
 
         if (this.locationDefault == "localhost") {
@@ -15786,7 +15790,7 @@ Bloonix.createServiceForm = function(o) {
             desc: Text.get("schema.service.desc.agent_id_tooltip"),
             descBoxCss: { width: "400px", padding: "20px" },
             name: "agent_id",
-            options: this.options.agent_id,
+            options: agent_ids,
             selected: this.locationDefault,
             required: true,
             callback: function(value) {

@@ -722,9 +722,9 @@ Bloonix.createServiceForm = function(o) {
     object.createLocationFormElements = function() {
         var plugin = this.plugin;
 
-        if (plugin.netaccess != "1") {
-            return;
-        }
+        //if (plugin.netaccess != "1") {
+        //    return;
+        //}
 
         this.createLocationBoxes();
         this.createLocationContainer();
@@ -752,6 +752,10 @@ Bloonix.createServiceForm = function(o) {
         var self = this,
             plugin = this.plugin;
 
+        var agent_ids = plugin.netaccess != "1"
+            ? [ "localhost" ]
+            : this.options.agent_id;
+
         this.locationDefault = this.values.agent_id || plugin.prefer;
 
         if (this.locationDefault == "localhost") {
@@ -764,7 +768,7 @@ Bloonix.createServiceForm = function(o) {
             desc: Text.get("schema.service.desc.agent_id_tooltip"),
             descBoxCss: { width: "400px", padding: "20px" },
             name: "agent_id",
-            options: this.options.agent_id,
+            options: agent_ids,
             selected: this.locationDefault,
             required: true,
             callback: function(value) {
