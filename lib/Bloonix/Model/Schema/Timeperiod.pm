@@ -41,17 +41,23 @@ sub by_user {
                 left => "timeperiod.company_id",
                 right => "company.id"
             }
-        ]
-    );
-
-    if ($opts{user}{role} ne "admin") {
-        push @select, condition => [
+        ],
+        condition => [
             where => {
                 column => "company_id",
                 value => $opts{user}{company_id}
             }
         ]
-    }
+    );
+
+    #if ($opts{user}{role} ne "admin") {
+    #    push @select, condition => [
+    #        where => {
+    #            column => "company_id",
+    #            value => $opts{user}{company_id}
+    #        }
+    #    ]
+    #}
 
     if ($opts{order}) {
         push @select, order => $opts{order};

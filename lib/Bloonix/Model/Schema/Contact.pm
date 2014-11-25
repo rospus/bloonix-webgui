@@ -14,8 +14,9 @@ sub set {
 
     $self->validator->set(
         company_id => {
-            options => $self->schema->company->get_companies_for_selection,
-            default => $user->{company_id},
+            #options => $self->schema->company->get_companies_for_selection,
+            options => [ $user->{company_id} ],
+            default => $user->{company_id}
         },
         name => {
             min_size => 1,
@@ -71,17 +72,23 @@ sub by_user {
                 left => "contact.company_id",
                 right => "company.id"
             }
-        ]
-    );
-
-    if ($opts{user}{role} ne "admin") {
-        push @select, condition => [
+        ],
+        condition => [
             where => {
                 column => "company_id",
                 value => $opts{user}{company_id}
             }
-        ];
-    }
+        ]
+    );
+
+    #if ($opts{user}{role} ne "admin") {
+    #    push @select, condition => [
+    #        where => {
+    #            column => "company_id",
+    #            value => $opts{user}{company_id}
+    #        }
+    #    ];
+    #}
 
     if ($opts{order}) {
         push @select, order => $opts{order};

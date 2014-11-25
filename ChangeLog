@@ -1,6 +1,8 @@
-bloonix-webgui (0.9) released at 2014-XX-XX
+bloonix-webgui (0.9) released at 2014-11-25
 
     * Fixed js error 'fillkey is not defined'.
+    * Admins can now see only contacts, contactgroups and
+      timeperiods from they own company.
 
 bloonix-webgui (0.8) released at 2014-11-23
 
