@@ -24234,7 +24234,7 @@ Bloonix.other.mapChart = function(o) {
             color = "OK";
 
         if (v.UNKNOWN > 0) {
-            color = v.UNKNOWN;
+            color = "UNKNOWN";
         } else if (v.CRITICAL > 0) {
             color = "CRITICAL";
         } else if (v.WARNING > 0) {
