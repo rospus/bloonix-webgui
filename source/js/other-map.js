@@ -17,13 +17,13 @@ Bloonix.other.mapChart = function(o) {
             color = "OK";
 
         if (v.UNKNOWN > 0) {
-            fillKey = v.UNKNOWN;
+            color = v.UNKNOWN;
         } else if (v.CRITICAL > 0) {
-            fillKey = "CRITICAL";
+            color = "CRITICAL";
         } else if (v.WARNING > 0) {
-            fillKey = "WARNING";
+            color = "WARNING";
         } else if (v.INFO > 0) {
-            fillKey = "INFO";
+            color = "INFO";
         }
 
         colors[country] = fillColor[color];
