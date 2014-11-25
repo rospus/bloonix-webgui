@@ -77,8 +77,8 @@ err-425: Your session token is expired!
 err-426: This action requires a token!
 err-427: Services that are inherited from a host template can't be deleted!
 err-500: An internal error occured! Please contact the administrator!
-err-600: The object you requested does not exists!
-err-601: The objects you requested does not exists!
+err-600: The object you requested does not exist!
+err-601: The objects you requested does not exist!
 err-605: Please select at least one object!
 err-610: Please fill in the red marked fields correctly!
 err-620: This object already exists!
