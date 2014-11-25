@@ -339,7 +339,7 @@ site.login.choose_your_language: Select your language
 
 site.help.title: Die Bloonix Hilfe
 site.help.doc.bloonix-webgui: Grundlegendes zur Bloonix-WebGUI
-site.help.doc.how-does-bloonix-checks-your-hosts-and-services: Wie überwacht Bloonix Ihre Hosts und Services
+site.help.doc.how-does-bloonix-checks-your-hosts-and-services: Wie überwacht Bloonix Hosts und Services
 site.help.doc.add-new-host: Einen neuen Host anlegen
 site.help.doc.host-parameter: Host Parameter im Detail
 site.help.doc.host-variables: Host Variablen
