@@ -1447,6 +1447,7 @@ Bloonix.createServiceForm = function(o) {
                     var opt = example.arguments.shift(),
                         value = example.arguments.shift();
 
+console.log(opt, self.pluginOptionsByOption);
                     opt = self.pluginOptionsByOption[opt];
 
                     if (opt.multiple && info.thresholds) {

@@ -96,6 +96,7 @@ err-704: The passwords doesn't match!
 err-705: The new and the old password cannot be the same!
 err-800: Sorry, but you cannot configure more than <b>%s</b> service!
 err-801: Sorry, but you cannot configure more than <b>%s</b> services!
+err-802: Sorry, but this feature is not available!
 
 action.action: Action
 action.create: Create

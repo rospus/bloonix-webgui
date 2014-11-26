@@ -408,8 +408,17 @@ Bloonix.WTRM = function(o) {
                 url: quick ? "/wtrm/quick" : "/wtrm/test",
                 data: steps,
                 success: function(result) {
-                    self.maxTestRequests = 50;
-                    self.waitForData(result.data, 1);
+                    if (result.status === "err-802") {
+                        Bloonix.createNoteBox({
+                            text: Text.get("err-802"),
+                            infoClass: "info-err"
+                        });
+                        self.outerBox.find(".loading-small").removeClass("loading-small");
+                        self.selectBox.show();
+                    } else {
+                        self.maxTestRequests = 50;
+                        self.waitForData(result.data, 1);
+                    }
                 }
             });
         }

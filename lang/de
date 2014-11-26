@@ -96,6 +96,7 @@ err-704: Die Passwörter stimmen nicht überein!
 err-705: Das neue und alte Passwort dürfen nicht übereinstimmen!
 err-800: Sorry, aber Sie dürfen nicht mehr als %s Service einrichten!
 err-801: Sorry, aber Sie dürfen nicht mehr als %s Services einrichten!
+err-802: Sorry, aber diese Funktion ist nicht verfügbar!
 
 action.action: Aktion
 action.create: Erstellen

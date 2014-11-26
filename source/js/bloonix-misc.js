@@ -29,7 +29,8 @@ Bloonix.initAjax = function() {
         "err-702": true,
         "err-703": true,
         "err-704": true,
-        "err-705": true
+        "err-705": true,
+        "err-802": true
     };
 };
 

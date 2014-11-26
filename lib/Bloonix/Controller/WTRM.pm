@@ -42,7 +42,7 @@ sub test {
     my ($self, $c, $opts) = @_;
 
     if (!$self->rest) {
-        return $c->plugin->error->service_not_available;
+        return $c->plugin->error->feature_not_available;
     }
 
     my $wtrm_api_key = $c->config->{wtrm_api_key};

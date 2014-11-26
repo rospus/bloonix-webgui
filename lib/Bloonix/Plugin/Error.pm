@@ -183,6 +183,11 @@ sub no_more_services_available {
     );
 }
 
+sub feature_not_available {
+    my $self = shift;
+    $self->_error("err-802");
+}
+
 sub _error {
     my ($self, $code, @str) = @_;
     my $c = $self->{c};

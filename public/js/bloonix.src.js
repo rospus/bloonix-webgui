@@ -1443,6 +1443,7 @@ var Lang = {
       "site.wtrm.action.doAuth" : "Set auth basic <b>username</b> and <b>password</b>",
       "err-600" : "The object you requested does not exist!",
       "site.wtrm.action.doSleep" : "<b>Sleep</b> a while",
+      "err-802" : "Sorry, but this feature is not available!",
       "schema.chart.text.selected" : "selected",
       "schema.user_chart.text.delete" : "Delete chart",
       "schema.plugin.attr.plugin" : "Plugin",
@@ -2412,6 +2413,7 @@ var Lang = {
       "site.wtrm.action.doAuth" : "Set auth basic <b>username</b> and <b>password</b>",
       "err-600" : "Das angeforderte Objekt existiert nicht!",
       "site.wtrm.action.doSleep" : "<b>Sleep</b> a while",
+      "err-802" : "Sorry, aber diese Funktion ist nicht verfügbar!",
       "schema.chart.text.selected" : "selektiert",
       "schema.user_chart.text.delete" : "Chart löschen",
       "schema.plugin.attr.plugin" : "Plugin",
@@ -10025,7 +10027,8 @@ Bloonix.initAjax = function() {
         "err-702": true,
         "err-703": true,
         "err-704": true,
-        "err-705": true
+        "err-705": true,
+        "err-802": true
     };
 };
 
@@ -16469,6 +16472,7 @@ Bloonix.createServiceForm = function(o) {
                     var opt = example.arguments.shift(),
                         value = example.arguments.shift();
 
+console.log(opt, self.pluginOptionsByOption);
                     opt = self.pluginOptionsByOption[opt];
 
                     if (opt.multiple && info.thresholds) {
@@ -22631,8 +22635,17 @@ Bloonix.WTRM = function(o) {
                 url: quick ? "/wtrm/quick" : "/wtrm/test",
                 data: steps,
                 success: function(result) {
-                    self.maxTestRequests = 50;
-                    self.waitForData(result.data, 1);
+                    if (result.status === "err-802") {
+                        Bloonix.createNoteBox({
+                            text: Text.get("err-802"),
+                            infoClass: "info-err"
+                        });
+                        self.outerBox.find(".loading-small").removeClass("loading-small");
+                        self.selectBox.show();
+                    } else {
+                        self.maxTestRequests = 50;
+                        self.waitForData(result.data, 1);
+                    }
                 }
             });
         }
