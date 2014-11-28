@@ -709,7 +709,7 @@ schema.chart.desc.charts: <b>Mehrere Charts können ausgewählt werden mittels</
 schema.chart.text.multiple_view: Chart Ansicht
 schema.chart.text.view: Charts für Host %s
 schema.chart.text.multiview: Anzeige mehrerer Charts
-schema.chart.text.select: Chartauswähl für Host %s
+schema.chart.text.select: Chartauswahl für Host %s
 schema.chart.text.multiselect: Chartauswahl für mehrere Hosts
 schema.chart.text.alignment: Chartausrichtung
 schema.chart.text.chart_views: Chart Ansichten

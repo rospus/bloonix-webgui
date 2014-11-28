@@ -66,8 +66,11 @@ sub test {
         : "/$wtrm_api_key/test";
 
     local $SIG{__DIE__} = sub {};
-    my $result = $self->rest->post(path => $path, data => $data)
-        or return $c->plugin->error->action_failed;
+    my $result = $self->rest->post(path => $path, data => $data);
+
+    if (!$result || $result->{status} ne "ok") {
+        return $c->plugin->error->feature_not_available;
+    }
 
     my $key = $result->{data};
     $c->stash->data("/wtrm/result/$key");
