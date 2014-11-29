@@ -11284,6 +11284,10 @@ Bloonix.dashboard = function(o) {
             size.height = size.width;
         }
 
+        if (size.height < 600) {
+            size.height = 600;
+        }
+
         $(".dashlet-outer").css({ "min-width": size.width - 10, "margin-bottom": "2px" });
 
         var chartBoxMargin = this.chartBoxMargin,
