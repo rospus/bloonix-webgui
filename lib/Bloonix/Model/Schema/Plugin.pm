@@ -23,4 +23,39 @@ sub get_by_plugin {
     );
 }
 
+sub query {
+    my ($self, $opts) = (shift, {@_});
+
+    $opts->{order} ||= [ asc => "plugin" ];
+
+    my @select = (
+        table => "plugin",
+        column => "*",
+        condition => [
+            where => {
+                column => "company_id",
+                value => [ 1, $opts->{user}->{company_id} ]
+            }
+        ]
+    );
+
+    if ($opts->{sort}) {
+        push @select, order => [ $opts->{sort}->{type} => $opts->{sort}->{by} ];
+    } elsif ($opts->{order}) {
+        push @select, order => $opts->{order};
+    }
+
+    my ($count, $data) = $self->dbi->query(
+        offset => $opts->{offset},
+        limit => $opts->{limit},
+        query => $opts->{query},
+        concat => [qw(plugin.id plugin.plugin plugin.command plugin.category plugin.description)],
+        delimiter => " ",
+        count => "plugin.id",
+        select => \@select
+    );
+
+    return ($count, $data);
+}
+
 1;

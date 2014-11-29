@@ -16,16 +16,25 @@ sub startup {
 sub list {
     my ($self, $c) = @_;
 
-    my $plugins = $c->model->database->plugin->search(
-        condition => [ company_id => [ 1, $c->user->{company_id} ] ],
-        order => [ asc => "plugin" ]
+    my $request = $c->plugin->defaults->request
+        or return 1;
+
+    my ($count, $data) = $c->model->database->plugin->query(
+        offset => $request->{offset},
+        limit => $request->{limit},
+        query => $request->{query},
+        user => $c->user,
+        sort => $request->{sort},
+        order => [ asc  => "plugin" ]
     );
 
-    foreach my $plugin (@$plugins) {
+    foreach my $plugin (@$data) {
         $plugin->{info} = $c->json->decode($plugin->{info});
     }
 
-    $c->stash->data($plugins);
+    $c->stash->offset($request->{offset});
+    $c->stash->total($count);
+    $c->stash->data($data);
     $c->view->render->json;
 }
 

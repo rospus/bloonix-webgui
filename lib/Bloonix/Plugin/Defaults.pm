@@ -31,7 +31,7 @@ sub request {
 
     if (!defined $limit) {
         $limit = 20;
-    } elsif ($limit !~ /^\d{1,3}\z/ || $limit > 500) {
+    } elsif ($limit !~ /^\d{1,4}\z/ || $limit > 1000) {
         $errors{limit} = $c->lang->get("err-632", 500);
     }
 

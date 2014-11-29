@@ -1834,7 +1834,7 @@ var Lang = {
       "text.locations_selected_costs" : "Sie haben %s Messpunkte ausgewählt. Bitte beachten Sie, dass jeder Kontrollpunkt extra berechnet wird.",
       "site.login.documentation" : "Die Bloonix Dokumentation",
       "text.report.availability.h02" : "02:00 - 02:59",
-      "schema.chart.text.select" : "Chartauswähl für Host %s",
+      "schema.chart.text.select" : "Chartauswahl für Host %s",
       "site.wtrm.attr.html" : "Inner HTML",
       "schema.host.text.list_device_classes" : "Device Klassen",
       "schema.host_template.text.delete_service" : "Einen Service aus dem Template löschen",

@@ -114,7 +114,7 @@ Bloonix.createService = function(o) {
     object.getPlugins = function() {
         var self = this;
 
-        this.plugins = Bloonix.get("/plugins");
+        this.plugins = Bloonix.get("/plugins", { limit: 1000 });
         this.categories = [];
         this.pluginsByCategory = {};
         this.order = {
