@@ -11280,6 +11280,10 @@ Bloonix.dashboard = function(o) {
         var size = Bloonix.getContentSize();
         size.height = size.height - $("#dashboard-title").outerHeight() - 10;
 
+        if (size.height > size.width) {
+            size.height = size.width;
+        }
+
         $(".dashlet-outer").css({ "min-width": size.width - 10, "margin-bottom": "2px" });
 
         var chartBoxMargin = this.chartBoxMargin,
