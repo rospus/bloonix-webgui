@@ -35,6 +35,11 @@ sub query {
             where => {
                 column => "company_id",
                 value => [ 1, $opts->{user}->{company_id} ]
+            },
+            and => {
+                column => "id",
+                op => "not in",
+                value => [ 52, 53, 54, 55, 56, 57 ]
             }
         ]
     );
