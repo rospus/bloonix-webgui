@@ -30,6 +30,48 @@ Bloonix.listHostTemplates = function(o) {
         },
         reloadable: true,
         columnSwitcher: true,
+        rowHoverIcons: [{
+            title: Text.get("schema.host_template.text.clone"),
+            icon: "share",
+            onClick: function(row) {
+                var content = Utils.create("div"),
+                    overlay = new Overlay();
+
+                var form = new Form({
+                    format: "medium",
+                    url: { submit: "/templates/hosts/"+ row.id +"/clone" },
+                    onSuccess: function() { overlay.close(); Bloonix.route.to("monitoring/templates") },
+                    appendTo: content,
+                    showButton: false,
+                    elements: [
+                        {
+                            element: "input",
+                            type: "text",
+                            name: "name",
+                            text: Text.get("schema.host_template.attr.name"),
+                            desc: Text.get("schema.host_template.desc.name"),
+                            maxlength: 100
+                        },{
+                            element: "input",
+                            type: "text",
+                            name: "description",
+                            text: Text.get("schema.host_template.attr.description"),
+                            desc: Text.get("schema.host_template.desc.description"),
+                            maxlength: 100
+                        }
+                    ]
+                }).create();
+
+                overlay.title = Text.get("schema.host_template.text.clone_title", row.name, true),
+                overlay.content = content,
+                overlay.buttons = [{
+                    content: Text.get("action.clone"),
+                    callback: function() { form.submit() },
+                    close: false
+                }];
+                overlay.create();
+            }
+        }],
         columns: [
             {
                 name: "id",
@@ -42,49 +84,6 @@ Bloonix.listHostTemplates = function(o) {
             },{
                 name: "description",
                 text: Text.get("schema.host_template.attr.description")
-            },{
-                icons: [{
-                    icon: "cicons data-add",
-                    title: Text.get("schema.host_template.text.clone"),
-                    onClick: function(row) {
-                        var content = Utils.create("div"),
-                            overlay = new Overlay();
-
-                        var form = new Form({
-                            format: "medium",
-                            url: { submit: "/templates/hosts/"+ row.id +"/clone" },
-                            onSuccess: function() { overlay.close(); Bloonix.route.to("monitoring/templates") },
-                            appendTo: content,
-                            showButton: false,
-                            elements: [
-                                {
-                                    element: "input",
-                                    type: "text",
-                                    name: "name",
-                                    text: Text.get("schema.host_template.attr.name"),
-                                    desc: Text.get("schema.host_template.desc.name"),
-                                    maxlength: 100
-                                },{
-                                    element: "input",
-                                    type: "text",
-                                    name: "description",
-                                    text: Text.get("schema.host_template.attr.description"),
-                                    desc: Text.get("schema.host_template.desc.description"),
-                                    maxlength: 100
-                                }
-                            ]
-                        }).create();
-
-                        overlay.title = Text.get("schema.host_template.text.clone_title", row.name, true),
-                        overlay.content = content,
-                        overlay.buttons = [{
-                            content: Text.get("action.clone"),
-                            callback: function() { form.submit() },
-                            close: false
-                        }];
-                        overlay.create();
-                    }
-                }]
             }
         ]
     });
