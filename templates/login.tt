@@ -206,10 +206,10 @@ Chrome, Safari, Opera or Firefox!
 <table>
 <tr>
 <th><%= $c->lang->get('site.login.username') %></th>
-<td><input placeholder="<%= $c->lang->get('site.login.username') %>" name="username" type="text" maxlength="100" value="" id="username" /></td>
+<td><input placeholder="<%= $c->lang->get('site.login.username') %>" name="username" type="text" maxlength="100" value="<% user %>" id="username" /></td>
 </tr><tr>
 <th><%= $c->lang->get('site.login.password') %></th>
-<td><input placeholder="<%= $c->lang->get('site.login.password') %>" name="password" type="password" maxlength="100" value="" id="password" /></td>
+<td><input placeholder="<%= $c->lang->get('site.login.password') %>" name="password" type="password" maxlength="100" value="<% password %>" id="password" /></td>
 </tr><tr>
 </tr>
 </table>

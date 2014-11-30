@@ -141,6 +141,10 @@ sub _validate_webapp {
         cloudapp => {
             type => Params::Validate::SCALAR,
             default => 0
+        },
+        is_demo => {
+            type => Params::Validate::SCALAR,
+            default => 0
         }
     });
 

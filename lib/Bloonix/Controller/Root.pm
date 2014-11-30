@@ -450,6 +450,11 @@ sub login {
         ? "mobile-login.tt"
         : "login.tt";
 
+    if ($c->config->{webapp}->{is_demo}) {
+        $c->stash->{user} = "demo";
+        $c->stash->{password} = "demo";
+    }
+
     $c->view->render->template;
 }
 
