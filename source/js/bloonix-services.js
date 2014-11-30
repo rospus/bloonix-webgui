@@ -394,7 +394,7 @@ Bloonix.listServices = function(o) {
             columnSwitcher: true,
             rowHoverIcons: [{
                 title: Text.get("schema.service.text.clone"),
-                icon: "plus",
+                icon: "share",
                 onClick: self.cloneService
             }],
             columns: [
