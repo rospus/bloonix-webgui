@@ -10950,7 +10950,7 @@ Bloonix.dashboard = function(o) {
 
         Bloonix.createFooterIcon({
             title: Text.get("text.dashboard.clone_dashboard"),
-            icon: "unchecked",
+            icon: "share",
             click: function() { self.createDashboard(true) }
         });
     };
