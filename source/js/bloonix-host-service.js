@@ -202,31 +202,6 @@ Bloonix.createService = function(o) {
             table.createColumn(tr, plugin, { name: "category" });
             table.createColumn(tr, plugin, { name: "command" });
             table.createColumn(tr, plugin, { name: "description" });
-
-            /*
-            var boxClickEvent = function() {
-                Bloonix.createServiceByCommand({
-                    id: self.id,
-                    host: self.host,
-                    plugin: plugin,
-                    template: self.template
-                });
-            };
-
-            var boxOuter = Utils.create("div")
-                .addClass("plugin-box-outer")
-                .appendTo(self.boxes.right);
-
-            var box = Utils.create("div")
-                .addClass("plugin-box")
-                .click(boxClickEvent)
-                .appendTo(boxOuter);
-
-            Utils.create("h2").text(plugin.plugin).appendTo(box);
-            Utils.create("h3").text(plugin.category).appendTo(box);
-            Utils.create("h4").text(plugin.command).appendTo(box);
-            Utils.create("p").text(plugin.description).appendTo(box);
-            */
         });
     };
 
@@ -237,7 +212,7 @@ Bloonix.createServiceByCommand = function(o) {
     $("#content").html("");
     $("#content-outer").scrollTop(0);
 
-    var serviceUrl, submitUrl;
+    var serviceUrl, submitUrl, onSuccess;
 
     if (o.template) {
         serviceUrl = "/templates/hosts/"+ o.id +"/services/options/"+ o.plugin.id;
@@ -295,6 +270,28 @@ Bloonix.editService = function(o) {
     });
 };
 
+Bloonix.cloneService = function(o) {
+    var toHost = Bloonix.getHost(o.clone_to),
+        service = Bloonix.get("/hosts/"+ o.id +"/services/"+ o.service_id +"/options"),
+        plugin = Bloonix.get("/plugins/"+ service.values.plugin_id),
+        submitUrl = "/hosts/"+ o.clone_to +"/services/create"
+
+    Bloonix.showHostSubNavigation(
+        "host",
+        toHost.id,
+        toHost.hostname
+    );
+
+    Bloonix.createServiceForm({
+        url: { submit: submitUrl },
+        host: toHost,
+        values: service.values,
+        options: service.options,
+        plugin: plugin,
+        action: "clone"
+    });
+};
+
 Bloonix.createServiceForm = function(o) {
     var object = Utils.extend({}, o);
 
@@ -319,7 +316,7 @@ Bloonix.createServiceForm = function(o) {
                 self.pluginOptionsByOption[opt.option] = opt;
             });
         }
-        if (this.action == "update") {
+        if (this.action == "update" || this.action == "clone") {
             $.each(this.values.command_options, function(i, e) {
                 if (self.pluginOptionsByOption[e.option].multiple) {
                     if (!self.commandOptionsByOption[e.option]) {
@@ -351,7 +348,7 @@ Bloonix.createServiceForm = function(o) {
             header, onSuccess,
             submitUrl;
 
-        if (this.action == "create") {
+        if (this.action == "create" || this.action == "clone") {
             submitUrl = this.template
                 ? "/templates/hosts/"+ this.template.id +"/services/create"
                 : "/hosts/"+ this.host.id +"/services/create";
@@ -360,9 +357,10 @@ Bloonix.createServiceForm = function(o) {
                 if (self.template) {
                     Bloonix.route.to("monitoring/templates/"+ result.host_template_id +"/services/"+ result.ref_id +"/edit");
                 } else {
-                    Bloonix.route.to("monitoring/hosts/"+ result.host_id +"/services/"+ result.id +"/edit");
+                    Bloonix.route.to("monitoring/hosts/"+ result.host_id);
                 }
             };
+
             header = new Header({
                 title: Text.get("schema.service.text.create"),
                 border: true,
@@ -1447,7 +1445,6 @@ Bloonix.createServiceForm = function(o) {
                     var opt = example.arguments.shift(),
                         value = example.arguments.shift();
 
-console.log(opt, self.pluginOptionsByOption);
                     opt = self.pluginOptionsByOption[opt];
 
                     if (opt.multiple && info.thresholds) {
@@ -1680,7 +1677,7 @@ console.log(opt, self.pluginOptionsByOption);
         var self = this;
         this.form.button({
             name: "submit",
-            text: this.action == "create"
+            text: this.action == "create" || this.action == "clone"
                 ? Text.get("action.create")
                 : Text.get("action.update"),
             appendTo: this.form.form

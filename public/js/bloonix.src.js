@@ -995,6 +995,7 @@ var Lang = {
       "schema.timeperiod.text.list" : "Overview of all timeperiods",
       "action.add" : "Add",
       "action.show_selected_objects" : "Show selected objects",
+      "schema.service.text.clone" : "Clone service",
       "schema.plugin_stats.attr.alias" : "Name",
       "nav.sub.companies" : "Companies",
       "text.dashboard.dashlet_configuration" : "Dashlet configuration",
@@ -1270,6 +1271,7 @@ var Lang = {
       "schema.host.text.delete" : "Delete host",
       "schema.service.info.host_alive_check" : "This is a host-alive-check.",
       "action.clear" : "Clear",
+      "schema.service.text.clone_service" : "Clone service %s",
       "schema.dependency.text.host" : "Host",
       "schema.service.attr.last_mail" : "Last notification per mail",
       "action.operate_as" : "React as",
@@ -1379,6 +1381,7 @@ var Lang = {
       "site.login.title" : "Login to the monitoring system",
       "site.wtrm.attr.element" : "Element",
       "schema.service.attr.next_check" : "Next check",
+      "schema.service.text.clone_to_the_same_host" : "Clone the service to the same host",
       "site.wtrm.action.checkIfElementHasNotText" : "Check if an <b>element does <i>NOT</i></b> contain <b>text</b>",
       "schema.host.text.add_host_to_contactgroup" : "Add the host to a contact group",
       "site.help.doc.contacts-and-notifications" : "Kontakte und Benachrichtigungen",
@@ -1464,6 +1467,7 @@ var Lang = {
       "schema.company.attr.name" : "Name",
       "schema.dependency.attr.on_host_id" : "Depends on host ID",
       "schema.service.text.title" : "Services",
+      "schema.service.text.clone_select_host" : "Select another host",
       "schema.contactgroup.text.host_members" : "Hosts in group",
       "schema.service.desc.rotate_check_type" : "The rotate check has no fixed checkpoint.\nInstead of that the service check rotates over the selected checkpoints. If a check\nof one checkpoint is not OK, then the check jumps immediate to the next checkpoint.\nIf the third checkpoint still returns a status that is not OK then the counter of <i>attempt max</i>\nis increased.",
       "word.day" : "day",
@@ -1966,6 +1970,7 @@ var Lang = {
       "schema.timeperiod.text.list" : "Übersicht über alle Zeitpläne",
       "action.add" : "Hinzufügen",
       "action.show_selected_objects" : "Ausgewählte Objekte anzeigen",
+      "schema.service.text.clone" : "Den Service klonen",
       "schema.plugin_stats.attr.alias" : "Name",
       "nav.sub.companies" : "Unternehmen",
       "text.dashboard.dashlet_configuration" : "Dashlet Konfiguration",
@@ -1984,8 +1989,8 @@ var Lang = {
       "schema.group.desc.description" : "Gebe eine kleine Beschreibung zum Unternehmen ein.",
       "schema.service.desc.host_alive_check" : "Ein Host-Alive-Check ist ein Check der feststellt, ob ein Host UP oder DOWN ist. Wenn dieser Service Check einen kritischen Status liefert erhalten Sie eine besondere Nachricht. Wenn andere Services des Hosts ebenfalls in einem kritischen Status sind, während der Host-Alive-Check kritisch ist, dann werden die Benachrichtiungen anderer Services unterdrückt. Es wird empfohlen einen Ping-Check als Host-Alive-Check zu definieren.",
       "info.new_version" : "<h4>Eine neue Version ist verfügbar</h4>\n<p>Eine neue Version der Bloonix-WebGUI ist verfügbar!</p>\n<p>Bitte laden Sie die Webseite neu!</p>",
-      "schema.host.desc.virt_product" : "z.B. VMware-Server, Virtuozzo",
       "schema.host.attr.notification" : "Benachrichtigungen aktiv",
+      "schema.host.desc.virt_product" : "z.B. VMware-Server, Virtuozzo",
       "text.report.availability.fatal" : "Fatale Fehler",
       "schema.service.desc.multiple_check_select_concurrency" : "Wähle einen Gleichzeitigkeitsfaktor",
       "schema.service.attr.mail_ok" : "Benachrichtigungen für OK Meldungen per E-Mail versenden",
@@ -2240,6 +2245,7 @@ var Lang = {
       "schema.host.text.delete" : "Den Host löschen",
       "schema.service.info.host_alive_check" : "Dies ist ein Host-Alive-Check.",
       "action.clear" : "Zurücksetzen",
+      "schema.service.text.clone_service" : "Service %s klonen",
       "schema.dependency.text.host" : "Host",
       "schema.service.attr.last_mail" : "Letzte Benachrichtigung per E-Mail",
       "action.operate_as" : "Operiere als",
@@ -2349,6 +2355,7 @@ var Lang = {
       "site.login.title" : "Login zum Monitoring-System",
       "site.wtrm.attr.element" : "Element",
       "schema.service.attr.next_check" : "Nächste Prüfung",
+      "schema.service.text.clone_to_the_same_host" : "Den Service zum selben Host klonen",
       "site.wtrm.action.checkIfElementHasNotText" : "Check if an <b>element does <i>NOT</i></b> contain <b>text</b>",
       "schema.host.text.add_host_to_contactgroup" : "Den Host einer Kontaktgruppe hinzufügen",
       "site.help.doc.contacts-and-notifications" : "Kontakte und Benachrichtigungen",
@@ -2434,6 +2441,7 @@ var Lang = {
       "schema.company.attr.name" : "Name",
       "schema.dependency.attr.on_host_id" : "Depends on host ID",
       "schema.service.text.title" : "Services",
+      "schema.service.text.clone_select_host" : "Einen anderen Host auswählen",
       "schema.contactgroup.text.host_members" : "Hosts, die der Kontaktgruppe angehören",
       "schema.service.desc.rotate_check_type" : "Die Rotate-Checks haben keinen festen Messpunkt.\nStattdessen rotieren die Services-Prüfungen über die ausgewählten Messpunkte.\nSollte die Prüfung von einem Messpunkt nicht OK sein, wird sofort zum nächsten Messpunkt\ngesprungen. Sollte auch der dritte Messpunkt ein Resultat liefern, welcher nicht OK ist, so wird\nder Zähler für die maximalen Fehlversuche eines Service um eins erhöht.",
       "word.day" : "Tage",
@@ -6822,7 +6830,15 @@ Table.prototype.createRows = function(rows) {
             }
         });
 
-        if (self.deletable != undefined) {
+        var rowHoverIcons, rowHoverIconsWidth = 0;
+
+        if (self.deletable !== undefined || self.rowHoverIcons) {
+            rowHoverIcons = Utils.create("td")
+                .css({ "vertical-align": "middle", padding: "3px 0 0 0", "white-space": "nowrap" })
+                .appendTo(tr);
+        }
+
+        if (self.deletable !== undefined) {
             var addDeletableObject = true,
                 icon = "";
 
@@ -6845,10 +6861,30 @@ Table.prototype.createRows = function(rows) {
                 );
             }
 
-            Utils.create("td")
-                .html(icon)
-                .css({ "vertical-align": "middle", padding: "3px 0 0 0" })
-                .appendTo(tr);
+            rowHoverIconsWidth = rowHoverIconsWidth + 20;
+            rowHoverIcons.css({ width: rowHoverIconsWidth });
+            icon.appendTo(rowHoverIcons);
+        }
+
+        if (self.rowHoverIcons) {
+            $.each(self.rowHoverIcons, function(i, iconOpts) {
+                var icon = Utils.create("a")
+                    .attr("title", iconOpts.title)
+                    .tooltip()
+                    .addClass("hicons-btn")
+                    .html(Utils.create("span").addClass("hicons "+ iconOpts.icon).css({ margin: "0" }))
+                    .click(function() { iconOpts.onClick(row, iconOpts) })
+                    .hide()
+                    .appendTo(rowHoverIcons);
+
+                tr.hover(
+                    function() { icon.show() },
+                    function() { icon.hide() }
+                );
+
+                rowHoverIconsWidth = rowHoverIconsWidth + 20;
+                rowHoverIcons.css({ width: rowHoverIconsWidth });
+            });
         }
     });
 };
@@ -8426,6 +8462,14 @@ Overlay.prototype.create = function() {
     return this;
 };
 
+Overlay.prototype.setWidth = function(width) {
+    this.innerContainer.css({ width: width });
+};
+
+Overlay.prototype.setHeight = function(height) {
+    this.innerContainer.css({ height: height });
+};
+
 Overlay.prototype.close = function() {
     var self = this;
     this.innerContainer.fadeOut(400);
@@ -9844,6 +9888,9 @@ Bloonix.initRoutes = function() {
     });
     route.add("monitoring/hosts/:id/services/:service_id/edit", function(req) {
         Bloonix.editService(req);
+    });
+    route.add("monitoring/hosts/:id/services/:service_id/clone-to/:clone_to", function(req) {
+        Bloonix.cloneService(req);
     });
     route.add("monitoring/hosts/:id/services/:service_id/report", function(req) {
         Bloonix.viewServiceLocationReport(req);
@@ -15235,31 +15282,6 @@ Bloonix.createService = function(o) {
             table.createColumn(tr, plugin, { name: "category" });
             table.createColumn(tr, plugin, { name: "command" });
             table.createColumn(tr, plugin, { name: "description" });
-
-            /*
-            var boxClickEvent = function() {
-                Bloonix.createServiceByCommand({
-                    id: self.id,
-                    host: self.host,
-                    plugin: plugin,
-                    template: self.template
-                });
-            };
-
-            var boxOuter = Utils.create("div")
-                .addClass("plugin-box-outer")
-                .appendTo(self.boxes.right);
-
-            var box = Utils.create("div")
-                .addClass("plugin-box")
-                .click(boxClickEvent)
-                .appendTo(boxOuter);
-
-            Utils.create("h2").text(plugin.plugin).appendTo(box);
-            Utils.create("h3").text(plugin.category).appendTo(box);
-            Utils.create("h4").text(plugin.command).appendTo(box);
-            Utils.create("p").text(plugin.description).appendTo(box);
-            */
         });
     };
 
@@ -15270,7 +15292,7 @@ Bloonix.createServiceByCommand = function(o) {
     $("#content").html("");
     $("#content-outer").scrollTop(0);
 
-    var serviceUrl, submitUrl;
+    var serviceUrl, submitUrl, onSuccess;
 
     if (o.template) {
         serviceUrl = "/templates/hosts/"+ o.id +"/services/options/"+ o.plugin.id;
@@ -15328,6 +15350,28 @@ Bloonix.editService = function(o) {
     });
 };
 
+Bloonix.cloneService = function(o) {
+    var toHost = Bloonix.getHost(o.clone_to),
+        service = Bloonix.get("/hosts/"+ o.id +"/services/"+ o.service_id +"/options"),
+        plugin = Bloonix.get("/plugins/"+ service.values.plugin_id),
+        submitUrl = "/hosts/"+ o.clone_to +"/services/create"
+
+    Bloonix.showHostSubNavigation(
+        "host",
+        toHost.id,
+        toHost.hostname
+    );
+
+    Bloonix.createServiceForm({
+        url: { submit: submitUrl },
+        host: toHost,
+        values: service.values,
+        options: service.options,
+        plugin: plugin,
+        action: "clone"
+    });
+};
+
 Bloonix.createServiceForm = function(o) {
     var object = Utils.extend({}, o);
 
@@ -15352,7 +15396,7 @@ Bloonix.createServiceForm = function(o) {
                 self.pluginOptionsByOption[opt.option] = opt;
             });
         }
-        if (this.action == "update") {
+        if (this.action == "update" || this.action == "clone") {
             $.each(this.values.command_options, function(i, e) {
                 if (self.pluginOptionsByOption[e.option].multiple) {
                     if (!self.commandOptionsByOption[e.option]) {
@@ -15384,7 +15428,7 @@ Bloonix.createServiceForm = function(o) {
             header, onSuccess,
             submitUrl;
 
-        if (this.action == "create") {
+        if (this.action == "create" || this.action == "clone") {
             submitUrl = this.template
                 ? "/templates/hosts/"+ this.template.id +"/services/create"
                 : "/hosts/"+ this.host.id +"/services/create";
@@ -15393,9 +15437,10 @@ Bloonix.createServiceForm = function(o) {
                 if (self.template) {
                     Bloonix.route.to("monitoring/templates/"+ result.host_template_id +"/services/"+ result.ref_id +"/edit");
                 } else {
-                    Bloonix.route.to("monitoring/hosts/"+ result.host_id +"/services/"+ result.id +"/edit");
+                    Bloonix.route.to("monitoring/hosts/"+ result.host_id);
                 }
             };
+
             header = new Header({
                 title: Text.get("schema.service.text.create"),
                 border: true,
@@ -16480,7 +16525,6 @@ Bloonix.createServiceForm = function(o) {
                     var opt = example.arguments.shift(),
                         value = example.arguments.shift();
 
-console.log(opt, self.pluginOptionsByOption);
                     opt = self.pluginOptionsByOption[opt];
 
                     if (opt.multiple && info.thresholds) {
@@ -16713,7 +16757,7 @@ console.log(opt, self.pluginOptionsByOption);
         var self = this;
         this.form.button({
             name: "submit",
-            text: this.action == "create"
+            text: this.action == "create" || this.action == "clone"
                 ? Text.get("action.create")
                 : Text.get("action.update"),
             appendTo: this.form.form
@@ -18072,7 +18116,8 @@ Bloonix.listServices = function(o) {
     };
 
     object.createHostServiceTable = function() {
-        var host = this.host,
+        var self = this,
+            host = this.host,
             services = this.services,
             appendTo = this.appendTo,
             icons = this.getStatusIcons();
@@ -18144,6 +18189,11 @@ Bloonix.listServices = function(o) {
                 check: function(row) { return row.host_template_name ? false : true }
             },
             columnSwitcher: true,
+            rowHoverIcons: [{
+                title: Text.get("schema.service.text.clone"),
+                icon: "plus",
+                onClick: self.cloneService
+            }],
             columns: [
                 {
                     name: "id",
@@ -18197,6 +18247,75 @@ Bloonix.listServices = function(o) {
                 }
             ]
         }).create();
+    };
+
+    object.cloneService = function(service) {
+        var content = Utils.create("div");
+
+        var overlay = new Overlay({
+            title: Text.get("schema.service.text.clone_service", service.service_name, true),
+            content: content
+        });
+
+        var buttons = Utils.create("div")
+            .appendTo(content);
+
+        var hostList = Utils.create("div")
+            .appendTo(content)
+            .hide();
+
+        Utils.create("div")
+            .addClass("btn btn-white btn-medium")
+            .html(Text.get("schema.service.text.clone_to_the_same_host"))
+            .appendTo(buttons)
+            .click(function() {
+                overlay.close();
+                Bloonix.route.to("monitoring/hosts/"+ service.host_id +"/services/"+ service.id +"/clone-to/"+ service.host_id);
+            });
+
+        Utils.create("div")
+            .addClass("btn btn-white btn-medium")
+            .html(Text.get("schema.service.text.clone_select_host"))
+            .appendTo(buttons)
+            .click(function() {
+                buttons.hide();
+                hostList.html("").show();
+                overlay.setWidth("1000px");
+                new Table({
+                    url: "/hosts",
+                    postdata: { offset: 0, limit: 20 },
+                    appendTo: hostList,
+                    sortable: true,
+                    header: {
+                        title: Text.get("schema.service.text.clone_select_host"),
+                        pager: true,
+                        search: true,
+                        appendTo: hostList
+                    },
+                    searchable: {
+                        url: "/hosts/search/",
+                        result: [ "id", "hostname", "ipaddr" ]
+                    },
+                    onClick: function(row) {
+                        overlay.close();
+                        Bloonix.route.to("monitoring/hosts/"+ service.host_id +"/services/"+ service.id +"/clone-to/"+ row.id);
+                    },
+                    columns: [
+                        {
+                            name: "id",
+                            text: Text.get("schema.host.attr.id")
+                        },{
+                            name: "hostname",
+                            text: Text.get("schema.host.attr.hostname")
+                        },{
+                            name: "ipaddr",
+                            text:  Text.get("schema.host.attr.ipaddr")
+                        }
+                    ]
+                }).create();
+            });
+
+        overlay.create();
     };
 
     object.getStatusIcons = function() {
@@ -19630,8 +19749,8 @@ Bloonix.createUserChart = function(o) {
         var self = this;
 
         var submit = o.id
-            ? '/user/charts/'+ o.id +'/update'
-            : '/user/charts/create';
+            ? "/user/charts/"+ o.id +"/update"
+            : "/user/charts/create";
 
         this.form = new Form({
             url: { submit: submit },

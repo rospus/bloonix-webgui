@@ -861,6 +861,10 @@ schema.service.text.title: Services
 schema.service.text.create: Einen neuen Service erstellen
 schema.service.text.settings: Einstellung des Service %s
 schema.service.text.delete: Den Service löschen
+schema.service.text.clone: Den Service klonen
+schema.service.text.clone_service: Service %s klonen
+schema.service.text.clone_to_the_same_host: Den Service zum selben Host klonen
+schema.service.text.clone_select_host: Einen anderen Host auswählen
 schema.service.text.choose_plugin: Wähle ein Plugin
 schema.service.text.attempt: Prüfungen
 schema.service.text.host_alive_check: Host-Alive-Check

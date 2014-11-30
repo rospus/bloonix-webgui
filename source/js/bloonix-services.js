@@ -319,7 +319,8 @@ Bloonix.listServices = function(o) {
     };
 
     object.createHostServiceTable = function() {
-        var host = this.host,
+        var self = this,
+            host = this.host,
             services = this.services,
             appendTo = this.appendTo,
             icons = this.getStatusIcons();
@@ -391,6 +392,11 @@ Bloonix.listServices = function(o) {
                 check: function(row) { return row.host_template_name ? false : true }
             },
             columnSwitcher: true,
+            rowHoverIcons: [{
+                title: Text.get("schema.service.text.clone"),
+                icon: "plus",
+                onClick: self.cloneService
+            }],
             columns: [
                 {
                     name: "id",
@@ -444,6 +450,75 @@ Bloonix.listServices = function(o) {
                 }
             ]
         }).create();
+    };
+
+    object.cloneService = function(service) {
+        var content = Utils.create("div");
+
+        var overlay = new Overlay({
+            title: Text.get("schema.service.text.clone_service", service.service_name, true),
+            content: content
+        });
+
+        var buttons = Utils.create("div")
+            .appendTo(content);
+
+        var hostList = Utils.create("div")
+            .appendTo(content)
+            .hide();
+
+        Utils.create("div")
+            .addClass("btn btn-white btn-medium")
+            .html(Text.get("schema.service.text.clone_to_the_same_host"))
+            .appendTo(buttons)
+            .click(function() {
+                overlay.close();
+                Bloonix.route.to("monitoring/hosts/"+ service.host_id +"/services/"+ service.id +"/clone-to/"+ service.host_id);
+            });
+
+        Utils.create("div")
+            .addClass("btn btn-white btn-medium")
+            .html(Text.get("schema.service.text.clone_select_host"))
+            .appendTo(buttons)
+            .click(function() {
+                buttons.hide();
+                hostList.html("").show();
+                overlay.setWidth("1000px");
+                new Table({
+                    url: "/hosts",
+                    postdata: { offset: 0, limit: 20 },
+                    appendTo: hostList,
+                    sortable: true,
+                    header: {
+                        title: Text.get("schema.service.text.clone_select_host"),
+                        pager: true,
+                        search: true,
+                        appendTo: hostList
+                    },
+                    searchable: {
+                        url: "/hosts/search/",
+                        result: [ "id", "hostname", "ipaddr" ]
+                    },
+                    onClick: function(row) {
+                        overlay.close();
+                        Bloonix.route.to("monitoring/hosts/"+ service.host_id +"/services/"+ service.id +"/clone-to/"+ row.id);
+                    },
+                    columns: [
+                        {
+                            name: "id",
+                            text: Text.get("schema.host.attr.id")
+                        },{
+                            name: "hostname",
+                            text: Text.get("schema.host.attr.hostname")
+                        },{
+                            name: "ipaddr",
+                            text:  Text.get("schema.host.attr.ipaddr")
+                        }
+                    ]
+                }).create();
+            });
+
+        overlay.create();
     };
 
     object.getStatusIcons = function() {

@@ -425,7 +425,15 @@ Table.prototype.createRows = function(rows) {
             }
         });
 
-        if (self.deletable != undefined) {
+        var rowHoverIcons, rowHoverIconsWidth = 0;
+
+        if (self.deletable !== undefined || self.rowHoverIcons) {
+            rowHoverIcons = Utils.create("td")
+                .css({ "vertical-align": "middle", padding: "3px 0 0 0", "white-space": "nowrap" })
+                .appendTo(tr);
+        }
+
+        if (self.deletable !== undefined) {
             var addDeletableObject = true,
                 icon = "";
 
@@ -448,10 +456,30 @@ Table.prototype.createRows = function(rows) {
                 );
             }
 
-            Utils.create("td")
-                .html(icon)
-                .css({ "vertical-align": "middle", padding: "3px 0 0 0" })
-                .appendTo(tr);
+            rowHoverIconsWidth = rowHoverIconsWidth + 20;
+            rowHoverIcons.css({ width: rowHoverIconsWidth });
+            icon.appendTo(rowHoverIcons);
+        }
+
+        if (self.rowHoverIcons) {
+            $.each(self.rowHoverIcons, function(i, iconOpts) {
+                var icon = Utils.create("a")
+                    .attr("title", iconOpts.title)
+                    .tooltip()
+                    .addClass("hicons-btn")
+                    .html(Utils.create("span").addClass("hicons "+ iconOpts.icon).css({ margin: "0" }))
+                    .click(function() { iconOpts.onClick(row, iconOpts) })
+                    .hide()
+                    .appendTo(rowHoverIcons);
+
+                tr.hover(
+                    function() { icon.show() },
+                    function() { icon.hide() }
+                );
+
+                rowHoverIconsWidth = rowHoverIconsWidth + 20;
+                rowHoverIcons.css({ width: rowHoverIconsWidth });
+            });
         }
     });
 };

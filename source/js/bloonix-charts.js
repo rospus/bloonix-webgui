@@ -1251,8 +1251,8 @@ Bloonix.createUserChart = function(o) {
         var self = this;
 
         var submit = o.id
-            ? '/user/charts/'+ o.id +'/update'
-            : '/user/charts/create';
+            ? "/user/charts/"+ o.id +"/update"
+            : "/user/charts/create";
 
         this.form = new Form({
             url: { submit: submit },

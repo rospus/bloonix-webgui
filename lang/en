@@ -860,6 +860,10 @@ schema.service.text.title: Services
 schema.service.text.create: Create a new service
 schema.service.text.settings: Settings of service <b>%s</b>
 schema.service.text.delete: Delete service
+schema.service.text.clone: Clone service
+schema.service.text.clone_service: Clone service %s
+schema.service.text.clone_to_the_same_host: Clone the service to the same host
+schema.service.text.clone_select_host: Select another host
 schema.service.text.choose_plugin: Select a plugin
 schema.service.text.attempt: Attempts
 schema.service.text.host_alive_check: Host-Alive-Check

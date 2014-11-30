@@ -57,6 +57,9 @@ Bloonix.initRoutes = function() {
     route.add("monitoring/hosts/:id/services/:service_id/edit", function(req) {
         Bloonix.editService(req);
     });
+    route.add("monitoring/hosts/:id/services/:service_id/clone-to/:clone_to", function(req) {
+        Bloonix.cloneService(req);
+    });
     route.add("monitoring/hosts/:id/services/:service_id/report", function(req) {
         Bloonix.viewServiceLocationReport(req);
     });

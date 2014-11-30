@@ -97,6 +97,14 @@ Overlay.prototype.create = function() {
     return this;
 };
 
+Overlay.prototype.setWidth = function(width) {
+    this.innerContainer.css({ width: width });
+};
+
+Overlay.prototype.setHeight = function(height) {
+    this.innerContainer.css({ height: height });
+};
+
 Overlay.prototype.close = function() {
     var self = this;
     this.innerContainer.fadeOut(400);
