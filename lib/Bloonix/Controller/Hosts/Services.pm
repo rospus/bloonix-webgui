@@ -69,14 +69,14 @@ sub options {
         $c->user->{id}, $opts->{id}
     ) or return $c->plugin->error->no_privileges_on_action(modify => "service");
 
-    if ($c->stash->object->{service}->{host_template_id}) {
-        $c->model->database->service->set_small;
-    } else {
+    #if ($c->stash->object->{service}->{host_template_id}) {
+    #    $c->model->database->service->set_small;
+    #} else {
         $c->model->database->service->set(
             $c->stash->object->{plugin},
             $c->stash->object->{service} ? "update" : "create"
         );
-    }
+    #}
 
     if ($opts && $opts->{service_id}) {
         my $service = $c->stash->object->{service};
