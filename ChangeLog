@@ -1,3 +1,7 @@
+bloonix-webgui (0.12) released at 2014-12-01
+
+    * Fixed "undefined is not a function".
+
 bloonix-webgui (0.11) released at 2014-11-30
 
     * Services can be cloned now to the same or other hosts.

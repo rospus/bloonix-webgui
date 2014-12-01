@@ -6859,11 +6859,11 @@ Table.prototype.createRows = function(rows) {
                     function() { icon.show() },
                     function() { icon.hide() }
                 );
-            }
 
-            rowHoverIconsWidth = rowHoverIconsWidth + 20;
-            rowHoverIcons.css({ width: rowHoverIconsWidth });
-            icon.appendTo(rowHoverIcons);
+                rowHoverIconsWidth = rowHoverIconsWidth + 20;
+                rowHoverIcons.css({ width: rowHoverIconsWidth });
+                icon.appendTo(rowHoverIcons);
+            }
         }
 
         if (self.rowHoverIcons) {
