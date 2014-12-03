@@ -1035,6 +1035,7 @@ site.wtrm.attr.password: Password
 site.wtrm.attr.userAgent: User-Agent
 site.wtrm.attr.url: URL
 site.wtrm.attr.contentType: Content-Type
+site.wtrm.attr.status: HTTP-Status
 site.wtrm.attr.parent: Parent ID
 site.wtrm.attr.element: Element
 site.wtrm.attr.value: Value
@@ -1047,6 +1048,7 @@ site.wtrm.desc.password: This password for the auth basic authentification.
 site.wtrm.desc.userAgent: This is the User-Agent to send for all requests.
 site.wtrm.desc.url: This is the full URL to request. As example: http://www.bloonix.de/
 site.wtrm.desc.contentType: Enter content type that is expeced for the URL.
+site.wtrm.desc.status: Enter the expected http status for the URL.
 site.wtrm.desc.parent: It's possible to set a parent ID. The ID, class or name is searched within the element of the parent ID.
 site.wtrm.desc.element: The element you want to select. As example: #id, .class, name
 site.wtrm.desc.value: The value of the element you wish to fill or check.
@@ -1059,6 +1061,7 @@ site.wtrm.placeholder.password: Secret
 site.wtrm.placeholder.userAgent: User-Agent
 site.wtrm.placeholder.url: http://www.bloonix.de/
 site.wtrm.placeholder.contentType: text/html
+site.wtrm.placeholder.status: 200
 site.wtrm.placeholder.parent: #parent-id (optional)
 site.wtrm.placeholder.element: #element-id OR .class-name OR name
 site.wtrm.placeholder.value: value

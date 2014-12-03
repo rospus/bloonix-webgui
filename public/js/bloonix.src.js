@@ -912,6 +912,7 @@ var Lang = {
       "schema.host.desc.add_host_to_group" : "Add the host at least to one group.",
       "schema.plugin.text.list" : "Plugins",
       "site.wtrm.text.click_for_details" : "Click on a row to get a detailed report",
+      "site.wtrm.placeholder.status" : "200",
       "schema.service.text.select_location_check_type" : "Select the type of the check",
       "err-601" : "The objects you requested does not exist!",
       "err-420" : "The action failed!",
@@ -958,6 +959,7 @@ var Lang = {
       "nav.sub.contactgroup_service_members" : "Services in contact group",
       "schema.user.text.is_logged_in" : "Logged in",
       "text.browsers_heap_size" : "Display of the heap size in your browser",
+      "site.wtrm.desc.status" : "Enter the expected http status for the URL.",
       "text.from_now_to_4d" : "From now + 4 days",
       "site.help.doc.users-and-groups" : "Die Benutzer- und Gruppenverwaltung",
       "schema.contact.text.timeperiod_type" : "Include / Exclude",
@@ -1372,6 +1374,7 @@ var Lang = {
       "site.login.login" : "Please login with your username and password:",
       "schema.service.action.acknowledge_multiple" : "Acknowledge the status of the selected services",
       "schema.service.attr.status" : "Status",
+      "site.wtrm.attr.status" : "HTTP-Status",
       "schema.company.text.delete" : "Delete company",
       "schema.user.desc.manage_templates" : "Is the user allowed to manage host templates?",
       "site.login.request_failed" : "You request was not successful. Please try it again.",
@@ -1887,6 +1890,7 @@ var Lang = {
       "schema.host.desc.add_host_to_group" : "Füge den Host einer Gruppe hinzu.",
       "schema.plugin.text.list" : "Plugins",
       "site.wtrm.text.click_for_details" : "Click on a row to get a detailed report",
+      "site.wtrm.placeholder.status" : "200",
       "schema.service.text.select_location_check_type" : "Wähle den Typ des Checks",
       "err-601" : "Die angeforderten Objekte existieren nicht!",
       "err-420" : "Die Aktion ist fehlgeschlagen!",
@@ -1933,6 +1937,7 @@ var Lang = {
       "nav.sub.contactgroup_service_members" : "Services in der Kontaktgruppe",
       "schema.user.text.is_logged_in" : "Ist eingeloggt",
       "text.browsers_heap_size" : "Anzeige der Auslastung der Heap-size in Ihrem Browser",
+      "site.wtrm.desc.status" : "Enter the expected http status for the URL.",
       "text.from_now_to_4d" : "Von jetzt + 4 Tage",
       "site.help.doc.users-and-groups" : "Die Benutzer- und Gruppenverwaltung",
       "schema.contact.text.timeperiod_type" : "Inkludieren / Exkludieren",
@@ -2346,6 +2351,7 @@ var Lang = {
       "site.login.login" : "Bitte loggen Sie sich mit Ihrem Benutzernamen und Passwort ein:",
       "schema.service.action.acknowledge_multiple" : "Den Status der selektierten Services bestätigen",
       "schema.service.attr.status" : "Status",
+      "site.wtrm.attr.status" : "HTTP-Status",
       "schema.company.text.delete" : "Unternehmen löschen",
       "schema.user.desc.manage_templates" : "Darf der Benutzer Host-Templates verwalten?",
       "site.login.request_failed" : "Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",
@@ -22586,8 +22592,7 @@ Bloonix.WTRM = function(o) {
     };
 
     object.addStep = function(action, attrs) {
-        var self = this,
-            config = Bloonix.WtrmAction[action];
+        var self = this;
 
         var addClass = /^do/.test(action)
             ? "wtrm-action"
@@ -22616,7 +22621,7 @@ Bloonix.WTRM = function(o) {
         Utils.create("div")
             .addClass("wtrm-step-command")
             .addClass(addClass)
-            .html(config(attrs))
+            .html(Bloonix.PreWtrmAction(action, attrs))
             .appendTo(step);
 
         this.steps[stepId].resultContainer = Utils.create("div")
@@ -22655,8 +22660,7 @@ Bloonix.WTRM = function(o) {
 
     object.updateStep = function(id, attrs) {
         var step = this.steps[id],
-            action = step.action,
-            config = Bloonix.WtrmAction[action];
+            action = step.action;
 
         step.attrs = {};
 
@@ -22665,7 +22669,7 @@ Bloonix.WTRM = function(o) {
         });
 
         step.object.find(".wtrm-step-command").each(function() {
-            $(this).html(config(attrs));
+            $(this).html(Bloonix.PreWtrmAction(action, attrs));
         });
     };
 
@@ -22905,6 +22909,16 @@ Bloonix.getWtrmElement = function(item) {
         : item.element;
 };
 
+Bloonix.PreWtrmAction = function(action, attrs) {
+    var clone = {};
+
+    $.each(attrs, function(key, value) {
+        clone[key] = Utils.escape(value);
+    });
+
+    return Bloonix.WtrmAction[action](clone);
+};
+
 Bloonix.WtrmAction = {
     doAuth: function(item) {
         return Text.get("site.wtrm.command.doAuth", [ item.username, item.password ]);
@@ -22941,9 +22955,9 @@ Bloonix.WtrmAction = {
     },
     checkUrl: function(item) {
         if (item.contentType) {
-            return Text.get("site.wtrm.command.checkUrl", [ item.url ]);
+            return Text.get("site.wtrm.command.checkUrlWithContentType", [ item.url, item.contentType ]);
         }
-        return Text.get("site.wtrm.command.checkUrlWithContentType", [ item.url, item.contentType ]);
+        return Text.get("site.wtrm.command.checkUrl", [ item.url ]);
     },
     checkIfElementExists: function(item) {
         return Text.get("site.wtrm.command.checkIfElementExists", [ Bloonix.getWtrmElement(item) ]);

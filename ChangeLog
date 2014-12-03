@@ -1,6 +1,8 @@
-bloonix-webgui (0.14) released at 2014-XX-XX
+bloonix-webgui (0.14) released at 2014-12-03
 
     * Fixed parsing nagios argument list.
+    * Fixed html injection in the wtrm command list.
+    * Fixed the wtrm function checkUrl.
 
 bloonix-webgui (0.13) released at 2014-12-03
 

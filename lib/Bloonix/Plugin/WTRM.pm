@@ -56,8 +56,9 @@ sub new {
             ms => 1
         ],
         checkUrl => [
-            parent => 0,
-            element => 1
+            url => 1,
+            status => 0,
+            contentType => 0
         ],
         checkIfElementExists => [
             parent => 0,

@@ -233,8 +233,7 @@ Bloonix.WTRM = function(o) {
     };
 
     object.addStep = function(action, attrs) {
-        var self = this,
-            config = Bloonix.WtrmAction[action];
+        var self = this;
 
         var addClass = /^do/.test(action)
             ? "wtrm-action"
@@ -263,7 +262,7 @@ Bloonix.WTRM = function(o) {
         Utils.create("div")
             .addClass("wtrm-step-command")
             .addClass(addClass)
-            .html(config(attrs))
+            .html(Bloonix.PreWtrmAction(action, attrs))
             .appendTo(step);
 
         this.steps[stepId].resultContainer = Utils.create("div")
@@ -302,8 +301,7 @@ Bloonix.WTRM = function(o) {
 
     object.updateStep = function(id, attrs) {
         var step = this.steps[id],
-            action = step.action,
-            config = Bloonix.WtrmAction[action];
+            action = step.action;
 
         step.attrs = {};
 
@@ -312,7 +310,7 @@ Bloonix.WTRM = function(o) {
         });
 
         step.object.find(".wtrm-step-command").each(function() {
-            $(this).html(config(attrs));
+            $(this).html(Bloonix.PreWtrmAction(action, attrs));
         });
     };
 
@@ -552,6 +550,16 @@ Bloonix.getWtrmElement = function(item) {
         : item.element;
 };
 
+Bloonix.PreWtrmAction = function(action, attrs) {
+    var clone = {};
+
+    $.each(attrs, function(key, value) {
+        clone[key] = Utils.escape(value);
+    });
+
+    return Bloonix.WtrmAction[action](clone);
+};
+
 Bloonix.WtrmAction = {
     doAuth: function(item) {
         return Text.get("site.wtrm.command.doAuth", [ item.username, item.password ]);
@@ -588,9 +596,9 @@ Bloonix.WtrmAction = {
     },
     checkUrl: function(item) {
         if (item.contentType) {
-            return Text.get("site.wtrm.command.checkUrl", [ item.url ]);
+            return Text.get("site.wtrm.command.checkUrlWithContentType", [ item.url, item.contentType ]);
         }
-        return Text.get("site.wtrm.command.checkUrlWithContentType", [ item.url, item.contentType ]);
+        return Text.get("site.wtrm.command.checkUrl", [ item.url ]);
     },
     checkIfElementExists: function(item) {
         return Text.get("site.wtrm.command.checkIfElementExists", [ Bloonix.getWtrmElement(item) ]);
