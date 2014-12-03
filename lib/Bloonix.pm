@@ -145,8 +145,17 @@ sub _validate_webapp {
         is_demo => {
             type => Params::Validate::SCALAR,
             default => 0
+        },
+        allow_simple_usernames => {
+            type => Params::Validate::SCALAR,
+            default => "no",
+            regex => qr/^(yes|no|0|1)\z/
         }
     });
+
+    if ($config{allow_simple_usernames} eq "no") {
+        $config{allow_simple_usernames} = 0;
+    }
 
     if ($config{hostname} eq "yourdomain.test") {
         $config{hostname} = Sys::Hostname::hostname();

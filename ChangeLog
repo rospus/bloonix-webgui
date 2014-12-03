@@ -1,3 +1,8 @@
+bloonix-webgui (0.13) released at 2014-XX-XX
+
+    * Added config parameter allow_simple_username, which allows
+      simple usernames like "joe" instead of email addresses.
+
 bloonix-webgui (0.12) released at 2014-12-01
 
     * Fixed "undefined is not a function".

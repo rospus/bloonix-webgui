@@ -19,6 +19,10 @@ sub set {
         die "missing user";
     }
 
+    my $username_regex = $self->c->config->{webapp}->{allow_simple_usernames}
+        ? qr/^[^\s].*[^\s]\z/
+        : qr/^(:?[\w\-.]+\@[\w\-.]+\.[a-z]+|admin)\z/;
+
     $self->validator->set(
         company_id => {
             options => $self->schema->company->get_companies_for_selection,
@@ -31,7 +35,7 @@ sub set {
         username => {
             min_size => 5,
             max_size => 50,
-            regex => qr/^(:?[\w\-.]+\@[\w\-.]+\.[a-z]+|admin)\z/,
+            regex => $username_regex
         },
         name => {
             min_size => 1,
