@@ -1,4 +1,4 @@
-bloonix-webgui (0.13) released at 2014-XX-XX
+bloonix-webgui (0.13) released at 2014-12-03
 
     * Added config parameter allow_simple_username, which allows
       simple usernames like "joe" instead of email addresses.
