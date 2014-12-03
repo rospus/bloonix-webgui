@@ -1,3 +1,7 @@
+bloonix-webgui (0.14) released at 2014-XX-XX
+
+    * Fixed parsing nagios argument list.
+
 bloonix-webgui (0.13) released at 2014-12-03
 
     * Added config parameter allow_simple_username, which allows
