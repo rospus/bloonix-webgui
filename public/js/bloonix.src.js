@@ -20369,11 +20369,13 @@ Bloonix.listHostTemplateMembers = function(o) {
         left: {
             title: Text.get("schema.group.text.host_members"),
             listURL: "/templates/hosts/"+ o.id +"/members/list/",
+            searchURL: "/templates/hosts/"+ o.id +"/members/list/",
             updateMember: "/templates/hosts/"+ o.id +"/members/remove/"
         },
         right: {
             title: Text.get("schema.group.text.host_nonmembers"),
             listURL: "/templates/hosts/"+ o.id +"/members/list-non/",
+            searchURL: "/templates/hosts/"+ o.id +"/members/list-non/",
             updateMember: "/templates/hosts/"+ o.id +"/members/add/"
         },
         columns: [
