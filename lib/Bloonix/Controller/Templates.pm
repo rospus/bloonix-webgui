@@ -22,9 +22,6 @@ sub startup {
     $c->route->map("/templates/hosts/:id/services/:ref_id/update")->to("update_service");
     $c->route->map("/templates/hosts/:id/services/:ref_id/delete")->to("delete_service");
     $c->route->map("/templates/hosts/:id/services/:ref_id/options")->to("service_options");
-    $c->route->map("/templates/hosts/:id/members/list")->to("list_members");
-    $c->route->map("/templates/hosts/:id/members/list-non")->to("list_nonmembers");
-    $c->route->map("/templates/hosts/:id/members/:action(add|remove)")->to("add_remove_members");
     $c->route->map("/templates/hosts/:id/clone")->to("clone");
 }
 
@@ -296,60 +293,6 @@ sub delete_service {
         target => "service_parameter",
         data => $c->stash->object->{service}
     );
-
-    $c->view->render->json;
-}
-
-sub list_members {
-    my ($self, $c, $opts) = @_;
-
-    $c->stash->data(
-        $c->model->database->host_template->get_members(
-            $opts->{id}
-        )
-    );
-
-    $c->view->render->json;
-}
-
-sub list_nonmembers {
-    my ($self, $c, $opts) = @_;
-
-    $c->stash->data(
-        $c->model->database->host_template->get_nonmembers(
-            $opts->{id}, $c->user->{company_id}
-        )
-    );
-
-    $c->view->render->json;
-}
-
-sub add_remove_members {
-    my ($self, $c, $opts) = @_;
-
-    $c->plugin->token->check
-        or return 1;
-
-    my $host_ids = [ $c->req->param("id") ];
-
-    if (!@$host_ids) {
-        $c->plugin->error->no_objects_selected;
-        return undef;
-    }
-
-    $c->plugin->validate->ids($host_ids)
-        or return $c->plugin->error->json_parse_params_error("id");
-
-    $c->model->database->host->validate_host_ids_by_company_id($c->user->{company_id}, $host_ids)
-        or return $c->plugin->error->object_does_not_exists;
-
-    if ($opts->{action} eq "add") {
-        $c->plugin->template->add_hosts_to_template($opts->{id}, $host_ids)
-            or return;
-    } elsif ($opts->{action} eq "remove") {
-        $c->plugin->template->remove_hosts_from_template($opts->{id}, $host_ids)
-            or return;
-    }
 
     $c->view->render->json;
 }

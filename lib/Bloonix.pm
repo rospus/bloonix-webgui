@@ -91,6 +91,7 @@ sub _init_routes {
     $self->load("Screen");
     $self->load("Services");
     $self->load("Templates");
+    $self->load("Templates::Member");
     $self->load("Timeperiods");
     $self->load("Token");
     $self->load("User");

@@ -1426,4 +1426,137 @@ sub _no_privileges {
     return scalar keys %check_ids ? [ keys %check_ids ] : undef;
 }
 
+# -------------------------------------
+# host template member
+# -------------------------------------
+
+sub search_template_member {
+    my ($self, $opts) = (shift, {@_});
+
+    my @select = $opts->{is_in_group}
+        ? $self->_is_template_member($opts)
+        : $self->_is_not_template_member($opts);
+
+    my ($count, $hosts) = $self->dbi->query(
+        offset => $opts->{offset},
+        limit => $opts->{limit},
+        query => $opts->{query},
+        maps => {
+            hostname => "host.hostname",
+            ipaddr => "host.ipaddr"
+        },
+        concat => [
+            "host.id", "host.hostname", "host.ipaddr"
+        ],
+        delimiter => " ",
+        count => "host.id",
+        select => \@select
+    );
+
+    return ($count, $hosts);
+}
+
+sub _is_template_member {
+    my ($self, $opts) = @_;
+    my $user = $opts->{user};
+
+    my %select = (
+        distinct => 1,
+        table => "host",
+        column => [qw(id hostname ipaddr)],
+        join => [
+            inner => {
+                table => "host_template_host",
+                left  => "host.id",
+                right => "host_template_host.host_id"
+            },
+            inner => {
+                table => "host_group",
+                left  => "host.id",
+                right => "host_group.host_id",
+            },
+            inner => {
+                table => "user_group",
+                left  => "host_group.group_id",
+                right => "user_group.group_id",
+            }
+        ],
+        condition => [
+            where => {
+                table => "user_group",
+                column => "user_id",
+                value => $user->{id}
+            },
+            and => {
+                table => "host_template_host",
+                column => "host_template_id",
+                value => $opts->{host_template_id}
+            },
+            and => {
+                table => "host",
+                column => "company_id",
+                value => $user->{company_id}
+            }
+        ],
+        order => [ asc => "hostname" ]
+    );
+
+    return %select;
+}
+
+sub _is_not_template_member {
+    my ($self, $opts) = @_;
+    my $user = $opts->{user};
+
+    my %select = (
+        distinct => 1,
+        table => "host",
+        column => [qw(id hostname ipaddr)],
+        join => [
+            inner => {
+                table => "host_group",
+                left  => "host.id",
+                right => "host_group.host_id"
+            },
+            inner => {
+                table => "user_group",
+                left  => "host_group.group_id",
+                right => "user_group.group_id"
+            }
+        ],
+        condition => [
+            where => {
+                table => "user_group",
+                column => "user_id",
+                value => $user->{id}
+            },
+            and => {
+                table => "host",
+                column => "id",
+                op => "not in",
+                value => {
+                    distinct => 1,
+                    table => "host_template_host",
+                    column => "host_id",
+                    condition => [
+                        where => {
+                            table => "host_template_host",
+                            column => "host_template_id",
+                            value => $opts->{host_template_id}
+                        }
+                    ]
+                }
+            },
+            and => {
+                table => "host",
+                column => "company_id",
+                value => $user->{company_id}
+            }
+        ],
+        order => [ asc => "hostname" ]
+    );
+
+    return %select;
+}
+
 1;
