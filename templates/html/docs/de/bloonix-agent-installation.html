@@ -17,32 +17,20 @@ Wenn Sie die Distributionen Debian, Ubuntu, Red Hat oder CentOS einsetzen - oder
 </p>
 </div>
 
-<h2>Installation auf Debian/Ubuntu</h2>
-
+<h2>Einrichtung der Repositories von Bloonix</h2>
 <div>
+
 <p>
-Da das Bloonix-Repository über HTTPS erreichbar ist, sollten Sie vorab das folgende Paket installieren:
+Eine genaue Anleitung zur Einrichtung eines Bloonix Repositories finden Sie hier:
 </p>
 
-<pre>apt-get install apt-transport-https</pre>
-
 <p>
-Desweiteren müssen Sie den GPG-Key von Bloonix und das Repository einbinden:
+<a target="_blank" href="https://www.bloonix.de/docs/installation#repo">https://www.bloonix.de/docs/installation#repo</a>
 </p>
+</div>
 
-<pre>wget https://download.bloonix.de/debian/bloonix.gpg -O- | apt-key add -</pre>
-
-<p>
-Tragen Sie nun folgende Zeile in der Datei <i>/etc/apt/sources.list</i> ein:
-
-<pre>echo "deb https://download.bloonix.de/debian/ wheezy main" >>/etc/apt/sources.list</pre>
-
-<p>Sie können das Wheezy Repository für alle Debian und Ubuntu Versionen einsetzen.</p>
-
-<p>Nun können Sie nach Paketen von Bloonix suchen:</p>
-
-<pre>apt-get update
-apt-cache search bloonix</pre>
+<h2>Installation auf Debian/Ubuntu</h2>
+<div>
 
 <p>
 Installieren Sie nun den Bloonix-Agenten und die Plugins, die Sie benötigen. Zum Beispiel
@@ -52,17 +40,10 @@ Installieren Sie nun den Bloonix-Agenten und die Plugins, die Sie benötigen. Zu
 </div>
 
 <h2>Installation auf CentOS/Red Hat</h2>
-
 <div>
-<p>
-Die Installation auf CentOS oder Red Hat Systemen ist sehr einfach. Binden Sie zunächst das Repository von Bloonix ein:
-</p>
-
-<pre>rpm -ivh \
-    https://download.bloonix.de/centos/6/noarch/bloonix-release-0.3-1.el6.noarch.rpm</pre>
 
 <p>
-Daraufhin können Sie sofort nach Bloonix Paketen suchen:
+Nach der Einrichtung des Repositories können Sie sofort nach Bloonix Paketen suchen:
 </p>
 
 <pre>yum search bloonix</pre>
@@ -74,27 +55,3 @@ Installieren Sie nun den Bloonix-Agenten und die Plugins, die Sie benötigen. Zu
 <pre>yum install bloonix-agent bloonix-plugins-linux bloonix-plugins-mysql</pre>
 </div>
 
-<h2>Installation des Agenten aus den Sourcen</h2>
-
-<div>
-<p>
-Auch die Installation aus den Sourcen ist sehr einfach, wenn die Bloonix Pakete für Ihre Distribution nicht zur Verfügung stehen. Der Pfad zu den Sourcen lautet:
-</p>
-
-<pre>https://download.bloonix.de/sources/</pre>
-
-<p>
-Die Installation läuft wie folgt ab:
-</p>
-
-<pre>wget https://download.bloonix.de/sources/bloonix-agent-0.21.tar.gz
-tar -xzf bloonix-agent-0.21.tar.gz
-cd bloonix-agent-0.21
-make
-make install
-</pre>
-
-<p>
-<b>Bitte beachten Sie</b> das die Version des Agenten eventuell schon weiter fortgeschritten ist.
-</p>
-</div>
