@@ -1,6 +1,7 @@
-bloonix-webgui (0.16) released at 2014-XX-XX
+bloonix-webgui (0.16) released at 2014-12-05
 
     * Fixed bloonix repo documentation.
+    * Add the clone service button to the global service list.
 
 bloonix-webgui (0.15) released at 2014-12-04
 
