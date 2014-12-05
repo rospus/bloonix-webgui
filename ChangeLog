@@ -1,3 +1,7 @@
+bloonix-webgui (0.16) released at 2014-XX-XX
+
+    * Fixed bloonix repo documentation.
+
 bloonix-webgui (0.15) released at 2014-12-04
 
     * Fixed host list offset and limit for template groups.

@@ -6640,7 +6640,7 @@ Table.prototype.createStruct = function() {
         }
     });
 
-    if (this.deletable != undefined) {
+    if (this.deletable != undefined || self.rowHoverIcons) {
         Utils.create("th")
             .appendTo(this.thRow)
             .css({ "width": "20px" });
@@ -18048,6 +18048,11 @@ Bloonix.listServices = function(o) {
             reloadable: true,
             sortable: true,
             columnSwitcher: true,
+            rowHoverIcons: [{
+                title: Text.get("schema.service.text.clone"),
+                icon: "share",
+                onClick: this.cloneService
+            }],
             columns: [
                 {
                     name: "id",

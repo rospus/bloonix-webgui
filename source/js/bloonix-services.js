@@ -245,6 +245,11 @@ Bloonix.listServices = function(o) {
             reloadable: true,
             sortable: true,
             columnSwitcher: true,
+            rowHoverIcons: [{
+                title: Text.get("schema.service.text.clone"),
+                icon: "share",
+                onClick: this.cloneService
+            }],
             columns: [
                 {
                     name: "id",

@@ -229,7 +229,7 @@ Table.prototype.createStruct = function() {
         }
     });
 
-    if (this.deletable != undefined) {
+    if (this.deletable != undefined || self.rowHoverIcons) {
         Utils.create("th")
             .appendTo(this.thRow)
             .css({ "width": "20px" });
