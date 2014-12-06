@@ -18,7 +18,7 @@ bloonix-init-host [ HOST-KEY ] [ SERVER ]
 </pre>
 
 <p>
-Geben Sie anstelle von <b>[ HOST-KEY ]</b> den Host-Key aus dem Formular an und anstelle von <b>[ SERVER ]</b> die Adressen der Bloonix-Server an. In etwa so:
+Ersetzen Sie den Platzhalter <b>[ HOST-KEY ]</b> mit dem Host-Key. Den Platzhalter <b>[ SERVER ]</b> ersetzen Sie mit der Adresse des Bloonix-Servers:
 </p>
 
 <pre>
@@ -131,7 +131,7 @@ bloonix ALL=NOPASSWD: /usr/lib/bloonix/plugins/check-smart-health
 </pre>
 
 <p>
-Als nächstes editieren Sie die Konfiguration des Bloonix-Agenten. Die Konfigurationdatei lautet <i>/etc/bloonix/agent/main.conf</i>. Fügen Sie in der Host-Sektion den Parameter <i>use_sudo</i> wie folgt hinzu:
+Als nächstes editieren Sie die Konfiguration des Bloonix-Agenten. Die Konfigurationdatei, in welcher der Host konfiguriert ist, ist entweder <i>/etc/bloonix/agent/conf.d/host-$id.conf</i> oder <i>/etc/bloonix/agent/main.conf</i>. Fügen Sie in der Host-Sektion den Parameter <i>use_sudo</i> wie folgt hinzu:
 </p>
 
 <pre>
@@ -139,7 +139,6 @@ host {
     use_sudo check-mdadm, check-smart-health
     host_id 12345
     passsord secret
-    agent_id localhost
 }
 </pre>
 
