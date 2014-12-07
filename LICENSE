@@ -92,5 +92,5 @@ Parts of the software are provided under separate licenses, as follows:
 
 Note:
 
-The javascript code of D3.js, topojson, Flot, datamaps are compressed in the file /public/js/other.min.js.
+The javascript code of JQVMap and Flot are compressed in the file /public/js/other.min.js.
 The javascript code of InfoVis and jQuery Timepicker are compressed in the file /public/js/misc.min.js.
