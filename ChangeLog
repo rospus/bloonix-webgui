@@ -1,3 +1,9 @@
+bloonix-webgui (0.17) released at 2014-12-10
+
+    * Added new column data_retention to table host.
+      This column is automatically added if the webgui is
+      restarted.
+
 bloonix-webgui (0.16) released at 2014-12-05
 
     * Fixed bloonix repo documentation.

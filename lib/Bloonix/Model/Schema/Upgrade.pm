@@ -14,23 +14,33 @@ sub init {
 sub check_service_force_check {
     my $self = shift;
 
+    if (!$self->exist(service => "force_check")) {
+        $self->upgrade("alter table service add column force_check char(1) default '0'");
+    }
+
+    if (!$self->exist(host => "data_retention")) {
+        $self->upgrade("alter table host add column data_retention smallint default 3650");
+    }
+}
+
+sub upgrade {
+    my ($self, $stmt) = @_;
+
+    $self->log->warning("upgrade table: $stmt");
+    $self->dbi->do($stmt);
+}
+
+sub exist {
+    my ($self, $table, $column) = @_;
+
     my $stmt = qq{
         SELECT column_name
         FROM information_schema.columns
         WHERE table_name = ?
-        and column_name = ?
+        AND column_name = ?
     };
 
-    my $def = qq{
-        alter table service add column force_check char(1) default '0'
-    };
-
-    my $col = $self->dbi->unique($stmt, "service", "force_check");
-
-    if (!defined $col) {
-        $self->log->warning("upgrade table service: $def");
-        $self->dbi->do($def);
-    }
+    return $self->dbi->unique($stmt, $table, $column);
 }
 
 1;

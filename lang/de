@@ -504,6 +504,7 @@ schema.host.attr.notification: Benachrichtigungen aktiv
 schema.host.attr.last_check: Letzter Check
 schema.host.attr.max_services: Maximal konfigurierbare Services
 schema.host.attr.variables: Host Variablen
+schema.host.attr.data_retention: Daten Aufbewahrungszeit
 schema.host.desc.company_id: Wähle ein Unternehmen zu dem der Host gehört
 schema.host.desc.password: Dieses Passwort wird für den Bloonix Agenten benötigt. Wenn der Agent Statistiken für einen Host zum Bloonix Server senden möchte dann ist dies nur möglich wenn der Agent die Host-ID und das Passwort kennt.
 schema.host.desc.hostname: Dies ist der vollständig qualifizierte Hostname.
@@ -530,6 +531,7 @@ schema.host.desc.timeout: Das ist der Timeout aller Services des Hosts. Wenn in 
 schema.host.desc.notification: Aktiere oder deaktiviere die Benachrichtigungen aller Services.
 schema.host.desc.max_services: Konfiguration der maximalen Services, die für diesen Host eingerichtet werden dürfen. 0 heißt unlimitiert.
 schema.host.desc.variables: In diesem Feld können Host Variablen definiert werden. Diese Variablen können für Schwellwerten bei der Konfiguration von Service-Checks verwendet werden. Beispiel:<br/><br/><b>HTTP.PORT=9000</b><br/><br/>Diese Variable kann dann im Format <i>%HTTP.PORT%</i> für Schwellwerte eingesetzt werden. Bitte beachten Sie das zwei Variablen vordefiniert sind: <i>IPADDR</i> und <i>HOSTNAME</i>. Diese Variablen werden mit der IP-Adresse und dem Hostnamen ersetzt. Weitere Informationen hierzu finden Sie in der Hilfe.<br/><br/>Erlaubte Zeichen: a-z, A-Z, 0-9, Punkt und Unterstrich
+schema.host.desc.data_retention: Die Aufbewahrungszeit in Tagen aller Daten des Host und der Services.
 schema.host.text.list: Übersicht über alle Hosts
 schema.host.text.view: Host %s
 schema.host.text.create: Einen neuen Host erstellen

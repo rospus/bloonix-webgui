@@ -925,6 +925,7 @@ var Lang = {
       "site.wtrm.action.doClick" : "<b>Click</b> on a element",
       "text.chart_info" : "Chart information",
       "schema.group.text.may_modify_services" : "May modify services",
+      "schema.host.attr.data_retention" : "Data retention",
       "schema.user_chart.attr.description" : "Description",
       "schema.contact.desc.name" : "This is the full name of the contact.",
       "schema.service.action.disable_notifications_multiple" : "Disable notifications of the selected services",
@@ -1011,8 +1012,8 @@ var Lang = {
       "nav.sub.events" : "Events",
       "schema.service.action.clear_acknowledgement_multiple" : "Clear the acknowledgement of the selected services",
       "site.wtrm.action.checkIfElementIsNotSelected" : "Check if a <b>value is <i>NOT</i> selected</b> in a selectbox",
-      "schema.service.attr.last_mail_time" : "Last notification per mail",
       "schema.service.attr.active" : "Active",
+      "schema.service.attr.last_mail_time" : "Last notification per mail",
       "schema.group.desc.description" : "Enter a short description about the group.",
       "schema.service.desc.host_alive_check" : "A host alive check is a check that determines if a host is down or alive. If this check returns a critical status then you get a special notification. If other service checks returns a critical status at the same time then the notifications will be suppressed. It's recommended you use the ping check as host alive check.",
       "info.new_version" : "<h4>A new version is available</h4>\n<p>A new version of the Bloonix-WebGUI is available!</p>\n<p>Please reload the website!</p>",
@@ -1133,6 +1134,7 @@ var Lang = {
       "schema.chart.attr.refresh" : "Refresh",
       "text.dashboard.list_top_hosts" : "Overview of the top hosts",
       "schema.group.attr.description" : "Description",
+      "schema.host.desc.data_retention" : "The retention in days of all data of the host and services. ",
       "err-410" : "The requested URL was not found!",
       "err-640" : "No data available!",
       "action.timeslices" : "List timeslices",
@@ -1610,9 +1612,9 @@ var Lang = {
       "action.no_abort" : "<b>No, abort!</b>",
       "text.from_now_to_4h" : "From now + 4 hours",
       "schema.service.attr.scheduled" : "Has downtime",
-      "schema.host.text.multiple_activate" : "Activate or deactivate multiple hosts",
       "schema.group.attr.groupname" : "Groupname",
       "action.members" : "List members",
+      "schema.host.text.multiple_activate" : "Activate or deactivate multiple hosts",
       "schema.host.attr.company_id" : "Company ID",
       "word.active" : "active",
       "schema.host.attr.comment" : "Comment",
@@ -1903,6 +1905,7 @@ var Lang = {
       "site.wtrm.action.doClick" : "<b>Click</b> on a element",
       "text.chart_info" : "Chart Informationen",
       "schema.group.text.may_modify_services" : "Darf Services ändern",
+      "schema.host.attr.data_retention" : "Daten Aufbewahrungszeit",
       "schema.user_chart.attr.description" : "Beschreibung",
       "schema.contact.desc.name" : "Dies ist der volle Name des Kontakts.",
       "schema.service.action.disable_notifications_multiple" : "Benachrichtigungen ausschalten für die selektierten Services",
@@ -2111,6 +2114,7 @@ var Lang = {
       "schema.chart.attr.refresh" : "Aktualisierungsrate",
       "text.dashboard.list_top_hosts" : "Anzeigen der Top-Hosts",
       "schema.group.attr.description" : "Beschreibung",
+      "schema.host.desc.data_retention" : "Die Aufbewahrungszeit in Tagen aller Daten des Host und der Services.",
       "err-410" : "Die angeforderte Seite wurde nicht gefunden!",
       "err-640" : "Keine Daten verfügbar!",
       "action.timeslices" : "Zeitpläne auflisten",
@@ -2587,9 +2591,9 @@ var Lang = {
       "action.no_abort" : "<b>Nein, abbrechen!</b>",
       "text.from_now_to_4h" : "Von jetzt + 4 Stunden",
       "schema.service.attr.scheduled" : "Hat eine Downtime",
-      "schema.host.text.multiple_activate" : "Mehrere Hosts aktivieren oder deaktivieren",
       "schema.group.attr.groupname" : "Gruppenname",
       "action.members" : "Mitglieder auflisten",
+      "schema.host.text.multiple_activate" : "Mehrere Hosts aktivieren oder deaktivieren",
       "schema.host.attr.company_id" : "Firmen ID",
       "word.active" : "aktiv",
       "schema.host.attr.comment" : "Kommentar",
@@ -12819,6 +12823,10 @@ Bloonix.listHosts = function(o) {
                     name: "interval",
                     text: Text.get("schema.host.attr.interval"),
                     hide: true
+                },{
+                    name: "data_retention",
+                    text: Text.get("schema.host.attr.data_retention"),
+                    hide: true
                 }
             ]
         }).create();
@@ -13056,6 +13064,15 @@ Bloonix.getHostFormElements = function() {
             desc: Text.get("schema.host.desc.timeout"),
             secondsToFormValues: true,
             nullString: Text.get("text.inherited_from_host")
+        },{
+            element: "input",
+            type: "text",
+            name: "data_retention",
+            text: Text.get("schema.host.attr.data_retention"),
+            desc: Text.get("schema.host.desc.data_retention"),
+            minValue: 0,
+            maxValue: 32767,
+            required: true
         },{
             element: "input",
             type: "text",

@@ -443,6 +443,11 @@ sub set {
                 return 1;
             },
             default => "{}"
+        },
+        data_retention => {
+            min_val => 0,
+            max_val => 32767,
+            default => 3650
         }
     );
 

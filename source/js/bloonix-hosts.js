@@ -489,6 +489,10 @@ Bloonix.listHosts = function(o) {
                     name: "interval",
                     text: Text.get("schema.host.attr.interval"),
                     hide: true
+                },{
+                    name: "data_retention",
+                    text: Text.get("schema.host.attr.data_retention"),
+                    hide: true
                 }
             ]
         }).create();
@@ -726,6 +730,15 @@ Bloonix.getHostFormElements = function() {
             desc: Text.get("schema.host.desc.timeout"),
             secondsToFormValues: true,
             nullString: Text.get("text.inherited_from_host")
+        },{
+            element: "input",
+            type: "text",
+            name: "data_retention",
+            text: Text.get("schema.host.attr.data_retention"),
+            desc: Text.get("schema.host.desc.data_retention"),
+            minValue: 0,
+            maxValue: 32767,
+            required: true
         },{
             element: "input",
             type: "text",
