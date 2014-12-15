@@ -1,3 +1,7 @@
+bloonix-webgui (0.18) released at 2014-XX-XX
+
+    * Show the company name in the form of the company settings.
+
 bloonix-webgui (0.17) released at 2014-12-10
 
     * Added new column data_retention to table host.

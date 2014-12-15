@@ -118,8 +118,8 @@ Bloonix.listCompanies = function() {
 Bloonix.editCompany = function(o) {
     var company = Bloonix.get("/administration/companies/"+ o.id +"/options/");
 
-    new Header({ title: Text.get("schema.company.text.settings", company.values.company, true) }).create();
-    Bloonix.setMetaTitle(Text.get("schema.company.text.settings", company.values.company));
+    new Header({ title: Text.get("schema.company.text.view", company.values.company, true) }).create();
+    Bloonix.setMetaTitle(Text.get("schema.company.text.view", company.values.company));
 
     new Form({
         url: { submit: "/administration/companies/"+ o.id +"/update/" },

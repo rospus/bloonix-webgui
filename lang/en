@@ -389,6 +389,7 @@ schema.company.text.list: Overview of all companies
 schema.company.text.create: Create a new company
 schema.company.text.delete: Delete company
 schema.company.text.settings: Company settings
+schema.company.text.view: Company %s
 
 schema.user.attr.id: User ID
 schema.user.attr.username: Username

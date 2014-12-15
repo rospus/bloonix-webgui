@@ -1264,6 +1264,7 @@ var Lang = {
       "site.help.doc.web-transactions" : "Web-Transactions",
       "err-634" : "For the parameter sort_type only \"asc\" or \"desc\" is allowed as value.",
       "text.dashboard.choose_content_box" : "Select a dashlet",
+      "schema.company.text.view" : "Company %s",
       "schema.service.info.notification" : "Notifications are disabled of the service.",
       "schema.service.desc.mail_soft_interval" : "This is the notification interval for emails. As long as the service is not OK you will be re-notified in this interval.",
       "word.no" : "no",
@@ -2243,6 +2244,7 @@ var Lang = {
       "site.help.doc.web-transactions" : "Web-Transactions",
       "err-634" : "Für den Paramter sort_by sind nur die Werte \"asc\" und \"desc\" erlaubt.",
       "text.dashboard.choose_content_box" : "Wähle ein Dashlet aus",
+      "schema.company.text.view" : "Unternehmen %s",
       "schema.service.info.notification" : "Benachrichtigungen sind ausgeschaltet.",
       "schema.service.desc.mail_soft_interval" : "Dies ist der Benachrichtigungsintervall für Services. Solange der Service nicht OK ist, erhalten Sie in diesem Intervall erneut Benachrichtigungen.",
       "word.no" : "nein",
@@ -21984,8 +21986,8 @@ Bloonix.listCompanies = function() {
 Bloonix.editCompany = function(o) {
     var company = Bloonix.get("/administration/companies/"+ o.id +"/options/");
 
-    new Header({ title: Text.get("schema.company.text.settings", company.values.company, true) }).create();
-    Bloonix.setMetaTitle(Text.get("schema.company.text.settings", company.values.company));
+    new Header({ title: Text.get("schema.company.text.view", company.values.company, true) }).create();
+    Bloonix.setMetaTitle(Text.get("schema.company.text.view", company.values.company));
 
     new Form({
         url: { submit: "/administration/companies/"+ o.id +"/update/" },

@@ -27,12 +27,12 @@ sub set {
             default => "0",
         },
         mail_to => {
-            regex    => $self->validator->regex->email,
+            regex => $self->validator->regex->email,
             max_size => 100,
             optional => 1,
         },
         sms_to => {
-            regex    => qr/^\+{0,1}\d{0,99}\z/,
+            regex => qr/^\+{0,1}\d{0,99}\z/,
             max_size => 100,
             optional => 1,
         },
