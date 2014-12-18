@@ -48,10 +48,11 @@ Bloonix.listCompanies = function() {
                 wrapNameValueClass: true
             },{
                 name: "email",
-                text: Text.get("schema.company.attr.email"),
+                text: Text.get("schema.company.attr.email")
             },{
                 name: "count_hosts_services",
                 text: Text.get("word.Hosts") + "/" + Text.get("word.Services"),
+                sortable: false
             },{
                 name: "title",
                 text: Text.get("schema.company.attr.title"),
