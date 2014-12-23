@@ -318,6 +318,10 @@ Bloonix.createServiceForm = function(o) {
         }
         if (this.action == "update" || this.action == "clone") {
             $.each(this.values.command_options, function(i, e) {
+                // nagios-command is deprecated
+                if (e.option == "nagios-command" && self.pluginOptionsByOption["simple-command"]) {
+                    e.option = "simple-command";
+                }
                 if (self.pluginOptionsByOption[e.option].multiple) {
                     if (!self.commandOptionsByOption[e.option]) {
                         self.commandOptionsByOption[e.option] = [];
@@ -521,6 +525,8 @@ Bloonix.createServiceForm = function(o) {
             values = this.commandOptionsByOption,
             value;
 
+console.log(opt);
+
         if (this.action == "create") {
             value = opt.default;
         } else if (values[opt.option] != undefined) {
@@ -537,7 +543,7 @@ Bloonix.createServiceForm = function(o) {
                 .appendTo(desc);
         }
 
-        if (this.plugin.info.flags && /nagios/.test(this.plugin.info.flags)) {
+        if (this.plugin.info.flags && /simple/.test(this.plugin.info.flags)) {
             element = "textarea";
         }
 
