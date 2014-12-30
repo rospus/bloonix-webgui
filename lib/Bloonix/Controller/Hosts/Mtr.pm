@@ -23,6 +23,7 @@ sub mtr {
     eval {
         local $SIG{__DIE__} = sub { alarm(0) };
         local $SIG{ALRM} = sub { die "timeout" };
+        local $ENV{PATH} = "/usr/bin:/usr/sbin";
         alarm($timeout);
         $output = qx{$command};
         alarm(0);
