@@ -244,6 +244,11 @@ sub operateas {
 
     $c->session->store->{adminlogin} = 1;
     $c->stash->{meta}->{new_user_id} = $opts->{id};
+
+    if ($c->req->is_json) {
+        return $c->view->render->json;
+    }
+
     $c->res->redirect("/");
 }
 
