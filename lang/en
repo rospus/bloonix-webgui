@@ -358,7 +358,7 @@ site.help.doc.bloonix-agent-installation: Den Bloonix-Agenten installieren
 site.help.doc.bloonix-agent-configuration: Den Bloonix-Agenten konfigurieren
 site.help.doc.notification-screen: Notification Screen
 site.help.doc.json-api: Die Bloonix JSON API
-site.help.doc.user-charts: Benutzer Charts
+site.help.doc.user-charts: Eigene Charts erstellen
 
 schema.company.attr.alt_company_id: Real company ID
 schema.company.attr.id: Company ID

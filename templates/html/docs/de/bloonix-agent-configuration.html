@@ -128,7 +128,13 @@ Um nun für diese zwei Service-Checks <i>sudo</i> einzurichten, gehen Sie folgt 
 <pre>
 bloonix ALL=NOPASSWD: /usr/lib/bloonix/plugins/check-mdadm
 bloonix ALL=NOPASSWD: /usr/lib/bloonix/plugins/check-smart-health
+Defaults env_keep += "PLUGIN_LIBDIR CONFIG_PATH"
+Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 </pre>
+
+<p>
+<em>Bitte beachten Sie</em>, dass der Parameter <i>secure_path</i> lediglich um den Pfad <i>/usr/sbin</i> erweitert werden sollte, da das Programm <i>smartctl</i> beispielsweise unter diesem Pfad liegt, dieser aber nicht bei allen Linux-Distributionen gesetzt ist.
+</p>
 
 <p>
 Als nächstes editieren Sie die Konfiguration des Bloonix-Agenten. Die Konfigurationdatei, in welcher der Host konfiguriert ist, ist entweder <i>/etc/bloonix/agent/conf.d/host-$id.conf</i> oder <i>/etc/bloonix/agent/main.conf</i>. Fügen Sie in der Host-Sektion den Parameter <i>use_sudo</i> wie folgt hinzu:

@@ -33,6 +33,7 @@ sub new {
         "bloonix-agent-installation",
         "bloonix-agent-configuration",
         "notification-screen",
+        "user-charts",
         "json-api"
     ];
 
