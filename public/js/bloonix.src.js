@@ -16279,7 +16279,7 @@ console.log(opt);
 
         if (/sudo/.test(plugin.info.flags)) {
             Utils.create("h3")
-                .text("Root privileges")
+                .text("Root privileges (sudo)")
                 .appendTo(infoBox);
 
             Utils.create("p")
