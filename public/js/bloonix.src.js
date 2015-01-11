@@ -15630,8 +15630,6 @@ Bloonix.createServiceForm = function(o) {
             values = this.commandOptionsByOption,
             value;
 
-console.log(opt);
-
         if (this.action == "create") {
             value = opt.default;
         } else if (values[opt.option] != undefined) {
@@ -15703,7 +15701,7 @@ console.log(opt);
             if (value != undefined) {
                 input.setValue(value);
             }
-            this.addDestroyButton(tr, td);
+            this.addDestroyButton({}, tr, td);
             return;
         }
 

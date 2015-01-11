@@ -215,7 +215,7 @@ sub validate_command_options {
         my $values = $command_options->{$option};
         my $value_type = $opt->{value_type} || 0;
 
-        if (!exists $command_options->{$option} || !defined $values || !length $values) {
+        if (!defined $values || !length $values) {
             if ($opt->{mandatory}) {
                 push @errors, "command_options:$option";
             }
