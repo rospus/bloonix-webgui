@@ -1363,7 +1363,7 @@ Bloonix.createServiceForm = function(o) {
         this.form.table = table.getTable();
 
         $.each(info.options, function(i, opt) {
-            if (opt.value || opt.value_type) { // expects a value
+            if (opt.value || opt.value_type) { // expects a value, opt.value is deprecated
                 if (plugin.id == "58" && opt.option === "workflow") {
                     return true;
                 } else if (opt.multiple) { // multiple values possible
@@ -1468,8 +1468,8 @@ Bloonix.createServiceForm = function(o) {
                         value = [ key, op, val ].join(" ");
                     }
 
-                    // this is a flag
-                    if (!opt.value) {
+                    // this is a flag (opt.value is deprecated)
+                    if (!opt.value && !opt.value_type) {
                         value = Text.get("word.yes");
                     }
 
