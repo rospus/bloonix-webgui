@@ -1,3 +1,7 @@
+bloonix-webgui (0.24) released at 2015-01-13
+
+    * Make it unpossible to delete user and group with id 1.
+
 bloonix-webgui (0.23) released at 2015-01-13
 
     * Check value_type in addition to value to determine if a
