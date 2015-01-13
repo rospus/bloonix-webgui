@@ -1393,7 +1393,7 @@ Bloonix.createServiceForm = function(o) {
             $.each(multiple, function(i, opt) {
                 var btn = Utils.create("div")
                     .addClass("btn btn-white")
-                    .text("+ "+ opt.option)
+                    .text("+ "+ opt.name)
                     .appendTo(bottomBox);
 
                 btn.click(function() {
