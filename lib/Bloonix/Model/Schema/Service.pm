@@ -105,6 +105,8 @@ sub set {
         }
     );
 
+    push @params, $self->get_check_frequency($plugin);
+
     if (!$template) {
         push @params, (
             status_nok_since => {
@@ -134,21 +136,38 @@ sub set {
         $plugin = $self->schema->plugin->find(condition => [ plugin => $plugin ]);
     }
 
+    if ($action eq "create") {
+        push @params, plugin_id => {
+            default => $plugin->{id}
+        };
+        push @params, command => {
+            default => $plugin->{command}
+        };
+    }
+
+    $self->validator->set(@params);
+}
+
+sub get_check_frequency {
+    my ($self, $plugin) = @_;
+
     # check-linux-updates
-    if ($plugin->{id} == 23) {
-        push @params, (
+    if ($plugin->{id} == 23 || $plugin->{flags} =~ /low-check-frequency/) {
+        return (
             interval => {
                 options => [ 28800, 43200, 57600, 86400 ],
-                default => 86400
+                default => 43200
             },
             timeout => {
                 options => [ 300, 600, 900, 1800, 3600 ],
                 default => 600
             }
         );
+    }
+
     # check-wtrm
-    } elsif ($plugin->{id} == 58) {
-        push @params, (
+    if ($plugin->{id} == 58 || $plugin->{flags} =~ /mid-check-frequency/) {
+        return (
             interval => {
                 options => [
                     ($self->c->config->{webapp}->{check_frequency} eq "high" ? (60, 120, 300) : ()),
@@ -164,35 +183,25 @@ sub set {
                 default => 300,
             }
         );
-    } else {
-        push @params, (
-            interval => {
-                options => [
-                    0, ($self->c->config->{webapp}->{check_frequency} eq "high" ? (15, 30) : ()),
-                    60, 120, 300, 600, 900, 1800, 3600, 7200, 14400, 28800, 43200, 57600, 86400
-                ],
-                default => 0,
-            },
-            timeout => {
-                options => [
-                    0, ($self->c->config->{webapp}->{check_frequency} eq "high" ? (30, 60, 120) : ()),
-                    180, 300, 600, 900, 1800, 3600
-                ],
-                default => 0,
-            }
-        );
     }
 
-    if ($action eq "create") {
-        push @params, plugin_id => {
-            default => $plugin->{id}
-        };
-        push @params, command => {
-            default => $plugin->{command}
-        };
-    }
-
-    $self->validator->set(@params);
+    # Default frequency
+    return (
+        interval => {
+            options => [
+                0, ($self->c->config->{webapp}->{check_frequency} eq "high" ? (15, 30) : ()),
+                60, 120, 300, 600, 900, 1800, 3600, 7200, 14400, 28800, 43200, 57600, 86400
+            ],
+            default => 0,
+        },
+        timeout => {
+            options => [
+                0, ($self->c->config->{webapp}->{check_frequency} eq "high" ? (30, 60, 120) : ()),
+                180, 300, 600, 900, 1800, 3600
+            ],
+            default => 0,
+        }
+    );
 }
 
 sub set_small {

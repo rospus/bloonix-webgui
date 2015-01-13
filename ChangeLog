@@ -1,3 +1,8 @@
+bloonix-webgui (0.23) released at 2015-01-13
+
+    * Check value_type in addition to value to determine if a
+      check option is just a flag or if the option expects a value.
+
 bloonix-webgui (0.22) released at 2015-01-11
 
     * Fixed service form and add a remove button to remove
