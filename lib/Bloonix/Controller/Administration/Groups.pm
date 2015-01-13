@@ -92,6 +92,10 @@ sub update {
 sub delete {
     my ($self, $c) = @_;
 
+    if ($opts->{id} == 1) {
+        return $c->plugin->error->no_privileges;
+    }
+
     $c->plugin->action->delete(group => $c->stash->object);
 }
 
