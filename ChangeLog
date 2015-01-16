@@ -1,3 +1,8 @@
+bloonix-webgui (0.25) released at 2015-XX-XX
+
+    * Added a script and example how to reset the password
+      of the user admin
+
 bloonix-webgui (0.24) released at 2015-01-13
 
     * Make it unpossible to delete user and group with id 1.
