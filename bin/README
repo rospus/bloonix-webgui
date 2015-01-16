@@ -1,0 +1,15 @@
+* generate-password
+
+Use this script if you want to reset the password of the user admin.
+
+Execute it:
+
+    ./generate-password $user_id $password
+
+Then connect to the database and execute the update statements.
+
+    psql -U bloonix -h localhost
+
+    update ...
+    update ...
+
