@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+
+if [ -h "/srv/bloonix/webgui" ] ; then
+    rm -f /srv/bloonix/webgui
+fi
+
+exit 0

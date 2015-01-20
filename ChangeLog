@@ -1,4 +1,8 @@
-bloonix-webgui (0.25) released at 2015-01-20
+bloonix-webgui (0.26) released at 2015-01-20
+
+    * Installation fixed.
+
+bloonix-webgui (0.25) released at 2015-01-18
 
     * Added a script and example how to reset the password
       of the user admin

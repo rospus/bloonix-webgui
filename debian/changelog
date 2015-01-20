@@ -1,0 +1,12 @@
+bloonix-webgui (0.26-1) unstable; urgency=low
+
+    * Installation fixed.
+
+ -- Jonny Schulz <js@bloonix.de>  Sun, 20 Jan 2015 01:00:00 +0100
+
+bloonix-webgui (0.25-1) unstable; urgency=low
+
+    * Make it unpossible to delete user and group with id 1.
+
+ -- Jonny Schulz <js@bloonix.de>  Sun, 18 Jan 2015 01:00:00 +0100
+

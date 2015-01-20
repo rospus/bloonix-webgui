@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -e
+WITH_SYSTEMD=0
+
+/srv/bloonix/webgui/bin/fix-perms
+
+if [ $WITH_SYSTEMD -eq 1 ] ; then
+    systemctl condrestart bloonix-webgui.service
+else
+    /etc/init.d/bloonix-webgui condrestart
+fi
+
+exit 0

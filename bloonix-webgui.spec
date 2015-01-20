@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.25
+Version: 0.26
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -20,43 +20,48 @@ AutoReqProv: no
 This is the web application of Bloonix.
 
 %define with_systemd 0
-%define blxdir /usr/lib/bloonix
-%define srvdir /srv/bloonix
+%define srvdir /srv/bloonix/webgui
 
 %prep
 %setup -q -n %{name}-%{version}
 
 %install
 rm -rf %{buildroot}
-mkdir -p ${RPM_BUILD_ROOT}%{srvdir}
-mkdir -p ${RPM_BUILD_ROOT}%{blxdir}/pkg
-install -c -m 0444 webgui.tar.gz ${RPM_BUILD_ROOT}%{blxdir}/pkg/
+mkdir -p %{buildroot}%{srvdir}
+cp -a bin %{buildroot}%{srvdir}/
+cp -a ChangeLog %{buildroot}%{srvdir}/
+cp -a lang %{buildroot}%{srvdir}/
+cp -a lib %{buildroot}%{srvdir}/
+cp -a LICENSE %{buildroot}%{srvdir}/
+cp -a public %{buildroot}%{srvdir}/
+cp -a schema %{buildroot}%{srvdir}/
+cp -a scripts %{buildroot}%{srvdir}/
+cp -a templates %{buildroot}%{srvdir}/
+
+%pre
+if [ -h "/srv/bloonix/webgui" ] ; then
+    rm -f /srv/bloonix/webgui
+fi
 
 %post
-cd %{srvdir}
-tar -xzf %{blxdir}/pkg/webgui.tar.gz
-ln -sfn /srv/bloonix/webgui-%{version} /srv/bloonix/webgui
-chmod 755 /srv/bloonix/webgui-%{version}
-chown root:root /srv/bloonix/webgui-%{version} /srv/bloonix/webgui
 /srv/bloonix/webgui/bin/fix-perms
 
-if [ -x "/srv/bloonix/webgui/scripts/bloonix-webgui" ] ; then
 %if %{?with_systemd}
 systemctl condrestart bloonix-webgui.service
 %else
 /sbin/service bloonix-webgui condrestart &>/dev/null
 %endif
-fi
 
 %clean
 rm -rf %{buildroot}
 
 %files
-%dir %attr(0755, root, root) %{blxdir}
-%dir %attr(0755, root, root) %{blxdir}/pkg
-%{blxdir}/pkg/webgui.tar.gz
 %dir %attr(0755, root, root) %{srvdir}
+%defattr (-, root, root)
+%{srvdir}/*
 
 %changelog
-* Sun Jan 20 2015 Jonny Schulz <js@bloonix.de> - 0.25-1
+* Tue Jan 20 2015 Jonny Schulz <js@bloonix.de> - 0.26-1
+- Fix installation.
+* Sun Jan 18 2015 Jonny Schulz <js@bloonix.de> - 0.25-1
 - Make it unpossible to delete user and group with id 1.
