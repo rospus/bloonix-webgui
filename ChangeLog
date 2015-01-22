@@ -1,3 +1,8 @@
+bloonix-webgui (0.27) released at 2015-XX-XX
+
+    * Fixed <br/> in dependency table.
+    * Hide nav item "company" if the user is not an admin.
+
 bloonix-webgui (0.26) released at 2015-01-20
 
     * Installation fixed.
