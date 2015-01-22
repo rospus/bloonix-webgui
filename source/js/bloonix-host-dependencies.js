@@ -245,7 +245,7 @@ Bloonix.viewHostDependencies = function(o) {
 
             Utils.create("td")
                 .css({ "white-space": "nowrap" })
-                .text(row.timeslice +"<br/>"+ row.timezone)
+                .html(row.timeslice +"<br/>"+ row.timezone)
                 .appendTo(tr);
 
             var actionColumn = Utils.create("td")
