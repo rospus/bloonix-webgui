@@ -10223,7 +10223,6 @@ Bloonix.initNavigation = function(site) {
                 link: "monitoring/templates",
                 icon: "hicons list-alt",
                 text: Text.get("nav.sub.templates")
-                    //+ ' <span style="color: #8A0000; font-weight: bold; font-size: 13px; font-style: italic;">Beta!</span>'
             },{
                 link: "monitoring/screen",
                 icon: "hicons tasks",
@@ -10243,32 +10242,40 @@ Bloonix.initNavigation = function(site) {
                 link: "notification/timeperiods",
                 icon: "hicons time",
                 text: Text.get("nav.sub.timeperiods")
-            //},{
-            //    link: "notification/rosters",
-            //    icon: "hicons calendar",
-            //    text: Text.get("nav.sub.roster")
             }]
         },
         administration: {
-            items: [{
-                link: "administration/users",
-                icon: "hicons user",
-                text: Text.get("nav.sub.users")
-            },{
-                link: "administration/groups",
-                icon: "hicons group",
-                text: Text.get("nav.sub.groups")
-            },{
-                link: "administration/companies",
-                icon: "hicons company",
-                text: Text.get("nav.sub.companies")
-            },{
-                link: "administration/variables",
-                icon: "hicons wrench",
-                text: Text.get("nav.sub.variables")
-            }]
+            items: Bloonix.getAdministrativeNavigationItems()
         }
     };
+};
+
+Bloonix.getAdministrativeNavigationItems = function() {
+    var administrationItems = [
+        {
+            link: "administration/users",
+            icon: "hicons user",
+            text: Text.get("nav.sub.users")
+        },{
+            link: "administration/groups",
+            icon: "hicons group",
+            text: Text.get("nav.sub.groups")
+        },{
+            link: "administration/variables",
+            icon: "hicons wrench",
+            text: Text.get("nav.sub.variables")
+        }
+    ];
+
+    if (Bloonix.user.role === "admin") {
+        administrationItems.splice(2, 0, {
+            link: "administration/companies",
+            icon: "hicons company",
+            text: Text.get("nav.sub.companies")
+        });
+    }
+
+    return administrationItems;
 };
 
 Bloonix.showHostSubNavigation = function(active, id, hostname) {
@@ -13366,7 +13373,7 @@ Bloonix.viewHostDependencies = function(o) {
 
             Utils.create("td")
                 .css({ "white-space": "nowrap" })
-                .text(row.timeslice +"<br/>"+ row.timezone)
+                .html(row.timeslice +"<br/>"+ row.timezone)
                 .appendTo(tr);
 
             var actionColumn = Utils.create("td")
