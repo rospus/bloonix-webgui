@@ -201,12 +201,6 @@ Bloonix.editContact = function(o) {
 Bloonix.getContactFormElements = function() {
     return [
         {
-            element: "select",
-            name: "company_id",
-            text: Text.get("schema.company.attr.company"),
-            desc: Text.get("schema.contact.desc.company_id"),
-            required: true
-        },{
             element: "input",
             type: "text",
             name: "name",
