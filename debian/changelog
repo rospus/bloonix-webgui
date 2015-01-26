@@ -1,3 +1,12 @@
+bloonix-webgui (0.27-1) unstable; urgency=low
+
+    * Fixed <br/> in dependency table.
+    * Hide nav item "company" if the user is not an admin.
+    * Kicked parameter company_id for contact forms.
+    * Replaced the raw call /usr/sbin/sendmail with MIME::Lite.
+
+ -- Jonny Schulz <js@bloonix.de>  Mon, 26 Jan 2015 21:13:10 +0100
+
 bloonix-webgui (0.26-1) unstable; urgency=low
 
     * Installation fixed.

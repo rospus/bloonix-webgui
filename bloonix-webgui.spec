@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.26
+Version: 0.27
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -61,6 +61,11 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Mon Jan 26 2015 Jonny Schulz <js@bloonix.de> - 0.27-1
+- Fixed <br/> in dependency table.
+- Hide nav item "company" if the user is not an admin.
+- Kicked parameter company_id for contact forms.
+- Replaced the raw call /usr/sbin/sendmail with MIME::Lite.
 * Tue Jan 20 2015 Jonny Schulz <js@bloonix.de> - 0.26-1
 - Fix installation.
 * Sun Jan 18 2015 Jonny Schulz <js@bloonix.de> - 0.25-1
