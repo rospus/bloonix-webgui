@@ -4,6 +4,7 @@ use strict;
 use warnings;
 use Digest::SHA qw(sha256_hex sha512_hex hmac_sha512);
 use MIME::Base64;
+use MIME::Lite;
 use Time::ParseDate;
 
 sub new {
@@ -83,17 +84,14 @@ sub quickmail {
         return 1;
     }
 
-    $mail{charset} ||= 'UTF-8';
-    $mail{message} ||= "";
-    $mail{subject} ||= "bloonix quick mail";
+    MIME::Lite->new(
+        From => $mail{from},
+        To => $mail{to},
+        Subject => $mail{subject} || "bloonix quick mail",
+        Type => "TEXT",
+        Data => $mail{message}
+    )->send("sendmail", "/usr/sbin/sendmail -t -oi -oem");
 
-    open my $fh, "|/usr/sbin/sendmail -t" or die "unable to execute '/usr/sbin/sendmail' - $!";
-    print $fh "Content-Type: text/plain; charset=$mail{charset}\n";
-    print $fh "From: $mail{from}\n";
-    print $fh "To: $mail{to}\n";
-    print $fh "Subject: $mail{subject}\n\n";
-    print $fh $mail{message};
-    close $fh;
     return 1;
 }
 

@@ -3,6 +3,7 @@ bloonix-webgui (0.27) released at 2015-XX-XX
     * Fixed <br/> in dependency table.
     * Hide nav item "company" if the user is not an admin.
     * Kicked parameter company_id for contact forms.
+    * Replaced the raw call /usr/sbin/sendmail with MIME::Lite.
 
 bloonix-webgui (0.26) released at 2015-01-20
 
