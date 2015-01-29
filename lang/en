@@ -144,7 +144,7 @@ action.unselect: Unselect
 action.operate_as: React as
 action.generate_string: Generate a random string
 action.redirect: Redirect
-action.safe: Safe
+action.save: Save
 
 bool.yesno.0: no
 bool.yesno.1: yes
@@ -307,7 +307,7 @@ text.dashboard.top_hosts_events: Top events of all hosts
 text.dashboard.service_chart: Service chart
 text.dashboard.user_chart: Self created chart
 text.dashboard.add_new_dashlet: Add a new dashlet
-text.dashboard.safe_dashboard: Safe dashboard
+text.dashboard.save_dashboard: Save dashboard
 text.dashboard.open_dashboard: Open a dashboard
 text.dashboard.create_dashboard: Create an empty dashboard
 text.dashboard.delete_dashboard: Delete the dashboard
@@ -715,7 +715,7 @@ schema.chart.text.select: Chart selection for host %s
 schema.chart.text.multiselect: Select charts for multiple hosts
 schema.chart.text.alignment: Chart alignment
 schema.chart.text.chart_views: Chart views
-schema.chart.text.safe_view: Safe view
+schema.chart.text.save_view: Save view
 schema.chart.text.load_view: Load view
 schema.chart.text.delete_view: Delete chart view
 schema.chart.text.really_delete_view: Do you really want to delete chart view <b><b>%s</b></b>?

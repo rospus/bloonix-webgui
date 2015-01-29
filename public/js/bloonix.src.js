@@ -1049,7 +1049,6 @@ var Lang = {
       "nav.sub.groups" : "Groups",
       "site.wtrm.action.checkIfElementNotExists" : "Check if an <b>element does <i>NOT</i> exists</b>",
       "text.report.availability.AV-O" : "Time slice in percent in which the service was in status OK.",
-      "action.safe" : "Safe",
       "err-610" : "Please fill in the red marked fields correctly!",
       "text.report.availability.h05" : "05:00 - 05:59",
       "text.dashboard.remove_dashlet" : "Remove the dashlet",
@@ -1163,6 +1162,7 @@ var Lang = {
       "site.wtrm.command.checkIfElementHasText" : "Check if the element <b>%s</b> contains <b>%s</b>",
       "text.report.availability.h04" : "04:00 - 04:59",
       "schema.chart.text.chart_id" : "Chart-ID: %s",
+      "schema.chart.text.save_view" : "Save view",
       "text.report.availability.h20" : "20:00 - 20:59",
       "schema.service.desc.attempt_warn2crit" : "This option is useful if you want that the status of the service upgrades to CRITICAL if the real status is WARNING and the max attempts are reached.",
       "schema.dependency.text.service_to_host" : "service to host",
@@ -1230,6 +1230,7 @@ var Lang = {
       "site.wtrm.action.doWaitForElement" : "Wait for element",
       "schema.service.action.clear_volatile_multiple" : "Clear the volatile status of the selected services",
       "text.click_to_delete_seletion" : "Click to delete the selection",
+      "text.dashboard.save_dashboard" : "Save dashboard",
       "schema.group.desc.company" : "Select the company the group belongs to.",
       "err-702" : "The new password is to long (max 128 signs)!",
       "info.add-further-options" : "Add further options",
@@ -1265,10 +1266,10 @@ var Lang = {
       "err-634" : "For the parameter sort_type only \"asc\" or \"desc\" is allowed as value.",
       "text.dashboard.choose_content_box" : "Select a dashlet",
       "schema.company.text.view" : "Company %s",
+      "site.help.doc.bloonix-webgui" : "Grundlegendes zur Bloonix-WebGUI",
       "schema.service.info.notification" : "Notifications are disabled of the service.",
       "schema.service.desc.mail_soft_interval" : "This is the notification interval for emails. As long as the service is not OK you will be re-notified in this interval.",
       "word.no" : "no",
-      "site.help.doc.bloonix-webgui" : "Grundlegendes zur Bloonix-WebGUI",
       "action.genstr" : "Generate string",
       "schema.host.desc.password" : "This password is used by the Bloonix Agents. If an agent wants to connect to the Bloonix server to deliver host statistics then this is only possible if the agent knows the host id and the password.",
       "schema.event.text.list" : "Events of host %s",
@@ -1368,7 +1369,6 @@ var Lang = {
       "text.report.availability.h16" : "16:00 - 16:59",
       "schema.dependency.text.workflow_from_service" : "and from service",
       "schema.service.desc.agent_options.timeout" : "This is the global execution timeout of the check itself. After the timeout the check is killed and a CRITICAL status is triggered. This is very useful for checks that hangs and are unable to stop itself.<br/><br/>Default: 30 seconds",
-      "schema.chart.text.safe_view" : "Safe view",
       "schema.chart.text.user_charts" : "User charts",
       "schema.service.text.create" : "Create a new service",
       "site.wtrm.attr.password" : "Password",
@@ -1514,7 +1514,6 @@ var Lang = {
       "word.No" : "No",
       "schema.hs_downtime.text.create" : "Create a scheduled downtime",
       "site.wtrm.command.checkIfElementHasHTML" : "Check if the element <b>%s</b> contains <b>%s</b>",
-      "text.dashboard.safe_dashboard" : "Safe dashboard",
       "schema.service.attr.result" : "Advanced status information",
       "schema.host.desc.hw_manufacturer" : "e.g. IBM, HP, Dell, Fujitsu Siemens",
       "schema.company.attr.surname" : "Surname",
@@ -1528,6 +1527,7 @@ var Lang = {
       "text.dashboard.services_acknowledged" : "Acknowledged",
       "schema.service.desc.mail_warnings" : "This option enables or disables notifications if the service is in status WARNING.",
       "site.wtrm.placeholder.html" : "<span>Loren ipsum...</span>",
+      "action.save" : "Save",
       "schema.service.text.multiple_acknowledge" : "Acknowledge or clear acknowledgements of multiple services",
       "schema.service.desc.sms_soft_interval" : "This is the notification interval for SMS. If a service is in a non OK status then you will be re-notified after this time if the service doesn't change to status OK.",
       "site.wtrm.placeholder.password" : "Secret",
@@ -2030,7 +2030,6 @@ var Lang = {
       "nav.sub.groups" : "Gruppen",
       "site.wtrm.action.checkIfElementNotExists" : "Check if an <b>element does <i>NOT</i> exists</b>",
       "text.report.availability.AV-O" : "Der Zeitbereich in Prozent in dem der Service im Status OK war.",
-      "action.safe" : "Speichern",
       "err-610" : "Bitte füllen Sie die rot markierten Felder korrekt aus!",
       "text.report.availability.h05" : "05:00 - 05:59",
       "text.dashboard.remove_dashlet" : "Das Dashlet entfernen",
@@ -2143,6 +2142,7 @@ var Lang = {
       "site.wtrm.command.checkIfElementHasText" : "Check if the element <b>%s</b> contains <b>%s</b>",
       "text.report.availability.h04" : "04:00 - 04:59",
       "schema.chart.text.chart_id" : "Chart-ID: %s",
+      "schema.chart.text.save_view" : "Ansicht speichern",
       "text.report.availability.h20" : "20:00 - 20:59",
       "schema.service.desc.attempt_warn2crit" : "Diese Option ist hilfreich, wenn Sie möchten, dass der Status von WARNING zu CRITICAL aufgewertet wird, nach dem der Services die maximale Anzahl von fehlgeschlagenen Versuchen erreicht hat.",
       "schema.dependency.text.service_to_host" : "Service zu Host",
@@ -2210,6 +2210,7 @@ var Lang = {
       "site.wtrm.action.doWaitForElement" : "Wait for element",
       "schema.service.action.clear_volatile_multiple" : "Den flüchtigen Status aufheben",
       "text.click_to_delete_seletion" : "Klicken um die Auswahl zu löschen",
+      "text.dashboard.save_dashboard" : "Dashboard speichern",
       "schema.group.desc.company" : "Wähle ein Unternehmen zu der die Gruppe gehört",
       "err-702" : "Das Passwort ist zu lang (maximal 128 Zeichen)!",
       "info.add-further-options" : "Weiter Optionen hinzufügen",
@@ -2348,7 +2349,6 @@ var Lang = {
       "text.report.availability.h16" : "16:00 - 16:59",
       "schema.dependency.text.workflow_from_service" : "und von Service",
       "schema.service.desc.agent_options.timeout" : "Das ist der globale Timeout zur Ausführung des Checks. Nach dem Timeout wird der Check hart beendet und der Status des Servcice auf CRITICAL gesetzt. Dies kann sehr sinnvoll für Checks sein die hängen und sich selbst nicht mehr beenden können.<br/><br/>Standard: 30 Sekunden",
-      "schema.chart.text.safe_view" : "Ansicht speichern",
       "schema.chart.text.user_charts" : "User charts",
       "schema.service.text.create" : "Einen neuen Service erstellen",
       "site.wtrm.attr.password" : "Password",
@@ -2494,7 +2494,6 @@ var Lang = {
       "word.No" : "Nein",
       "schema.hs_downtime.text.create" : "Erstelle eine geplante Wartungsarbeit",
       "site.wtrm.command.checkIfElementHasHTML" : "Check if the element <b>%s</b> contains <b>%s</b>",
-      "text.dashboard.safe_dashboard" : "Dashboard speichern",
       "schema.service.attr.result" : "Erweiterte Status Information",
       "schema.host.desc.hw_manufacturer" : "z.B. IBM, HP, Dell, Fujitsu Siemens",
       "schema.company.attr.surname" : "Vorname",
@@ -2508,6 +2507,7 @@ var Lang = {
       "text.dashboard.services_acknowledged" : "Bestätigt",
       "schema.service.desc.mail_warnings" : "Diese Option aktiviert oder deaktiviert das Versenden von Nachrichten per E-Mail für Services im Status WARNING.",
       "site.wtrm.placeholder.html" : "<span>Loren ipsum...</span>",
+      "action.save" : "Speichern",
       "schema.service.text.multiple_acknowledge" : "Den Status mehrerer Services bestätigen",
       "schema.service.desc.sms_soft_interval" : "Dies ist der Benachrichtigungsintervall für Services. Solange der Service nicht OK ist, erhalten Sie in diesem Intervall erneut Benachrichtigungen.",
       "site.wtrm.placeholder.password" : "Secret",
@@ -4759,7 +4759,7 @@ Form.prototype.textarea = function(o) {
     +-------------------------------------------------------------+
 
     select-container    - The container to place all elements.
-    hidden input        - To safe the selected item from the select list (has no class).
+    hidden input        - To save the selected item from the select list (has no class).
                           The input field is useable for jQuery.serializeArray().
     select              - The select drop down box.
     select-selected     - The selected item from the select list (has no class).
@@ -10866,8 +10866,8 @@ Bloonix.dashboard = function(o) {
         this.setResizeEvent();
         this.setInterval();
         this.dashletOptions.animation = false;
-        if (this.safeInitialDashboard === true) {
-            this.safeDashboard();
+        if (this.saveInitialDashboard === true) {
+            this.saveDashboard();
         }
     };
 
@@ -10917,15 +10917,15 @@ Bloonix.dashboard = function(o) {
             overlay.close();
 
             if (clone === true) {
-                self.safeDashboard(name);
+                self.saveDashboard(name);
             } else {
-                Bloonix.safeUserConfig("dashboard", {
+                Bloonix.saveUserConfig("dashboard", {
                     name: name,
                     data: []
                 });
             }
 
-            Bloonix.safeUserConfig("last_open_dashboard", name);
+            Bloonix.saveUserConfig("last_open_dashboard", name);
             Bloonix.route.to("dashboard", { name: name });
         });
     };
@@ -11009,12 +11009,12 @@ Bloonix.dashboard = function(o) {
 
             overlay.close();
 
-            Bloonix.safeUserConfig("rename-dashboard", {
+            Bloonix.saveUserConfig("rename-dashboard", {
                 "new": name,
                 "old": self.configName
             });
 
-            Bloonix.safeUserConfig("last_open_dashboard", name);
+            Bloonix.saveUserConfig("last_open_dashboard", name);
             Bloonix.route.to("dashboard", { name: name });
         });
     };
@@ -11037,7 +11037,7 @@ Bloonix.dashboard = function(o) {
             row.css({ cursor: "pointer" });
             row.click(function() {
                 overlay.close();
-                Bloonix.safeUserConfig("last_open_dashboard", name);
+                Bloonix.saveUserConfig("last_open_dashboard", name);
                 Bloonix.route.to("dashboard", { name: name });
             });
         });
@@ -11064,7 +11064,7 @@ Bloonix.dashboard = function(o) {
             .html(Text.get("action.yes_delete"))
             .appendTo(overlay.content)
             .click(function() {
-                Bloonix.safeUserConfig("dashboard", { name: self.configName });
+                Bloonix.saveUserConfig("dashboard", { name: self.configName });
                 overlay.close();
                 Bloonix.route.to("dashboard");
             });
@@ -11124,7 +11124,7 @@ Bloonix.dashboard = function(o) {
             this.dashboards = userConfig.dashboard;
         } else {
             this.dashboards = this.getDefaultDashlets();
-            this.safeInitialDashboard = true;
+            this.saveInitialDashboard = true;
         }
 
         if (this.name !== false) {
@@ -11334,7 +11334,7 @@ Bloonix.dashboard = function(o) {
                 dashlet.outer.data("width", data.width);
                 dashlet.outer.data("height", data.height);
                 self.resizeDashlets();
-                self.safeDashboard();
+                self.saveDashboard();
                 $(window).trigger("resize");
             }
         });
@@ -11406,7 +11406,7 @@ Bloonix.dashboard = function(o) {
                 overlay.close();
                 delete self.reload[dashlet.id];
                 dashlet.outer.remove();
-                self.safeDashboard();
+                self.saveDashboard();
             });
 
         Utils.create("div")
@@ -11484,13 +11484,13 @@ Bloonix.dashboard = function(o) {
             box.header.html(Utils.create("h3").text(dashlet.title));
             dashlet.box = box;
             dashlet.callback(box, this.dashletOptions);
-            this.safeDashboard();
+            this.saveDashboard();
             box.hoverBoxIcons.destroy();
             this.addDashletOptions(box, name);
         } else {
             this.createDashlet(1, name, 3, 3, opts);
             this.resizeDashlets();
-            this.safeDashboard();
+            this.saveDashboard();
         }
     };
 
@@ -11507,7 +11507,7 @@ Bloonix.dashboard = function(o) {
         }).disableSelection();
     };
 
-    object.safeDashboard = function(configName) {
+    object.saveDashboard = function(configName) {
         var self = this,
             config = { name: configName || this.configName, data: [] };
 
@@ -11533,7 +11533,7 @@ Bloonix.dashboard = function(o) {
         });
 
         this.config = config.data;
-        Bloonix.safeUserConfig("dashboard", config);
+        Bloonix.saveUserConfig("dashboard", config);
     };
 
     object.startSortOrResizeDashlets = function() {
@@ -11542,7 +11542,7 @@ Bloonix.dashboard = function(o) {
     };
 
     object.stopSortOrResizeDashlets = function() {
-        this.safeDashboard();
+        this.saveDashboard();
         $(".dashlet-outer").css({ "border": "1px solid transparent" });
         $(".dashlet").css({ "border": "1px solid transparent" });
     };
@@ -11611,7 +11611,7 @@ Bloonix.dashboard = function(o) {
 
         form.button({
             appendTo: form.form,
-            text: Text.get("action.safe"),
+            text: Text.get("action.save"),
             callback: function() {
                 var data = form.getData();
                 overlay.close();
@@ -18793,15 +18793,15 @@ Bloonix.listCharts = function(o) {
             options.push({ name: opt.alias, value: opt.id });
         });
 
-        this.safeChartBox = Utils.create("div")
+        this.saveChartBox = Utils.create("div")
             .css({ "margin-top": "20px" })
-            .addClass("safe-chart")
+            .addClass("save-chart")
             .appendTo(this.boxes.left);
 
         Utils.create("p")
             .addClass("chart-options-title")
             .html(Text.get("schema.chart.text.chart_views"))
-            .appendTo(this.safeChartBox);
+            .appendTo(this.saveChartBox);
 
         this.cache.chartSelection = new Form({ format: "small" }).select({
             placeholder: Text.get("schema.chart.text.load_view"),
@@ -18809,7 +18809,7 @@ Bloonix.listCharts = function(o) {
             id: "chart-view-list",
             options: options,
             callback: function(id) { self.loadChartView(id) },
-            appendTo: this.safeChartBox,
+            appendTo: this.saveChartBox,
             showValue: true
         });
 
@@ -18818,15 +18818,15 @@ Bloonix.listCharts = function(o) {
             .addClass("btn btn-white btn-icon")
             .click(function(){ self.deleteChartView() })
             .html(Utils.create("span").addClass("hicons-gray hicons remove"))
-            .appendTo(this.safeChartBox)
+            .appendTo(this.saveChartBox)
             .tooltip();
 
         Utils.create("div")
             .addClass("clear")
-            .appendTo(this.safeChartBox);
+            .appendTo(this.saveChartBox);
     };
 
-    object.safeChartView = function() {
+    object.saveChartView = function() {
         var self = this,
             alias = $("#chart-view-alias").val();
 
@@ -18837,18 +18837,18 @@ Bloonix.listCharts = function(o) {
 
         $("#chart-view-alias").removeClass("rwb");
 
-        var toSafe = {
+        var toSave = {
             alignment: this.chartFormOptions.alignment,
             alias: alias,
             selected: [ ]
         };
 
         if (this.cache.timetype == "relative") {
-            toSafe.refresh = this.chartFormOptions.refresh;
-            toSafe.preset = this.chartFormOptions.preset;
+            toSave.refresh = this.chartFormOptions.refresh;
+            toSave.preset = this.chartFormOptions.preset;
         } else if (this.validateChartOptions(this.chartFormOptions)== true) {
-            toSafe.from = this.chartFormOptions.from;
-            toSafe.to = this.chartFormOptions.to;
+            toSave.from = this.chartFormOptions.from;
+            toSave.to = this.chartFormOptions.to;
         } else {
             return false;
         }
@@ -18858,13 +18858,13 @@ Bloonix.listCharts = function(o) {
             $(id).find(".chart-outer").each(function(y, obj) {
                 var data = $(obj).data("chart");
                 data.position = x;
-                toSafe.selected.push(data);
+                toSave.selected.push(data);
             });
         });
 
         Ajax.post({
-            url: "/hosts/charts/view/safe/",
-            data: toSafe,
+            url: "/hosts/charts/view/save/",
+            data: toSave,
             async: false,
             success: function(result) {
                 if (result.status === "ok") {
@@ -19181,7 +19181,7 @@ Bloonix.listCharts = function(o) {
         }).create();
 
         Utils.create("input")
-            .attr("placeholder", Text.get("schema.chart.text.safe_view"))
+            .attr("placeholder", Text.get("schema.chart.text.save_view"))
             .attr("type", "text")
             .attr("id", "chart-view-alias")
             .attr("name", "chart-view-alias")
@@ -19191,9 +19191,9 @@ Bloonix.listCharts = function(o) {
             .appendTo(header.rbox);
 
         Utils.create("div")
-            .attr("title", Text.get("schema.chart.text.safe_view"))
+            .attr("title", Text.get("schema.chart.text.save_view"))
             .addClass("btn btn-white")
-            .click(function() { self.safeChartView() })
+            .click(function() { self.saveChartView() })
             .html(Utils.create("span").addClass("hicons-gray hicons check"))
             .appendTo(header.rbox)
             .tooltip();
@@ -19252,7 +19252,7 @@ Bloonix.listCharts = function(o) {
                     ? row.service_id +":"+ row.chart_id
                     : row.chart_id;
 
-                // check if the chart is selected, if not, then ignore the safed selection
+                // check if the chart is selected, if not, then ignore the saved selection
                 if (self.chartsSelected[key]) {
                     var obj = Utils.extend({}, self.chartsSelected[key]);
                     obj.position = row.position;
@@ -21401,9 +21401,9 @@ Bloonix.getUserFormElements = function() {
     ];
 };
 
-Bloonix.safeUserConfig = function(key, data) {
+Bloonix.saveUserConfig = function(key, data) {
     Ajax.post({
-        url: "/user/config/safe",
+        url: "/user/config/save",
         data: { key: key, data: data },
         async: false,
         success: function(result) {

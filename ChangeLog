@@ -1,3 +1,7 @@
+bloonix-webgui (0.28) released at 2015-XX-XX
+
+    * Fixed typo safe -> save.
+
 bloonix-webgui (0.27) released at 2015-01-26
 
     * Fixed <br/> in dependency table.

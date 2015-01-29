@@ -250,9 +250,9 @@ Bloonix.getUserFormElements = function() {
     ];
 };
 
-Bloonix.safeUserConfig = function(key, data) {
+Bloonix.saveUserConfig = function(key, data) {
     Ajax.post({
-        url: "/user/config/safe",
+        url: "/user/config/save",
         data: { key: key, data: data },
         async: false,
         success: function(result) {

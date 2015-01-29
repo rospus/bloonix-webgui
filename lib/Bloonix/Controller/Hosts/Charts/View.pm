@@ -7,7 +7,7 @@ use Bloonix::Validator;
 sub startup {
     my ($self, $c) = @_;
 
-    $c->route->map("/hosts/charts/view/safe")->to("safe");
+    $c->route->map("/hosts/charts/view/save")->to("save");
     $c->route->map("/hosts/charts/view/:view_id")->to("view");
     $c->route->map("/hosts/charts/view/:view_id/delete")->to("delete");
 }
@@ -110,7 +110,7 @@ sub view {
     $c->view->render->json;
 }
 
-sub safe {
+sub save {
     my ($self, $c) = @_;
 
     my $params = $c->req->params($c->validator->params);

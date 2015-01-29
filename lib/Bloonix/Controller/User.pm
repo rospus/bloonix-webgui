@@ -7,7 +7,7 @@ sub startup {
     my ($self, $c) = @_;
 
     $c->route->map("/user/passwd")->to("passwd");
-    $c->route->map("/user/config/safe")->to("safe");
+    $c->route->map("/user/config/save")->to("save");
     $c->route->map("/user/config/stash")->to("stash");
 }
 
@@ -30,7 +30,7 @@ sub new {
     return $self;
 }
 
-sub safe {
+sub save {
     my ($self, $c) = @_;
 
     my $jsondata = $c->req->jsondata;

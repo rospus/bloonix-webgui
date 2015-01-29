@@ -144,7 +144,7 @@ action.unselect: Abwählen
 action.operate_as: Operiere als
 action.generate_string: String generieren
 action.redirect: Umleiten
-action.safe: Speichern
+action.save: Speichern
 
 bool.yesno.0: Nein
 bool.yesno.1: Ja
@@ -307,7 +307,7 @@ text.dashboard.top_hosts_events: Anzeige der Top-Events aller Hosts
 text.dashboard.service_chart: Service-Chart
 text.dashboard.user_chart: Selbst erstellter Chart
 text.dashboard.add_new_dashlet: Ein neues Dashlet hinzufügen
-text.dashboard.safe_dashboard: Dashboard speichern
+text.dashboard.save_dashboard: Dashboard speichern
 text.dashboard.open_dashboard: Ein Dashboard öffnen
 text.dashboard.create_dashboard: Ein leeres Dashboard erstellen
 text.dashboard.delete_dashboard: Das Dashboard löschen
@@ -716,7 +716,7 @@ schema.chart.text.select: Chartauswahl für Host %s
 schema.chart.text.multiselect: Chartauswahl für mehrere Hosts
 schema.chart.text.alignment: Chartausrichtung
 schema.chart.text.chart_views: Chart Ansichten
-schema.chart.text.safe_view: Ansicht speichern
+schema.chart.text.save_view: Ansicht speichern
 schema.chart.text.load_view: Ansicht laden
 schema.chart.text.delete_view: Chartansicht löschen
 schema.chart.text.really_delete_view: Möchten Sie wirklich die Chart Ansicht <b>%s</b> löschen?

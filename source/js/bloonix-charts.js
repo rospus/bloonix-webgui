@@ -254,15 +254,15 @@ Bloonix.listCharts = function(o) {
             options.push({ name: opt.alias, value: opt.id });
         });
 
-        this.safeChartBox = Utils.create("div")
+        this.saveChartBox = Utils.create("div")
             .css({ "margin-top": "20px" })
-            .addClass("safe-chart")
+            .addClass("save-chart")
             .appendTo(this.boxes.left);
 
         Utils.create("p")
             .addClass("chart-options-title")
             .html(Text.get("schema.chart.text.chart_views"))
-            .appendTo(this.safeChartBox);
+            .appendTo(this.saveChartBox);
 
         this.cache.chartSelection = new Form({ format: "small" }).select({
             placeholder: Text.get("schema.chart.text.load_view"),
@@ -270,7 +270,7 @@ Bloonix.listCharts = function(o) {
             id: "chart-view-list",
             options: options,
             callback: function(id) { self.loadChartView(id) },
-            appendTo: this.safeChartBox,
+            appendTo: this.saveChartBox,
             showValue: true
         });
 
@@ -279,15 +279,15 @@ Bloonix.listCharts = function(o) {
             .addClass("btn btn-white btn-icon")
             .click(function(){ self.deleteChartView() })
             .html(Utils.create("span").addClass("hicons-gray hicons remove"))
-            .appendTo(this.safeChartBox)
+            .appendTo(this.saveChartBox)
             .tooltip();
 
         Utils.create("div")
             .addClass("clear")
-            .appendTo(this.safeChartBox);
+            .appendTo(this.saveChartBox);
     };
 
-    object.safeChartView = function() {
+    object.saveChartView = function() {
         var self = this,
             alias = $("#chart-view-alias").val();
 
@@ -298,18 +298,18 @@ Bloonix.listCharts = function(o) {
 
         $("#chart-view-alias").removeClass("rwb");
 
-        var toSafe = {
+        var toSave = {
             alignment: this.chartFormOptions.alignment,
             alias: alias,
             selected: [ ]
         };
 
         if (this.cache.timetype == "relative") {
-            toSafe.refresh = this.chartFormOptions.refresh;
-            toSafe.preset = this.chartFormOptions.preset;
+            toSave.refresh = this.chartFormOptions.refresh;
+            toSave.preset = this.chartFormOptions.preset;
         } else if (this.validateChartOptions(this.chartFormOptions)== true) {
-            toSafe.from = this.chartFormOptions.from;
-            toSafe.to = this.chartFormOptions.to;
+            toSave.from = this.chartFormOptions.from;
+            toSave.to = this.chartFormOptions.to;
         } else {
             return false;
         }
@@ -319,13 +319,13 @@ Bloonix.listCharts = function(o) {
             $(id).find(".chart-outer").each(function(y, obj) {
                 var data = $(obj).data("chart");
                 data.position = x;
-                toSafe.selected.push(data);
+                toSave.selected.push(data);
             });
         });
 
         Ajax.post({
-            url: "/hosts/charts/view/safe/",
-            data: toSafe,
+            url: "/hosts/charts/view/save/",
+            data: toSave,
             async: false,
             success: function(result) {
                 if (result.status === "ok") {
@@ -642,7 +642,7 @@ Bloonix.listCharts = function(o) {
         }).create();
 
         Utils.create("input")
-            .attr("placeholder", Text.get("schema.chart.text.safe_view"))
+            .attr("placeholder", Text.get("schema.chart.text.save_view"))
             .attr("type", "text")
             .attr("id", "chart-view-alias")
             .attr("name", "chart-view-alias")
@@ -652,9 +652,9 @@ Bloonix.listCharts = function(o) {
             .appendTo(header.rbox);
 
         Utils.create("div")
-            .attr("title", Text.get("schema.chart.text.safe_view"))
+            .attr("title", Text.get("schema.chart.text.save_view"))
             .addClass("btn btn-white")
-            .click(function() { self.safeChartView() })
+            .click(function() { self.saveChartView() })
             .html(Utils.create("span").addClass("hicons-gray hicons check"))
             .appendTo(header.rbox)
             .tooltip();
@@ -713,7 +713,7 @@ Bloonix.listCharts = function(o) {
                     ? row.service_id +":"+ row.chart_id
                     : row.chart_id;
 
-                // check if the chart is selected, if not, then ignore the safed selection
+                // check if the chart is selected, if not, then ignore the saved selection
                 if (self.chartsSelected[key]) {
                     var obj = Utils.extend({}, self.chartsSelected[key]);
                     obj.position = row.position;

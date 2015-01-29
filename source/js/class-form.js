@@ -313,7 +313,7 @@ Form.prototype.textarea = function(o) {
     +-------------------------------------------------------------+
 
     select-container    - The container to place all elements.
-    hidden input        - To safe the selected item from the select list (has no class).
+    hidden input        - To save the selected item from the select list (has no class).
                           The input field is useable for jQuery.serializeArray().
     select              - The select drop down box.
     select-selected     - The selected item from the select list (has no class).

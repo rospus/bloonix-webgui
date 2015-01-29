@@ -116,7 +116,7 @@ sub validate_location_options {
     }
 
     my $location_options = {};
-    my (@errors, %safe_location_options);
+    my (@errors, %save_location_options);
 
     my @fetch_location_options = qw(
         fixed_checkpoint first_failover_checkpoint second_failover_checkpoint
@@ -139,13 +139,13 @@ sub validate_location_options {
             return 0;
         }
 
-        $safe_location_options{check_type} = $location_options->{check_type};
+        $save_location_options{check_type} = $location_options->{check_type};
 
         if ($location_options->{check_type} eq "failover") {
             foreach my $key (qw/fixed_checkpoint first_failover_checkpoint second_failover_checkpoint/) {
                 my $location = $location_options->{$key};
                 if (defined $location_options->{$key} && exists $locations->{$location} && !$seen{$locations->{$location}->{id}}) {
-                    push @{$safe_location_options{locations}}, $locations->{$location}->{id};
+                    push @{$save_location_options{locations}}, $locations->{$location}->{id};
                     $seen{$locations->{$location}->{id}} = 1;
                 } else {
                     push @errors, "command_options:$key";
@@ -157,7 +157,7 @@ sub validate_location_options {
             if ($location_options->{$parameter} && ref $location_options->{$parameter} eq "ARRAY") {
                 foreach my $location (@{$location_options->{$parameter}}) {
                     if (exists $locations->{$location} && !$seen{$locations->{$location}->{id}}) {
-                        push @{$safe_location_options{locations}}, $locations->{$location}->{id};
+                        push @{$save_location_options{locations}}, $locations->{$location}->{id};
                         $seen{$locations->{$location}->{id}} = 1;
                     } else {
                         push @errors, "command_options:$parameter";
@@ -165,7 +165,7 @@ sub validate_location_options {
                     }
                 }
 
-                if ($safe_location_options{locations} eq "ARRAY" && @{$safe_location_options{locations}} < 3) {
+                if ($save_location_options{locations} eq "ARRAY" && @{$save_location_options{locations}} < 3) {
                     push @errors, "command_options:$parameter";
                 }
             } else {
@@ -176,7 +176,7 @@ sub validate_location_options {
                 if (!$location_options->{concurrency} || $location_options->{concurrency} !~ /^[1-9]\d{0,1}\z/) {
                     push @errors, "command_options:concurrency";
                 } else {
-                    $safe_location_options{concurrency} = $location_options->{concurrency};
+                    $save_location_options{concurrency} = $location_options->{concurrency};
                 }
             }
         }
@@ -189,12 +189,12 @@ sub validate_location_options {
         return;
     }
 
-    return \%safe_location_options;
+    return \%save_location_options;
 }
 
 sub validate_command_options {
     my ($self, $plugin, $plugin_info, $plugin_options) = @_;
-    my (@errors, @safe_options);
+    my (@errors, @save_options);
     my $c = $self->c;
 
     my $command_options = $c->req->param("command_options");
@@ -231,7 +231,7 @@ sub validate_command_options {
                 if ($errors) {
                     push @errors, "command_options:$option";
                 } else {
-                    push @safe_options, {
+                    push @save_options, {
                         option => $option,
                         value => $values
                     };
@@ -248,7 +248,7 @@ sub validate_command_options {
         if ($value_type =~ /^(hash|array)\z/) {
             my $ref = lc(ref $values);
             if ($value_type eq $ref) {
-                push @safe_options, {
+                push @save_options, {
                     option => $option,
                     value => $values
                 };
@@ -311,7 +311,7 @@ sub validate_command_options {
                 }
             }
 
-            push @safe_options, {
+            push @save_options, {
                 option => $option,
                 value => $value
             };
@@ -323,7 +323,7 @@ sub validate_command_options {
         return;
     }
 
-    return \@safe_options;
+    return \@save_options;
 }
 
 sub validate_agent_options {
@@ -369,7 +369,7 @@ sub validate_agent_options {
 
 sub validate_check_cluster {
     my ($self, $command_options) = @_;
-    my (@errors, @safe_options, %service_ids);
+    my (@errors, @save_options, %service_ids);
     my $c = $self->c;
 
     foreach my $param (qw/warning critical service/) {
@@ -385,7 +385,7 @@ sub validate_check_cluster {
 
     foreach my $status (qw/warning critical/) {
         if ($command_options->{$status} =~ /^\d+\z/) {
-            push @safe_options, {
+            push @save_options, {
                 option => $status,
                 value => $command_options->{$status}
             };
@@ -424,13 +424,13 @@ sub validate_check_cluster {
     }
 
     foreach my $id (keys %service_ids) {
-        push @safe_options, {
+        push @save_options, {
             option => "service",
             value => $id
         };
     }
 
-    return \@safe_options;
+    return \@save_options;
 }
 
 sub parse_command_line {
