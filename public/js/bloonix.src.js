@@ -20346,7 +20346,7 @@ Bloonix.listHostTemplateServices = function(o) {
             icons: [{
                 type: "create",
                 callback: function() { Bloonix.route.to("monitoring/templates/"+ o.id +"/services/create") },
-                title: Text.get("schema.host_template.text.create")
+                title: Text.get("schema.service.text.create")
             }]
         },
         deletable: {
