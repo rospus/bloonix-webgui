@@ -32,7 +32,8 @@ sub validate {
     my $command_options = $self->validate_command_options($plugin, $plugin_info, $plugin_options)
         or return;
     my $location_options = $self->validate_location_options($plugin);
-    my $agent_options = $self->validate_agent_options($service);
+    my $agent_options = $self->validate_agent_options($service)
+        or return;
 
     if (!defined $location_options) {
         return;
