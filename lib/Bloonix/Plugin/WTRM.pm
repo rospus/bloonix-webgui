@@ -193,7 +193,7 @@ sub validate_step {
             || ($param eq "ms" && defined $step->{$param} && $step->{$param} !~ /^[1-9]\d{1,4}\z/)
             || ($param eq "url" && defined $step->{$param} && $step->{$param} !~ m!^https{0,1}://[^\s]+\.[^\s+]+\z!)
             || ($param eq "parent" && defined $step->{$param} && $step->{$param} !~ /^#[^\s]+\z/)
-            || ($param eq "element" && defined $step->{$param} && $step->{$param} !~ /^[^\s]+\z/);
+            || ($param eq "element" && defined $step->{$param} && $step->{$param} !~ /^(?:[^\s]+|<\s*[a-zA-Z0-9]{1,16}(?:\[\d{1,2}\]){0,1}(?:\s+[a-zA-Z0-9_\-]+=(?:'[^']*'|"[^"]*"))*\s*>)\z/);
     }
 
     return @errors ? \@errors : undef;

@@ -1053,7 +1053,11 @@ site.wtrm.desc.url: This is the full URL to request. As example: http://www.bloo
 site.wtrm.desc.contentType: Enter content type that is expeced for the URL.
 site.wtrm.desc.status: Enter the expected http status for the URL.
 site.wtrm.desc.parent: It's possible to set a parent ID. The ID, class or name is searched within the element of the parent ID.
-site.wtrm.desc.element: The element you want to select. As example: #id, .class, name
+site.wtrm.desc.element: The element you want to select. As example: #id, .class, name<br/><br/>
+ It's also possible to search for tags and attributes. Example:<br/><br/>
+ &lt;a&gt; - get the first 'a' tag<br/><br/>
+ &lt;a[5]&gt; - get the fifth 'a' tag<br/><br/>
+ &lt;a a="hello" b="world"&gt; - search for a 'a' tag with the specified attributes and values
 site.wtrm.desc.value: The value of the element you wish to fill or check.
 site.wtrm.desc.hidden: Do you want to hide the value because it's a password or a secret string?
 site.wtrm.desc.text: The inner text of an element you wish to check.
