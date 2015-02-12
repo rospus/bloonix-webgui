@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.28
+Version: 0.29
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -61,6 +61,8 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Thu Feb 12 2015 Jonny Schulz <js@bloonix.de> - 0.29-1
+- New feature: doWaitForElement can now wait for text within an element too.
 * Thu Feb 12 2015 Jonny Schulz <js@bloonix.de> - 0.28-1
 - Fixed typo safe -> save.
 - Fixed empty variable handling (agent_options).
