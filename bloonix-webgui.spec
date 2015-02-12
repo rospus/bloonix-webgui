@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.27
+Version: 0.28
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -61,6 +61,9 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Thu Feb 12 2015 Jonny Schulz <js@bloonix.de> - 0.28-1
+- Fixed typo safe -> save.
+- Fixed empty variable handling (agent_options).
 * Mon Jan 26 2015 Jonny Schulz <js@bloonix.de> - 0.27-1
 - Fixed <br/> in dependency table.
 - Hide nav item "company" if the user is not an admin.
