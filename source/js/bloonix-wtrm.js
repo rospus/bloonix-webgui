@@ -589,6 +589,9 @@ Bloonix.WtrmAction = {
         return Text.get("site.wtrm.command.doSelect", [ item.value, Bloonix.getWtrmElement(item) ]);
     },
     doWaitForElement: function(item) {
+        if (item.text) {
+            return Text.get("site.wtrm.command.doWaitForElementWithText", [ Bloonix.getWtrmElement(item), item.text ]);
+        }
         return Text.get("site.wtrm.command.doWaitForElement", [ Bloonix.getWtrmElement(item) ]);
     },
     doSleep: function(item) {

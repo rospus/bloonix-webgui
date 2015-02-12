@@ -50,7 +50,8 @@ sub new {
         ],
         doWaitForElement => [
             parent => 0,
-            element => 1
+            element => 1,
+            text => 0
         ],
         doSleep => [
             ms => 1

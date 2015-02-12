@@ -1091,6 +1091,7 @@ site.wtrm.command.doCheck: Check the radio button or checkbox of element <b>%s</
 site.wtrm.command.doUncheck: Uncheck the radio button or checkbox <b>%s</b> with value <b>%s</b>
 site.wtrm.command.doSelect: Select the value <b>%s</b> from the selectbox <b>%s</b>
 site.wtrm.command.doWaitForElement: Wait for element <b>%s</b>
+site.wtrm.command.doWaitForElementWithText: Wait for element <b>%s</b> with text <b>%s</b>
 site.wtrm.command.doSleep: Sleep <b>%s</b>ms
 site.wtrm.command.checkUrl: Check if the URL in the address bar is <b>%s</b>
 site.wtrm.command.checkUrlWithContentType: Check if the URL <b>%s</b> has content type %s
