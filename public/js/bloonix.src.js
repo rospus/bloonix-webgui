@@ -10887,7 +10887,7 @@ Bloonix.dashboard = function(o) {
         var form = Utils.create("form")
             .appendTo(content);
 
-        var input = Utils.create("input")
+        var nameInput = Utils.create("input")
             .attr("placeholder", Text.get("text.dashboard.name"))
             .addClass("input input-medium")
             .appendTo(form);
@@ -10895,24 +10895,43 @@ Bloonix.dashboard = function(o) {
         Utils.create("br")
             .appendTo(form);
 
+        /*
+        var scaleInput = Utils.create("input")
+            .attr("value", 0.35)
+            .addClass("input input-medium")
+            .appendTo(form)
+            .hide();
+
+        Utils.create("br")
+            .appendTo(form);
+        */
+
         var button = Utils.create("div")
             .addClass("btn btn-white btn-medium")
             .html(Text.get("action.create"))
             .appendTo(form);
 
         button.click(function() {
-            var name = input.val();
+            var name = nameInput.val(),
+                scale = 0.35; // scaleInput.val();
 
             if (name === undefined || name.length === 0 || /^\s+$/.test(name)) {
-                input.addClass("rwb");
+                nameInput.addClass("rwb");
                 return;
             }
+
+            /*
+            if (scale === undefined || !/^([1-9]|[0-9]\.[0-9]{1,2})$/.test(scale) || parseFloat(scale) < 0.1) {
+                scaleInput.addClass("rwb");
+                return;
+            }
+            */
 
             // Check if the dashboard name already exists. This check
             // is only on client side! The server does not check this!
             var stash = Bloonix.get("/user/config/stash");
             if (typeof stash === "object" && typeof stash.dashboard === "object" && stash.dashboard[name] !== undefined) {
-                input.addClass("rwb");
+                nameInput.addClass("rwb");
                 return;
             }
 
@@ -10923,7 +10942,8 @@ Bloonix.dashboard = function(o) {
             } else {
                 Bloonix.saveUserConfig("dashboard", {
                     name: name,
-                    data: []
+                    scale: scale,
+                    dashlets: []
                 });
             }
 
@@ -11013,7 +11033,7 @@ Bloonix.dashboard = function(o) {
 
             Bloonix.saveUserConfig("rename-dashboard", {
                 "new": name,
-                "old": self.configName
+                "old": self.dashboardName
             });
 
             Bloonix.saveUserConfig("last_open_dashboard", name);
@@ -11057,7 +11077,7 @@ Bloonix.dashboard = function(o) {
         });
 
         Utils.create("p")
-            .html(Text.get("text.dashboard.really_delete_dashboard", Utils.escape(this.configName), true))
+            .html(Text.get("text.dashboard.really_delete_dashboard", Utils.escape(this.dashboardName), true))
             .css({ "margin-bottom": "20px" })
             .appendTo(content);
 
@@ -11066,7 +11086,7 @@ Bloonix.dashboard = function(o) {
             .html(Text.get("action.yes_delete"))
             .appendTo(overlay.content)
             .click(function() {
-                Bloonix.saveUserConfig("dashboard", { name: self.configName });
+                Bloonix.saveUserConfig("delete-dashboard", { name: self.dashboardName });
                 overlay.close();
                 Bloonix.route.to("dashboard");
             });
@@ -11084,7 +11104,7 @@ Bloonix.dashboard = function(o) {
         var self = this,
             dashlets = this.dashlets;
 
-        $.each(this.config, function(i, c) {
+        $.each(this.config.dashlets, function(i, c) {
             var pos = c.pos > 3 ? c.pos - 3 : c.pos;
             self.createDashlet(pos, c.name, c.width, c.height, c.opts);
         });
@@ -11109,14 +11129,27 @@ Bloonix.dashboard = function(o) {
     object.setTitle = function() {
         Bloonix.setTitle("text.dashboard.title");
 
-        this.title = Utils.create("div")
+        this.dashboardTitleBox = Utils.create("div")
             .attr("id", "header-title")
-            .appendTo("#header-wrapper")
+            .appendTo("#header-wrapper");
+
+        this.dashboardTitle = Utils.create("span")
+            .appendTo(this.dashboardTitleBox)
             .text("Dashboard: Default");
+
+        this.dashboardTitleSize = Utils.create("span")
+            .appendTo(this.dashboardTitleBox);
+
+        this.updateDashboardTitleSize();
     };
 
     object.setDashboardTitle = function(text) {
-        this.title.text(text);
+        this.dashboardTitle.text(text);
+    };
+
+    object.updateDashboardTitleSize = function() {
+        //var size = Bloonix.getContentSize();
+        //this.dashboardTitleSize.text("("+ size.width +"x"+ size.height +")");
     };
 
     object.getDashboardConfig = function() {
@@ -11132,7 +11165,7 @@ Bloonix.dashboard = function(o) {
         if (this.name !== false) {
             if (this.dashboards[this.name]) {
                 this.config = this.dashboards[this.name];
-                this.configName = this.name;
+                this.dashboardName = this.name;
             } else {
                 $("#content").html(
                     Utils.create("div")
@@ -11143,13 +11176,17 @@ Bloonix.dashboard = function(o) {
             }
         } else if (userConfig.last_open_dashboard !== undefined && this.dashboards[userConfig.last_open_dashboard]) {
             this.config = this.dashboards[userConfig.last_open_dashboard];
-            this.configName = userConfig.last_open_dashboard;
+            this.dashboardName = userConfig.last_open_dashboard;
         } else {
             this.config = this.dashboards.Default;
-            this.configName = "Default";
+            this.dashboardName = "Default";
         }
 
-        this.setDashboardTitle(Text.get("text.dashboard.title") +": "+ this.configName);
+        if ($.isArray(this.config)) {
+            this.migrateDashboardConfig();
+        }
+
+        this.setDashboardTitle(Text.get("text.dashboard.title") +": "+ this.dashboardName);
     };
 
     object.getDefaultDashlets = function() {
@@ -11348,8 +11385,12 @@ Bloonix.dashboard = function(o) {
         var size = Bloonix.getContentSize();
         size.height = size.height - $("#dashboard-title").outerHeight() - 10;
 
-        if (size.height > size.width) {
-            size.height = size.width;
+        var scaleFactor = parseFloat(this.config.scale || 0.35);
+
+        var optimalHeight = parseInt(size.width - (size.width * scaleFactor));
+
+        if (size.height > optimalHeight) {
+            size.height = optimalHeight;
         }
 
         if (size.height < 600) {
@@ -11387,7 +11428,8 @@ Bloonix.dashboard = function(o) {
     object.setResizeEvent = function() {
         var self = this;
         $(window).resize(function() {
-            self.resizeDashlets()
+            self.updateDashboardTitleSize();
+            self.resizeDashlets();
         });
     };
 
@@ -11509,9 +11551,18 @@ Bloonix.dashboard = function(o) {
         }).disableSelection();
     };
 
-    object.saveDashboard = function(configName) {
-        var self = this,
-            config = { name: configName || this.configName, data: [] };
+    object.saveDashboard = function(dashboardName) {
+        var self = this;
+
+        if (dashboardName === undefined) {
+            dashboardName = this.dashboardName;
+        }
+
+        var config = {
+            name: dashboardName,
+            scale: this.config.scale,
+            dashlets: []
+        };
 
         $(".dashlet-outer").each(function() {
             var pos = $(this).data("pos");
@@ -11519,7 +11570,7 @@ Bloonix.dashboard = function(o) {
             $(this).find(".dashlet").each(function() {
                 var opts = $(this).data("opts");
 
-                var data = {
+                var dashlet = {
                     pos: pos,
                     name: $(this).data("name"),
                     width: $(this).data("width"),
@@ -11527,14 +11578,32 @@ Bloonix.dashboard = function(o) {
                 };
 
                 if (opts) {
-                    data.opts = opts;
+                    dashlet.opts = opts;
                 }
 
-                config.data.push(data);
+                config.dashlets.push(dashlet);
             });
         });
 
-        this.config = config.data;
+        this.dashboardName = config.name;
+        this.config.dashlets = config.dashlets;
+        Bloonix.saveUserConfig("dashboard", config);
+    };
+
+    object.migrateDashboardConfig = function()  {
+        var config = {
+            name: this.dashboardName,
+            scale: 0.35,
+            dashlets: this.config
+        };
+
+        this.dashboardName = config.name;
+        this.config = {
+            dashlets: config.dashlets,
+            scale: config.scale
+        };
+
+        console.log("migrate user config to", config);
         Bloonix.saveUserConfig("dashboard", config);
     };
 

@@ -48,6 +48,8 @@ sub save {
         return $self->parse_dashboard_data($c, $data);
     } elsif ($key eq "rename-dashboard") {
         return $self->rename_dashboard($c, $data);
+    } elsif ($key eq "delete-dashboard") {
+        return $self->delete_dashboard($c, $data);
     } elsif ($key eq "last_open_dashboard") {
         if ($dashboard && exists $dashboard->{$data}) {
             $stash->{last_open_dashboard} = $data;
@@ -66,17 +68,40 @@ sub rename_dashboard {
     my $stash = $c->user->{stash};
     my $dashboard = $stash->{dashboard};
 
+    if (ref $data ne "HASH") {
+        return $c->plugin->error->form_parse_errors("data");
+    }
+
     foreach my $key (qw/old new/) {
         if (!defined $data->{$key} || !length $data->{$key}) {
             return $c->plugin->error->form_parse_errors("old", "new");
         }
     }
 
-    if ($dashboard->{$data->{old}}) {
-        $dashboard->{$data->{new}} = delete $dashboard->{$data->{old}};
-    } else {
-        $dashboard->{$data->{new}} = [];
+    $dashboard->{$data->{new}} = delete $dashboard->{$data->{old}};
+
+    $c->model->database->user->update(
+        $c->user->{id},
+        { stash => $c->json->encode($stash) }
+    );
+
+    $c->view->render->json;
+}
+
+sub delete_dashboard {
+    my ($self, $c, $data) = @_;
+    my $stash = $c->user->{stash};
+    my $dashboard = $stash->{dashboard};
+
+    if (ref $data ne "HASH") {
+        return $c->plugin->error->form_parse_errors("data");
     }
+
+    if (!defined $data->{name}) {
+        return $c->plugin->error->form_parse_errors("name");
+    }
+
+    delete $dashboard->{$data->{name}};
 
     $c->model->database->user->update(
         $c->user->{id},
@@ -91,83 +116,93 @@ sub parse_dashboard_data {
     my $dashboards = $self->{dashboards};
     my $stash = $c->user->{stash};
 
-    if (
-        ref $data ne "HASH"
-        || !defined $data->{name}
-        || length $data->{name} > 100
-        || (defined $data->{data} && ref $data->{data} ne "ARRAY")
-    ) {
+    if (ref $data ne "HASH") {
         return $c->plugin->error->form_parse_errors("data");
     }
 
-    if (defined $data->{data}) {
-        foreach my $row (@{$data->{data}}) {
-            if (ref $row ne "HASH") {
-                return $c->plugin->error->form_parse_errors("data");
-            }
+    if (length $data->{name} > 100) {
+        return $c->plugin->error->form_parse_errors("name");
+    }
 
-            foreach my $key (keys %$row) {
-                if ($key !~ /^(name|pos|width|height|opts)\z/) {
-                    return $c->plugin->error->form_parse_errors($key);
-                }
-            }
+    if (!defined $data->{dashlets}) {
+        $data->{dashlets} = [];
+    } elsif (ref $data->{dashlets} ne "ARRAY") {
+        return $c->plugin->error->form_parse_errors("dashlets");
+    }
 
-            if (!defined $row->{pos} || $row->{pos} !~ /^([1-9]|[1][0-9])\z/) {
-                return $c->plugin->error->form_parse_errors("pos"); 
-            }
+    if (!defined $data->{scale}) {
+        $data->{scale} = "0.35";
+    } elsif ($data->{scale} !~ /^([1-9]|\d\.\d{1,2})\z/ || $data->{scale} < 0.1) {
+        return $c->plugin->error->form_parse_errors("scale");
+    }
 
-            if (!defined $row->{name} || !exists $dashboards->{$row->{name}}) {
-                return $c->plugin->error->form_parse_errors("name");
-            }
+    foreach my $row (@{$data->{dashlets}}) {
+        if (ref $row ne "HASH") {
+            return $c->plugin->error->form_parse_errors("dashlets");
+        }
 
-            if (!defined $row->{width} || $row->{width} !~ /^[1-9]\z/) {
-                return $c->plugin->error->form_parse_errors("width");
-            }
-
-            if (!defined $row->{height} || $row->{height} !~ /^[1-8]\z/) {
-                return $c->plugin->error->form_parse_errors("height");
-            }
-
-            if ($row->{name} !~ /^(userChart|serviceChart|hostTopStatus|serviceTopStatus|topHostsEvents)\z/ && exists $row->{opts}) {
-                return $c->plugin->error->form_parse_errors("opts");
-            }
-
-            if ($row->{name} eq "serviceChart" || $row->{name} eq "userChart") {
-                if (defined $row->{opts} && ref $row->{opts} eq "HASH") {
-                    foreach my $key (keys %{$row->{opts}}) {
-                        if ($key !~ /^(chart_id|service_id|subkey|preset)\z/) {
-                            return $c->plugin->error->form_parse_errors("opts");
-                        }
-                    }
-
-                    my $chart_id = $row->{opts}->{chart_id};
-                    my $service_id = $row->{opts}->{service_id};
-                    my $subkey = $row->{opts}->{subkey};
-                    my $preset = $row->{opts}->{preset};
-
-                    if (
-                        !defined $chart_id
-                        || $chart_id !~ /^\d+\z/
-                        || ($preset && $preset !~ /^(3h|6h|12h|18h|1d)\z/)
-                        || (defined $service_id && ($service_id !~ /^\d+\z/ || !$c->model->database->chart->by_user_chart_and_service_id($c->user->{id}, $chart_id, $service_id)))
-                        || (!defined $service_id && (!$c->model->database->user_chart->find(condition => [ id => $chart_id, user_id => $c->user->{id} ])))
-                    ) {
-                        return $c->plugin->error->form_parse_errors("opts");
-                    }
-                } else {
-                    return $c->plugin->error->form_parse_errors("opts");
-                }
-            } elsif ($row->{name} =~ /^(hostTopStatus|serviceTopStatus|topHostsEvents)\z/) {
-                if (defined $row->{opts} && (ref $row->{opts} ne "HASH" || scalar keys %{$row->{opts}} > 1 || !exists $row->{opts}->{query})) {
-                    return $c->plugin->error->form_parse_errors("opts");
-                }
+        foreach my $key (keys %$row) {
+            if ($key !~ /^(name|pos|width|height|opts)\z/) {
+                return $c->plugin->error->form_parse_errors($key);
             }
         }
 
-        $stash->{dashboard}->{$data->{name}} = $data->{data};
-    } else {
-        delete $stash->{dashboard}->{$data->{name}};
+        if (!defined $row->{pos} || $row->{pos} !~ /^([1-9]|[1][0-9])\z/) {
+            return $c->plugin->error->form_parse_errors("pos"); 
+        }
+
+        if (!defined $row->{name} || !exists $dashboards->{$row->{name}}) {
+            return $c->plugin->error->form_parse_errors("name");
+        }
+
+        if (!defined $row->{width} || $row->{width} !~ /^[1-9]\z/) {
+            return $c->plugin->error->form_parse_errors("width");
+        }
+
+        if (!defined $row->{height} || $row->{height} !~ /^[1-8]\z/) {
+            return $c->plugin->error->form_parse_errors("height");
+        }
+
+        if ($row->{name} !~ /^(userChart|serviceChart|hostTopStatus|serviceTopStatus|topHostsEvents)\z/ && exists $row->{opts}) {
+            return $c->plugin->error->form_parse_errors("opts");
+        }
+
+        if ($row->{name} eq "serviceChart" || $row->{name} eq "userChart") {
+            if (defined $row->{opts} && ref $row->{opts} eq "HASH") {
+                foreach my $key (keys %{$row->{opts}}) {
+                    if ($key !~ /^(chart_id|service_id|subkey|preset)\z/) {
+                        return $c->plugin->error->form_parse_errors("opts");
+                    }
+                }
+
+                my $chart_id = $row->{opts}->{chart_id};
+                my $service_id = $row->{opts}->{service_id};
+                my $subkey = $row->{opts}->{subkey};
+                my $preset = $row->{opts}->{preset};
+
+                if (
+                    !defined $chart_id
+                    || $chart_id !~ /^\d+\z/
+                    || ($preset && $preset !~ /^(3h|6h|12h|18h|1d)\z/)
+                    || (defined $service_id && ($service_id !~ /^\d+\z/ || !$c->model->database->chart->by_user_chart_and_service_id($c->user->{id}, $chart_id, $service_id)))
+                    || (!defined $service_id && (!$c->model->database->user_chart->find(condition => [ id => $chart_id, user_id => $c->user->{id} ])))
+                ) {
+                    return $c->plugin->error->form_parse_errors("opts");
+                }
+            } else {
+                return $c->plugin->error->form_parse_errors("opts");
+            }
+        } elsif ($row->{name} =~ /^(hostTopStatus|serviceTopStatus|topHostsEvents)\z/) {
+            if (defined $row->{opts} && (ref $row->{opts} ne "HASH" || scalar keys %{$row->{opts}} > 1 || !exists $row->{opts}->{query})) {
+                return $c->plugin->error->form_parse_errors("opts");
+            }
+        }
     }
+
+    $stash->{dashboard}->{$data->{name}} = {
+        dashlets => $data->{dashlets},
+        scale => $data->{scale}
+    };
 
     $c->model->database->user->update(
         $c->user->{id},
