@@ -1,3 +1,7 @@
+bloonix-webgui (0.31) released at 2015-02-15
+
+    * Fixed quoting of init-database.
+
 bloonix-webgui (0.30) released at 2015-02-14
 
     * Scale dashlets on the dashboard to a value related to the content width.
