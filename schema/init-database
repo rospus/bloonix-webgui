@@ -30,7 +30,7 @@ my $sql_quoted_password = $password;
 $sql_quoted_password =~ s!\\!\\\\!g;
 $sql_quoted_password =~ s!'!\\'!g;
 
-open my $fh, ">", "/etc/bloonix/database/create-bloonix-user.sql" or die $!;
+open $fh, ">", "/etc/bloonix/database/create-bloonix-user.sql" or die $!;
 system("chmod 640 /etc/bloonix/database/create-bloonix-user.sql");
 system("chgrp postgres /etc/bloonix/database/create-bloonix-user.sql");
 print $fh "CREATE ROLE $user WITH LOGIN PASSWORD '$sql_quoted_password';\n";
