@@ -9,7 +9,7 @@ if (getuid() != 0) {
 }
 
 my ($password, $config, $fh);
-my $user = "bloonix1";
+my $user = "bloonix";
 
 if ($ARGV[0] && $ARGV[0] eq "--stdin") {
     print "\nEnter the password for user 'bloonix': ";
