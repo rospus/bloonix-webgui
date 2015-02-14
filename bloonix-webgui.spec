@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.29
+Version: 0.30
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -61,6 +61,9 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Sat Feb 14 2015 Jonny Schulz <js@bloonix.de> - 0.30-1
+- Scale dashlets on the dashboard to a value related to the content width.
+- Init-database now replaces the pattern @@PASSWORD@@ in the configuration.
 * Thu Feb 12 2015 Jonny Schulz <js@bloonix.de> - 0.29-1
 - New feature: doWaitForElement can now wait for text within an element too.
 * Thu Feb 12 2015 Jonny Schulz <js@bloonix.de> - 0.28-1
