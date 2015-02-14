@@ -1,0 +1,87 @@
+#!/bin/bash
+
+HOST=$1
+
+if test -z "$HOST" ; then
+    echo ""
+    echo "Usage: $0 <hostname>"
+    echo ""
+    echo "The hostname is the host and port number of elasticsearch."
+    echo ""
+    echo "Example: $0 localhost:9200"
+    echo ""
+    exit 1
+fi
+
+curl -XPUT "http://$HOST/_template/template_bloonix/" -d '{
+    "template": "bloonix-*",
+    "settings" : {
+        "index.number_of_shards" : 4,
+        "index.number_of_replicas" : 1
+    },
+    "mappings": {
+        "stats" : {
+            "dynamic_templates" : [{
+                "thisnamedoesnotmatter": {
+                    "match_mapping_type" : "long",
+                    "mapping" : {
+                        "type": "string",
+                        "index" : "no"
+                    }
+                }
+            }],
+            "properties" : {
+                "time" : { "type" : "date", "index" : "not_analyzed" },
+                "host_id" : { "type" : "long", "index" : "not_analyzed" },
+                "service_id" : { "type" : "long", "index" : "not_analyzed" },
+                "plugin" : { "type" : "string", "index" : "not_analyzed" },
+                "subkey" : { "type" : "string", "index" : "not_analyzed" },
+                "data" : { "type" : "object", "index" : "no" }
+            }
+        },
+        "event" : {
+            "dynamic_templates" : [{
+                "thisnamedoesnotmatter": {
+                    "match_mapping_type" : "long",
+                    "mapping" : {
+                        "type": "string",
+                        "index" : "no"
+                    }
+                }
+            }],
+            "properties" : {
+                "time" : { "type" : "date", "index" : "not_analyzed" },
+                "host_id" : { "type" : "long", "index" : "not_analyzed" },
+                "service_id" : { "type" : "long", "index" : "not_analyzed" },
+                "last_status" : { "type" : "string", "index" : "not_analyzed" },
+                "status" : { "type" : "string" },
+                "message" : { "type" : "string" },
+                "result" : { "type" : "object", "index" : "no" },
+                "debug" : { "type" : "object", "index" : "no" },
+                "attempts" : { "type" : "string" },
+                "tags" : { "type" : "string" },
+                "duration" : { "type" : "long", "index" : "not_analyzed" }
+            }
+        },
+        "results" : {
+            "dynamic_templates" : [{
+                "thisnamedoesnotmatter": {
+                    "match_mapping_type" : "long",
+                    "mapping" : {
+                        "type": "string",
+                        "index" : "no"
+                    }
+                }
+            }],
+            "properties" : {
+                "time" : { "type" : "date", "index" : "not_analyzed" },
+                "host_id" : { "type" : "long", "index" : "not_analyzed" },
+                "service_id" : { "type" : "long", "index" : "not_analyzed" },
+                "status" : { "type" : "string", "index" : "not_analyzed" },
+                "message" : { "type" : "string" },
+                "attempts" : { "type" : "string" },
+                "data" : { "type" : "object" }
+            }
+        }
+    }
+}'

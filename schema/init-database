@@ -1,0 +1,61 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use POSIX qw(getuid);
+
+if (getuid() != 0) {
+    print "Please execute this script as user root\n";
+    exit 1;
+}
+
+my ($password, $config, $fh);
+my $user = "bloonix1";
+
+if ($ARGV[0] && $ARGV[0] eq "--stdin") {
+    print "\nEnter the password for user 'bloonix': ";
+    $password = <stdin>;
+} else {
+    print "\nGenerate password for user 'bloonix'\n\n";
+    $password = do {
+        my @c = ("a".."z", "A".."Z", 0..9, qw(^ ! § $ % & = ? * + _ - ; . : [ ] @ ~ | < > /), ",", "#", "(", ")");
+        my $s = "";
+        $s .= $c[int(rand(scalar @c))] for (1..15);
+        $s;
+    };
+}
+
+print "\nCreate user 'bloonix'\n\n";
+
+my $sql_quoted_password = $password;
+$sql_quoted_password =~ s!\\!\\\\!g;
+$sql_quoted_password =~ s!'!\\'!g;
+
+open my $fh, ">", "/etc/bloonix/database/create-bloonix-user.sql" or die $!;
+system("chmod 640 /etc/bloonix/database/create-bloonix-user.sql");
+system("chgrp postgres /etc/bloonix/database/create-bloonix-user.sql");
+print $fh "CREATE ROLE $user WITH LOGIN PASSWORD '$sql_quoted_password';\n";
+print $fh "CREATE DATABASE $user OWNER $user;\n";
+close $fh;
+
+system('su - postgres -c "psql -f /etc/bloonix/database/create-bloonix-user.sql"');
+unlink("/etc/bloonix/database/create-bloonix-user.sql");
+
+print "\nInstall bloonix schema\n\n";
+
+$ENV{PGPASSWORD} = $password;
+system("psql -U $user -h localhost -f /srv/bloonix/webgui/schema/schema-pg.sql");
+$ENV{PGPASSWORD} = "";
+
+open $fh, "<", "/etc/bloonix/database/main.conf" or die $!;
+$config = do { local $/; <$fh> };
+close $fh;
+
+$config =~ s/\@\@PASSWORT\@\@/$password/;
+open $fh, ">", "/etc/bloonix/database/main.conf" or die $!;
+print $fh $config;
+close $fh;
+
+system("chmod 640 /etc/bloonix/database/main.conf");
+system("chown root:bloonix /etc/bloonix/database/main.conf");
+
+print "\ndone\n\n";
