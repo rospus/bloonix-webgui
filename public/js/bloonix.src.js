@@ -11191,14 +11191,17 @@ Bloonix.dashboard = function(o) {
 
     object.getDefaultDashlets = function() {
         return {
-            Default: [
-                { pos: "1", name: "hostAvailStatus" },
-                { pos: "1", name: "hostStatusMap" },
-                { pos: "1", name: "hostTopStatus" },
-                { pos: "2", name: "serviceAvailStatus" },
-                { pos: "2", name: "serviceNoteStatus" },
-                { pos: "2", name: "serviceTopStatus" }
-            ]
+            Default: {
+                dashlets: [
+                    { pos: "1", name: "hostAvailStatus" },
+                    { pos: "1", name: "hostStatusMap" },
+                    { pos: "1", name: "hostTopStatus" },
+                    { pos: "2", name: "serviceAvailStatus" },
+                    { pos: "2", name: "serviceNoteStatus" },
+                    { pos: "2", name: "serviceTopStatus" }
+                ],
+                scale: 0.35
+            }
         };
     };
 
