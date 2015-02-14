@@ -23,6 +23,7 @@ echo "Install bloonix schema"
 echo
 
 PGPASSWORD="$password" psql -U bloonix -h localhost -f /srv/bloonix/webgui/schema/schema-pg.sql
+sed -i "s/$password/@@PASSWORD@@/" /etc/bloonix/database/main.conf
 
 echo
 
