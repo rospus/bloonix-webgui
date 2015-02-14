@@ -7,7 +7,8 @@ chown -R root:root /srv/bloonix/webgui/
 find /srv/bloonix/webgui/ -type d | xargs chmod 755
 find /srv/bloonix/webgui/ -type f | xargs chmod 644
 chmod 755 /srv/bloonix/webgui/scripts/*
-chmod 750 /srv/bloonix/webgui/schema/*.sh
+chmod 750 /srv/bloonix/webgui/schema/init-database
+chmod 750 /srv/bloonix/webgui/schema/init-elasticsearch
 chmod o-rwx /srv/bloonix/webgui/bin /srv/bloonix/webgui/schema
 find /srv/bloonix/webgui/bin | grep -v README | xargs chmod 750
 

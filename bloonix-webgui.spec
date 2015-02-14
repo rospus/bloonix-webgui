@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.30
+Version: 0.31
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -61,6 +61,8 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Sun Feb 15 2015 Jonny Schulz <js@bloonix.de> - 0.31-1
+- Fixed quoting of init-database.
 * Sat Feb 14 2015 Jonny Schulz <js@bloonix.de> - 0.30-1
 - Scale dashlets on the dashboard to a value related to the content width.
 - Init-database now replaces the pattern @@PASSWORD@@ in the configuration.
