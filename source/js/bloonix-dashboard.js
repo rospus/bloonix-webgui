@@ -474,13 +474,13 @@ Bloonix.dashboard = function(o) {
                 title: Text.get("text.dashboard.remove_dashlet"),
                 callback: function() { self.removeDashlet(dashlet) }
             },{
-                type: "move",
-                title: Text.get("action.move_box"),
-                addClass: "dashlet-portlet"
-            },{
                 type: "fullscreen",
                 title: Text.get("action.resize"),
                 callback: function() { self.resizeDashlet(dashlet) }
+            },{
+                type: "move",
+                title: Text.get("action.move_box"),
+                addClass: "dashlet-portlet"
             }
         ];
 
@@ -732,7 +732,7 @@ Bloonix.dashboard = function(o) {
             box.hoverBoxIcons.destroy();
             this.addDashletOptions(box, name);
         } else {
-            this.createDashlet(1, name, 3, 3, opts);
+            this.createDashlet(1, name, 4, 6, opts);
             this.resizeDashlets();
             this.saveDashboard();
         }
