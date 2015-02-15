@@ -120,6 +120,12 @@ sub parse_dashboard_data {
         return $c->plugin->error->form_parse_errors("data");
     }
 
+    foreach my $key (keys %$data) {
+        if ($key !~ /^(name|dashlets|scale|count)\z/) {
+            return $c->plugin->error->form_parse_errors("data");
+        }
+    }
+
     if (length $data->{name} > 100) {
         return $c->plugin->error->form_parse_errors("name");
     }
@@ -134,6 +140,10 @@ sub parse_dashboard_data {
         $data->{scale} = "0.35";
     } elsif ($data->{scale} !~ /^([1-9]|\d\.\d{1,2})\z/ || $data->{scale} < 0.1) {
         return $c->plugin->error->form_parse_errors("scale");
+    }
+
+    if (defined $data->{count} && $data->{count} =~ /^\d+\z/) {
+        return $c->plugin->error->form_parse_errors("count");
     }
 
     foreach my $row (@{$data->{dashlets}}) {
@@ -180,14 +190,8 @@ sub parse_dashboard_data {
                 my $subkey = $row->{opts}->{subkey};
                 my $preset = $row->{opts}->{preset};
 
-                if (
-                    !defined $chart_id
-                    || $chart_id !~ /^\d+\z/
-                    || ($preset && $preset !~ /^(3h|6h|12h|18h|1d)\z/)
-                    || (defined $service_id && ($service_id !~ /^\d+\z/ || !$c->model->database->chart->by_user_chart_and_service_id($c->user->{id}, $chart_id, $service_id)))
-                    || (!defined $service_id && (!$c->model->database->user_chart->find(condition => [ id => $chart_id, user_id => $c->user->{id} ])))
-                ) {
-                    return $c->plugin->error->form_parse_errors("opts");
+                if (!$self->check_service_chart($c, $chart_id, $preset, $service_id)) {
+                   return $c->plugin->error->form_parse_errors("opts");
                 }
             } else {
                 return $c->plugin->error->form_parse_errors("opts");
@@ -211,6 +215,28 @@ sub parse_dashboard_data {
 
     $c->stash->data($data);
     $c->view->render->json;
+}
+
+sub check_service_chart {
+    my ($self, $c, $chart_id, $preset, $service_id) = @_;
+
+    if (!defined $chart_id || $chart_id !~ /^\d+\z/) {
+        return undef;
+    }
+
+    if ($preset && $preset !~ /^(3h|6h|12h|18h|1d)\z/) {
+        return undef;
+    }
+
+    if (defined $service_id) {
+        if ($service_id !~ /^\d+\z/ || !$c->model->database->chart->by_user_chart_and_service_id($c->user->{id}, $chart_id, $service_id)) {
+            return undef;
+        }
+    } elsif (!$c->model->database->user_chart->find(condition => [ id => $chart_id, user_id => $c->user->{id} ])) {
+        return undef;
+    }
+
+    return 1;
 }
 
 sub passwd {

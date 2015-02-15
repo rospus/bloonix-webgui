@@ -51,8 +51,9 @@ sub load {
         # for testing, do not delete it
         test => "Bloonix::Model::Schema::Test",
 
-        # Upgrade the database schema
-        upgrade => "Bloonix::Model::Schema::Upgrade"
+        # Maintenance and upgrade.
+        # This table must be loaded at the end!
+        maintenance => "Bloonix::Model::Schema::Maintenance"
     );
 }
 
