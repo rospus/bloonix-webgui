@@ -242,12 +242,6 @@ Bloonix.listCharts = function(o) {
             .appendTo(this.buttonBox)
             .attr("title", Text.get("action.generate"))
             .tooltip();
-
-        this.counterButton = Utils.create("div")
-            .addClass("btn btn-white btn-default")
-            .appendTo(this.buttonBox)
-            .attr("title", Text.get("action.show_selected_objects"))
-            .tooltip();
     };
 
     object.createChartLoaderOptions = function() {
@@ -483,7 +477,7 @@ Bloonix.listCharts = function(o) {
                 : Text.get("schema.chart.text.multiselect"),
             pager: true,
             search: true,
-            //counter: true,
+            counter: true,
             infoBox: false
         }).create();
 
@@ -494,8 +488,7 @@ Bloonix.listCharts = function(o) {
             headerObject: header,
             selectable: {
                 result: [ "hostname", "service_name", "plugin", "title" ],
-                counter: { update: this.counterButton, hideIfNull: false, descriptive: true },
-                //counter: { update: header.counterObject, hideIfNull: false, descriptive: true },
+                counter: { update: header.counterObject, hideIfNull: false, descriptive: true },
                 getUniqueId: function(row) { return row.service_id +":"+ row.chart_id },
                 max: 100
             },
