@@ -26,15 +26,15 @@ sub get_version {
     return $self->all->[0]->{version};
 }
 
-sub set_version {
-    my ($self, $version) = @_;
+sub update_version {
+    my $self = shift;
 
-    $self->log->warning("upgrade schema version to $version");
+    $self->log->warning("upgrade schema version to $self->{schema_version}");
 
     $self->dbi->do(
         $self->sql->update(
             table => $self->{table},
-            data => { version => $version }
+            data => { version => $self->{schema_version} }
         )
     );
 }

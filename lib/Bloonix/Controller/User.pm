@@ -142,7 +142,7 @@ sub parse_dashboard_data {
         return $c->plugin->error->form_parse_errors("scale");
     }
 
-    if (defined $data->{count} && $data->{count} =~ /^\d+\z/) {
+    if (defined $data->{count} && $data->{count} !~ /^\d{1,2}x\d{1,2}\z/) {
         return $c->plugin->error->form_parse_errors("count");
     }
 
@@ -205,7 +205,8 @@ sub parse_dashboard_data {
 
     $stash->{dashboard}->{$data->{name}} = {
         dashlets => $data->{dashlets},
-        scale => $data->{scale}
+        scale => $data->{scale},
+        count => $data->{count}
     };
 
     $c->model->database->user->update(

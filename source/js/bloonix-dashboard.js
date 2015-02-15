@@ -123,7 +123,8 @@ Bloonix.dashboard = function(o) {
                 Bloonix.saveUserConfig("dashboard", {
                     name: name,
                     scale: scale,
-                    dashlets: []
+                    dashlets: [],
+                    count: "12x12"
                 });
             }
 
@@ -333,12 +334,17 @@ Bloonix.dashboard = function(o) {
     };
 
     object.getDashboardConfig = function() {
-        var userConfig = Bloonix.get("/user/config/stash");
+        var userConfig = Bloonix.get("/user/config/stash"),
+            defaultConfig = this.getDefaultConfig();
 
         if (userConfig && userConfig.dashboard && Utils.objectSize(userConfig.dashboard)) {
             this.dashboards = userConfig.dashboard;
+            if (!this.dashboards.Default) {
+                this.dashboards.Default = defaultConfig.Default;
+                this.saveInitialDashboard = true;
+            }
         } else {
-            this.dashboards = this.getDefaultDashlets();
+            this.dashboards = defaultConfig;
             this.saveInitialDashboard = true;
         }
 
@@ -362,25 +368,28 @@ Bloonix.dashboard = function(o) {
             this.dashboardName = "Default";
         }
 
-        if ($.isArray(this.config)) {
-            this.migrateDashboardConfig();
-        }
-
+        this.migrateDashboardConfig();
         this.setDashboardTitle(Text.get("text.dashboard.title") +": "+ this.dashboardName);
     };
 
-    object.getDefaultDashlets = function() {
+    object.getDefaultConfig = function() {
+        var width = 4,
+            height = 6,
+            scale = 0.35,
+            count = "12x12"; // width x height
+
         return {
             Default: {
                 dashlets: [
-                    { pos: "1", name: "hostAvailStatus" },
-                    { pos: "1", name: "hostStatusMap" },
-                    { pos: "1", name: "hostTopStatus" },
-                    { pos: "2", name: "serviceAvailStatus" },
-                    { pos: "2", name: "serviceNoteStatus" },
-                    { pos: "2", name: "serviceTopStatus" }
+                    { pos: "1", name: "hostAvailStatus", width: width, height: height },
+                    { pos: "1", name: "hostStatusMap", width: width, height: height },
+                    { pos: "1", name: "hostTopStatus", width: width, height: height },
+                    { pos: "2", name: "serviceAvailStatus", width: width, height: height },
+                    { pos: "2", name: "serviceNoteStatus", width: width, height: height },
+                    { pos: "2", name: "serviceTopStatus", width: width, height: height }
                 ],
-                scale: 0.35
+                scale: scale,
+                count: count
             }
         };
     };
@@ -519,15 +528,18 @@ Bloonix.dashboard = function(o) {
             text: "Dashlet width",
             checked: dashlet.outer.data("width"),
             options: [
-                { label: "1/9", value: 1 },
-                { label: "2/9", value: 2 },
-                { label: "3/9", value: 3 },
-                { label: "4/9", value: 4 },
-                { label: "5/9", value: 5 },
-                { label: "6/9", value: 6 },
-                { label: "7/9", value: 7 },
-                { label: "8/9", value: 8 },
-                { label: "9/9", value: 9 }
+                { label:  "1/12", value:  1 },
+                { label:  "2/12", value:  2 },
+                { label:  "3/12", value:  3 },
+                { label:  "4/12", value:  4 },
+                { label:  "5/12", value:  5 },
+                { label:  "6/12", value:  6 },
+                { label:  "7/12", value:  7 },
+                { label:  "8/12", value:  8 },
+                { label:  "9/12", value:  9 },
+                { label: "10/12", value: 10 },
+                { label: "11/12", value: 11 },
+                { label: "12/12", value: 12 }
             ]
         });
 
@@ -537,12 +549,18 @@ Bloonix.dashboard = function(o) {
             text: "Dashlet height",
             checked: dashlet.outer.data("height"),
             options: [
-                { label: "1/6", value: 1 },
-                { label: "2/6", value: 2 },
-                { label: "3/6", value: 3 },
-                { label: "4/6", value: 4 },
-                { label: "5/6", value: 5 },
-                { label: "6/6", value: 6 },
+                { label:  "1/12", value:  1 },
+                { label:  "2/12", value:  2 },
+                { label:  "3/12", value:  3 },
+                { label:  "4/12", value:  4 },
+                { label:  "5/12", value:  5 },
+                { label:  "6/12", value:  6 },
+                { label:  "7/12", value:  7 },
+                { label:  "8/12", value:  8 },
+                { label:  "9/12", value:  9 },
+                { label: "10/12", value: 10 },
+                { label: "11/12", value: 11 },
+                { label: "12/12", value: 12 }
             ]
         });
 
@@ -587,9 +605,8 @@ Bloonix.dashboard = function(o) {
             chartBoxBorderWidth = this.chartBoxBorderWidth,
             chartBoxWidth = chartBoxWidth - 2, // dashlet-outer border
             chartBoxHeight = chartBoxHeight - 2, // dashlet-outer border
-            // -1px because of an unknown bug with tooltip()
-            chartBoxWidth = Math.floor(size.width / 9) - 2,
-            chartBoxHeight = Math.floor(size.height / 6);
+            chartBoxWidth = Math.floor(size.width / 12) - 2, // -2px because of an unknown bug with tooltip()
+            chartBoxHeight = Math.floor(size.height / 12);
 
         var boxes = box ? [ box ] : this.boxes;
 
@@ -744,7 +761,8 @@ Bloonix.dashboard = function(o) {
         var config = {
             name: dashboardName,
             scale: this.config.scale,
-            dashlets: []
+            dashlets: [],
+            count: this.config.count
         };
 
         $(".dashlet-outer").each(function() {
@@ -774,20 +792,55 @@ Bloonix.dashboard = function(o) {
     };
 
     object.migrateDashboardConfig = function()  {
-        var config = {
-            name: this.dashboardName,
-            scale: 0.35,
-            dashlets: this.config
-        };
+        var saveConfig = false;
 
-        this.dashboardName = config.name;
-        this.config = {
-            dashlets: config.dashlets,
-            scale: config.scale
-        };
+        // very old config
+        if ($.isArray(this.config)) {
+            saveConfig = true;
 
-        console.log("migrate user config to", config);
-        Bloonix.saveUserConfig("dashboard", config);
+            var config = {
+                name: this.dashboardName,
+                scale: 0.35,
+                dashlets: this.config
+            };
+
+            this.config = {
+                dashlets: config.dashlets,
+                scale: config.scale
+            };
+        }
+
+        // deprecated dashboard size
+        if (!this.config.count || this.config.count === "9x6") {
+            saveConfig = true;
+            this.config.count = "12x12";
+
+            var width = {
+                "x1": "1",   "x2": "2",    "x3": "4",
+                "x4": "5",   "x5": "6",    "x6": "8",
+                "x7": "9",   "x8": "10",   "x9": "12"
+            };
+
+            var height = {
+                "x1": "2",   "x2": "4",    "x3": "6",
+                "x4": "8",   "x5": "10",   "x6": "12"
+            };
+
+            $.each(this.config.dashlets, function(i, dashlet) {
+                dashlet.width = width["x"+ dashlet.width];
+                dashlet.height = height["x"+ dashlet.height];
+            });
+        }
+
+        if (saveConfig === true) {
+            console.log("migrate dashboard to", this.config);
+            Bloonix.saveUserConfig("dashboard", {
+                name: this.dashboardName,
+                scale: this.config.scale,
+                dashlets: this.config.dashlets,
+                count: this.config.count
+            });
+        }
     };
 
     object.startSortOrResizeDashlets = function() {
