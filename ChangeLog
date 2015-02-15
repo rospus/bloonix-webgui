@@ -2,6 +2,8 @@ bloonix-webgui (0.32) released at 2015-XX-XX
 
     * Improved the database upgrade.
     * Migrate dashboard width from 9 to 12 and height from 6 to 12.
+    * Changed the order of dashlet icons and fixed the initial dashlet
+      width and height
 
 bloonix-webgui (0.31) released at 2015-02-15
 
