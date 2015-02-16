@@ -50,7 +50,7 @@ open $fh, "<", "/etc/bloonix/database/main.conf" or die $!;
 $config = do { local $/; <$fh> };
 close $fh;
 
-$config =~ s/\@\@PASSWORT\@\@/$password/;
+$config =~ s/\@\@PASSWORD\@\@/$password/;
 open $fh, ">", "/etc/bloonix/database/main.conf" or die $!;
 print $fh $config;
 close $fh;
