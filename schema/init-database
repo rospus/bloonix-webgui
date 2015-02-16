@@ -9,9 +9,37 @@ if (getuid() != 0) {
 }
 
 my ($password, $config, $fh);
+my $progname = do { $0 =~ m!([^/]+)\z!; $1 };
 my $user = "bloonix";
+my $opts = { stdin => 0, "drop-bloonix" => 0 };
 
-if ($ARGV[0] && $ARGV[0] eq "--stdin") {
+while (@ARGV) {
+    my $opt = shift @ARGV;
+    $opt =~ s/^--//;
+    if (!exists $opts->{$opt}) {
+        $opts->{help} = 1;
+    } else {
+        $opts->{$opt} = 1;
+    }
+}
+
+if ($opts->{help}) {
+    print "\nUsage: $progname [ OPTIONS ]\n\n";
+    print "Calling $progname without options will generate a password\n";
+    print "and install the Bloonix database schema.\n\n";
+    print "Options:\n\n";
+    print "--stdin\n";
+    print "    Enter the password over STDIN.\n";
+    print "    By default a random password is generated.\n";
+    print "--drop-bloonix\n";
+    print "    The bloonix database and role will be dropped at first.\n";
+    print "    Be careful with this option!\n";
+    print "--help\n";
+    print "    Print the help and exit.\n\n";
+    exit;
+}
+
+if ($opts->{stdin}) {
     print "\nEnter the password for user 'bloonix': ";
     $password = <stdin>;
 } else {
@@ -33,6 +61,12 @@ $sql_quoted_password =~ s!'!\\'!g;
 open $fh, ">", "/etc/bloonix/database/create-bloonix-user.sql" or die $!;
 system("chmod 640 /etc/bloonix/database/create-bloonix-user.sql");
 system("chgrp postgres /etc/bloonix/database/create-bloonix-user.sql");
+
+if ($opts->{"drop-bloonix"}) {
+    print $fh "DROP DATABASE bloonix;\n";
+    print $fh "DROP ROLE bloonix;\n";
+}
+
 print $fh "CREATE ROLE $user WITH LOGIN PASSWORD '$sql_quoted_password';\n";
 print $fh "CREATE DATABASE $user OWNER $user;\n";
 close $fh;
