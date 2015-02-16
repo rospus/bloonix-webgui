@@ -1,3 +1,13 @@
+bloonix-webgui (0.32-1) unstable; urgency=low
+
+    * Improved the database upgrade.
+    * Migrate dashboard width from 9 to 12 and height from 6 to 12.
+    * Changed the order of dashlet icons and fixed the initial dashlet
+      width and height
+    * Pattern fixed in init-database.
+
+ -- Jonny Schulz <js@bloonix.de>  Mon, 16 Feb 2015 01:53:22 +0100
+
 bloonix-webgui (0.31-1) unstable; urgency=low
 
     * Fixed quoting of init-database.

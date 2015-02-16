@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.31
+Version: 0.32
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -61,6 +61,12 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Mon Feb 16 2015 Jonny Schulz <js@bloonix.de> - 0.32-1
+- Improved the database upgrade.
+- Migrate dashboard width from 9 to 12 and height from 6 to 12.
+- Changed the order of dashlet icons and fixed the initial dashlet
+  width and height
+- Pattern fixed in init-database.
 * Sun Feb 15 2015 Jonny Schulz <js@bloonix.de> - 0.31-1
 - Fixed quoting of init-database.
 * Sat Feb 14 2015 Jonny Schulz <js@bloonix.de> - 0.30-1
