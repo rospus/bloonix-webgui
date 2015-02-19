@@ -229,7 +229,8 @@ Form.prototype.textarea = function(o) {
         bubbleCloseIconClass: "i-bubble-close-button",
         bubbleCloseText: "x",
         format: this.format,
-        form: this
+        form: this,
+        css: false
     }, o);
 
     object.getBubbleOuterClass = function() {
@@ -264,6 +265,10 @@ Form.prototype.textarea = function(o) {
             .addClass(this.getClass())
             .text(this.value)
             .appendTo(this.container);
+
+        if (this.css !== false) {
+            this.textarea.css(this.css);
+        }
 
         $.each(["id","placeholder","minlength","maxlength"], function(i, key) {
             if (self[key] != false) {

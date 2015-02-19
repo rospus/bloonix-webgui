@@ -36,7 +36,13 @@ curl -XPUT "http://$HOST/_template/template_bloonix/" -d '{
                 "service_id" : { "type" : "long", "index" : "not_analyzed" },
                 "plugin" : { "type" : "string", "index" : "not_analyzed" },
                 "subkey" : { "type" : "string", "index" : "not_analyzed" },
-                "data" : { "type" : "object", "index" : "no" }
+                "data" : {
+                    "type" : "object",
+                    "index" : "no",
+                    "properties": {
+                        "time" : { "type" : "string", "index" : "not_analyzed" }
+                    }
+                }
             }
         },
         "event" : {
@@ -56,11 +62,25 @@ curl -XPUT "http://$HOST/_template/template_bloonix/" -d '{
                 "last_status" : { "type" : "string", "index" : "not_analyzed" },
                 "status" : { "type" : "string" },
                 "message" : { "type" : "string" },
-                "result" : { "type" : "object", "index" : "no" },
-                "debug" : { "type" : "object", "index" : "no" },
                 "attempts" : { "type" : "string" },
                 "tags" : { "type" : "string" },
-                "duration" : { "type" : "long", "index" : "not_analyzed" }
+                "duration" : { "type" : "long", "index" : "not_analyzed" },
+                "result" : {
+                    "type" : "object",
+                    "index" : "no",
+                    "properties": {
+                        "time" : { "type" : "string", "index" : "not_analyzed" },
+                        "duration" : { "type" : "string", "index" : "not_analyzed" }
+                    }
+                },
+                "debug" : {
+                    "type" : "object",
+                    "index" : "no",
+                    "properties": {
+                        "time" : { "type" : "string", "index" : "not_analyzed" },
+                        "duration" : { "type" : "string", "index" : "not_analyzed" }
+                    }
+                }
             }
         },
         "results" : {
@@ -80,7 +100,13 @@ curl -XPUT "http://$HOST/_template/template_bloonix/" -d '{
                 "status" : { "type" : "string", "index" : "not_analyzed" },
                 "message" : { "type" : "string" },
                 "attempts" : { "type" : "string" },
-                "data" : { "type" : "object" }
+                "data" : {
+                    "type" : "object",
+                    "index" : "no",
+                    "properties": {
+                        "time" : { "type" : "string", "index" : "not_analyzed" }
+                    }
+                }
             }
         }
     }

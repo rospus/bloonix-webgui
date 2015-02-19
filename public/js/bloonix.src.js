@@ -4677,7 +4677,8 @@ Form.prototype.textarea = function(o) {
         bubbleCloseIconClass: "i-bubble-close-button",
         bubbleCloseText: "x",
         format: this.format,
-        form: this
+        form: this,
+        css: false
     }, o);
 
     object.getBubbleOuterClass = function() {
@@ -4712,6 +4713,10 @@ Form.prototype.textarea = function(o) {
             .addClass(this.getClass())
             .text(this.value)
             .appendTo(this.container);
+
+        if (this.css !== false) {
+            this.textarea.css(this.css);
+        }
 
         $.each(["id","placeholder","minlength","maxlength"], function(i, key) {
             if (self[key] != false) {
@@ -15762,7 +15767,7 @@ Bloonix.createServiceForm = function(o) {
         var desc = Utils.create("div"),
             element = "input",
             values = this.commandOptionsByOption,
-            value;
+            value, simple;
 
         if (this.action == "create") {
             value = opt.default;
@@ -15782,6 +15787,7 @@ Bloonix.createServiceForm = function(o) {
 
         if (this.plugin.info.flags && /simple/.test(this.plugin.info.flags)) {
             element = "textarea";
+            simple = true;
         }
 
         this.form.createElement({
@@ -15791,7 +15797,8 @@ Bloonix.createServiceForm = function(o) {
             text: opt.name,
             desc: desc,
             placeholder: opt.example == undefined ? "" : opt.example,
-            value: value
+            value: value,
+            css: { width: "450px" }
         });
     };
 
