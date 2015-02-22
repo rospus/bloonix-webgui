@@ -172,6 +172,13 @@ sub service_options {
         $service->{command_options} = $c->json->decode($service->{command_options});
         if ($service->{location_options}) {
             $service->{location_options} = $c->json->decode($service->{location_options});
+
+            my $locations_form_parameter = join("_",
+                $service->{location_options}->{check_type},
+                "locations"
+            );
+
+            $service->{location_options}->{$locations_form_parameter} = delete $service->{location_options}->{locations};
         }
         if ($service->{agent_options}) {
             $service->{agent_options} = $c->json->decode($service->{agent_options});
