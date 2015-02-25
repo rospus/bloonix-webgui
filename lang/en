@@ -926,8 +926,8 @@ schema.service.desc.agent_id_tooltip: <h3>From which location should the check b
  <p>
  With the option <i>localhost</i> the check is executed local on your server.
  For this action it's necessary that the Bloonix-Agent is installed on your server.
- This option is useful if you want to monitor the system vitals like the CPU,
- the memory or the disk usage.
+ This option is useful if you want to monitor the system performance like CPU,
+ memory or disk usage.
  </p>
  <h3>intranet</h3>
  <p>
