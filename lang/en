@@ -542,7 +542,7 @@ schema.host.text.list_device_classes: Device classes
 schema.host.text.device_class_help_link: Read how this feature works
 schema.host.text.multiple_selection_help: <h4>This action requires to select at least one host.</h4>
  To mark a single host just click on a row. If you want to mark multiple hosts
- just press and hold <i>CTRL</i> on your keyboard. If you press and hold <i>SHIFT</i>
+ just press and hold <i>CTRL</i> on your keyboard. If you press and hold the left mouse button
  you can mark a range of hosts.
 schema.host.text.multiple_downtimes: Schedule a downtime for multiple hosts
 schema.host.text.multiple_notification: Enable or disable the notifications of multiple hosts
@@ -707,7 +707,7 @@ schema.chart.attr.datetime: Date and time
 schema.chart.attr.from_to: From <b>%s</b> to <b>%s</b>
 schema.chart.attr.charts: Charts
 schema.chart.desc.charts: <b>Select multiple charts with</b><br/><br/>
- <i>CTRL+click</i><br/>or<br/><i>SHIFT+click</i>
+ <i>CTRL+click</i><br/>or<br/><i>press + hold left mouse button + move pointer</i>
 schema.chart.text.multiple_view: Chart view
 schema.chart.text.view: Charts for host <b>%s</b>
 schema.chart.text.multiview: View multiple charts
@@ -874,7 +874,7 @@ schema.service.text.select_location_check_type: Select the type of the check
 schema.service.text.select_location_check_type_info: Click on the buttons to see a short description of each type
 schema.service.text.multiple_help: <h4>This action requires to select at least one service.</h4>
  To mark a single service just click on a row. If you want to mark multiple services
- just press and hold <i>CTRL</i> on your keyboard. If you press and hold <i>SHIFT</i>
+ just press and hold <i>CTRL</i> on your keyboard. If you press and hold the left mouse button
  you can mark a range of services.
 schema.service.text.multiple_downtimes: Schedule a downtime for multiple services
 schema.service.text.multiple_notification: Enable or disable the notifications of multiple services

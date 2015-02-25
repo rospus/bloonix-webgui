@@ -543,8 +543,8 @@ schema.host.text.device_class_help_link: Lesen Sie wie dieses Feature funktionie
 schema.host.text.multiple_selection_help: <h4>Diese Aktion erfordert, dass mindestens ein Host ausgewählt ist.</h4>
  Um einen einzelnen Host zu markieren, klicken Sie auf die entsprechende Zeile.
  Wenn Sie mehrere Hosts markieren möchten, halten Sie einfach die Taste <i>STRG</i>
- auf Ihrer Tastatur gedrückt. Beim Drücken und Halten der <i>SHIFT</i>-Taste kann ein
- größerer Bereich von Hosts gewählt werden.
+ auf Ihrer Tastatur gedrückt. Beim Drücken und Halten der der linken Maustaste und dem
+ Bewegen des Mauszeigers kann ein größerer Bereich von Hosts gewählt werden.
 schema.host.text.multiple_downtimes: Eine geplante Wartungsarbeit für mehrere Hosts einrichten
 schema.host.text.multiple_notification: Die Benachrichtigungen für mehrere Hosts ein- oder ausschalten
 schema.host.text.multiple_activate: Mehrere Hosts aktivieren oder deaktivieren
@@ -708,7 +708,7 @@ schema.chart.attr.datetime: Datum und Uhrzeit
 schema.chart.attr.from_to: Von %s bis %s
 schema.chart.attr.charts: Charts
 schema.chart.desc.charts: <b>Mehrere Charts können ausgewählt werden mittels</b><br/><br/>
- <i>STRG+Klick</i><br/>oder<br/><i>SHIFT+Klick</i>
+ <i>STRG+Klick</i><br/>oder<br/><i>linke Maustaste drücken + halten + Mauszeiger bewegen</i>
 schema.chart.text.multiple_view: Chart Ansicht
 schema.chart.text.view: Charts für Host %s
 schema.chart.text.multiview: Anzeige mehrerer Charts
@@ -876,8 +876,8 @@ schema.service.text.select_location_check_type_info: Klicke auf die Buttons um e
 schema.service.text.multiple_help: <h4>Diese Aktion erfordert, dass mindestens ein Service ausgewählt ist.</h4>
  Um einen einzelnen Service zu markieren, klicken Sie auf die entsprechende Zeile.
  Wenn Sie mehrere Services markieren möchten, halten Sie einfach die Taste <i>STRG</i>
- auf Ihrer Tastatur gedrückt. Beim Drücken und Halten der <i>SHIFT</i>-Taste kann ein
- größerer Bereich von Hosts gewählt werden.
+ auf Ihrer Tastatur gedrückt. Beim Drücken und Halten der der linken Maustaste und dem
+ Bewegen des Mauszeigers kann ein größerer Bereich von Hosts gewählt werden.
 schema.service.text.multiple_downtimes: Eine geplante Wartungsarbeit für mehrere Services einrichten
 schema.service.text.multiple_notification: Die Benachrichtigungen für mehrere Services ein- oder ausschalten
 schema.service.text.multiple_activate: Mehrere Services aktivieren oder deaktivieren
