@@ -707,7 +707,7 @@ schema.chart.attr.datetime: Date and time
 schema.chart.attr.from_to: From <b>%s</b> to <b>%s</b>
 schema.chart.attr.charts: Charts
 schema.chart.desc.charts: <b>Select multiple charts with</b><br/><br/>
- <i>CTRL+click</i><br/>or<br/><i>press + hold left mouse button + move pointer</i>
+ <i>CTRL + click</i><br/>or<br/><i>press + hold left mouse button + move pointer</i>
 schema.chart.text.multiple_view: Chart view
 schema.chart.text.view: Charts for host <b>%s</b>
 schema.chart.text.multiview: View multiple charts

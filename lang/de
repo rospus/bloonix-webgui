@@ -708,7 +708,7 @@ schema.chart.attr.datetime: Datum und Uhrzeit
 schema.chart.attr.from_to: Von %s bis %s
 schema.chart.attr.charts: Charts
 schema.chart.desc.charts: <b>Mehrere Charts können ausgewählt werden mittels</b><br/><br/>
- <i>STRG+Klick</i><br/>oder<br/><i>linke Maustaste drücken + halten + Mauszeiger bewegen</i>
+ <i>STRG + Klick</i><br/>oder<br/><i>linke Maustaste drücken + halten + Mauszeiger bewegen</i>
 schema.chart.text.multiple_view: Chart Ansicht
 schema.chart.text.view: Charts für Host %s
 schema.chart.text.multiview: Anzeige mehrerer Charts
