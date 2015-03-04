@@ -145,16 +145,17 @@ Utils.secondsToStringShortReadable = function(seconds) {
 
     if (list[0] != "0") {
         toReturn.push(list[0] +"d");
+    }
+    if (list[1] != "0") {
         toReturn.push(list[1] +"h");
-        toReturn.push(list[2] +"m");
-    } else if (list[1] != "0") {
-        toReturn.push(list[1] +"h");
-        toReturn.push(list[2] +"m");
-    } else if (list[2] != "0") {
+    }
+    if (list[2] != "0") {
         toReturn.push(list[2] +"m");
     }
+    if (list[3] != "0") {
+        toReturn.push(list[3] +"s");
+    }
 
-    toReturn.push(list[3] +"s");
     return toReturn.join(", ");
 };
 

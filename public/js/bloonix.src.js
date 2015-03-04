@@ -362,16 +362,17 @@ Utils.secondsToStringShortReadable = function(seconds) {
 
     if (list[0] != "0") {
         toReturn.push(list[0] +"d");
+    }
+    if (list[1] != "0") {
         toReturn.push(list[1] +"h");
-        toReturn.push(list[2] +"m");
-    } else if (list[1] != "0") {
-        toReturn.push(list[1] +"h");
-        toReturn.push(list[2] +"m");
-    } else if (list[2] != "0") {
+    }
+    if (list[2] != "0") {
         toReturn.push(list[2] +"m");
     }
+    if (list[3] != "0") {
+        toReturn.push(list[3] +"s");
+    }
 
-    toReturn.push(list[3] +"s");
     return toReturn.join(", ");
 };
 
@@ -774,7 +775,7 @@ var Lang = {
       "word.From" : "From",
       "text.from_now_to_2h" : "From now + 2 hours",
       "site.login.error" : "Bad login! Try it again!",
-      "schema.chart.desc.charts" : "<b>Select multiple charts with</b><br/><br/>\n<i>CTRL+click</i><br/>or<br/><i>press + hold left mouse button + move pointer</i>",
+      "schema.chart.desc.charts" : "<b>Select multiple charts with</b><br/><br/>\n<i>CTRL + click</i><br/>or<br/><i>press + hold left mouse button + move pointer</i>",
       "nav.main.dashboard" : "DASHBOARD",
       "site.login.request_success" : "Your request was successful.<br/>\nAn administrator will contact you as soon as possible.",
       "schema.contact.desc.company_id" : "Select the company the contact belongs to.",
@@ -1756,7 +1757,7 @@ var Lang = {
       "word.From" : "Von",
       "text.from_now_to_2h" : "Von jetzt + 2 Stunden",
       "site.login.error" : "Einloggen fehlgeschlagen! Versuchen Sie es erneut!",
-      "schema.chart.desc.charts" : "<b>Mehrere Charts können ausgewählt werden mittels</b><br/><br/>\n<i>STRG+Klick</i><br/>oder<br/><i>linke Maustaste drücken + halten + Mauszeiger bewegen</i>",
+      "schema.chart.desc.charts" : "<b>Mehrere Charts können ausgewählt werden mittels</b><br/><br/>\n<i>STRG + Klick</i><br/>oder<br/><i>linke Maustaste drücken + halten + Mauszeiger bewegen</i>",
       "nav.main.dashboard" : "DASHBOARD",
       "site.login.request_success" : "Ihre Anfrage wurde erfolgreich zugestellt.<br/>\nEin Administrator wird Sie so schnell wie möglich kontaktieren.",
       "schema.contact.desc.company_id" : "Wähle ein Unternehmen zu dem der Kontakt gehört",
@@ -16502,6 +16503,7 @@ Bloonix.createServiceForm = function(o) {
             checked: this.values.interval,
             secondsToFormValues: true,
             nullString: Text.get("text.inherited_from_host")
+                +" ("+ Utils.secondsToStringShortReadable(this.host.interval) +")"
         });
 
         this.form.createElement({
@@ -16513,6 +16515,7 @@ Bloonix.createServiceForm = function(o) {
             checked: this.values.timeout,
             secondsToFormValues: true,
             nullString: Text.get("text.inherited_from_host")
+                +" ("+ Utils.secondsToStringShortReadable(this.host.timeout) +")"
         });
     };
 

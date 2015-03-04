@@ -1258,6 +1258,7 @@ Bloonix.createServiceForm = function(o) {
             checked: this.values.interval,
             secondsToFormValues: true,
             nullString: Text.get("text.inherited_from_host")
+                +" ("+ Utils.secondsToStringShortReadable(this.host.interval) +")"
         });
 
         this.form.createElement({
@@ -1269,6 +1270,7 @@ Bloonix.createServiceForm = function(o) {
             checked: this.values.timeout,
             secondsToFormValues: true,
             nullString: Text.get("text.inherited_from_host")
+                +" ("+ Utils.secondsToStringShortReadable(this.host.timeout) +")"
         });
     };
 
