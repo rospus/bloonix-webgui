@@ -8397,6 +8397,7 @@ Overlay.prototype = {
     title: false,
     content: false,
     buttons: false,
+    buttonsByAlias: {},
     closeText: Text.get("action.close"),
     showCloseButton: true,
     width: false,
@@ -8449,15 +8450,27 @@ Overlay.prototype.create = function() {
 
     if (this.buttons) {
         $.each(this.buttons, function(i, item) {
-            Utils.create("div")
+            var button = Utils.create("div")
                 .addClass(self.buttonClass)
                 .html(item.content)
                 .click(function() {
-                    item.callback(item.content, self);
-                    if (item.close != false) {
+                    if (item.callback) {
+                        item.callback(item.content, self);
+                    }
+                    if (item.close !== false) {
                         self.close();
                     }
-                }).appendTo(buttonContainer);
+                });
+
+            if (item.hide === true) {
+                button.hide();
+            }
+
+            button.appendTo(buttonContainer);
+
+            if (item.alias) {
+                self.buttonsByAlias[item.alias] = button;
+            }
         });
     }
 
@@ -8480,6 +8493,14 @@ Overlay.prototype.create = function() {
     this.outerContainer.fadeIn(400);
     this.innerContainer.fadeIn(400);
     return this;
+};
+
+Overlay.prototype.getButton = function(alias) {
+    return this.buttonsByAlias[alias];
+};
+
+Overlay.prototype.getButtons = function() {
+    return this.buttonsByAlias;
 };
 
 Overlay.prototype.setWidth = function(width) {
@@ -20074,7 +20095,13 @@ Bloonix.createUserChart = function(o) {
         this.overlay = new Overlay({
             title: Text.get("schema.user_chart.text.add_metric"),
             content: this.overlayContent,
-            width: "1000px"
+            width: "1000px",
+            buttons: [{
+                content: Text.get("action.submit"),
+                alias: "Submit",
+                hide: true,
+                close: false
+            }]
         }).create();
     };
 
@@ -20185,6 +20212,7 @@ Bloonix.createUserChart = function(o) {
             icons: [{
                 type: "go-back",
                 callback: function() { 
+                    self.overlay.getButton("Submit").hide();
                     self.serviceList.hide();
                     self.serviceList.html("");
                     self.pluginStatsList.show(300);
@@ -20197,6 +20225,7 @@ Bloonix.createUserChart = function(o) {
             .appendTo(this.serviceList);
 
         var rightBox = Utils.create("div")
+            .attr("id", "int-chart-selection-services-selected")
             .addClass("chart-selection-services-selected")
             .appendTo(this.serviceList);
 
@@ -20217,6 +20246,8 @@ Bloonix.createUserChart = function(o) {
             },
             columnSwitcher: true,
             onClick: function(row) {
+                $("#int-chart-selection-services-selected").removeClass("rwb");
+
                 var li = Utils.create("li")
                     .data("service-id", row.id)
                     .data("statkey", plugin.statkey)
@@ -20249,13 +20280,9 @@ Bloonix.createUserChart = function(o) {
             ]
         }).create();
 
-        var button = Utils.create("div")
-            .addClass("btn btn-white btn-medium")
-            .css({ "margin-top": "12px" })
-            .text(Text.get("action.submit"))
-            .appendTo(leftBox);
+        this.overlay.getButton("Submit").show().click(function() {
+            var i = 0;
 
-        button.click(function() {
             selectedList.find("li").each(function() {
                 var id = $(this).data("service-id"),
                     key = $(this).data("statkey"),
@@ -20271,8 +20298,17 @@ Bloonix.createUserChart = function(o) {
                     }
                 });
 
-                self.overlay.close();
+                i++;
             });
+
+            // If no service is selected and the user clicks
+            // on the submit button, then the select field
+            // is marked with a red border.
+            if (i == 0) {
+                $("#int-chart-selection-services-selected").addClass("rwb");
+            } else {
+                self.overlay.close();
+            }
         });
     };
 

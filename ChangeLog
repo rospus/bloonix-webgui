@@ -3,6 +3,7 @@ bloonix-webgui (0.33) released at 2015-XX-XX
     * Modified ES template and force object some keys to type 'string'.
     * Fixed building of location option for templates.
     * Show the inherited time values for timeouts and intervals for services.
+    * Moved the submit button to create user charts into the overlay footer.
 
 bloonix-webgui (0.32) released at 2015-02-16
 

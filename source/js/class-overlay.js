@@ -12,6 +12,7 @@ Overlay.prototype = {
     title: false,
     content: false,
     buttons: false,
+    buttonsByAlias: {},
     closeText: Text.get("action.close"),
     showCloseButton: true,
     width: false,
@@ -64,15 +65,27 @@ Overlay.prototype.create = function() {
 
     if (this.buttons) {
         $.each(this.buttons, function(i, item) {
-            Utils.create("div")
+            var button = Utils.create("div")
                 .addClass(self.buttonClass)
                 .html(item.content)
                 .click(function() {
-                    item.callback(item.content, self);
-                    if (item.close != false) {
+                    if (item.callback) {
+                        item.callback(item.content, self);
+                    }
+                    if (item.close !== false) {
                         self.close();
                     }
-                }).appendTo(buttonContainer);
+                });
+
+            if (item.hide === true) {
+                button.hide();
+            }
+
+            button.appendTo(buttonContainer);
+
+            if (item.alias) {
+                self.buttonsByAlias[item.alias] = button;
+            }
         });
     }
 
@@ -95,6 +108,14 @@ Overlay.prototype.create = function() {
     this.outerContainer.fadeIn(400);
     this.innerContainer.fadeIn(400);
     return this;
+};
+
+Overlay.prototype.getButton = function(alias) {
+    return this.buttonsByAlias[alias];
+};
+
+Overlay.prototype.getButtons = function() {
+    return this.buttonsByAlias;
 };
 
 Overlay.prototype.setWidth = function(width) {
