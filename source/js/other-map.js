@@ -462,7 +462,7 @@ Bloonix.other.mapRegions = {
     "re": "Reunion",
     "ro": "Romania",
     "rs": "Serbia",
-    "ru": "Russian Federationß",
+    "ru": "Russian Federation",
     "rw": "Rwanda",
     "sa": "Saudi Arabia",
     "sb": "Solomon Islands",
