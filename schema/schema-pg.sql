@@ -392,9 +392,10 @@ CREATE TABLE "service" (
     "notification"              CHAR(1) NOT NULL DEFAULT 1,
     "agent_version"             VARCHAR(10) NOT NULL DEFAULT '0',   -- the agent version
     "subkeys"                   TEXT,                               -- store subkeys of plugin statistics, comma separated
-    "active_comment"            VARCHAR(400) DEFAULT 'no comment',  -- add a comment why the service was deactivated
-    "acknowledged_comment"      VARCHAR(400) DEFAULT 'no comment',  -- add a comment why the service was acknowledged
-    "notification_comment"      VARCHAR(400) DEFAULT 'no comment',  -- add a comment why the notification was disabled
+    "active_comment"            VARCHAR(400) DEFAULT 'no comment',  -- who activated/deactivated the service
+    "acknowledged_comment"      VARCHAR(400) DEFAULT 'no comment',  -- who acknowledged or cleared the acknowledgement of the service
+    "notification_comment"      VARCHAR(400) DEFAULT 'no comment',  -- who enabled/disabled the notifications of the service
+    "volatile_comment"          VARCHAR(400) DEFAULT 'no comment',  -- who cleared the status of the service
     "attempt_counter"           SMALLINT NOT NULL DEFAULT 1,        -- attempt counter
     "last_mail"                 BIGINT NOT NULL DEFAULT 0,          -- the last time a email was send in seconds
     "last_mail_time"            BIGINT NOT NULL DEFAULT 0,          -- the last time a email was send in seconds
@@ -717,6 +718,6 @@ CREATE TABLE "maintenance" (
     "active" BIGINT NOT NULL DEFAULT 0
 );
 
-INSERT INTO "maintenance" ("version", "active") values ('0.1', '0');
+INSERT INTO "maintenance" ("version", "active") values ('2', '0');
 
 -- End.

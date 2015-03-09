@@ -169,6 +169,34 @@ sub update {
     my $data = $c->plugin->service->validate($service)
         or return;
 
+    my $username = $c->user->{username};
+    my $user_id = $c->user->{id};
+    my $timestamp = $c->plugin->util->timestamp;
+
+    if (exists $data->{active} && $service->{active} != $data->{active}) {
+        $data->{active_comment} = $data->{active} == 0
+            ? "service deactivated by $username($user_id) at $timestamp"
+            : "service activated by $username($user_id) at $timestamp";
+    }
+
+    if (exists $data->{notification} && $service->{notification} != $data->{notification}) {
+        $data->{notification_comment} = $data->{notification} == 0
+            ? "service notification disabled by $username($user_id) at $timestamp"
+            : "service notification enabled by $username($user_id) at $timestamp";
+    }
+
+    if (exists $data->{acknowledged} && $service->{acknowledged} != $data->{acknowledged}) {
+        $data->{acknowledged_comment} = $data->{acknowledged} == 0
+            ? "service acknowledgement cleared by $username($user_id) at $timestamp"
+            : "service acknowledged by $username($user_id) at $timestamp";
+    }
+
+    if (exists $data->{volatile_status} && $service->{volatile_status} != $data->{volatile_status}) {
+        $data->{volatile_comment} = $data->{volatile_status} == 0
+            ? "volatile status cleared by $username($user_id) at $timestamp"
+            : "volatile status enabled by $username($user_id) at $timestamp";
+    }
+
     $c->model->database->service->update_service($service->{id}, $service->{service_parameter_id}, $data)
         or return $c->plugin->error->action_failed;
 

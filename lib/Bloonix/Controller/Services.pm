@@ -254,21 +254,31 @@ sub action {
     }
 
     my %update;
+    my $username = $c->user->{username};
+    my $user_id = $c->user->{id};
+    my $timestamp = $c->plugin->util->timestamp;
 
     if ($opts->{action} eq "activate") {
         $update{active} = 1;
+        $update{active_comment} = "service activated by $username($user_id) at $timestamp";
     } elsif ($opts->{action} eq "deactivate") {
         $update{active} = 0;
+        $update{active_comment} = "service deactivated by $username($user_id) at $timestamp";
     } elsif ($opts->{action} eq "enable-notification") {
         $update{notification} = 1;
+        $update{notification_comment} = "service notification enabled by $username($user_id) at $timestamp";
     } elsif ($opts->{action} eq "disable-notification") {
         $update{notification} = 0;
+        $update{notification_comment} = "service notification disabled by $username($user_id) at $timestamp";
     } elsif ($opts->{action} eq "acknowledge") {
         $update{acknowledged} = 1;
+        $update{acknowledged_comment} = "service acknowledged by $username($user_id) at $timestamp";
     } elsif ($opts->{action} eq "clear-acknowledgement") {
         $update{acknowledged} = 0;
+        $update{acknowledged_comment} = "service acknowledgement cleared by $username($user_id) at $timestamp";
     } elsif ($opts->{action} eq "clear-volatile-status") {
         $update{volatile_status} = 0;
+        $update{volatile_comment} = "volatile status cleared by $username($user_id) at $timestamp";
     } elsif ($opts->{action} eq "force-next-check") {
         $update{force_check} = 1;
     }

@@ -1249,6 +1249,15 @@ Bloonix.createServiceForm = function(o) {
             checked: this.values.passive_check
         });
 
+        var intervalNullStrText = Text.get("text.inherited_from_host"),
+            timeoutNullStrText = Text.get("text.inherited_from_host");
+
+        // if it's a template, then this.host is undefined
+        if (this.host) {
+            intervalNullStrText += " ("+ Utils.secondsToStringShortReadable(this.host.interval) +")";
+            timeoutNullStrText += " ("+ Utils.secondsToStringShortReadable(this.host.interval) +")";
+        }
+
         this.form.createElement({
             text: Text.get("schema.service.attr.interval"),
             desc: Text.get("schema.service.desc.interval"),
@@ -1257,8 +1266,7 @@ Bloonix.createServiceForm = function(o) {
             options: this.options.interval,
             checked: this.values.interval,
             secondsToFormValues: true,
-            nullString: Text.get("text.inherited_from_host")
-                +" ("+ Utils.secondsToStringShortReadable(this.host.interval) +")"
+            nullString: intervalNullStrText
         });
 
         this.form.createElement({
@@ -1269,8 +1277,7 @@ Bloonix.createServiceForm = function(o) {
             options: this.options.timeout,
             checked: this.values.timeout,
             secondsToFormValues: true,
-            nullString: Text.get("text.inherited_from_host")
-                +" ("+ Utils.secondsToStringShortReadable(this.host.timeout) +")"
+            nullString: timeoutNullStrText
         });
     };
 

@@ -1147,7 +1147,7 @@ sub update_service {
     my ($self, $service_id, $service_parameter_id, $service_parameter_options) = @_;
     my $service_options = {};
 
-    foreach my $key (qw/active acknowledged notification/) {
+    foreach my $key (qw/active active_comment acknowledged acknowledged_comment notification notification_comment volatile_comment/) {
         if (defined $service_parameter_options->{$key}) {
             $service_options->{$key} = delete $service_parameter_options->{$key};
         }

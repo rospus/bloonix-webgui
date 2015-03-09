@@ -8,7 +8,7 @@ use base qw(Bloonix::DBI::CRUD);
 sub init {
     my $self = shift;
 
-    $self->{schema_version} = 1;
+    $self->{schema_version} = 2;
 
     #$self->log->warning("#", "-" x 50);
     $self->log->warning("start upgrade database schema");
@@ -78,6 +78,10 @@ sub run_upgrade {
         $self->check_service_force_check;
     }
 
+    if ($version <= 1) {
+        $self->check_service_volatile_comment;
+    }
+
     $self->update_version;
 }
 
@@ -90,6 +94,14 @@ sub check_service_force_check {
 
     if (!$self->exist(host => "data_retention")) {
         $self->upgrade("alter table host add column data_retention smallint default 3650");
+    }
+}
+
+sub check_service_volatile_comment {
+    my $self = shift;
+
+    if (!$self->exist(service => "volatile_comment")) {
+        $self->upgrade("alter table service add column volatile_comment varchar(400) default 'no comment'");
     }
 }
 
