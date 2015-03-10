@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.32
+Version: 0.33
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -61,6 +61,13 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Tue Mar 10 2015 Jonny Schulz <js@bloonix.de> - 0.33-1
+- Modified ES template and force object some keys to type 'string'.
+- Fixed building of location option for templates.
+- Show the inherited time values for timeouts and intervals for services.
+- Moved the submit button to create user charts into the overlay footer.
+- Added column volatile_comment to table service.
+- Now all actions (acknowlegded, notification, active, volatile) will be logged.
 * Mon Feb 16 2015 Jonny Schulz <js@bloonix.de> - 0.32-1
 - Improved the database upgrade.
 - Migrate dashboard width from 9 to 12 and height from 6 to 12.

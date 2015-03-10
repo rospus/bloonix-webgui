@@ -1,3 +1,14 @@
+bloonix-webgui (0.33-1) unstable; urgency=low
+
+    * Modified ES template and force object some keys to type 'string'.
+    * Fixed building of location option for templates.
+    * Show the inherited time values for timeouts and intervals for services.
+    * Moved the submit button to create user charts into the overlay footer.
+    * Added column volatile_comment to table service.
+    * Now all actions (acknowlegded, notification, active, volatile) will be logged.
+
+ -- Jonny Schulz <js@bloonix.de>  Tue, 10 Mar 2015 01:05:43 +0100
+
 bloonix-webgui (0.32-1) unstable; urgency=low
 
     * Improved the database upgrade.

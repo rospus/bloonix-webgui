@@ -16521,7 +16521,7 @@ Bloonix.createServiceForm = function(o) {
         // if it's a template, then this.host is undefined
         if (this.host) {
             intervalNullStrText += " ("+ Utils.secondsToStringShortReadable(this.host.interval) +")";
-            timeoutNullStrText += " ("+ Utils.secondsToStringShortReadable(this.host.interval) +")";
+            timeoutNullStrText += " ("+ Utils.secondsToStringShortReadable(this.host.timeout) +")";
         }
 
         this.form.createElement({

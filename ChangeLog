@@ -1,4 +1,4 @@
-bloonix-webgui (0.33) released at 2015-XX-XX
+bloonix-webgui (0.33) released at 2015-03-10
 
     * Modified ES template and force object some keys to type 'string'.
     * Fixed building of location option for templates.
