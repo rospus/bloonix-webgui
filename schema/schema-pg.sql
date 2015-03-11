@@ -185,6 +185,7 @@ CREATE TABLE "host" (
     "coordinates"           VARCHAR(100) DEFAULT '',
     "creation_time"         TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "variables"             TEXT NOT NULL DEFAULT '{}',
+    "data_retention"        SMALLINT DEFAULT 3650,
     UNIQUE("hostname", "company_id")
 );
 
