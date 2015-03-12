@@ -844,8 +844,8 @@ Bloonix.dashboard = function(o) {
     };
 
     object.startSortOrResizeDashlets = function() {
-        $(".dashlet-outer").css({ "border": "1px dashed #444444" });
-        $(".dashlet").css({ "border": "1px dashed #c1c1c1" });
+        $(".dashlet-outer").css({ "border": "1px dashed #c1c1c1" });
+        $(".dashlet").css({ "border": "1px dashed #444444" });
     };
 
     object.stopSortOrResizeDashlets = function() {
