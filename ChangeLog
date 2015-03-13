@@ -1,3 +1,7 @@
+bloonix-webgui (0.35) released at 2015-03-13
+
+    * Fixed column creation for the service table.
+
 bloonix-webgui (0.34) released at 2015-03-11
 
     * Added column data_retention to table host.

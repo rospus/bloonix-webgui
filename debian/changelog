@@ -1,3 +1,9 @@
+bloonix-webgui (0.35-1) unstable; urgency=low
+
+    * Fixed column creation for the service table.
+
+ -- Jonny Schulz <js@bloonix.de>  Fri, 13 Mar 2015 13:12:12 +0100
+
 bloonix-webgui (0.34-1) unstable; urgency=low
 
     * Added column data_retention to table host.

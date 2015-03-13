@@ -8,7 +8,7 @@ use base qw(Bloonix::DBI::CRUD);
 sub init {
     my $self = shift;
 
-    $self->{schema_version} = 2;
+    $self->{schema_version} = 3;
 
     #$self->log->warning("#", "-" x 50);
     $self->log->warning("start upgrade database schema");
@@ -78,7 +78,7 @@ sub run_upgrade {
         $self->check_service_force_check;
     }
 
-    if ($version <= 1) {
+    if ($version <= 2) {
         $self->check_service_volatile_comment;
     }
 
