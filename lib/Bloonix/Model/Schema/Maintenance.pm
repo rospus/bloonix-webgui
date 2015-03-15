@@ -8,7 +8,7 @@ use base qw(Bloonix::DBI::CRUD);
 sub init {
     my $self = shift;
 
-    $self->{schema_version} = 3;
+    $self->{schema_version} = 4;
 
     #$self->log->warning("#", "-" x 50);
     $self->log->warning("start upgrade database schema");
@@ -82,6 +82,10 @@ sub run_upgrade {
         $self->check_service_volatile_comment;
     }
 
+    if ($version <= 3) {
+        $self->check_company_max_columns;
+    }
+
     $self->update_version;
 }
 
@@ -102,6 +106,17 @@ sub check_service_volatile_comment {
 
     if (!$self->exist(service => "volatile_comment")) {
         $self->upgrade("alter table service add column volatile_comment varchar(400) default 'no comment'");
+    }
+}
+
+
+sub check_company_max_columns {
+    my $self = shift;
+
+    foreach my $col (qw/templates hosts contacts contactgroups groups timeperiods timeslices groups users/) {
+        if (!$self->exist(company => "max_$col")) {
+            $self->upgrade("alter table company add column max_$col integer not null default 0");
+        }
     }
 }
 

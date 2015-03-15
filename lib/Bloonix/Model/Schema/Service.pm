@@ -559,11 +559,11 @@ sub by_user_id {
             sn => "service_parameter.service_name", service_name => "service_parameter.service_name",
             p => "plugin.plugin", plugin => "plugin.plugin",
             s => "service.status", status => "service.status",
-            m => "service.message", message => "service.message",
+            i => "service_parameter.agent_id", agent_id => "service_parameter.agent_id"
         },
         concat => [
             "host.hostname", "service_parameter.service_name", "service_parameter.plugin_id",
-            "service.status", "service.message",
+            "service.status", "service.message", "service_parameter.agent_id"
         ],
         delimiter => " ",
         select => \@select,
