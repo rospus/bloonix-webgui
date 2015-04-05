@@ -1,3 +1,7 @@
+bloonix-webgui (0.36) released at 2015-04-02
+
+    * Limits implemented.
+
 bloonix-webgui (0.35) released at 2015-03-13
 
     * Fixed column creation for the service table.
