@@ -10,12 +10,10 @@ sub init {
 
     $self->{schema_version} = 4;
 
-    #$self->log->warning("#", "-" x 50);
     $self->log->warning("start upgrade database schema");
     $self->dbi->reconnect;
     $self->run_upgrade;
     $self->log->warning("upgrade finished");
-    #$self->log->warning("#", "-" x 50);
 }
 
 sub get_version {
@@ -129,9 +127,9 @@ sub check_company_limits {
         max_downtimes_per_host      => [ qw(smallint 1000) ],
         max_chart_views_per_user    => [ qw(bigint 50) ],
         max_charts_per_user         => [ qw(bigint 1000) ],
-        max_metrics_per_chart       => [ qw(smallint 100) ],
-        max_dashboards_per_user     => [ qw(smallint 100) ],
-        max_dashlets_per_dashboard  => [ qw(smallint 100) ]
+        max_metrics_per_chart       => [ qw(smallint 50) ],
+        max_dashboards_per_user     => [ qw(smallint 50) ],
+        max_dashlets_per_dashboard  => [ qw(smallint 50) ]
     );
 
     while (my ($col, $val) = each %limit) {

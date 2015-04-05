@@ -82,12 +82,12 @@ sub init {
         max_hosts => {
             min_val => 0,
             max_val => 9_999_999_999,
-            default => 0
+            default => 10000
         },
         max_services => {
             min_val => 0,
             max_val => 9_999_999_999,
-            default => 0
+            default => 10000 
         },
         max_services_per_host => {
             min_val => 0,
@@ -147,22 +147,22 @@ sub init {
         max_metrics_per_chart => {
             min_val => 0,
             max_val => 100,
-            default => 100
+            default => 50
         },
         max_dashboards_per_user => {
             min_val => 0,
             max_val => 32767,
-            default => 100
+            default => 50
         },
         max_dashlets_per_dashboard => {
             min_val => 0,
             max_val => 32767,
-            default => 100
+            default => 50
         },
         max_sms => {
             min_val => 0,
             max_val => 999_999_999,
-            default => 0
+            default => 10000
         },
         sms_enabled => {
             regex => qr/^\d+\z/,

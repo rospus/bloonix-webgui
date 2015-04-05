@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.35
+Version: 0.36
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -61,6 +61,8 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Sun Apr 05 2015 Jonny Schulz <js@bloonix.de> - 0.36-1
+- Limits implemented.
 * Fri Mar 13 2015 Jonny Schulz <js@bloonix.de> - 0.35-1
 - Fixed column creation for the service table.
 * Wed Mar 11 2015 Jonny Schulz <js@bloonix.de> - 0.34-1
