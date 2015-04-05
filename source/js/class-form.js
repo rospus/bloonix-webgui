@@ -82,6 +82,8 @@ Form.prototype.input = function(o) {
         placeholder: false,
         minlength: false,
         maxlength: false,
+        minvalue: false,
+        maxvalue: false,
         pattern: false,
         autocomplete: false,
         name: "not-available",
@@ -166,7 +168,7 @@ Form.prototype.input = function(o) {
             }).create();
         }
 
-        $.each(["id","placeholder","minlength","maxlength","pattern"], function(i, key) {
+        $.each(["id","placeholder","minlength","maxlength","minvalue","maxvalue","pattern"], function(i, key) {
             if (self[key] != false) {
                 self.input.attr(key, self[key]);
             }
@@ -270,7 +272,7 @@ Form.prototype.textarea = function(o) {
             this.textarea.css(this.css);
         }
 
-        $.each(["id","placeholder","minlength","maxlength"], function(i, key) {
+        $.each(["id","placeholder","minlength","maxlength","minvalue","maxvalue"], function(i, key) {
             if (self[key] != false) {
                 self.textarea.attr(key, self[key]);
             }
@@ -1404,7 +1406,7 @@ Form.prototype.createElement = function(e) {
             .appendTo(descBox);
     }
 
-    if (e.minlength != undefined || e.maxlength != undefined) {
+    if (e.minlength != undefined || e.maxlength != undefined || e.minvalue != undefined || e.maxvalue != undefined) {
         hasDesc = true;
         var small = Utils.create("small")
             .appendTo(descBox);
@@ -1417,6 +1419,19 @@ Form.prototype.createElement = function(e) {
         if (e.maxlength != undefined) {
             Utils.create("div")
                 .html(Text.get("text.max_length", e.maxlength))
+                .appendTo(small);
+        }
+        if (e.minvalue != undefined && e.maxvalue != undefined) {
+            Utils.create("div")
+                .html(Text.get("text.range_value", [ e.minvalue, e.maxvalue ]))
+                .appendTo(small);
+        } else if (e.minvalue != undefined) {
+            Utils.create("div")
+                .html(Text.get("text.min_value", e.minvalue))
+                .appendTo(small);
+        } else if (e.maxvalue != undefined) {
+            Utils.create("div")
+                .html(Text.get("text.max_value", e.maxvalue))
                 .appendTo(small);
         }
     }

@@ -1,10 +1,10 @@
 var Utils = function() {};
 
 Utils.escape = function(str){
-    if (str == undefined) {
+    if (str === undefined) {
         return "";
     }
-    if (typeof str == "number") {
+    if (typeof str === "number") {
         return str;
     }
     str = str.replace(/&/g, "&amp;");
@@ -255,6 +255,27 @@ Utils.append = function(a, b) {
             }
         }
     }
+};
+
+/* Shift options from b to a new object. a should be an array with
+   keys that are delete from b and stored to r. r will be returned
+   as a new object. */
+Utils.shift = function(a, b) {
+    var n, r = {}, c = {};
+
+    if (b) {
+        for (n in b) {
+            c[n] = 1;
+        }
+        for (n in a) {
+            if (c[n] === 1) {
+                r[n] = b[n];
+                delete b[n];
+            }
+        }
+    }
+
+    return r;
 };
 
 /* Filter empty values from an object.

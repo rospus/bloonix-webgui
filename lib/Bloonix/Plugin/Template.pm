@@ -16,15 +16,36 @@ sub add_hosts_to_template {
     my ($self, $host_template_id, $host_ids) = @_;
     my $c = $self->c;
 
-    $c->plugin->transaction->begin
-        or return undef;
+    my $host_template_services = $c->model->database->service_parameter->search(
+        condition => [ host_template_id => $host_template_id ]
+    );  
+
+    my $count_services = $c->model->database->service->count_by_company_id($c->user->{company_id});
+    my $add_services = scalar @$host_ids * scalar @$host_template_services;
+
+    if ($c->user->{max_services} && $count_services + $add_services >= $c->user->{max_services}) {
+        $c->plugin->error->limit_error("err-832" => $c->user->{max_services});
+        return undef;
+    }
+
+    if (!$c->model->database->begin_transaction) {
+        $c->plugin->error->action_failed;
+        return undef;
+    }
 
     eval {
-        my $host_template_services = $c->model->database->service_parameter->search(
-            condition => [ host_template_id => $host_template_id ]
-        );  
+        local $SIG{__DIE__} = "DEFAULT";
 
         foreach my $host_id (@$host_ids) {
+            my $count_services_per_host = $c->model->database->service->count(
+                id => condition => [ host_id => $host_id ]
+            );
+
+            if ($count_services_per_host + scalar @$host_template_services > $c->user->{max_services_per_host}) {
+                $c->plugin->error->limit_error("err-834" => $c->user->{max_services_per_host}, $host_id);
+                die "service limit exceeded";
+            }
+
             $c->model->database->host_template_host->create({
                 host_id => $host_id,
                 host_template_id => $host_template_id
@@ -53,12 +74,14 @@ sub add_hosts_to_template {
     };
 
     if ($@) {
-        $c->plugin->transaction->rollback;
+        if (!$c->model->database->rollback_transaction) {
+            $c->plugin->error->action_failed;
+        }
+        return undef;
+    } elsif (!$c->model->database->end_transaction) {
+        $c->plugin->error->action_failed;
         return undef;
     }
-
-    $c->plugin->transaction->end
-        or return undef;
 
     return 1;
 }
@@ -67,10 +90,13 @@ sub add_templates_to_host {
     my ($self, $host_id, $host_template_ids) = @_;
     my $c = $self->c;
 
-    $c->plugin->transaction->begin
-        or return undef;
+    if (!$c->model->database->begin_transaction) {
+        $c->plugin->error->action_failed;
+        return undef;
+    }
 
     eval {
+        local $SIG{__DIE__} = "DEFAULT";
         my $services_added = 0;
 
         foreach my $host_template_id (@$host_template_ids) {
@@ -91,6 +117,19 @@ sub add_templates_to_host {
                 condition => [ host_template_id => $host_template_id ]
             );
 
+            my $count_services = $c->model->database->service->count_by_company_id($c->user->{company_id});
+            my $count_services_per_host = $c->model->database->service->count(id => condition => [ host_id => $host_id ]);
+
+            if ($count_services + scalar @$host_template_services > $c->user->{max_services}) {
+                $c->plugin->error->limit_error("err-832" => $c->user->{max_services});
+                die "service limit exceeded";
+            }
+
+            if ($count_services_per_host + scalar @$host_template_services > $c->user->{max_services_per_host}) {
+                $c->plugin->error->limit_error("err-834" => $c->user->{max_services_per_host}, $host_id);
+                die "service limit exceeded";
+            }
+
             foreach my $hs (@$host_template_services) {
                 $self->create_service($hs->{ref_id}, $host_id);
                 $services_added++;
@@ -105,12 +144,14 @@ sub add_templates_to_host {
     };
 
     if ($@) {
-        $c->plugin->transaction->rollback;
+        if (!$c->model->database->rollback_transaction) {
+            $c->plugin->error->action_failed;
+        }
+        return undef;
+    } elsif (!$c->model->database->end_transaction) {
+        $c->plugin->error->action_failed;
         return undef;
     }
-
-    $c->plugin->transaction->end
-        or return undef;
 
     return 1;
 }
@@ -218,8 +259,7 @@ sub remove_templates_from_host {
     };
 
     if ($@) {
-        $c->plugin->transaction->rollback;
-        return undef;
+        return $c->plugin->transaction->rollback;
     }
 
     $c->plugin->transaction->end

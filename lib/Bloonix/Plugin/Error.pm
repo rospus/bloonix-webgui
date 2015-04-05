@@ -175,12 +175,9 @@ sub passwords_must_be_different {
     $self->_error("err-705");
 }
 
-sub no_more_services_available {
-    my ($self, $value) = @_;
-    $self->_error(
-        $value == 1 ? "err-800" : "err-801",
-        $value
-    );
+sub limit_error {
+    my $self = shift;
+    $self->_error(@_);
 }
 
 sub feature_not_available {

@@ -125,8 +125,16 @@ sub create {
 
     my $count_services = $c->model->database->service->count_by_company_id($c->user->{company_id});
 
-    if ($c->user->{max_services} != 0 && $count_services >= $c->user->{max_services}) {
-        return $c->plugin->error->no_more_services_available($c->user->{max_services});
+    if ($c->user->{max_services} && $count_services >= $c->user->{max_services}) {
+        return $c->plugin->error->limit_error("err-832" => $c->user->{max_services});
+    }
+
+    my $count_services_per_host = $c->model->database->service->count(
+        id => condition => [ host_id => $opts->{id} ]
+    );
+
+    if ($count_services_per_host >= $c->user->{max_services_per_host}) {
+        return $c->plugin->error->limit_error("err-833" => $c->user->{max_services_per_host});
     }
 
     $c->model->database->user_group->can_create_service(

@@ -11,8 +11,6 @@ sub startup {
     $c->route->map("/templates/hosts/create")->to("create");
     $c->route->map("/templates/hosts/options")->to("options");
     $c->route->map("/templates/hosts/:id")->to("view");
-    $c->route->map("/templates/hosts/:id/clone")->to("clone");
-    $c->route->map("/templates/hosts/:id/merge")->to("merge");
     $c->route->map("/templates/hosts/:id/options")->to("options");
     $c->route->map("/templates/hosts/:id/update")->to("update");
     $c->route->map("/templates/hosts/:id/delete")->to("delete");
@@ -127,6 +125,14 @@ sub options {
 sub create {
     my ($self, $c) = @_;
 
+    my $count_templates = $c->model->database->host_template->count(
+        id => condition => [ company_id => $c->user->{company_id} ]
+    );
+
+    if ($count_templates >= $c->user->{max_templates}) {
+        return $c->plugin->error->limit_error("err-825" => $c->user->{max_templates});
+    }
+
     $c->plugin->action->store_simple("host_template", undef, sub {
         $c->plugin->template->parse_variables(shift);
     });
@@ -206,14 +212,34 @@ sub create_service {
 
     $data->{host_template_id} = $opts->{id};
 
-    $c->plugin->transaction->begin
-        or return;
+    # Pre check the current number of services of the company
+    my $count_services = $c->model->database->service->count_by_company_id($c->user->{company_id});
+
+    my $hosts = $c->model->database->host_template_host->search(
+        condition => [ host_template_id => $opts->{id} ]
+    );
+
+    if ($c->user->{max_services} && $count_services * scalar @$hosts > $c->user->{max_services}) {
+        return $c->plugin->error->limit_error("err-832" => $c->user->{max_services});
+    }
+
+    # Pre check the current number of services of the template
+    my $count_services_per_template = $c->model->database->service_parameter->count(
+        ref_id => condition => [ host_template_id => $opts->{id} ]
+    );
+
+    if ($count_services_per_template >= $c->user->{max_services_per_host}) {
+        return $c->plugin->error->limit_error("err-826" => $c->user->{max_services_per_host});
+    }
+
+    $c->model->database->begin_transaction
+        or return $c->plugin->error->action_failed;
 
     my $service;
 
     eval {
+        local $SIG{__DIE__} = "DEFAULT";
         $service = $c->model->database->service_parameter->create_and_get($data);
-
         $service->{command_options} = $c->json->decode($service->{command_options});
 
         if ($service->{location_options}) {
@@ -225,11 +251,16 @@ sub create_service {
             data => $service
         );
 
-        my $hosts = $c->model->database->host_template_host->search(
-            condition => [ host_template_id => $opts->{id} ]
-        );
-
         foreach my $host (@$hosts) {
+            my $count_services_per_host = $c->model->database->service->count(
+                id => condition => [ host_id => $host->{host_id} ]
+            );
+
+            if ($count_services_per_host >= $c->user->{max_services_per_host}) {
+                $c->plugin->error->limit_error("err-834" => $c->user->{max_services_per_host}, $host->{host_id});
+                die "service limit exceeded";
+            }
+
             $c->model->database->service->create(
                 service_parameter_id => $service->{ref_id},
                 updated => 1,
@@ -239,16 +270,25 @@ sub create_service {
                 last_check => time
             );
         }
+
+        # Post check the current number of services of the company (prevent race conditions)
+        my $count_services = $c->model->database->service->count_by_company_id($c->user->{company_id});
+
+        if ($c->user->{max_services} && $count_services > $c->user->{max_services}) {
+            $c->plugin->error->limit_error("err-832" => $c->user->{max_services});
+            die "service limit exceeded";
+        }
     };
 
     if ($@) {
-        return $c->plugin->transaction->rollback;
+        $c->model->database->rollback_transaction
+            or return $c->plugin->error->action_failed;
+    } else {
+        $c->model->database->end_transaction
+            or return $c->plugin->error->action_failed;
+        $c->stash->data($service);
     }
 
-    $c->plugin->transaction->end
-        or return;
-
-    $c->stash->data($service);
     $c->view->render->json;
 }
 

@@ -69,6 +69,14 @@ sub view {
 sub create {
     my ($self, $c) = @_;
 
+    my $count_contactgroups = $c->model->database->contactgroup->count(
+        id => condition => [ company_id => $c->user->{company_id} ]
+    );
+
+    if ($count_contactgroups >= $c->user->{max_contactgroups}) {
+        return $c->plugin->error->limit_error("err-836" => $c->user->{max_contactgroups});
+    }
+
     $c->plugin->action->store_simple("contactgroup");
 }
 

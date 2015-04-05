@@ -30,7 +30,7 @@ Bloonix.listHosts = function(o) {
             var form = Bloonix.createScheduledDowntime({
                 url: "/hosts/create-downtime/",
                 data: { host_id: selectedIds },
-                callback: function() { self.table.getData(); overlay.close() }
+                callback: function(result) { self.table.getData(); overlay.close() }
             });
             form.container.appendTo(overlay.content);
         } else if (action === 1) {

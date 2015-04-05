@@ -70,6 +70,13 @@ sub create {
         shift @service_ids
     }
 
+    my $count_downtimes = $c->model->database->host->count_downtimes($opts->{id});
+    $count_downtimes += scalar @service_ids ? scalar @service_ids : 1;
+
+    if ($count_downtimes > $c->user->{max_downtimes_per_host}) {
+        return $c->plugin->error->limit_error("err-821" => $c->user->{max_downtimes_per_host});
+    }
+
     if (@service_ids) {
         my $services = $c->model->database->service->by_host_id_as_hash($opts->{id});
         my @invalid;

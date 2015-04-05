@@ -32,6 +32,14 @@ sub create {
     my $form = $c->plugin->action->check_form(create => "dependency")
         or return 1;
 
+    my $count_dependencies = $c->model->database->dependency->count(
+        id => condition => [ host_id => $opts->{id} ]
+    );
+
+    if ($count_dependencies >= $c->user->{max_dependencies_per_host}) {
+        return $c->plugin->error->limit_error("err-847" => $c->user->{max_dependencies_per_host});
+    }
+
     if ($form->data->{type} =~ /^service/) {
         if (!defined $form->data->{service_id}) {
             return $c->plugin->error->form_parse_errors("service_id");

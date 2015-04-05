@@ -1361,6 +1361,20 @@ sub group_by_device_class {
     return $self->dbi->fetch($stmt, @bind);
 }
 
+sub count_downtimes {
+    my ($self, $host_id) = @_;
+
+    my $count_host_downtimes = $self->schema->host_downtime->count(
+        host_id => condition => [ host_id => $host_id ]
+    );
+
+    my $count_service_downtimes = $self->schema->service_downtime->count(
+        service_id => condition => [ host_id => $host_id ]
+    );
+
+    return $count_host_downtimes + $count_service_downtimes;
+}
+
 sub no_privileges_to_create_service {
     my $self = shift;
     return $self->_no_privileges(create_service => @_);

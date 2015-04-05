@@ -123,8 +123,19 @@ sub store {
     my $action = $c->stash->object ? "update" : "create";
     my $form = $c->plugin->action->check_form($action => "user_chart")
         or return 1;
-
     my $data = $form->data;
+
+    if ($action eq "create") {
+        my $user_count = $c->model->database->user_chart->count(user_id => condition => [ user_id => $c->user->{id} ]);
+
+        if ($user_count >= $c->user->{max_charts_per_user}) {
+            return $c->plugin->error->limit_error("err-815", $c->user->{max_charts_per_user});
+        }
+    }
+
+    if (scalar @{$data->{options}} > $c->user->{max_metrics_per_chart}) {
+        return $c->plugin->error->limit_error("err-816", $c->user->{max_metrics_per_chart});
+    }
 
     foreach my $opt (@{$data->{options}}) {
         my $service = $c->model->database->service->by_service_and_user_id($opt->{service_id}, $c->user->{user_id})

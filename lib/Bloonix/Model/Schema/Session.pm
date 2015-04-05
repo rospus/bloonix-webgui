@@ -12,7 +12,26 @@ sub get_user {
         table  => [
             session => "*",
             user    => "*",
-            company => [ qw(company sla max_services) ]
+            company => [ qw(
+                company sla
+                max_chart_views_per_user
+                max_charts_per_user
+                max_contacts
+                max_contactgroups
+                max_dashboards_per_user
+                max_dashlets_per_dashboard
+                max_dependencies_per_host
+                max_downtimes_per_host
+                max_hosts
+                max_groups
+                max_metrics_per_chart
+                max_services
+                max_services_per_host
+                max_templates
+                max_timeperiods
+                max_timeslices_per_object
+                max_users
+            ) ]
         ],
         join => [
             inner => {

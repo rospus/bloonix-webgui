@@ -1,88 +1,89 @@
-var Ajax = function(o) {
-    Utils.extend(this, o);
+var Ajax = {};
 
-    this.requestDefaults = {
-        type: this.type || "post",
-        contentType: "application/json; charset=utf-8",
-        scriptCharset: "utf-8",
-        dataType: "json",
-        processData: false,
-        async: true,
-        // Because of a bug it's necessary to set a default data string.
-        // If data is empty, then the content type is not send to the server.
-        //data: "{}",
-        error: function() {
-            Log.error(
-                "Failed to load data from server."
-                +"Try it again and reload the site."
-                +"Please contact an administrator if the request failed again."
-            );
-        }
-    };
-
-    Utils.extend(this.err, Ajax.defaults.err);
-    Utils.extend(this.ignoreErrors, Ajax.defaults.ignoreErrors);
-    Utils.extend(this.handleStatus, Ajax.defaults.handleStatus);
-
-    if (this.beforeSuccess === false && Ajax.defaults.beforeSuccess !== false) {
-        this.beforeSuccess = Ajax.defaults.beforeSuccess;
-    }
-};
-
-Ajax.defaults = { beforeSuccess: false };
-Ajax.xhrPool = [];
-Ajax.prototype = {
+// This are the default options of Ajax() itself, not jQuery.ajax().
+Ajax.defaults = {
     token: false,
     tokenURL: "/token/csrf",
     beforeSuccess: false,
     handleStatus: {},
     ignoreErrors: {},
-    err: {}
+    err: {},
+    success: false
 };
 
-Ajax.prototype.request = function(o) {
-    var self = this,
-        success = o.success,
-        handler = {},
-        request = {};
+// This are the default options that will be passed to jQuery.ajax().
+Ajax.ajaxDefaults = {
+    type: "post",
+    contentType: "application/json; charset=utf-8",
+    scriptCharset: "utf-8",
+    dataType: "json",
+    processData: false,
+    async: true,
+    error: function() {
+        Log.error(
+            "Failed to load data from server."
+            +"Try it again and reload the site."
+            +"Please contact an administrator if the request failed again."
+        );
+    }
+};
 
-    delete o.ignoreErrors;
-    Utils.extend(request, this.requestDefaults);
-    Utils.extend(request, o);
+Ajax.post = function(opts) {
+    if (opts.token === true || Ajax.defaults.token === true) {
+        Ajax.__post({
+            url: opts.tokenURL || Ajax.defaults.tokenURL,
+            async: false,
+            type: "get",
+            success: function(result) {
+                if (opts.data == undefined) {
+                    opts.data = {};
+                }
+                opts.data.token = result.data;
+                Ajax.__post(opts);
+            }
+        });
+    } else {
+        Ajax.__post(opts);
+    }
+};
 
-    $.each([ "redirectOnError" ], function(i, h) {
-        if (request[h] != undefined) {
-            handler[h] = request[h];
-            delete request[h];
-        }
-    });
+Ajax.__post = function(jQueryAjaxOptions) {
+    // At first the options will be splittet. "self" has options for Ajax().
+    // "request" has options for jQuery.ajax().
+    var opts = Utils.shift(Ajax.defaults, jQueryAjaxOptions);
 
-    request.success = function(result) {
+    Utils.append(jQueryAjaxOptions, Ajax.ajaxDefaults);
+    Utils.append(opts, Ajax.defaults);
+    Utils.append(opts.handleStatus, Ajax.defaults.handleStatus);
+    Utils.append(opts.ignoreErrors, Ajax.defaults.ignoreErrors);
+    Utils.append(opts.err, Ajax.defaults.err);
+
+    jQueryAjaxOptions.success = function(result) {
         Log.debug("response status: "+ result.status);
 
-        if (self.beforeSuccess !== false) {
-            self.beforeSuccess(result);
+        if (opts.beforeSuccess !== false) {
+            opts.beforeSuccess(result);
         }
 
-        if (self.handleStatus[result.status]) {
-            self.handleStatus[result.status](result);
+        if (opts.handleStatus[result.status]) {
+            opts.handleStatus[result.status](result);
             return false;
         }
 
-        if (result.status === "ok" || self.ignoreErrors[result.status] === true) {
-            if (success != undefined) {
-                success(result);
+        if (result.status === "ok" || opts.ignoreErrors[result.status] === true) {
+            if (opts.success != undefined) {
+                opts.success(result);
             }
             return false;
         }
 
-        Log.error("request ("+ request.url +"):");
+        Log.error("request ("+ jQueryAjaxOptions.url +"):");
         Log.error(result);
 
         var infoErr;
 
-        if (self.err[result.status]) {
-            infoErr = self.err[result.status]();
+        if (opts.err[result.status]) {
+            infoErr = opts.err[result.status]();
         } else if (result.data && result.data.message) {
             infoErr = result.data.message;
         } else {
@@ -90,6 +91,7 @@ Ajax.prototype.request = function(o) {
         }
 
         if (infoErr) {
+            $("#overlay").remove();
             $("#content").html(
                 Utils.create("div")
                     .addClass("info-err")
@@ -99,58 +101,41 @@ Ajax.prototype.request = function(o) {
         }
     };
 
-    if (request.beforeSend == undefined) {
-        request.beforeSend = Ajax.addXHRs;
+    if (jQueryAjaxOptions.beforeSend == undefined) {
+        jQueryAjaxOptions.beforeSend = Ajax.addXHRs;
     } else {
-        var beforeSend = request.beforeSend;
-        request.beforeSend = function(x) {
+        var beforeSend = jQueryAjaxOptions.beforeSend;
+        jQueryAjaxOptions.beforeSend = function(x) {
             Ajax.addXHRs(x);
             beforeSend(x);
         }
     }
 
-    if (request.complete == undefined) {
-        request.complete = Ajax.removeXHRs;
+    if (jQueryAjaxOptions.complete == undefined) {
+        jQueryAjaxOptions.complete = Ajax.removeXHRs;
     } else {
-        var complete = request.complete;
-        request.complete = function(x) {
+        var complete = jQueryAjaxOptions.complete;
+        jQueryAjaxOptions.complete = function(x) {
             Ajax.removeXHRs(x);
             complete(x);
         }
     }
 
-    if (request.token === true) {
-        request.token = false;
-        Ajax.post({
-            url: this.tokenURL,
-            async: false,
-            type: "get",
-            success: function(result) {
-                if (request.data == undefined) {
-                    request.data = { };
-                }
-                request.data.token = result.data;
-                Ajax.post(request);
-            }
-        });
-    } else {
-        if (typeof(request.data) == "object") {
-            request.data = Utils.toJSON(request.data);
-        }
-        if (request.data == undefined) {
-            request.type = "get";
-        } else {
-            request.type = "post";
-        }
-        Log.info("request "+ request.url);
-        $.ajax(request);
+    if (typeof(jQueryAjaxOptions.data) == "object") {
+        jQueryAjaxOptions.data = Utils.toJSON(jQueryAjaxOptions.data);
     }
+
+    if (jQueryAjaxOptions.data == undefined) {
+        jQueryAjaxOptions.type = "get";
+    } else {
+        jQueryAjaxOptions.type = "post";
+    }
+
+    Log.info("request "+ jQueryAjaxOptions.url);
+    $.ajax(jQueryAjaxOptions);
 };
 
-Ajax.post = function(req) {
-    var ajax = new Ajax();
-    return ajax.request(req);
-};
+Ajax.xhrPool = [];
 
 Ajax.addXHRs = function(jqXHR) {
     Log.debug("begin add jqXHR, cur length "+ Ajax.xhrPool.length);

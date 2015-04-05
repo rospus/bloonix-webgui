@@ -150,6 +150,7 @@ sub set {
 
 sub get_check_frequency {
     my ($self, $plugin) = @_;
+    $plugin->{flags} ||= "";
 
     # check-linux-updates
     if ($plugin->{id} == 23 || $plugin->{flags} =~ /low-check-frequency/) {

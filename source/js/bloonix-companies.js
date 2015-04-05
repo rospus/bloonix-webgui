@@ -243,14 +243,133 @@ Bloonix.getCompanyFormElements = function() {
             element: "radio-yes-no",
             name: "active",
             text: Text.get("schema.company.attr.active"),
-            description: Text.get("schema.company.desc.active")
+            desc: Text.get("schema.company.desc.active")
+        },{
+            element: "input",
+            type: "text",
+            name: "max_templates",
+            text: Text.get("schema.company.attr.max_templates"),
+            desc: Text.get("schema.company.desc.max_templates"),
+            minvalue: 0, maxvalue: 2147483647
+        },{
+            element: "input",
+            type: "text",
+            name: "max_hosts",
+            text: Text.get("schema.company.attr.max_hosts"),
+            desc: Text.get("schema.company.desc.max_hosts"),
+            minvalue: 0, maxvalue: 9999999999
         },{
             element: "input",
             type: "text",
             name: "max_services",
             text: Text.get("schema.company.attr.max_services"),
-            description: Text.get("schema.company.desc.max_services"),
-            maxlength: 6
+            desc: Text.get("schema.company.desc.max_services"),
+            minvalue: 0, maxvalue: 9999999999
+        },{
+            element: "input",
+            type: "text",
+            name: "max_services_per_host",
+            text: Text.get("schema.company.attr.max_services_per_host"),
+            desc: Text.get("schema.company.desc.max_services_per_host"),
+            minvalue: 0, maxvalue: 32767
+        },{
+            element: "input",
+            type: "text",
+            name: "max_contacts",
+            text: Text.get("schema.company.attr.max_contacts"),
+            desc: Text.get("schema.company.desc.max_contacts"),
+            minvalue: 0, maxvalue: 32767
+        },{
+            element: "input",
+            type: "text",
+            name: "max_contactgroups",
+            text: Text.get("schema.company.attr.max_contactgroups"),
+            desc: Text.get("schema.company.desc.max_contactgroups"),
+            minvalue: 0, maxvalue: 32767
+        },{
+            element: "input",
+            type: "text",
+            name: "max_timeperiods",
+            text: Text.get("schema.company.attr.max_timeperiods"),
+            desc: Text.get("schema.company.desc.max_timeperiods"),
+            minvalue: 0, maxvalue: 32767
+        },{
+            element: "input",
+            type: "text",
+            name: "max_timeslices_per_object",
+            text: Text.get("schema.company.attr.max_timeslices_per_object"),
+            desc: Text.get("schema.company.desc.max_timeslices_per_object"),
+            minvalue: 0, maxvalue: 32767
+        },{
+            element: "input",
+            type: "text",
+            name: "max_groups",
+            text: Text.get("schema.company.attr.max_groups"),
+            desc: Text.get("schema.company.desc.max_groups"),
+            minvalue: 0, maxvalue: 32767
+        },{
+            element: "input",
+            type: "text",
+            name: "max_users",
+            text: Text.get("schema.company.attr.max_users"),
+            desc: Text.get("schema.company.desc.max_users"),
+            minvalue: 0, maxvalue: 32767
+        },{
+            element: "input",
+            type: "text",
+            name: "max_dependencies_per_host",
+            text: Text.get("schema.company.attr.max_dependencies_per_host"),
+            desc: Text.get("schema.company.desc.max_dependencies_per_host"),
+            minvalue: 0, maxvalue: 32767
+        },{
+            element: "input",
+            type: "text",
+            name: "max_downtimes_per_host",
+            text: Text.get("schema.company.attr.max_downtimes_per_host"),
+            desc: Text.get("schema.company.desc.max_downtimes_per_host"),
+            minvalue: 0, maxvalue: 32767
+        },{
+            element: "input",
+            type: "text",
+            name: "max_chart_views_per_user",
+            text: Text.get("schema.company.attr.max_chart_views_per_user"),
+            desc: Text.get("schema.company.desc.max_chart_views_per_user"),
+            minvalue: 0, maxvalue: 9999999999
+        },{
+            element: "input",
+            type: "text",
+            name: "max_charts_per_user",
+            text: Text.get("schema.company.attr.max_charts_per_user"),
+            desc: Text.get("schema.company.desc.max_charts_per_user"),
+            minvalue: 0, maxvalue: 9999999999
+        },{
+            element: "input",
+            type: "text",
+            name: "max_metrics_per_chart",
+            text: Text.get("schema.company.attr.max_metrics_per_chart"),
+            desc: Text.get("schema.company.desc.max_metrics_per_chart"),
+            minvalue: 0, maxvalue: 9999999999
+        },{
+            element: "input",
+            type: "text",
+            name: "max_dashboards_per_user",
+            text: Text.get("schema.company.attr.max_dashboards_per_user"),
+            desc: Text.get("schema.company.desc.max_dashboards_per_user"),
+            minvalue: 0, maxvalue: 32767
+        },{
+            element: "input",
+            type: "text",
+            name: "max_dashlets_per_dashboard",
+            text: Text.get("schema.company.attr.max_dashlets_per_dashboard"),
+            desc: Text.get("schema.company.desc.max_dashlets_per_dashboard"),
+            minvalue: 0, maxvalue: 32767
+        },{
+            element: "input",
+            type: "text",
+            name: "max_sms",
+            text: Text.get("schema.company.attr.max_sms"),
+            desc: Text.get("schema.company.desc.max_sms"),
+            minvalue: 0, maxvalue: 9999999999
         },{
             element: "radio-yes-no",
             name: "sms_enabled",

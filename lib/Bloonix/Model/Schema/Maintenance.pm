@@ -83,7 +83,7 @@ sub run_upgrade {
     }
 
     if ($version <= 3) {
-        $self->check_company_max_columns;
+        $self->check_company_limits;
     }
 
     $self->update_version;
@@ -110,12 +110,33 @@ sub check_service_volatile_comment {
 }
 
 
-sub check_company_max_columns {
+sub check_company_limits {
     my $self = shift;
 
-    foreach my $col (qw/templates hosts contacts contactgroups groups timeperiods timeslices groups users/) {
-        if (!$self->exist(company => "max_$col")) {
-            $self->upgrade("alter table company add column max_$col integer not null default 0");
+    my %limit = (
+        max_templates               => [ qw(integer 1000) ],
+        max_hosts                   => [ qw(bigint 10000) ],
+        max_services                => [ qw(bigint 10000) ],
+        max_services_per_host       => [ qw(smallint 100) ],
+        max_contacts                => [ qw(smallint 100) ],
+        max_contactgroups           => [ qw(smallint 100) ],
+        max_timeperiods             => [ qw(smallint 1000) ],
+        max_timeslices_per_object   => [ qw(smallint 200) ],
+        max_groups                  => [ qw(smallint 100) ],
+        max_users                   => [ qw(smallint 100) ],
+        max_sms                     => [ qw(bigint 10000) ],
+        max_dependencies_per_host   => [ qw(smallint 100) ],
+        max_downtimes_per_host      => [ qw(smallint 1000) ],
+        max_chart_views_per_user    => [ qw(bigint 50) ],
+        max_charts_per_user         => [ qw(bigint 1000) ],
+        max_metrics_per_chart       => [ qw(smallint 100) ],
+        max_dashboards_per_user     => [ qw(smallint 100) ],
+        max_dashlets_per_dashboard  => [ qw(smallint 100) ]
+    );
+
+    while (my ($col, $val) = each %limit) {
+        if (!$self->exist(company => $col)) {
+            $self->upgrade("alter table company add column $col $val->[0] not null default $val->[1]");
         }
     }
 }

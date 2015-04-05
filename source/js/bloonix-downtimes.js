@@ -346,10 +346,8 @@ Bloonix.createScheduledDowntime = function(o) {
                 success: function(result) {
                     if (result.status == "err-610") {
                         self.form.markErrors(result.data.failed);
-                    } else if (result.status == "ok") {
-                        if (self.callback) {
-                            self.callback(result, data);
-                        }
+                    } else if (self.callback) {
+                        self.callback(result, data);
                     }
                 }
             });

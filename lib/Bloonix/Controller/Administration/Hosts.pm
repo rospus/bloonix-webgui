@@ -120,6 +120,14 @@ sub create {
     $c->plugin->token->check
         or return 1;
 
+    my $count_hosts = $c->model->database->host->count(
+        id => condition => [ company_id => $c->user->{company_id} ]
+    );
+
+    if ($c->user->{max_hosts} && $count_hosts >= $c->user->{max_hosts}) {
+        return $c->plugin->error->limit_error("err-831" => $c->user->{max_hosts});
+    }
+
     my $group_ids = [ $c->req->param("group_id") ];
     if (!$c->model->database->group->validate_ids_by_company_id($c->user->{company_id}, $group_ids)) {
         return $c->plugin->error->form_parse_errors("group_id");
@@ -215,33 +223,8 @@ sub create {
     }
 
     if (@$host_template_ids) {
-        foreach my $host_template_id (@$host_template_ids) {
-            $c->model->database->host_template_host->create({
-                host_id => $result->data->{id},
-                host_template_id => $host_template_id
-            }) or return $c->plugin->error->action_failed;
-            $c->plugin->log_action->create(
-                target => "host_template_host",
-                data => {
-                    host_id => $result->data->{id},
-                    host_template_id => $host_template_id
-                }
-            );
-
-            my $host_template_services = $c->model->database->service_parameter->search(
-                condition => [ host_template_id => $host_template_id ]
-            );
-
-            foreach my $hs (@$host_template_services) {
-                $c->model->database->service->create(
-                    service_parameter_id => $hs->{ref_id},
-                    updated => 1,
-                    host_id => $result->data->{id},
-                    message => "waiting for initialization",
-                    status => "INFO"
-                );
-            }
-        }
+        $c->plugin->template->add_templates_to_host($result->data->{id}, $host_template_ids)
+            or return;
     }
 
     $c->stash->data($result->data);

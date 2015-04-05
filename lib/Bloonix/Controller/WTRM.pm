@@ -3,22 +3,24 @@ package Bloonix::Controller::WTRM;
 use strict;
 use warnings;
 use Time::HiRes qw();
-use Bloonix::REST;
+use Bloonix::IO::SIPC;
 
 sub new {
     my ($class, $c) = @_;
     my $self = bless { }, $class;
 
     if ($c->config->{wtrm_api}) {
-        $self->{rest} = Bloonix::REST->new($c->config->{wtrm_api});
+        $c->config->{wtrm_api}->{peerport} = delete $c->config->{wtrm_api}->{port};
+        $c->config->{wtrm_api}->{peeraddr} = delete $c->config->{wtrm_api}->{host};
+        $self->{io} = Bloonix::IO::SIPC->new($c->config->{wtrm_api});
     }
 
     return $self;
 }
 
-sub rest {
+sub io {
     my $self = shift;
-    return $self->{rest};
+    return $self->{io};
 }
 
 sub startup {
@@ -41,7 +43,7 @@ sub quick {
 sub test {
     my ($self, $c, $opts) = @_;
 
-    if (!$self->rest) {
+    if (!$self->io) {
         return $c->plugin->error->feature_not_available;
     }
 
@@ -61,18 +63,28 @@ sub test {
         return $c->plugin->error->json_parse_params_error($errors);
     }
 
-    my $path = $opts && $opts->{quick}
-        ? "/$wtrm_api_key/quick"
-        : "/$wtrm_api_key/test";
+    my $action = $opts && $opts->{quick}
+        ? "quick"
+        : "test";
 
-    local $SIG{__DIE__} = sub {};
-    my $result = $self->rest->post(path => $path, data => $data);
+    my $res;
 
-    if (!$result || $result->{status} ne "ok") {
+    eval {
+        $self->io->connect or die $self->io->errstr;
+        $self->io->send(
+            action => $action,
+            wtrm_api_key => $wtrm_api_key,
+            data => $data
+        ) or die $self->io->errstr;
+        $res = $self->io->recv or die $self->io->errstr;
+        $self->io->disconnect;
+    };
+
+    if (!$res || !ref $res eq "HASH" || $res->{status} ne "ok") {
         return $c->plugin->error->feature_not_available;
     }
 
-    my $key = $result->{data};
+    my $key = $res->{data};
     $c->stash->data("/wtrm/result/$key");
     $c->view->render->json;
 }
@@ -80,14 +92,27 @@ sub test {
 sub result {
     my ($self, $c, $opts) = @_;
     my $wtrm_api_key = $c->config->{wtrm_api_key};
+    my $res;
 
-    local $SIG{__DIE__} = sub {};
-    my $result = $self->rest->get(
-        path => "/$wtrm_api_key/result",
-        data => $opts
-    ) or return $c->plugin->error->action_failed;
+    eval {
+        $self->io->connect or die $self->io->errstr;
 
-    $c->stash->data($result->{data});
+        $self->io->send(
+            action => "result",
+            wtrm_api_key => $wtrm_api_key,
+            key => $opts->{key},
+            num => $opts->{num}
+        ) or die $self->io->errstr;
+
+        $res = $self->io->recv or die $self->io->errstr;
+        $self->io->disconnect;
+    };
+
+    if (!$res || !ref $res eq "HASH" || !$res->{data}) {
+        return $c->plugin->error->action_failed;
+    }
+
+    $c->stash->data($res->{data});
     $c->view->render->json;
 }
 

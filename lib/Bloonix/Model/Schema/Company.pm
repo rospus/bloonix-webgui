@@ -74,12 +74,94 @@ sub init {
             options => [1,0],
             default => 1
         },
-        max_services => {
-            regex => qr/^\d{1,6}\z/,
+        max_templates => {
+            min_val => 0,
+            max_val => 2147483647,
+            default => 1000
+        },
+        max_hosts => {
+            min_val => 0,
+            max_val => 9_999_999_999,
             default => 0
         },
+        max_services => {
+            min_val => 0,
+            max_val => 9_999_999_999,
+            default => 0
+        },
+        max_services_per_host => {
+            min_val => 0,
+            max_val => 32767,
+            default => 100
+        },
+        max_contacts => {
+            min_val => 0,
+            max_val => 32767,
+            default => 100
+        },
+        max_contactgroups => {
+            min_val => 0,
+            max_val => 32767,
+            default => 100
+        },
+        max_timeperiods => {
+            min_val => 0,
+            max_val => 32767,
+            default => 1000
+        },
+        max_timeslices_per_object => {
+            min_val => 0,
+            max_val => 32767,
+            default => 200
+        },
+        max_groups => {
+            min_val => 0,
+            max_val => 32767,
+            default => 100
+        },
+        max_users => {
+            min_val => 0,
+            max_val => 32767,
+            default => 100
+        },
+        max_dependencies_per_host => {
+            min_val => 0,
+            max_val => 32767,
+            default => 100
+        },
+        max_downtimes_per_host => {
+            min_val => 0,
+            max_val => 32767,
+            default => 1000
+        },
+        max_chart_views_per_user => {
+            min_val => 0,
+            max_val => 999_999_999,
+            default => 50
+        },
+        max_charts_per_user => {
+            min_val => 0,
+            max_val => 999_999_999,
+            default => 1000
+        },
+        max_metrics_per_chart => {
+            min_val => 0,
+            max_val => 100,
+            default => 100
+        },
+        max_dashboards_per_user => {
+            min_val => 0,
+            max_val => 32767,
+            default => 100
+        },
+        max_dashlets_per_dashboard => {
+            min_val => 0,
+            max_val => 32767,
+            default => 100
+        },
         max_sms => {
-            regex => qr/^\d{1,6}\z/,
+            min_val => 0,
+            max_val => 999_999_999,
             default => 0
         },
         sms_enabled => {

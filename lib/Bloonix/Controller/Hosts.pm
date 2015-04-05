@@ -372,9 +372,30 @@ sub create_downtime {
     my $host_ids = $self->validate_hosts($c)
         or return;
 
-    foreach my $host_id (@$host_ids) {
-        $data->{host_id} = $host_id;
-        $c->model->database->host_downtime->create($data)
+    $c->model->database->begin_transaction
+        or return $c->plugin->error->action_failed;
+
+    eval {
+        local $SIG{__DIE__} = "DEFAULT";
+
+        foreach my $host_id (@$host_ids) {
+            my $count_downtimes = $c->model->database->host->count_downtimes($host_id);
+
+            if ($count_downtimes >= $c->user->{max_downtimes_per_host}) {
+                die $c->plugin->error->limit_error("err-823" => $c->user->{max_downtimes_per_host}, $host_id);
+            }
+
+            $data->{host_id} = $host_id;
+            $c->model->database->host_downtime->create($data)
+                or die $c->plugin->error->action_failed;
+        }
+    };
+
+    if ($@) {
+        $c->model->database->rollback_transaction
+            or return $c->plugin->error->action_failed;
+    } else {
+        $c->model->database->end_transaction
             or return $c->plugin->error->action_failed;
     }
 

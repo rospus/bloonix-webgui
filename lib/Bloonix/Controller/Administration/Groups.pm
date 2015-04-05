@@ -80,6 +80,14 @@ sub options {
 sub create {
     my ($self, $c) = @_;
 
+    my $count_groups = $c->model->database->group->count(
+        id => condition => [ company_id => $c->user->{company_id} ]
+    );
+
+    if ($count_groups >= $c->user->{max_groups}) {
+        return $c->plugin->error->limit_error("err-845" => $c->user->{max_groups});
+    }
+
     $c->plugin->action->store_simple("group");
 }
 

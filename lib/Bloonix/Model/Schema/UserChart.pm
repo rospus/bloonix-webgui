@@ -106,4 +106,29 @@ sub by_user_id {
     return ($count, $charts);
 }
 
+sub count_by_company_id {
+    my ($self, $company_id) = @_;
+
+    my ($stmt, @bind) = $self->sql->select(
+        table => "user_chart",
+        count => "user_id",
+        join => [
+            inner => {
+                table => "user",
+                left  => "user_chart.user_id",
+                right => "user.id",
+            }
+        ],
+        condition => [
+            where => {
+                table => "user",
+                column => "company_id",
+                value => $company_id
+            }
+        ]
+    );
+
+    return $self->dbi->count($stmt, @bind);
+}
+
 1;

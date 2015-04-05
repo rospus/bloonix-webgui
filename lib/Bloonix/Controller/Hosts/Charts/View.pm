@@ -162,6 +162,14 @@ sub save {
             }
         );
     } else {
+        my $count = $c->model->database->chart_view->count(
+            user_id => condition => [ user_id => $c->user->{id} ]
+        );
+
+        if ($count >= $c->user->{max_chart_views_per_user}) {
+            return $c->plugin->error->limit_error("err-817" => $c->user->{max_chart_views_per_user});
+        }
+
         $c->model->database->chart_view->create(
             user_id => $c->user->{id},
             alias => $alias,

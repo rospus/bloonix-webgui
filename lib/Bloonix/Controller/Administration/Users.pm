@@ -114,6 +114,14 @@ sub options {
 sub create {
     my ($self, $c) = @_;
 
+    my $count_users = $c->model->database->user->count(
+        id => condition => [ company_id => $c->user->{company_id} ]
+    );
+
+    if ($count_users >= $c->user->{max_users}) {
+        return $c->plugin->error->limit_error("err-846" => $c->user->{max_users});
+    }
+
     return $self->_store($c);
 }
 

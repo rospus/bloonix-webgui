@@ -70,6 +70,14 @@ sub view {
 sub create {
     my ($self, $c) = @_;
 
+    my $count_timeperiods = $c->model->database->timeperiod->count(
+        id => condition => [ company_id => $c->user->{company_id} ]
+    );
+
+    if ($count_timeperiods >= $c->user->{max_timeperiods}) {
+        return $c->plugin->error->limit_error("err-840" => $c->user->{max_timeperiods});
+    }
+
     $c->plugin->action->store_simple("timeperiod");
 }
 
@@ -105,6 +113,14 @@ sub create_timeslice {
 
     if (!$timeslice || !$date) {
         return $c->plugin->error->form_parse_errors("timeslice");
+    }
+
+    my $count_timeslices = $c->model->database->timeslice->count(
+        id => condition => [ timeperiod_id => $opts->{id} ]
+    );
+
+    if ($count_timeslices >= $c->user->{max_timeslices_per_object}) {
+        return $c->plugin->error->limit_error("err-841" => $c->user->{max_timeslices_per_object});
     }
 
     $c->model->database->timeslice->create({

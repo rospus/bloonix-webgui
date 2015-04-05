@@ -85,7 +85,7 @@ err-620: This object already exists!
 err-630: Invalid parameter settings found!
 err-631: The parameter offset must be an numeric value, min 0.
 err-632: The parameter limit must be an numeric value, min 0, max <b>%s</b>.
-err-633: The parameter sort_by must begin with a character of a-z and only characters from a-z, 0-9 and a underscore are allowed. The max length is 63 characters.
+err-633: The parameter sort_by must begin with a character of a-z and only characters from a-z, 0-9 and a underscore are allowed. The maximum length is 63 characters.
 err-634: For the parameter sort_type only "asc" or "desc" is allowed as value.
 err-640: No data available!
 err-700: Please change your password!
@@ -94,9 +94,28 @@ err-702: The new password is to long (max 128 signs)!
 err-703: The new password is to short (min 8 signs)!
 err-704: The passwords doesn't match!
 err-705: The new and the old password cannot be the same!
-err-800: Sorry, but you cannot configure more than <b>%s</b> service!
-err-801: Sorry, but you cannot configure more than <b>%s</b> services!
 err-802: Sorry, but this feature is not available!
+err-810: Sorry, but you cannot add more than %s dashlets to a dashboard!
+err-811: Sorry, but you cannot create more than %s dashboards!
+err-815: Sorry, but you cannot create more than %s charts!
+err-816: Sorry, but you cannot add more than %s metrics to a chart!
+err-817: Sorry, but you cannot create more than %s chart views!
+err-821: Sorry, but you cannot create more than %s host downtimes!
+err-823: Sorry, but you cannot create more than %s host downtimes for host id %s!
+err-825: Sorry, but you cannot create more than %s host templates!
+err-826: Sorry, but you cannot create more than %s services per template!
+err-827: Sorry, but you cannot create more than %s services for template id %s!
+err-831: Sorry, but you cannot create more than %s hosts!
+err-832: Sorry, but you cannot create more than %s services!
+err-833: Sorry, but you cannot create more than %s services per host!
+err-834: Sorry, but you cannot create more than %s services for host id %s!
+err-835: Sorry, but you cannot create more than %s contacts!
+err-836: Sorry, but you cannot create more than %s contact groups!
+err-840: Sorry, but you cannot create more than %s timeperiods!
+err-841: Sorry, but you cannot create more than %s timeslices per object!
+err-845: Sorry, but you cannot create more than %s groups!
+err-846: Sorry, but you cannot create more than %s users!
+err-847: Sorry, but you cannot create more than %s dependencies per host!
 
 action.action: Action
 action.create: Create
@@ -179,6 +198,9 @@ info.new_version: <h4>A new version is available</h4>
 text.selected_objects: Selected objects
 text.min_length: Min length: <b>%s</b>
 text.max_length: Max length: <b>%s</b>
+text.min_value: Min value: <b>%s</b>
+text.max_value: Max value: <b>%s</b>
+text.range_value: Range: %s - %s
 text.unlimited: Unlimited
 text.undefined: Undefined
 text.inherited_from_host: Inherited from the host
@@ -375,15 +397,49 @@ schema.company.attr.country: Country
 schema.company.attr.phone: Phone
 schema.company.attr.fax: Fax
 schema.company.attr.email: E-Mail
+schema.company.attr.max_templates: Max templates
+schema.company.attr.max_hosts: Max hosts
 schema.company.attr.max_services: Max services
+schema.company.attr.max_services_per_host: Max services per host
+schema.company.attr.max_contacts: Max contacts
+schema.company.attr.max_contactgroups: Max contactgroups
+schema.company.attr.max_timeperiods: Max timeperiods
+schema.company.attr.max_timeslices_per_object: Max timeslices
+schema.company.attr.max_groups: Max groups
+schema.company.attr.max_users: Max users
+schema.company.attr.max_dependencies_per_host: Max dependencies per host
+schema.company.attr.max_downtimes_per_host: Max downtimes per host
+schema.company.attr.max_chart_views_per_user: Max chart views per user
+schema.company.attr.max_charts_per_user: Max charts per user
+schema.company.attr.max_metrics_per_chart: Max metrics per chart
+schema.company.attr.max_dashboards_per_user: Max dashboards per user
+schema.company.attr.max_dashlets_per_dashboard: Max dashlets per dashboard
+schema.company.attr.max_sms: Max SMS
 schema.company.attr.sms_enabled: SMS notifications enabled
 schema.company.attr.active: Active
 schema.company.attr.comment: Comment
 schema.company.attr.sla: SLA
 schema.company.attr.variables: Global variables
 schema.company.desc.variables: In this field you can define global variables for all hosts. These variables can be used for thresholds by the configuration of service checks. Example:<br/><br/>HTTP.PORT=9000<br/><br/>This variable could be used in the format <i>%HTTP.PORT%</i> for thresholds. Please note that two variables are pre-defined: <i>IPADDR</i> and <i>HOSTNAME</i>. These variables are replaced with the IP address and the hostname of the host. For further information read the help.<br/><br/>Allowed signs: a-z, A-Z, 0-9, dot and underscore
-schema.company.desc.active: Activate or de-activate all objects of this company.
-schema.company.desc.max_services: The max amount of services this company is allowed to monitor. Set 0 (null) if unlimited.
+schema.company.desc.active: Activate or de-activate all objects of the company.
+schema.company.desc.max_templates: The maximum number of template that can be created.
+schema.company.desc.max_hosts: The maximum number of hosts that can be created. Set 0 (null) if unlimited.
+schema.company.desc.max_services: The maximum number of services that can be created. Set 0 (null) if unlimited.
+schema.company.desc.max_services_per_host: The maximum number of services that can be created for a host.
+schema.company.desc.max_contacts: The maximum number of contacts that can be created.
+schema.company.desc.max_contactgroups: The maximum number of contactgroups that can be created.
+schema.company.desc.max_timeperiods: The maximum number of timeperiods that can be created.
+schema.company.desc.max_timeslices_per_object: The maximum number of timeslices that can be created for a timeperiod.
+schema.company.desc.max_groups: The maximum number of groups that can be created.
+schema.company.desc.max_users: The maximum number of users that can be created.
+schema.company.desc.max_dependencies_per_host: The maximum number of dependencies that can be create for a host.
+schema.company.desc.max_downtimes_per_host: The maximum number of downtimes that can be created for a host.
+schema.company.desc.max_chart_views_per_user: The maximum number of chart views that can be created by a user.
+schema.company.desc.max_charts_per_user: The maximum number of user-charts that can be created by a user.
+schema.company.desc.max_metrics_per_chart: The maximum number of metrics per user-chart.
+schema.company.desc.max_dashboards_per_user: The maximum number of dashboards that can be created by a user.
+schema.company.desc.max_dashlets_per_dashboard: The maximum number of dashlets that can be added to a dashboard.
+schema.company.desc.max_sms: The maximum number of SMS that can be sent per month. Set 0 (null) if unlimited.
 schema.company.text.edit_variables: Global variables
 schema.company.text.list: Overview of all companies
 schema.company.text.create: Create a new company
@@ -526,7 +582,7 @@ schema.host.desc.location: e.g. New York, Datacenter 3, Room 6, Rack A29
 schema.host.desc.coordinates: Select the location of the host by country code.
 schema.host.desc.active: Active or de-activate the host and all services.
 schema.host.desc.allow_from: With this field it's possible to set a comma separated list of IP addresses from which the Bloonix agents are allowed to deliver host statistics. Set the keyword <i>all</i> to allow all IP addresses.
-schema.host.desc.max_sms: In this field you can define the maximum number of SMS that can be send per month.
+schema.host.desc.max_sms: In this field you can define the maximum number of SMS that can be sent per month.
 schema.host.desc.interval: This is the check interval of all services of the host.
 schema.host.desc.timeout: This is the timeout of all services of the host. If the status of a service is not updated in this time then a critical status is set for the services with the information that it seems that the Bloonix agent is not working.
 schema.host.desc.notification: Enable or disable the notifications of all services.
@@ -836,7 +892,7 @@ schema.service.desc.description: This is a short description of the check.
 schema.service.desc.comment: This is a short internal comment to the check.
 schema.service.desc.interval: This is the check interval of the service. If no value is set, then the interval of the host is inherited.
 schema.service.desc.timeout: This is the timeout of the service. If the status of the service is not updated in this time then a critical status is set for the service with the information that it seems that the Bloonix agent is not working. If no value is set, then the timeout of the host is inherited.
-schema.service.desc.attempt_warn2crit: This option is useful if you want that the status of the service upgrades to CRITICAL if the real status is WARNING and max attempts were reached.
+schema.service.desc.attempt_warn2crit: This option is useful if you want that the status of the service upgrades to CRITICAL if the real status is WARNING and maximum attempts were reached.
 schema.service.desc.attempt_max: This option controls when you gets a notification of services that are not in status OK. As example a value of 3 means that you get a notification first if the service check returns 3 times in a row a not OK status.
 schema.service.desc.active: This option activates or de-activates the service check.
 schema.service.desc.acknowledged: This option is useful if a service is not OK and if you want to disable the notifications temporary. The notifications will be enabled again if the services switched to the status OK.

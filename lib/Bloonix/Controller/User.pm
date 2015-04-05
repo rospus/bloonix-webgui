@@ -45,7 +45,7 @@ sub save {
     my $dashboard = $stash->{dashboard};
 
     if ($key eq "dashboard") {
-        return $self->parse_dashboard_data($c, $data);
+        return $self->save_dashboard_data($c, $data);
     } elsif ($key eq "rename-dashboard") {
         return $self->rename_dashboard($c, $data);
     } elsif ($key eq "delete-dashboard") {
@@ -111,10 +111,11 @@ sub delete_dashboard {
     $c->view->render->json;
 }
 
-sub parse_dashboard_data {
+sub save_dashboard_data {
     my ($self, $c, $data) = @_;
     my $dashboards = $self->{dashboards};
     my $stash = $c->user->{stash};
+    my $user_dashboards = $c->user->{stash}->{dashboard};
 
     if (ref $data ne "HASH") {
         return $c->plugin->error->form_parse_errors("data");
@@ -144,6 +145,10 @@ sub parse_dashboard_data {
 
     if (defined $data->{count} && $data->{count} !~ /^\d{1,2}x\d{1,2}\z/) {
         return $c->plugin->error->form_parse_errors("count");
+    }
+
+    if (scalar @{$data->{dashlets}} > $c->user->{max_dashlets_per_dashboard}) {
+        return $c->plugin->error->limit_error("err-810", $c->user->{max_dashlets_per_dashboard});
     }
 
     foreach my $row (@{$data->{dashlets}}) {
@@ -201,6 +206,10 @@ sub parse_dashboard_data {
                 return $c->plugin->error->form_parse_errors("opts");
             }
         }
+    }
+
+    if (!exists $user_dashboards->{$data->{name}} && scalar keys %$user_dashboards >= $c->user->{max_dashboards_per_user}) {
+        return $c->plugin->error->limit_error("err-811", $c->user->{max_dashboards_per_user});
     }
 
     $stash->{dashboard}->{$data->{name}} = {

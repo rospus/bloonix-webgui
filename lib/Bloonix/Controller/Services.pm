@@ -318,13 +318,54 @@ sub create_downtime {
         return $c->plugin->error->no_privileges_on_action(modify => $noauth);
     }
 
-    foreach my $service_id (@$service_ids) {
-        my $service = $c->model->database->service->by_service_id($service_id);
-        $data->{service_id} = $service_id;
-        $data->{host_id} = $service->{host_id};
-        $c->model->database->service_downtime->create($data)
+    $c->model->database->begin_transaction
+        or return $c->plugin->error->action_failed;
+
+    eval {
+        local $SIG{__DIE__} = "DEFAULT";
+
+        # count host downtimes
+        my %downtime_counter = ();
+
+        foreach my $service_id (@$service_ids) {
+            my $service = $c->model->database->service->by_service_id($service_id);
+            my $host_id = $service->{host_id};
+
+            # memory friendly caching
+            if (scalar keys %downtime_counter > 10000) {
+                %downtime_counter = ();
+            }
+
+            # cache the host id
+            if (!$downtime_counter{$host_id}) {
+                $downtime_counter{$host_id} = $c->model->database->host->count_downtimes($host_id);
+            }
+
+            if ($downtime_counter{$host_id} >= $c->user->{max_downtimes_per_host}) {
+                $c->plugin->error->limit_error("err-823", $c->user->{max_downtimes_per_host}, $host_id);
+                die "max_downtimes_per_host";
+            }
+
+            $data->{service_id} = $service_id;
+            $data->{host_id} = $host_id;
+
+            $c->model->database->service_downtime->create($data)
+                or die $c->plugin->error->action_failed;
+
+            # one more downtime configured
+            $downtime_counter{$host_id}++;
+        }
+    };
+
+    if ($@) {
+        $c->model->database->rollback_transaction
+            or return $c->plugin->error->action_failed;
+    } else {
+        $c->model->database->end_transaction
             or return $c->plugin->error->action_failed;
     }
+
+    $c->view->render->json;
 }
 
 1;

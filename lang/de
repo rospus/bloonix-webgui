@@ -94,9 +94,28 @@ err-702: Das Passwort ist zu lang (maximal 128 Zeichen)!
 err-703: Das Passwort ist zu kurz (minimum 8 Zeichen)!
 err-704: Die Passwörter stimmen nicht überein!
 err-705: Das neue und alte Passwort dürfen nicht übereinstimmen!
-err-800: Sorry, aber Sie dürfen nicht mehr als %s Service einrichten!
-err-801: Sorry, aber Sie dürfen nicht mehr als %s Services einrichten!
 err-802: Sorry, aber diese Funktion ist nicht verfügbar!
+err-810: Sorry, aber Sie können nicht mehr als %s Dashlets zu einem Dashboard hinzufügen!
+err-811: Sorry, aber Sie dürfen nicht mehr als %s Dashboards erstellen!
+err-815: Sorry, aber Sie dürfen nicht mehr als %s Charts erstellen!
+err-816: Sorry, aber Sie dürfen nicht mehr als %s Metriken zu einem Chart hinzufügen!
+err-817: Sorry, aber Sie dürfen nicht mehr als %s Chart-Views erstellen!
+err-821: Sorry, aber Sie dürfen nicht mehr als %s Host-Downtimes erstellen!
+err-823: Sorry, aber Sie dürfen nicht mehr als %s Host-Downtimes for host id %s erstellen!
+err-825: Sorry, aber Sie dürfen nicht mehr als %s Host-Templates erstellen!
+err-826: Sorry, aber Sie dürfen nicht mehr als %s Services pro Template erstellen!
+err-827: Sorry, aber Sie dürfen nicht mehr als %s Services für Template-ID %s erstellen!
+err-831: Sorry, aber Sie dürfen nicht mehr als %s Hosts erstellen!
+err-832: Sorry, aber Sie dürfen nicht mehr als %s Services erstellen!
+err-833: Sorry, aber Sie dürfen nicht mehr als %s Services pro Host erstellen!
+err-834: Sorry, aber Sie dürfen nicht mehr als %s Services für Host-ID %s erstellen!
+err-835: Sorry, aber Sie dürfen nicht mehr als %s Kontakte erstellen!
+err-836: Sorry, aber Sie dürfen nicht mehr als %s Kontaktgruppen erstellen!
+err-840: Sorry, aber Sie dürfen nicht mehr als %s Timeperiods erstellen!
+err-841: Sorry, aber Sie dürfen nicht mehr als %s Timeslices per objec erstellent!
+err-845: Sorry, aber Sie dürfen nicht mehr als %s Gruppen erstellen!
+err-846: Sorry, aber Sie dürfen nicht mehr als %s Benutzer erstellen!
+err-847: Sorry, aber Sie dürfen nicht mehr als %s Abhängigkeiten pro Host erstellen!
 
 action.action: Aktion
 action.create: Erstellen
@@ -177,8 +196,11 @@ info.new_version: <h4>Eine neue Version ist verfügbar</h4>
  <p>Bitte laden Sie die Webseite neu!</p>
 
 text.selected_objects: Ausgewählte Objekte
-text.min_length: Mindestlänge %s
-text.max_length: Maximallänge %s
+text.min_length: Mindestlänge: %s
+text.max_length: Maximallänge: %s
+text.min_value: Mindestwert: %s
+text.max_value: Höchstwert: %s
+text.range_value: Wertebereich: %s - %s
 text.unlimited: Unbegrenzt
 text.undefined: Nicht definiert
 text.inherited_from_host: Vererbt vom Host
@@ -375,7 +397,24 @@ schema.company.attr.country: Land
 schema.company.attr.phone: Telefon
 schema.company.attr.fax: Fax
 schema.company.attr.email: E-Mail
+schema.company.attr.max_templates: Maximale Templates
+schema.company.attr.max_hosts: Maximale Hosts
 schema.company.attr.max_services: Maximale Services
+schema.company.attr.max_services_per_host: Maximale Services pro Host
+schema.company.attr.max_contacts: Maximale Kontakte
+schema.company.attr.max_contactgroups: Maximale Kontaktgruppen
+schema.company.attr.max_timeperiods: Maximale Timeperiods
+schema.company.attr.max_timeslices_per_object: Maximale Timeslices
+schema.company.attr.max_groups: Maximale Gruppen
+schema.company.attr.max_users: Maximale Benutzer
+schema.company.attr.max_dependencies_per_host: Maximale Abhängigkeiten pro Host
+schema.company.attr.max_downtimes_per_host: Maximale Downtimes pro Host
+schema.company.attr.max_chart_views_per_user: Maximale Chart-Views pro User
+schema.company.attr.max_charts_per_user: Maximale Charts pro Benutzer
+schema.company.attr.max_metrics_per_chart: Maximale Metriken pro Chart
+schema.company.attr.max_dashboards_per_user: Maximale Dashboards pro Benutzer
+schema.company.attr.max_dashlets_per_dashboard: Maximale Dashlets pro Dashboard
+schema.company.attr.max_sms: Maximale SMS pro Monat
 schema.company.attr.sms_enabled: SMS Benachrichtigungen eingeschaltet
 schema.company.attr.active: Aktiv
 schema.company.attr.comment: Kommentar
@@ -383,7 +422,24 @@ schema.company.attr.sla: SLA
 schema.company.attr.variables: Globale Variablen
 schema.company.desc.variables: In diesem Feld können globale Variablen für alle Hosts definiert werden. Diese Variablen können für Schwellwerte bei der Konfiguration von Service-Checks verwendet werden. Beispiel:<br/><br/><b>HTTP.PORT=9000</b><br/><br/>Diese Variable kann dann im Format <i>%HTTP.PORT%</i> für Schwellwerte eingesetzt werden. Bitte beachten Sie das zwei Variablen vordefiniert sind: <i>IPADDR</i> und <i>HOSTNAME</i>. Diese Variablen werden mit der IP-Adresse und dem Hostnamen ersetzt. Weitere Informationen hierzu finden Sie in der Hilfe.<br/><br/>Erlaubte Zeichen: a-z, A-Z, 0-9, Punkt und Unterstrich
 schema.company.desc.active: Aktivierung oder Deaktivierung aller Objekte dieser Firma.
+schema.company.desc.max_templates: Die maximale Anzahl an Templates die erstellt werden dürfen.
+schema.company.desc.max_hosts: Die maximale Anzahl an Hosts die erstellt werden dürfen. Setze 0 (null) wenn es kein Limit gibt.
 schema.company.desc.max_services: Die maximale Anzahl an Services die überwacht werden dürfen. Setze 0 (null) wenn es kein Limit gibt.
+schema.company.desc.max_services_per_host: Die maximale Anzahl an sSrvices die pro Host erstellt werden dürfen.
+schema.company.desc.max_contacts: Die maximale Anzahl an Kontakten die erstellt werden dürfen.
+schema.company.desc.max_contactgroups: Die maximale Anzahl an Kontaktgruppen die erstellt werden dürfen.
+schema.company.desc.max_timeperiods: Die maximale Anzahl an Timeperiods die erstellt werden dürfen.
+schema.company.desc.max_timeslices_per_object: Die maximale Anzahl an Timeslices die pro Timeperiod erstellt werden dürfen.
+schema.company.desc.max_groups: Die maximale Anzahl an Gruppen die erstellt werden dürfen.
+schema.company.desc.max_users: Die maximale Anzahl an Benutzer die erstellt werden dürfen.
+schema.company.desc.max_dependencies_per_host: Die maximale Anzahl an Abhängigkeiten die pro Host erstellt werden dürfen.
+schema.company.desc.max_downtimes_per_host: Die maximale Anzahl an Downtimes die pro Host erstellt werden dürfen.
+schema.company.desc.max_chart_views_per_user: Die maximale Anzahl an Chart-Views die pro Benutzer erstellt werden dürfen.
+schema.company.desc.max_charts_per_user: Die maximale Anzahl an Benutzer-Charts die pro Benutzer erstellt werden dürfen.
+schema.company.desc.max_metrics_per_chart: Die maximale Anzahl an Metriken die pro Benutzer-Chart hinzugefügt werden dürfen.
+schema.company.desc.max_dashboards_per_user: Die maximale Anzahl an Dashboards die pro Benutzer erstellt werden dürfen.
+schema.company.desc.max_dashlets_per_dashboard: Die maximale Anzahl an Dashlets die pro Dashboard hinzugefügt werden dürfen.
+schema.company.desc.max_sms: Die maximale Anzahl SMS, die pro Monat versendet werden dürfen. Setze 0 (null) wenn es kein Limit gibt.
 schema.company.text.edit_variables: Globale Variablen
 schema.company.text.list: Übersicht über alle Unternehmen
 schema.company.text.create: Erstelle ein Unternehmen

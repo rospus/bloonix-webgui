@@ -95,6 +95,14 @@ sub options {
 sub create {
     my ($self, $c) = @_;
 
+    my $count_contacts = $c->model->database->contact->count(
+        id => condition => [ company_id => $c->user->{company_id} ]
+    );
+
+    if ($count_contacts >= $c->user->{max_contacts}) {
+        return $c->plugin->error->limit_error("err-835" => $c->user->{max_contacts});
+    }
+
     return $c->plugin->action->store("contact");
 }
 

@@ -40,8 +40,6 @@ sub check {
         return undef;
     }
 
-    $c->model->database->token->delete_expired(time);
-
     if (length $action > 100) {
         warn "action for session token is too long: '$action'";
         $action = substr($action, 0, 100);
@@ -55,8 +53,21 @@ sub check {
         ]
     );
 
+    $c->model->database->token->delete_expired(time);
+
     if (!$session_token) {
         $c->plugin->error->token_expired;
+        return undef;
+    }
+
+    if ($session_token->{expire} <= time) {
+        $c->plugin->error->token_expired;
+        $c->log->notice(
+            "token exist, but is expired:",
+            "expire[$session_token->{expire}]",
+            "action[$action]",
+            "token[$token]"
+        );
         return undef;
     }
 

@@ -28,7 +28,7 @@
 <script src="/public/js/other.min.js?v=1"></script>
 % }
 <script src="/public/js/misc.min.js?v=3"></script>
-% if ($stash->{meta}->{debug_bloonix_js}) {
+% if ($stash->{meta}->{debugjs}) {
 <script src="/public/js/bloonix.src.js?v=<% data.version %>"></script>
 % } else {
 <script src="/public/js/bloonix.min.js?v=<% data.version %>"></script>
