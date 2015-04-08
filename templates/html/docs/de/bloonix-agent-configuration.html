@@ -23,7 +23,7 @@ Ersetzen Sie den Platzhalter <b>[ HOST-KEY ]</b> mit dem Host-Key. Den Platzhalt
 
 <pre>
 %%+ bloonix-init-host  60.EAjCK1LlI9E7IWq36vO4c8psqCb5CC  @@SERVER@@ +%%
-%%- bloonix-init-host  60.EAjCK1LlI9E7IWq36vO4c8psqCb5CC  bloonix.server.example:8443 -%%
+%%- bloonix-init-host  60.EAjCK1LlI9E7IWq36vO4c8psqCb5CC  bloonix.server.example -%%
 </pre>
 
 <p>
@@ -53,12 +53,11 @@ Editieren Sie die Konfiguration und tragen in der Sektion <i>server</i> die IP-A
 <pre>
 server {
     host @@SERVER@@   <b style="color:red;">&lt;- diesen Parameter %%+ setzen +%%%%- ersetzen -%%</b>
-    proto https
+    port 5460
     mode failover
-    ssl_options {
-        ssl_verify_mode 1
-        ssl_ca_path /etc/ssl/certs
-    }
+    use_ssl yes
+    ssl_verify_mode peer
+    ssl_ca_path /etc/ssl/certs
 }
 </pre>
 
