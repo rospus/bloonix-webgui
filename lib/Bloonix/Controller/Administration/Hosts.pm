@@ -241,7 +241,7 @@ sub update {
     my $host_secret = $c->model->database->host_secret->find(
         condition => [ host_id => $host->{id} ]
     ) or return $c->plugin->error->object_does_not_exists;
-    my $form = $c->plugin->action->check_form(create => "host")
+    my $form = $c->plugin->action->check_form(update => "host")
         or return 1;
 
     my $data = $form->data;
