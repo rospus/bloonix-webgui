@@ -89,6 +89,8 @@ sub options {
 
     my $action = $opts->{id} ? "update" : "create";
     $c->stash->data(options => $c->model->database->contact->validator->options);
+    $c->stash->data(mandatory => $c->model->database->contact->validator->mandatory);
+    $c->stash->data(optional => $c->model->database->contact->validator->optional);
     $c->view->render->json;
 }
 

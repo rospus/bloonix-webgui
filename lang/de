@@ -49,6 +49,7 @@ nav.sub.users: Benutzer
 nav.sub.groups: Gruppen
 nav.sub.companies: Unternehmen
 nav.sub.variables: Variablen
+nav.sub.locations: Lokationen
 nav.sub.events: Ereignisse
 nav.sub.reports: Berichte
 nav.sub.dependencies: Abhängigkeiten
@@ -76,6 +77,7 @@ err-420: Die Aktion ist fehlgeschlagen!
 err-425: Ihr Session-Token ist abgelaufen!
 err-426: Diese Aktion erfordert ein Session-Token!
 err-427: Services, die von einem Host-Template vererbt wurden, können nicht gelöscht werden!
+err-428: Die Lokation kann nicht gelöscht werden, da mindestens ein Service die Lokation konfiguriert hat!
 err-500: Ein interner Fehler ist aufgetreten! Bitten kontaktieren Sie den Administrator!
 err-600: Das angeforderte Objekt existiert nicht!
 err-601: Die angeforderten Objekte existieren nicht!
@@ -208,7 +210,8 @@ text.never: Niemals
 text.click_me: Klick mich
 text.click_to_delete_seletion: Klicken um die Auswahl zu löschen
 text.browsers_heap_size: Anzeige der Auslastung der Heap-size in Ihrem Browser
-text.locations_selected_costs: Sie haben %s Messpunkte ausgewählt. Bitte beachten Sie, dass jeder Kontrollpunkt extra berechnet wird.
+text.selected_locations_counter: Sie haben %s Messpunkte ausgewählt.
+text.selected_locations_costs: itte beachten Sie, dass jeder Kontrollpunkt extra berechnet wird.
 text.sort_by_dots: Sortiere nach ...
 text.filter_by_category_dots: Filter nach Kategorie ...
 text.option_examples: Optionen und Beispiele
@@ -1064,6 +1067,21 @@ schema.user_chart.text.update: Einen Chart aktualisieren
 schema.user_chart.text.add_metric: Metrik hinzufügen
 schema.user_chart.text.chart_metrics: Chart Metriken
 schema.user_chart.text.click_to_add_metric: Klicken, um die Metrik hinzuzufügen
+
+schema.location.attr.id: ID
+schema.location.attr.ipaddr: IP Adresse
+schema.location.attr.hostname: Hostname
+schema.location.attr.city: Stadt
+schema.location.attr.country: Land
+schema.location.attr.country_code: Ländercode
+schema.location.attr.continent: Kontinent
+schema.location.attr.coordinates: Koordinaten
+schema.location.attr.is_default: Standard Lokation
+schema.location.attr.description: Beschreibung
+schema.location.text.list: Lokationen
+schema.location.text.create: Eine neue Lokation erstellen
+schema.location.text.view: Lokation %s
+schema.location.text.delete: Lokation %s löschen
 
 site.wtrm.action.doAuth: Set auth basic <b>username</b> and <b>password</b>
 site.wtrm.action.doUserAgent: Set the <b>user agent</b> for the request

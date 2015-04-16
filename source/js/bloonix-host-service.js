@@ -341,9 +341,9 @@ Bloonix.createServiceForm = function(o) {
         this.locationsById = {};
         $.each(this.locations, function(i, item) {
             self.locationsById[item.id] = item;
-            if (item.is_default == "1") {
+            /*if (item.is_default == "1") {
                 self.defaultLocation = item;
-            }
+            }*/
         });
     };
 
@@ -924,12 +924,13 @@ Bloonix.createServiceForm = function(o) {
             .html(Text.get("schema.service.desc.default_check_type"))
             .appendTo(this.locationTypeDefaultContainer);
 
+        /*
         Utils.create("h3")
             .html(Text.get("schema.service.desc.default_check_type_location"))
             .appendTo(this.locationTypeDefaultContainer);
 
         var flag = Bloonix.flag(
-            this.defaultLocation.country_code,
+            this.defaultLocation.country,
             this.defaultLocation.continent +" - "+ this.defaultLocation.city +" - "+ this.defaultLocation.ipaddr
         );
 
@@ -937,6 +938,7 @@ Bloonix.createServiceForm = function(o) {
             .addClass("list-rotate-locations-box")
             .html(flag)
             .appendTo(this.locationTypeDefaultContainer);
+        */
     };
 
     object.createFailoverLocationTypeElements = function() {
@@ -1071,6 +1073,13 @@ Bloonix.createServiceForm = function(o) {
             .addClass("locations-selected")
             .appendTo(container);
 
+        if (Bloonix.args.showCostInfo === "yes") {
+            Utils.create("div")
+                .addClass("locations-selected")
+                .html(Text.get("text.selected_locations_costs"))
+                .appendTo(container);
+        }
+
         if (type !== "multiple") {
             locationCounterBox.hide();
         }
@@ -1109,7 +1118,7 @@ Bloonix.createServiceForm = function(o) {
 
             var calCost = function() {
                 var len = checkboxTable.find("input:checked").length;
-                locationCounterBox.html(Text.get("text.locations_selected_costs", len, true, true));
+                locationCounterBox.html(Text.get("text.selected_locations_counter", len, true, true));
              };
 
             calCost();
@@ -1123,7 +1132,7 @@ Bloonix.createServiceForm = function(o) {
                 .appendTo(div);
 
             Utils.create("td")
-                .html( Bloonix.flag(item.country_code, Utils.escape(item.continent +" - "+ item.city +" - "+ item.ipaddr)))
+                .html( Bloonix.flag(item.country, Utils.escape(item.continent +" - "+ item.city +" - "+ item.ipaddr)))
                 .click(function() { checkbox.click() }).appendTo(tr);
         });
     };

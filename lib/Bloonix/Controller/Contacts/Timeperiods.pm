@@ -90,6 +90,8 @@ sub options {
     my ($self, $c, $opts) = @_;
 
     $c->stash->data(options => $c->model->database->contact_timeperiod->validator->options);
+    $c->stash->data(mandatory => $c->model->database->contact_timeperiod->validator->mandatory);
+    $c->stash->data(optional => $c->model->database->contact_timeperiod->validator->optional);
     $c->stash->data(values => $c->model->database->contact_timeperiod->validator->defaults);
 
     return $c->view->render->json;

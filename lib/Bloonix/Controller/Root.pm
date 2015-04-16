@@ -191,7 +191,9 @@ sub index {
         $c->stash->{data} = {
             init => $c->json->encode({
                 chartLibrary => $c->config->{webapp}->{chart_library},
-                version => $c->version->{js}
+                version => $c->version->{js},
+                showCostInfo => $c->config->{webapp}->{show_cost_info},
+                showLocations => $c->config->{webapp}->{show_locations}
             }),
             version => $c->version->{js}
         };

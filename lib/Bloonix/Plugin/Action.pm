@@ -38,6 +38,8 @@ sub options {
     }
 
     $c->stash->data(options => $options);
+    $c->stash->data(mandatory => $c->model->database->$schema->validator->mandatory);
+    $c->stash->data(optional => $c->model->database->$schema->validator->optional);
     $c->view->render->json;
 }
 

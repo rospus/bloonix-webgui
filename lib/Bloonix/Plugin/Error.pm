@@ -86,6 +86,11 @@ sub cannot_delete_host_template_object {
     $self->_error("err-427");
 }
 
+sub cannot_delete_location {
+    my $self = shift;
+    $self->_error("err-428");
+}
+
 sub internal_error {
     my $self = shift;
     $self->_error("err-500");

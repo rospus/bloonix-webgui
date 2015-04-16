@@ -19,7 +19,7 @@ sub list {
     );
 
     foreach my $location (@$locations) {
-        $location->{coordinates} = $c->json->decode($location->{coordinates});
+        $location->{coordinates} = [ split /,/, $location->{coordinates} ];
     }
 
     $c->stash->data($locations);

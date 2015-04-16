@@ -811,15 +811,18 @@ var Lang = {
       "schema.contact.text.timeperiod_type_send_only_mail" : "Send only mail",
       "schema.event.text.filter_message" : "Filter message",
       "site.wtrm.action.checkIfElementHasNotValue" : "Check if an <b>input</b> field or <b>textarea has <i>NOT</i></b> a specified <b>value</b>",
+      "schema.location.attr.id" : "ID",
       "action.submit" : "Submit",
       "schema.contactgroup.text.service_members" : "Services in contact group",
       "schema.service.attr.fd_enabled" : "Flap detection enabled",
+      "schema.location.attr.country_code" : "Country code",
       "schema.host.desc.max_services" : "Set the maximum number of services that can be configured for the host. 0 means unlimited.",
       "action.unselect" : "Unselect",
       "schema.dependency.text.service" : "Service",
       "site.wtrm.desc.html" : "The inner HTML of an element you wish to check.",
       "action.remove" : "Remove",
       "word.Seconds" : "Seconds",
+      "nav.sub.locations" : "Locations",
       "schema.contactgroup.text.service_nonmembers" : "Services not in contact group",
       "schema.user.desc.comment" : "This field can be used for internal comment about the user.",
       "schema.service.info.notification_disabled" : "Notifications are disabled of the service.",
@@ -880,6 +883,7 @@ var Lang = {
       "schema.service.attr.passive_check" : "Is this a passive check?",
       "schema.chart.text.multiple_view" : "Chart view",
       "schema.plugin.attr.info" : "Information",
+      "schema.location.attr.is_default" : "Default location",
       "schema.plugin_stats.attr.datatype" : "Data type",
       "schema.timeperiod.text.list" : "Overview of all timeperiods",
       "schema.plugin_stats.attr.alias" : "Name",
@@ -909,12 +913,14 @@ var Lang = {
       "err-632" : "The parameter limit must be an numeric value, min 0, max <b>%s</b>.",
       "schema.timeperiod.text.create" : "Create a new timeperiod",
       "err-400" : "Bad login! Try it again!",
+      "schema.location.attr.city" : "City",
       "text.dashboard.remove_dashlet" : "Remove the dashlet",
       "schema.company.attr.title" : "Title",
       "schema.service.desc.multiple_check_concurrency_title" : "Concurrency checks",
       "schema.contact.desc.mail_notification_level" : "Select the status level for which you want to receive notifications.",
       "err-847" : "Sorry, but you cannot create more than %s dependencies per host!",
       "schema.service.text.rotate_location_check_button" : "Rotate check",
+      "schema.location.attr.hostname" : "Hostname",
       "schema.host.info.sysinfo" : "External system information available.",
       "schema.event.attr.attempts" : "Attempts",
       "action.resize" : "Resize",
@@ -942,11 +948,14 @@ var Lang = {
       "schema.company.text.edit_variables" : "Global variables",
       "schema.service.text.host_template" : "Host template",
       "nav.sub.charts" : "Charts",
+      "schema.location.attr.country" : "Country",
       "schema.service.text.no_command_options" : "This check has no settings.",
       "schema.service.desc.comment" : "This is a short internal comment to the check.",
       "schema.chart.text.multiselect" : "Select charts for multiple hosts",
+      "schema.location.attr.ipaddr" : "IP address",
       "schema.contact.attr.escalation_level" : "Escalation level",
       "site.wtrm.action.doCheck" : "Check a <b>radio button</b> or <b>checkbox</b>",
+      "schema.location.text.view" : "Location %s",
       "schema.host.text.multiple_selection_help" : "<h4>This action requires to select at least one host.</h4>\nTo mark a single host just click on a row. If you want to mark multiple hosts\njust press and hold <i>CTRL</i> on your keyboard. If you press and hold the left mouse button\nyou can mark a range of hosts.",
       "schema.user.desc.role" : "Which role does the user have? Users with the role <i>operator</i> are power users and can manage user accounts and user groups. Users with the role <i>user</i> are not allowed to manage other users and groups.",
       "text.report.availability.h10" : "10:00 - 10:59",
@@ -976,6 +985,7 @@ var Lang = {
       "info.move_with_mouse" : "Press and hold down the left mouse button while you move the box up or down.</p>",
       "text.report.availability.EV-O" : "Number of events with status OK.",
       "schema.group.text.add" : "Add a new user to the group",
+      "err-428" : "The location cannot be deleted because at least one service has the location configured!",
       "schema.company.attr.variables" : "Global variables",
       "schema.dependency.text.depends_on_host" : "depends on host",
       "text.dashboard.rename_dashboard" : "Rename the dashboard",
@@ -990,6 +1000,7 @@ var Lang = {
       "nav.sub.group_settings" : "Group settings",
       "schema.host.desc.allow_from" : "With this field it's possible to set a comma separated list of IP addresses from which the Bloonix agents are allowed to deliver host statistics. Set the keyword <i>all</i> to allow all IP addresses.",
       "schema.dependency.attr.inherit" : "Inheritance",
+      "schema.location.attr.description" : "Description",
       "site.wtrm.command.checkIfElementHasNotValue" : "Check if the input field or textarea with element <b>%s</b> does <i>NOT</i> contain <b>%s</b>",
       "schema.host.text.settings" : "Host settings",
       "schema.service.attr.volatile_retain" : "The volatile retain time",
@@ -1030,6 +1041,7 @@ var Lang = {
       "word.Timeslice" : "Timeslice",
       "schema.dependency.text.list" : "Dependencies for host %s",
       "schema.service.attr.mail_soft_interval" : "Notification interval for mails (soft)",
+      "text.selected_locations_costs" : "Please note that each checkpoint will be charged extra.",
       "text.fixed_checkpoint" : "Fixed checkpoint",
       "schema.user_chart.attr.subtitle" : "Subtitle",
       "schema.contact.desc.sms_to" : "This is the mobil number of the contact. Event notifications will be send via SMS to this number.",
@@ -1163,6 +1175,7 @@ var Lang = {
       "schema.chart.text.really_delete_view" : "Do you really want to delete chart view <b><b>%s</b></b>?",
       "schema.dependency.attr.id" : "Dependency ID",
       "site.wtrm.command.doWaitForElementWithText" : "Wait for element <b>%s</b> with text <b>%s</b>",
+      "schema.location.attr.coordinates" : "Coordinates",
       "schema.user.attr.manage_contacts" : "Manage contacts?",
       "site.wtrm.desc.text" : "The inner text of an element you wish to check.",
       "word.Yes" : "Yes",
@@ -1176,6 +1189,7 @@ var Lang = {
       "schema.host.text.add_host_to_group" : "Add the host to a user group",
       "schema.host.desc.active" : "Active or de-activate the host and all services.",
       "schema.chart.text.alignment" : "Chart alignment",
+      "schema.location.text.list" : "Locations",
       "schema.plugin.attr.categories" : "Categories",
       "err-704" : "The passwords doesn't match!",
       "word.Absolute" : "Absolute",
@@ -1302,9 +1316,9 @@ var Lang = {
       "schema.user.text.password_update" : "Please enter a new password.",
       "site.wtrm.action.doUncheck" : "Uncheck a <b>radio button</b> or <b>checkbox</b>",
       "schema.timeslice.text.list" : "Overview of all timeslices",
+      "site.wtrm.command.checkUrl" : "Check if the URL in the address bar is <b>%s</b>",
       "schema.user_chart.text.chart_metrics" : "Chart metrics",
       "site.wtrm.placeholder.contentType" : "text/html",
-      "site.wtrm.command.checkUrl" : "Check if the URL in the address bar is <b>%s</b>",
       "schema.host.info.notification_disabled" : "Notifications are disabled of the host.",
       "site.wtrm.command.checkIfElementIsNotSelected" : "Check if the value <b>%s</b> of the selectbox <b>%s</b> is <i>NOT</i> selected",
       "nav.sub.notifications" : "Notifications",
@@ -1329,6 +1343,7 @@ var Lang = {
       "schema.chart.text.chart_type" : "Select the chart type",
       "text.report.availability.EV-U" : "Number of events with status UNKNOWN.",
       "bool.yesno.1" : "yes",
+      "text.selected_locations_counter" : "You have <b>%s</b> checkpoints selected.",
       "schema.service.desc.default_check_type" : "A default check has a pre-defined checkpoint.\nFrom this checkpoint your service is checked.",
       "schema.host.attr.interval" : "Interval",
       "schema.service.text.multiple_downtimes" : "Schedule a downtime for multiple services",
@@ -1356,8 +1371,8 @@ var Lang = {
       "err-416" : "You do not have enough access privileges for this operation!",
       "schema.chart.attr.charts" : "Charts",
       "schema.company.attr.country" : "Country",
-      "schema.host.desc.os_manufacturer" : "e.g. Red Hat, Microsoft, CISCO",
       "site.wtrm.command.doSleep" : "Sleep <b>%s</b>ms",
+      "schema.host.desc.os_manufacturer" : "e.g. Red Hat, Microsoft, CISCO",
       "site.wtrm.action.doSelect" : "<b>Select</b> a value from a selectbox",
       "action.abort" : "Abort",
       "text.report.availability.h08" : "08:00 - 08:59",
@@ -1368,6 +1383,7 @@ var Lang = {
       "schema.user.text.is_logged_in" : "Logged in",
       "schema.company.attr.max_contacts" : "Max contacts",
       "site.wtrm.desc.status" : "Enter the expected http status for the URL.",
+      "schema.location.text.create" : "Create a new location",
       "schema.contact.text.timeperiod_type" : "Include / Exclude",
       "text.report.availability.h15" : "15:00 - 15:59",
       "nav.sub.contactgroup_host_members" : "Hosts in contact group",
@@ -1380,6 +1396,7 @@ var Lang = {
       "schema.host.attr.allow_from" : "Allow from",
       "schema.host.desc.variables" : "In this field you can define host variables. These variables can be used for thresholds by the configuration of service checks. Example:<br/><br/>HTTP.PORT=9000<br/><br/>This variable could be used in the format <i>%HTTP.PORT%</i> for thresholds. Please note that two variables are pre-defined: <i>IPADDR</i> and <i>HOSTNAME</i>. These variables are replaced with the IP address and the hostname of the host. For further information read the help.<br/><br/>Allowed signs: a-z, A-Z, 0-9, dot and underscore",
       "schema.contact.attr.mail_notifications_enabled" : "E-Mail global enabled",
+      "schema.location.attr.continent" : "Continent",
       "schema.host_template.text.clone" : "Clone the template",
       "site.wtrm.placeholder.text" : "Lorem ipsum...",
       "schema.user.attr.last_login" : "Last login",
@@ -1483,8 +1500,8 @@ var Lang = {
       "schema.dependency.text.service_to_host" : "service to host",
       "schema.host.attr.last_check" : "Last check",
       "word.Timezone" : "Timezone",
-      "action.settings" : "Settings",
       "site.wtrm.command.doUncheck" : "Uncheck the radio button or checkbox <b>%s</b> with value <b>%s</b>",
+      "action.settings" : "Settings",
       "text.from_now_to_2d" : "From now + 2 days",
       "schema.user_chart.attr.id" : "ID",
       "schema.dependency.text.host_to_host" : "host to host",
@@ -1750,7 +1767,6 @@ var Lang = {
       "schema.user.desc.allow_from" : "It's possible to set a comma separated list of ip addresses from which the user is restricted to login. With the keyword <i>all</i> the login has no restriction.",
       "schema.contact.desc.mail_notifications_enabled" : "With this option it's possible to enable or disable event notifications via email.",
       "schema.company.desc.max_services" : "The maximum number of services that can be created. Set 0 (null) if unlimited.",
-      "text.locations_selected_costs" : "You have <b>%s</b> checkpoints selected. Please note that each checkpoint will be charged extra.",
       "text.report.availability.h02" : "02:00 - 02:59",
       "site.wtrm.attr.html" : "Inner HTML",
       "schema.host.text.list_device_classes" : "Device classes",
@@ -1770,16 +1786,17 @@ var Lang = {
       "schema.roster.text.list" : "Overview of all rosters",
       "schema.service.text.view_wtrm_report" : "View web transaction report",
       "site.help.doc.device-classes" : "Bauklasse von Hosts",
+      "schema.service.attr.comment" : "Comment",
       "schema.user.attr.manage_templates" : "Manage templates?",
       "text.dashboard.hosts_availability" : "Availability of all hosts",
-      "schema.service.attr.comment" : "Comment",
       "text.last_60d" : "Last 60 days",
-      "site.help.doc.host-alive-check" : "Was ist ein Host-Alive-Check?",
       "schema.contact.text.escalation_level_event.1" : "active after 1 notification",
+      "site.help.doc.host-alive-check" : "Was ist ein Host-Alive-Check?",
       "schema.company.attr.company" : "Company",
       "site.wtrm.command.doUserAgent" : "Set the user agent to <b>%s</b>",
-      "action.yes_delete" : "<b>Yes, delete!</b>",
       "schema.service.attr.command" : "Command",
+      "action.yes_delete" : "<b>Yes, delete!</b>",
+      "schema.location.text.delete" : "Delete location %s",
       "action.help" : "Help",
       "schema.event.text.host_service" : "Host / Service",
       "schema.event.attr.tags" : "Tags",
@@ -1850,15 +1867,18 @@ var Lang = {
       "schema.contact.text.timeperiod_type_send_only_mail" : "Nur Mails versenden",
       "schema.event.text.filter_message" : "Nachrichtenfilter",
       "site.wtrm.action.checkIfElementHasNotValue" : "Check if an <b>input</b> field or <b>textarea has <i>NOT</i></b> a specified <b>value</b>",
+      "schema.location.attr.id" : "ID",
       "action.submit" : "Bestätigen",
       "schema.contactgroup.text.service_members" : "Services, die der Kontakgruppe angehören",
       "schema.service.attr.fd_enabled" : "Erkennung von Statuswechseln eingeschaltet",
+      "schema.location.attr.country_code" : "Ländercode",
       "schema.host.desc.max_services" : "Konfiguration der maximalen Services, die für diesen Host eingerichtet werden dürfen. 0 heißt unlimitiert.",
       "action.unselect" : "Abwählen",
       "schema.dependency.text.service" : "Service",
       "site.wtrm.desc.html" : "The inner HTML of an element you wish to check.",
       "action.remove" : "Entfernen",
       "word.Seconds" : "Sekunden",
+      "nav.sub.locations" : "Lokationen",
       "schema.contactgroup.text.service_nonmembers" : "Services, die nicht der Kontaktgruppe angehören",
       "schema.user.desc.comment" : "Dieses Feld kann für interne Kommentare über den Benutzer verwendet werden.",
       "schema.service.info.notification_disabled" : "Die Benachrichtigungen sind ausgeschaltet.",
@@ -1919,6 +1939,7 @@ var Lang = {
       "schema.service.attr.passive_check" : "Ist dies ein passiver Check?",
       "schema.chart.text.multiple_view" : "Chart Ansicht",
       "schema.plugin.attr.info" : "Information",
+      "schema.location.attr.is_default" : "Standard Lokation",
       "schema.plugin_stats.attr.datatype" : "Datentyp",
       "schema.timeperiod.text.list" : "Übersicht über alle Zeitpläne",
       "schema.plugin_stats.attr.alias" : "Name",
@@ -1948,12 +1969,14 @@ var Lang = {
       "err-632" : "Der Parameter limit muss ein numerischer Wert sein, mindestens 0, maximal %s.",
       "schema.timeperiod.text.create" : "Einen neuen Zeitplan erstellen",
       "err-400" : "Der Login ist fehlgeschlagen. Bitte versuchen Sie es erneut!",
+      "schema.location.attr.city" : "Stadt",
       "text.dashboard.remove_dashlet" : "Das Dashlet entfernen",
       "schema.company.attr.title" : "Titel",
       "schema.service.desc.multiple_check_concurrency_title" : "Konkurrierende Checks",
       "schema.contact.desc.mail_notification_level" : "Wähle die Status Level für die der Konakt eine Benachrichtigung per E-Mail erhalten soll.",
       "err-847" : "Sorry, aber Sie dürfen nicht mehr als %s Abhängigkeiten pro Host erstellen!",
       "schema.service.text.rotate_location_check_button" : "Rotierende Checks",
+      "schema.location.attr.hostname" : "Hostname",
       "schema.host.info.sysinfo" : "Externe Informationen sind verfügbar.",
       "schema.event.attr.attempts" : "Versuche",
       "action.resize" : "Größe ändern",
@@ -1981,11 +2004,14 @@ var Lang = {
       "schema.company.text.edit_variables" : "Globale Variablen",
       "schema.service.text.host_template" : "Host template",
       "nav.sub.charts" : "Charts",
+      "schema.location.attr.country" : "Land",
       "schema.service.text.no_command_options" : "Dieser Check hat keine Einstellungen.",
       "schema.service.desc.comment" : "Dies ist ein beliebiges Kommentar zum Service.",
       "schema.chart.text.multiselect" : "Chartauswahl für mehrere Hosts",
+      "schema.location.attr.ipaddr" : "IP Adresse",
       "schema.contact.attr.escalation_level" : "Eskalationslevel",
       "site.wtrm.action.doCheck" : "Check a <b>radio button</b> or <b>checkbox</b>",
+      "schema.location.text.view" : "Lokation %s",
       "schema.host.text.multiple_selection_help" : "<h4>Diese Aktion erfordert, dass mindestens ein Host ausgewählt ist.</h4>\nUm einen einzelnen Host zu markieren, klicken Sie auf die entsprechende Zeile.\nWenn Sie mehrere Hosts markieren möchten, halten Sie einfach die Taste <i>STRG</i>\nauf Ihrer Tastatur gedrückt. Beim Drücken und Halten der der linken Maustaste und dem\nBewegen des Mauszeigers kann ein größerer Bereich von Hosts gewählt werden.",
       "schema.user.desc.role" : "Welche Rolle hat der Benutzer? Benutzer mit der Rolle <i>operator</i> sind Poweruser und können Benutzeraccounts und Gruppen verwalten. Benutzer mit der Gruppe <i>user</i> haben dazu keine Berechtigung.",
       "text.report.availability.h10" : "10:00 - 10:59",
@@ -2015,6 +2041,7 @@ var Lang = {
       "info.move_with_mouse" : "Drücke und halte den linken Mausbutton während die Box runter oder hoch bewegt wird.",
       "text.report.availability.EV-O" : "Anzahl von Ereignissen mit Status OK.",
       "schema.group.text.add" : "Einen neuen Benutzer der Gruppe hinzufügen",
+      "err-428" : "Die Lokation kann nicht gelöscht werden, da mindestens ein Service die Lokation konfiguriert hat!",
       "schema.company.attr.variables" : "Globale Variablen",
       "schema.dependency.text.depends_on_host" : "hängt ab von Host",
       "text.dashboard.rename_dashboard" : "Das Dashboard umbenennen",
@@ -2029,6 +2056,7 @@ var Lang = {
       "nav.sub.group_settings" : "Gruppeneinstellungen",
       "schema.host.desc.allow_from" : "Es ist möglich eine Komma-separierte Liste von IP-Adressen anzugeben, von denen statistische Daten für den Host geliefert werden dürfen. Das Schlüsselwort <i>all</i> heißt von überall.",
       "schema.dependency.attr.inherit" : "Vererbung",
+      "schema.location.attr.description" : "Beschreibung",
       "site.wtrm.command.checkIfElementHasNotValue" : "Check if the input field or textarea with element <b>%s</b> does <i>NOT</i> contain <b>%s</b>",
       "schema.host.text.settings" : "Einstellungen des Hosts",
       "schema.service.attr.volatile_retain" : "Vorhaltezeit des flüchtigen Status (volatile)",
@@ -2069,6 +2097,7 @@ var Lang = {
       "word.Timeslice" : "Zeitscheibe",
       "schema.dependency.text.list" : "Abhängigkeiten für Host %s",
       "schema.service.attr.mail_soft_interval" : "Benachrichtigungsintervall für E-Mails (soft)",
+      "text.selected_locations_costs" : "itte beachten Sie, dass jeder Kontrollpunkt extra berechnet wird.",
       "text.fixed_checkpoint" : "Fixer Messpunkt",
       "schema.user_chart.attr.subtitle" : "Untertitel",
       "schema.contact.desc.sms_to" : "Dies ist die Mobilfunknummer des Konakts. Benachrichtigung über Ereignisse werden an diese Rufnummer per SMS gesendet.",
@@ -2202,6 +2231,7 @@ var Lang = {
       "schema.chart.text.really_delete_view" : "Möchten Sie wirklich die Chart Ansicht <b>%s</b> löschen?",
       "schema.dependency.attr.id" : "Dependency ID",
       "site.wtrm.command.doWaitForElementWithText" : "Wait for element <b>%s</b> with text <b>%s</b>",
+      "schema.location.attr.coordinates" : "Koordinaten",
       "schema.user.attr.manage_contacts" : "Verwaltung von Kontakten?",
       "site.wtrm.desc.text" : "The inner text of an element you wish to check.",
       "word.Yes" : "Ja",
@@ -2215,6 +2245,7 @@ var Lang = {
       "schema.host.text.add_host_to_group" : "Den Host einer Gruppe hinzufügen",
       "schema.host.desc.active" : "Aktiviere oder deaktiviere den Host und alle Services.",
       "schema.chart.text.alignment" : "Chartausrichtung",
+      "schema.location.text.list" : "Lokationen",
       "schema.plugin.attr.categories" : "Kategorien",
       "err-704" : "Die Passwörter stimmen nicht überein!",
       "word.Absolute" : "Absolut",
@@ -2340,9 +2371,9 @@ var Lang = {
       "schema.user.text.password_update" : "Bitte gebe ein neues Passwort ein.",
       "site.wtrm.action.doUncheck" : "Uncheck a <b>radio button</b> or <b>checkbox</b>",
       "schema.timeslice.text.list" : "Übersicht über alle Zeitabschnitte",
+      "site.wtrm.command.checkUrl" : "Check if the URL in the address bar is <b>%s</b>",
       "schema.user_chart.text.chart_metrics" : "Chart Metriken",
       "site.wtrm.placeholder.contentType" : "text/html",
-      "site.wtrm.command.checkUrl" : "Check if the URL in the address bar is <b>%s</b>",
       "schema.host.info.notification_disabled" : "Benachrichtigungen sind für diesen Host ausgeschaltet",
       "site.wtrm.command.checkIfElementIsNotSelected" : "Check if the value <b>%s</b> of the selectbox <b>%s</b> is <i>NOT</i> selected",
       "nav.sub.notifications" : "Benachrichtigungen",
@@ -2367,6 +2398,7 @@ var Lang = {
       "schema.chart.text.chart_type" : "Wähle den Charttyp",
       "text.report.availability.EV-U" : "Anzahl von Ereignissen mit Status UNKNOWN. ",
       "bool.yesno.1" : "Ja",
+      "text.selected_locations_counter" : "Sie haben %s Messpunkte ausgewählt.",
       "schema.service.desc.default_check_type" : "Standard-Checks haben einen vordefinierten Messpunkt. Von diesem Messpunkt aus wird Ihr Service geprüft. Der Messpunkt für Standardchecks ist:",
       "schema.host.attr.interval" : "Intervall",
       "schema.service.text.multiple_downtimes" : "Eine geplante Wartungsarbeit für mehrere Services einrichten",
@@ -2394,8 +2426,8 @@ var Lang = {
       "err-416" : "Sie haben nicht genügend Rechte für diese Operation!",
       "schema.chart.attr.charts" : "Charts",
       "schema.company.attr.country" : "Land",
-      "schema.host.desc.os_manufacturer" : "z.B. Red Hat, Microsoft, CISCO",
       "site.wtrm.command.doSleep" : "Sleep <b>%s</b>ms",
+      "schema.host.desc.os_manufacturer" : "z.B. Red Hat, Microsoft, CISCO",
       "site.wtrm.action.doSelect" : "<b>Select</b> a value from a selectbox",
       "action.abort" : "Abbrechen",
       "text.report.availability.h08" : "08:00 - 08:59",
@@ -2406,6 +2438,7 @@ var Lang = {
       "schema.user.text.is_logged_in" : "Ist eingeloggt",
       "schema.company.attr.max_contacts" : "Maximale Kontakte",
       "site.wtrm.desc.status" : "Enter the expected http status for the URL.",
+      "schema.location.text.create" : "Eine neue Lokation erstellen",
       "schema.contact.text.timeperiod_type" : "Inkludieren / Exkludieren",
       "text.report.availability.h15" : "15:00 - 15:59",
       "nav.sub.contactgroup_host_members" : "Hosts in der Kontaktgruppe",
@@ -2418,6 +2451,7 @@ var Lang = {
       "schema.host.attr.allow_from" : "Erlaubter Zugriff",
       "schema.host.desc.variables" : "In diesem Feld können Host Variablen definiert werden. Diese Variablen können für Schwellwerten bei der Konfiguration von Service-Checks verwendet werden. Beispiel:<br/><br/><b>HTTP.PORT=9000</b><br/><br/>Diese Variable kann dann im Format <i>%HTTP.PORT%</i> für Schwellwerte eingesetzt werden. Bitte beachten Sie das zwei Variablen vordefiniert sind: <i>IPADDR</i> und <i>HOSTNAME</i>. Diese Variablen werden mit der IP-Adresse und dem Hostnamen ersetzt. Weitere Informationen hierzu finden Sie in der Hilfe.<br/><br/>Erlaubte Zeichen: a-z, A-Z, 0-9, Punkt und Unterstrich",
       "schema.contact.attr.mail_notifications_enabled" : "E-Mail global aktiv",
+      "schema.location.attr.continent" : "Kontinent",
       "schema.host_template.text.clone" : "Das Template klonen",
       "site.wtrm.placeholder.text" : "Lorem ipsum...",
       "schema.user.attr.last_login" : "Letzter Login",
@@ -2520,8 +2554,8 @@ var Lang = {
       "schema.dependency.text.service_to_host" : "Service zu Host",
       "schema.host.attr.last_check" : "Letzter Check",
       "word.Timezone" : "Zeitzone",
-      "action.settings" : "Einstellungen",
       "site.wtrm.command.doUncheck" : "Uncheck the radio button or checkbox <b>%s</b> with value <b>%s</b>",
+      "action.settings" : "Einstellungen",
       "text.from_now_to_2d" : "Von jetzt + 2 Tage",
       "schema.user_chart.attr.id" : "ID",
       "schema.dependency.text.host_to_host" : "Host zu Host",
@@ -2787,7 +2821,6 @@ var Lang = {
       "schema.user.desc.allow_from" : "Es ist möglich eine Komma-separierte Liste von IP-Adressen anzugeben, von denen sich der Benutzer einloggen darf. Das Schlüsselwort <i>all</i> heißt von überall.",
       "schema.contact.desc.mail_notifications_enabled" : "Mit dieser Option ist es möglich die Benachrichtigung per E-Mail ein- oder auszuschalten.",
       "schema.company.desc.max_services" : "Die maximale Anzahl an Services die überwacht werden dürfen. Setze 0 (null) wenn es kein Limit gibt.",
-      "text.locations_selected_costs" : "Sie haben %s Messpunkte ausgewählt. Bitte beachten Sie, dass jeder Kontrollpunkt extra berechnet wird.",
       "text.report.availability.h02" : "02:00 - 02:59",
       "site.wtrm.attr.html" : "Inner HTML",
       "schema.host.text.list_device_classes" : "Device Klassen",
@@ -2811,12 +2844,13 @@ var Lang = {
       "text.dashboard.hosts_availability" : "Verfügbarkeit aller Hosts",
       "schema.service.attr.comment" : "Kommentar",
       "text.last_60d" : "Die letzten 60 Tage",
-      "site.help.doc.host-alive-check" : "Was ist ein Host-Alive-Check?",
       "schema.contact.text.escalation_level_event.1" : "aktiv nach 1er Benachrichtiung",
+      "site.help.doc.host-alive-check" : "Was ist ein Host-Alive-Check?",
       "schema.company.attr.company" : "Firma",
       "site.wtrm.command.doUserAgent" : "Set the user agent to <b>%s</b>",
-      "action.yes_delete" : "<b>Ja, löschen!</b>",
       "schema.service.attr.command" : "Kommando",
+      "action.yes_delete" : "<b>Ja, löschen!</b>",
+      "schema.location.text.delete" : "Lokation %s löschen",
       "action.help" : "Hilfe",
       "schema.event.text.host_service" : "Host / Service",
       "schema.event.attr.tags" : "Hinweise",
@@ -2825,8 +2859,8 @@ var Lang = {
       "schema.host_template.text.clone_title" : "Das Template %s klonen",
       "text.report.availability.h17" : "17:00 - 17:59",
       "schema.service.attr.interval" : "Intervall",
-      "schema.user.text.delete" : "Den Benutzer löschen",
       "schema.service.text.select_location_check_type_info" : "Klicke auf die Buttons um eine kurze Beschreibung zu jedem Typ zu erhalten",
+      "schema.user.text.delete" : "Den Benutzer löschen",
       "schema.service.attr.notification" : "Benachrichtigungen eingeschaltet",
       "schema.service.desc.failover_check_type_title" : "Failover Messpunkt",
       "text.undefined" : "Nicht definiert",
@@ -9984,6 +10018,7 @@ Bloonix.createFooterIcon = function(o) {
 };
 Bloonix.init = function(o) {
     Bloonix.initAjax();
+    Bloonix.args = o;
     Bloonix.version = o.version;
     if (o) {
         if (o.chartLibrary) {
@@ -10158,6 +10193,15 @@ Bloonix.initRoutes = function() {
     });
     route.add("administration/companies/create", function(req) {
         new Bloonix.createCompany();
+    });
+    route.add("administration/locations", function(req) {
+        Bloonix.listLocations();
+    });
+    route.add("administration/locations/:id/edit", function(req) {
+        new Bloonix.editLocation(req);
+    });
+    route.add("administration/locations/create", function(req) {
+        new Bloonix.createLocation();
     });
     route.add("administration/variables", function(req) {
         new Bloonix.editCompanyVariables();
@@ -10430,6 +10474,14 @@ Bloonix.getAdministrativeNavigationItems = function() {
     ];
 
     if (Bloonix.user.role === "admin") {
+        if (Bloonix.args.showLocations === "yes") {
+            administrationItems.push({
+                link: "administration/locations",
+                icon: "hicons globe",
+                text: Text.get("nav.sub.locations")
+            });
+        }
+
         administrationItems.splice(2, 0, {
             link: "administration/companies",
             icon: "hicons company",
@@ -15740,9 +15792,9 @@ Bloonix.createServiceForm = function(o) {
         this.locationsById = {};
         $.each(this.locations, function(i, item) {
             self.locationsById[item.id] = item;
-            if (item.is_default == "1") {
+            /*if (item.is_default == "1") {
                 self.defaultLocation = item;
-            }
+            }*/
         });
     };
 
@@ -16323,12 +16375,13 @@ Bloonix.createServiceForm = function(o) {
             .html(Text.get("schema.service.desc.default_check_type"))
             .appendTo(this.locationTypeDefaultContainer);
 
+        /*
         Utils.create("h3")
             .html(Text.get("schema.service.desc.default_check_type_location"))
             .appendTo(this.locationTypeDefaultContainer);
 
         var flag = Bloonix.flag(
-            this.defaultLocation.country_code,
+            this.defaultLocation.country,
             this.defaultLocation.continent +" - "+ this.defaultLocation.city +" - "+ this.defaultLocation.ipaddr
         );
 
@@ -16336,6 +16389,7 @@ Bloonix.createServiceForm = function(o) {
             .addClass("list-rotate-locations-box")
             .html(flag)
             .appendTo(this.locationTypeDefaultContainer);
+        */
     };
 
     object.createFailoverLocationTypeElements = function() {
@@ -16470,6 +16524,13 @@ Bloonix.createServiceForm = function(o) {
             .addClass("locations-selected")
             .appendTo(container);
 
+        if (Bloonix.args.showCostInfo === "yes") {
+            Utils.create("div")
+                .addClass("locations-selected")
+                .html(Text.get("text.selected_locations_costs"))
+                .appendTo(container);
+        }
+
         if (type !== "multiple") {
             locationCounterBox.hide();
         }
@@ -16508,7 +16569,7 @@ Bloonix.createServiceForm = function(o) {
 
             var calCost = function() {
                 var len = checkboxTable.find("input:checked").length;
-                locationCounterBox.html(Text.get("text.locations_selected_costs", len, true, true));
+                locationCounterBox.html(Text.get("text.selected_locations_counter", len, true, true));
              };
 
             calCost();
@@ -16522,7 +16583,7 @@ Bloonix.createServiceForm = function(o) {
                 .appendTo(div);
 
             Utils.create("td")
-                .html( Bloonix.flag(item.country_code, Utils.escape(item.continent +" - "+ item.city +" - "+ item.ipaddr)))
+                .html( Bloonix.flag(item.country, Utils.escape(item.continent +" - "+ item.city +" - "+ item.ipaddr)))
                 .click(function() { checkbox.click() }).appendTo(tr);
         });
     };
@@ -17765,6 +17826,133 @@ Bloonix.viewExtServiceData = function(service) {
     });
 
     return box;
+};
+Bloonix.listLocations = function() {
+    Bloonix.setTitle("schema.location.text.list");
+
+    new Table({
+        url: "/administration/locations",
+        header: {
+            title: Text.get("schema.location.text.list"),
+            icons: [{
+                type: "create",
+                callback: function() { Bloonix.route.to("administration/locations/create") },
+                title: Text.get("schema.location.text.create")
+            }]
+        },
+        deletable: {
+            title: Text.get("schema.location.text.delete"),
+            url: "/administration/locations/:id/delete/",
+            result: [ "id", "continent", "country", "city" ]
+        },
+        reloadable: true,
+        columnSwitcher: true,
+        columns: [
+            {
+                name: "id",
+                text: Text.get("schema.location.attr.id"),
+                hide: true
+            },{
+                name: "hostname",
+                text: Text.get("schema.location.attr.hostname"),
+                call: function(row) { return Bloonix.call("administration/locations/"+ row.id +"/edit", row.hostname) }
+            },{
+                name: "ipaddr",
+                text: Text.get("schema.location.attr.ipaddr")
+            },{
+                name: "continent",
+                text: Text.get("schema.location.attr.continent")
+            },{
+                name: "country",
+                text: Text.get("schema.location.attr.country")
+            },{
+                name: "city",
+                text: Text.get("schema.location.attr.city")
+            },{
+                name: "coordinates",
+                text: Text.get("schema.location.attr.coordinates"),
+                hide: true
+            },{
+                name: "description",
+                text: Text.get("schema.location.attr.description"),
+                hide: true
+            }
+        ]
+    }).create();
+};
+
+Bloonix.editLocation = function(o) {
+    var location = Bloonix.get("/administration/locations/"+ o.id +"/options/");
+console.log(location);
+
+    new Header({ title: Text.get("schema.location.text.view", location.values.hostname, true) }).create();
+    Bloonix.setMetaTitle(Text.get("schema.location.text.view", location.values.hostname));
+
+    new Form({
+        url: { submit: "/administration/locations/"+ o.id +"/update/" },
+        buttonText: Text.get("action.update"),
+        values: location.values,
+        options: location.options,
+        elements: Bloonix.getLocationFormElements()
+    }).create();
+};
+
+Bloonix.createLocation = function() {
+    var location = Bloonix.get("/administration/locations/options/");
+
+    new Header({ title: Text.get("schema.location.text.create") }).create();
+    Bloonix.setTitle("schema.location.text.create");
+
+    new Form({
+        url: { submit: "/administration/locations/create/" },
+        buttonText: Text.get("action.create"),
+        values: location.values,
+        options: location.options,
+        elements: Bloonix.getLocationFormElements()
+    }).create();
+};
+
+Bloonix.getLocationFormElements = function() {
+    return [
+        {
+            element: "input",
+            type: "text",
+            name: "hostname",
+            text: Text.get("schema.location.attr.hostname"),
+            maxlength: 64,
+            required: true
+        },{
+            element: "input",
+            type: "text",
+            name: "ipaddr",
+            text: Text.get("schema.location.attr.ipaddr"),
+            maxlength: 39,
+            required: true
+        },{
+            element: "select",
+            name: "continent",
+            text: Text.get("schema.location.attr.continent"),
+            required: true
+        },{
+            element: "select",
+            name: "country",
+            text: Text.get("schema.location.attr.country"),
+            required: true
+        },{
+            element: "input",
+            type: "text",
+            name: "city",
+            text: Text.get("schema.location.attr.city"),
+            maxlength: 39,
+            required: true
+        },{
+            element: "input",
+            type: "text",
+            name: "description",
+            text: Text.get("schema.location.attr.description"),
+            maxlength: 500
+        }
+    ];
 };
 Bloonix.viewHostDowntimes = function(o) {
     var object = o;

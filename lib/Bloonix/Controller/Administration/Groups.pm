@@ -74,6 +74,8 @@ sub options {
     }
 
     $c->stash->data(options => $c->model->database->group->validator->options);
+    $c->stash->data(mandatory => $c->model->database->group->validator->mandatory);
+    $c->stash->data(optional => $c->model->database->group->validator->optional);
     $c->view->render->json;
 }
 

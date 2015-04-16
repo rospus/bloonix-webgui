@@ -111,6 +111,8 @@ sub options {
     $c->plugin->template->variables_to_form($host);
     $c->stash->data(values => $host);
     $c->stash->data(options => $options);
+    $c->stash->data(mandatory => $c->model->database->host->validator->mandatory);
+    $c->stash->data(optional => $c->model->database->host->validator->optional);
     $c->view->render->json;
 }
 

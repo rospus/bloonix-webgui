@@ -41,6 +41,7 @@ sub _init_plugins {
 
     $self->plugin->load("Action");
     $self->plugin->load("Chart");
+    $self->plugin->load("CCodes");
     $self->plugin->load("Defaults");
     $self->plugin->load("Downtime");
     $self->plugin->load("Error");
@@ -66,6 +67,7 @@ sub _init_routes {
     $self->load("Administration::Groups");
     $self->load("Administration::Groups::Members");
     $self->load("Administration::Hosts");
+    $self->load("Administration::Locations");
     $self->load("Administration::Users");
     $self->load("Administration::Variables");
     $self->load("Contactgroups");
@@ -141,21 +143,33 @@ sub _validate_webapp {
         },
         cloudapp => {
             type => Params::Validate::SCALAR,
+            regex => qr/^(yes|no|0|1)\z/,
+            default => 0
+        },
+        show_cost_info => {
+            type => Params::Validate::SCALAR,
+            regex => qr/^(yes|no|0|1)\z/,
+            default => 0
+        },
+        show_locations => {
+            type => Params::Validate::SCALAR,
+            regex => qr/^(yes|no|0|1)\z/,
             default => 0
         },
         is_demo => {
             type => Params::Validate::SCALAR,
+            regex => qr/^(yes|no|0|1)\z/,
             default => 0
         },
         allow_simple_usernames => {
             type => Params::Validate::SCALAR,
-            default => "no",
-            regex => qr/^(yes|no|0|1)\z/
+            regex => qr/^(yes|no|0|1)\z/,
+            default => 0
         }
     });
 
-    if ($config{allow_simple_usernames} eq "no") {
-        $config{allow_simple_usernames} = 0;
+    foreach my $key (qw/cloudapp show_cost_info show_locations is_demo allow_simple_usernames/) {
+        $config{$key} = $config{$key} =~ /0|no/ ? 0 : "yes";
     }
 
     if ($config{hostname} eq "yourdomain.test") {

@@ -1,5 +1,6 @@
 Bloonix.init = function(o) {
     Bloonix.initAjax();
+    Bloonix.args = o;
     Bloonix.version = o.version;
     if (o) {
         if (o.chartLibrary) {

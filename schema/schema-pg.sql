@@ -465,10 +465,8 @@ CREATE TABLE "location" (
     "hostname"     VARCHAR(50) NOT NULL,
     "city"         VARCHAR(50) NOT NULL,
     "country"      VARCHAR(50) NOT NULL,
-    "country_code" VARCHAR(5) NOT NULL,
     "continent"    VARCHAR(13) NOT NULL,
-    "coordinates"  VARCHAR(500),
-    "is_default"   CHAR(1) DEFAULT '0',
+    "coordinates"  VARCHAR(500) NOT NULL DEFAULT '0,0',
     "description"  VARCHAR(500)
 );
 

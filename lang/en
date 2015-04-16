@@ -49,6 +49,7 @@ nav.sub.users: Users
 nav.sub.groups: Groups
 nav.sub.companies: Companies
 nav.sub.variables: Variables
+nav.sub.locations: Locations
 nav.sub.events: Events
 nav.sub.reports: Reports
 nav.sub.dependencies: Dependencies
@@ -76,6 +77,7 @@ err-420: The action failed!
 err-425: Your session token is expired!
 err-426: This action requires a token!
 err-427: Services that are inherited from a host template can't be deleted!
+err-428: The location cannot be deleted because at least one service has the location configured!
 err-500: An internal error occured! Please contact the administrator!
 err-600: The object you requested does not exist!
 err-601: The objects you requested does not exist!
@@ -208,7 +210,8 @@ text.never: Never
 text.click_me: Click me
 text.click_to_delete_seletion: Click to delete the selection
 text.browsers_heap_size: Display of the heap size in your browser
-text.locations_selected_costs: You have <b>%s</b> checkpoints selected. Please note that each checkpoint will be charged extra.
+text.selected_locations_counter: You have <b>%s</b> checkpoints selected.
+text.selected_locations_costs: Please note that each checkpoint will be charged extra.
 text.sort_by_dots: Sort by ...
 text.filter_by_category_dots: Filter by category ...
 text.option_examples: Option examples
@@ -1059,6 +1062,21 @@ schema.user_chart.text.update: Update a chart
 schema.user_chart.text.add_metric: Add metric
 schema.user_chart.text.chart_metrics: Chart metrics
 schema.user_chart.text.click_to_add_metric: Click to add the metric
+
+schema.location.attr.id: ID
+schema.location.attr.ipaddr: IP address
+schema.location.attr.hostname: Hostname
+schema.location.attr.city: City
+schema.location.attr.country: Country
+schema.location.attr.country_code: Country code
+schema.location.attr.continent: Continent
+schema.location.attr.coordinates: Coordinates
+schema.location.attr.is_default: Default location
+schema.location.attr.description: Description
+schema.location.text.list: Locations
+schema.location.text.create: Create a new location
+schema.location.text.view: Location %s
+schema.location.text.delete: Delete location %s
 
 site.wtrm.action.doAuth: Set auth basic <b>username</b> and <b>password</b>
 site.wtrm.action.doUserAgent: Set the <b>user agent</b> for the request

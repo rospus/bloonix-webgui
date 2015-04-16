@@ -153,6 +153,15 @@ Bloonix.initRoutes = function() {
     route.add("administration/companies/create", function(req) {
         new Bloonix.createCompany();
     });
+    route.add("administration/locations", function(req) {
+        Bloonix.listLocations();
+    });
+    route.add("administration/locations/:id/edit", function(req) {
+        new Bloonix.editLocation(req);
+    });
+    route.add("administration/locations/create", function(req) {
+        new Bloonix.createLocation();
+    });
     route.add("administration/variables", function(req) {
         new Bloonix.editCompanyVariables();
     });

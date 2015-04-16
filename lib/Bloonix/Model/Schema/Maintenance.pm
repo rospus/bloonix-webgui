@@ -8,7 +8,7 @@ use base qw(Bloonix::DBI::CRUD);
 sub init {
     my $self = shift;
 
-    $self->{schema_version} = 4;
+    $self->{schema_version} = 5;
 
     $self->log->warning("start upgrade database schema");
     $self->dbi->reconnect;
@@ -84,6 +84,10 @@ sub run_upgrade {
         $self->check_company_limits;
     }
 
+    if ($version <= 4) {
+        $self->check_locations;
+    }
+
     $self->update_version;
 }
 
@@ -137,6 +141,16 @@ sub check_company_limits {
             $self->upgrade("alter table company add column $col $val->[0] not null default $val->[1]");
         }
     }
+}
+
+sub check_locations {
+    my $self = shift;
+
+    $self->upgrade("alter table location drop column country_code");
+    $self->upgrade("alter table location drop column is_default");
+    $self->upgrade("alter table location alter column coordinates set default '0,0'");
+    $self->upgrade("update location set coordinates = '0,0' where coordinates is null");
+    $self->upgrade("alter table location alter column coordinates set not null");
 }
 
 1;
