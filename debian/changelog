@@ -1,3 +1,9 @@
+bloonix-webgui (0.38-1) unstable; urgency=low
+
+    * Fixed version number handling in database maintenance.
+
+ -- Jonny Schulz <js@bloonix.de>  Fri, 17 Apr 2015 22:11:52 +0200
+
 bloonix-webgui (0.37-1) unstable; urgency=low
 
     * Bloonix Satellite implemented.
