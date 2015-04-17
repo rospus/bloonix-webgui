@@ -733,6 +733,6 @@ CREATE TABLE "maintenance" (
     "active" BIGINT NOT NULL DEFAULT 0
 );
 
-INSERT INTO "maintenance" ("version", "active") values ('4', '0');
+INSERT INTO "maintenance" ("version", "active") values ('-1', '0');
 
 -- End.

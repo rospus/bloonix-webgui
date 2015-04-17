@@ -67,6 +67,11 @@ sub run_upgrade {
 
     $self->log->warning("found schema version $version");
 
+    if ($version eq "-1") {
+        $self->update_version;
+        return;
+    }
+
     if ($version == $self->{schema_version}) {
         $self->log->warning("database schema is on the lastest version");
         return 1;

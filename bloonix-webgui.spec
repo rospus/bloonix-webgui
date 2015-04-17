@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.36
+Version: 0.37
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -61,6 +61,8 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Thu Apr 16 2015 Jonny Schulz <js@bloonix.de> - 0.37-1
+- Bloonix Satellite implemented.
 * Sun Apr 05 2015 Jonny Schulz <js@bloonix.de> - 0.36-1
 - Limits implemented.
 * Fri Mar 13 2015 Jonny Schulz <js@bloonix.de> - 0.35-1
