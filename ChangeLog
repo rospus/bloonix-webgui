@@ -1,3 +1,7 @@
+bloonix-webgui (0.39) released at 2015-04-19
+
+    * Kicked parameter show_locations and make the location feature available.
+
 bloonix-webgui (0.38) released at 2015-04-17
 
     * Fixed version number handling in database maintenance.

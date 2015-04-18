@@ -10474,14 +10474,11 @@ Bloonix.getAdministrativeNavigationItems = function() {
     ];
 
     if (Bloonix.user.role === "admin") {
-        if (Bloonix.args.showLocations === "yes") {
-            administrationItems.push({
-                link: "administration/locations",
-                icon: "hicons globe",
-                text: Text.get("nav.sub.locations")
-            });
-        }
-
+        administrationItems.push({
+            link: "administration/locations",
+            icon: "hicons globe",
+            text: Text.get("nav.sub.locations")
+        });
         administrationItems.splice(2, 0, {
             link: "administration/companies",
             icon: "hicons company",

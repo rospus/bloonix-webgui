@@ -151,11 +151,6 @@ sub _validate_webapp {
             regex => qr/^(yes|no|0|1)\z/,
             default => 0
         },
-        show_locations => {
-            type => Params::Validate::SCALAR,
-            regex => qr/^(yes|no|0|1)\z/,
-            default => 0
-        },
         is_demo => {
             type => Params::Validate::SCALAR,
             regex => qr/^(yes|no|0|1)\z/,

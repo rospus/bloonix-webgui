@@ -7,7 +7,7 @@ use Time::HiRes;
 sub auto {
     my ($self, $c) = @_;
 
-    $c->version->{js} = 92;
+    $c->version->{js} = 93;
 
     my $addr = $c->req->remote_addr || "n/a";
     my $lang = $c->req->cookie("lang");
@@ -192,8 +192,7 @@ sub index {
             init => $c->json->encode({
                 chartLibrary => $c->config->{webapp}->{chart_library},
                 version => $c->version->{js},
-                showCostInfo => $c->config->{webapp}->{show_cost_info},
-                showLocations => $c->config->{webapp}->{show_locations}
+                showCostInfo => $c->config->{webapp}->{show_cost_info}
             }),
             version => $c->version->{js}
         };
