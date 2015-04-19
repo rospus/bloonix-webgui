@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.39
+Version: 0.40
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -61,6 +61,9 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Sun Apr 19 2015 Jonny Schulz <js@bloonix.de> - 0.40-1
+- Fixed bug: if a template is added to a host then max_services=0 is not
+  treated as unlimited.
 * Sun Apr 19 2015 Jonny Schulz <js@bloonix.de> - 0.39-1
 - Kicked parameter show_locations and make the location feature available.
 * Fri Apr 17 2015 Jonny Schulz <js@bloonix.de> - 0.38-1
