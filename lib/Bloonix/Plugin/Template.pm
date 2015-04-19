@@ -120,7 +120,7 @@ sub add_templates_to_host {
             my $count_services = $c->model->database->service->count_by_company_id($c->user->{company_id});
             my $count_services_per_host = $c->model->database->service->count(id => condition => [ host_id => $host_id ]);
 
-            if ($count_services + scalar @$host_template_services > $c->user->{max_services}) {
+            if ($c->user->{max_services} && $count_services + scalar @$host_template_services > $c->user->{max_services}) {
                 $c->plugin->error->limit_error("err-832" => $c->user->{max_services});
                 die "service limit exceeded";
             }
