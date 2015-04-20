@@ -151,9 +151,14 @@ sub check_company_limits {
 sub check_locations {
     my $self = shift;
 
-    $self->upgrade("alter table location drop column country_code");
-    $self->upgrade("alter table location drop column is_default");
-    $self->upgrade("alter table location alter column coordinates set default '0,0'");
+    if (!$self->exist(location => "country_code")) {
+        $self->upgrade("alter table location drop column country_code");
+    }
+
+    if (!$self->exist(location => "is_default")) {
+        $self->upgrade("alter table location drop column is_default");
+    }
+
     $self->upgrade("update location set coordinates = '0,0' where coordinates is null");
     $self->upgrade("alter table location alter column coordinates set not null");
 }
