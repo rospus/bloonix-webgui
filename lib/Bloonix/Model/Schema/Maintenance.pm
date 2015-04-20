@@ -151,11 +151,11 @@ sub check_company_limits {
 sub check_locations {
     my $self = shift;
 
-    if (!$self->exist(location => "country_code")) {
+    if ($self->exist(location => "country_code")) {
         $self->upgrade("alter table location drop column country_code");
     }
 
-    if (!$self->exist(location => "is_default")) {
+    if ($self->exist(location => "is_default")) {
         $self->upgrade("alter table location drop column is_default");
     }
 
