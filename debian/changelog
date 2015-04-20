@@ -1,3 +1,9 @@
+bloonix-webgui (0.41-1) unstable; urgency=low
+
+    * Fixed bug: drop column country_code only if the column exist.
+
+ -- Jonny Schulz <js@bloonix.de>  Mon, 20 Apr 2015 15:45:03 +0200
+
 bloonix-webgui (0.40-1) unstable; urgency=low
 
     * Fixed bug: if a template is added to a host then max_services=0 is not

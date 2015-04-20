@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.40
+Version: 0.41
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -61,6 +61,8 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Mon Apr 20 2015 Jonny Schulz <js@bloonix.de> - 0.41-1
+- Fixed bug: drop column country_code only if the column exist.
 * Sun Apr 19 2015 Jonny Schulz <js@bloonix.de> - 0.40-1
 - Fixed bug: if a template is added to a host then max_services=0 is not
   treated as unlimited.
