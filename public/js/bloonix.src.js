@@ -16600,7 +16600,10 @@ Bloonix.createServiceForm = function(o) {
         table.createFormRow(Text.get("schema.plugin.attr.plugin"), plugin.plugin);
         table.createFormRow(Text.get("schema.plugin.attr.categories"), plugin.category);
         table.createFormRow(Text.get("schema.plugin.attr.description"), plugin.description);
-        table.createFormRow(Text.get("schema.plugin.attr.command"), plugin.command);
+
+        if (plugin.command != "check-simple-wrapper") {
+            table.createFormRow(Text.get("schema.plugin.attr.command"), plugin.command);
+        }
 
         if (plugin.info.info) {
             Utils.create("h3")
