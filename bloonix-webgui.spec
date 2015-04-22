@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.42
+Version: 0.43
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -61,6 +61,8 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Thu Apr 23 2015 Jonny Schulz <js@bloonix.de> - 0.43-1
+- Improved service parameter parsing.
 * Mon Apr 20 2015 Jonny Schulz <js@bloonix.de> - 0.42-1
 - Fixed bug: drop column country_code only if the column exist - 2.
 * Mon Apr 20 2015 Jonny Schulz <js@bloonix.de> - 0.41-1

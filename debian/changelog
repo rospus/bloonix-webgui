@@ -1,3 +1,9 @@
+bloonix-webgui (0.43-1) unstable; urgency=low
+
+    * Improved service parameter parsing.
+
+ -- Jonny Schulz <js@bloonix.de>  Thu, 23 Apr 2015 01:16:16 +0200
+
 bloonix-webgui (0.42-1) unstable; urgency=low
 
     * Fixed bug: drop column country_code only if the column exist - 2.
