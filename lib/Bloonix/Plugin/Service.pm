@@ -246,9 +246,8 @@ sub validate_command_options {
             push @errors, "command_options:nagios-command";
         }
 
-        if ($value_type =~ /^(hash|array)\z/) {
-            my $ref = lc(ref $values);
-            if ($value_type eq $ref) {
+        if (!$opt->{multiple} && $value_type =~ /^(hash|array)\z/) {
+            if (($value_type eq "hash" && ref $values eq "HASH") || ($value_type eq "array" && ref $values eq "ARRAY")) {
                 push @save_options, {
                     option => $option,
                     value => $values
@@ -282,26 +281,19 @@ sub validate_command_options {
                 next;
             }
 
+            if (!defined $value) {
+                $value = "";
+            }
+
             if ($value_type && $value !~ /^%[a-zA-Z_0-9\-\.]+%\z/) {
-                # i = integer 0 .. n
-                if ($value_type eq "int" && $value !~ /^\d+\z/) {
-                    push @errors, "command_options:$option";
-                    next;
-                }
-
-                # n = number 1 .. n
-                if ($value_type eq "number" && $value !~ /^[1-9]\d*\z/) {
-                    push @errors, "command_options:$option";
-                    next;
-                }
-
-                # s = string
-                if ($value_type eq "string" && length $value == 0) {
-                    push @errors, "command_options:$option";
-                    next;
-                }
-
-                if (defined $value && ($value =~ m![`']! || $value =~ m!\\[^a-zA-Z0-9]!)) {
+                if (
+                    ($value_type eq "int" && $value !~ /^\d+\z/)
+                    || ($value_type eq "number" && $value !~ /^[1-9]\d*\z/)
+                    || ($value_type eq "string" && length $value == 0)
+                    || ($value_type eq "hash" && ref $value ne "HASH")
+                    || ($value_type eq "array" && ref $value ne "ARRAY")
+                    || (!ref $value && $value =~ /[`']/)
+                ) {
                     push @errors, "command_options:$option";
                     next;
                 }
