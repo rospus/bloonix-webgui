@@ -1,3 +1,7 @@
+bloonix-webgui (0.45) released at 2015-05-14
+
+    * Quick fix for init-database.
+
 bloonix-webgui (0.44) released at 2015-05-07
 
     * Added support for MySQL.

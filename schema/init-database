@@ -80,7 +80,7 @@ if ($opts->{mysql}) {
 } else {
     $system_user = "postgres";
     $driver = "Pg";
-    $port = 5460;
+    $port = 5432;
 }
 
 my $sql_quoted_password = $password;
@@ -123,10 +123,12 @@ if ($opts->{postgres}) {
     chomp(my $password = <STDIN>);
     ReadMode(0);
     print "\nCreate user 'bloonix'\n\n";
-    system("mysql -u root </etc/bloonix/database/create-bloonix-user.sql");
-    print "\nInstall bloonix schema\n\n";
     $ENV{MYSQL_PWD} = $password;
+    system("mysql -u root </etc/bloonix/database/create-bloonix-user.sql");
+    die $? if $?;
+    print "\nInstall bloonix schema\n\n";
     system("mysql -u root $user </srv/bloonix/webgui/schema/schema-mysql.sql");
+    die $? if $?;
     $ENV{MYSQL_PWD} = "";
 }
 
