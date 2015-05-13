@@ -30,13 +30,16 @@ sub auto {
 sub get {
     my ($self, $c) = @_;
 
-    $c->plugin->template->variables_to_form($c->stash->object);
+    $c->plugin->util->json_to_pv(variables => $c->stash->object);
     $c->stash->data($c->stash->object->{variables});
     $c->view->render->json;
 }
 
 sub update {
     my ($self, $c) = @_;
+
+    $c->plugin->token->check
+        or return;
 
     my $variables = $self->validate($c)
         or return $c->plugin->error->form_parse_errors("variables");
@@ -51,6 +54,7 @@ sub update {
         old => { variables => $c->stash->object->{variables} }
     );
 
+    $c->stash->data(variables => $c->plugin->util->json_to_pv($variables->{variables}));
     $c->view->render->json;
 }
 
@@ -67,7 +71,7 @@ sub validate {
         }
     }
 
-    $c->plugin->template->parse_variables($data);
+    $c->plugin->util->pv_to_json(variables => $data);
     return $data;
 }
 

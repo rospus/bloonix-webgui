@@ -281,33 +281,4 @@ sub create_service {
     );
 }
 
-sub parse_variables {
-    my ($self, $data) = @_;
-    my $c = $self->c;
-    my $variables = $data->{variables} // "";
-    $data->{variables} = {};
-
-    foreach my $pv (split /[\r\n]+/, $variables) {
-        next if $pv =~ /^\s*\z/;
-        if ($pv =~ /^\s*([a-zA-Z_0-9\-\.]+)\s*=\s*([^\s].*)\z/) {
-            my ($p, $v) = ($1, $2);
-            $v =~ s/\s*\z//;
-            $data->{variables}->{$p} = $v;
-        }
-    }
-
-    $data->{variables} = $c->json->encode($data->{variables});
-}
-
-sub variables_to_form {
-    my ($self, $data) = @_;
-    my $c = $self->c;
-
-    my $variables = $c->json->decode($data->{variables});
-    $data->{variables} = "";
-    foreach my $key (sort keys %$variables) {
-        $data->{variables} .= "$key=$variables->{$key}\n";
-    }
-}
-
 1;

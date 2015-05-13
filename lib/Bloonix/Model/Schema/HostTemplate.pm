@@ -26,16 +26,7 @@ sub set {
             max_size => 100
         },
         variables => {
-            constraint => sub {
-                return 1 unless $_[0];
-                foreach my $pv (split /[\r\n]+/, $_[0]) {
-                    next if $pv =~ /^\s*\z/;
-                    if ($pv !~ /^\s*[a-zA-Z_0-9\.]+\s*=\s*([^\s].*)\z/) {
-                        return undef;
-                    }
-                }
-                return 1;
-            },
+            constraint => $self->validator->constraint->param_value,
             default => "{}"
         }
     );

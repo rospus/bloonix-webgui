@@ -87,7 +87,7 @@ sub store {
 }
 
 sub store_simple {
-    my ($self, $schema, $object, $callback) = @_;
+    my ($self, $schema, $object, $callback_in, $callback_out) = @_;
     my $c = $self->{c};
     my $action = $object ? "update" : "create";
 
@@ -101,8 +101,8 @@ sub store_simple {
     my $form = $self->check_form($action, $schema)
         or return 1;
 
-    if ($callback) {
-        &$callback($form->data);
+    if ($callback_in) {
+        &$callback_in($form->data);
     }
 
     if ($object) {
@@ -124,6 +124,10 @@ sub store_simple {
             target => $schema,
             data => $form->data
         );
+    }
+
+    if ($callback_out) {
+        &$callback_out($c->stash->{data});
     }
 
     $c->view->render->json;

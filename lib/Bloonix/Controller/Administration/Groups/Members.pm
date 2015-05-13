@@ -91,6 +91,10 @@ sub _update_host_groups {
 
     my $host_ids = [ $c->req->param("id") ];
 
+    if (@$host_ids == 0) {
+        $host_ids = [ $c->req->param("host_id") ];
+    }
+
     if (!@$host_ids) {
         $c->plugin->error->no_objects_selected;
         return undef;

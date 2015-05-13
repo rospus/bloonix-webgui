@@ -10,6 +10,13 @@ sub init {
     my $self = shift;
 
     $self->set_unique(or => [ "username" ]);
+
+    $self->action(
+        pre_create => sub {
+            my ($self, $data) = @_;
+            $data->{stash} = '{}';
+        }
+    );
 }
 
 sub set {

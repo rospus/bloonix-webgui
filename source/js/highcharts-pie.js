@@ -4,7 +4,7 @@ Bloonix.highcharts.pieChart = function(o) {
             renderTo: o.chart.container,
             plotBackgroundColor: null,
             plotBorderWidth: null,
-            plotShadow: true,
+            plotShadow: false,
             type: "pie",
             options3d: {
                 enabled: true,
@@ -103,6 +103,14 @@ Bloonix.highcharts.pieChart = function(o) {
         } else {
             chartOpts.colors = o.colors;
         }
+    }
+
+    if (o.chart.spacing) {
+        chartOpts.chart.spacing = o.chart.spacing;
+    }
+
+    if (o.chart.margin) {
+        chartOpts.chart.margin = o.chart.margin;
     }
 
     Bloonix.createOrReplaceChart({

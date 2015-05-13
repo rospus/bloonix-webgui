@@ -225,6 +225,7 @@ sub create_new_structure {
 
     my $old = $self->dbi->autocommit(0);
     my $company;
+    $data->{variables} = "{}";
 
     eval {
         $self->dbi->begin;

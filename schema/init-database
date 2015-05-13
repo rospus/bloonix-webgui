@@ -2,6 +2,7 @@
 use strict;
 use warnings;
 use POSIX qw(getuid);
+use Term::ReadKey;
 
 if (getuid() != 0) {
     print "Please execute this script as user root\n";
@@ -11,7 +12,12 @@ if (getuid() != 0) {
 my ($password, $config, $fh);
 my $progname = do { $0 =~ m!([^/]+)\z!; $1 };
 my $user = "bloonix";
-my $opts = { stdin => 0, "drop-bloonix" => 0 };
+my $opts = {
+    stdin => 0,
+    "drop-bloonix" => 0,
+    postgres => 0,
+    mysql => 0
+};
 
 while (@ARGV) {
     my $opt = shift @ARGV;
@@ -34,8 +40,22 @@ if ($opts->{help}) {
     print "--drop-bloonix\n";
     print "    The bloonix database and role will be dropped at first.\n";
     print "    Be careful with this option!\n";
+    print "--postgres\n";
+    print "  Use PostgreSQL as database system.\n";
+    print "--mysql\n";
+    print "  Use MySQL as database system.\n";
     print "--help\n";
     print "    Print the help and exit.\n\n";
+    exit;
+}
+
+if (!$opts->{postgres} && !$opts->{mysql}) {
+    print "Missing mandatory parameter --postgres or --mysql\n";
+    exit;
+}
+
+if ($opts->{postgres} && $opts->{mysql}) {
+    print "Mixing parameter --postgres and --mysql is not allowed\n";
     exit;
 }
 
@@ -52,7 +72,16 @@ if ($opts->{stdin}) {
     };
 }
 
-print "\nCreate user 'bloonix'\n\n";
+my ($system_user, $driver, $port);
+
+if ($opts->{mysql}) {
+    $system_user = $driver = "mysql";
+    $port = 3306;
+} else {
+    $system_user = "postgres";
+    $driver = "Pg";
+    $port = 5460;
+}
 
 my $sql_quoted_password = $password;
 $sql_quoted_password =~ s!\\!\\\\!g;
@@ -60,31 +89,54 @@ $sql_quoted_password =~ s!'!\\'!g;
 
 open $fh, ">", "/etc/bloonix/database/create-bloonix-user.sql" or die $!;
 system("chmod 640 /etc/bloonix/database/create-bloonix-user.sql");
-system("chgrp postgres /etc/bloonix/database/create-bloonix-user.sql");
+system("chgrp $system_user /etc/bloonix/database/create-bloonix-user.sql");
 
 if ($opts->{"drop-bloonix"}) {
     print $fh "DROP DATABASE bloonix;\n";
-    print $fh "DROP ROLE bloonix;\n";
+    if ($opts->{postgres}) {
+        print $fh "DROP ROLE bloonix;\n";
+    }
 }
 
-print $fh "CREATE ROLE $user WITH LOGIN PASSWORD '$sql_quoted_password';\n";
-print $fh "CREATE DATABASE $user OWNER $user;\n";
+if ($opts->{postgres}) {
+    print $fh "CREATE ROLE $user WITH LOGIN PASSWORD '$sql_quoted_password';\n";
+    print $fh "CREATE DATABASE $user OWNER $user;\n";
+} else {
+    print $fh "CREATE DATABASE $user;\n";
+    print $fh "GRANT ALL PRIVILEGES ON $user.* to $user\@localhost IDENTIFIED BY '$sql_quoted_password';\n";
+    print $fh "FLUSH PRIVILEGES;\n";
+}
+
 close $fh;
 
-system('su - postgres -c "psql -f /etc/bloonix/database/create-bloonix-user.sql"');
-unlink("/etc/bloonix/database/create-bloonix-user.sql");
-
-print "\nInstall bloonix schema\n\n";
-
-$ENV{PGPASSWORD} = $password;
-system("psql -U $user -h localhost -f /srv/bloonix/webgui/schema/schema-pg.sql");
-$ENV{PGPASSWORD} = "";
+if ($opts->{postgres}) {
+    print "\nCreate user 'bloonix'\n\n";
+    system('su - postgres -c "psql -f /etc/bloonix/database/create-bloonix-user.sql"');
+    unlink("/etc/bloonix/database/create-bloonix-user.sql");
+    print "\nInstall bloonix schema\n\n";
+    $ENV{PGPASSWORD} = $password;
+    system("psql -U $user -h localhost -f /srv/bloonix/webgui/schema/schema-pg.sql");
+    $ENV{PGPASSWORD} = "";
+} else {
+    print "Type the root password of the mysql: ";
+    ReadMode("noecho");
+    chomp(my $password = <STDIN>);
+    ReadMode(0);
+    print "\nCreate user 'bloonix'\n\n";
+    system("mysql -u root </etc/bloonix/database/create-bloonix-user.sql");
+    print "\nInstall bloonix schema\n\n";
+    $ENV{MYSQL_PWD} = $password;
+    system("mysql -u root $user </srv/bloonix/webgui/schema/schema-mysql.sql");
+    $ENV{MYSQL_PWD} = "";
+}
 
 open $fh, "<", "/etc/bloonix/database/main.conf" or die $!;
 $config = do { local $/; <$fh> };
 close $fh;
 
 $config =~ s/\@\@PASSWORD\@\@/$password/;
+$config =~ s/\@\@DRIVER\@\@/$driver/;
+$config =~ s/\@\@PORT\@\@/$port/;
 open $fh, ">", "/etc/bloonix/database/main.conf" or die $!;
 print $fh $config;
 close $fh;

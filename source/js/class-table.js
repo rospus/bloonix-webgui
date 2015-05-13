@@ -845,6 +845,10 @@ Table.prototype.addColumn = function(o) {
         td.html(o.html);
     }
 
+    if (o.text) {
+        td.text(o.text);
+    }
+
     td.appendTo(this.tbody);
 
     return td;

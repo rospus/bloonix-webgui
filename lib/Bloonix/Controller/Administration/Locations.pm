@@ -10,6 +10,7 @@ sub startup {
     $c->route->map("/administration/locations/list")->to("list");
     $c->route->map("/administration/locations/create")->to("create");
     $c->route->map("/administration/locations/options")->to("options");
+    $c->route->map("/administration/locations/:id")->to("view");
     $c->route->map("/administration/locations/:id/options")->to("options");
     $c->route->map("/administration/locations/:id/update")->to("update");
     $c->route->map("/administration/locations/:id/delete")->to("delete");
@@ -43,6 +44,12 @@ sub list {
             order => [ asc => "hostname" ]
         )
     );
+}
+
+sub view {
+    my ($self, $c) = @_;
+
+    $c->stash->data($c->stash->object);
 }
 
 sub options {

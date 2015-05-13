@@ -108,6 +108,9 @@ sub timeslices {
 sub create_timeslice {
     my ($self, $c, $opts) = @_;
 
+    $c->plugin->token->check
+        or return;
+
     my $timeslice = $c->req->param("timeslice");
     my ($date, $time) = $c->plugin->timeperiod->parse($timeslice);
 
@@ -123,24 +126,25 @@ sub create_timeslice {
         return $c->plugin->error->limit_error("err-841" => $c->user->{max_timeslices_per_object});
     }
 
-    $c->model->database->timeslice->create({
+    my $obj = $c->model->database->timeslice->create_and_get({
         timeperiod_id => $opts->{id},
         timeslice => $timeslice
-    });
+    }) or return $c->plugin->error->action_failed;
 
     $c->plugin->log_action->create(
         target => "timeslice",
-        data => {
-            timeperiod_id => $opts->{id},
-            timeslice => $timeslice
-        }
+        data => $obj
     );
 
+    $c->stash->data($obj);
     $c->view->render->json;
 }
 
 sub delete_timeslice {
     my ($self, $c, $opts) = @_;
+
+    $c->plugin->token->check
+        or return;
 
     my $timeslice = $c->model->database->timeslice->find(
         condition => [ timeperiod_id => $opts->{id}, id => $opts->{timeslice_id} ]

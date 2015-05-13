@@ -8,7 +8,7 @@ use base qw(Bloonix::DBI::CRUD);
 sub init {
     my $self = shift;
 
-    $self->{schema_version} = 5;
+    $self->{schema_version} = 6;
 
     $self->log->warning("start upgrade database schema");
     $self->dbi->reconnect;
@@ -46,15 +46,30 @@ sub upgrade {
 
 sub exist {
     my ($self, $table, $column) = @_;
+    my $stmt;
 
-    my $stmt = qq{
-        SELECT column_name
-        FROM information_schema.columns
-        WHERE table_name = ?
-        AND column_name = ?
-    };
+    if ($self->dbi->driver eq "Pg") {
+        $stmt = qq{
+            SELECT column_name
+            FROM information_schema.columns
+            WHERE table_name = ?
+            AND column_name = ?
+        };
 
-    return $self->dbi->unique($stmt, $table, $column);
+        return $self->dbi->unique($stmt, $table, $column);
+    }
+
+    if ($self->dbi->driver eq "mysql") {
+        $stmt = qq{
+            SELECT *
+            FROM information_schema.COLUMNS
+            WHERE TABLE_SCHEMA = ?
+            AND TABLE_NAME = ?
+            AND COLUMN_NAME = ?
+        };
+
+        return $self->dbi->unique($stmt, $self->dbi->database, $table, $column);
+    }
 }
 
 # ----------------------------
@@ -78,25 +93,29 @@ sub run_upgrade {
     }
 
     if ($version < 1) {
-        $self->check_service_force_check;
+        $self->v1;
     }
 
     if ($version <= 2) {
-        $self->check_service_volatile_comment;
+        $self->v3;
     }
 
     if ($version <= 3) {
-        $self->check_company_limits;
+        $self->v4;
     }
 
     if ($version <= 4) {
-        $self->check_locations;
+        $self->v5;
+    }
+
+    if ($version <= 5) {
+        $self->v6;
     }
 
     $self->update_version;
 }
 
-sub check_service_force_check {
+sub v1 {
     my $self = shift;
 
     if (!$self->exist(service => "force_check")) {
@@ -108,7 +127,7 @@ sub check_service_force_check {
     }
 }
 
-sub check_service_volatile_comment {
+sub v3 {
     my $self = shift;
 
     if (!$self->exist(service => "volatile_comment")) {
@@ -116,8 +135,7 @@ sub check_service_volatile_comment {
     }
 }
 
-
-sub check_company_limits {
+sub v4 {
     my $self = shift;
 
     my %limit = (
@@ -148,7 +166,7 @@ sub check_company_limits {
     }
 }
 
-sub check_locations {
+sub v5 {
     my $self = shift;
 
     if ($self->exist(location => "country_code")) {
@@ -161,6 +179,22 @@ sub check_locations {
 
     $self->upgrade("update location set coordinates = '0,0' where coordinates is null");
     $self->upgrade("alter table location alter column coordinates set not null");
+}
+
+sub v6 {
+    my $self = shift;
+
+    if ($self->dbi->driver eq "Pg") {
+        $self->upgrade("alter table plugin alter column info set not null");
+    } elsif ($self->dbi->driver eq "mysql") {
+        $self->upgrade("alter table plugin modify info text not null");
+    }
+
+    $self->upgrade("alter table service_parameter drop column command");
+
+    if ($self->exist(plugin => "metadata")) {
+        $self->upgrade("alter table plugin drop column metadata");
+    }
 }
 
 1;

@@ -15,6 +15,8 @@ sub new {
         c => $c,
     }, $class;
 
+    $self->{rest}->utf8(1);
+
     $self->_load(
         base => "Bloonix::Model::REST::Base",
         event => "Bloonix::Model::REST::Event",

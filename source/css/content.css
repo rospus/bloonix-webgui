@@ -976,7 +976,7 @@
     font-weight: bold !important;
 }
 .av-service-box {
-    width: 320px;
+    width: 300px;
     height: 150px;
     margin: 10px 10px 0 0;
     padding: 10px;
@@ -984,26 +984,34 @@
     vertical-align: top;
     border: 1px solid #f1f1f1;
 }
-.av-service-2c-box {
-    width: 470px;
-    height: 170px;
-    margin: 10px 10px 0 0;
-    display: inline-block;
-    vertical-align: top;
-    border: 1px solid #f1f1f1;
+.av-service-box h3 {
+    color: #444444;
+    padding: 8px 0;
+    line-height: 14px;
+    font-size: 14px;
+    z-index: 100;
 }
 .av-service-2c-table-box {
-    width: 280px;
+    width: 140px;
     height: 130px;
-    padding: 10px;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    vertical-align: top;
+}
+.av-service-2c-graph-box-outer {
+    width: 160px;
+    height: 130px;
+    margin: 0;
+    padding: 0;
     display: inline-block;
     vertical-align: top;
 }
 .av-service-2c-graph-box {
-    width: 170px;
-    height: 170px;
-    display: inline-block; 
-    vertical-align: top;
+    width: 160px;
+    height: 130px;
+    margin: 0;
+    padding: 0;
 }
 .av-service-status-duration-box {
     width: 674px;
@@ -1017,11 +1025,11 @@
     width: 100%;
 }
 .av-table tr th {
-    font-size: 14px;
+    font-size: 13px;
     text-align: left;
 }
 .av-table tr td {
-    font-size: 14px;
+    font-size: 13px;
     text-align: right;
 }
 .menu-title {

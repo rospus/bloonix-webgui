@@ -9,6 +9,15 @@ sub init {
     my $self = shift;
 
     $self->set_unique(and => [ "company_id", "hostname" ]);
+
+    $self->action(
+        pre_create => sub {
+            my ($self, $data) = @_;
+            $data->{status_nok_since} = $data->{last_check} = time;
+            $data->{facts} = "{}";
+            $data->{variables} ||= "{}";
+        }
+    );
 }
 
 sub set {
@@ -172,13 +181,6 @@ sub set {
             min_val => 0,
             max_val => 32767,
             default => 3650
-        }
-    );
-
-    $self->action(
-        pre_create => sub {
-            my ($self, $data) = @_;
-            $data->{status_nok_since} = $data->{last_check} = time;
         }
     );
 }

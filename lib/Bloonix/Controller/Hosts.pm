@@ -44,6 +44,7 @@ sub view {
     my ($self, $c) = @_;
 
     $c->stash->data($c->stash->object);
+    $c->plugin->util->json_to_pv(variables => $c->stash->data);
     $c->view->render->json;
 }
 
@@ -145,6 +146,7 @@ sub list {
     my @host_ids = (0);
 
     foreach my $host (@$data) {
+        $c->plugin->util->json_to_pv(variables => $host);
         $self->_de_serialize($c, $host);
 
         $host->{duration} = sprintf(

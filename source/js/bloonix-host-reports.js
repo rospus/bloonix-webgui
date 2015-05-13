@@ -9,7 +9,6 @@ Bloonix.viewHostReport = function(o) {
 
     o.intDetailedServiceReport = Utils.create("div")
         .attr("id", "int-detailed-service-report")
-        .css({ width: "1200px" })
         .hide()
         .appendTo("#content");
 
@@ -116,19 +115,19 @@ Bloonix.generateHostReportView = function(o, data) {
     var lastYear = thisYear - 1;
 
     Utils.create("div")
-        .addClass("btn btn-small btn-white btn-icon-even")
+        .addClass("btn btn-small btn-white")
         .html(Text.get("action.search"))
         .appendTo(form)
         .click(function() { Bloonix.getHostReportData(o, formInputFrom.val(), formInputTo.val()) });
 
     Utils.create("div")
-        .addClass("btn btn-small btn-white btn-icon-even")
+        .addClass("btn btn-small btn-white")
         .html(Text.get("info.this-year"))
         .appendTo(form)
         .click(function() { Bloonix.getHostReportData(o, thisYear, thisYear) });
 
     Utils.create("div")
-        .addClass("btn btn-small btn-white btn-icon-even")
+        .addClass("btn btn-small btn-white")
         .html(Text.get("info.last-year"))
         .appendTo(form)
         .click(function() { Bloonix.getHostReportData(o, lastYear, lastYear) });
@@ -250,8 +249,7 @@ Bloonix.generateHostReportView = function(o, data) {
                     .appendTo(div);
             });
 
-            Utils.create("clear")
-                .appendTo(div);
+            Utils.clear(div);
         });
     });
 
@@ -323,22 +321,32 @@ Bloonix.createReportServiceBox = function(o, service) {
 
 Bloonix.createServiceAvailabilityPercentBox = function(service, container) {
     var box = Utils.create("div")
-        .addClass("av-service-2c-box")
+        .addClass("av-service-box")
         .appendTo(container);
+
+    var titleBox = Utils.create("h3")
+        .addClass("h3")
+        .html(Text.get("text.report.title.total_availability"))
+        .appendTo(box);
 
     var tableBox = Utils.create("div")
         .addClass("av-service-2c-table-box")
         .appendTo(box);
 
+    var graphOuterBox = Utils.create("div")
+        .addClass("av-service-2c-graph-box-outer")
+        .appendTo(box);
+
     var graphBox = Utils.create("div")
         .attr("id", "int-service-availability-percent-box")
         .addClass("av-service-2c-graph-box")
-        .appendTo(box);
+        .appendTo(graphOuterBox);
 
     Bloonix.pieChart({
         chart: {
             title: null,
-            container: "int-service-availability-percent-box"
+            container: "int-service-availability-percent-box",
+            spacing: [0,0,20,20]
         },
         legend: false,
         colors: Bloonix.areaStatusColors,
@@ -348,13 +356,8 @@ Bloonix.createServiceAvailabilityPercentBox = function(service, container) {
             { name: "WARNING",  y: parseFloat(service.availability.WARNING)  },
             { name: "CRITICAL", y: parseFloat(service.availability.CRITICAL) },
             { name: "UNKNOWN",  y: parseFloat(service.availability.UNKNOWN)  }
-        ],
+        ]
     });
-
-    Utils.create("h3")
-        .addClass("h3")
-        .html(Text.get("text.report.title.total_availability"))
-        .appendTo(tableBox);
 
     var table = Utils.create("table")
         .addClass("av-table")
@@ -374,10 +377,7 @@ Bloonix.createServiceAvailabilityPercentBox = function(service, container) {
             .appendTo(row);
     });
 
-    Utils.create("div")
-        .addClass("clear")
-        .appendTo(box);
-
+    Utils.clear(box);
     return box;
 };
 
@@ -423,22 +423,32 @@ Bloonix.createServiceTotalDurationOfEventsBox = function(service, container) {
 
 Bloonix.createServiceNumerOfEventsBox = function(service, container) {
     var box = Utils.create("div")
-        .addClass("av-service-2c-box")
+        .addClass("av-service-box")
         .appendTo(container);
+
+    Utils.create("h3")
+        .addClass("h3")
+        .html(Text.get("text.report.title.number_of_events"))
+        .appendTo(box);
 
     var tableBox = Utils.create("div")
         .addClass("av-service-2c-table-box")
         .appendTo(box);
 
+    var graphOuterBox = Utils.create("div")
+        .addClass("av-service-2c-graph-box-outer")
+        .appendTo(box);
+
     var graphBox = Utils.create("div")
         .attr("id", "int-service-number-of-events-box")
-        .addClass("av-service-2c-graph-box")  
-        .appendTo(box);
+        .addClass("av-service-2c-graph-box")
+        .appendTo(graphOuterBox);
 
     Bloonix.pieChart({
         chart: {
             title: null,
-            container: "int-service-number-of-events-box"
+            container: "int-service-number-of-events-box",
+            spacing: [0,0,20,20]
         },
         legend: false,
         colors: Bloonix.areaStatusColors,
@@ -450,11 +460,6 @@ Bloonix.createServiceNumerOfEventsBox = function(service, container) {
             { name: "UNKNOWN",  y: parseFloat(service.number_of_events.UNKNOWN)  }
         ],
     });
-
-    Utils.create("h3")
-        .addClass("h3")
-        .html(Text.get("text.report.title.number_of_events"))
-        .appendTo(tableBox);
 
     var table = Utils.create("table")
         .addClass("av-table")
@@ -474,6 +479,7 @@ Bloonix.createServiceNumerOfEventsBox = function(service, container) {
             .appendTo(row);
     });
 
+    Utils.clear(box);
     return box;
 };
 

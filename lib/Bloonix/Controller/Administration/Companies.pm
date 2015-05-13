@@ -14,8 +14,7 @@ sub startup {
     $c->route->map("/administration/companies/:id/options")->to("options");
     $c->route->map("/administration/companies/:id/update")->to("update");
     $c->route->map("/administration/companies/:id/delete")->to("delete");
-    $c->route->map("/administration/companies/variables")->to("get_variables");
-    $c->route->map("/administration/companies/variables/update")->to("update_variables");
+    $c->route->map("/administration/companies/delete-api-test")->to("delete_api_test");
 }
 
 sub auto {
@@ -125,6 +124,14 @@ sub delete {
     }
 
     $c->plugin->action->delete(company => $c->stash->object);
+}
+
+sub delete_api_test {
+    my ($self, $c) = @_;
+
+    $c->model->database->company->delete(
+        company => "bloonix-webgui-api-test-tohdeeg7bae3"
+    );
 }
 
 1;

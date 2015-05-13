@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.43
+Version: 0.44
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -61,6 +61,9 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Thu May 07 2015 Jonny Schulz <js@bloonix.de> - 0.44-1
+- Added support for MySQL.
+- Sort thresholds in service form.
 * Thu Apr 23 2015 Jonny Schulz <js@bloonix.de> - 0.43-1
 - Improved service parameter parsing.
 * Mon Apr 20 2015 Jonny Schulz <js@bloonix.de> - 0.42-1

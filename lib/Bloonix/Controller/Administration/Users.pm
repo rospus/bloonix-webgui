@@ -116,6 +116,9 @@ sub options {
 sub create {
     my ($self, $c) = @_;
 
+    $c->plugin->token->check
+        or return 1;
+
     my $count_users = $c->model->database->user->count(
         id => condition => [ company_id => $c->user->{company_id} ]
     );

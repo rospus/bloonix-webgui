@@ -55,7 +55,7 @@ CREATE SEQUENCE "user_id_seq" START WITH 2 INCREMENT BY 1 NO MAXVALUE NO MINVALU
 
 CREATE TABLE "user" (
     "id"                BIGINT PRIMARY KEY DEFAULT nextval('user_id_seq'),
-    "company_id"        BIGINT REFERENCES "company"("id") ON DELETE CASCADE DEFAULT 1,
+    "company_id"        BIGINT NOT NULL REFERENCES "company"("id") ON DELETE CASCADE DEFAULT 1,
     "username"          VARCHAR(50) UNIQUE NOT NULL,
     "name"              VARCHAR(50),
     "phone"             VARCHAR(100),
@@ -86,7 +86,7 @@ INSERT INTO "user" (
 -- crypt_type 1: pbkdf2 sha512 substr64 base64
 
 CREATE TABLE "user_secret" (
-    "user_id"               BIGINT REFERENCES "user"("id") ON DELETE CASCADE,
+    "user_id"               BIGINT NOT NULL REFERENCES "user"("id") ON DELETE CASCADE,
     "crypt_type"            CHAR(1) DEFAULT 0,
     "salt"                  VARCHAR(128),
     "rounds"                INTEGER DEFAULT 0,
@@ -110,9 +110,9 @@ INSERT INTO "user_secret" (
 -- Session IDs for each user
 
 CREATE TABLE "session" (
-    "sid"       VARCHAR(255),
-    "user_id"   BIGINT REFERENCES "user"("id") ON DELETE CASCADE,
-    "expire"    BIGINT,
+    "sid"       VARCHAR(255) NOT NULL,
+    "user_id"   BIGINT NOT NULL REFERENCES "user"("id") ON DELETE CASCADE,
+    "expire"    BIGINT NOT NULL,
     "stash"     TEXT
 );
 
@@ -121,8 +121,8 @@ CREATE INDEX "session_sid_index" on "session" ("sid");
 -- Token IDs for transactions
 
 CREATE TABLE "token" (
-    "tid"       VARCHAR(255),
-    "sid"       VARCHAR(255),
+    "tid"       VARCHAR(255) NOT NULL,
+    "sid"       VARCHAR(255) NOT NULL,
     "expire"    BIGINT NOT NULL,
     "action"    VARCHAR(100)
 );
@@ -134,7 +134,7 @@ CREATE SEQUENCE "group_id_seq" START WITH 2 INCREMENT BY 1 NO MAXVALUE NO MINVAL
 
 CREATE TABLE "group" (
     "id"            BIGINT PRIMARY KEY DEFAULT nextval('group_id_seq'),
-    "company_id"    BIGINT REFERENCES "company"("id") ON DELETE CASCADE DEFAULT 1,
+    "company_id"    BIGINT NOT NULL REFERENCES "company"("id") ON DELETE CASCADE DEFAULT 1,
     "groupname"     VARCHAR(64) NOT NULL,
     "description"   VARCHAR(100),
     "creation_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -157,7 +157,7 @@ CREATE TABLE "host_template" (
     "id"          BIGINT PRIMARY KEY DEFAULT nextval('host_template_id_seq'),
     "company_id"  BIGINT NOT NULL REFERENCES "company"("id") ON DELETE CASCADE,
     "name"        VARCHAR(100) NOT NULL,
-    "description" TEXT NOT NULL DEFAULT '',
+    "description" VARCHAR(100) NOT NULL DEFAULT '',
     "variables"   TEXT NOT NULL DEFAULT '{}'
 );
 
@@ -213,7 +213,7 @@ CREATE INDEX "host_status_since_index" ON "host" ("status_since");
 -- Table host_secret contains the passwords and cbckeys for each host
 
 CREATE TABLE "host_secret" (
-    "host_id"   BIGINT REFERENCES "host"("id") ON DELETE CASCADE,
+    "host_id"   BIGINT NOT NULL REFERENCES "host"("id") ON DELETE CASCADE,
     "password"  VARCHAR(128) NOT NULL
 );
 
@@ -222,16 +222,16 @@ CREATE INDEX "host_secret_host_id" ON "host_secret" ("host_id");
 -- Reference beween host_template and host
 
 CREATE TABLE "host_template_host" (
-    "host_template_id"  BIGINT REFERENCES "host_template"("id") ON DELETE CASCADE,
-    "host_id"           BIGINT REFERENCES "host"("id") ON DELETE CASCADE,
+    "host_template_id"  BIGINT NOT NULL REFERENCES "host_template"("id") ON DELETE CASCADE,
+    "host_id"           BIGINT NOT NULL REFERENCES "host"("id") ON DELETE CASCADE,
     UNIQUE ("host_template_id", "host_id")
 );
 
 -- References between groups
 
 CREATE TABLE "user_group" (
-    "user_id"           BIGINT REFERENCES "user"("id") ON DELETE CASCADE,
-    "group_id"          BIGINT REFERENCES "group"("id") ON DELETE CASCADE,
+    "user_id"           BIGINT NOT NULL REFERENCES "user"("id") ON DELETE CASCADE,
+    "group_id"          BIGINT NOT NULL REFERENCES "group"("id") ON DELETE CASCADE,
     "create_service"    CHAR(1) DEFAULT 0,
     "update_service"    CHAR(1) DEFAULT 0,
     "delete_service"    CHAR(1) DEFAULT 0,
@@ -251,8 +251,8 @@ INSERT INTO "user_group" (
 );
 
 CREATE TABLE "host_group" (
-    "host_id"   BIGINT REFERENCES "host"("id") ON DELETE CASCADE,
-    "group_id"  BIGINT REFERENCES "group"("id") ON DELETE CASCADE,
+    "host_id"   BIGINT NOT NULL REFERENCES "host"("id") ON DELETE CASCADE,
+    "group_id"  BIGINT NOT NULL REFERENCES "group"("id") ON DELETE CASCADE,
     UNIQUE ("host_id", "group_id")
 );
 
@@ -277,7 +277,7 @@ INSERT INTO "status_priority" ("priority", "status") VALUES (30, 'UNKNOWN');
 
 CREATE TABLE "plugin" (
     "id"            BIGINT PRIMARY KEY NOT NULL,
-    "company_id"    BIGINT REFERENCES "company"("id") ON DELETE CASCADE DEFAULT 1,
+    "company_id"    BIGINT NOT NULL REFERENCES "company"("id") ON DELETE CASCADE DEFAULT 1,
     "plugin"        VARCHAR(100) UNIQUE NOT NULL,             -- The plugin name.
     "command"       VARCHAR(100) NOT NULL,                    -- The script name.
     "category"      VARCHAR(100) NOT NULL,                    -- The category of the plugins data, comma separated, such as System/Network/Database/Security
@@ -286,10 +286,9 @@ CREATE TABLE "plugin" (
     "worldwide"     CHAR(1) NOT NULL DEFAULT '0',             -- If the location is remote, is it possible to do worldwide checks?
     "subkey"        VARCHAR(20) DEFAULT 0,                    -- The subkey alias if exists, such as dev/cpu/disk.
     "datatype"      VARCHAR(10) NOT NULL,                     -- The data type of the plugin, such as statistic/table/logfile.
-    "metadata"      TEXT NOT NULL DEFAULT '{}',               -- Metadata, like column order for table data.
     "abstract"      VARCHAR(100) NOT NULL,                    -- A short description of the plugin (used as service name).
     "description"   VARCHAR(500) NOT NULL,                    -- A long description of the plugin (used as description).
-    "info"          TEXT DEFAULT '{}'                         -- The plugin information returned by --plugin-info, stored as JSON.
+    "info"          TEXT NOT NULL DEFAULT '{}'                -- The plugin information returned by --plugin-info, stored as JSON.
 );
 
 CREATE INDEX "plugin_plugin_index" ON "plugin" ("plugin");
@@ -298,7 +297,7 @@ CREATE INDEX "plugin_category_index" ON "plugin" ("category");
 -- Table statitic is used to all availabe plugin statistics.
 
 CREATE TABLE "plugin_stats" (
-    "plugin_id"     BIGINT REFERENCES "plugin"("id") ON DELETE CASCADE DEFAULT 1,
+    "plugin_id"     BIGINT NOT NULL REFERENCES "plugin"("id") ON DELETE CASCADE DEFAULT 1,
     "statkey"       VARCHAR(25) NOT NULL,   -- txbyt
     "alias"         VARCHAR(100),           -- a human readable statkey name
     "datatype"      VARCHAR(20) NOT NULL,   -- float
@@ -314,7 +313,7 @@ CREATE TABLE "plugin_stats" (
 
 CREATE TABLE "chart" (
     "id"        BIGINT PRIMARY KEY NOT NULL,
-    "plugin_id" BIGINT REFERENCES "plugin"("id") ON DELETE CASCADE DEFAULT 1,
+    "plugin_id" BIGINT NOT NULL REFERENCES "plugin"("id") ON DELETE CASCADE DEFAULT 1,
     "title"     VARCHAR(100) NOT NULL,  -- the title of the chart
     "options"   TEXT                    -- the chart options like label names, area stacked or line charts
 );
@@ -327,7 +326,7 @@ CREATE SEQUENCE "user_chart_id_seq" START WITH 1 INCREMENT BY 1 NO MAXVALUE NO M
 
 CREATE TABLE "user_chart" (
     "id"          BIGINT PRIMARY KEY DEFAULT nextval('user_chart_id_seq'),
-    "user_id"     BIGINT REFERENCES "user"("id") ON DELETE CASCADE DEFAULT 1,
+    "user_id"     BIGINT NOT NULL REFERENCES "user"("id") ON DELETE CASCADE DEFAULT 1,
     "public"      CHAR(1) DEFAULT 0,
     "title"       VARCHAR(50) DEFAULT 'n/a',
     "subtitle"    VARCHAR(50) NULL,
@@ -345,7 +344,7 @@ CREATE SEQUENCE "chart_view_id_seq" START WITH 1 INCREMENT BY 1 NO MAXVALUE NO M
 
 CREATE TABLE "chart_view" (
     "id"        BIGINT PRIMARY KEY DEFAULT nextval('chart_view_id_seq'),
-    "user_id"   BIGINT REFERENCES "user"("id") ON DELETE CASCADE DEFAULT 1,
+    "user_id"   BIGINT NOT NULL REFERENCES "user"("id") ON DELETE CASCADE DEFAULT 1,
     "public"    CHAR(1) DEFAULT 0,
     "alias"     VARCHAR(200) DEFAULT 'n/a',
     "options"   TEXT DEFAULT '{}'
@@ -364,11 +363,10 @@ CREATE TABLE "service_parameter" (
     "service_name"              VARCHAR(100) NOT NULL,
     "host_alive_check"          CHAR(1) NOT NULL DEFAULT '0',
     "passive_check"             CHAR(1) NOT NULL DEFAULT '0',
-    "command"                   TEXT NOT NULL DEFAULT '',
     "command_options"           TEXT NOT NULL DEFAULT '[]',
     "location_options"          TEXT NOT NULL DEFAULT '0',
     "agent_options"             TEXT NOT NULL DEFAULT '{}',
-    "plugin_id"                 BIGINT REFERENCES "plugin"("id"),
+    "plugin_id"                 BIGINT NOT NULL REFERENCES "plugin"("id"),
     "description"               VARCHAR(100) NOT NULL DEFAULT '',
     "comment"                   VARCHAR(200) NOT NULL DEFAULT '',
     "interval"                  INTEGER NOT NULL DEFAULT 0,
@@ -476,11 +474,11 @@ CREATE SEQUENCE "dependency_id_seq" START WITH 1 INCREMENT BY 1 NO MAXVALUE NO M
 
 CREATE TABLE "dependency" (
     "id"                BIGINT PRIMARY KEY DEFAULT nextval('dependency_id_seq'),
-    "host_id"           BIGINT REFERENCES "host"("id") ON DELETE CASCADE NULL,
-    "service_id"        BIGINT REFERENCES "service"("id") ON DELETE CASCADE NULL,
+    "host_id"           BIGINT NOT NULL REFERENCES "host"("id") ON DELETE CASCADE NULL,
+    "service_id"        BIGINT NOT NULL REFERENCES "service"("id") ON DELETE CASCADE NULL,
     "status"            VARCHAR(32) NOT NULL DEFAULT 'CRITICAL,UNKNOWN,INFO',
-    "on_host_id"        BIGINT REFERENCES "host"("id") ON DELETE CASCADE NULL,
-    "on_service_id"     BIGINT REFERENCES "service"("id") ON DELETE CASCADE NULL,
+    "on_host_id"        BIGINT NOT NULL REFERENCES "host"("id") ON DELETE CASCADE NULL,
+    "on_service_id"     BIGINT NOT NULL REFERENCES "service"("id") ON DELETE CASCADE NULL,
     "on_status"         VARCHAR(32) NOT NULL DEFAULT 'CRITICAL,UNKNOWN,INFO',
     "inherit"           CHAR(1) NOT NULL DEFAULT 0,
     "timezone"          VARCHAR(40) NOT NULL DEFAULT 'Europe/Berlin',
@@ -502,7 +500,7 @@ CREATE SEQUENCE "contactgroup_id_seq" START WITH 1 INCREMENT BY 1 NO MAXVALUE NO
 
 CREATE TABLE "contactgroup" (
     "id"            BIGINT PRIMARY KEY DEFAULT nextval('contactgroup_id_seq'),
-    "company_id"    BIGINT REFERENCES "company"("id") ON DELETE CASCADE,
+    "company_id"    BIGINT NOT NULL REFERENCES "company"("id") ON DELETE CASCADE,
     "name"          VARCHAR(100) NOT NULL,
     "description"   VARCHAR(100),
     "creation_time" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -512,7 +510,7 @@ CREATE SEQUENCE "contact_id_seq" START WITH 1 INCREMENT BY 1 NO MAXVALUE NO MINV
 
 CREATE TABLE "contact" (
     "id"                            BIGINT PRIMARY KEY DEFAULT nextval('contact_id_seq'),
-    "company_id"                    BIGINT REFERENCES "company"("id") ON DELETE CASCADE,
+    "company_id"                    BIGINT NOT NULL REFERENCES "company"("id") ON DELETE CASCADE,
     "name"                          VARCHAR(100) NOT NULL,
     "escalation_level"              VARCHAR(8) NOT NULL DEFAULT 'e0',
     -- mail
@@ -527,20 +525,20 @@ CREATE TABLE "contact" (
 );
 
 CREATE TABLE "contact_contactgroup" (
-    "contactgroup_id"   BIGINT REFERENCES "contactgroup"("id") ON DELETE CASCADE,
-    "contact_id"        BIGINT REFERENCES "contact"("id") ON DELETE CASCADE,
+    "contactgroup_id"   BIGINT NOT NULL REFERENCES "contactgroup"("id") ON DELETE CASCADE,
+    "contact_id"        BIGINT NOT NULL REFERENCES "contact"("id") ON DELETE CASCADE,
     UNIQUE ("contactgroup_id", "contact_id")
 );
 
 CREATE TABLE "host_contactgroup" (
-    "contactgroup_id"   BIGINT REFERENCES "contactgroup"("id") ON DELETE CASCADE,
-    "host_id"           BIGINT REFERENCES "host"("id") ON DELETE CASCADE,
+    "contactgroup_id"   BIGINT NOT NULL REFERENCES "contactgroup"("id") ON DELETE CASCADE,
+    "host_id"           BIGINT NOT NULL REFERENCES "host"("id") ON DELETE CASCADE,
     UNIQUE ("contactgroup_id", "host_id")
 );
 
 CREATE TABLE "service_contactgroup" (
-    "contactgroup_id"   BIGINT REFERENCES "contactgroup"("id") ON DELETE CASCADE,
-    "service_id"        BIGINT REFERENCES "service"("id") ON DELETE CASCADE,
+    "contactgroup_id"   BIGINT NOT NULL REFERENCES "contactgroup"("id") ON DELETE CASCADE,
+    "service_id"        BIGINT NOT NULL REFERENCES "service"("id") ON DELETE CASCADE,
     UNIQUE ("contactgroup_id", "service_id")
 );
 
@@ -552,7 +550,7 @@ CREATE SEQUENCE "timeperiod_id_seq" START WITH 1 INCREMENT BY 1 NO MAXVALUE NO M
 
 CREATE TABLE "timeperiod" (
     "id"            BIGINT PRIMARY KEY DEFAULT nextval('timeperiod_id_seq'),
-    "company_id"    BIGINT REFERENCES "company"("id") ON DELETE CASCADE,
+    "company_id"    BIGINT NOT NULL REFERENCES "company"("id") ON DELETE CASCADE,
     "name"          VARCHAR(40) NOT NULL,
     "description"   VARCHAR(100)
 );
@@ -561,7 +559,7 @@ CREATE SEQUENCE "timeslice_id_seq" START WITH 1 INCREMENT BY 1 NO MAXVALUE NO MI
 
 CREATE TABLE "timeslice" (
     "id"            BIGINT PRIMARY KEY DEFAULT nextval('timeslice_id_seq'),
-    "timeperiod_id" BIGINT REFERENCES "timeperiod"("id") ON DELETE CASCADE,
+    "timeperiod_id" BIGINT NOT NULL REFERENCES "timeperiod"("id") ON DELETE CASCADE,
     "timeslice"     VARCHAR(200) NOT NULL
 );
 
@@ -595,8 +593,8 @@ CREATE SEQUENCE "contact_timeperiod_id_seq" START WITH 1 INCREMENT BY 1 NO MAXVA
 
 CREATE TABLE "contact_timeperiod" (
     "id"            BIGINT PRIMARY KEY DEFAULT nextval('contact_timeperiod_id_seq'),
-    "contact_id"    BIGINT REFERENCES "contact"("id") ON DELETE CASCADE,
-    "timeperiod_id" BIGINT REFERENCES "timeperiod"("id") ON DELETE CASCADE,
+    "contact_id"    BIGINT NOT NULL REFERENCES "contact"("id") ON DELETE CASCADE,
+    "timeperiod_id" BIGINT NOT NULL REFERENCES "timeperiod"("id") ON DELETE CASCADE,
     "type"          VARCHAR(20) NOT NULL DEFAULT 'send all',
     "timezone"      VARCHAR(40) NOT NULL DEFAULT 'Europe/Berlin',
     UNIQUE("timeperiod_id", "contact_id", "timezone")
@@ -608,7 +606,7 @@ CREATE SEQUENCE "host_downtime_id_seq" START WITH 1 INCREMENT BY 1 NO MAXVALUE N
 
 CREATE TABLE "host_downtime" (
     "id"                        BIGINT PRIMARY KEY DEFAULT nextval('host_downtime_id_seq'),
-    "host_id"                   BIGINT REFERENCES "host"("id") ON DELETE CASCADE,
+    "host_id"                   BIGINT NOT NULL REFERENCES "host"("id") ON DELETE CASCADE,
     "begin"                     TIMESTAMP,
     "end"                       TIMESTAMP,
     "timeslice"                 VARCHAR(200),
@@ -626,8 +624,8 @@ CREATE SEQUENCE "service_downtime_id_seq" START WITH 1 INCREMENT BY 1 NO MAXVALU
 
 CREATE TABLE "service_downtime" (
     "id"                        BIGINT PRIMARY KEY DEFAULT nextval('service_downtime_id_seq'),
-    "host_id"                   BIGINT REFERENCES "host"("id") ON DELETE CASCADE,
-    "service_id"                BIGINT REFERENCES "service"("id") ON DELETE CASCADE,
+    "host_id"                   BIGINT NOT NULL REFERENCES "host"("id") ON DELETE CASCADE,
+    "service_id"                BIGINT NOT NULL REFERENCES "service"("id") ON DELETE CASCADE,
     "begin"                     TIMESTAMP,
     "end"                       TIMESTAMP,
     "timeslice"                 VARCHAR(200),
@@ -660,7 +658,7 @@ CREATE TABLE "mail_send" (
     -- No referenc to host.id and service.id because this line shouldn't be deleted
     -- if the host or service will be deleted
     "time"       BIGINT DEFAULT 0,
-    "host_id"    BIGINT REFERENCES "host"("id") ON DELETE CASCADE,
+    "host_id"    BIGINT NOT NULL REFERENCES "host"("id") ON DELETE CASCADE,
     "company_id" BIGINT NOT NULL DEFAULT 0,
     "send_to"    VARCHAR(100) NOT NULL,
     "subject"    VARCHAR(200) NOT NULL,
@@ -676,22 +674,22 @@ CREATE SEQUENCE "roster_id_seq" START WITH 1 INCREMENT BY 1 NO MAXVALUE NO MINVA
 
 CREATE TABLE "roster" (
     "id"            BIGINT PRIMARY KEY DEFAULT nextval('roster_id_seq'),
-    "company_id"    BIGINT REFERENCES "company"("id") ON DELETE CASCADE,
+    "company_id"    BIGINT NOT NULL REFERENCES "company"("id") ON DELETE CASCADE,
     "roster"        VARCHAR(100) NOT NULL,
     "description"   VARCHAR(100),
     "active"        CHAR(1) NOT NULL DEFAULT 1
 );
 
 CREATE TABLE "roster_host" (
-    "roster_id" BIGINT REFERENCES "roster"("id") ON DELETE CASCADE,
-    "host_id"   BIGINT REFERENCES "host"("id") ON DELETE CASCADE
+    "roster_id" BIGINT NOT NULL REFERENCES "roster"("id") ON DELETE CASCADE,
+    "host_id"   BIGINT NOT NULL REFERENCES "host"("id") ON DELETE CASCADE
 );
 
 CREATE SEQUENCE "roster_entry_id_seq" START WITH 1 INCREMENT BY 1 NO MAXVALUE NO MINVALUE CACHE 1;
 
 CREATE TABLE "roster_entry" (
     "id"        BIGINT PRIMARY KEY DEFAULT nextval('roster_entry_id_seq'),
-    "roster_id" BIGINT REFERENCES "roster"("id") ON DELETE CASCADE,
+    "roster_id" BIGINT NOT NULL REFERENCES "roster"("id") ON DELETE CASCADE,
     "from_time" TIMESTAMP NOT NULL,
     "to_time"   TIMESTAMP NOT NULL,
     "timezone"  VARCHAR(40) NOT NULL DEFAULT 'Europe/Berlin'
@@ -701,8 +699,8 @@ CREATE SEQUENCE "roster_contact_id_seq" START WITH 1 INCREMENT BY 1 NO MAXVALUE 
 
 CREATE TABLE "roster_contact" (
     "id"                BIGINT PRIMARY KEY DEFAULT nextval('roster_contact_id_seq'),
-    "roster_entry_id"   BIGINT REFERENCES "roster_entry"("id") ON DELETE CASCADE,
-    "contact_id"        BIGINT REFERENCES "contact"("id") ON DELETE CASCADE,
+    "roster_entry_id"   BIGINT NOT NULL REFERENCES "roster_entry"("id") ON DELETE CASCADE,
+    "contact_id"        BIGINT NOT NULL REFERENCES "contact"("id") ON DELETE CASCADE,
     "send_mail"         CHAR(1) NOT NULL DEFAULT 1,
     "send_sms"          CHAR(1) NOT NULL DEFAULT 1,
     "escalation_level"  SMALLINT NOT NULL DEFAULT 0
@@ -714,8 +712,8 @@ CREATE SEQUENCE "user_tracking_id_seq" START WITH 1 INCREMENT BY 1 NO MAXVALUE N
 
 CREATE TABLE "user_tracking" (
     "id"            BIGINT PRIMARY KEY DEFAULT nextval('user_tracking_id_seq'),
-    "company_id"    BIGINT REFERENCES "company"("id") ON DELETE CASCADE,
-    "time"          TIMESTAMP NOT NULL DEFAULT current_timestamp,
+    "company_id"    BIGINT NOT NULL REFERENCES "company"("id") ON DELETE CASCADE,
+    "time"          TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "user_id"       BIGINT NOT NULL,
     "username"      VARCHAR(50) NOT NULL,
     "action"        VARCHAR(10) NOT NULL, -- create, update, delete, add, remove

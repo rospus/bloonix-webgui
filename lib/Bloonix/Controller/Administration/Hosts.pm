@@ -108,11 +108,16 @@ sub options {
         }
     }
 
-    $c->plugin->template->variables_to_form($host);
+    $c->plugin->util->json_to_pv(variables => $host);
     $c->stash->data(values => $host);
     $c->stash->data(options => $options);
     $c->stash->data(mandatory => $c->model->database->host->validator->mandatory);
     $c->stash->data(optional => $c->model->database->host->validator->optional);
+
+    if (!grep /group_id/, @{$c->stash->data->{mandatory}}) {
+        push @{$c->stash->data->{mandatory}}, "group_id";
+    }
+
     $c->view->render->json;
 }
 
@@ -151,7 +156,7 @@ sub create {
     my $data = $form->data;
     my $password = delete $data->{password};
 
-    $c->plugin->template->parse_variables($data);
+    $c->plugin->util->pv_to_json(variables => $data);
     my $result = $c->model->database->host->create_unique($data);
 
     $c->plugin->action->check_crud($result)
@@ -264,7 +269,10 @@ sub update {
             : "host notification enabled by $username($user_id) at $timestamp";
     }
 
-    $c->plugin->template->parse_variables($data);
+    if (exists $data->{variables}) {
+        $c->plugin->util->pv_to_json(variables => $data);
+    }
+
     my $result = $c->model->database->host->update_unique($opts->{id} => $data);
 
     $c->plugin->action->check_crud($result)
@@ -276,14 +284,16 @@ sub update {
         old => $host
     );
 
-    if ($host_secret->{password} ne $password) {
+    if (defined $password && $host_secret->{password} ne $password) {
         $c->model->database->host_secret->update(
             data => { password => $password },
             condition => [ host_id => $opts->{id} ]
         );  
     }   
 
-    $c->stash->data($c->model->database->host->get($opts->{id}));
+    $host = $c->model->database->host->get($opts->{id});
+    $c->plugin->util->json_to_pv(variables => $host);
+    $c->stash->data($host);
     $c->view->render->json;
 }
 

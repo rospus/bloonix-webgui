@@ -21,6 +21,16 @@ sub startup {
     $c->route->map("/templates/hosts/:id/services/:ref_id/delete")->to("delete_service");
     $c->route->map("/templates/hosts/:id/services/:ref_id/options")->to("service_options");
     $c->route->map("/templates/hosts/:id/clone")->to("clone");
+
+    $self->{pv_to_json_callback} = sub {
+        my $data = shift;
+        $c->plugin->util->pv_to_json(variables => $data);
+    };
+
+    $self->{json_to_pv_callback} = sub {
+        my $data = shift;
+        $c->plugin->util->json_to_pv(variables => $data);
+    };
 }
 
 sub auto {
@@ -83,6 +93,7 @@ sub view {
     my ($self, $c) = @_;
 
     $c->stash->data($c->stash->object->{template});
+    &{$self->{json_to_pv_callback}}($c->stash->data);
     $c->view->render->json;
 }
 
@@ -101,6 +112,10 @@ sub list {
         order => [ asc => "name" ]
     );
 
+    foreach my $row (@$data) {
+        $row->{variables} = $c->plugin->util->json_to_pv($row->{variables});
+    }
+
     $c->stash->offset($request->{offset});
     $c->stash->total($count);
     $c->stash->data($data);
@@ -110,15 +125,10 @@ sub list {
 sub options {
     my ($self, $c, $opts) = @_;
 
-    my $callback = sub {
-        my $options = shift;
-        $c->plugin->template->variables_to_form($options);
-    };
-
     if ($opts && $opts->{id}) {
-        $c->plugin->action->options(host_template => $c->stash->object->{template}, $callback);
+        $c->plugin->action->options(host_template => $c->stash->object->{template}, $self->{json_to_pv_callback});
     } else {
-        $c->plugin->action->options("host_template", undef, $callback);
+        $c->plugin->action->options("host_template", undef, $self->{json_to_pv_callback});
     }
 }
 
@@ -133,17 +143,17 @@ sub create {
         return $c->plugin->error->limit_error("err-825" => $c->user->{max_templates});
     }
 
-    $c->plugin->action->store_simple("host_template", undef, sub {
-        $c->plugin->template->parse_variables(shift);
-    });
+    $c->plugin->action->store_simple("host_template", undef, $self->{pv_to_json_callback});
 }
 
 sub update {
-    my ($self, $c) = @_;
+    my ($self, $c, $opts) = @_;
 
-    $c->plugin->action->store_simple(host_template => $c->stash->object->{template}, sub {
-        $c->plugin->template->parse_variables(shift);
-    });
+    $c->plugin->action->store_simple(
+        host_template => $c->stash->object->{template},
+        $self->{pv_to_json_callback},
+        $self->{json_to_pv_callback}
+    );
 }
 
 sub delete {

@@ -307,7 +307,7 @@ Bloonix.modifyUserGroupMember = function(o, action, row) {
             content: Text.get("action."+ action),
             callback: function() {
                 var data = form.getData();
-                data.id = row.user_id;
+                data.user_id = row.user_id;
                 Ajax.post({
                     url: "/administration/groups/"+ o.id +"/members/users/"+ action +"/",
                     data: data,

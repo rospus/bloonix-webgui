@@ -140,9 +140,6 @@ sub set {
         push @params, plugin_id => {
             default => $plugin->{id}
         };
-        push @params, command => {
-            default => $plugin->{command}
-        };
     }
 
     $self->validator->set(@params);
@@ -1136,10 +1133,16 @@ sub create_new_service {
         }
     }
 
+    $service_parameter_options->{command_options} //= "[]";
+    $service_parameter_options->{location_options} //= 0;
+    $service_parameter_options->{agent_options} //= "{}";
+
     my $service_parameter = $self->schema->service_parameter->create_and_get($service_parameter_options)
         or return undef;
 
     $service_options->{service_parameter_id} = $service_parameter->{ref_id};
+    $service_options->{message} //= "waiting for initialization";
+
     my $service = $self->create_and_get($service_options);
     return $self->by_service_id($service->{id});
 }

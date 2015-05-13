@@ -6,11 +6,14 @@ use Digest::SHA qw(sha256_hex sha512_hex hmac_sha512);
 use MIME::Base64;
 use MIME::Lite;
 use Time::ParseDate;
+use base qw(Bloonix::Accessor);
+
+__PACKAGE__->mk_accessors(qw/c/);
 
 sub new {
-    my $class = shift;
+    my ($class, $c) = @_;
 
-    return bless { }, $class;
+    return bless { c => $c }, $class;
 }
 
 sub sha256 {
@@ -368,6 +371,72 @@ sub ip_by_alias {
     $ip_by_alias{"%IPADDR%"} = $ipaddr;
 
     return \%ip_by_alias;
+}
+
+# pv
+#   a=b
+#   c=d
+# to json
+#   {"a":"b","c":"d"}
+sub pv_to_json {
+    my $self = shift;
+    my ($key, $data);
+
+    if (@_ == 2) {
+        ($key, $data) = @_;
+    } else {
+        $data = shift;
+    }
+
+    my $c = $self->c;
+    my $variables = $key ? $data->{$key} : $data;
+    $variables //= "";
+    my $to_json = {};
+
+    foreach my $pv (split /[\r\n]+/, $variables) {
+        next if $pv =~ /^\s*\z/;
+        if ($pv =~ /^\s*([a-zA-Z_0-9\-\.]+)\s*=\s*([^\s].*)\z/) {
+            my ($p, $v) = ($1, $2);
+            $v =~ s/\s*\z//;
+            $to_json->{$p} = $v;
+        }
+    }
+
+    if ($key) {
+        $data->{$key} = $c->json->encode($to_json);
+        return $data;
+    }
+
+    return $c->json->encode($to_json);
+}
+
+sub json_to_pv {
+    my $self = shift;
+    my ($key, $data);
+
+    if (@_ == 2) {
+        ($key, $data) = @_;
+    } else {
+        $data = shift;
+    }
+
+    my $c = $self->c;
+    my $variables = $key
+        ? $c->json->decode($data->{$key})
+        : $c->json->decode($data);
+
+    my $to_pv = "";
+
+    foreach my $param (sort keys %$variables) {
+        $to_pv .= "$param=$variables->{$param}\n";
+    }
+
+    if ($key) {
+        $data->{$key} = $to_pv;
+        return $data;
+    }
+
+    return $to_pv;
 }
 
 1;

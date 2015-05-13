@@ -618,7 +618,7 @@ Bloonix.createServiceForm = function(o) {
         });
 
         var selectKey = this.form.select({
-            options: options,
+            options: options.sort(),
             selected: selectkeySelected,
             appendTo: td,
             width: "210px"

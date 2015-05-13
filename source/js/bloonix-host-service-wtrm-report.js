@@ -121,7 +121,7 @@ Bloonix.viewServiceWtrmReport = function(o) {
 
             var col = table.addColumn({
                 addClass: addClass,
-                html: Bloonix.WtrmAction[step.action](step)
+                text: Bloonix.WtrmAction[step.action](step)
             });
 
             if (success == "error") {

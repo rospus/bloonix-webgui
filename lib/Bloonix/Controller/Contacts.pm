@@ -125,6 +125,9 @@ sub update {
 sub delete {
     my ($self, $c, $opts) = @_;
 
+    $c->plugin->token->check
+        or return;
+
     my $contact = $c->user->{role} eq "admin"
         ? $c->model->database->contact->get($opts->{id})
         : $c->model->database->contact->find(condition => [ id => $opts->{id}, company_id => $c->user->{company_id} ]);
