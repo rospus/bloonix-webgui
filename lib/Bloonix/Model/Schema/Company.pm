@@ -240,6 +240,7 @@ sub create_new_structure {
         );
 
         if ($check_dup) {
+            local $SIG{__DIE__} = "DEFAULT"; # prevent that the message is logged with a tracestack
             die "duplicate company";
         }
 
