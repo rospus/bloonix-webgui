@@ -1,3 +1,9 @@
+bloonix-webgui (0.46-1) unstable; urgency=low
+
+    * Fixed/added transactions support for mysql.
+
+ -- Jonny Schulz <js@bloonix.de>  Thu, 14 May 2015 03:50:17 +0200
+
 bloonix-webgui (0.45-1) unstable; urgency=low
 
     * Quick fix for init-database.

@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.45
+Version: 0.46
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -61,6 +61,8 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Thu May 14 2015 Jonny Schulz <js@bloonix.de> - 0.46-1
+- Fixed/added transactions support for mysql.
 * Thu May 14 2015 Jonny Schulz <js@bloonix.de> - 0.45-1
 - Quick fix for init-database.
 * Thu May 07 2015 Jonny Schulz <js@bloonix.de> - 0.44-1
