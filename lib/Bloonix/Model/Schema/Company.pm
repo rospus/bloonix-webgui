@@ -247,6 +247,8 @@ sub create_new_structure {
         $company = $self->create_and_get($data)
             or die "unable to create company";
 
+        $self->dbi->unlock("company");
+
         ## ****** 24 x 7 ******
         my $timeperiod = $self->schema->timeperiod->create_and_get(
             company_id => $company->{id},
@@ -297,10 +299,11 @@ sub create_new_structure {
     };
 
     if ($@) {
+        $self->dbi->unlock("company");
+        eval { $self->dbi->rollback };
         if ($@ =~ /^duplicate company/) {
             $company = { status => "dup", data => "company" };
         } else {
-            eval { $self->dbi->rollback };
             $company = { status => "err" };
         }
     } else {

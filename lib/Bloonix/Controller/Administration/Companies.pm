@@ -132,6 +132,10 @@ sub delete_api_test {
     $c->model->database->company->delete(
         company => "bloonix-webgui-api-test-tohdeeg7bae3"
     );
+
+    $c->model->database->location->delete(
+        hostname => "bloonix-webgui-api-test-tohdeeg7bae3"
+    );
 }
 
 1;
