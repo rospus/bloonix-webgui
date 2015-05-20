@@ -1,3 +1,8 @@
+bloonix-webgui (0.47) released at 2015-XX-XX
+
+    * Implemented a small workaround for a bug in check-by-satellite
+      of bloonix-plugins-basic 0.37.
+
 bloonix-webgui (0.46) released at 2015-05-15
 
     * Fixed/added transactions support for mysql.

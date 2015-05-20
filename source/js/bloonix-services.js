@@ -616,6 +616,11 @@ Bloonix.getServicesForSelection = function(hostId) {
 Bloonix.showServiceResultData = function(plugin, data) {
     var content = Utils.create("div");
 
+    if (typeof data[0] === "object" && typeof data[0].result === "object") {
+        // fix check-by-satellite bug in bloonix-plugins-basic 0.37
+        data = data[0].result;
+    }
+
     var table = new Table({ appendTo: content }).init();
     table.addHeadColumn(Text.get("schema.host.attr.hostname"));
     table.addHeadColumn(Text.get("schema.service.attr.status"));
