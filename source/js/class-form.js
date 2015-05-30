@@ -1083,7 +1083,7 @@ Form.prototype.iconList = function(o) {
             }
 
             if (item.icon) {
-                button.addClass("btn-icon-unselected");
+            //    button.addClass("btn-icon-unselected");
             }
 
             if (self.even == true) {
@@ -1134,18 +1134,10 @@ Form.prototype.iconList = function(o) {
                 if (item.input) {
                     item.input.remove();
                     item.input = false;
-                    if (item.icon) {
-                        item.button.addClass("btn-icon-unselected");
-                    } else {
-                        item.button.removeClass("btn-selected");
-                    }
+                    item.button.removeClass("btn-selected");
                 } else {
                     item.input = self.createInput(value);
-                    if (item.icon) {
-                        item.button.removeClass("btn-icon-unselected");
-                    } else {
-                        item.button.addClass("btn-selected");
-                    }
+                    item.button.addClass("btn-selected");
                 }
             }
         });
@@ -1156,19 +1148,11 @@ Form.prototype.iconList = function(o) {
         $.each(this.cache, function(i, item) {
             if (item.value == value && item.input == false) {
                 item.input = self.createInput(value);
-                if (item.icon) {
-                    item.button.removeClass("btn-icon-unselected");
-                } else {
-                    item.button.addClass("btn-selected");
-                }
+                item.button.addClass("btn-selected");
             } else if (item.value != value && item.input) {
                 item.input.remove();
                 item.input = false;
-                if (item.icon) {
-                    item.button.addClass("btn-icon-unselected");
-                } else {
-                    item.button.removeClass("btn-selected");
-                }
+                item.button.removeClass("btn-selected");
             }
         });
     };
@@ -1812,7 +1796,7 @@ Form.prototype.group = function(o) {
             .attr("title", Text.get("action.remove"))
             .css({ "margin-top": "92px" })
             .addClass("btn btn-white btn-icon")
-            .html(Utils.create("span").addClass("hicons hicons-gray chevron-right"))
+            .html(Utils.create("span").addClass("hicons hicons-white chevron-right"))
             .appendTo(this.button.container)
             .tooltip()
             .click(function() { self.addOrRemove("add") });
@@ -1821,7 +1805,7 @@ Form.prototype.group = function(o) {
         this.button.remove = Utils.create("span")
             .attr("title", Text.get("action.add"))
             .addClass("btn btn-white btn-icon")
-            .html(Utils.create("span").addClass("hicons hicons-gray chevron-left"))
+            .html(Utils.create("span").addClass("hicons hicons-white chevron-left"))
             .appendTo(this.button.container)
             .tooltip()
             .click(function() { self.addOrRemove("remove") });

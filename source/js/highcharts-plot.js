@@ -23,7 +23,7 @@ Bloonix.highcharts.plotChart = function(o) {
             text: o.chart.title,
             align: "left",
             style: {
-                color: "#333333",
+                color: "#505050",
                 fontWeight: "normal",
                 fontSize: "14px"
             }
@@ -33,7 +33,7 @@ Bloonix.highcharts.plotChart = function(o) {
             align: "left",
             style: {
                 color: "#555555",
-                fontWeight: "normal",
+                fontWeight: 300,
                 fontSize: "13px"
             }
         },
@@ -68,7 +68,7 @@ Bloonix.highcharts.plotChart = function(o) {
         },
         legend: {
             itemStyle: {
-                color: "#333333",
+                color: "#505050",
                 fontSize: "12px",
                 fontWeight: "normal",
             },

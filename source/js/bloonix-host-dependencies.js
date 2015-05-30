@@ -59,14 +59,14 @@ Bloonix.viewHostDependencies = function(o) {
         Bloonix.createIconList({
             items: [
                 {
-                    icon: "hicons radial",
+                    icon: "hicons hicons-white remove-circle",
                     value: "radialGraph",
-                    title: "Radial graph",
+                    title: Text.get("text.radial_graph"),
                     default: true
                 },{
-                    icon: "hicons asterisk",
+                    icon: "hicons hicons-white asterisk",
                     value: "hyperTree",
-                    title: "Hypertree"
+                    title: Text.get("text.hypertree")
                 }
             ],
             store: { to: this.cache.selected, as: "graphType" },

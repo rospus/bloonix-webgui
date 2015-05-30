@@ -72,14 +72,13 @@ Bloonix.createService = function(o) {
             .appendTo(this.boxes.left);
 
         Bloonix.createIconList({
-            format: "large",
+            format: "even-large",
             items: [
-                { name: "• plugin name", value: "plugin", default: true },
-                { name: "• check name", value: "command" }
+                { name: Text.get("text.plugin"), value: "plugin", default: true },
+                { name: Text.get("text.command"), value: "command" }
             ],
             callback: function(value) { self.updateOrder(value) },
-            appendTo: orderIconList,
-            button: false
+            appendTo: orderIconList
         });
 
         Utils.create("h2")
@@ -94,17 +93,16 @@ Bloonix.createService = function(o) {
         var categoryList = [];
         $.each(this.categories.sort(), function(i, category) {
             categoryList.push({
-                name: "• "+ category,
+                name: category,
                 value: category
             });
         });
 
         Bloonix.createIconList({
-            format: "large",
+            format: "even-large",
             items: categoryList,
             callback: function(value) { self.filterCategories(value) },
             appendTo: categoryIconList,
-            button: false,
             multiple: true
         });
 
@@ -1069,19 +1067,23 @@ Bloonix.createServiceForm = function(o) {
             .addClass("location-checkbox-table")
             .appendTo(container);
 
-        var locationCounterBox = Utils.create("div")
+        var locationCounterBoxContainer = Utils.create("div")
             .addClass("locations-selected")
             .appendTo(container);
 
+        var locationCounterBox = Utils.create("div")
+            .appendTo(locationCounterBoxContainer);
+
         if (Bloonix.args.showCostInfo === "yes") {
+            Utils.create("br")
+                .appendTo(locationCounterBoxContainer);
             Utils.create("div")
-                .addClass("locations-selected")
                 .html(Text.get("text.selected_locations_costs"))
-                .appendTo(container);
+                .appendTo(locationCounterBoxContainer);
         }
 
         if (type !== "multiple") {
-            locationCounterBox.hide();
+            locationCounterBoxContainer.hide();
         }
 
         // force array
@@ -1118,7 +1120,9 @@ Bloonix.createServiceForm = function(o) {
 
             var calCost = function() {
                 var len = checkboxTable.find("input:checked").length;
-                locationCounterBox.html(Text.get("text.selected_locations_counter", len, true, true));
+                locationCounterBox.html(
+                    Text.get("text.selected_locations_counter", len, true, true)
+                );
              };
 
             calCost();

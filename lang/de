@@ -197,6 +197,10 @@ info.new_version: <h4>Eine neue Version ist verfügbar</h4>
  <p>Eine neue Version der Bloonix-WebGUI ist verfügbar!</p>
  <p>Bitte laden Sie die Webseite neu!</p>
 
+text.radial_graph: Radial graph
+text.hypertree: Hypertree
+text.plugin: Plugin
+text.command: Kommando
 text.selected_objects: Ausgewählte Objekte
 text.min_length: Mindestlänge: %s
 text.max_length: Maximallänge: %s
@@ -344,7 +348,7 @@ text.dashboard.name: Name des Dashboards
 
 site.login.welcome: Willkommen bei Bloonix!
 site.login.title: Login zum Monitoring-System
-site.login.username: E-Mail Adresse
+site.login.username: E-Mail
 site.login.password: Passwort
 site.login.error: Einloggen fehlgeschlagen! Versuchen Sie es erneut!
 site.login.login: Bitte loggen Sie sich mit Ihrem Benutzernamen und Passwort ein:

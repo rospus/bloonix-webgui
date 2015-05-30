@@ -216,10 +216,10 @@ Bloonix.initEventList = function(o) {
     });
 
     var serviceFilterBox = Bloonix.createIconList({
+        format: "even-full",
         items: services,
         store: { to: o.cache.selected, as: "services" },
         callback: function() { o.table.getData({ resetOffset: true }) },
-        button: false,
         multiple: true
     });
 

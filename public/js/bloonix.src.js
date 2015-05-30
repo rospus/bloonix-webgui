@@ -896,6 +896,7 @@ var Lang = {
       "nav.sub.events" : "Events",
       "site.wtrm.action.checkIfElementIsNotSelected" : "Check if a <b>value is <i>NOT</i> selected</b> in a selectbox",
       "schema.service.attr.last_mail_time" : "Last notification per mail",
+      "text.radial_graph" : "Radial graph",
       "schema.service.desc.host_alive_check" : "A host alive check is a check that determines if a host is down or alive. If this check returns a critical status then you get a special notification. If other service checks returns a critical status at the same time then the notifications will be suppressed. It's recommended you use the ping check as host alive check.",
       "schema.host.desc.virt_product" : "e.g. VMware-Server, Virtuozzo",
       "info.new_version" : "<h4>A new version is available</h4>\n<p>A new version of the Bloonix-WebGUI is available!</p>\n<p>Please reload the website!</p>",
@@ -1026,6 +1027,7 @@ var Lang = {
       "schema.host.desc.password" : "This password is used by the Bloonix Agents. If an agent wants to connect to the Bloonix server to deliver host statistics then this is only possible if the agent knows the host id and the password.",
       "schema.event.text.list" : "Events of host %s",
       "schema.host.text.delete" : "Delete host",
+      "text.hypertree" : "Hypertree",
       "schema.service.text.clone_service" : "Clone service %s",
       "schema.dependency.text.host" : "Host",
       "action.operate_as" : "React as",
@@ -1128,6 +1130,7 @@ var Lang = {
       "schema.contactgroup.text.list" : "Overview of all contactgroups",
       "schema.service.desc.notification" : "This option activates or de-activates the notifications per email or SMS.",
       "schema.event.attr.status" : "Status",
+      "text.plugin" : "Plugin",
       "schema.contactgroup.text.host_members" : "Hosts in group",
       "word.day" : "day",
       "action.delete" : "Delete",
@@ -1274,6 +1277,7 @@ var Lang = {
       "text.report.availability.AV-W" : "Time slice in percent in which the service was in status WARNING.",
       "schema.hs_downtime.attr.username" : "Added by",
       "schema.service.action.deactivate_multiple" : "Deactivate the selected services",
+      "text.command" : "Command",
       "site.wtrm.attr.url" : "URL",
       "site.help.doc.how-does-bloonix-checks-your-hosts-and-services" : "Wie überwacht Bloonix Hosts und Services",
       "schema.service.action.enable_notifications_multiple" : "Enable notifications of the selected services",
@@ -1409,8 +1413,8 @@ var Lang = {
       "action.show_selected_objects" : "Show selected objects",
       "text.dashboard.dashlet_configuration" : "Dashlet configuration",
       "schema.host.action.activate_multiple" : "Activate the selected hosts",
-      "text.report.availability.GE300" : "Filter events with a status duration greater than 5 hours.",
       "text.report.title.number_of_events_by_duration" : "Number of events by duration",
+      "text.report.availability.GE300" : "Filter events with a status duration greater than 5 hours.",
       "schema.company.attr.max_timeperiods" : "Max timeperiods",
       "schema.service.action.clear_acknowledgement_multiple" : "Clear the acknowledgement of the selected services",
       "schema.service.attr.active" : "Active",
@@ -1612,7 +1616,7 @@ var Lang = {
       "schema.company.attr.max_services_per_host" : "Max services per host",
       "site.wtrm.action.checkIfElementExists" : "Check if an <b>element exists</b>",
       "schema.user.desc.select_language" : "Please note that the complete WebGUI is reloaded after the language were selected and you will be redirected to the dashboard!",
-      "site.login.username" : "Email address",
+      "site.login.username" : "Email",
       "schema.contact.attr.sms_notification_level" : "SMS notification level",
       "schema.hs_downtime.attr.begin_time" : "Begin time",
       "err-831" : "Sorry, but you cannot create more than %s hosts!",
@@ -1641,8 +1645,8 @@ var Lang = {
       "schema.dependency.text.workflow_to_host" : "to host",
       "err-605" : "Please select at least one object!",
       "schema.host_template.desc.description" : "Set a short description for the template.",
-      "schema.service.desc.multiple_check_type" : "With this option it's possible to select\nmultiple checkpoints from which the service is checked. If 3 checkpoints\nreturns a critical status then the counter of <i>attempt max</i> is increased.",
       "site.wtrm.placeholder.value" : "value",
+      "schema.service.desc.multiple_check_type" : "With this option it's possible to select\nmultiple checkpoints from which the service is checked. If 3 checkpoints\nreturns a critical status then the counter of <i>attempt max</i> is increased.",
       "text.default" : "Default",
       "err-840" : "Sorry, but you cannot create more than %s timeperiods!",
       "site.help.doc.notification-screen" : "Notification Screen",
@@ -1760,8 +1764,8 @@ var Lang = {
       "schema.group.attr.groupname" : "Groupname",
       "action.members" : "List members",
       "schema.host.text.multiple_activate" : "Activate or deactivate multiple hosts",
-      "schema.host.attr.company_id" : "Company ID",
       "word.active" : "active",
+      "schema.host.attr.company_id" : "Company ID",
       "schema.host.attr.comment" : "Comment",
       "schema.user.attr.comment" : "Comment",
       "schema.user.desc.allow_from" : "It's possible to set a comma separated list of ip addresses from which the user is restricted to login. With the keyword <i>all</i> the login has no restriction.",
@@ -1787,8 +1791,8 @@ var Lang = {
       "schema.service.text.view_wtrm_report" : "View web transaction report",
       "site.help.doc.device-classes" : "Bauklasse von Hosts",
       "schema.service.attr.comment" : "Comment",
-      "schema.user.attr.manage_templates" : "Manage templates?",
       "text.dashboard.hosts_availability" : "Availability of all hosts",
+      "schema.user.attr.manage_templates" : "Manage templates?",
       "text.last_60d" : "Last 60 days",
       "schema.contact.text.escalation_level_event.1" : "active after 1 notification",
       "site.help.doc.host-alive-check" : "Was ist ein Host-Alive-Check?",
@@ -1952,6 +1956,7 @@ var Lang = {
       "nav.sub.events" : "Ereignisse",
       "site.wtrm.action.checkIfElementIsNotSelected" : "Check if a <b>value is <i>NOT</i> selected</b> in a selectbox",
       "schema.service.attr.last_mail_time" : "Letzte Benachrichtigung per E-Mail",
+      "text.radial_graph" : "Radial graph",
       "schema.service.desc.host_alive_check" : "Ein Host-Alive-Check ist ein Check der feststellt, ob ein Host UP oder DOWN ist. Wenn dieser Service Check einen kritischen Status liefert erhalten Sie eine besondere Nachricht. Wenn andere Services des Hosts ebenfalls in einem kritischen Status sind, während der Host-Alive-Check kritisch ist, dann werden die Benachrichtiungen anderer Services unterdrückt. Es wird empfohlen einen Ping-Check als Host-Alive-Check zu definieren.",
       "schema.host.desc.virt_product" : "z.B. VMware-Server, Virtuozzo",
       "info.new_version" : "<h4>Eine neue Version ist verfügbar</h4>\n<p>Eine neue Version der Bloonix-WebGUI ist verfügbar!</p>\n<p>Bitte laden Sie die Webseite neu!</p>",
@@ -2082,6 +2087,7 @@ var Lang = {
       "schema.host.desc.password" : "Dieses Passwort wird für den Bloonix Agenten benötigt. Wenn der Agent Statistiken für einen Host zum Bloonix Server senden möchte dann ist dies nur möglich wenn der Agent die Host-ID und das Passwort kennt.",
       "schema.event.text.list" : "Ereignisse von Host %s",
       "schema.host.text.delete" : "Den Host löschen",
+      "text.hypertree" : "Hypertree",
       "schema.service.text.clone_service" : "Service %s klonen",
       "schema.dependency.text.host" : "Host",
       "action.operate_as" : "Operiere als",
@@ -2184,6 +2190,7 @@ var Lang = {
       "schema.contactgroup.text.list" : "Übersicht über alle Kontaktgruppen",
       "schema.service.desc.notification" : "Diese Option aktiviert oder deaktiviert Benachrichtigungen für den Service.",
       "schema.event.attr.status" : "Status",
+      "text.plugin" : "Plugin",
       "schema.contactgroup.text.host_members" : "Hosts, die der Kontaktgruppe angehören",
       "word.day" : "Tage",
       "action.delete" : "Löschen",
@@ -2330,6 +2337,7 @@ var Lang = {
       "text.report.availability.AV-W" : "Der Zeitbereich in Prozent in dem der Service im Status WARNING war.",
       "schema.hs_downtime.attr.username" : "Erstellt von",
       "schema.service.action.deactivate_multiple" : "Selektierte Services deaktivieren",
+      "text.command" : "Kommando",
       "site.wtrm.attr.url" : "URL",
       "site.help.doc.how-does-bloonix-checks-your-hosts-and-services" : "Wie überwacht Bloonix Hosts und Services",
       "schema.service.action.enable_notifications_multiple" : "Benachrichtigungen einschalten für die selektierten Services",
@@ -2464,8 +2472,8 @@ var Lang = {
       "action.show_selected_objects" : "Ausgewählte Objekte anzeigen",
       "text.dashboard.dashlet_configuration" : "Dashlet Konfiguration",
       "schema.host.action.activate_multiple" : "Selektierte Hosts aktivieren",
-      "text.report.availability.GE300" : "Filterung von Ereignissen mit einer Statusdauer größer als 5 Stunden.",
       "text.report.title.number_of_events_by_duration" : "Anzahl der Ereignisse nach Dauer",
+      "text.report.availability.GE300" : "Filterung von Ereignissen mit einer Statusdauer größer als 5 Stunden.",
       "schema.company.attr.max_timeperiods" : "Maximale Timeperiods",
       "schema.service.action.clear_acknowledgement_multiple" : "Die Bestätigung des Status der selektierten Services aufheben",
       "schema.service.attr.active" : "Aktiv",
@@ -2666,7 +2674,7 @@ var Lang = {
       "schema.company.attr.max_services_per_host" : "Maximale Services pro Host",
       "site.wtrm.action.checkIfElementExists" : "Check if an <b>element exists</b>",
       "schema.user.desc.select_language" : "Bitte beachten Sie das die WebGUI nach der Auswahl neu geladen wird und Sie zum Dashboard umgeleitet werden!",
-      "site.login.username" : "E-Mail Adresse",
+      "site.login.username" : "E-Mail",
       "schema.contact.attr.sms_notification_level" : "Benachrichtigungslevel für SMS",
       "schema.hs_downtime.attr.begin_time" : "Anfangszeit",
       "err-831" : "Sorry, aber Sie dürfen nicht mehr als %s Hosts erstellen!",
@@ -2695,8 +2703,8 @@ var Lang = {
       "schema.dependency.text.workflow_to_host" : "zu Host",
       "err-605" : "Bitte wählen Sie mindestens ein Objekt aus!",
       "schema.host_template.desc.description" : "Gebe eine kurze Beschreibung zum Template an.",
-      "schema.service.desc.multiple_check_type" : "Mit den Multiplen-Checks haben Sie die Möglichkeit, verschiedene Messpunkte auszuwählen, von denen eine Service-Prüfung gleichzeitig ausgeführt\nwird. Erst wenn von drei Messpunkten ein kritisches Resultat geliefert wird, wird der Zähler\nvon für die maximalen Fehlversuche eines Service um eins erhöht.<br/><br/>\nUm Ihren Service nicht zu überlasten, werden maximal\n3 Messpunktprüfungen gleichzeitig ausgeführt, es findet jedoch immer eine Prüfung\nvon allen Messpunkten aus statt, auch wenn mehr als 3 Prüfungen kritisch sind.",
       "site.wtrm.placeholder.value" : "value",
+      "schema.service.desc.multiple_check_type" : "Mit den Multiplen-Checks haben Sie die Möglichkeit, verschiedene Messpunkte auszuwählen, von denen eine Service-Prüfung gleichzeitig ausgeführt\nwird. Erst wenn von drei Messpunkten ein kritisches Resultat geliefert wird, wird der Zähler\nvon für die maximalen Fehlversuche eines Service um eins erhöht.<br/><br/>\nUm Ihren Service nicht zu überlasten, werden maximal\n3 Messpunktprüfungen gleichzeitig ausgeführt, es findet jedoch immer eine Prüfung\nvon allen Messpunkten aus statt, auch wenn mehr als 3 Prüfungen kritisch sind.",
       "text.default" : "Standard",
       "err-840" : "Sorry, aber Sie dürfen nicht mehr als %s Timeperiods erstellen!",
       "site.help.doc.notification-screen" : "Notification Screen",
@@ -2814,8 +2822,8 @@ var Lang = {
       "schema.group.attr.groupname" : "Gruppenname",
       "action.members" : "Mitglieder auflisten",
       "schema.host.text.multiple_activate" : "Mehrere Hosts aktivieren oder deaktivieren",
-      "schema.host.attr.company_id" : "Firmen ID",
       "word.active" : "aktiv",
+      "schema.host.attr.company_id" : "Firmen ID",
       "schema.host.attr.comment" : "Kommentar",
       "schema.user.attr.comment" : "Kommentar",
       "schema.user.desc.allow_from" : "Es ist möglich eine Komma-separierte Liste von IP-Adressen anzugeben, von denen sich der Benutzer einloggen darf. Das Schlüsselwort <i>all</i> heißt von überall.",
@@ -2840,9 +2848,9 @@ var Lang = {
       "schema.roster.text.list" : "Übersicht über alle Bereitschaftspläne",
       "schema.service.text.view_wtrm_report" : "Web-Transaktionsreport einsehen",
       "site.help.doc.device-classes" : "Bauklasse von Hosts",
-      "schema.user.attr.manage_templates" : "Verwaltung von Vorlagen?",
-      "text.dashboard.hosts_availability" : "Verfügbarkeit aller Hosts",
       "schema.service.attr.comment" : "Kommentar",
+      "text.dashboard.hosts_availability" : "Verfügbarkeit aller Hosts",
+      "schema.user.attr.manage_templates" : "Verwaltung von Vorlagen?",
       "text.last_60d" : "Die letzten 60 Tage",
       "schema.contact.text.escalation_level_event.1" : "aktiv nach 1er Benachrichtiung",
       "site.help.doc.host-alive-check" : "Was ist ein Host-Alive-Check?",
@@ -5684,7 +5692,7 @@ Form.prototype.iconList = function(o) {
             }
 
             if (item.icon) {
-                button.addClass("btn-icon-unselected");
+            //    button.addClass("btn-icon-unselected");
             }
 
             if (self.even == true) {
@@ -5735,18 +5743,10 @@ Form.prototype.iconList = function(o) {
                 if (item.input) {
                     item.input.remove();
                     item.input = false;
-                    if (item.icon) {
-                        item.button.addClass("btn-icon-unselected");
-                    } else {
-                        item.button.removeClass("btn-selected");
-                    }
+                    item.button.removeClass("btn-selected");
                 } else {
                     item.input = self.createInput(value);
-                    if (item.icon) {
-                        item.button.removeClass("btn-icon-unselected");
-                    } else {
-                        item.button.addClass("btn-selected");
-                    }
+                    item.button.addClass("btn-selected");
                 }
             }
         });
@@ -5757,19 +5757,11 @@ Form.prototype.iconList = function(o) {
         $.each(this.cache, function(i, item) {
             if (item.value == value && item.input == false) {
                 item.input = self.createInput(value);
-                if (item.icon) {
-                    item.button.removeClass("btn-icon-unselected");
-                } else {
-                    item.button.addClass("btn-selected");
-                }
+                item.button.addClass("btn-selected");
             } else if (item.value != value && item.input) {
                 item.input.remove();
                 item.input = false;
-                if (item.icon) {
-                    item.button.addClass("btn-icon-unselected");
-                } else {
-                    item.button.removeClass("btn-selected");
-                }
+                item.button.removeClass("btn-selected");
             }
         });
     };
@@ -6413,7 +6405,7 @@ Form.prototype.group = function(o) {
             .attr("title", Text.get("action.remove"))
             .css({ "margin-top": "92px" })
             .addClass("btn btn-white btn-icon")
-            .html(Utils.create("span").addClass("hicons hicons-gray chevron-right"))
+            .html(Utils.create("span").addClass("hicons hicons-white chevron-right"))
             .appendTo(this.button.container)
             .tooltip()
             .click(function() { self.addOrRemove("add") });
@@ -6422,7 +6414,7 @@ Form.prototype.group = function(o) {
         this.button.remove = Utils.create("span")
             .attr("title", Text.get("action.add"))
             .addClass("btn btn-white btn-icon")
-            .html(Utils.create("span").addClass("hicons hicons-gray chevron-left"))
+            .html(Utils.create("span").addClass("hicons hicons-white chevron-left"))
             .appendTo(this.button.container)
             .tooltip()
             .click(function() { self.addOrRemove("remove") });
@@ -7021,7 +7013,7 @@ Table.prototype.createRows = function(rows) {
 
         if (self.deletable !== undefined || self.rowHoverIcons) {
             rowHoverIcons = Utils.create("td")
-                .css({ "vertical-align": "middle", padding: "3px 0 0 0", "white-space": "nowrap" })
+                .css({ "vertical-align": "middle", padding: "1px 0 0 0", "white-space": "nowrap" })
                 .appendTo(tr);
         }
 
@@ -7205,9 +7197,10 @@ Table.prototype.createDeleteOverlay = function(row, o) {
 };
 
 Table.prototype.createColumn = function(tr, row, col) {
+    var td = Utils.create("td");
+
     if (col.icons) {
-        var td = Utils.create("td")
-            .addClass(this.iconsClass)
+        td.addClass(this.iconsClass)
             .appendTo(tr);
 
         $.each(col.icons, function(i, obj) {
@@ -7300,7 +7293,7 @@ Table.prototype.createColumn = function(tr, row, col) {
             .appendTo(menuContainer);
 
         Utils.create("div")
-            .addClass("hicons-gray hicons remove close-x")
+            .addClass("hicons-white hicons remove close-x")
             .appendTo(listContainer)
             .click(function() { listContainer.fadeOut(200) });
 
@@ -7354,9 +7347,7 @@ Table.prototype.createColumn = function(tr, row, col) {
     }
 
     if (col.wrapValueClass === true) {
-        value = Utils.create("div")
-            .addClass("status-base status-"+ value)
-            .html(value);
+        td.addClass("status-base status-"+ value +" status-border-right");
     }
 
     if (col.wrapNameValueClass === true) {
@@ -7408,8 +7399,7 @@ Table.prototype.createColumn = function(tr, row, col) {
         }
     }
 
-    var td = Utils.create("td")
-        .attr("data-col", col.name)
+    td.attr("data-col", col.name)
         .html(value)
         .appendTo(tr);
 
@@ -7542,7 +7532,7 @@ Table.prototype.addSelectedCounter = function() {
                 Utils.create("span")
                     .attr("title", Text.get("action.unselect"))
                     .addClass("btn btn-white btn-small-icon")
-                    .html(Utils.create("span").addClass("hicons-gray hicons remove"))
+                    .html(Utils.create("span").addClass("hicons-white hicons remove"))
                     .appendTo(Utils.create("td").appendTo(tdRow))
                     .click(function(){
                         delete self.cache.selected[id];
@@ -8768,7 +8758,7 @@ Header.prototype.create = function() {
             .appendTo(this.outer);
     } else {
         // correction for sideBySideBoxes if no buttons exists in the right box
-        this.outer.css({ "padding-bottom": "3px" });
+        //this.outer.css({ "padding-bottom": "3px" });
     }
 
     if (typeof this.pager == "object") {
@@ -8789,7 +8779,7 @@ Header.prototype.create = function() {
     if (this.icons) {
         $.each(this.icons, function(i, e) {
             var icon = Utils.create("span")
-                .css({ float: "right", cursor: "pointer", "margin-top": "2px" });
+                .css({ float: "right", cursor: "pointer" });
 
             if (e.type == "create") {
                 icon.addClass("gicons-gray gicons circle-plus");
@@ -9639,12 +9629,12 @@ Bloonix.createIconList = function(o) {
     } else {
         o.switchTo = function(value, noCallback) {
             $.each(this.cache, function(key, btn) {
-                if (btn.enabled == true) {
+                if (btn.enabled === true) {
                     btn.enabled = false;
 
-                    if (btn.icon == undefined) {
-                        btn.object.removeClass("btn-selected");
-                    } else {
+                    btn.object.removeClass("btn-selected");
+
+                    if (btn.icon !== undefined) {
                         btn.icon.removeClass("btn-icon-selected");
                         btn.icon.addClass("btn-icon-unselected");
                     }
@@ -9652,10 +9642,9 @@ Bloonix.createIconList = function(o) {
             });
 
             this.cache[value].enabled = true;
+            this.cache[value].object.addClass("btn-selected");
 
-            if (this.cache[value].icon == undefined) {
-                this.cache[value].object.addClass("btn-selected");
-            } else {
+            if (this.cache[value].icon !== undefined) {
                 this.cache[value].icon.removeClass("btn-icon-unselected");
                 this.cache[value].icon.addClass("btn-icon-selected");
             }
@@ -9696,7 +9685,7 @@ Bloonix.createIconList = function(o) {
 
         elem.click(function() { o.switchTo(item.value) });
 
-        if (o.button != false) {
+        if (o.button !== false) {
             if (o.format == undefined) {
                 elem.addClass("btn btn-white btn-icon-even")
             } else {
@@ -9709,7 +9698,6 @@ Bloonix.createIconList = function(o) {
             elem.css({
                 display: o.display,
                 padding: "4px",
-                "font-size": "14px",
                 cursor: "pointer"
             });
             elem.hover(
@@ -10386,7 +10374,7 @@ Bloonix.initNavigation = function(site) {
         into: "#nav-top",
         items: [{
             link: "dashboard",
-            icon: "gicons-white gicons tablet",
+            icon: "gicons-white gicons pie-chart",
             text: Text.get("nav.main.dashboard")
         },{
             data: "monitoring",
@@ -10419,38 +10407,38 @@ Bloonix.initNavigation = function(site) {
         monitoring: {
             items: [{
                 link: "monitoring/hosts",
-                icon: "hicons hdd",
+                icon: "hicons hicons-white hdd",
                 text: Text.get("nav.sub.hosts")
             },{
                 link: "monitoring/services",
-                icon: "hicons th-list",
+                icon: "hicons hicons-white th-list",
                 text: Text.get("nav.sub.services")
             },{
                 link: "monitoring/charts",
-                icon: "hicons signal",
+                icon: "hicons hicons-white signal",
                 text: Text.get("nav.sub.charts" )
             },{
                 link: "monitoring/templates",
-                icon: "hicons list-alt",
+                icon: "hicons hicons-white list-alt",
                 text: Text.get("nav.sub.templates")
             },{
                 link: "monitoring/screen",
-                icon: "hicons tasks",
+                icon: "hicons hicons-white tasks",
                 text: Text.get("nav.sub.screen")
             }]
         },
         notification: {
             items: [{
                 link: "notification/contacts",
-                icon: "hicons user",
+                icon: "hicons hicons-white user",
                 text: Text.get("nav.sub.contacts")
             },{
                 link: "notification/contactgroups",
-                icon: "hicons groups",
+                icon: "hicons hicons-white user",
                 text: Text.get("nav.sub.contactgroups")
             },{
                 link: "notification/timeperiods",
-                icon: "hicons time",
+                icon: "hicons hicons-white time",
                 text: Text.get("nav.sub.timeperiods")
             }]
         },
@@ -10464,15 +10452,15 @@ Bloonix.getAdministrativeNavigationItems = function() {
     var administrationItems = [
         {
             link: "administration/users",
-            icon: "hicons user",
+            icon: "hicons hicons-white user",
             text: Text.get("nav.sub.users")
         },{
             link: "administration/groups",
-            icon: "hicons group",
+            icon: "hicons hicons-white user",
             text: Text.get("nav.sub.groups")
         },{
             link: "administration/variables",
-            icon: "hicons wrench",
+            icon: "hicons hicons-white wrench",
             text: Text.get("nav.sub.variables")
         }
     ];
@@ -10480,12 +10468,12 @@ Bloonix.getAdministrativeNavigationItems = function() {
     if (Bloonix.user.role === "admin") {
         administrationItems.push({
             link: "administration/locations",
-            icon: "hicons globe",
+            icon: "hicons hicons-white globe",
             text: Text.get("nav.sub.locations")
         });
         administrationItems.splice(2, 0, {
             link: "administration/companies",
-            icon: "hicons company",
+            icon: "hicons hicons-white home",
             text: Text.get("nav.sub.companies")
         });
     }
@@ -13527,14 +13515,14 @@ Bloonix.viewHostDependencies = function(o) {
         Bloonix.createIconList({
             items: [
                 {
-                    icon: "hicons radial",
+                    icon: "hicons hicons-white remove-circle",
                     value: "radialGraph",
-                    title: "Radial graph",
+                    title: Text.get("text.radial_graph"),
                     default: true
                 },{
-                    icon: "hicons asterisk",
+                    icon: "hicons hicons-white asterisk",
                     value: "hyperTree",
-                    title: "Hypertree"
+                    title: Text.get("text.hypertree")
                 }
             ],
             store: { to: this.cache.selected, as: "graphType" },
@@ -14243,10 +14231,10 @@ Bloonix.initEventList = function(o) {
     });
 
     var serviceFilterBox = Bloonix.createIconList({
+        format: "even-full",
         items: services,
         store: { to: o.cache.selected, as: "services" },
         callback: function() { o.table.getData({ resetOffset: true }) },
-        button: false,
         multiple: true
     });
 
@@ -15530,14 +15518,13 @@ Bloonix.createService = function(o) {
             .appendTo(this.boxes.left);
 
         Bloonix.createIconList({
-            format: "large",
+            format: "even-large",
             items: [
-                { name: "• plugin name", value: "plugin", default: true },
-                { name: "• check name", value: "command" }
+                { name: Text.get("text.plugin"), value: "plugin", default: true },
+                { name: Text.get("text.command"), value: "command" }
             ],
             callback: function(value) { self.updateOrder(value) },
-            appendTo: orderIconList,
-            button: false
+            appendTo: orderIconList
         });
 
         Utils.create("h2")
@@ -15552,17 +15539,16 @@ Bloonix.createService = function(o) {
         var categoryList = [];
         $.each(this.categories.sort(), function(i, category) {
             categoryList.push({
-                name: "• "+ category,
+                name: category,
                 value: category
             });
         });
 
         Bloonix.createIconList({
-            format: "large",
+            format: "even-large",
             items: categoryList,
             callback: function(value) { self.filterCategories(value) },
             appendTo: categoryIconList,
-            button: false,
             multiple: true
         });
 
@@ -16527,19 +16513,23 @@ Bloonix.createServiceForm = function(o) {
             .addClass("location-checkbox-table")
             .appendTo(container);
 
-        var locationCounterBox = Utils.create("div")
+        var locationCounterBoxContainer = Utils.create("div")
             .addClass("locations-selected")
             .appendTo(container);
 
+        var locationCounterBox = Utils.create("div")
+            .appendTo(locationCounterBoxContainer);
+
         if (Bloonix.args.showCostInfo === "yes") {
+            Utils.create("br")
+                .appendTo(locationCounterBoxContainer);
             Utils.create("div")
-                .addClass("locations-selected")
                 .html(Text.get("text.selected_locations_costs"))
-                .appendTo(container);
+                .appendTo(locationCounterBoxContainer);
         }
 
         if (type !== "multiple") {
-            locationCounterBox.hide();
+            locationCounterBoxContainer.hide();
         }
 
         // force array
@@ -16576,7 +16566,9 @@ Bloonix.createServiceForm = function(o) {
 
             var calCost = function() {
                 var len = checkboxTable.find("input:checked").length;
-                locationCounterBox.html(Text.get("text.selected_locations_counter", len, true, true));
+                locationCounterBox.html(
+                    Text.get("text.selected_locations_counter", len, true, true)
+                );
              };
 
             calCost();
@@ -19083,8 +19075,8 @@ Bloonix.listCharts = function(o) {
     object.createBoxes = function() {
         this.boxes = Bloonix.createSideBySideBoxes({
             container: this.chartOptionBox,
-            width: "300px",
-            marginLeft: "310px"
+            width: "290px",
+            marginLeft: "300px"
         });
 
         if (this.id) {
@@ -19255,9 +19247,9 @@ Bloonix.listCharts = function(o) {
         this.alignmentFormOptions = this.form.iconList({
             name: "alignment",
             options: [
-                { value: 3, icon: "hicons-gray hicons th" },
-                { value: 2, icon: "hicons-gray hicons th-large" },
-                { value: 1, icon: "hicons-gray hicons align-justify" }
+                { value: 3, icon: "hicons-white hicons th" },
+                { value: 2, icon: "hicons-white hicons th-large" },
+                { value: 1, icon: "hicons-white hicons align-justify" }
             ],
             appendTo: this.leftContainer,
             even: true,
@@ -19318,7 +19310,7 @@ Bloonix.listCharts = function(o) {
             .attr("title", Text.get("schema.chart.text.delete_view"))
             .addClass("btn btn-white btn-icon")
             .click(function(){ self.deleteChartView() })
-            .html(Utils.create("span").addClass("hicons-gray hicons remove"))
+            .html(Utils.create("span").addClass("hicons-white hicons remove"))
             .appendTo(this.saveChartBox)
             .tooltip();
 
@@ -19695,7 +19687,7 @@ Bloonix.listCharts = function(o) {
             .attr("title", Text.get("schema.chart.text.save_view"))
             .addClass("btn btn-white")
             .click(function() { self.saveChartView() })
-            .html(Utils.create("span").addClass("hicons-gray hicons check"))
+            .html(Utils.create("span").addClass("hicons-white hicons check"))
             .appendTo(header.rbox)
             .tooltip();
 
@@ -19703,7 +19695,7 @@ Bloonix.listCharts = function(o) {
             .attr("title", Text.get("schema.chart.text.back_to_selection"))
             .click(function() { self.reviewChartOptions() })
             .addClass("btn btn-white")
-            .html(Utils.create("span").addClass("hicons-gray hicons cog"))
+            .html(Utils.create("span").addClass("hicons-white hicons cog"))
             .appendTo(header.rbox)
             .tooltip();
     };
@@ -23705,7 +23697,7 @@ Bloonix.highcharts.plotChart = function(o) {
             text: o.chart.title,
             align: "left",
             style: {
-                color: "#333333",
+                color: "#505050",
                 fontWeight: "normal",
                 fontSize: "14px"
             }
@@ -23715,7 +23707,7 @@ Bloonix.highcharts.plotChart = function(o) {
             align: "left",
             style: {
                 color: "#555555",
-                fontWeight: "normal",
+                fontWeight: 300,
                 fontSize: "13px"
             }
         },
@@ -23750,7 +23742,7 @@ Bloonix.highcharts.plotChart = function(o) {
         },
         legend: {
             itemStyle: {
-                color: "#333333",
+                color: "#505050",
                 fontSize: "12px",
                 fontWeight: "normal",
             },

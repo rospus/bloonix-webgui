@@ -293,12 +293,12 @@ Bloonix.createIconList = function(o) {
     } else {
         o.switchTo = function(value, noCallback) {
             $.each(this.cache, function(key, btn) {
-                if (btn.enabled == true) {
+                if (btn.enabled === true) {
                     btn.enabled = false;
 
-                    if (btn.icon == undefined) {
-                        btn.object.removeClass("btn-selected");
-                    } else {
+                    btn.object.removeClass("btn-selected");
+
+                    if (btn.icon !== undefined) {
                         btn.icon.removeClass("btn-icon-selected");
                         btn.icon.addClass("btn-icon-unselected");
                     }
@@ -306,10 +306,9 @@ Bloonix.createIconList = function(o) {
             });
 
             this.cache[value].enabled = true;
+            this.cache[value].object.addClass("btn-selected");
 
-            if (this.cache[value].icon == undefined) {
-                this.cache[value].object.addClass("btn-selected");
-            } else {
+            if (this.cache[value].icon !== undefined) {
                 this.cache[value].icon.removeClass("btn-icon-unselected");
                 this.cache[value].icon.addClass("btn-icon-selected");
             }
@@ -350,7 +349,7 @@ Bloonix.createIconList = function(o) {
 
         elem.click(function() { o.switchTo(item.value) });
 
-        if (o.button != false) {
+        if (o.button !== false) {
             if (o.format == undefined) {
                 elem.addClass("btn btn-white btn-icon-even")
             } else {
@@ -363,7 +362,6 @@ Bloonix.createIconList = function(o) {
             elem.css({
                 display: o.display,
                 padding: "4px",
-                "font-size": "14px",
                 cursor: "pointer"
             });
             elem.hover(

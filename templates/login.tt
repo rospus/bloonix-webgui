@@ -6,59 +6,63 @@
 <script src="/public/js/jquery.min.js"></script>
 <meta charset="UTF-8" />
 <style type="text/css">
-@import url("//fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900|Roboto+Condensed:400,700|Roboto+Slab:400,700,300,100");
+@font-face {
+    font-family: "Open Sans";
+    src: url(/public/fonts/OpenSans-Light.ttf) format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Open Sans";
+    src: url(/public/fonts/OpenSans-Regular.ttf) format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Open Sans";
+    src: url(/public/fonts/OpenSans-Semibold.ttf) format("truetype");
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Open Sans";
+    src: url(/public/fonts/OpenSans-Bold.ttf) format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    background: url(/public/img/teaser.jpg) no-repeat;
-    background-size: 100% 100%;
-    font-family: "Roboto",Arial,sans-serif;
+    background-color: #DDF5F5;
+    font-family: "Open Sans",Arial,sans-serif;
 }
 img {
     border: none;
 }
-.overlay1 {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,.6);
-}
-.overlay2 {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    background: url(/public/img/overlay-dot.png) repeat;
-    position: relative;
-}
 .logo {
-    width: 208px;
-    height: 50px;
+    width: 75%;
+    max-width: 500px;
     padding: 30px;
+    display: inline-block;
+}
+.logo img {
+    width: 100%;
 }
 .centered {
-    width: 800px;
-    height: 410px;
+    width: 100%;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -400px;
-    margin-top: -205px;
-    background: rgba(0,0,0,0.1);
+    top: 10%;
 }
 .content {
-    position: relative;
-    width: 800px;
-    height: 410px;
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 h1 {
-    color: #ffffff;
-    font-size: 50px;
+    color: #505050;
+    font-size: 40px;
     margin: 0;
     padding: 10px 0 16px 0;
     text-align: center;
@@ -100,12 +104,10 @@ h1 {
     text-align: right;
 }
 .switch {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    color: #ffffff;
+    color: #505050;
     font-size: 20px;
     letter-spacing: 0;
+    margin-top: 40px;
 }
 .switch a {
     cursor: pointer;
@@ -120,8 +122,8 @@ table th {
     font-weight: normal;
     vertical-align: middle;
     text-align: right;
-    color: #ffffff;
-    font-size: 36px;
+    color: #505050;
+    font-size: 30px;
     padding: 10px;
 }
 table td {
@@ -137,7 +139,7 @@ input[type=text] {
     -moz-transition: all ease-in-out .40s;
 }
 input {
-    width: 400px;
+    width: 300px;
     margin: 0 0 15px 0;
     padding: 16px 10px;
     border: 2px solid #ffffff;
@@ -193,11 +195,9 @@ We recommend using the latest version of
 Chrome, Safari, Opera or Firefox!
 </div>
 <![endif]-->
-<div class="overlay1">
-<div class="overlay2">
-<div class="logo"><a target="_blank" href="https://www.bloonix.de/"><img src="/public/img/bloonix-logo-login.png" alt="www.bloonix.de" /></a></div>
 <div class="centered">
 <div class="content">
+<div class="logo"><a target="_blank" href="https://www.bloonix.de/"><img src="/public/img/bloonix-logo.png" alt="www.bloonix.de" /></a></div>
 
 <div class="login-box" id="user-login-box">
 <h1><%= $c->lang->get('site.login.welcome') %></h1>
@@ -244,8 +244,6 @@ Chrome, Safari, Opera or Firefox!
 </div>
 </div>
 
-</div>
-</div>
 </div>
 </div>
 <script> 

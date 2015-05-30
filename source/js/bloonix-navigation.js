@@ -6,7 +6,7 @@ Bloonix.initNavigation = function(site) {
         into: "#nav-top",
         items: [{
             link: "dashboard",
-            icon: "gicons-white gicons tablet",
+            icon: "gicons-white gicons pie-chart",
             text: Text.get("nav.main.dashboard")
         },{
             data: "monitoring",
@@ -39,38 +39,38 @@ Bloonix.initNavigation = function(site) {
         monitoring: {
             items: [{
                 link: "monitoring/hosts",
-                icon: "hicons hdd",
+                icon: "hicons hicons-white hdd",
                 text: Text.get("nav.sub.hosts")
             },{
                 link: "monitoring/services",
-                icon: "hicons th-list",
+                icon: "hicons hicons-white th-list",
                 text: Text.get("nav.sub.services")
             },{
                 link: "monitoring/charts",
-                icon: "hicons signal",
+                icon: "hicons hicons-white signal",
                 text: Text.get("nav.sub.charts" )
             },{
                 link: "monitoring/templates",
-                icon: "hicons list-alt",
+                icon: "hicons hicons-white list-alt",
                 text: Text.get("nav.sub.templates")
             },{
                 link: "monitoring/screen",
-                icon: "hicons tasks",
+                icon: "hicons hicons-white tasks",
                 text: Text.get("nav.sub.screen")
             }]
         },
         notification: {
             items: [{
                 link: "notification/contacts",
-                icon: "hicons user",
+                icon: "hicons hicons-white user",
                 text: Text.get("nav.sub.contacts")
             },{
                 link: "notification/contactgroups",
-                icon: "hicons groups",
+                icon: "hicons hicons-white user",
                 text: Text.get("nav.sub.contactgroups")
             },{
                 link: "notification/timeperiods",
-                icon: "hicons time",
+                icon: "hicons hicons-white time",
                 text: Text.get("nav.sub.timeperiods")
             }]
         },
@@ -84,15 +84,15 @@ Bloonix.getAdministrativeNavigationItems = function() {
     var administrationItems = [
         {
             link: "administration/users",
-            icon: "hicons user",
+            icon: "hicons hicons-white user",
             text: Text.get("nav.sub.users")
         },{
             link: "administration/groups",
-            icon: "hicons group",
+            icon: "hicons hicons-white user",
             text: Text.get("nav.sub.groups")
         },{
             link: "administration/variables",
-            icon: "hicons wrench",
+            icon: "hicons hicons-white wrench",
             text: Text.get("nav.sub.variables")
         }
     ];
@@ -100,12 +100,12 @@ Bloonix.getAdministrativeNavigationItems = function() {
     if (Bloonix.user.role === "admin") {
         administrationItems.push({
             link: "administration/locations",
-            icon: "hicons globe",
+            icon: "hicons hicons-white globe",
             text: Text.get("nav.sub.locations")
         });
         administrationItems.splice(2, 0, {
             link: "administration/companies",
-            icon: "hicons company",
+            icon: "hicons hicons-white home",
             text: Text.get("nav.sub.companies")
         });
     }

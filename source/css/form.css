@@ -1,5 +1,7 @@
 .input, .select, .multiselect, .textarea {
-    margin: 7px 0;
+    font-family: "Open Sans",Arial,Helvetica,sans-serif,Serif;
+    font-weight: 300;
+    margin: 7px 2px 7px 0;
     border: 1px solid #d1d1d1;
     -moz-box-shadow: 0 0 5px 3px #f1f1f1;
     -webkit-box-shadow: 0 0 5px 3px #f1f1f1;
@@ -17,7 +19,7 @@
     -webkit-box-shadow: 0 0 3px 3px #f7efe1;
     box-shadow: 0 0 3px 3px #f7efe1;
 }
-.select {
+/*.select {
     color: #333333;
     border-width: 1px;
     border-style: solid;
@@ -28,7 +30,7 @@
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6');
     cursor: pointer;
-}
+}*/
 .select-container {
     position: relative;
     display: inline-block;
@@ -239,8 +241,8 @@
     text-align: right;
     vertical-align: middle;
     font-size: 14px;
-    font-weight: bold;
-    color: #444444;
+    font-weight: 600;
+    color: #505050;
     padding: 0;
     white-space: nowrap;
 }
@@ -275,7 +277,8 @@
     padding: 3px 0;
     cursor: pointer;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 600;
+    color: #505050;
 }
 .form-link-list li:hover {
     text-decoration: underline;
@@ -523,50 +526,29 @@
 .radio, .checkbox {
     margin: 7px 2px;
     display: inline-block;
-    -moz-box-shadow: 0 0 5px 5px #f1f1f1;
-    -webkit-box-shadow: 0 0 5px 5px #f1f1f1;
-    box-shadow: 0 0 5px 5px #f1f1f1;
 }
 .radio input[type=radio], .checkbox input[type=checkbox] {
     display: none;
 }
 .radio input[type=radio] + label, .checkbox input[type=checkbox] + label {
     display: inline-block;
-    margin: -2px;
+    margin: 1px;
     padding: 4px 12px;
     margin-bottom: 0;
     font-size: 14px;
     line-height: 20px;
-    color: #333333;
+    color: #ffffff;
     text-align: center;
-    text-shadow: 0 1px 1px rgba(255,255,255,0.75);
     vertical-align: middle;
     cursor: pointer;
-    background-color: #f5f5f5;
-    background-image: -moz-linear-gradient(top,#ffffff,#e6e6e6);
-    background-image: -webkit-gradient(linear,0 0,0 100%,from(#ffffff),to(#e6e6e6));
-    background-image: -webkit-linear-gradient(top,#ffffff,#e6e6e6);
-    background-image: -o-linear-gradient(top,#ffffff,#e6e6e6);
-    background-image: linear-gradient(to bottom,#ffffff,#e6e6e6);
-    background-repeat: repeat-x;
-    border: 1px solid #cccccc;
-    border-color: #e6e6e6 #e6e6e6 #bfbfbf #e6e6e6;
-    border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
-    border-bottom-color: #b3b3b3;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',endColorstr='#e6e6e6',GradientType=0);
-    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
-    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+    background-color: #9c9c9c;
 }
 .radio input[type=radio]:checked + label, .checkbox input[type=checkbox]:checked + label {
     background-image: none;
     outline: 0;
-    -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
-    -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
-    background-color: #e0e0e0;
-    color: #009ac8;
+    color: #00ffff;
+    background-color: #585858;
+    opacity: 1;
 }
 /* checkbox square */
 .checkbox-ng input[type=checkbox] {
@@ -649,9 +631,6 @@
     font-weight: bold;
 }*/
 .form-error, .form-success, .form-info, .form-warning {
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
     display: inline-block;
     color: #ffffff;
     font-size: 14px;
@@ -660,19 +639,15 @@
 }
 .form-error {
     background-color: #c3313b;
-    border: 1px solid #a50813;
 }
 .form-success {
-    background-color: #58ac58;
-    border: 1px solid #339933;
+    background-color: #5bb75b;
 }
 .form-info {
     background-color: #42a2be;
-    border: 1px solid #248eac;
 }
 .form-warning {
     background-color: #eb8a2a;
-    border: 1px solid #d9720e;
 }
 .form-row {
     margin-bottom: 20px;

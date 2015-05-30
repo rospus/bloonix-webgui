@@ -45,8 +45,8 @@ Bloonix.listCharts = function(o) {
     object.createBoxes = function() {
         this.boxes = Bloonix.createSideBySideBoxes({
             container: this.chartOptionBox,
-            width: "300px",
-            marginLeft: "310px"
+            width: "290px",
+            marginLeft: "300px"
         });
 
         if (this.id) {
@@ -217,9 +217,9 @@ Bloonix.listCharts = function(o) {
         this.alignmentFormOptions = this.form.iconList({
             name: "alignment",
             options: [
-                { value: 3, icon: "hicons-gray hicons th" },
-                { value: 2, icon: "hicons-gray hicons th-large" },
-                { value: 1, icon: "hicons-gray hicons align-justify" }
+                { value: 3, icon: "hicons-white hicons th" },
+                { value: 2, icon: "hicons-white hicons th-large" },
+                { value: 1, icon: "hicons-white hicons align-justify" }
             ],
             appendTo: this.leftContainer,
             even: true,
@@ -280,7 +280,7 @@ Bloonix.listCharts = function(o) {
             .attr("title", Text.get("schema.chart.text.delete_view"))
             .addClass("btn btn-white btn-icon")
             .click(function(){ self.deleteChartView() })
-            .html(Utils.create("span").addClass("hicons-gray hicons remove"))
+            .html(Utils.create("span").addClass("hicons-white hicons remove"))
             .appendTo(this.saveChartBox)
             .tooltip();
 
@@ -657,7 +657,7 @@ Bloonix.listCharts = function(o) {
             .attr("title", Text.get("schema.chart.text.save_view"))
             .addClass("btn btn-white")
             .click(function() { self.saveChartView() })
-            .html(Utils.create("span").addClass("hicons-gray hicons check"))
+            .html(Utils.create("span").addClass("hicons-white hicons check"))
             .appendTo(header.rbox)
             .tooltip();
 
@@ -665,7 +665,7 @@ Bloonix.listCharts = function(o) {
             .attr("title", Text.get("schema.chart.text.back_to_selection"))
             .click(function() { self.reviewChartOptions() })
             .addClass("btn btn-white")
-            .html(Utils.create("span").addClass("hicons-gray hicons cog"))
+            .html(Utils.create("span").addClass("hicons-white hicons cog"))
             .appendTo(header.rbox)
             .tooltip();
     };

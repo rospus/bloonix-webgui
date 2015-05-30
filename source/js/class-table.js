@@ -429,7 +429,7 @@ Table.prototype.createRows = function(rows) {
 
         if (self.deletable !== undefined || self.rowHoverIcons) {
             rowHoverIcons = Utils.create("td")
-                .css({ "vertical-align": "middle", padding: "3px 0 0 0", "white-space": "nowrap" })
+                .css({ "vertical-align": "middle", padding: "1px 0 0 0", "white-space": "nowrap" })
                 .appendTo(tr);
         }
 
@@ -613,9 +613,10 @@ Table.prototype.createDeleteOverlay = function(row, o) {
 };
 
 Table.prototype.createColumn = function(tr, row, col) {
+    var td = Utils.create("td");
+
     if (col.icons) {
-        var td = Utils.create("td")
-            .addClass(this.iconsClass)
+        td.addClass(this.iconsClass)
             .appendTo(tr);
 
         $.each(col.icons, function(i, obj) {
@@ -708,7 +709,7 @@ Table.prototype.createColumn = function(tr, row, col) {
             .appendTo(menuContainer);
 
         Utils.create("div")
-            .addClass("hicons-gray hicons remove close-x")
+            .addClass("hicons-white hicons remove close-x")
             .appendTo(listContainer)
             .click(function() { listContainer.fadeOut(200) });
 
@@ -762,9 +763,7 @@ Table.prototype.createColumn = function(tr, row, col) {
     }
 
     if (col.wrapValueClass === true) {
-        value = Utils.create("div")
-            .addClass("status-base status-"+ value)
-            .html(value);
+        td.addClass("status-base status-"+ value +" status-border-right");
     }
 
     if (col.wrapNameValueClass === true) {
@@ -816,8 +815,7 @@ Table.prototype.createColumn = function(tr, row, col) {
         }
     }
 
-    var td = Utils.create("td")
-        .attr("data-col", col.name)
+    td.attr("data-col", col.name)
         .html(value)
         .appendTo(tr);
 
@@ -950,7 +948,7 @@ Table.prototype.addSelectedCounter = function() {
                 Utils.create("span")
                     .attr("title", Text.get("action.unselect"))
                     .addClass("btn btn-white btn-small-icon")
-                    .html(Utils.create("span").addClass("hicons-gray hicons remove"))
+                    .html(Utils.create("span").addClass("hicons-white hicons remove"))
                     .appendTo(Utils.create("td").appendTo(tdRow))
                     .click(function(){
                         delete self.cache.selected[id];

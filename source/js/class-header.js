@@ -75,7 +75,7 @@ Header.prototype.create = function() {
             .appendTo(this.outer);
     } else {
         // correction for sideBySideBoxes if no buttons exists in the right box
-        this.outer.css({ "padding-bottom": "3px" });
+        //this.outer.css({ "padding-bottom": "3px" });
     }
 
     if (typeof this.pager == "object") {
@@ -96,7 +96,7 @@ Header.prototype.create = function() {
     if (this.icons) {
         $.each(this.icons, function(i, e) {
             var icon = Utils.create("span")
-                .css({ float: "right", cursor: "pointer", "margin-top": "2px" });
+                .css({ float: "right", cursor: "pointer" });
 
             if (e.type == "create") {
                 icon.addClass("gicons-gray gicons circle-plus");
