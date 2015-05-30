@@ -167,17 +167,17 @@ button {
     margin: 6px 0;
     padding: 20px 44px;
     line-height: 16px;
+    background-color: #2FBED2;
     font-size: 24px;
     font-weight: bold;
-    background-color: #3CCCE0;
     color: #ededed;
 }
 button:hover {
-    background-color: #4BAFBD;
+    background-color: #3CCCE0;
     color: #ffffff;
 }
 button:active {
-    background-color: #1C93A3;
+    background-color: #3CCCE0;
     color: #ffffff;
 }
 p {
@@ -197,7 +197,7 @@ Chrome, Safari, Opera or Firefox!
 <![endif]-->
 <div class="centered">
 <div class="content">
-<div class="logo"><a target="_blank" href="https://www.bloonix.de/"><img src="/public/img/bloonix-logo.png" alt="www.bloonix.de" /></a></div>
+<div class="logo"><a target="_blank" href="https://www.bloonix.de/"><img src="/public/img/bloonix-dark-logo.png" alt="www.bloonix.de" /></a></div>
 
 <div class="login-box" id="user-login-box">
 <h1><%= $c->lang->get('site.login.welcome') %></h1>

@@ -2,6 +2,9 @@ bloonix-webgui (0.47) released at 2015-XX-XX
 
     * Implemented a small workaround for a bug in check-by-satellite
       of bloonix-plugins-basic 0.37.
+    * Created a new style.
+    * Changed the default font to "Open Sans" and added a info to
+      the license file.
 
 bloonix-webgui (0.46) released at 2015-05-15
 
