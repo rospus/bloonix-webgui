@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.46
+Version: 0.47
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -61,6 +61,12 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Mon Jun 01 2015 Jonny Schulz <js@bloonix.de> - 0.47-1
+- Implemented a small workaround for a bug in check-by-satellite
+  of bloonix-plugins-basic 0.37.
+- Created a new style.
+- Changed the default font to "Open Sans" and added a info to
+  the license file.
 * Thu May 14 2015 Jonny Schulz <js@bloonix.de> - 0.46-1
 - Fixed/added transactions support for mysql.
 * Thu May 14 2015 Jonny Schulz <js@bloonix.de> - 0.45-1

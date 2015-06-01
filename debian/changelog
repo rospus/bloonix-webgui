@@ -1,3 +1,13 @@
+bloonix-webgui (0.47-1) unstable; urgency=low
+
+    * Implemented a small workaround for a bug in check-by-satellite
+      of bloonix-plugins-basic 0.37.
+    * Created a new style.
+    * Changed the default font to "Open Sans" and added a info to
+      the license file.
+
+ -- Jonny Schulz <js@bloonix.de>  Mon, 01 Jun 2015 09:22:28 +0200
+
 bloonix-webgui (0.46-1) unstable; urgency=low
 
     * Fixed/added transactions support for mysql.
