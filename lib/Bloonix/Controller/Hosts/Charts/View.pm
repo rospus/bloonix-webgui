@@ -17,7 +17,7 @@ sub begin {
 
     $c->validator->set(
         preset => {
-            options => [qw/3h 6h 12h 24h 2d 5d 7d 14d/],
+            options => [qw/3h 6h 12h 18h 1d 3d 5d 7d 15d 30d 60d 90d/],
             optional => 1
         },
         refresh => {

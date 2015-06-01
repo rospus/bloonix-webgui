@@ -2,7 +2,7 @@
     background: #cad7eb !important;
 }
 .maintab .ui-selected {
-    background: #9ec1fa !important;
+    background: #B9D1F7 !important;
     color: #000000;
 }
 .maintab .ui-selected td a {
@@ -14,7 +14,6 @@
 }
 .maintab .ui-selected td span, .maintab .ui-selected td a {
     color: #000000 !important;
-    text-shadow: 0 1px 1px #ffffff;
 }
 .maintab .ui-selected td a {
     font-weight: bold;

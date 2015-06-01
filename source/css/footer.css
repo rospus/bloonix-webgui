@@ -6,7 +6,7 @@
     position: absolute;
     color: #eeeeee;
     clear: both;
-    background-color: #303030;
+    background-color: #424242;
     overflow: hidden;
     z-index: 5;
 }
@@ -33,12 +33,12 @@
     padding: 6px 10px;
     margin: 7px 2px;
     color: #ffffff;
-    background-color: #3d3d3d;
+    background-color: #525252;
     display: inline-block;
     vertical-align: middle;
 }
 #footer-left span:hover {
-    background-color: #000000;
+    background-color: #202020;
 }
 .footer-button {
     cursor: pointer;

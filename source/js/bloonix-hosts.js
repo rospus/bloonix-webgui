@@ -167,8 +167,7 @@ Bloonix.listHosts = function(o) {
 
         this.boxes = Bloonix.createSideBySideBoxes({
             container: this.contentContainer,
-            width: "250px",
-            marginLeft: "260px"
+            width: "250px"
         });
     };
 

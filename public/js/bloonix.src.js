@@ -10377,17 +10377,14 @@ Bloonix.initNavigation = function(site) {
             icon: "gicons-white gicons pie-chart",
             text: Text.get("nav.main.dashboard")
         },{
-            data: "monitoring",
             link: "monitoring/hosts",
             icon: "gicons-white gicons sampler",
             text: Text.get("nav.main.monitoring")
         },{
-            data: "notification",
             link: "notification/contacts",
             icon: "gicons-white gicons bullhorn",
             text: Text.get("nav.main.notifications")
         },{
-            data: "administration",
             link: "administration/users",
             icon: "gicons-white gicons cogwheels",
             text: Text.get("nav.main.administration")
@@ -10398,7 +10395,6 @@ Bloonix.initNavigation = function(site) {
         }]
     });
 
-    // Dynamic navigations.
     Bloonix.navigation = { };
     Bloonix.activeNavigationMain = "";
     Bloonix.activeNavigationSub = "";
@@ -11008,8 +11004,13 @@ Bloonix.createSideBySideBoxes = function(o) {
         .css({ width: o.width });
 
     object.right = Utils.create("div")
-        .addClass("b2x-right")
-        .css({ "margin-left": o.marginLeft });
+        .addClass("b2x-right");
+
+    if (o.marginLeft) {
+        object.right.css({ "margin-left": o.marginLeft });
+    } else {
+        object.right.css({ "margin-left": object.left.innerWidth() + 10 });
+    }
 
     if (o.container) {
         object.header.appendTo(o.container);
@@ -11303,8 +11304,7 @@ Bloonix.dashboard = function(o) {
     };
 
     object.loadDashboard = function() {
-        var self = this,
-            dashlets = this.dashlets;
+        var self = this;
 
         $.each(this.config.dashlets, function(i, c) {
             var pos = c.pos > 3 ? c.pos - 3 : c.pos;
@@ -11749,14 +11749,14 @@ Bloonix.dashboard = function(o) {
             box.header.html(Utils.create("h3").text(dashlet.title));
             dashlet.box = box;
             dashlet.callback(box, this.dashletOptions);
-            this.saveDashboard();
             box.hoverBoxIcons.destroy();
+            box.name = name;
             this.addDashletOptions(box, name);
         } else {
             this.createDashlet(1, name, 4, 6, opts);
             this.resizeDashlets();
-            this.saveDashboard();
         }
+        this.saveDashboard();
     };
 
     object.addSortableEvents = function() {
@@ -12602,8 +12602,7 @@ Bloonix.helpIndex = function(o) {
     object.createBoxes = function() {
         this.boxes = Bloonix.createSideBySideBoxes({
             container: this.appendTo,
-            width: "350px",
-            marginLeft: "360px"
+            width: "350px"
         });
 
         this.indexContainer = this.boxes.left;
@@ -12838,8 +12837,7 @@ Bloonix.listHosts = function(o) {
 
         this.boxes = Bloonix.createSideBySideBoxes({
             container: this.contentContainer,
-            width: "250px",
-            marginLeft: "260px"
+            width: "250px"
         });
     };
 
@@ -13490,8 +13488,7 @@ Bloonix.viewHostDependencies = function(o) {
 
         this.boxes = Bloonix.createSideBySideBoxes({
             container: this.container,
-            width: "350px",
-            marginLeft: "360px"
+            width: "350px"
         });
 
         this.optionBox = this.boxes.left;
@@ -14622,8 +14619,7 @@ Bloonix.viewHostNotifications = function(o) {
 
         this.boxes = Bloonix.createSideBySideBoxes({
             container: $("#content"),
-            width: "300px",
-            marginLeft: "310px"
+            width: "300px"
         });
 
         this.createForm();
@@ -15482,8 +15478,7 @@ Bloonix.createService = function(o) {
     object.createBoxes = function() {
         this.boxes = Bloonix.createSideBySideBoxes({
             container: "#content",
-            width: "300px",
-            marginLeft: "310px"
+            width: "300px"
         });
     };
 
@@ -17568,8 +17563,7 @@ Bloonix.editHostTemplates = function(o) {
 
     var boxes = Bloonix.createSideBySideBoxes({
         container: contentContainer,
-        width: "500px",
-        marginLeft: "520px"
+        width: "500px"
     });
 
     new Header({
@@ -17973,8 +17967,7 @@ Bloonix.viewHostDowntimes = function(o) {
 
         this.boxes = Bloonix.createSideBySideBoxes({
             container: this.container,
-            width: "350px",
-            marginLeft: "360px"
+            width: "350px"
         });
 
         new Header({
@@ -19075,8 +19068,7 @@ Bloonix.listCharts = function(o) {
     object.createBoxes = function() {
         this.boxes = Bloonix.createSideBySideBoxes({
             container: this.chartOptionBox,
-            width: "290px",
-            marginLeft: "300px"
+            width: "290px"
         });
 
         if (this.id) {
@@ -21328,8 +21320,7 @@ Bloonix.editContact = function(o) {
 
     var boxes = Bloonix.createSideBySideBoxes({
         container: $("#content"),
-        width: "300px",
-        marginLeft: "310px"
+        width: "300px"
     });
 
     var timeperiodTable = new Table({

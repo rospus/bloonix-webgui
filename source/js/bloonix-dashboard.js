@@ -282,8 +282,7 @@ Bloonix.dashboard = function(o) {
     };
 
     object.loadDashboard = function() {
-        var self = this,
-            dashlets = this.dashlets;
+        var self = this;
 
         $.each(this.config.dashlets, function(i, c) {
             var pos = c.pos > 3 ? c.pos - 3 : c.pos;
@@ -728,14 +727,14 @@ Bloonix.dashboard = function(o) {
             box.header.html(Utils.create("h3").text(dashlet.title));
             dashlet.box = box;
             dashlet.callback(box, this.dashletOptions);
-            this.saveDashboard();
             box.hoverBoxIcons.destroy();
+            box.name = name;
             this.addDashletOptions(box, name);
         } else {
             this.createDashlet(1, name, 4, 6, opts);
             this.resizeDashlets();
-            this.saveDashboard();
         }
+        this.saveDashboard();
     };
 
     object.addSortableEvents = function() {

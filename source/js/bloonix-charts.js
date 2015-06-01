@@ -45,8 +45,7 @@ Bloonix.listCharts = function(o) {
     object.createBoxes = function() {
         this.boxes = Bloonix.createSideBySideBoxes({
             container: this.chartOptionBox,
-            width: "290px",
-            marginLeft: "300px"
+            width: "290px"
         });
 
         if (this.id) {

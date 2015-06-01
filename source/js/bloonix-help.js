@@ -21,8 +21,7 @@ Bloonix.helpIndex = function(o) {
     object.createBoxes = function() {
         this.boxes = Bloonix.createSideBySideBoxes({
             container: this.appendTo,
-            width: "350px",
-            marginLeft: "360px"
+            width: "350px"
         });
 
         this.indexContainer = this.boxes.left;

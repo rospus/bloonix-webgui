@@ -15,8 +15,7 @@ Bloonix.viewHostDowntimes = function(o) {
 
         this.boxes = Bloonix.createSideBySideBoxes({
             container: this.container,
-            width: "350px",
-            marginLeft: "360px"
+            width: "350px"
         });
 
         new Header({

@@ -107,8 +107,7 @@ Bloonix.editContact = function(o) {
 
     var boxes = Bloonix.createSideBySideBoxes({
         container: $("#content"),
-        width: "300px",
-        marginLeft: "310px"
+        width: "300px"
     });
 
     var timeperiodTable = new Table({

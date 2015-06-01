@@ -3,7 +3,7 @@
     z-index: 4;
 }
 #content {
-    margin: 10px 12px;
+    padding: 10px 12px;
     position: relative;
     z-index: 4;
 }
@@ -127,7 +127,7 @@
     border-bottom: 1px solid #e1e1e1;
 }
 .chart-box-header h3 {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     color: #444444;
     text-align: left;
@@ -509,8 +509,10 @@
 }
 .b2x-left  {
     position: absolute;
-    width: 400px;
+    width: 380px;
     vertical-align: top;
+    /*padding: 10px;
+    background-color: #eaeaea;*/
 }
 .b2x-right {
     position: relative;
@@ -734,7 +736,8 @@
     line-height: 14px;
     display: inline-block;
     cursor: pointer;
-    background-color: #3d3d3d;
+    background-color: #2d2d2d;
+    font-weight: normal;
 }
 .unknown-counter, .c-unknown {
     color: #eb582a;
@@ -882,7 +885,6 @@
     border-right: 1px solid #e1e1e1;
     cursor: pointer;
     font-size: 14px;
-    text-shadow: 1px 1px 1px #ffffff;
     line-height: 14px;
     color: #444444;
     background: #f1f1f1;
@@ -1219,27 +1221,23 @@
     font-size: 15px;
     font-weight: bold;
     margin: 0 0 5px 0;
-    text-shadow: 1px 1px 1px #ffffff;
-    color: #222222;
+    color: #505050;
 }
 .location-selection h3 {
     font-size: 15px;
     font-weight: bold;
     margin: 15px 0 5px 0;
-    text-shadow: 1px 1px 1px #ffffff;
-    color: #222222;
+    color: #505050;
 }
 .location-selection p {
     font-size: 13px;
     line-height: 18px;
-    text-shadow: 1px 1px 1px #ffffff;
-    color: #222222;
+    color: #505050;
 }
 .locations-selected {
     margin-top: 15px;
     font-size: 14px;
-    text-shadow: 1px 1px 1px #ffffff;
-    color: #222222;
+    color: #404040;
 }
 .location-checkbox-table td {
     text-align: left;
@@ -1247,8 +1245,7 @@
     padding-left: 6px;
     padding-right: 20px;
     font-size: 13px;
-    text-shadow: 1px 1px 1px #ffffff;
-    color: #222222;
+    color: #404040;
     cursor: pointer;
 }
 .command-examples {
@@ -1364,7 +1361,6 @@
     padding: 4px 0;
     font-size: 13px;
     line-height: 14px;
-    text-shadow: 1px 1px 1px #ffffff;
     overflow: hidden;
     white-space: nowrap;
     color: #222222;

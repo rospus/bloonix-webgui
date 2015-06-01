@@ -9,17 +9,14 @@ Bloonix.initNavigation = function(site) {
             icon: "gicons-white gicons pie-chart",
             text: Text.get("nav.main.dashboard")
         },{
-            data: "monitoring",
             link: "monitoring/hosts",
             icon: "gicons-white gicons sampler",
             text: Text.get("nav.main.monitoring")
         },{
-            data: "notification",
             link: "notification/contacts",
             icon: "gicons-white gicons bullhorn",
             text: Text.get("nav.main.notifications")
         },{
-            data: "administration",
             link: "administration/users",
             icon: "gicons-white gicons cogwheels",
             text: Text.get("nav.main.administration")
@@ -30,7 +27,6 @@ Bloonix.initNavigation = function(site) {
         }]
     });
 
-    // Dynamic navigations.
     Bloonix.navigation = { };
     Bloonix.activeNavigationMain = "";
     Bloonix.activeNavigationSub = "";

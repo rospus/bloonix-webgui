@@ -278,8 +278,13 @@ Bloonix.createSideBySideBoxes = function(o) {
         .css({ width: o.width });
 
     object.right = Utils.create("div")
-        .addClass("b2x-right")
-        .css({ "margin-left": o.marginLeft });
+        .addClass("b2x-right");
+
+    if (o.marginLeft) {
+        object.right.css({ "margin-left": o.marginLeft });
+    } else {
+        object.right.css({ "margin-left": object.left.innerWidth() + 10 });
+    }
 
     if (o.container) {
         object.header.appendTo(o.container);

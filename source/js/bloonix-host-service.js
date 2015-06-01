@@ -36,8 +36,7 @@ Bloonix.createService = function(o) {
     object.createBoxes = function() {
         this.boxes = Bloonix.createSideBySideBoxes({
             container: "#content",
-            width: "300px",
-            marginLeft: "310px"
+            width: "300px"
         });
     };
 

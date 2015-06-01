@@ -12,8 +12,7 @@ Bloonix.viewHostNotifications = function(o) {
 
         this.boxes = Bloonix.createSideBySideBoxes({
             container: $("#content"),
-            width: "300px",
-            marginLeft: "310px"
+            width: "300px"
         });
 
         this.createForm();

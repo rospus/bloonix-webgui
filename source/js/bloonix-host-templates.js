@@ -11,8 +11,7 @@ Bloonix.editHostTemplates = function(o) {
 
     var boxes = Bloonix.createSideBySideBoxes({
         container: contentContainer,
-        width: "500px",
-        marginLeft: "520px"
+        width: "500px"
     });
 
     new Header({
