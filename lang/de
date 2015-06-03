@@ -197,6 +197,8 @@ info.new_version: <h4>Eine neue Version ist verfügbar</h4>
  <p>Eine neue Version der Bloonix-WebGUI ist verfügbar!</p>
  <p>Bitte laden Sie die Webseite neu!</p>
 
+text.change_nav_to_horizontal: Horizontale Navigation
+text.change_nav_to_vertical: Verticale Navigation
 text.radial_graph: Radial graph
 text.hypertree: Hypertree
 text.plugin: Plugin

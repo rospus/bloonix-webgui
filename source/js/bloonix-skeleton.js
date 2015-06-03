@@ -1,39 +1,69 @@
+/*
+    Header:
+
+    <div id="header-wrapper">
+        <div id="header"></div>
+            <div id="header-left-box"></div>
+            <div id="header-center-box">
+                <nav id="nav-top-1"><nav>
+            </div>
+            <div id="header-right-box"></div>
+        </div>
+        <nav id="nav-top-2"></nav>
+        <nav id="nav-top-3"></nav>
+    </div>
+*/
+
 Bloonix.initHeader = function() {
     Log.debug("initHeader()");
 
-    var body = $("body");
-
     var headerWrapper = Utils.create("div")
         .attr("id", "header-wrapper")
-        .appendTo(body);
+        .appendTo("body");
 
     var header = Utils.create("div")
         .attr("id", "header")
         .appendTo(headerWrapper);
 
-    Utils.create("div")
+    var headerLeftBox = Utils.create("div")
+        .attr("id", "header-left-box")
+        .appendTo(header);
+
+    var headerCenterBox = Utils.create("div")
+        .attr("id", "header-center-box")
+        .appendTo(header);
+
+    var headerRightBox = Utils.create("div")
+        .attr("id", "header-right-box")
+        .appendTo(header);
+
+    var logo = Utils.create("div")
         .attr("id", "logo")
-        .appendTo(header)
-        .html(
-            Utils.create("img")
-                .attr("src", "/public/img/bloonix-logo.png")
-        );
+        .appendTo(headerLeftBox);
+
+    Utils.create("img")
+        .attr("src", "/public/img/bloonix-logo.png")
+        .appendTo(logo);
 
     Utils.create("nav")
-        .attr("id", "nav-top")
-        .appendTo(header);
+        .attr("id", "nav-top-1")
+        .appendTo(headerCenterBox);
 
-    var box = Utils.create("div")
-        .attr("id", "headerbox")
-        .appendTo(header);
+    Utils.create("nav")
+        .attr("id", "nav-top-2")
+        .appendTo(headerWrapper);
 
-    Utils.create("div")
-        .addClass("clear")
-        .appendTo(header);
+    Utils.create("nav")
+        .attr("id", "nav-top-3")
+        .appendTo(headerWrapper);
+
+    Utils.clear(header);
+    Utils.clear(headerCenterBox);
+    Utils.clear(headerWrapper);
 
     var btnGroup = Utils.create("div")
         .addClass("btn-group")
-        .appendTo(box);
+        .appendTo(headerRightBox);
 
     Utils.create("a")
         .attr("href", "#language")
@@ -63,19 +93,7 @@ Bloonix.initHeader = function() {
 
     Utils.create("div")
         .addClass("clear")
-        .appendTo(box);
-
-    Utils.create("nav")
-        .attr("id", "nav-main")
-        .appendTo(headerWrapper);
-
-    Utils.create("nav")
-        .attr("id", "nav-sub")
-        .appendTo(headerWrapper);
-
-    Utils.create("div")
-        .addClass("clear")
-        .appendTo(headerWrapper);
+        .appendTo(headerRightBox);
 };
 
 Bloonix.initContent = function() {
@@ -85,25 +103,40 @@ Bloonix.initContent = function() {
         .attr("id", "content-outer")
         .appendTo("body");
 
-    var inner = Utils.create("div")
-        .attr("id", "content")
+    var contentLeft = Utils.create("div")
+        .attr("id", "content-left")
         .appendTo(outer);
 
-    Utils.create("div")
-        .addClass("clear")
+    var contentRight = Utils.create("div")
+        .attr("id", "content-right")
         .appendTo(outer);
+
+    var content = Utils.create("div")
+        .attr("id", "content")
+        .appendTo(contentRight);
+
+    Utils.clear(outer);
 
     $(window).resize(Bloonix.resizeContent);
+    $("#content").resize(Bloonix.resizeContent);
     Bloonix.resizeContent();
 };
 
 Bloonix.resizeContent = function() {
     if ($("#content-outer").length > 0) {
+        var w = $(window).height(),
+            h = $("#header-wrapper").outerHeight(),
+            f = $("#footer-outer").outerHeight();
+
         $("#content-outer").height(
-            $(window).height() 
-                - $("#content-outer").offset().top 
-                - 40
+            $(window).height()
+                - $("#content-outer").offset().top
+                - $("#footer-outer").outerHeight()
         );
+
+        $("#content-right").css({
+            "min-height": w - h - f
+        });
     }
 };
 
@@ -114,9 +147,13 @@ Bloonix.initFooter = function() {
     Bloonix.objects.footerStats = { };
 
     // Outer footer element
-    var footer = Utils.create("div")
-        .attr("id", "footer")
+    var footerOuter = Utils.create("div")
+        .attr("id", "footer-outer")
         .appendTo(body);
+
+    var footer = Utils.create("div")
+        .attr("id", "footer-inner")
+        .appendTo(footerOuter);
 
     // Left footer
     var footerLeft = Utils.create("div")
@@ -269,27 +306,30 @@ Bloonix.initFooter = function() {
 };
 
 Bloonix.createSideBySideBoxes = function(o) {
-    var object = {};
+    var object = {},
+        outer = Utils.create("div")
+            .addClass("b2x-outer");
 
-    object.header = Utils.create("div");
+    object.header = Utils.create("div")
+        .appendTo(outer);
 
     object.left = Utils.create("div")
         .addClass("b2x-left")
-        .css({ width: o.width });
+        .appendTo(outer);
 
-    object.right = Utils.create("div")
-        .addClass("b2x-right");
-
-    if (o.marginLeft) {
-        object.right.css({ "margin-left": o.marginLeft });
-    } else {
-        object.right.css({ "margin-left": object.left.innerWidth() + 10 });
+    if (o.width) {
+        object.left.css({ "min-width": o.width })
+        object.left.css({ "max-width": o.width })
     }
 
+    object.right = Utils.create("div")
+        .addClass("b2x-right")
+        .appendTo(outer);
+
+    Utils.clear(outer);
+
     if (o.container) {
-        object.header.appendTo(o.container);
-        object.left.appendTo(o.container);
-        object.right.appendTo(o.container);
+        outer.appendTo(o.container);
     }
 
     return object;

@@ -321,6 +321,7 @@ Bloonix.dashboard = function(o) {
             .appendTo(this.dashboardTitleBox);
 
         this.updateDashboardTitleSize();
+        Bloonix.resizeContent();
     };
 
     object.setDashboardTitle = function(text) {
@@ -399,6 +400,9 @@ Bloonix.dashboard = function(o) {
         this.dashletContainer = Utils.create("div")
             .attr("id", "chart-box-outer")
             .appendTo(this.container);
+
+        Utils.clear(this.container);
+        Utils.clear(this.dashletContainer);
 
         this.columns = [];
         this.boxes = [];
@@ -583,7 +587,7 @@ Bloonix.dashboard = function(o) {
 
     object.resizeDashlets = function(box) {
         var size = Bloonix.getContentSize();
-        size.height = size.height - $("#dashboard-title").outerHeight() - 10;
+        size.height = size.height - 10;
 
         var scaleFactor = parseFloat(this.config.scale || 0.35);
 

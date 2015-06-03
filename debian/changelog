@@ -1,3 +1,9 @@
+bloonix-webgui (0.48-1) unstable; urgency=low
+
+    * Default font-weight set to normal.
+
+ -- Jonny Schulz <js@bloonix.de>  Mon, 01 Jun 2015 14:27:38 +0200
+
 bloonix-webgui (0.47-1) unstable; urgency=low
 
     * Implemented a small workaround for a bug in check-by-satellite

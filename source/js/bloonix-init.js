@@ -15,9 +15,9 @@ Bloonix.init = function(o) {
     Bloonix.initUser();
     Bloonix.initRoutes();
     Bloonix.initHeader();
-    Bloonix.initFooter();
     Bloonix.initContent();
-    Bloonix.getStats();
     Bloonix.initNavigation();
+    Bloonix.initFooter();
+    Bloonix.getStats();
     Bloonix.route.to();
 };

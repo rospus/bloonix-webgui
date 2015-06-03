@@ -1,8 +1,21 @@
 #content-outer {
     overflow: auto;
     z-index: 4;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+#content-left {
+    z-index: 5;
+    min-width: 240px;
+}
+#content-right {
+    background-color: #ffffff;
+    flex-grow: 1;
 }
 #content {
+    background-color: #ffffff;
     padding: 10px 12px;
     position: relative;
     z-index: 4;
@@ -507,17 +520,23 @@
 .pointer {
     cursor: pointer;
 }
+.b2x-outer {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
 .b2x-left  {
-    position: absolute;
-    width: 380px;
+    min-width: 380px;
+    max-width: 380px;
     vertical-align: top;
-    /*padding: 10px;
-    background-color: #eaeaea;*/
+    position: relative;
 }
 .b2x-right {
+    padding-left: 20px;
     position: relative;
-    margin-left: 410px;
     vertical-align: top;
+    flex-grow: 1;
 }
 .a-infobox .a-divbox {
     max-width: 500px;

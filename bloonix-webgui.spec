@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.47
+Version: 0.48
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -61,6 +61,8 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Mon Jun 01 2015 Jonny Schulz <js@bloonix.de> - 0.48-1
+- Default font-weight set to normal.
 * Mon Jun 01 2015 Jonny Schulz <js@bloonix.de> - 0.47-1
 - Implemented a small workaround for a bug in check-by-satellite
   of bloonix-plugins-basic 0.37.

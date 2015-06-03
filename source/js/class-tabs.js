@@ -4,34 +4,28 @@ var Tabs = function(o) {
 };
 
 Tabs.prototype = {
-    activeClass: "nav-sub-active",
-    appendNavTo: "#nav-sub",
-    appendContentTo: "#content",
+    activeClass: false,
+    appendNavTo: false,
+    appendContentTo: false,
     tabs: false
 };
 
 /*
-    <nav id="nav-sub" style="display: block;">
-        <nav>
-            <ul>
-                <li class="nav-sub-active"><a style="cursor: pointer;">Group settings</a></li>
-                <li><a style="cursor: pointer;">Host group settings </a></li>
-                <li><a style="cursor: pointer;">User group settings</a></li>
-            </ul>
-            <div class="clear"></div>
-        </nav>
-    </nav>
+    <ul>
+        <li class="li-active"><a style="cursor: pointer;">Group settings</a></li>
+        <li><a style="cursor: pointer;">Host group settings </a></li>
+        <li><a style="cursor: pointer;">User group settings</a></li>
+    </ul>
+    <div class="clear"></div>
 */
 
 Tabs.prototype.create = function() {
     $(this.appendNavTo).html("");
 
     var self = this,
-        list = Utils.create("ul").appendTo(this.appendNavTo);
+        ul = Utils.create("ul").appendTo(this.appendNavTo);
 
-    Utils.create("div")
-        .addClass("clear")
-        .appendTo(this.appendNavTo);
+    Utils.clear(this.appendNavTo);
 
     $.each(this.tabs, function(i, tab) {
         var link = Utils.create("a")
@@ -40,7 +34,7 @@ Tabs.prototype.create = function() {
 
         var li = Utils.create("li")
             .html(link)
-            .appendTo(list)
+            .appendTo(ul)
             .click(function() { self.switchTab(i) });
 
         var content = Utils.create("div")

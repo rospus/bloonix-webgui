@@ -91,7 +91,6 @@ Bloonix.initRoutes = function() {
         Bloonix.listHostTemplateMembers(req);
     });
     route.add("monitoring/templates/:id/services", function(req) {
-        Bloonix.hideNavSubElement();
         Bloonix.listHostTemplateServices(req);
     });
     route.add("monitoring/templates/:id/services/create", function(req) {

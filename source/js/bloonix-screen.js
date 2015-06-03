@@ -33,18 +33,14 @@ Bloonix.viewScreen = function(o) {
     };
 
     object.hideElements = function() {
-        $("#nav-sub").fadeOut(200);
-        $("#nav-main").fadeOut(200);
-        $("#header").fadeOut(200);
-        $("#footer").fadeOut(200);
+        $("#header-wrapper").fadeOut(200);
+        $("#footer-outer").fadeOut(200);
         $("#content-outer").fadeOut(200);
     };
 
     object.showElements = function() {
-        $("#nav-sub").fadeIn(200);
-        $("#nav-main").fadeIn(200);
-        $("#header").fadeIn(200);
-        $("#footer").fadeIn(200);
+        $("#header-wrapper").fadeIn(200);
+        $("#footer-outer").fadeIn(200);
         $("#content-outer").fadeIn(200);
     };
 

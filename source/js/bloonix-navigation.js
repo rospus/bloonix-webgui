@@ -1,197 +1,320 @@
+/*
+    Horizontal navigation:
+
+        <nav id="nav-top-1">
+            <ul>
+                <li data-path="dashboard">DASHBOARD</li>
+                <li data-path="monitoring" class="active">MONITORING</li>
+                <li data-path="notification">NOTIFICATION</li>
+                <li data-path="administration">ADMINISTRATION</li>
+            </ul>
+        </nav>
+
+        <nav id="nav-top-2">
+            <ul>
+                <li data-path="monitoring/hosts" class="active">Hosts</li>
+                <li data-path="monitoring/services">Services</li>
+                <li data-path="monitoring/charts">Charts</li>
+                <li data-path="monitoring/templates">Templates</li>
+                <li data-path="monitoring/screen">Screen</li>
+            </ul>
+        </nav>
+
+        <nav id="nav-top-3">
+            <ul>
+                <li data-path="monitoring/hosts/10" class="active">hostname.example</li>
+                <li data-path="monitoring/hosts/10/events">Events</li>
+                <li data-path="monitoring/hosts/10/charts">Charts</li>
+                <li data-path="monitoring/hosts/10/reports">Reports</li>
+            </ul>
+        </nav>
+
+    Vertical navigation:
+
+        <nav id="nav-left">
+            <ul class="nav-left-1">
+                <li data-path="dashboard">DASHBOARD</li>
+                <li data-path="monitoring" class="active">MONITORING
+                    <ul class="nav-left-2">
+                        <li data-path="monitoring/hosts" class="active">Hosts
+                            <ul class="nav-left-3">
+                                <li data-path="monitoring/hosts/10" class="active">hostname.example</li>
+                                <li data-path="monitoring/hosts/10/events">Events</li>
+                                <li data-path="monitoring/hosts/10/charts">Charts</li>
+                                <li data-path="monitoring/hosts/10/reports">Reports</li>
+                            </ul>
+                        </li>
+                        <li data-path="monitoring/services">Services</li>
+                        <li data-path="monitoring/charts">Charts</li>
+                        <li data-path="monitoring/templates">Templates</li>
+                        <li data-path="monitoring/screen">Screen</li>
+                    </ul>
+                </li>
+                <li data-path="notification">NOTIFICATION</li>
+                <li data-path="administration">ADMINISTRATION</li>
+            </ul>
+        </nav>
+*/
+
+Bloonix.navType = "X";
+Bloonix.createNav = {};
+Bloonix.activeNav1 = false;
+Bloonix.activeNav2 = false;
+Bloonix.activeNav3 = false;
+Bloonix.nav1Class = false;
+Bloonix.nav2Class = false;
+Bloonix.nav3Class = false;
+Bloonix.navIconColor = false;
+
 Bloonix.initNavigation = function(site) {
     Log.debug("initNavigation()");
 
-    // Init the static top navigation.
-    Bloonix.createNavigation({
-        into: "#nav-top",
-        items: [{
-            link: "dashboard",
-            icon: "gicons-white gicons pie-chart",
-            text: Text.get("nav.main.dashboard")
-        },{
-            link: "monitoring/hosts",
-            icon: "gicons-white gicons sampler",
-            text: Text.get("nav.main.monitoring")
-        },{
-            link: "notification/contacts",
-            icon: "gicons-white gicons bullhorn",
-            text: Text.get("nav.main.notifications")
-        },{
-            link: "administration/users",
-            icon: "gicons-white gicons cogwheels",
-            text: Text.get("nav.main.administration")
-        },{
-            link: "help",
-            icon: "gicons-white gicons circle-question-mark",
-            text: Text.get("nav.main.help")
-        }]
-    });
+    if (Bloonix.navType === "X") {
+        Bloonix.nav1Class = "nav-top-1";
+        Bloonix.nav2Class = "nav-top-2";
+        Bloonix.nav3Class = "nav-top-3";
+        Bloonix.navIconColor = "white";
+        $("#content-left").hide();
+        $("#nav-top-1").html(Bloonix.createNav.main());
+    } else if (Bloonix.navType === "Y") {
+        Bloonix.nav1Class = "nav-left-1";
+        Bloonix.nav2Class = "nav-left-2";
+        Bloonix.nav3Class = "nav-left-3";
+        Bloonix.navIconColor = "gray";
 
-    Bloonix.navigation = { };
-    Bloonix.activeNavigationMain = "";
-    Bloonix.activeNavigationSub = "";
+        Utils.create("nav")
+            .attr("id", "nav-left")
+            .appendTo("#content-left");
 
-    Bloonix.navigation["nav-main"] = {
-        monitoring: {
-            items: [{
-                link: "monitoring/hosts",
-                icon: "hicons hicons-white hdd",
-                text: Text.get("nav.sub.hosts")
-            },{
-                link: "monitoring/services",
-                icon: "hicons hicons-white th-list",
-                text: Text.get("nav.sub.services")
-            },{
-                link: "monitoring/charts",
-                icon: "hicons hicons-white signal",
-                text: Text.get("nav.sub.charts" )
-            },{
-                link: "monitoring/templates",
-                icon: "hicons hicons-white list-alt",
-                text: Text.get("nav.sub.templates")
-            },{
-                link: "monitoring/screen",
-                icon: "hicons hicons-white tasks",
-                text: Text.get("nav.sub.screen")
-            }]
-        },
-        notification: {
-            items: [{
-                link: "notification/contacts",
-                icon: "hicons hicons-white user",
-                text: Text.get("nav.sub.contacts")
-            },{
-                link: "notification/contactgroups",
-                icon: "hicons hicons-white user",
-                text: Text.get("nav.sub.contactgroups")
-            },{
-                link: "notification/timeperiods",
-                icon: "hicons hicons-white time",
-                text: Text.get("nav.sub.timeperiods")
-            }]
-        },
-        administration: {
-            items: Bloonix.getAdministrativeNavigationItems()
-        }
-    };
-};
+        $("#nav-left").html(Bloonix.createNav.main());
 
-Bloonix.getAdministrativeNavigationItems = function() {
-    var administrationItems = [
-        {
-            link: "administration/users",
-            icon: "hicons hicons-white user",
-            text: Text.get("nav.sub.users")
-        },{
-            link: "administration/groups",
-            icon: "hicons hicons-white user",
-            text: Text.get("nav.sub.groups")
-        },{
-            link: "administration/variables",
-            icon: "hicons hicons-white wrench",
-            text: Text.get("nav.sub.variables")
-        }
-    ];
-
-    if (Bloonix.user.role === "admin") {
-        administrationItems.push({
-            link: "administration/locations",
-            icon: "hicons hicons-white globe",
-            text: Text.get("nav.sub.locations")
-        });
-        administrationItems.splice(2, 0, {
-            link: "administration/companies",
-            icon: "hicons hicons-white home",
-            text: Text.get("nav.sub.companies")
+        $.each(["monitoring","notification","administration"], function(i, nav) {
+            $(".nav-left-1")
+                .find("[data-path='"+ nav +"']")
+                .append(Bloonix.createNav[nav]().hide());
         });
     }
+};
 
-    return administrationItems;
+Bloonix.createNav.main = function(addClass) {
+    var ul =  Utils.create("ul")
+        .addClass(Bloonix.nav1Class);
+
+    Bloonix.createNavElem({
+        link: "dashboard",
+        icon: "pie-chart",
+        iconSize: "gicons",
+        text: Text.get("nav.main.dashboard")
+    }).appendTo(ul);
+
+    Bloonix.createNavElem({
+        path: "monitoring",
+        link: "monitoring/hosts",
+        icon: "sampler",
+        iconSize: "gicons",
+        text: Text.get("nav.main.monitoring")
+    }).appendTo(ul);
+
+    Bloonix.createNavElem({
+        path: "notification",
+        link: "notification/contacts",
+        icon: "bullhorn",
+        iconSize: "gicons",
+        text: Text.get("nav.main.notifications")
+    }).appendTo(ul);
+
+    Bloonix.createNavElem({
+        path: "administration",
+        link: "administration/users",
+        icon: "cogwheels",
+        iconSize: "gicons",
+        text: Text.get("nav.main.administration")
+    }).appendTo(ul);
+
+    Bloonix.createNavElem({
+        link: "help",
+        icon: "circle-question-mark",
+        iconSize: "gicons",
+        text: Text.get("nav.main.help")
+    }).appendTo(ul);
+
+    return ul;
+};
+
+Bloonix.createNav.monitoring = function() {
+    var ul = Utils.create("ul")
+        .addClass(Bloonix.nav2Class);
+
+    Bloonix.createNavElem({
+        link: "monitoring/hosts",
+        icon: "hdd",
+        text: Text.get("nav.sub.hosts")
+    }).appendTo(ul);
+
+    Bloonix.createNavElem({
+        link: "monitoring/services",
+        icon: "th-list",
+        text: Text.get("nav.sub.services")
+    }).appendTo(ul);
+
+    Bloonix.createNavElem({
+        link: "monitoring/charts",
+        icon: "signal",
+        text: Text.get("nav.sub.charts" )
+    }).appendTo(ul);
+
+    Bloonix.createNavElem({
+        link: "monitoring/templates",
+        icon: "list-alt",
+        text: Text.get("nav.sub.templates")
+    }).appendTo(ul);
+
+    Bloonix.createNavElem({
+        link: "monitoring/screen",
+        icon: "tasks",
+        text: Text.get("nav.sub.screen")
+    }).appendTo(ul);
+
+    return ul;
+};
+
+Bloonix.createNav.notification = function() {
+    var ul = Utils.create("ul")
+        .addClass(Bloonix.nav2Class);
+
+    Bloonix.createNavElem({
+        link: "notification/contacts",
+        icon: "user",
+        text: Text.get("nav.sub.contacts")
+    }).appendTo(ul);
+
+    Bloonix.createNavElem({
+        link: "notification/contactgroups",
+        icon: "user",
+        text: Text.get("nav.sub.contactgroups")
+    }).appendTo(ul);
+
+    Bloonix.createNavElem({
+        link: "notification/timeperiods",
+        icon: "time",
+        text: Text.get("nav.sub.timeperiods")
+    }).appendTo(ul);
+
+    return ul;
+};
+
+Bloonix.createNav.administration = function() {
+    var ul = Utils.create("ul")
+        .addClass(Bloonix.nav2Class);
+
+    Bloonix.createNavElem({
+        link: "administration/users",
+        icon: "user",
+        text: Text.get("nav.sub.users")
+    }).appendTo(ul);
+
+    Bloonix.createNavElem({
+        link: "administration/groups",
+        icon: "user",
+        text: Text.get("nav.sub.groups")
+    }).appendTo(ul);
+
+    Bloonix.createNavElem({
+        link: "administration/variables",
+        icon: "wrench",
+        text: Text.get("nav.sub.variables")
+    }).appendTo(ul);
+
+    if (Bloonix.user.role === "admin") {
+        Bloonix.createNavElem({
+            link: "administration/locations",
+            icon: "globe",
+            text: Text.get("nav.sub.locations")
+        }).appendTo(ul);
+
+        Bloonix.createNavElem({
+            link: "administration/companies",
+            icon: "home",
+            text: Text.get("nav.sub.companies")
+        }).appendTo(ul);
+    }
+
+    return ul;
 };
 
 Bloonix.showHostSubNavigation = function(active, id, hostname) {
     Log.debug("showHostSubNavigation()");
-    $("#nav-sub").html("");
 
-    Bloonix.createNavigation({
-        activeClass: "nav-sub-active",
+    Bloonix.showNav3({
         active: active,
-        into: "#nav-sub",
         items: [
             {
                 link: "monitoring/hosts/" +id,
                 text: Utils.escape(hostname),
-                activeKey: "host",
+                active: "host",
             },{
                 link: "monitoring/hosts/"+ id +"/events",
                 text: Text.get("nav.sub.events"),
-                activeKey: "events"
+                active: "events"
             },{
                 link: "monitoring/hosts/"+ id +"/charts",
                 text: Text.get("nav.sub.charts"),
-                activeKey: "charts"
+                active: "charts"
             },{
                 link: "monitoring/hosts/"+ id +"/reports",
                 text: Text.get("nav.sub.reports"),
-                activeKey: "reports"
+                active: "reports"
             },{
                 link: "monitoring/hosts/"+ id +"/dependencies",
                 text: Text.get("nav.sub.dependencies"),
-                activeKey: "dependencies"
+                active: "dependencies"
             },{
                 link: "monitoring/hosts/"+ id +"/downtimes",
                 text: Text.get("nav.sub.downtimes"),
-                activeKey: "downtimes"
+                active: "downtimes"
             },{
                 link: "monitoring/hosts/"+ id +"/templates",
                 text: Text.get("nav.sub.templates"),
-                activeKey: "templates"
+                active: "templates"
             },{
                 link: "monitoring/hosts/"+ id +"/mtr",
                 text: Text.get("nav.sub.mtr"),
-                activeKey: "mtr"
+                active: "mtr"
             },{
                 link: "monitoring/hosts/" + id +"/notifications",
                 text: Text.get("nav.sub.notifications"),
-                activeKey: "notifications"
+                active: "notifications"
             }
         ]
     });
-
-    $("#nav-sub").show(400);
-    Bloonix.resizeContent();
 };
 
 Bloonix.showChartsSubNavigation = function(active, id) {
     Log.debug("showGroupSubNavigation()");
-    $("#nav-sub").html("");
 
-    Bloonix.createNavigation({
-        activeClass: "nav-sub-active",
+    Bloonix.showNav3({
         active: active,
-        into: "#nav-sub",
         items: [
             {
                 link: "monitoring/charts",
                 text: Text.get("schema.chart.text.charts"),
-                activeKey: "service-charts"
+                active: "service-charts"
             },{
                 link: "monitoring/charts/editor",
                 text: Text.get("schema.user_chart.text.editor"),
-                activeKey: "user-charts"
+                active: "user-charts"
             }
         ]
     });
-
-    $("#nav-sub").show(400);
-    Bloonix.resizeContent();
 };
 
 Bloonix.showGroupSubNavigation = function() {
     Log.debug("showGroupSubNavigation()");
-    $("#nav-sub").html("");
 
     new Tabs({
+        activeClass: "active",
+        appendNavTo: "#nav-top-3",
+        appendContentTo: "#content",
         tabs: [
             {
                 id: "int-group-form",
@@ -206,15 +329,16 @@ Bloonix.showGroupSubNavigation = function() {
         ]
     }).create();
 
-    $("#nav-sub").show(400);
     Bloonix.resizeContent();
 };
 
 Bloonix.showContactgroupSubNavigation = function() {
     Log.debug("showGroupSubNavigation()");
-    $("#nav-sub").html("");
 
     new Tabs({
+        activeClass: "active",
+        appendNavTo: "#nav-top-3",
+        appendContentTo: "#content",
         tabs: [
             {
                 id: "int-contactgroup-form",
@@ -232,127 +356,175 @@ Bloonix.showContactgroupSubNavigation = function() {
         ]
     }).create();
 
-    $("#nav-sub").show(400);
     Bloonix.resizeContent();
 };
 
 Bloonix.showTemplateSubNavigation = function(active, id) {
     Log.debug("showTemplateSubNavigation()");
-    $("#nav-sub").html("");
 
-    Bloonix.createNavigation({
-        activeClass: "nav-sub-active",
+    Bloonix.showNav3({
         active: active,
-        into: "#nav-sub",
         items: [
             {
                 link: "monitoring/templates/"+ id,
                 text: Text.get("schema.host_template.text.setting"),
-                activeKey: "settings"
+                active: "settings"
             },{
                 link: "monitoring/templates/"+ id +"/members",
                 text: Text.get("schema.host_template.text.view_members"),
-                activeKey: "members"
+                active: "members"
             },{
                 link: "monitoring/templates/"+ id +"/services",
                 text: Text.get("schema.host_template.text.view_services"),
-                activeKey: "services"
+                active: "services"
             }
         ]
     });
+};
 
-    $("#nav-sub").show(400);
-    Bloonix.resizeContent();
+Bloonix.createNavElem = function(item) {
+    var link;
+
+    if (item.icon) {
+        var icon = Utils.create("div");
+
+        if (item.iconSize === "gicons") {
+            icon.addClass("gicons gicons-"+ Bloonix.navIconColor +" "+ item.icon);
+        } else {
+            icon.addClass("hicons hicons-"+ Bloonix.navIconColor +" "+ item.icon);
+        }
+
+        link = Bloonix.call(item.link, icon);
+        link.append(item.text);
+    } else {
+        link = Bloonix.call(item.link, text);
+    }
+
+    var li = Utils.create("li")
+        .attr("data-path", item.path || item.link)
+        .html(link);
+
+    if (item.id) {
+        li.attr("id", item.id);
+    }
+
+    return li;
 };
 
 Bloonix.showNavigation = function(site, args) {
     Log.debug("showNavigation()");
-    var nav = site.split("/");
-    var navTop = nav[0];
-    var navMain = nav[1];
-    var navSub = nav[2];
 
-    var navTopElem = $("#nav-top");
-    var navMainElem = $("#nav-main");
-    var navSubElem = $("#nav-sub");
-
-    navTopElem.find("ul li").removeClass("nav-top-active");
-    navTopElem.find("ul").find("[data-path='"+ navTop  +"']").addClass("nav-top-active");
-
-    if (navMain == undefined || !Bloonix.navigation["nav-main"][navTop]) {
-        navSubElem.hide();
-        navMainElem.hide();
-        return false;
-    }
-
-    var navMainElem = $("#nav-main");
-    var mainDataPath = navTop +"/"+ navMain;
-
-    if (Bloonix.activeNavigationMain != mainDataPath) {
-        Bloonix.activeNavigationMain = mainDataPath;
-        Bloonix.createNavigation({
-            into: "#nav-main",
-            items: Bloonix.navigation["nav-main"][navTop].items
-        });
-    }
-
-    navMainElem.find("ul li").removeClass("nav-main-active");
-    navMainElem.find("ul [data-path='"+ mainDataPath +"']").addClass("nav-main-active");
-    navMainElem.show(400);
-
-    if (navSub == undefined) {
-        navSubElem.hide();
-        return false;
+    if (Bloonix.navType === "X") {
+        Bloonix.showXnavigation(site, args);
+    } else if (Bloonix.navType === "Y") {
+        Bloonix.showYnavigation(site, args);
     }
 };
 
-Bloonix.hideNavSubElement = function() {
-    $("#nav-sub").hide();
+Bloonix.showXnavigation = function(site, args) {
+    var nav = site.split("/"),
+        nav1 = nav[0], // dashboard, monitoring, notification
+        nav2 = nav[1], // hosts, services, charts
+        nav3 = nav[2]; // create, list
+
+    if (Bloonix.activeNav1 !== nav1) {
+        Bloonix.activeNav1 = nav1;
+        $("#nav-top-1").find(".active").removeClass("active");
+        $("#nav-top-1").find("[data-path='"+ nav1 +"']").addClass("active");
+
+        if (Bloonix.createNav[nav1]) {
+            $("#nav-top-2").html(Bloonix.createNav[nav1]());
+            Utils.clear("#nav-top-2");
+        }
+    }
+
+    if (nav2) {
+        var activeNav = nav1 +"-"+ nav2;
+        if (Bloonix.activeNav2 !== activeNav) {
+            $("#nav-top-2").find(".active").removeClass("active");
+            $("#nav-top-2").find("[data-path='"+ nav1 +"/"+ nav2 +"']").addClass("active");
+        }
+    } else {
+        $("#nav-top-3").html("");
+        $("#nav-top-2").html("");
+    }
+
+    if (!nav3) {
+        $("#nav-top-3").html("");
+    }
 };
 
-Bloonix.createNavigation = function(o) {
-    Log.debug("createNavigation()");
-    var list = Utils.create("ul");
+Bloonix.showYnavigation = function(site, args) {
+    var nav = site.split("/"),
+        nav1 = nav[0], // dashboard, monitoring, notification
+        nav2 = nav[1], // hosts, services, charts
+        nav3 = nav[2]; // create, list
 
-    if (o.id) {
-        list.attr("id", o.id);
+    if (Bloonix.activeNav1 !== nav1) {
+        Bloonix.activeNav1 = nav1;
+        $(".nav-left-1").find(".active").removeClass("active");
+        $(".nav-left-1").find("[data-path='"+ nav1 +"']").addClass("active");
+        $(".nav-left-1").find("ul").hide(400);
+
+        if (Bloonix.createNav[nav1]) {
+            $(".nav-left-1").find("[data-path='"+ nav1 +"']").find("ul").show(400);
+        }
     }
+
+    if (nav2) {
+        var activeNav = nav1 +"-"+ nav2;
+        if (Bloonix.activeNav2 !== activeNav) {
+            $(".nav-left-2").find(".active").removeClass("active");
+            $(".nav-left-2").find("[data-path='"+ nav1 +"/"+ nav2 +"']").addClass("active");
+            $(".nav-left-2").find("ul").remove();
+        }
+    } else {
+        $(".nav-left-2").find("ul").remove();
+    }
+};
+
+Bloonix.showNav3 = function(o) {
+    Log.debug("showNav3()");
+
+    if (Bloonix.navType === "X") {
+        Bloonix.showXnav3(o);
+    } else if (Bloonix.navType === "Y") {
+        Bloonix.showYnav3(o);
+    }
+};
+
+Bloonix.showXnav3 = function(o) {
+    var ul = Utils.create("ul");
 
     $.each(o.items, function(i, item) {
-        var link;
-        var icon = Utils.create("div").addClass(item.icon);
-
-        if (item.extern == true) {
-            link = Utils.create("a")
-                .attr("href", item.link)
-                .attr("target", "_blank")
-                .html(icon);
-        } else {
-            link = Bloonix.call(item.link, icon);
-        }
-
-        var dataPath = item.data
-            ? item.data
-            : item.link;
-
-        link.append(item.text);
         var li = Utils.create("li")
-            .attr("data-path", dataPath)
-            .html(link)
-            .appendTo(list);
+            .html( Bloonix.call(item.link, item.text) )
+            .appendTo(ul);
 
-        if (item.activeKey && item.activeKey == o.active) {
-            li.addClass(o.activeClass);
-        } else if (o.active && o.active == dataPath) {
-            li.addClass(o.activeClass);
+        if (item.active && item.active === o.active) {
+            li.addClass("active");
         }
     });
 
-    $(o.into)
-        .html(list)
-        .fadeIn(200)
-        .append(Utils.create("div")
-        .addClass("clear"));
+    $("#nav-top-3").html(ul).show();
+    Utils.clear("#nav-top-3");
+    Bloonix.resizeContent();
+};
 
-    return list;
+Bloonix.showYnav3 = function(o) {
+    var ul = Utils.create("ul");
+
+    $.each(o.items, function(i, item) {
+        var li = Utils.create("li")
+            .html( Bloonix.call(item.link, item.text) )
+            .appendTo(ul);
+
+        if (item.active && item.active === o.active) {
+            li.addClass("active");
+        }
+    });
+
+    $(".nav-left-2").find(".active").find("ul").remove();
+    $(".nav-left-2").find(".active").append(ul.addClass("nav-left-3"));
+    Bloonix.resizeContent();
 };

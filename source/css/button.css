@@ -10,7 +10,7 @@
     padding: 8px 14px;
     cursor: pointer;
     line-height: 14px;
-    font-size: 14px;
+    font-size: 13px;
 }
 .inlinefix { /* inline-block sucks - we known that all */
     font-size: 0px;
@@ -102,7 +102,7 @@
 }
 .btn-icon-even {
     width: 56px;
-    font-size: 13px;
+    font-size: 12px;
     padding: 7px 0;
 }
 .btn-icon {
@@ -129,7 +129,7 @@
 }
 .btn-default {
     line-height: 14px;
-    font-size: 14px;
+    font-size: 13px;
     padding: 8px 14px;
 }
 .btn-tall {

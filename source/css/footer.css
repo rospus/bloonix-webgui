@@ -1,14 +1,17 @@
-#footer {
+#footer-outer {
     width: 100%;
-    min-width: 1200px;
     height: 40px;
     bottom: 0px;
-    position: absolute;
+    position: fixed;
     color: #eeeeee;
     clear: both;
     background-color: #424242;
     overflow: hidden;
     z-index: 5;
+}
+#footer-inner {
+    margin: 0;
+    padding: 0 2px;
 }
 #footer-left {
     width: 26%;
@@ -31,7 +34,7 @@
 #footer-left span, #footer-right span {
     font-size: 13px;
     padding: 6px 10px;
-    margin: 7px 2px;
+    margin: 7px 1px;
     color: #ffffff;
     background-color: #525252;
     display: inline-block;

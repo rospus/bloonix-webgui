@@ -18,20 +18,27 @@ Bloonix.viewHostDashboard = function(o) {
 };
 
 Bloonix.initHostView = function() {
+    var outer = Utils.create("div")
+        .addClass("b2x-outer")
+        .appendTo("#content");
+
     Utils.create("div")
         .attr("id", "b2x-left")
         .addClass("b2x-left")
-        .appendTo("#content");
+        .appendTo(outer);
+
     Utils.create("div")
         .attr("id", "b2x-right")
         .addClass("b2x-right")
-        .appendTo("#content");
+        .appendTo(outer);
+
     Utils.create("div")
         .addClass("loading")
         .appendTo("#b2x-right");
+
     Utils.create("div")
         .addClass("clear")
-        .appendTo("#content");
+        .appendTo(outer);
 };
 
 Bloonix.loadHost = function(hostId) {

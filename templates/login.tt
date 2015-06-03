@@ -35,7 +35,7 @@ html, body {
     padding: 0;
     width: 100%;
     height: 100%;
-    background-color: #DDF5F5;
+    background-color: #DFFCFC;
     font-family: "Open Sans",Arial,sans-serif;
 }
 img {
