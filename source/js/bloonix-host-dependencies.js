@@ -33,8 +33,7 @@ Bloonix.viewHostDependencies = function(o) {
         }).create();
 
         this.boxes = Bloonix.createSideBySideBoxes({
-            container: this.container,
-            width: "350px"
+            container: this.container
         });
 
         this.optionBox = this.boxes.left;

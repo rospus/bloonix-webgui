@@ -97,6 +97,7 @@ Bloonix.initRoutes = function() {
         Bloonix.createService({ id: req.id, template: true });
     });
     route.add("monitoring/templates/:id/services/:ref_id/edit", function(req) {
+        Bloonix.showTemplateSubNavigation("services", req.id);
         Bloonix.editService({ id: req.id, refId: req.ref_id, template: true });
     });
     route.add("monitoring/templates/create", function(req) {

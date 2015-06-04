@@ -14,8 +14,7 @@ Bloonix.viewHostDowntimes = function(o) {
         );
 
         this.boxes = Bloonix.createSideBySideBoxes({
-            container: this.container,
-            width: "350px"
+            container: this.container
         });
 
         new Header({

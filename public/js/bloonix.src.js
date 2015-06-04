@@ -10128,6 +10128,7 @@ Bloonix.initRoutes = function() {
         Bloonix.createService({ id: req.id, template: true });
     });
     route.add("monitoring/templates/:id/services/:ref_id/edit", function(req) {
+        Bloonix.showTemplateSubNavigation("services", req.id);
         Bloonix.editService({ id: req.id, refId: req.ref_id, template: true });
     });
     route.add("monitoring/templates/create", function(req) {
@@ -10442,7 +10443,7 @@ Bloonix.initNavigation = function(site) {
         $("#content-left").hide();
         $("#nav-top-1").html(Bloonix.createNav.main());
     } else if (Bloonix.navType === "Y") {
-        Bloonix.nav1Class = "nav-left-1";
+        Bloonix.nav1Class = "nav-top-1";
         Bloonix.nav2Class = "nav-left-2";
         Bloonix.nav3Class = "nav-left-3";
         Bloonix.navIconColor = "gray";
@@ -10451,7 +10452,7 @@ Bloonix.initNavigation = function(site) {
             .attr("id", "nav-left")
             .appendTo("#content-left");
 
-        $("#nav-left").html(Bloonix.createNav.main());
+        $("#nav-top-1").html(Bloonix.createNav.main());
 
         $.each(["monitoring","notification","administration"], function(i, nav) {
             $(".nav-left-1")
@@ -10754,7 +10755,7 @@ Bloonix.createNavElem = function(item) {
         var icon = Utils.create("div");
 
         if (item.iconSize === "gicons") {
-            icon.addClass("gicons gicons-"+ Bloonix.navIconColor +" "+ item.icon);
+            icon.addClass("gicons gicons-white "+ item.icon);
         } else {
             icon.addClass("hicons hicons-"+ Bloonix.navIconColor +" "+ item.icon);
         }
@@ -10827,12 +10828,11 @@ Bloonix.showYnavigation = function(site, args) {
 
     if (Bloonix.activeNav1 !== nav1) {
         Bloonix.activeNav1 = nav1;
-        $(".nav-left-1").find(".active").removeClass("active");
-        $(".nav-left-1").find("[data-path='"+ nav1 +"']").addClass("active");
-        $(".nav-left-1").find("ul").hide(400);
+        $("#nav-top-1").find(".active").removeClass("active");
+        $("#nav-top-1").find("[data-path='"+ nav1 +"']").addClass("active");
 
         if (Bloonix.createNav[nav1]) {
-            $(".nav-left-1").find("[data-path='"+ nav1 +"']").find("ul").show(400);
+            $("#nav-left").html(Bloonix.createNav[nav1]());
         }
     }
 
@@ -10843,8 +10843,10 @@ Bloonix.showYnavigation = function(site, args) {
             $(".nav-left-2").find("[data-path='"+ nav1 +"/"+ nav2 +"']").addClass("active");
             $(".nav-left-2").find("ul").remove();
         }
+        $("#content-left").show(300);
     } else {
-        $(".nav-left-2").find("ul").remove();
+        $("#content-left").hide();
+        $(".nav-left-2").find("ul").hide(300).remove();
     }
 };
 
@@ -13700,8 +13702,7 @@ Bloonix.viewHostDependencies = function(o) {
         }).create();
 
         this.boxes = Bloonix.createSideBySideBoxes({
-            container: this.container,
-            width: "350px"
+            container: this.container
         });
 
         this.optionBox = this.boxes.left;
@@ -14646,6 +14647,7 @@ Bloonix.viewMtrResult = function(o) {
         Ajax.post({
             url: "/hosts/"+ this.id +"/mtr",
             success: function(result) {
+console.log(result);
                 self.data = result.data.output;
                 self.showMtrData();
                 self.createMtrChart();
@@ -18186,8 +18188,7 @@ Bloonix.viewHostDowntimes = function(o) {
         );
 
         this.boxes = Bloonix.createSideBySideBoxes({
-            container: this.container,
-            width: "350px"
+            container: this.container
         });
 
         new Header({

@@ -37,9 +37,9 @@ sub mtr {
         }
     } else {
         my @lines = split /\n/, $output;
-        my @header = split /\s+/, shift @lines;
         my @output;
         foreach my $line (@lines) {
+            next unless $line =~ /^\s+\d+\./;
             $line =~ s/^\s*//;
             my %data;
             @data{qw(step ipaddr loss snt last avg best wrst stdev)}
