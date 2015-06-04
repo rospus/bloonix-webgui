@@ -88,7 +88,6 @@ Bloonix.viewMtrResult = function(o) {
         Ajax.post({
             url: "/hosts/"+ this.id +"/mtr",
             success: function(result) {
-console.log(result);
                 self.data = result.data.output;
                 self.showMtrData();
                 self.createMtrChart();
