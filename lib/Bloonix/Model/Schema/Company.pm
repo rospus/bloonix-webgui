@@ -164,6 +164,11 @@ sub init {
             max_val => 999_999_999,
             default => 10000
         },
+        data_retention => {
+            min_val => 0,
+            max_val => 32767,
+            default => 3650
+        },
         sms_enabled => {
             regex => qr/^\d+\z/,
             default => 0

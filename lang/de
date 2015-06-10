@@ -424,6 +424,7 @@ schema.company.attr.max_metrics_per_chart: Maximale Metriken pro Chart
 schema.company.attr.max_dashboards_per_user: Maximale Dashboards pro Benutzer
 schema.company.attr.max_dashlets_per_dashboard: Maximale Dashlets pro Dashboard
 schema.company.attr.max_sms: Maximale SMS pro Monat
+schema.company.attr.data_retention: Daten Aufbewahrungszeit
 schema.company.attr.sms_enabled: SMS Benachrichtigungen eingeschaltet
 schema.company.attr.active: Aktiv
 schema.company.attr.comment: Kommentar
@@ -449,6 +450,7 @@ schema.company.desc.max_metrics_per_chart: Die maximale Anzahl an Metriken die p
 schema.company.desc.max_dashboards_per_user: Die maximale Anzahl an Dashboards die pro Benutzer erstellt werden dürfen.
 schema.company.desc.max_dashlets_per_dashboard: Die maximale Anzahl an Dashlets die pro Dashboard hinzugefügt werden dürfen.
 schema.company.desc.max_sms: Die maximale Anzahl SMS, die pro Monat versendet werden dürfen. Setze 0 (null) wenn es kein Limit gibt.
+schema.company.desc.data_retention: Die Aufbewahrungszeit in Tagen aller Daten von Hosts und der Services.
 schema.company.text.edit_variables: Globale Variablen
 schema.company.text.list: Übersicht über alle Unternehmen
 schema.company.text.create: Erstelle ein Unternehmen

@@ -371,6 +371,13 @@ Bloonix.getCompanyFormElements = function() {
             desc: Text.get("schema.company.desc.max_sms"),
             minvalue: 0, maxvalue: 9999999999
         },{
+            element: "input",
+            type: "text",
+            name: "data_retention",
+            text: Text.get("schema.company.attr.data_retention"),
+            desc: Text.get("schema.company.desc.data_retention"),
+            minvalue: 0, maxvalue: 32767
+        },{
             element: "radio-yes-no",
             name: "sms_enabled",
             text: Text.get("schema.company.attr.sms_enabled")

@@ -362,7 +362,7 @@ site.login.forgot_password_info: Please note that the new password is not send
  your request at first and contact you as soon as possible.
 site.login.request_success: Your request was successful.<br/>
  An administrator will contact you as soon as possible.
-site.login.request_failed: You request was not successful. Please try it again.
+site.login.request_failed: Your request was not successful. Please try it again.
 site.login.follow: Follow Bloonix
 site.login.sign_up: Sign up for a Bloonix account
 site.login.documentation: The Bloonix documentation
@@ -424,6 +424,7 @@ schema.company.attr.max_metrics_per_chart: Max metrics per chart
 schema.company.attr.max_dashboards_per_user: Max dashboards per user
 schema.company.attr.max_dashlets_per_dashboard: Max dashlets per dashboard
 schema.company.attr.max_sms: Max SMS
+schema.company.attr.data_retention: Data retention
 schema.company.attr.sms_enabled: SMS notifications enabled
 schema.company.attr.active: Active
 schema.company.attr.comment: Comment
@@ -449,6 +450,7 @@ schema.company.desc.max_metrics_per_chart: The maximum number of metrics per use
 schema.company.desc.max_dashboards_per_user: The maximum number of dashboards that can be created by a user.
 schema.company.desc.max_dashlets_per_dashboard: The maximum number of dashlets that can be added to a dashboard.
 schema.company.desc.max_sms: The maximum number of SMS that can be sent per month. Set 0 (null) if unlimited.
+schema.company.desc.data_retention: The retention in days of all data of hosts and services.
 schema.company.text.edit_variables: Global variables
 schema.company.text.list: Overview of all companies
 schema.company.text.create: Create a new company

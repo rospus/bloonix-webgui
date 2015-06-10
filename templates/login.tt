@@ -82,26 +82,24 @@ h1 {
     display: none;
 }
 #failed, #success {
-    width: 500px;
     margin: 20px auto;
-    font-size: 34px;
+    font-size: 24px;
+    line-height: 40px;
+    font-weight: bold;
     text-align: center;
 }
 #failed {
-    color: #ff0000;
+    color: #D70000;
 }
 #success {
-    color: #7DE49E;
+    color: #05948F;
 }
 .attention {
-    width: 500px;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    color: #ff0000;
-    font-size: 20px;
+    color: #D70000;
+    font-size: 24px;
+    font-weight: bold;
     letter-spacing: 0;
-    text-align: right;
+    text-align: center;
 }
 .switch {
     color: #505050;
@@ -201,6 +199,13 @@ Chrome, Safari, Opera or Firefox!
 
 <div class="login-box" id="user-login-box">
 <h1><%= $c->lang->get('site.login.welcome') %></h1>
+% if ($stash->{error}) {
+<div class="attention">
+% foreach my $str ($stash->for("error")) {
+<%= $str %>
+% }
+</div>
+% }
 <form id="login" name="Login" action="/login/" method="POST">
 <input id="redirect" type="hidden" name="redirect" value="" />
 <table>
@@ -218,13 +223,6 @@ Chrome, Safari, Opera or Firefox!
 </div>
 </form>
 <div class="switch"><a onclick="forgotPasswordBox()"><%= $c->lang->get('site.login.forgot_password') %></a></div>
-% if ($stash->{error}) {
-<div class="attention">
-% foreach my $str ($stash->for("error")) {
-<%= $str %>
-% }
-</div>
-% }
 </div>
 
 <div class="forgot-box" id="forgot-password-box">

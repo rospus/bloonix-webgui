@@ -447,7 +447,7 @@ sub login {
             $c->plugin->error->bad_login;
             return $c->view->render->json;
         }
-        $c->stash->{error} = $c->lang->get("site.login.error");
+        $c->stash->{error} = [ $c->lang->get("site.login.error") ];
     }
 
     $c->stash->{title} = "Login";

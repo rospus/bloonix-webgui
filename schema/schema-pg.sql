@@ -38,6 +38,7 @@ CREATE TABLE "company" (
     "max_metrics_per_chart"      SMALLINT NOT NULL DEFAULT 50,
     "max_dashboards_per_user"    SMALLINT NOT NULL DEFAULT 50,
     "max_dashlets_per_dashboard" SMALLINT NOT NULL DEFAULT 50,
+    "data_retention"             SMALLINT NOT NULL DEFAULT 3650,
     "sms_enabled"                CHAR(1) DEFAULT '1',
     "sms_route"                  VARCHAR(10) DEFAULT 'gold',
     "comment"                    TEXT,

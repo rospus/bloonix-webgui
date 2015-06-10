@@ -8,7 +8,7 @@ use base qw(Bloonix::DBI::CRUD);
 sub init {
     my $self = shift;
 
-    $self->{schema_version} = 6;
+    $self->{schema_version} = 7;
 
     $self->log->warning("start upgrade database schema");
     $self->dbi->reconnect;
@@ -112,6 +112,10 @@ sub run_upgrade {
         $self->v6;
     }
 
+    if ($version <= 6) {
+        $self->v7;
+    }
+
     $self->update_version;
 }
 
@@ -194,6 +198,14 @@ sub v6 {
 
     if ($self->exist(plugin => "metadata")) {
         $self->upgrade("alter table plugin drop column metadata");
+    }
+}
+
+sub v7 {
+    my $self = shift;
+
+    if (!$self->exist(company => "data_retention")) {
+        $self->upgrade("alter table company add column data_retention SMALLINT NOT NULL DEFAULT 3650");
     }
 }
 
