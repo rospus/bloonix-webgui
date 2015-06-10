@@ -26,6 +26,8 @@ Form.prototype = {
     infoClass: "form-info",
     warningClass: "form-warning",
     tableClass: "form-table",
+    descInfoClass: "form-table-desc-info",
+    elementInfoClass: "form-table-element-info",
     formClass: false,
     createTable: false
 };
@@ -1455,6 +1457,21 @@ Form.prototype.createElement = function(e) {
         copy.options = e.options || this.options[e.name];
         copy.checked = this.getCheckedValue(e);
         this.slider(copy);
+    }
+
+console.log("e", e);
+    if (e.descInfo) {
+        Utils.create("div")
+            .addClass(this.descInfoClass)
+            .text(e.descInfo)
+            .appendTo(th);
+    }
+
+    if (e.elementInfo) {
+        Utils.create("div")
+            .addClass(this.elementInfoClass)
+            .text(e.elementInfo)
+            .appendTo(td);
     }
 };
 

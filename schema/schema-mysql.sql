@@ -45,7 +45,7 @@ CREATE TABLE `company` (
     `variables`                  TEXT NOT NULL -- DEFAULT '{}'
 ) ENGINE=InnoDB;
 
-INSERT INTO `company` (`company`) VALUES ('Bloonix'); -- id = 1
+INSERT INTO `company` (`company`,`variables`) VALUES ('Bloonix','{}'); -- id = 1
 
 -- Table user is used to store all user that are allowed to login
 -- and request statistic informations.

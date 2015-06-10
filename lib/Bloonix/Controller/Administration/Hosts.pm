@@ -113,6 +113,7 @@ sub options {
     $c->stash->data(options => $options);
     $c->stash->data(mandatory => $c->model->database->host->validator->mandatory);
     $c->stash->data(optional => $c->model->database->host->validator->optional);
+    $c->stash->data(limits => { data_retention => $c->user->{company_data_retention} });
 
     if (!grep /group_id/, @{$c->stash->data->{mandatory}}) {
         push @{$c->stash->data->{mandatory}}, "group_id";

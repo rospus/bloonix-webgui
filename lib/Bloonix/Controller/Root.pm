@@ -75,6 +75,7 @@ sub auto {
         # Delete secrets!
         delete $user->{password};
         delete $user->{authkey};
+        $user->{company_data_retention} = $company->{data_retention};
 
         $c->user($user);
         $c->stash->{user} = $user;

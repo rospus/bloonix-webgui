@@ -255,6 +255,16 @@
     vertical-align: middle;
     font-size: 14px;
 }
+.form-table-desc-info {
+    text-align: right;
+    font-size: 11px;
+    font-weight: normal
+}
+.form-table-element-info {
+    text-align: left;
+    font-size: 11px;
+    font-weight: normal
+}
 .form-title {
     padding-bottom: 10px;
     font-size: 14px;

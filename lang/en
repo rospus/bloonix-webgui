@@ -450,13 +450,14 @@ schema.company.desc.max_metrics_per_chart: The maximum number of metrics per use
 schema.company.desc.max_dashboards_per_user: The maximum number of dashboards that can be created by a user.
 schema.company.desc.max_dashlets_per_dashboard: The maximum number of dashlets that can be added to a dashboard.
 schema.company.desc.max_sms: The maximum number of SMS that can be sent per month. Set 0 (null) if unlimited.
-schema.company.desc.data_retention: The retention in days of all data of hosts and services.
+schema.company.desc.data_retention: The retention in days of all data of hosts and services. If a host has a higher data retention configured then the data retention of the company is used.
 schema.company.text.edit_variables: Global variables
 schema.company.text.list: Overview of all companies
 schema.company.text.create: Create a new company
 schema.company.text.delete: Delete company
 schema.company.text.settings: Company settings
 schema.company.text.view: Company %s
+schema.company.text.data_retention_info: Your account is limited to %s days.
 
 schema.user.attr.id: User ID
 schema.user.attr.username: Username

@@ -517,7 +517,7 @@ Bloonix.editHost = function(o) {
         action: "update",
         options: host.options,
         values: host.values,
-        elements: Bloonix.getHostFormElements(),
+        elements: Bloonix.getHostFormElements(host.limits),
         autocomplete: Bloonix.get("/hosts/cats")
     }).create();
 };
@@ -531,7 +531,7 @@ Bloonix.createHost = function() {
         icons: Bloonix.getHostAddEditIcons()
     }).create();
 
-    var elements = Bloonix.getHostFormElements(),
+    var elements = Bloonix.getHostFormElements(host.limits),
         groups = Bloonix.get("/administration/groups"),
         contactgroups = Bloonix.get("/contactgroups");
 
@@ -570,7 +570,7 @@ Bloonix.createHost = function() {
     }).create();
 };
 
-Bloonix.getHostFormElements = function() {
+Bloonix.getHostFormElements = function(o) {
     return [
         {
             element: "select",
@@ -737,7 +737,8 @@ Bloonix.getHostFormElements = function() {
             desc: Text.get("schema.host.desc.data_retention"),
             minValue: 0,
             maxValue: 32767,
-            required: true
+            required: true,
+            elementInfo: Text.get("schema.company.text.data_retention_info", o.data_retention)
         },{
             element: "input",
             type: "text",

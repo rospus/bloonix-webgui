@@ -1208,7 +1208,7 @@ var Lang = {
       "nav.sub.services" : "Services",
       "schema.service.desc.failover_check_type_locations" : "Select a fixed and two failover checkpoints",
       "schema.dependency.text.dependencies" : "Dependencies",
-      "schema.company.desc.data_retention" : "The retention in days of all data of hosts and services.",
+      "schema.company.desc.data_retention" : "The retention in days of all data of hosts and services. If a host has a higher data retention configured then the data retention of the company is used.",
       "schema.service.attr.scheduled" : "Has downtime",
       "schema.service.desc.timeout" : "This is the timeout of the service. If the status of the service is not updated in this time then a critical status is set for the service with the information that it seems that the Bloonix agent is not working. If no value is set, then the timeout of the host is inherited.",
       "schema.contactgroup.text.selected_hosts" : "Selected hosts",
@@ -1605,6 +1605,7 @@ var Lang = {
       "schema.service.attr.fd_flap_count" : "Notifiy after X status switches",
       "site.wtrm.command.checkIfElementNotExists" : "Check if the element <b>%s</b> does <i>NOT</i> exists",
       "text.dashboard.delete_dashboard" : "Delete the dashboard",
+      "schema.company.text.data_retention_info" : "Your account is limited to %s days.",
       "schema.service.text.failover_location_check_button" : "Failover check",
       "text.change_your_password" : "Change your password",
       "text.plugin_info" : "Plugin information",
@@ -1786,8 +1787,8 @@ var Lang = {
       "word.debug" : "Debug",
       "text.report.availability.LT15" : "Filter events with a status duration less than 15 minutes.",
       "schema.service.desc.acknowledged" : "This option is useful if a service is not OK and if you want to disable the notifications temporary. The notifications will be enabled again if the services switched to the status OK.",
-      "nav.sub.mtr" : "MTR",
       "site.wtrm.desc.value" : "The value of the element you wish to fill or check.",
+      "nav.sub.mtr" : "MTR",
       "schema.company.attr.max_charts_per_user" : "Max charts per user",
       "site.help.doc.host-and-service-dependencies" : "Abhängigkeiten zwischen Hosts und Services",
       "schema.user_chart.text.update" : "Update a chart",
@@ -2272,7 +2273,7 @@ var Lang = {
       "nav.sub.services" : "Services",
       "schema.service.desc.failover_check_type_locations" : "Bitte wählen Sie einen festen und zwei Failover Messpunkte aus",
       "schema.dependency.text.dependencies" : "Abhängigkeiten",
-      "schema.company.desc.data_retention" : "Die Aufbewahrungszeit in Tagen aller Daten von Hosts und der Services.",
+      "schema.company.desc.data_retention" : "Die Aufbewahrungszeit in Tagen aller Daten von Hosts und der Services. Wenn ein Host eine höhere Aufbewahrungszeit konfiguriert hat, dann wird die Aufbewahrungszeit der Firma verwendet.",
       "schema.service.attr.scheduled" : "Hat eine Downtime",
       "schema.service.desc.timeout" : "Das ist der Timeout des Service. Wenn in dieser Zeit der Status des Service nicht aktualisiert wurde, dann wird ein kritischer Status gesetzt mit der Information, dass der Bloonix-Agent wohlmöglich ausgefallen ist. Wenn kein Wert gesetzt ist, dann wird der Timeout des Hosts vererbt.",
       "schema.contactgroup.text.selected_hosts" : "Ausgewählte Hosts",
@@ -2455,8 +2456,8 @@ var Lang = {
       "schema.location.text.create" : "Eine neue Lokation erstellen",
       "schema.contact.text.timeperiod_type" : "Inkludieren / Exkludieren",
       "text.report.availability.h15" : "15:00 - 15:59",
-      "nav.sub.contactgroup_host_members" : "Hosts in der Kontaktgruppe",
       "site.wtrm.placeholder.userAgent" : "User-Agent",
+      "nav.sub.contactgroup_host_members" : "Hosts in der Kontaktgruppe",
       "text.from_now_to_1d" : "Von jetzt + 1 Tag",
       "text.report.availability.AV-U" : "Der Zeitbereich in Prozent in dem der Service im Status UNKNOWN war.",
       "schema.host.attr.max_services" : "Maximal konfigurierbare Services",
@@ -2667,6 +2668,7 @@ var Lang = {
       "schema.service.attr.fd_flap_count" : "Maximale Anzahl von Statuswechsel",
       "site.wtrm.command.checkIfElementNotExists" : "Check if the element <b>%s</b> does <i>NOT</i> exists",
       "text.dashboard.delete_dashboard" : "Das Dashboard löschen",
+      "schema.company.text.data_retention_info" : "Ihr Account ist limitiert auf %s Tage.",
       "schema.service.text.failover_location_check_button" : "Ausfall Checks",
       "text.change_your_password" : "Ändere dein Passwort",
       "text.plugin_info" : "Plugin Informationen",
@@ -4643,6 +4645,8 @@ Form.prototype = {
     infoClass: "form-info",
     warningClass: "form-warning",
     tableClass: "form-table",
+    descInfoClass: "form-table-desc-info",
+    elementInfoClass: "form-table-element-info",
     formClass: false,
     createTable: false
 };
@@ -6072,6 +6076,21 @@ Form.prototype.createElement = function(e) {
         copy.options = e.options || this.options[e.name];
         copy.checked = this.getCheckedValue(e);
         this.slider(copy);
+    }
+
+console.log("e", e);
+    if (e.descInfo) {
+        Utils.create("div")
+            .addClass(this.descInfoClass)
+            .text(e.descInfo)
+            .appendTo(th);
+    }
+
+    if (e.elementInfo) {
+        Utils.create("div")
+            .addClass(this.elementInfoClass)
+            .text(e.elementInfo)
+            .appendTo(td);
     }
 };
 
@@ -13406,7 +13425,7 @@ Bloonix.editHost = function(o) {
         action: "update",
         options: host.options,
         values: host.values,
-        elements: Bloonix.getHostFormElements(),
+        elements: Bloonix.getHostFormElements(host.limits),
         autocomplete: Bloonix.get("/hosts/cats")
     }).create();
 };
@@ -13420,7 +13439,7 @@ Bloonix.createHost = function() {
         icons: Bloonix.getHostAddEditIcons()
     }).create();
 
-    var elements = Bloonix.getHostFormElements(),
+    var elements = Bloonix.getHostFormElements(host.limits),
         groups = Bloonix.get("/administration/groups"),
         contactgroups = Bloonix.get("/contactgroups");
 
@@ -13459,7 +13478,7 @@ Bloonix.createHost = function() {
     }).create();
 };
 
-Bloonix.getHostFormElements = function() {
+Bloonix.getHostFormElements = function(o) {
     return [
         {
             element: "select",
@@ -13626,7 +13645,8 @@ Bloonix.getHostFormElements = function() {
             desc: Text.get("schema.host.desc.data_retention"),
             minValue: 0,
             maxValue: 32767,
-            required: true
+            required: true,
+            elementInfo: Text.get("schema.company.text.data_retention_info", o.data_retention)
         },{
             element: "input",
             type: "text",
