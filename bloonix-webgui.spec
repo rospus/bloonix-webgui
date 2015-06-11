@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.48
+Version: 0.49
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -61,6 +61,12 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Wed Jun 10 2015 Jonny Schulz <js@bloonix.de> - 0.49-1
+- Fixed the error handling of the login page.
+- Fixed font-weight in the top navigation.
+- Implemnted a data retention as company param that has
+  a higher priority as the data retention of a host.
+- Fixed column variables of company for company id 1.
 * Mon Jun 01 2015 Jonny Schulz <js@bloonix.de> - 0.48-1
 - Default font-weight set to normal.
 * Mon Jun 01 2015 Jonny Schulz <js@bloonix.de> - 0.47-1
