@@ -475,11 +475,11 @@ CREATE SEQUENCE "dependency_id_seq" START WITH 1 INCREMENT BY 1 NO MAXVALUE NO M
 
 CREATE TABLE "dependency" (
     "id"                BIGINT PRIMARY KEY DEFAULT nextval('dependency_id_seq'),
-    "host_id"           BIGINT NOT NULL REFERENCES "host"("id") ON DELETE CASCADE NULL,
-    "service_id"        BIGINT NOT NULL REFERENCES "service"("id") ON DELETE CASCADE NULL,
+    "host_id"           BIGINT NOT NULL REFERENCES "host"("id") ON DELETE CASCADE ,
+    "service_id"        BIGINT NOT NULL REFERENCES "service"("id") ON DELETE CASCADE ,
     "status"            VARCHAR(32) NOT NULL DEFAULT 'CRITICAL,UNKNOWN,INFO',
-    "on_host_id"        BIGINT NOT NULL REFERENCES "host"("id") ON DELETE CASCADE NULL,
-    "on_service_id"     BIGINT NOT NULL REFERENCES "service"("id") ON DELETE CASCADE NULL,
+    "on_host_id"        BIGINT NOT NULL REFERENCES "host"("id") ON DELETE CASCADE ,
+    "on_service_id"     BIGINT NOT NULL REFERENCES "service"("id") ON DELETE CASCADE ,
     "on_status"         VARCHAR(32) NOT NULL DEFAULT 'CRITICAL,UNKNOWN,INFO',
     "inherit"           CHAR(1) NOT NULL DEFAULT 0,
     "timezone"          VARCHAR(40) NOT NULL DEFAULT 'Europe/Berlin',
