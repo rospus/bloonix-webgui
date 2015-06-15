@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.49
+Version: 0.50
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -61,6 +61,8 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Mon Jun 15 2015 Jonny Schulz <js@bloonix.de> - 0.50-1
+- Fixed "CASCADE NULL" in schema-pg.sql.
 * Wed Jun 10 2015 Jonny Schulz <js@bloonix.de> - 0.49-1
 - Fixed the error handling of the login page.
 - Fixed font-weight in the top navigation.
