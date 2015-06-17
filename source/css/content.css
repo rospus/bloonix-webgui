@@ -1,18 +1,6 @@
 #content-outer {
     overflow: auto;
     z-index: 4;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-}
-#content-left {
-    z-index: 5;
-    min-width: 200px;
-}
-#content-right {
-    background-color: #ffffff;
-    flex-grow: 1;
 }
 #content {
     background-color: #ffffff;

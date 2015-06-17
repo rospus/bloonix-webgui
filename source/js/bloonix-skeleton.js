@@ -103,17 +103,9 @@ Bloonix.initContent = function() {
         .attr("id", "content-outer")
         .appendTo("body");
 
-    var contentLeft = Utils.create("div")
-        .attr("id", "content-left")
-        .appendTo(outer);
-
-    var contentRight = Utils.create("div")
-        .attr("id", "content-right")
-        .appendTo(outer);
-
     var content = Utils.create("div")
         .attr("id", "content")
-        .appendTo(contentRight);
+        .appendTo(outer);
 
     Utils.clear(outer);
 

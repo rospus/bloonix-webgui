@@ -63,11 +63,8 @@ sub no_privileges_on_action {
 sub action_failed {
     my ($self, %action) = @_;
     my $c = $self->{c};
-    # this is an critical error
-    $c->log->trace(critical => "err-420");
-    if (scalar keys %action) {
-        $c->log->dump(critical => \%action);
-    }
+    $c->log->trace(warning => "err-420");
+    $c->log->dump(warning => \%action);
     $self->_error("err-420");
 }
 

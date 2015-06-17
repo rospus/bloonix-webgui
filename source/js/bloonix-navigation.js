@@ -1,59 +1,31 @@
 /*
-    Horizontal navigation:
+    <nav id="nav-top-1">
+        <ul>
+            <li data-path="dashboard">DASHBOARD</li>
+            <li data-path="monitoring" class="active">MONITORING</li>
+            <li data-path="notification">NOTIFICATION</li>
+            <li data-path="administration">ADMINISTRATION</li>
+        </ul>
+    </nav>
 
-        <nav id="nav-top-1">
-            <ul>
-                <li data-path="dashboard">DASHBOARD</li>
-                <li data-path="monitoring" class="active">MONITORING</li>
-                <li data-path="notification">NOTIFICATION</li>
-                <li data-path="administration">ADMINISTRATION</li>
-            </ul>
-        </nav>
+    <nav id="nav-top-2">
+        <ul>
+            <li data-path="monitoring/hosts" class="active">Hosts</li>
+            <li data-path="monitoring/services">Services</li>
+            <li data-path="monitoring/charts">Charts</li>
+            <li data-path="monitoring/templates">Templates</li>
+            <li data-path="monitoring/screen">Screen</li>
+        </ul>
+    </nav>
 
-        <nav id="nav-top-2">
-            <ul>
-                <li data-path="monitoring/hosts" class="active">Hosts</li>
-                <li data-path="monitoring/services">Services</li>
-                <li data-path="monitoring/charts">Charts</li>
-                <li data-path="monitoring/templates">Templates</li>
-                <li data-path="monitoring/screen">Screen</li>
-            </ul>
-        </nav>
-
-        <nav id="nav-top-3">
-            <ul>
-                <li data-path="monitoring/hosts/10" class="active">hostname.example</li>
-                <li data-path="monitoring/hosts/10/events">Events</li>
-                <li data-path="monitoring/hosts/10/charts">Charts</li>
-                <li data-path="monitoring/hosts/10/reports">Reports</li>
-            </ul>
-        </nav>
-
-    Vertical navigation:
-
-        <nav id="nav-left">
-            <ul class="nav-left-1">
-                <li data-path="dashboard">DASHBOARD</li>
-                <li data-path="monitoring" class="active">MONITORING
-                    <ul class="nav-left-2">
-                        <li data-path="monitoring/hosts" class="active">Hosts
-                            <ul class="nav-left-3">
-                                <li data-path="monitoring/hosts/10" class="active">hostname.example</li>
-                                <li data-path="monitoring/hosts/10/events">Events</li>
-                                <li data-path="monitoring/hosts/10/charts">Charts</li>
-                                <li data-path="monitoring/hosts/10/reports">Reports</li>
-                            </ul>
-                        </li>
-                        <li data-path="monitoring/services">Services</li>
-                        <li data-path="monitoring/charts">Charts</li>
-                        <li data-path="monitoring/templates">Templates</li>
-                        <li data-path="monitoring/screen">Screen</li>
-                    </ul>
-                </li>
-                <li data-path="notification">NOTIFICATION</li>
-                <li data-path="administration">ADMINISTRATION</li>
-            </ul>
-        </nav>
+    <nav id="nav-top-3">
+        <ul>
+            <li data-path="monitoring/hosts/10" class="active">hostname.example</li>
+            <li data-path="monitoring/hosts/10/events">Events</li>
+            <li data-path="monitoring/hosts/10/charts">Charts</li>
+            <li data-path="monitoring/hosts/10/reports">Reports</li>
+        </ul>
+    </nav>
 */
 
 Bloonix.navType = "X";
@@ -61,39 +33,17 @@ Bloonix.createNav = {};
 Bloonix.activeNav1 = false;
 Bloonix.activeNav2 = false;
 Bloonix.activeNav3 = false;
-Bloonix.nav1Class = false;
-Bloonix.nav2Class = false;
-Bloonix.nav3Class = false;
-Bloonix.navIconColor = false;
+Bloonix.nav1Class = "nav-top-1";
+Bloonix.nav2Class = "nav-top-2";
+Bloonix.nav3Class = "nav-top-3";
+Bloonix.navIconColor = "white";
 
 Bloonix.initNavigation = function(site) {
     Log.debug("initNavigation()");
 
-    if (Bloonix.navType === "X") {
-        Bloonix.nav1Class = "nav-top-1";
-        Bloonix.nav2Class = "nav-top-2";
-        Bloonix.nav3Class = "nav-top-3";
-        Bloonix.navIconColor = "white";
-        $("#content-left").hide();
-        $("#nav-top-1").html(Bloonix.createNav.main());
-    } else if (Bloonix.navType === "Y") {
-        Bloonix.nav1Class = "nav-top-1";
-        Bloonix.nav2Class = "nav-left-2";
-        Bloonix.nav3Class = "nav-left-3";
-        Bloonix.navIconColor = "gray";
-
-        Utils.create("nav")
-            .attr("id", "nav-left")
-            .appendTo("#content-left");
-
-        $("#nav-top-1").html(Bloonix.createNav.main());
-
-        $.each(["monitoring","notification","administration"], function(i, nav) {
-            $(".nav-left-1")
-                .find("[data-path='"+ nav +"']")
-                .append(Bloonix.createNav[nav]().hide());
-        });
-    }
+    $("#nav-top-1").html(
+        Bloonix.createNav.main()
+    );
 };
 
 Bloonix.createNav.main = function(addClass) {
@@ -414,14 +364,6 @@ Bloonix.createNavElem = function(item) {
 Bloonix.showNavigation = function(site, args) {
     Log.debug("showNavigation()");
 
-    if (Bloonix.navType === "X") {
-        Bloonix.showXnavigation(site, args);
-    } else if (Bloonix.navType === "Y") {
-        Bloonix.showYnavigation(site, args);
-    }
-};
-
-Bloonix.showXnavigation = function(site, args) {
     var nav = site.split("/"),
         nav1 = nav[0], // dashboard, monitoring, notification
         nav2 = nav[1], // hosts, services, charts
@@ -454,47 +396,9 @@ Bloonix.showXnavigation = function(site, args) {
     }
 };
 
-Bloonix.showYnavigation = function(site, args) {
-    var nav = site.split("/"),
-        nav1 = nav[0], // dashboard, monitoring, notification
-        nav2 = nav[1], // hosts, services, charts
-        nav3 = nav[2]; // create, list
-
-    if (Bloonix.activeNav1 !== nav1) {
-        Bloonix.activeNav1 = nav1;
-        $("#nav-top-1").find(".active").removeClass("active");
-        $("#nav-top-1").find("[data-path='"+ nav1 +"']").addClass("active");
-
-        if (Bloonix.createNav[nav1]) {
-            $("#nav-left").html(Bloonix.createNav[nav1]());
-        }
-    }
-
-    if (nav2) {
-        var activeNav = nav1 +"-"+ nav2;
-        if (Bloonix.activeNav2 !== activeNav) {
-            $(".nav-left-2").find(".active").removeClass("active");
-            $(".nav-left-2").find("[data-path='"+ nav1 +"/"+ nav2 +"']").addClass("active");
-            $(".nav-left-2").find("ul").remove();
-        }
-        $("#content-left").show(300);
-    } else {
-        $("#content-left").hide();
-        $(".nav-left-2").find("ul").hide(300).remove();
-    }
-};
-
 Bloonix.showNav3 = function(o) {
     Log.debug("showNav3()");
 
-    if (Bloonix.navType === "X") {
-        Bloonix.showXnav3(o);
-    } else if (Bloonix.navType === "Y") {
-        Bloonix.showYnav3(o);
-    }
-};
-
-Bloonix.showXnav3 = function(o) {
     var ul = Utils.create("ul");
 
     $.each(o.items, function(i, item) {
@@ -509,23 +413,5 @@ Bloonix.showXnav3 = function(o) {
 
     $("#nav-top-3").html(ul).show();
     Utils.clear("#nav-top-3");
-    Bloonix.resizeContent();
-};
-
-Bloonix.showYnav3 = function(o) {
-    var ul = Utils.create("ul");
-
-    $.each(o.items, function(i, item) {
-        var li = Utils.create("li")
-            .html( Bloonix.call(item.link, item.text) )
-            .appendTo(ul);
-
-        if (item.active && item.active === o.active) {
-            li.addClass("active");
-        }
-    });
-
-    $(".nav-left-2").find(".active").find("ul").remove();
-    $(".nav-left-2").find(".active").append(ul.addClass("nav-left-3"));
     Bloonix.resizeContent();
 };
