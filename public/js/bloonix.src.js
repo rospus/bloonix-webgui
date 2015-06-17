@@ -1036,6 +1036,7 @@ var Lang = {
       "schema.service.info.is_volatile" : "The service is in volatile status.",
       "schema.company.attr.phone" : "Phone",
       "text.dashboard.replace_dashlet" : "Replace the dashlet",
+      "text.show_legend" : "Show legend",
       "text.report.availability.flapping" : "Flapping",
       "schema.service.attr.fd_time_range" : "Flap detection time range",
       "schema.host.desc.add_host_to_host_template" : "The host inherits all services from the host template.",
@@ -1168,8 +1169,8 @@ var Lang = {
       "schema.user.desc.phone" : "The phone number can be very helpful for colleagues or the Bloonix support in emergency situations.",
       "schema.contactgroup.text.settings" : "Contact group settings",
       "schema.host.action.add_template" : "Add template",
-      "text.max_length" : "Max length: <b>%s</b>",
       "schema.hs_downtime.text.delete" : "Delete a scheduled downtime",
+      "text.max_length" : "Max length: <b>%s</b>",
       "nav.main.report" : "REPORT",
       "schema.service.attr.timeout" : "Timeout",
       "text.report.availability.h23" : "23:00 - 23:59",
@@ -1239,6 +1240,7 @@ var Lang = {
       "action.view_selected_objects" : "View selected objects",
       "site.wtrm.command.doSelect" : "Select the value <b>%s</b> from the selectbox <b>%s</b>",
       "schema.dependency.text.workflow_to_service_status" : "Select the status of the parent service that avoids a notification",
+      "text.dashlet_height" : "Dashlet height",
       "schema.service.info.has_result" : "This service check has advanced status information. Click me :-)",
       "schema.service.info.flapping" : "The service is flapping.",
       "text.dashboard.services_downtimes" : "Downtimes",
@@ -1274,8 +1276,8 @@ var Lang = {
       "schema.host.desc.coordinates" : "Select the location of the host by country code.",
       "site.wtrm.action.checkIfElementIsSelected" : "Check if a <b>value</b> is <b>selected</b> in a selectbox",
       "info.search_syntax" : "<p><b>Search syntax:</b></p>\n<p>planet <i>AND</i> mars</p>\n<p>mars <i>OR</i> pluto</p>\n<p>planet <i>AND</i> mars <i>OR</i> pluto</p>",
-      "err-827" : "Sorry, but you cannot create more than %s services for template id %s!",
       "schema.user.attr.authentication_key" : "Authentication key",
+      "err-827" : "Sorry, but you cannot create more than %s services for template id %s!",
       "text.report.availability.AV-W" : "Time slice in percent in which the service was in status WARNING.",
       "schema.hs_downtime.attr.username" : "Added by",
       "schema.service.action.deactivate_multiple" : "Deactivate the selected services",
@@ -1699,6 +1701,7 @@ var Lang = {
       "site.wtrm.command.checkIfElementIsNotChecked" : "Check if the radio button or checkbox <b>%s</b> is <i>NOT</i> checked",
       "schema.chart.text.charts" : "Charts",
       "text.please_select_objects" : "Please select at least one object!",
+      "text.dashlet_width" : "Dashlet width",
       "text.min_length" : "Min length: <b>%s</b>",
       "schema.host.text.report_title" : "Report for host %s",
       "schema.service.info.inherits_from_host_template" : "This service is inherited from host template '%s'.",
@@ -1785,8 +1788,8 @@ var Lang = {
       "word.days" : "days",
       "schema.service.attr.is_volatile" : "Is the service volatile",
       "word.debug" : "Debug",
-      "text.report.availability.LT15" : "Filter events with a status duration less than 15 minutes.",
       "schema.service.desc.acknowledged" : "This option is useful if a service is not OK and if you want to disable the notifications temporary. The notifications will be enabled again if the services switched to the status OK.",
+      "text.report.availability.LT15" : "Filter events with a status duration less than 15 minutes.",
       "site.wtrm.desc.value" : "The value of the element you wish to fill or check.",
       "nav.sub.mtr" : "MTR",
       "schema.company.attr.max_charts_per_user" : "Max charts per user",
@@ -2101,6 +2104,7 @@ var Lang = {
       "schema.service.info.is_volatile" : "Der Service befindet sich in einem flüchtigen Status.",
       "schema.company.attr.phone" : "Telefon",
       "text.dashboard.replace_dashlet" : "Das Dashlet ersetzen",
+      "text.show_legend" : "Legende anzeigen",
       "text.report.availability.flapping" : "Flapping",
       "schema.service.attr.fd_time_range" : "Zeitraum zur Erkennung von Statuswechsel",
       "schema.host.desc.add_host_to_host_template" : "Der Host erbt alle Services eines Host-Templates.",
@@ -2233,8 +2237,8 @@ var Lang = {
       "schema.user.desc.phone" : "Die Rufnummer kann sehr hilfreich für Kollegen oder dem Bloonix-Support in dringenden Notfällen sein.",
       "schema.contactgroup.text.settings" : "Einstellungen der Kontaktgruppe",
       "schema.host.action.add_template" : "Template hinzufügen",
-      "text.max_length" : "Maximallänge: %s",
       "schema.hs_downtime.text.delete" : "Lösche eine geplante Wartungsarbeit",
+      "text.max_length" : "Maximallänge: %s",
       "nav.main.report" : "REPORT",
       "schema.service.attr.timeout" : "Timeout",
       "text.report.availability.h23" : "23:00 - 23:59",
@@ -2304,6 +2308,7 @@ var Lang = {
       "action.view_selected_objects" : "Ausgewählte Objekte einsehen",
       "site.wtrm.command.doSelect" : "Select the value <b>%s</b> from the selectbox <b>%s</b>",
       "schema.dependency.text.workflow_to_service_status" : "Wähle den Status des übergeordneten Services, welcher die Benachrichtigung untertrückt",
+      "text.dashlet_height" : "Dashlet Höhe",
       "schema.service.info.has_result" : "Dieser Service-Check hat erweiterte Statusinformationen. Klick mich :-)",
       "schema.service.info.flapping" : "Der Service wechselt zu häufig den Status.",
       "text.dashboard.services_downtimes" : "Geplante Wartungsarbeiten",
@@ -2339,8 +2344,8 @@ var Lang = {
       "schema.host.desc.coordinates" : "Der Standort des Hosts nach Länderkürzel.",
       "site.wtrm.action.checkIfElementIsSelected" : "Check if a <b>value</b> is <b>selected</b> in a selectbox",
       "info.search_syntax" : "<p><b>Syntax der Suche:</b></p>\n<p>planet <i>AND</i> mars</p>\n<p>mars <i>OR</i> pluto</p>\n<p>planet <i>AND</i> mars <i>OR</i> pluto</p>",
-      "err-827" : "Sorry, aber Sie dürfen nicht mehr als %s Services für Template-ID %s erstellen!",
       "schema.user.attr.authentication_key" : "Authentication Key",
+      "err-827" : "Sorry, aber Sie dürfen nicht mehr als %s Services für Template-ID %s erstellen!",
       "text.report.availability.AV-W" : "Der Zeitbereich in Prozent in dem der Service im Status WARNING war.",
       "schema.hs_downtime.attr.username" : "Erstellt von",
       "schema.service.action.deactivate_multiple" : "Selektierte Services deaktivieren",
@@ -2762,6 +2767,7 @@ var Lang = {
       "site.wtrm.command.checkIfElementIsNotChecked" : "Check if the radio button or checkbox <b>%s</b> is <i>NOT</i> checked",
       "schema.chart.text.charts" : "Charts",
       "text.please_select_objects" : "Bitte selektieren Sie mindestens ein Objekt!",
+      "text.dashlet_width" : "Dashlet Breite",
       "text.min_length" : "Mindestlänge: %s",
       "schema.host.text.report_title" : "Bericht für Host %s",
       "schema.service.info.inherits_from_host_template" : "Dieser Service wird von Host Template '%s' vererbt.",
@@ -2850,8 +2856,8 @@ var Lang = {
       "word.debug" : "Debug",
       "text.report.availability.LT15" : "Filterung von Ereignissen mit einer Statusdauer kleiner als 15 Minuten.",
       "schema.service.desc.acknowledged" : "Diese Option ist hilfreich wenn ein Service nicht OK ist und Sie das Benachrichtiungen temporär ausschalten möchten. Die Benachrichtigungen werden automatisch wieder eingeschaltet, wenn der Service in den Status OK gewechselt ist.",
-      "nav.sub.mtr" : "MTR",
       "site.wtrm.desc.value" : "The value of the element you wish to fill or check.",
+      "nav.sub.mtr" : "MTR",
       "schema.company.attr.max_charts_per_user" : "Maximale Charts pro Benutzer",
       "site.help.doc.host-and-service-dependencies" : "Abhängigkeiten zwischen Hosts und Services",
       "schema.user_chart.text.update" : "Einen Chart aktualisieren",
@@ -11664,7 +11670,7 @@ Bloonix.dashboard = function(o) {
         form.createElement({
             element: "radio",
             name: "width",
-            text: "Dashlet width",
+            text: Text.get("text.dashlet_width"),
             checked: dashlet.outer.data("width"),
             options: [
                 { label:  "1/12", value:  1 },
@@ -11685,7 +11691,7 @@ Bloonix.dashboard = function(o) {
         form.createElement({
             element: "radio",
             name: "height",
-            text: "Dashlet height",
+            text: Text.get("text.dashlet_height"),
             checked: dashlet.outer.data("height"),
             options: [
                 { label:  "1/12", value:  1 },
@@ -11705,7 +11711,7 @@ Bloonix.dashboard = function(o) {
 
         form.button({
             name: "submit",
-            text: "Resize",
+            text: Text.get("word.resize"),
             appendTo: form.form,
             callback: function() {
                 overlay.close();
@@ -12085,26 +12091,46 @@ Bloonix.dashboard = function(o) {
         }).init();
 
         if (action === "configure") {
-            opts = box.outer.data("opts"),
-            onClick = function(value) {
-                overlay.close();
-                self.replaceOrAddDashlet(box, name, {
-                    chart_id: opts.chart_id,
-                    service_id: opts.service_id,
-                    preset: value
-                });
-            };
-        } else {
-            opts = { preset: "3h" };
+            opts = box.outer.data("opts");
+        }
+
+        if (opts.preset === undefined) {
+            opts.preset = "3h";
+        }
+
+        if (opts.show_legend === undefined) {
+            opts.show_legend = 0;
         }
 
         form.createElement({
             element: "radio",
             name: "preset",
-            text: "Preset",
+            text: Text.get("word.Preset"),
             checked: opts.preset,
-            options: [ "3h", "6h", "12h", "18h", "1d" ],
-            onClick: onClick
+            options: [ "3h", "6h", "12h", "18h", "1d" ]
+        });
+
+        form.createElement({
+            element: "radio-yes-no",
+            name: "show_legend",
+            text: Text.get("text.show_legend"),
+            checked: opts.show_legend
+        });
+
+        form.button({
+            name: "submit",
+            text: Text.get("action.submit"),
+            appendTo: form.form,
+            callback: function() {
+                overlay.close();
+                var data = form.getData();
+                self.replaceOrAddDashlet(box, name, {
+                    chart_id: opts.chart_id,
+                    service_id: opts.service_id,
+                    preset: data.preset,
+                    show_legend: data.show_legend
+                });
+            }
         });
 
         if (action === "configure") {
@@ -12153,7 +12179,8 @@ Bloonix.dashboard = function(o) {
                     self.replaceOrAddDashlet(box, name, {
                         chart_id: row.chart_id,
                         service_id: row.service_id,
-                        preset: data.preset
+                        preset: data.preset,
+                        show_legend: data.show_legend
                     });
                 }
             }).create();
@@ -12572,7 +12599,7 @@ Bloonix.dashboard = function(o) {
                                 type: chartType
                             },
                             plotOptions: { animation: options.animation },
-                            legend: { enabled: false },
+                            legend: { enabled: data.show_legend === "1" ? true : false },
                             series: [ ],
                             colors: { },
                             units: { },
@@ -12657,9 +12684,7 @@ Bloonix.dashboard = function(o) {
                                     series: [ ],
                                     colors: { },
                                     units: { },
-                                    legend: {
-                                        enabled: false
-                                    },
+                                    legend: { enabled: data.show_legend === "1" ? true : false },
                                     hasNegativeValues: false
                                 };
         

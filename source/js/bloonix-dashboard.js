@@ -531,7 +531,7 @@ Bloonix.dashboard = function(o) {
         form.createElement({
             element: "radio",
             name: "width",
-            text: "Dashlet width",
+            text: Text.get("text.dashlet_width"),
             checked: dashlet.outer.data("width"),
             options: [
                 { label:  "1/12", value:  1 },
@@ -552,7 +552,7 @@ Bloonix.dashboard = function(o) {
         form.createElement({
             element: "radio",
             name: "height",
-            text: "Dashlet height",
+            text: Text.get("text.dashlet_height"),
             checked: dashlet.outer.data("height"),
             options: [
                 { label:  "1/12", value:  1 },
@@ -572,7 +572,7 @@ Bloonix.dashboard = function(o) {
 
         form.button({
             name: "submit",
-            text: "Resize",
+            text: Text.get("word.resize"),
             appendTo: form.form,
             callback: function() {
                 overlay.close();
@@ -952,26 +952,46 @@ Bloonix.dashboard = function(o) {
         }).init();
 
         if (action === "configure") {
-            opts = box.outer.data("opts"),
-            onClick = function(value) {
-                overlay.close();
-                self.replaceOrAddDashlet(box, name, {
-                    chart_id: opts.chart_id,
-                    service_id: opts.service_id,
-                    preset: value
-                });
-            };
-        } else {
-            opts = { preset: "3h" };
+            opts = box.outer.data("opts");
+        }
+
+        if (opts.preset === undefined) {
+            opts.preset = "3h";
+        }
+
+        if (opts.show_legend === undefined) {
+            opts.show_legend = 0;
         }
 
         form.createElement({
             element: "radio",
             name: "preset",
-            text: "Preset",
+            text: Text.get("word.Preset"),
             checked: opts.preset,
-            options: [ "3h", "6h", "12h", "18h", "1d" ],
-            onClick: onClick
+            options: [ "3h", "6h", "12h", "18h", "1d" ]
+        });
+
+        form.createElement({
+            element: "radio-yes-no",
+            name: "show_legend",
+            text: Text.get("text.show_legend"),
+            checked: opts.show_legend
+        });
+
+        form.button({
+            name: "submit",
+            text: Text.get("action.submit"),
+            appendTo: form.form,
+            callback: function() {
+                overlay.close();
+                var data = form.getData();
+                self.replaceOrAddDashlet(box, name, {
+                    chart_id: opts.chart_id,
+                    service_id: opts.service_id,
+                    preset: data.preset,
+                    show_legend: data.show_legend
+                });
+            }
         });
 
         if (action === "configure") {
@@ -1020,7 +1040,8 @@ Bloonix.dashboard = function(o) {
                     self.replaceOrAddDashlet(box, name, {
                         chart_id: row.chart_id,
                         service_id: row.service_id,
-                        preset: data.preset
+                        preset: data.preset,
+                        show_legend: data.show_legend
                     });
                 }
             }).create();
@@ -1439,7 +1460,7 @@ Bloonix.dashboard = function(o) {
                                 type: chartType
                             },
                             plotOptions: { animation: options.animation },
-                            legend: { enabled: false },
+                            legend: { enabled: data.show_legend === "1" ? true : false },
                             series: [ ],
                             colors: { },
                             units: { },
@@ -1524,9 +1545,7 @@ Bloonix.dashboard = function(o) {
                                     series: [ ],
                                     colors: { },
                                     units: { },
-                                    legend: {
-                                        enabled: false
-                                    },
+                                    legend: { enabled: data.show_legend === "1" ? true : false },
                                     hasNegativeValues: false
                                 };
         

@@ -185,7 +185,7 @@ sub save_dashboard_data {
         if ($row->{name} eq "serviceChart" || $row->{name} eq "userChart") {
             if (defined $row->{opts} && ref $row->{opts} eq "HASH") {
                 foreach my $key (keys %{$row->{opts}}) {
-                    if ($key !~ /^(chart_id|service_id|subkey|preset)\z/) {
+                    if ($key !~ /^(chart_id|service_id|subkey|preset|show_legend)\z/) {
                         return $c->plugin->error->form_parse_errors("opts");
                     }
                 }
@@ -194,8 +194,9 @@ sub save_dashboard_data {
                 my $service_id = $row->{opts}->{service_id};
                 my $subkey = $row->{opts}->{subkey};
                 my $preset = $row->{opts}->{preset};
+                my $show_legend = $row->{opts}->{show_legend};
 
-                if (!$self->check_service_chart($c, $chart_id, $preset, $service_id)) {
+                if (!$self->check_service_chart($c, $chart_id, $preset, $service_id, $show_legend)) {
                    return $c->plugin->error->form_parse_errors("opts");
                 }
             } else {
@@ -228,7 +229,7 @@ sub save_dashboard_data {
 }
 
 sub check_service_chart {
-    my ($self, $c, $chart_id, $preset, $service_id) = @_;
+    my ($self, $c, $chart_id, $preset, $service_id, $show_legend) = @_;
 
     if (!defined $chart_id || $chart_id !~ /^\d+\z/) {
         return undef;
@@ -243,6 +244,10 @@ sub check_service_chart {
             return undef;
         }
     } elsif (!$c->model->database->user_chart->find(condition => [ id => $chart_id, user_id => $c->user->{id} ])) {
+        return undef;
+    }
+
+    if ($show_legend !~ /^(0|1)\z/) {
         return undef;
     }
 

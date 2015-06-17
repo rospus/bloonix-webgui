@@ -197,6 +197,9 @@ info.new_version: <h4>A new version is available</h4>
  <p>A new version of the Bloonix-WebGUI is available!</p>
  <p>Please reload the website!</p>
 
+text.dashlet_width: Dashlet width
+text.dashlet_height: Dashlet height
+text.show_legend: Show legend
 text.change_nav_to_horizontal: Move navigation to the top
 text.change_nav_to_vertical: Move navigation to the left
 text.radial_graph: Radial graph

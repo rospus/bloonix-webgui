@@ -1,3 +1,8 @@
+bloonix-webgui (0.52) released at 2015-06-17
+
+    * Added new feature to the dashboard to show or hide the legend
+      of charts.
+
 bloonix-webgui (0.51) released at 2015-06-17
 
     * Kicked vertical navigation.
