@@ -125,10 +125,6 @@ Bloonix.resizeContent = function() {
                 - $("#content-outer").offset().top
                 - $("#footer-outer").outerHeight()
         );
-
-        $("#content-right").css({
-            "min-height": w - h - f
-        });
     }
 };
 

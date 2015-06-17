@@ -29,7 +29,7 @@ Bloonix.dashboard = function(o) {
     var object = Utils.extend({
         container: $("#content"),
         interval: Bloonix.chartReloadInterval,
-        chartBoxMargin: 10,
+        chartBoxMargin: 6,
         chartBoxPadding: 2,
         chartBoxBorderWidth: 1,
         dashletCounter: 1,
@@ -37,6 +37,7 @@ Bloonix.dashboard = function(o) {
     }, o);
 
     object.create = function() {
+        this.container.addClass("content-no-padding");
         this.dashletOptions = { animation: true };
         this.setTitle();
         this.createNavigation();
@@ -500,7 +501,9 @@ Bloonix.dashboard = function(o) {
 
         dashlet.hoverBoxIcons = Bloonix.createHoverBoxIcons({
             container: dashlet.outer,
-            icons: icons
+            icons: icons,
+            hide: true,
+            hoverElement: dashlet.outer
         });
     };
 
@@ -1436,6 +1439,7 @@ Bloonix.dashboard = function(o) {
                                 type: chartType
                             },
                             plotOptions: { animation: options.animation },
+                            legend: { enabled: false },
                             series: [ ],
                             colors: { },
                             units: { },

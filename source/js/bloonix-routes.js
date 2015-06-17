@@ -200,7 +200,7 @@ Bloonix.initRoutes = function() {
         var path = route.split("/");
 
         Bloonix.clearAll();
-        $("#content").html("");
+        $("#content").html("").removeClass("content-no-padding");
         Bloonix.showNavigation(route, args);
         Bloonix.resizeContent();
 

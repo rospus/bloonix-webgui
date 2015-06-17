@@ -9509,6 +9509,15 @@ Bloonix.createHoverBoxIcons = function(o) {
         .addClass("hover-box-icons")
         .appendTo(o.container);
 
+    if (o.hide) {
+        chartBoxIcons.hide();
+        chartBoxIcons.css({ "background-color": "#ffffff" });
+        $(o.hoverElement).hover(
+            function() { chartBoxIcons.show() },
+            function() { chartBoxIcons.hide() }
+        );
+    }
+
     if (o.addClass) {
         chartBoxIcons.addClass(o.addClass);
     }
@@ -9955,18 +9964,12 @@ Bloonix.checkIfObject = function(value) {
     return true;
 };
 
-Bloonix.getContentSize = function(o) {
-    var opt = Utils.extend({
-        content: "#content",
-        footer: "#footer"
-    }, o);
+Bloonix.getContentSize = function() {
+    var width = $("#content").width();
 
-    var width = $(opt.content).width();
-    var height = $(window).height() - $(opt.content).offset().top;
-
-    if ($(opt.footer).length) {
-        height -= $(opt.footer).outerHeight();
-    }
+    var height = $(window).height()
+        - $("#content-outer").offset().top
+        - $("#footer-outer").outerHeight();
 
     return { width: width, height: height };
 };
@@ -10254,7 +10257,7 @@ Bloonix.initRoutes = function() {
         var path = route.split("/");
 
         Bloonix.clearAll();
-        $("#content").html("");
+        $("#content").html("").removeClass("content-no-padding");
         Bloonix.showNavigation(route, args);
         Bloonix.resizeContent();
 
@@ -10931,10 +10934,6 @@ Bloonix.resizeContent = function() {
                 - $("#content-outer").offset().top
                 - $("#footer-outer").outerHeight()
         );
-
-        $("#content-right").css({
-            "min-height": w - h - f
-        });
     }
 };
 
@@ -11163,7 +11162,7 @@ Bloonix.dashboard = function(o) {
     var object = Utils.extend({
         container: $("#content"),
         interval: Bloonix.chartReloadInterval,
-        chartBoxMargin: 10,
+        chartBoxMargin: 6,
         chartBoxPadding: 2,
         chartBoxBorderWidth: 1,
         dashletCounter: 1,
@@ -11171,6 +11170,7 @@ Bloonix.dashboard = function(o) {
     }, o);
 
     object.create = function() {
+        this.container.addClass("content-no-padding");
         this.dashletOptions = { animation: true };
         this.setTitle();
         this.createNavigation();
@@ -11634,7 +11634,9 @@ Bloonix.dashboard = function(o) {
 
         dashlet.hoverBoxIcons = Bloonix.createHoverBoxIcons({
             container: dashlet.outer,
-            icons: icons
+            icons: icons,
+            hide: true,
+            hoverElement: dashlet.outer
         });
     };
 
@@ -12570,6 +12572,7 @@ Bloonix.dashboard = function(o) {
                                 type: chartType
                             },
                             plotOptions: { animation: options.animation },
+                            legend: { enabled: false },
                             series: [ ],
                             colors: { },
                             units: { },

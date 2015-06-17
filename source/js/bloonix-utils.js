@@ -152,6 +152,15 @@ Bloonix.createHoverBoxIcons = function(o) {
         .addClass("hover-box-icons")
         .appendTo(o.container);
 
+    if (o.hide) {
+        chartBoxIcons.hide();
+        chartBoxIcons.css({ "background-color": "#ffffff" });
+        $(o.hoverElement).hover(
+            function() { chartBoxIcons.show() },
+            function() { chartBoxIcons.hide() }
+        );
+    }
+
     if (o.addClass) {
         chartBoxIcons.addClass(o.addClass);
     }
@@ -598,18 +607,12 @@ Bloonix.checkIfObject = function(value) {
     return true;
 };
 
-Bloonix.getContentSize = function(o) {
-    var opt = Utils.extend({
-        content: "#content",
-        footer: "#footer"
-    }, o);
+Bloonix.getContentSize = function() {
+    var width = $("#content").width();
 
-    var width = $(opt.content).width();
-    var height = $(window).height() - $(opt.content).offset().top;
-
-    if ($(opt.footer).length) {
-        height -= $(opt.footer).outerHeight();
-    }
+    var height = $(window).height()
+        - $("#content-outer").offset().top
+        - $("#footer-outer").outerHeight();
 
     return { width: width, height: height };
 };
