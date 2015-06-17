@@ -1,3 +1,10 @@
+bloonix-webgui (0.51-1) unstable; urgency=low
+
+    * Kicked vertical navigation.
+    * Fixed background color of body.
+
+ -- Jonny Schulz <js@bloonix.de>  Wed, 17 Jun 2015 03:39:49 +0200
+
 bloonix-webgui (0.50-1) unstable; urgency=low
 
     * Fixed "CASCADE NULL" in schema-pg.sql.

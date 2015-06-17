@@ -1,3 +1,8 @@
+bloonix-webgui (0.51) released at 2015-06-17
+
+    * Kicked vertical navigation.
+    * Fixed background color of body.
+
 bloonix-webgui (0.50) released at 2015-06-16
 
     * Fixed "CASCADE NULL" in schema-pg.sql.
