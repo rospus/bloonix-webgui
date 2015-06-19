@@ -279,6 +279,7 @@ Bloonix.showGroupSubNavigation = function() {
         ]
     }).create();
 
+    $("#nav-top-3").show();
     Bloonix.resizeContent();
 };
 
@@ -306,6 +307,7 @@ Bloonix.showContactgroupSubNavigation = function() {
         ]
     }).create();
 
+    $("#nav-top-3").show();
     Bloonix.resizeContent();
 };
 

@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.52
+Version: 0.53
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -61,6 +61,9 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Sat Jun 20 2015 Jonny Schulz <js@bloonix.de> - 0.53-1
+- The sub navigations of administration/groups and contactgroups
+  was hidden.
 * Wed Jun 17 2015 Jonny Schulz <js@bloonix.de> - 0.52-1
 - Added new feature to the dashboard to show or hide the legend
   of charts.

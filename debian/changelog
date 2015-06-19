@@ -1,3 +1,10 @@
+bloonix-webgui (0.53-1) unstable; urgency=low
+
+    * The sub navigations of administration/groups and contactgroups
+      was hidden.
+
+ -- Jonny Schulz <js@bloonix.de>  Sat, 20 Jun 2015 00:49:58 +0200
+
 bloonix-webgui (0.52-1) unstable; urgency=low
 
     * Added new feature to the dashboard to show or hide the legend

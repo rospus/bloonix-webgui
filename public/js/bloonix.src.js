@@ -6084,7 +6084,6 @@ Form.prototype.createElement = function(e) {
         this.slider(copy);
     }
 
-console.log("e", e);
     if (e.descInfo) {
         Utils.create("div")
             .addClass(this.descInfoClass)
@@ -10677,6 +10676,7 @@ Bloonix.showGroupSubNavigation = function() {
         ]
     }).create();
 
+    $("#nav-top-3").show();
     Bloonix.resizeContent();
 };
 
@@ -10704,6 +10704,7 @@ Bloonix.showContactgroupSubNavigation = function() {
         ]
     }).create();
 
+    $("#nav-top-3").show();
     Bloonix.resizeContent();
 };
 

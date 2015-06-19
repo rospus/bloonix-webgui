@@ -1,3 +1,8 @@
+bloonix-webgui (0.53) released at 2015-06-20
+
+    * The sub navigations of administration/groups and contactgroups
+      was hidden.
+
 bloonix-webgui (0.52) released at 2015-06-17
 
     * Added new feature to the dashboard to show or hide the legend

@@ -1459,7 +1459,6 @@ Form.prototype.createElement = function(e) {
         this.slider(copy);
     }
 
-console.log("e", e);
     if (e.descInfo) {
         Utils.create("div")
             .addClass(this.descInfoClass)
