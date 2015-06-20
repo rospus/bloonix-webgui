@@ -938,7 +938,8 @@ Bloonix.dashboard = function(o) {
     object.selectChart = function(box, name, type, action) {
         var self = this,
             content = Utils.create("div"),
-            opts, onClick;
+            opts = {},
+            onClick;
 
         var overlay = new Overlay({
             title: Text.get("text.dashboard.dashlet_select_chart_title"),
@@ -952,7 +953,7 @@ Bloonix.dashboard = function(o) {
         }).init();
 
         if (action === "configure") {
-            opts = box.outer.data("opts");
+            Utils.extend(opts, box.outer.data("opts"));
         }
 
         if (opts.preset === undefined) {

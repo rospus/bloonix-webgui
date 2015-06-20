@@ -1,3 +1,7 @@
+bloonix-webgui (0.55) released at 2015-06-20
+
+    * Fixed service chart creation on the dashboard.
+
 bloonix-webgui (0.54) released at 2015-06-20
 
     * Improved random string generation in sha256 and sha512.
