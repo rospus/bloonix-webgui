@@ -1,3 +1,9 @@
+bloonix-webgui (0.55-1) unstable; urgency=low
+
+    * Fixed service chart creation on the dashboard.
+
+ -- Jonny Schulz <js@bloonix.de>  Sat, 20 Jun 2015 17:40:31 +0200
+
 bloonix-webgui (0.54-1) unstable; urgency=low
 
     * Improved random string generation in sha256 and sha512.
