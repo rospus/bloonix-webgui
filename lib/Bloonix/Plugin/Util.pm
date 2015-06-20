@@ -18,13 +18,13 @@ sub new {
 
 sub sha256 {
     my ($self, $string) = @_;
-    $string ||= time.rand(9_999_999);
+    $string ||= $self->pwgen(128).$$.time.rand().rand();
     return sha256_hex($string)
 }
 
 sub sha512 {
     my ($self, $string) = @_;
-    $string ||= time.rand().rand();
+    $string ||= $self->pwgen(128).$$.time.rand().rand();
     return sha512_hex($string)
 }
 

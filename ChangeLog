@@ -1,3 +1,7 @@
+bloonix-webgui (0.54) released at 2015-XX-XX
+
+    * Improved random string generation in sha256 and sha512.
+
 bloonix-webgui (0.53) released at 2015-06-20
 
     * The sub navigations of administration/groups and contactgroups
