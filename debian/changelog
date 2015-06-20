@@ -1,3 +1,9 @@
+bloonix-webgui (0.54-1) unstable; urgency=low
+
+    * Improved random string generation in sha256 and sha512.
+
+ -- Jonny Schulz <js@bloonix.de>  Sat, 20 Jun 2015 17:17:23 +0200
+
 bloonix-webgui (0.53-1) unstable; urgency=low
 
     * The sub navigations of administration/groups and contactgroups
