@@ -23,7 +23,13 @@ sub new {
             parent => 0,
             element => 1,
             value => 1,
+            event => 0,
             hidden => 0
+        ],
+        doTriggerEvent => [
+            parent => 0,
+            element => 1,
+            event => 1
         ],
         doClick => [
             parent => 0,
@@ -55,6 +61,12 @@ sub new {
         ],
         doSleep => [
             ms => 1
+        ],
+        doSwitchToFrame => [
+            name => 1
+        ],
+        doSwitchToParentFrame => [
+            novalue => 0
         ],
         checkUrl => [
             url => 1,
@@ -194,7 +206,9 @@ sub validate_step {
             || ($param eq "ms" && defined $step->{$param} && $step->{$param} !~ /^[1-9]\d{1,4}\z/)
             || ($param eq "url" && defined $step->{$param} && $step->{$param} !~ m!^https{0,1}://[^\s]+\.[^\s+]+\z!)
             || ($param eq "parent" && defined $step->{$param} && $step->{$param} !~ /^#[^\s]+\z/)
-            || ($param eq "element" && defined $step->{$param} && $step->{$param} !~ /^(?:[^\s]+|<\s*[a-zA-Z0-9]{1,16}(?:\[\d{1,2}\]){0,1}(?:\s+[a-zA-Z0-9_\-]+=(?:'[^']*'|"[^"]*"))*\s*>)\z/);
+            || ($param eq "element" && defined $step->{$param} && $step->{$param} !~ /^(?:[^\s]+|<\s*[a-zA-Z0-9]{1,16}(?:\[\d{1,2}\]){0,1}(?:\s+[a-zA-Z0-9_\-]+=(?:'[^']*'|"[^"]*"))*\s*>)\z/)
+            || ($param eq "novalue" && defined $step->{$param} && length $step->{$param})
+            || ($param eq "event" && defined $step->{$param} && $step->{$param} !~ /^(change|keyup|keydown|keypress|focus)\z/);
     }
 
     return @errors ? \@errors : undef;

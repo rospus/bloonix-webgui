@@ -806,6 +806,7 @@ var Lang = {
       "text.report.availability.lt15" : "Between 0 and 15 minutes",
       "schema.host.attr.os_manufacturer" : "OS manufacturer",
       "word.Language" : "Language",
+      "site.wtrm.command.doTriggerEvent" : "Trigger event <b>%s</b> on element <b>%s</b>",
       "schema.company.text.list" : "Overview of all companies",
       "err-701" : "Incorrect password!",
       "schema.event.attr.last_status" : "Last status",
@@ -826,8 +827,8 @@ var Lang = {
       "nav.sub.locations" : "Locations",
       "schema.contactgroup.text.service_nonmembers" : "Services not in contact group",
       "schema.user.desc.comment" : "This field can be used for internal comment about the user.",
-      "schema.service.info.notification_disabled" : "Notifications are disabled of the service.",
       "schema.company.attr.max_dependencies_per_host" : "Max dependencies per host",
+      "schema.service.info.notification_disabled" : "Notifications are disabled of the service.",
       "err-845" : "Sorry, but you cannot create more than %s groups!",
       "schema.service.desc.default_check_type_location" : "Your service is checked from the following checkpoint:",
       "site.help.doc.host-parameter" : "Host Parameter im Detail",
@@ -840,6 +841,7 @@ var Lang = {
       "schema.user_chart.attr.yaxis_label" : "Y-axis label",
       "schema.host_template.text.setting" : "Template settings",
       "word.Minutes" : "Minutes",
+      "site.wtrm.action.doSwitchToFrame" : "<b>Switch</b> to frame",
       "schema.chart.attr.from" : "From",
       "schema.dependency.text.for_node" : "Dependencies for node <b>%s</b>",
       "text.report.availability.EV-LT30" : "Number of events with a status duration less than 30 minutes.",
@@ -885,6 +887,7 @@ var Lang = {
       "schema.chart.text.multiple_view" : "Chart view",
       "schema.plugin.attr.info" : "Information",
       "schema.location.attr.is_default" : "Default location",
+      "site.wtrm.attr.event" : "Event",
       "schema.plugin_stats.attr.datatype" : "Data type",
       "schema.timeperiod.text.list" : "Overview of all timeperiods",
       "schema.plugin_stats.attr.alias" : "Name",
@@ -951,6 +954,7 @@ var Lang = {
       "schema.service.text.host_template" : "Host template",
       "nav.sub.charts" : "Charts",
       "schema.location.attr.country" : "Country",
+      "site.wtrm.action.doTriggerEvent" : "Trigger an event on a element",
       "schema.service.text.no_command_options" : "This check has no settings.",
       "schema.service.desc.comment" : "This is a short internal comment to the check.",
       "schema.chart.text.multiselect" : "Select charts for multiple hosts",
@@ -1015,8 +1019,9 @@ var Lang = {
       "schema.service.text.multiple_volatile" : "Clear the volatile status of multiple services",
       "schema.host.attr.id" : "Host ID",
       "schema.service.attr.agent_id" : "Agent location",
-      "schema.user_chart.text.user_chart" : "Chart editor",
       "schema.service.desc.default_check_type_title" : "Default checkpoint",
+      "schema.user_chart.text.user_chart" : "Chart editor",
+      "site.wtrm.desc.name" : "This is the name of the element.",
       "schema.chart.attr.subtitle" : "Chart subtitle",
       "nav.sub.contactgroup_settings" : "Contact group settings",
       "schema.service.text.delete" : "Delete service",
@@ -1270,9 +1275,9 @@ var Lang = {
       "schema.service.action.multiple_force_next_check" : "Reset the interval and force the next check of the service",
       "schema.service.info.inactive" : "The service is inactive.",
       "site.wtrm.attr.userAgent" : "User-Agent",
-      "site.wtrm.command.doFill" : "Fill element <b>%s</b> with value <b>%s</b>",
-      "schema.user_chart.desc.subtitle" : "The title of the chart.",
       "schema.service.attr.sms_soft_interval" : "Notification interval for SMS (soft)",
+      "schema.user_chart.desc.subtitle" : "The title of the chart.",
+      "site.wtrm.command.doFill" : "Fill element <b>%s</b> with value <b>%s</b>",
       "schema.host.desc.coordinates" : "Select the location of the host by country code.",
       "site.wtrm.action.checkIfElementIsSelected" : "Check if a <b>value</b> is <b>selected</b> in a selectbox",
       "info.search_syntax" : "<p><b>Search syntax:</b></p>\n<p>planet <i>AND</i> mars</p>\n<p>mars <i>OR</i> pluto</p>\n<p>planet <i>AND</i> mars <i>OR</i> pluto</p>",
@@ -1304,6 +1309,7 @@ var Lang = {
       "schema.service.attr.sms_warnings" : "Send WARNINGS per SMS",
       "schema.group.text.create" : "Create a new group",
       "schema.contact.text.delete" : "Delete contact",
+      "site.wtrm.attr.name" : "Name",
       "schema.service.attr.last_sms" : "Last notification per SMS",
       "schema.host.attr.hw_product" : "HW product",
       "schema.timeslice.attr.timeslice" : "Timeslice",
@@ -1370,6 +1376,7 @@ var Lang = {
       "text.chart_info" : "Chart information",
       "schema.group.text.may_modify_services" : "May modify services",
       "schema.host.attr.data_retention" : "Data retention",
+      "site.wtrm.command.doSwitchToParentFrame" : "Switch to parent frame",
       "schema.service.action.disable_notifications_multiple" : "Disable notifications of the selected services",
       "action.redirect" : "Redirect",
       "schema.sms_send.attr.send_to" : "Receipient",
@@ -1389,8 +1396,8 @@ var Lang = {
       "schema.service.desc.fd_time_range" : "This is the period the flap detection checks for status switches.",
       "action.login" : "Login",
       "schema.user.text.is_logged_in" : "Logged in",
-      "schema.company.attr.max_contacts" : "Max contacts",
       "site.wtrm.desc.status" : "Enter the expected http status for the URL.",
+      "schema.company.attr.max_contacts" : "Max contacts",
       "schema.location.text.create" : "Create a new location",
       "schema.contact.text.timeperiod_type" : "Include / Exclude",
       "text.report.availability.h15" : "15:00 - 15:59",
@@ -1424,6 +1431,7 @@ var Lang = {
       "schema.service.attr.active" : "Active",
       "schema.group.desc.description" : "Enter a short description about the group.",
       "schema.host.attr.notification" : "Notifications enabled",
+      "site.wtrm.command.doSwitchToFrame" : "Switch to frame <b>%s</b>",
       "schema.service.attr.mail_ok" : "Send OK notifications per mail",
       "schema.service.text.multiple_force_next_check" : "Reset the interval and force the next check of the service",
       "site.wtrm.desc.userAgent" : "This is the User-Agent to send for all requests.",
@@ -1433,9 +1441,9 @@ var Lang = {
       "word.second" : "second",
       "schema.hs_downtime.attr.description" : "Description",
       "schema.service.text.host_alive_check" : "Host-Alive-Check",
+      "site.wtrm.desc.parent" : "It's possible to set a parent ID. The ID, class or name is searched within the element of the parent ID.",
       "text.filter_by_category_dots" : "Filter by category ...",
       "schema.service.desc.multiple_check_type_title" : "Multiple checkpoints",
-      "site.wtrm.desc.parent" : "It's possible to set a parent ID. The ID, class or name is searched within the element of the parent ID.",
       "text.report.availability.h01" : "01:00 - 01:59",
       "nav.sub.timeperiods" : "Timeperiods",
       "nav.sub.groups" : "Groups",
@@ -1534,6 +1542,7 @@ var Lang = {
       "schema.contactgroup.text.contact_members" : "Contacts in contact group",
       "schema.contactgroup.text.group_members" : "Members of contact group '<b>%s</b>'",
       "schema.service.attr.description" : "Description",
+      "site.wtrm.action.doSwitchToParentFrame" : "<b>Switch</b> to parent frame",
       "text.report.availability.volatile" : "Volatile",
       "schema.service.attr.status_since" : "Status since",
       "err-846" : "Sorry, but you cannot create more than %s users!",
@@ -1614,6 +1623,7 @@ var Lang = {
       "schema.service.attr.sms_ok" : "Send OK notifications per SMS",
       "schema.host_template.test.host_nonmembers" : "Hosts not in group",
       "site.help.doc.bloonix-agent-installation" : "Den Bloonix-Agenten installieren",
+      "site.wtrm.desc.event" : "Trigger an event.",
       "schema.roster.attr.description" : "Description",
       "nav.sub.host_group_settings" : "Host group settings",
       "schema.host.desc.device_class" : "e.g.<br/>/Server/Linux/Debian<br/>/Server/Windows/Windows 2008<br/>/Network/Router<br/>/Network/Switch<br/>/Printer",
@@ -1785,13 +1795,13 @@ var Lang = {
       "schema.host_template.text.delete_service" : "Delete a service from the template",
       "word.hours" : "hours",
       "schema.host_template.text.list" : "Overview of all host templates",
-      "word.days" : "days",
       "schema.service.attr.is_volatile" : "Is the service volatile",
+      "word.days" : "days",
       "word.debug" : "Debug",
       "schema.service.desc.acknowledged" : "This option is useful if a service is not OK and if you want to disable the notifications temporary. The notifications will be enabled again if the services switched to the status OK.",
       "text.report.availability.LT15" : "Filter events with a status duration less than 15 minutes.",
-      "site.wtrm.desc.value" : "The value of the element you wish to fill or check.",
       "nav.sub.mtr" : "MTR",
+      "site.wtrm.desc.value" : "The value of the element you wish to fill or check.",
       "schema.company.attr.max_charts_per_user" : "Max charts per user",
       "site.help.doc.host-and-service-dependencies" : "Abhängigkeiten zwischen Hosts und Services",
       "schema.user_chart.text.update" : "Update a chart",
@@ -1874,6 +1884,7 @@ var Lang = {
       "text.report.availability.lt15" : "Zwischen 0 und 15 Minuten",
       "schema.host.attr.os_manufacturer" : "OS Hersteller",
       "word.Language" : "Sprache",
+      "site.wtrm.command.doTriggerEvent" : "Trigger event <b>%s</b> on element <b>%s</b>",
       "schema.company.text.list" : "Übersicht über alle Unternehmen",
       "err-701" : "Das Passwort ist ungültig!",
       "schema.event.attr.last_status" : "Letzter Status",
@@ -1894,8 +1905,8 @@ var Lang = {
       "nav.sub.locations" : "Lokationen",
       "schema.contactgroup.text.service_nonmembers" : "Services, die nicht der Kontaktgruppe angehören",
       "schema.user.desc.comment" : "Dieses Feld kann für interne Kommentare über den Benutzer verwendet werden.",
-      "schema.service.info.notification_disabled" : "Die Benachrichtigungen sind ausgeschaltet.",
       "schema.company.attr.max_dependencies_per_host" : "Maximale Abhängigkeiten pro Host",
+      "schema.service.info.notification_disabled" : "Die Benachrichtigungen sind ausgeschaltet.",
       "err-845" : "Sorry, aber Sie dürfen nicht mehr als %s Gruppen erstellen!",
       "schema.service.desc.default_check_type_location" : "Der Messpunkt für Standardchecks ist:",
       "site.help.doc.host-parameter" : "Host Parameter im Detail",
@@ -1908,6 +1919,7 @@ var Lang = {
       "schema.user_chart.attr.yaxis_label" : "Label der Y-Achse",
       "schema.host_template.text.setting" : "Einstellungen des Template",
       "word.Minutes" : "Minuten",
+      "site.wtrm.action.doSwitchToFrame" : "<b>Switch</b> to frame",
       "schema.chart.attr.from" : "Von",
       "schema.dependency.text.for_node" : "Abhängigkeiten für Knoten %s",
       "text.report.availability.EV-LT30" : "Anzahl von Ereignissen mit einer Statusdauer kleiner als 30 Minuten. ",
@@ -1953,6 +1965,7 @@ var Lang = {
       "schema.chart.text.multiple_view" : "Chart Ansicht",
       "schema.plugin.attr.info" : "Information",
       "schema.location.attr.is_default" : "Standard Lokation",
+      "site.wtrm.attr.event" : "Event",
       "schema.plugin_stats.attr.datatype" : "Datentyp",
       "schema.timeperiod.text.list" : "Übersicht über alle Zeitpläne",
       "schema.plugin_stats.attr.alias" : "Name",
@@ -2019,6 +2032,7 @@ var Lang = {
       "schema.service.text.host_template" : "Host template",
       "nav.sub.charts" : "Charts",
       "schema.location.attr.country" : "Land",
+      "site.wtrm.action.doTriggerEvent" : "Trigger an event on a element",
       "schema.service.text.no_command_options" : "Dieser Check hat keine Einstellungen.",
       "schema.service.desc.comment" : "Dies ist ein beliebiges Kommentar zum Service.",
       "schema.chart.text.multiselect" : "Chartauswahl für mehrere Hosts",
@@ -2083,8 +2097,9 @@ var Lang = {
       "schema.service.text.multiple_volatile" : "Den flüchtigen Status mehrerer Services aufheben",
       "schema.host.attr.id" : "Host ID",
       "schema.service.attr.agent_id" : "Standort des Agenten",
-      "schema.user_chart.text.user_chart" : "User charts",
       "schema.service.desc.default_check_type_title" : "Standard Messpunkt",
+      "schema.user_chart.text.user_chart" : "User charts",
+      "site.wtrm.desc.name" : "This is the name of the element.",
       "schema.chart.attr.subtitle" : "Chart Untertitel",
       "nav.sub.contactgroup_settings" : "Kontaktgruppen Einstellungen",
       "schema.service.text.delete" : "Den Service löschen",
@@ -2338,9 +2353,9 @@ var Lang = {
       "schema.service.action.multiple_force_next_check" : "Erzwinge den nächsten Check des Service",
       "schema.service.info.inactive" : "Der Service ist inaktiv.",
       "site.wtrm.attr.userAgent" : "User-Agent",
-      "site.wtrm.command.doFill" : "Fill element <b>%s</b> with value <b>%s</b>",
-      "schema.user_chart.desc.subtitle" : "Der Untertitle des Chart.",
       "schema.service.attr.sms_soft_interval" : "Benachrichtigungsintervall für SMS (soft)",
+      "schema.user_chart.desc.subtitle" : "Der Untertitle des Chart.",
+      "site.wtrm.command.doFill" : "Fill element <b>%s</b> with value <b>%s</b>",
       "schema.host.desc.coordinates" : "Der Standort des Hosts nach Länderkürzel.",
       "site.wtrm.action.checkIfElementIsSelected" : "Check if a <b>value</b> is <b>selected</b> in a selectbox",
       "info.search_syntax" : "<p><b>Syntax der Suche:</b></p>\n<p>planet <i>AND</i> mars</p>\n<p>mars <i>OR</i> pluto</p>\n<p>planet <i>AND</i> mars <i>OR</i> pluto</p>",
@@ -2371,6 +2386,7 @@ var Lang = {
       "schema.service.attr.sms_warnings" : "Benachrichtigungen für Warnmeldungen per SMS versenden",
       "schema.group.text.create" : "Eine neue Gruppe erstellen",
       "schema.contact.text.delete" : "Kontakt löschen",
+      "site.wtrm.attr.name" : "Name",
       "schema.service.attr.last_sms" : "Letzte Benachrichtigung per SMS",
       "schema.host.attr.hw_product" : "HW Produkt",
       "schema.timeslice.attr.timeslice" : "Zeitabschnitt",
@@ -2437,6 +2453,7 @@ var Lang = {
       "text.chart_info" : "Chart Informationen",
       "schema.group.text.may_modify_services" : "Darf Services ändern",
       "schema.host.attr.data_retention" : "Daten Aufbewahrungszeit",
+      "site.wtrm.command.doSwitchToParentFrame" : "Switch to parent frame",
       "schema.service.action.disable_notifications_multiple" : "Benachrichtigungen ausschalten für die selektierten Services",
       "action.redirect" : "Umleiten",
       "schema.sms_send.attr.send_to" : "Empfänger",
@@ -2491,6 +2508,7 @@ var Lang = {
       "schema.service.attr.active" : "Aktiv",
       "schema.group.desc.description" : "Gebe eine kleine Beschreibung zum Unternehmen ein.",
       "schema.host.attr.notification" : "Benachrichtigungen aktiv",
+      "site.wtrm.command.doSwitchToFrame" : "Switch to frame <b>%s</b>",
       "schema.service.attr.mail_ok" : "Benachrichtigungen für OK Meldungen per E-Mail versenden",
       "schema.service.text.multiple_force_next_check" : "Erzwinge einen Check aller Services so bald wie möglich",
       "site.wtrm.desc.userAgent" : "This is the User-Agent to send for all requests.",
@@ -2600,6 +2618,7 @@ var Lang = {
       "schema.contactgroup.text.contact_members" : "Kontakte, die der Kontaktgruppe angehören",
       "schema.contactgroup.text.group_members" : "Mitglieder der Kontaktgruppe",
       "schema.service.attr.description" : "Beschreibung",
+      "site.wtrm.action.doSwitchToParentFrame" : "<b>Switch</b> to parent frame",
       "text.report.availability.volatile" : "Flüchtig",
       "schema.service.attr.status_since" : "Status seit",
       "err-846" : "Sorry, aber Sie dürfen nicht mehr als %s Benutzer erstellen!",
@@ -2680,6 +2699,7 @@ var Lang = {
       "schema.service.attr.sms_ok" : "Benachrichtigungen für OK Meldungen per SMS versenden",
       "schema.host_template.test.host_nonmembers" : "Hosts nicht in der Gruppe",
       "site.help.doc.bloonix-agent-installation" : "Den Bloonix-Agenten installieren",
+      "site.wtrm.desc.event" : "Trigger an event.",
       "schema.roster.attr.description" : "Beschreibung",
       "nav.sub.host_group_settings" : "Gruppeneinstellungen für Hosts",
       "schema.host.desc.device_class" : "z.B.<br/>/Server/Linux/Debian<br/>/Server/Windows/Windows 2008<br/>/Network/Router<br/>/Network/Switch<br/>/Printer",
@@ -2851,13 +2871,13 @@ var Lang = {
       "schema.host_template.text.delete_service" : "Einen Service aus dem Template löschen",
       "word.hours" : "Stunden",
       "schema.host_template.text.list" : "Übersicht über alle Host-Templates",
-      "word.days" : "Tage",
       "schema.service.attr.is_volatile" : "Ist der Service flüchtig (volatile)",
+      "word.days" : "Tage",
       "word.debug" : "Debug",
-      "text.report.availability.LT15" : "Filterung von Ereignissen mit einer Statusdauer kleiner als 15 Minuten.",
       "schema.service.desc.acknowledged" : "Diese Option ist hilfreich wenn ein Service nicht OK ist und Sie das Benachrichtiungen temporär ausschalten möchten. Die Benachrichtigungen werden automatisch wieder eingeschaltet, wenn der Service in den Status OK gewechselt ist.",
-      "site.wtrm.desc.value" : "The value of the element you wish to fill or check.",
+      "text.report.availability.LT15" : "Filterung von Ereignissen mit einer Statusdauer kleiner als 15 Minuten.",
       "nav.sub.mtr" : "MTR",
+      "site.wtrm.desc.value" : "The value of the element you wish to fill or check.",
       "schema.company.attr.max_charts_per_user" : "Maximale Charts pro Benutzer",
       "site.help.doc.host-and-service-dependencies" : "Abhängigkeiten zwischen Hosts und Services",
       "schema.user_chart.text.update" : "Einen Chart aktualisieren",
@@ -23298,6 +23318,11 @@ Bloonix.WTRM = function(o) {
     object.createOrUpdateStep = function(action, id) {
         this.infoBox.hide();
 
+        if (action === "doSwitchToParentFrame") {
+            this.addStep(action, {});
+            return;
+        }
+
         var self = this,
             config = this.actionsByName[action],
             content = Utils.create("div").css({ "margin-bottom": "60px" });
@@ -23331,6 +23356,15 @@ Bloonix.WTRM = function(o) {
                     text: Text.get("site.wtrm.attr."+ name),
                     desc: Text.get("site.wtrm.desc."+ name),
                     checked: value === "1" ? "1" : 0
+                });
+            } else if (name == "event") {
+                form.createElement({
+                    element: "radio",
+                    name: name,
+                    text: Text.get("site.wtrm.attr."+ name),
+                    desc: Text.get("site.wtrm.desc."+ name),
+                    checked: value,
+                    options: [ "change", "keypress", "keyup", "keydown", "focus" ]
                 });
             } else {
                 form.createElement({
@@ -23737,6 +23771,9 @@ Bloonix.WtrmAction = {
     doFill: function(item) {
         return Text.get("site.wtrm.command.doFill", [ Bloonix.getWtrmElement(item), item.hidden === "1" ? "xxxxxx" : item.value ]);
     },
+    doTriggerEvent: function(item) {
+        return Text.get("site.wtrm.command.doTriggerEvent", [ item["event"], Bloonix.getWtrmElement(item) ]);
+    },
     doClick: function(item) {
         return Text.get("site.wtrm.command.doClick", [ Bloonix.getWtrmElement(item) ]);
     },
@@ -23760,6 +23797,12 @@ Bloonix.WtrmAction = {
     },
     doSleep: function(item) {
         return Text.get("site.wtrm.command.doSleep", [ item.ms ]);
+    },
+    doSwitchToFrame: function(item) {
+        return Text.get("site.wtrm.command.doSwitchToFrame", [ item.name ]);
+    },
+    doSwitchToParentFrame: function() {
+        return Text.get("site.wtrm.command.doSwitchToParentFrame");
     },
     checkUrl: function(item) {
         if (item.contentType) {

@@ -134,6 +134,11 @@ Bloonix.WTRM = function(o) {
     object.createOrUpdateStep = function(action, id) {
         this.infoBox.hide();
 
+        if (action === "doSwitchToParentFrame") {
+            this.addStep(action, {});
+            return;
+        }
+
         var self = this,
             config = this.actionsByName[action],
             content = Utils.create("div").css({ "margin-bottom": "60px" });
@@ -167,6 +172,15 @@ Bloonix.WTRM = function(o) {
                     text: Text.get("site.wtrm.attr."+ name),
                     desc: Text.get("site.wtrm.desc."+ name),
                     checked: value === "1" ? "1" : 0
+                });
+            } else if (name == "event") {
+                form.createElement({
+                    element: "radio",
+                    name: name,
+                    text: Text.get("site.wtrm.attr."+ name),
+                    desc: Text.get("site.wtrm.desc."+ name),
+                    checked: value,
+                    options: [ "change", "keypress", "keyup", "keydown", "focus" ]
                 });
             } else {
                 form.createElement({
@@ -573,6 +587,9 @@ Bloonix.WtrmAction = {
     doFill: function(item) {
         return Text.get("site.wtrm.command.doFill", [ Bloonix.getWtrmElement(item), item.hidden === "1" ? "xxxxxx" : item.value ]);
     },
+    doTriggerEvent: function(item) {
+        return Text.get("site.wtrm.command.doTriggerEvent", [ item["event"], Bloonix.getWtrmElement(item) ]);
+    },
     doClick: function(item) {
         return Text.get("site.wtrm.command.doClick", [ Bloonix.getWtrmElement(item) ]);
     },
@@ -596,6 +613,12 @@ Bloonix.WtrmAction = {
     },
     doSleep: function(item) {
         return Text.get("site.wtrm.command.doSleep", [ item.ms ]);
+    },
+    doSwitchToFrame: function(item) {
+        return Text.get("site.wtrm.command.doSwitchToFrame", [ item.name ]);
+    },
+    doSwitchToParentFrame: function() {
+        return Text.get("site.wtrm.command.doSwitchToParentFrame");
     },
     checkUrl: function(item) {
         if (item.contentType) {

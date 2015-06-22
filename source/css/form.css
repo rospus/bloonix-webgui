@@ -68,10 +68,10 @@
     -moz-transition: all ease-in-out 0s;
 }
 .select-container ul li * {
-    transition: all ease-in-out 0s;
-    -o-transition: all ease-in-out 0s;
-    -webkit-transition: all ease-in-out 0s;
-    -moz-transition: all ease-in-out 0s;
+    transition: none;
+    -o-transition: none;
+    -webkit-transition: none;
+    -moz-transition: none;
 }
 .select-container ul li[selected] {
     background-color: #009ac8;

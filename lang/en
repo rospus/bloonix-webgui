@@ -1094,6 +1094,7 @@ site.wtrm.action.doAuth: Set auth basic <b>username</b> and <b>password</b>
 site.wtrm.action.doUserAgent: Set the <b>user agent</b> for the request
 site.wtrm.action.doUrl: Go to <b>URL</b>
 site.wtrm.action.doFill: Fill data into a <b>input</b> field or <b>textarea</b>
+site.wtrm.action.doTriggerEvent: Trigger an event on a element
 site.wtrm.action.doClick: <b>Click</b> on a element
 site.wtrm.action.doSubmit: <b>Submit</b> a form
 site.wtrm.action.doCheck: Check a <b>radio button</b> or <b>checkbox</b>
@@ -1101,6 +1102,8 @@ site.wtrm.action.doUncheck: Uncheck a <b>radio button</b> or <b>checkbox</b>
 site.wtrm.action.doSelect: <b>Select</b> a value from a selectbox
 site.wtrm.action.doWaitForElement: Wait for element
 site.wtrm.action.doSleep: <b>Sleep</b> a while
+site.wtrm.action.doSwitchToFrame: <b>Switch</b> to frame
+site.wtrm.action.doSwitchToParentFrame: <b>Switch</b> to parent frame
 site.wtrm.action.checkUrl: Check the <b>URL</b> in the address bar
 site.wtrm.action.checkIfElementExists: Check if an <b>element exists</b>
 site.wtrm.action.checkIfElementNotExists: Check if an <b>element does <i>NOT</i> exists</b>
@@ -1129,9 +1132,11 @@ site.wtrm.attr.parent: Parent ID
 site.wtrm.attr.element: Element
 site.wtrm.attr.value: Value
 site.wtrm.attr.hidden: Hide
+site.wtrm.attr.event: Event
 site.wtrm.attr.text: Inner text
 site.wtrm.attr.html: Inner HTML
 site.wtrm.attr.ms: Milliseconds
+site.wtrm.attr.name: Name
 site.wtrm.desc.username: This username for the auth basic authentification.
 site.wtrm.desc.password: This password for the auth basic authentification.
 site.wtrm.desc.userAgent: This is the User-Agent to send for all requests.
@@ -1146,9 +1151,11 @@ site.wtrm.desc.element: The element you want to select. As example: #id, .class,
  &lt;a a="hello" b="world"&gt; - search for a 'a' tag with the specified attributes and values
 site.wtrm.desc.value: The value of the element you wish to fill or check.
 site.wtrm.desc.hidden: Do you want to hide the value because it's a password or a secret string?
+site.wtrm.desc.event: Trigger an event.
 site.wtrm.desc.text: The inner text of an element you wish to check.
 site.wtrm.desc.html: The inner HTML of an element you wish to check.
 site.wtrm.desc.ms: This is the time in milliseconds to sleep between actions.
+site.wtrm.desc.name: This is the name of the element.
 site.wtrm.placeholder.username: Username
 site.wtrm.placeholder.password: Secret
 site.wtrm.placeholder.userAgent: User-Agent
@@ -1166,6 +1173,7 @@ site.wtrm.command.doAuth: Use auth basic with username <b>%s</b> and password <b
 site.wtrm.command.doUserAgent: Set the user agent to <b>%s</b>
 site.wtrm.command.doUrl: Go to URL <b>%s</b>
 site.wtrm.command.doFill: Fill element <b>%s</b> with value <b>%s</b>
+site.wtrm.command.doTriggerEvent: Trigger event <b>%s</b> on element <b>%s</b>
 site.wtrm.command.doClick: Click on element <b>%s</b>
 site.wtrm.command.doSubmit: Submit form <b>%s</b>
 site.wtrm.command.doCheck: Check the radio button or checkbox of element <b>%s</b> with value <b>%s</b>
@@ -1174,6 +1182,8 @@ site.wtrm.command.doSelect: Select the value <b>%s</b> from the selectbox <b>%s<
 site.wtrm.command.doWaitForElement: Wait for element <b>%s</b>
 site.wtrm.command.doWaitForElementWithText: Wait for element <b>%s</b> with text <b>%s</b>
 site.wtrm.command.doSleep: Sleep <b>%s</b>ms
+site.wtrm.command.doSwitchToFrame: Switch to frame <b>%s</b>
+site.wtrm.command.doSwitchToParentFrame: Switch to parent frame
 site.wtrm.command.checkUrl: Check if the URL in the address bar is <b>%s</b>
 site.wtrm.command.checkUrlWithContentType: Check if the URL <b>%s</b> has content type %s
 site.wtrm.command.checkIfElementExists: Check if the element <b>%s</b> exists

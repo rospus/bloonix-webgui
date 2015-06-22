@@ -50,7 +50,7 @@ sub test {
     my $wtrm_api_key = $c->config->{wtrm_api_key};
     my $data = $c->req->jsondata;
     $c->log->notice("execute wtrm workflow");
-    $c->log->dump(notice => $data);
+    $c->log->dump(info => $data);
 
     if (!$data || ref $data ne "ARRAY") {
         return $c->plugin->error->json_parse_failure;
