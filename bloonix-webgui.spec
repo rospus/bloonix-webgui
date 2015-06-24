@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.56
+Version: 0.57
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -61,6 +61,8 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Wed Jun 24 2015 Jonny Schulz <js@bloonix.de> - 0.57-1
+- Added new WTRM features: doSwitchToNewPage and doSwitchToMainPage.
 * Mon Jun 22 2015 Jonny Schulz <js@bloonix.de> - 0.56-1
 - Added new WTRM features: doTriggerEvent, doSwitchToFrame,
   doSwitchToParentFrame, doDumpContent and doDumpFrameContent.
