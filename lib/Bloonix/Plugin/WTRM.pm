@@ -68,6 +68,12 @@ sub new {
         doSwitchToParentFrame => [
             novalue => 0
         ],
+        doSwitchToNewPage => [
+            novalue => 0
+        ],
+        doSwitchToMainPage => [
+            novalue => 0
+        ],
         checkUrl => [
             url => 1,
             status => 0,

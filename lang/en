@@ -1104,6 +1104,8 @@ site.wtrm.action.doWaitForElement: Wait for element
 site.wtrm.action.doSleep: <b>Sleep</b> a while
 site.wtrm.action.doSwitchToFrame: <b>Switch</b> to frame
 site.wtrm.action.doSwitchToParentFrame: <b>Switch</b> to parent frame
+site.wtrm.action.doSwitchToNewPage: <b>Switch</b> to new created page
+site.wtrm.action.doSwitchToMainPage: <b>Switch</b> to main page
 site.wtrm.action.checkUrl: Check the <b>URL</b> in the address bar
 site.wtrm.action.checkIfElementExists: Check if an <b>element exists</b>
 site.wtrm.action.checkIfElementNotExists: Check if an <b>element does <i>NOT</i> exists</b>
@@ -1184,6 +1186,8 @@ site.wtrm.command.doWaitForElementWithText: Wait for element <b>%s</b> with text
 site.wtrm.command.doSleep: Sleep <b>%s</b>ms
 site.wtrm.command.doSwitchToFrame: Switch to frame <b>%s</b>
 site.wtrm.command.doSwitchToParentFrame: Switch to parent frame
+site.wtrm.command.doSwitchToNewPage: Switch to new created page
+site.wtrm.command.doSwitchToMainPage: Switch to main page
 site.wtrm.command.checkUrl: Check if the URL in the address bar is <b>%s</b>
 site.wtrm.command.checkUrlWithContentType: Check if the URL <b>%s</b> has content type %s
 site.wtrm.command.checkIfElementExists: Check if the element <b>%s</b> exists

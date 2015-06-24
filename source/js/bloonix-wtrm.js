@@ -134,7 +134,7 @@ Bloonix.WTRM = function(o) {
     object.createOrUpdateStep = function(action, id) {
         this.infoBox.hide();
 
-        if (action === "doSwitchToParentFrame") {
+        if (action === "doSwitchToParentFrame" || action === "doSwitchToNewPage" || action === "doSwitchToMainPage") {
             this.addStep(action, {});
             return;
         }
@@ -619,6 +619,12 @@ Bloonix.WtrmAction = {
     },
     doSwitchToParentFrame: function() {
         return Text.get("site.wtrm.command.doSwitchToParentFrame");
+    },
+    doSwitchToNewPage: function() {
+        return Text.get("site.wtrm.command.doSwitchToNewPage");
+    },
+    doSwitchToMainPage: function() {
+        return Text.get("site.wtrm.command.doSwitchToMainPage");
     },
     checkUrl: function(item) {
         if (item.contentType) {
