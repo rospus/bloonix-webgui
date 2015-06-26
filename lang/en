@@ -332,6 +332,12 @@ text.dashboard.services_notification: Notification status of all services
 text.dashboard.services_flapping: Flapping
 text.dashboard.services_downtimes: Downtimes
 text.dashboard.services_acknowledged: Acknowledged
+text.dashboard.num_services_flapping: %s services are flapping
+text.dashboard.num_services_downtime: %s services with downtime
+text.dashboard.num_services_acknowledged: %s services are acknowledged
+text.dashboard.one_service_flapping: %s service is flapping
+text.dashboard.one_service_downtime: %s service with downtime
+text.dashboard.one_service_acknowledged: %s service status is acknowledged
 text.dashboard.map_title: Global host status map
 text.dashboard.double_click_or_mouse_wheel_to_zoom: Double click or use the mouse wheel to zoom in and out.
 text.dashboard.use_mouse_wheel_to_zoom: Use the mouse wheel to zoom in and out.
@@ -350,6 +356,9 @@ text.dashboard.clone_dashboard: Clone the dashboard
 text.dashboard.really_delete_dashboard: Do you really want to delete the dashboard %s?
 text.dashboard.default_dashboard_cannot_deleted: The default dashboard cannot be deleted!
 text.dashboard.name: Name of the dashboard
+text.dashboard.data_format: In which format the data should be shown?
+text.dashboard.show_as_chart: Show as chart
+text.dashboard.show_as_text: Show as text
 
 site.login.welcome: Welcome to Bloonix! Please log in.
 site.login.title: Login to the monitoring system

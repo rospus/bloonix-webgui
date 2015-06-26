@@ -488,7 +488,7 @@ Bloonix.dashboard = function(o) {
             }
         ];
 
-        if (/^(hostTopStatus|serviceTopStatus|topHostsEvents|serviceChart|userChart)$/.test(name)) {
+        if (/^(serviceNoteStatus|hostTopStatus|serviceTopStatus|topHostsEvents|serviceChart|userChart)$/.test(name)) {
             icons.unshift({
                 type: "wrench",
                 title: Text.get("text.dashboard.reconfigure_dashlet"),
@@ -1094,6 +1094,51 @@ Bloonix.dashboard = function(o) {
         overlay.create();
     };
 
+    object.serviceNoteConfig = function(box, name) {
+        var self = this,
+            content = Utils.create("div"),
+            opts = box.outer.data("opts"),
+            typeValue = opts.type;
+
+        if (typeValue === undefined) {
+            typeValue = 1;
+        }
+
+        var overlay = new Overlay({
+            title: Text.get("text.dashboard.dashlet_configuration"),
+            content: content
+        });
+
+        var form = new Form({
+            format: "default",
+            appendTo: content
+        }).init();
+
+        var table = new Table({
+            type: "form",
+            appendTo: form.form
+        }).init();
+
+        form.table = table.getTable();
+
+        form.createElement({
+            element: "radio",
+            name: "type",
+            text: Text.get("text.dashboard.data_format"),
+            checked: typeValue,
+            options: [
+                { label: Text.get("text.dashboard.show_as_chart"), value: 1 },
+                { label: Text.get("text.dashboard.show_as_text"), value: 2 }
+            ],
+            onClick: function(value) {
+                overlay.close();
+                self.replaceOrAddDashlet(box, name, { type: value });
+            }
+        });
+
+        overlay.create();
+    };
+
     object.dashlets = {
         hostAvailStatus: {
             title: Text.get("text.dashboard.hosts_availability"),
@@ -1178,12 +1223,67 @@ Bloonix.dashboard = function(o) {
         serviceNoteStatus: {
             title: Text.get("text.dashboard.services_notification"),
             image: "/public/img/dashlet-notification-status-of-all-services.png",
+            click: function(self, box, name) {
+                self.serviceNoteConfig(box, name);
+            },
             callback: function(dashlet, options) {
                 dashlet.header.html("");
 
                 Utils.create("h3")
                     .html(Text.get("text.dashboard.services_notification"))
                     .appendTo(dashlet.header);
+
+                var opts = dashlet.outer.data("opts");
+
+                if (opts && parseInt(opts.type) === 2) {
+                    Ajax.post({
+                        url: "/services/stats/notes/",
+                        success: function(result) {
+                            dashlet.content.find(".loading").remove();
+                            $("#"+ dashlet.id).html("");
+
+                            var flapping = parseInt(result.data.flapping.yes) === 1
+                                ? Text.get("text.dashboard.one_service_flapping", result.data.flapping.yes)
+                                : Text.get("text.dashboard.num_services_flapping", result.data.flapping.yes);
+
+                            var flappingClass = parseInt(result.data.flapping.yes) === 0
+                                ? "dashlet-text-green"
+                                : "dashlet-text-red";
+
+                            var downtimes = parseInt(result.data.scheduled.yes) === 1
+                                ? Text.get("text.dashboard.one_service_downtime", result.data.scheduled.yes)
+                                : Text.get("text.dashboard.num_services_downtime", result.data.scheduled.yes);
+
+                            var downtimesClass = parseInt(result.data.scheduled.yes) === 0
+                                ? "dashlet-text-green"
+                                : "dashlet-text-red";
+
+                            var acknowledged = parseInt(result.data.acknowledged.yes) === 1
+                                ? Text.get("text.dashboard.one_service_acknowledged", result.data.acknowledged.yes)
+                                : Text.get("text.dashboard.num_services_acknowledged", result.data.acknowledged.yes);
+
+                            var acknowledgedClass = parseInt(result.data.acknowledged.yes) === 0
+                                ? "dashlet-text-green"
+                                : "dashlet-text-red";
+
+                            Utils.create("div")
+                                .html(flapping)
+                                .addClass(flappingClass)
+                                .appendTo("#"+ dashlet.id);
+
+                            Utils.create("div")
+                                .html(downtimes)
+                                .addClass(downtimesClass)
+                                .appendTo("#"+ dashlet.id);
+
+                            Utils.create("div")
+                                .html(acknowledged)
+                                .addClass(acknowledgedClass)
+                                .appendTo("#"+ dashlet.id);
+                        }
+                    });
+                    return;
+                }
 
                 Ajax.post({
                     url: "/services/stats/notes/",

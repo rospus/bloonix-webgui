@@ -1121,6 +1121,17 @@
     font-size: 13px;
     font-style: italic;
 }
+.dashlet-text-green, .dashlet-text-red {
+    padding: 6px 0;
+    font-size: 30px;
+}
+.dashlet-text-green {
+    color: #5ec15e;
+}
+.dashlet-text-red {
+    color: #cc333f;
+    font-weight: bold;
+}
 .plugin-box-outer {
     width: 320px;
     height: 140px;

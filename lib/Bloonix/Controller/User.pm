@@ -178,7 +178,7 @@ sub save_dashboard_data {
             return $c->plugin->error->form_parse_errors("height");
         }
 
-        if ($row->{name} !~ /^(userChart|serviceChart|hostTopStatus|serviceTopStatus|topHostsEvents)\z/ && exists $row->{opts}) {
+        if ($row->{name} !~ /^(serviceNoteStatus|userChart|serviceChart|hostTopStatus|serviceTopStatus|topHostsEvents)\z/ && exists $row->{opts}) {
             return $c->plugin->error->form_parse_errors("opts");
         }
 
@@ -204,6 +204,10 @@ sub save_dashboard_data {
             }
         } elsif ($row->{name} =~ /^(hostTopStatus|serviceTopStatus|topHostsEvents)\z/) {
             if (defined $row->{opts} && (ref $row->{opts} ne "HASH" || scalar keys %{$row->{opts}} > 1 || !exists $row->{opts}->{query})) {
+                return $c->plugin->error->form_parse_errors("opts");
+            }
+        } elsif ($row->{name} eq "serviceNoteStatus") {
+            if (ref $row->{opts} ne "HASH" || scalar keys %{$row->{opts}} > 1 || $row->{opts}->{type} !~ /^(1|2)\z/) {
                 return $c->plugin->error->form_parse_errors("opts");
             }
         }

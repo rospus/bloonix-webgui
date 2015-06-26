@@ -203,24 +203,15 @@ sub stats {
 sub top {
     my ($self, $c) = @_;
 
-    my ($count, $hosts) = $c->model->database->host->by_user_id(
-        user => $c->user,
+    my ($count, $rows) = $c->model->database->service->by_user_id(
+        user_id => $c->user->{id},
         offset => 0,
         limit => 100,
-        query => $c->req->param("query"),
+        query => scalar $c->req->param("query"),
         order => [
-            desc => "priority",
-            desc => "last_check"
+            desc => [ "status_priority.priority", "service.last_check" ]
         ]
     );
-
-    my @host_ids = (0);
-
-    foreach my $host (@$hosts) {
-        push @host_ids, $host->{id};
-    }
-
-    my $rows = $c->model->database->service->top(\@host_ids, 0, 100);
 
     foreach my $row (@$rows) {
         $row->{last_check} = $c->plugin->util->timestamp(
