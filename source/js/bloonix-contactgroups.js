@@ -30,7 +30,6 @@ Bloonix.listContactgroups = function(o) {
         },
         appendTo: "#content",
         reloadable: true,
-        columnSwitcher: true,
         columns: [
             {
                 name: "id",
@@ -48,7 +47,7 @@ Bloonix.listContactgroups = function(o) {
                         "administration/companies/"+ row.company_id +"/edit", row.company
                     );
                 },
-                hide: true
+                hide: Bloonix.user.role == "admin" ? false : true
             },{
                 name: "description",
                 text: Text.get("schema.contactgroup.attr.description")

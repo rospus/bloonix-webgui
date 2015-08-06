@@ -30,7 +30,11 @@ Bloonix.listUsers = function() {
         },
         sortable: true,
         reloadable: true,
-        columnSwitcher: true,
+        columnSwitcher: {
+            table: "user",
+            callback: Bloonix.saveUserTableConfig,
+            config: Bloonix.getUserTableConfig("user")
+        },
         columns: [
             {
                 name: "id",
@@ -39,7 +43,8 @@ Bloonix.listUsers = function() {
             },{
                 name: "username",
                 text: Text.get("schema.user.attr.username"),
-                call: function(row) { return Bloonix.call("administration/users/"+ row.id +"/edit", row.username) }
+                call: function(row) { return Bloonix.call("administration/users/"+ row.id +"/edit", row.username) },
+                swtichable: false
             },{
                 name: "company",
                 text: Text.get("schema.company.attr.company"),
@@ -48,7 +53,8 @@ Bloonix.listUsers = function() {
                         "administration/companies/"+ row.company_id +"/edit", row.company
                     )
                 },
-                hide: Bloonix.user.role == "admin" ? false : true
+                hide: Bloonix.user.role == "admin" ? false : true,
+                swtichable: false
             },{
                 name: "name",
                 text: Text.get("schema.user.attr.name")
@@ -256,7 +262,7 @@ Bloonix.saveUserConfig = function(key, data) {
         data: { key: key, data: data },
         async: false,
         success: function(result) {
-            if (data.status == "ok") {
+            if (result.status == "ok") {
                 if (key === "dashboard") {
                     Bloonix.user.stash[key][data.name] = data.data;
                 } else {
@@ -270,6 +276,36 @@ Bloonix.saveUserConfig = function(key, data) {
             }
         }
     });
+};
+
+Bloonix.saveUserTableConfig = function(o) {
+    Ajax.post({
+        url: "/user/config/save-table-config",
+        data: o,
+        async: false,
+        success: function(result) {
+            if (result.status == "ok") {
+                if (typeof Bloonix.user.stash.table_config != "object") {
+                    Bloonix.user.stash.table_config = {};
+                }
+                if (typeof Bloonix.user.stash.table_config[o.table] != "object") {
+                    Bloonix.user.stash.table_config[o.table] = {};
+                }
+                Bloonix.user.stash.table_config[o.table][o.column] = o.action;
+                Bloonix.createNoteBox({
+                    infoClass: "info-ok",
+                    text: Text.get("info.update_success"),
+                    autoClose: true
+                });
+            }
+        }
+    });
+};
+
+Bloonix.getUserTableConfig = function(table) {
+    if (Bloonix.user.stash.table_config) {
+        return Bloonix.user.stash.table_config[table];
+    }
 };
 
 Bloonix.changeUserPassword = function(o) {

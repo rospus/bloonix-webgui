@@ -39,16 +39,16 @@ sub add {
     my $data = $form->data;
     $data->{contact_id} = $opts->{id};
 
-    my $timeperiod = $c->model->database->contact_timeperiod->find(
-        condition => [
-            contact_id => $opts->{id},
-            timeperiod_id => $data->{timeperiod_id}
-        ]
-    );
+    #my $timeperiod = $c->model->database->contact_timeperiod->find(
+    #    condition => [
+    #        contact_id => $opts->{id},
+    #        timeperiod_id => $data->{timeperiod_id}
+    #    ]
+    #);
 
-    if ($timeperiod) {
-        return $c->plugin->error->duplicate_params("timeperiod_id");
-    }
+    #if ($timeperiod) {
+    #    return $c->plugin->error->duplicate_params("timeperiod_id");
+    #}
 
     $c->model->database->contact_timeperiod->create($data);
 

@@ -17,7 +17,6 @@ Bloonix.listLocations = function() {
             result: [ "id", "continent", "country", "city" ]
         },
         reloadable: true,
-        columnSwitcher: true,
         columns: [
             {
                 name: "id",
@@ -39,14 +38,6 @@ Bloonix.listLocations = function() {
             },{
                 name: "city",
                 text: Text.get("schema.location.attr.city")
-            },{
-                name: "coordinates",
-                text: Text.get("schema.location.attr.coordinates"),
-                hide: true
-            },{
-                name: "description",
-                text: Text.get("schema.location.attr.description"),
-                hide: true
             }
         ]
     }).create();
@@ -54,7 +45,6 @@ Bloonix.listLocations = function() {
 
 Bloonix.editLocation = function(o) {
     var location = Bloonix.get("/administration/locations/"+ o.id +"/options/");
-console.log(location);
 
     new Header({ title: Text.get("schema.location.text.view", location.values.hostname, true) }).create();
     Bloonix.setMetaTitle(Text.get("schema.location.text.view", location.values.hostname));

@@ -18,7 +18,7 @@ sub startup {
     $c->route->map("/hosts/:action(activate|deactivate|enable-notification|disable-notification|update-multiple)")->to("action");
     $c->route->map("/hosts/create-downtime")->to("create_downtime");
     $c->route->map("/hosts/delete-downtime")->to("delete_downtime");
-    $c->route->map("/hosts/:id/sms-notifications")->to("sms");
+    $c->route->map("/hosts/:id/notifications")->to("notifications");
 }
 
 sub auto {
@@ -447,7 +447,7 @@ sub validate_hosts {
     return $host_ids;
 }
 
-sub sms {
+sub notifications {
     my ($self, $c, $opts) = @_;
 
     my $request = $c->plugin->defaults->request
@@ -455,6 +455,7 @@ sub sms {
 
     my $from = $c->req->param("from");
     my $to = $c->req->param("to");
+    my $type = $c->req->param("type");
     my @errors;
 
     if ($from) {
@@ -475,13 +476,14 @@ sub sms {
         return $c->plugin->error->form_parse_errors(@errors);
     }
 
-    my ($count, $data) = $c->model->database->sms_send->by_query(
+    my ($count, $data) = $c->model->database->notification->by_query(
         offset => $request->{offset},
         limit => $request->{limit},
         query => $request->{query},
         host_id => $opts->{id},
         from_time => $from,
-        to_time => $to
+        to_time => $to,
+        type => $type
     );
 
     $c->stash->offset($request->{offset});

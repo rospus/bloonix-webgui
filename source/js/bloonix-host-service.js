@@ -1265,11 +1265,13 @@ Bloonix.createServiceForm = function(o) {
         });
 
         var intervalNullStrText = Text.get("text.inherited_from_host"),
+            retryIntervalNullStrText = Text.get("text.inherited_from_host"),
             timeoutNullStrText = Text.get("text.inherited_from_host");
 
         // if it's a template, then this.host is undefined
         if (this.host) {
             intervalNullStrText += " ("+ Utils.secondsToStringShortReadable(this.host.interval) +")";
+            retryIntervalNullStrText += " ("+ Utils.secondsToStringShortReadable(this.host.retry_interval) +")";
             timeoutNullStrText += " ("+ Utils.secondsToStringShortReadable(this.host.timeout) +")";
         }
 
@@ -1282,6 +1284,17 @@ Bloonix.createServiceForm = function(o) {
             checked: this.values.interval,
             secondsToFormValues: true,
             nullString: intervalNullStrText
+        });
+
+        this.form.createElement({
+            text: Text.get("schema.service.attr.retry_interval"),
+            desc: Text.get("schema.service.desc.retry_interval"),
+            element: "slider",
+            name: "retry_interval",
+            options: this.options.retry_interval,
+            checked: this.values.retry_interval,
+            secondsToFormValues: true,
+            nullString: retryIntervalNullStrText
         });
 
         this.form.createElement({
@@ -1619,87 +1632,14 @@ Bloonix.createServiceForm = function(o) {
         });
 
         this.form.createElement({
-            text: Text.get("schema.service.attr.mail_soft_interval"),
-            desc: Text.get("schema.service.desc.mail_soft_interval"),
+            text: Text.get("schema.service.attr.notification_interval"),
+            desc: Text.get("schema.service.desc.notification_interval"),
             element: "slider",
-            name: "mail_soft_interval",
-            options: this.options.mail_soft_interval,
-            checked: this.values.mail_soft_interval,
+            name: "notification_interval",
+            options: this.options.notification_interval,
+            checked: this.values.notification_interval,
             secondsToFormValues: true,
             nullString: Text.get("text.undefined")
-        });
-
-        this.form.createElement({
-            text: Text.get("schema.service.attr.mail_hard_interval"),
-            desc: Text.get("schema.service.desc.mail_hard_interval"),
-            element: "slider",
-            name: "mail_hard_interval",
-            options: this.options.mail_hard_interval,
-            checked: this.values.mail_hard_interval,
-            secondsToFormValues: true,
-            nullString: Text.get("text.undefined")
-        });
-
-        this.form.createElement({
-            text: Text.get("schema.service.attr.mail_warnings"),
-            desc: Text.get("schema.service.desc.mail_warnings"),
-            element: "radio-yes-no",
-            name: "mail_warnings",
-            checked: this.values.mail_warnings
-        });
-
-        this.form.createElement({
-            text: Text.get("schema.service.attr.mail_ok"),
-            desc: Text.get("schema.service.desc.mail_ok"),
-            element: "radio-yes-no",
-            name: "mail_ok",
-            checked: this.values.mail_ok
-        });
-
-        this.form.createElement({
-            text: Text.get("schema.service.attr.send_sms"),
-            desc: Text.get("schema.service.desc.send_sms"),
-            element: "radio-yes-no",
-            name: "send_sms",
-            checked: this.values.send_sms
-        });
-
-        this.form.createElement({
-            text: Text.get("schema.service.attr.sms_soft_interval"),
-            desc: Text.get("schema.service.desc.sms_soft_interval"),
-            element: "slider",
-            name: "sms_soft_interval",
-            options: this.options.sms_soft_interval,
-            checked: this.values.sms_soft_interval,
-            secondsToFormValues: true,
-            nullString: Text.get("text.undefined")
-        });
-
-        this.form.createElement({
-            text: Text.get("schema.service.attr.sms_hard_interval"),
-            desc: Text.get("schema.service.desc.sms_hard_interval"),
-            element: "slider",
-            name: "sms_hard_interval",
-            options: this.options.sms_hard_interval,
-            checked: this.values.sms_hard_interval,
-            secondsToFormValues: true,
-            nullString: Text.get("text.undefined")
-        });
-
-        this.form.createElement({
-            text: Text.get("schema.service.attr.sms_warnings"),
-            desc: Text.get("schema.service.desc.sms_warnings"),
-            element: "radio-yes-no",
-            name: "sms_warnings",
-            checked: this.values.sms_warnings
-        });
-
-        this.form.createElement({
-            text: Text.get("schema.service.attr.sms_ok"),
-            desc: Text.get("schema.service.desc.sms_ok"),
-            element: "radio-yes-no",
-            name: "sms_ok",
-            checked: this.values.sms_ok
         });
     };
 

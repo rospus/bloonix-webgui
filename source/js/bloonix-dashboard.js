@@ -1098,10 +1098,10 @@ Bloonix.dashboard = function(o) {
         var self = this,
             content = Utils.create("div"),
             opts = box.outer.data("opts"),
-            typeValue = opts.type;
-
-        if (typeValue === undefined) {
             typeValue = 1;
+
+        if (typeof opts == "object" && opts.type !== undefined) {
+            typeValue = opts.type;
         }
 
         var overlay = new Overlay({

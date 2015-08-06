@@ -8,6 +8,7 @@ sub startup {
 
     $c->route->map("/user/passwd")->to("passwd");
     $c->route->map("/user/config/save")->to("save");
+    $c->route->map("/user/config/save-table-config")->to("save_table_config");
     $c->route->map("/user/config/stash")->to("stash");
 }
 
@@ -26,6 +27,24 @@ sub new {
         serviceChart
         userChart
     ) };
+
+    $self->{table_config} = {
+        company => [qw(
+            id alt_company_id sla email count_hosts_services title name surname address1 address2 zipcode
+            city state country phone fax active max_services sms_enabled comment
+        )],
+        user => [qw(
+            id name phone manage_contacts manage_templates last_login is_logged_in session_expires locked
+            role comment allow_from timezone operate_as
+        )],
+        host => [qw(
+            id ipaddr description comment status last_check sysgroup sysinfo device_class hw_manufacturer hw_product
+            os_manufacturer os_product virt_manufacturer virt_product location coordinates interval retry_interval data_retention
+        )],
+        service => [qw(
+            id command plugin agent_id description active acknowledged notification flapping scheduled message
+        )],
+    };
 
     return $self;
 }
@@ -51,16 +70,24 @@ sub save {
     } elsif ($key eq "delete-dashboard") {
         return $self->delete_dashboard($c, $data);
     } elsif ($key eq "last_open_dashboard") {
-        if ($dashboard && exists $dashboard->{$data}) {
-            $stash->{last_open_dashboard} = $data;
-            $c->model->database->user->update(
-                $c->user->{id},
-                { stash => $c->json->encode($stash) }
-            );
-        }
+        return $self->last_open_dashboard($c, $data);
     }
 
     return $c->plugin->error->form_parse_errors("key");
+}
+
+sub last_open_dashboard {
+    my ($self, $c, $data) = @_;
+    my $stash = $c->user->{stash};
+    my $dashboard = $stash->{dashboard};
+
+    if ($dashboard && exists $dashboard->{$data}) {
+        $stash->{last_open_dashboard} = $data;
+        $c->model->database->user->update(
+            $c->user->{id},
+            { stash => $c->json->encode($stash) }
+        );
+    }
 }
 
 sub rename_dashboard {
@@ -194,10 +221,12 @@ sub save_dashboard_data {
                 my $service_id = $row->{opts}->{service_id};
                 my $subkey = $row->{opts}->{subkey};
                 my $preset = $row->{opts}->{preset};
+
+                $row->{opts}->{show_legend} //= 0;
                 my $show_legend = $row->{opts}->{show_legend};
 
                 if (!$self->check_service_chart($c, $chart_id, $preset, $service_id, $show_legend)) {
-                   return $c->plugin->error->form_parse_errors("opts");
+                    return $c->plugin->error->form_parse_errors("opts");
                 }
             } else {
                 return $c->plugin->error->form_parse_errors("opts");
@@ -207,7 +236,7 @@ sub save_dashboard_data {
                 return $c->plugin->error->form_parse_errors("opts");
             }
         } elsif ($row->{name} eq "serviceNoteStatus") {
-            if (ref $row->{opts} ne "HASH" || scalar keys %{$row->{opts}} > 1 || $row->{opts}->{type} !~ /^(1|2)\z/) {
+            if ($row->{opts} && (ref $row->{opts} ne "HASH" || scalar keys %{$row->{opts}} > 1 || $row->{opts}->{type} !~ /^(1|2)\z/)) {
                 return $c->plugin->error->form_parse_errors("opts");
             }
         }
@@ -345,6 +374,24 @@ sub passwd {
     ) or return $c->plugin->error->action_failed;
 
     $c->view->render->json;
+}
+
+sub save_table_config {
+    my ($self, $c) = @_;
+
+    my $stash = $c->user->{stash};
+    my $table = $c->req->param("table") // "";
+    my $column = $c->req->param("column") // "";
+    my $action = $c->req->param("action") // "";
+    my $config = $self->{table_config};
+
+    if (exists $config->{$table} && $column =~ /^[a-z_0-9]+\z/ && grep(/^$column\z/, @{$config->{$table}}) && $action =~ /^(show|hide)\z/) {
+        $stash->{table_config}->{$table}->{$column} = $action;
+        $c->model->database->user->update(
+            $c->user->{id},
+            { stash => $c->json->encode($stash) }
+        );
+    }
 }
 
 sub stash {

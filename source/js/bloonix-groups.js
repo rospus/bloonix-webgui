@@ -30,7 +30,6 @@ Bloonix.listGroups = function() {
         },
         sortable: true,
         reloadable: true,
-        columnSwitcher: true,
         columns: [
             {
                 name: "id",

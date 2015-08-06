@@ -394,7 +394,11 @@ Bloonix.listHosts = function(o) {
 
                 return text;
             },
-            columnSwitcher: true,
+            columnSwitcher: {
+                table: "host",
+                callback: Bloonix.saveUserTableConfig,
+                config: Bloonix.getUserTableConfig("host")
+            },
             columns: [
                 {
                     name: "id",
@@ -403,7 +407,8 @@ Bloonix.listHosts = function(o) {
                 },{
                     name: "hostname",
                     text: Text.get("schema.host.attr.hostname"),
-                    call: function(row) { return Bloonix.call("monitoring/hosts/"+ row.id, row.hostname) }
+                    call: function(row) { return Bloonix.call("monitoring/hosts/"+ row.id, row.hostname) },
+                    switchable: false
                 },{
                     icons: [
                         {
@@ -428,7 +433,8 @@ Bloonix.listHosts = function(o) {
                 },{
                     name: "company",
                     text: Text.get("schema.company.attr.company"),
-                    hide: Bloonix.user.role == "admin" ? false : true
+                    hide: Bloonix.user.role == "admin" ? false : true,
+                    switchable: false
                 },{
                     name: "description",
                     text: Text.get("schema.host.attr.description")
@@ -439,7 +445,8 @@ Bloonix.listHosts = function(o) {
                 },{
                     name: "status",
                     text: Text.get("schema.host.attr.status"),
-                    wrapValueClass: true
+                    wrapValueClass: true,
+                    switchable: false
                 },{
                     name: "last_check",
                     text: Text.get("schema.host.attr.last_check"),
@@ -487,6 +494,10 @@ Bloonix.listHosts = function(o) {
                 },{
                     name: "interval",
                     text: Text.get("schema.host.attr.interval"),
+                    hide: true
+                },{
+                    name: "retry_interval",
+                    text: Text.get("schema.host.attr.retry_interval"),
                     hide: true
                 },{
                     name: "data_retention",
@@ -724,6 +735,13 @@ Bloonix.getHostFormElements = function(o) {
             nullString: Text.get("text.inherited_from_host")
         },{
             element: "slider",
+            name: "retry_interval",
+            text: Text.get("schema.host.attr.retry_interval"),
+            desc: Text.get("schema.host.desc.retry_interval"),
+            secondsToFormValues: true,
+            nullString: Text.get("text.inherited_from_host")
+        },{
+            element: "slider",
             name: "timeout",
             text: Text.get("schema.host.attr.timeout"),
             desc: Text.get("schema.host.desc.timeout"),
@@ -738,7 +756,7 @@ Bloonix.getHostFormElements = function(o) {
             minValue: 0,
             maxValue: 32767,
             required: true,
-            elementInfo: Text.get("schema.company.text.data_retention_info", o.data_retention)
+            elementInfo: o ? Text.get("schema.company.text.data_retention_info", o.data_retention) : false
         },{
             element: "input",
             type: "text",

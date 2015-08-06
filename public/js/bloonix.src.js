@@ -775,6 +775,7 @@ var Lang = {
       "text.change_nav_to_vertical" : "Move navigation to the left",
       "schema.dependency.text.workflow_timezone" : "Set the timezone for the timeslice",
       "schema.service.attr.message" : "Status information",
+      "schema.contact_message_services.attr.enabled" : "Enabled",
       "schema.host.desc.company_id" : "Select the company the host belongs to.",
       "schema.company.desc.max_contacts" : "The maximum number of contacts that can be created.",
       "schema.host.desc.status" : "The status of the host. Possible values are OK, INFO, WARNING, CRITICAL or UNKNOWN.",
@@ -782,6 +783,7 @@ var Lang = {
       "schema.host.attr.os_product" : "OS product",
       "info.last-year" : "Last year",
       "action.overview" : "Overview",
+      "word.resize" : "Resize",
       "text.change_the_language" : "Change the language",
       "schema.user_chart.text.add_metric" : "Add metric",
       "site.wtrm.command.checkIfElementIsChecked" : "Check if the radio button or checkbox <b>%s</b> is checked",
@@ -810,7 +812,6 @@ var Lang = {
       "schema.company.text.list" : "Overview of all companies",
       "err-701" : "Incorrect password!",
       "schema.event.attr.last_status" : "Last status",
-      "schema.contact.text.timeperiod_type_send_only_mail" : "Send only mail",
       "schema.event.text.filter_message" : "Filter message",
       "site.wtrm.action.checkIfElementHasNotValue" : "Check if an <b>input</b> field or <b>textarea has <i>NOT</i></b> a specified <b>value</b>",
       "schema.location.attr.id" : "ID",
@@ -837,6 +838,7 @@ var Lang = {
       "schema.service.attr.id" : "Service ID",
       "text.report.availability.EV-LT180" : "Number of events with a status duration less than 3 hours.",
       "site.help.doc.service-parameter" : "Service Parameter im Detail",
+      "schema.contact.text.message_services" : "Contact message services",
       "site.wtrm.desc.element" : "The element you want to select. As example: #id, .class, name<br/><br/>\nIt's also possible to search for tags and attributes. Example:<br/><br/>\n&lt;a&gt; - get the first 'a' tag<br/><br/>\n&lt;a[5]&gt; - get the fifth 'a' tag<br/><br/>\n&lt;a a=\"hello\" b=\"world\"&gt; - search for a 'a' tag with the specified attributes and values",
       "schema.user_chart.attr.yaxis_label" : "Y-axis label",
       "schema.host_template.text.setting" : "Template settings",
@@ -851,7 +853,6 @@ var Lang = {
       "site.wtrm.placeholder.status" : "200",
       "site.wtrm.text.click_for_details" : "Click on a row to get a detailed report",
       "schema.service.text.select_location_check_type" : "Select the type of the check",
-      "schema.service.desc.send_sms" : "This option enables or disables notifications per SMS.",
       "err-601" : "The objects you requested does not exist!",
       "schema.chart.attr.preset" : "Preset",
       "site.wtrm.command.doUrl" : "Go to URL <b>%s</b>",
@@ -869,7 +870,6 @@ var Lang = {
       "schema.host.text.mtr_chart" : "MTR chart",
       "schema.service.text.sla_requirements" : "Please note that for free accounts only the default check is available!",
       "schema.timeslice.text.delete" : "Delete timeslice",
-      "schema.contact.text.timeperiod_type_exclude" : "Exclude",
       "nav.sub.contactgroup_service_members" : "Services in contact group",
       "text.browsers_heap_size" : "Display of the heap size in your browser",
       "site.help.doc.users-and-groups" : "Die Benutzer- und Gruppenverwaltung",
@@ -877,6 +877,7 @@ var Lang = {
       "site.wtrm.action.doUserAgent" : "Set the <b>user agent</b> for the request",
       "schema.hs_downtime.attr.timeslice" : "Timeslice",
       "err-810" : "Sorry, but you cannot add more than %s dashlets to a dashboard!",
+      "schema.notification.text.filter_message" : "Filter message",
       "site.wtrm.placeholder.hidden" : "Hide this value?",
       "schema.service.text.multiple" : "Service actions",
       "site.wtrm.command.doAuth" : "Use auth basic with username <b>%s</b> and password <b>%s</b>",
@@ -890,8 +891,8 @@ var Lang = {
       "site.wtrm.attr.event" : "Event",
       "schema.plugin_stats.attr.datatype" : "Data type",
       "schema.timeperiod.text.list" : "Overview of all timeperiods",
-      "schema.plugin_stats.attr.alias" : "Name",
       "schema.service.text.clone" : "Clone service",
+      "schema.plugin_stats.attr.alias" : "Name",
       "nav.sub.companies" : "Companies",
       "schema.user.desc.manage_contacts" : "Is the user allowed to manage contacts?",
       "text.report.availability.lt180" : "Between 1 and 3 hours",
@@ -899,7 +900,6 @@ var Lang = {
       "text.report.availability.lt60" : "Between 30 and 60 minutes",
       "nav.sub.events" : "Events",
       "site.wtrm.action.checkIfElementIsNotSelected" : "Check if a <b>value is <i>NOT</i> selected</b> in a selectbox",
-      "schema.service.attr.last_mail_time" : "Last notification per mail",
       "text.radial_graph" : "Radial graph",
       "schema.service.desc.host_alive_check" : "A host alive check is a check that determines if a host is down or alive. If this check returns a critical status then you get a special notification. If other service checks returns a critical status at the same time then the notifications will be suppressed. It's recommended you use the ping check as host alive check.",
       "schema.host.desc.virt_product" : "e.g. VMware-Server, Virtuozzo",
@@ -923,7 +923,6 @@ var Lang = {
       "text.dashboard.remove_dashlet" : "Remove the dashlet",
       "schema.company.attr.title" : "Title",
       "schema.service.desc.multiple_check_concurrency_title" : "Concurrency checks",
-      "schema.contact.desc.mail_notification_level" : "Select the status level for which you want to receive notifications.",
       "err-847" : "Sorry, but you cannot create more than %s dependencies per host!",
       "schema.service.text.rotate_location_check_button" : "Rotate check",
       "schema.location.attr.hostname" : "Hostname",
@@ -932,7 +931,6 @@ var Lang = {
       "text.dashboard.one_service_downtime" : "%s service with downtime",
       "action.resize" : "Resize",
       "text.report.availability.LT60" : "Filter events with a status duration less than 60 minutes.",
-      "schema.service.attr.mail_warnings" : "Send WARNINGS per mail",
       "text.report.availability.EV-C" : "Number of events with status CRITICAL.",
       "err-835" : "Sorry, but you cannot create more than %s contacts!",
       "word.seconds" : "seconds",
@@ -961,7 +959,6 @@ var Lang = {
       "schema.service.desc.comment" : "This is a short internal comment to the check.",
       "schema.chart.text.multiselect" : "Select charts for multiple hosts",
       "schema.location.attr.ipaddr" : "IP address",
-      "schema.contact.attr.escalation_level" : "Escalation level",
       "site.wtrm.action.doCheck" : "Check a <b>radio button</b> or <b>checkbox</b>",
       "schema.location.text.view" : "Location %s",
       "schema.host.text.multiple_selection_help" : "<h4>This action requires to select at least one host.</h4>\nTo mark a single host just click on a row. If you want to mark multiple hosts\njust press and hold <i>CTRL</i> on your keyboard. If you press and hold the left mouse button\nyou can mark a range of hosts.",
@@ -977,7 +974,6 @@ var Lang = {
       "action.timeslices" : "List timeslices",
       "schema.service.text.notification_settings" : "Notification settings",
       "schema.host_template.attr.id" : "Template ID",
-      "schema.contact.text.timeperiod_type_send_only_sms" : "Send only SMS",
       "schema.company.attr.sla" : "SLA",
       "text.report.availability.h18" : "18:00 - 18:59",
       "action.reload" : "Reload",
@@ -987,6 +983,7 @@ var Lang = {
       "site.login.contact" : "Do you have questions?",
       "nav.sub.dependencies" : "Dependencies",
       "text.report.availability.h04" : "04:00 - 04:59",
+      "schema.contact_timeperiod.text.add" : "Add a timeperiod to the contact",
       "word.minute" : "minute",
       "site.wtrm.action.checkUrl" : "Check the <b>URL</b> in the address bar",
       "schema.contact.attr.company_id" : "Company ID",
@@ -1021,19 +1018,20 @@ var Lang = {
       "schema.service.text.multiple_volatile" : "Clear the volatile status of multiple services",
       "schema.host.attr.id" : "Host ID",
       "schema.service.attr.agent_id" : "Agent location",
-      "schema.service.desc.default_check_type_title" : "Default checkpoint",
       "schema.user_chart.text.user_chart" : "Chart editor",
+      "schema.service.desc.default_check_type_title" : "Default checkpoint",
       "site.wtrm.desc.name" : "This is the name of the element.",
       "schema.chart.attr.subtitle" : "Chart subtitle",
       "nav.sub.contactgroup_settings" : "Contact group settings",
       "schema.service.text.delete" : "Delete service",
+      "schema.notification.attr.time" : "Timestamp",
       "schema.service.desc.service_name" : "This is the display name of the service.",
       "text.dashboard.choose_content_box" : "Select a dashlet",
       "schema.company.text.view" : "Company %s",
-      "schema.service.desc.mail_soft_interval" : "This is the notification interval for emails. As long as the service is not OK you will be re-notified in this interval.",
       "word.no" : "no",
       "schema.host.desc.password" : "This password is used by the Bloonix Agents. If an agent wants to connect to the Bloonix server to deliver host statistics then this is only possible if the agent knows the host id and the password.",
       "schema.event.text.list" : "Events of host %s",
+      "schema.host.desc.retry_interval" : "This is the retry interval of all services of the host. If a service is not in OK status then the interval is forced to this value.",
       "schema.host.text.delete" : "Delete host",
       "text.hypertree" : "Hypertree",
       "schema.service.text.clone_service" : "Clone service %s",
@@ -1053,16 +1051,15 @@ var Lang = {
       "word.Timeslice" : "Timeslice",
       "schema.dependency.text.list" : "Dependencies for host %s",
       "site.wtrm.action.doSwitchToMainPage" : "<b>Switch</b> to main page",
-      "schema.service.attr.mail_soft_interval" : "Notification interval for mails (soft)",
       "text.selected_locations_costs" : "Please note that each checkpoint will be charged extra.",
       "text.fixed_checkpoint" : "Fixed checkpoint",
       "schema.user_chart.attr.subtitle" : "Subtitle",
-      "schema.contact.desc.sms_to" : "This is the mobil number of the contact. Event notifications will be send via SMS to this number.",
       "schema.group.text.host_nonmembers" : "Non group members",
       "site.wtrm.command.doSubmit" : "Submit form <b>%s</b>",
       "schema.service.text.wtrm_result_steps" : "Web transaction - step results",
       "schema.host.attr.description" : "Description",
       "word.minutes" : "minutes",
+      "schema.notification.text.filter_message_service" : "sms, mail, ...",
       "schema.hs_downtime.text.preset" : "Preset",
       "site.wtrm.command.checkIfElementHasNotHTML" : "Check if the element <b>%s</b> does <i>NOT</i> contain <b>%s</b>",
       "schema.host.desc.location" : "e.g. New York, Datacenter 3, Room 6, Rack A29",
@@ -1094,6 +1091,7 @@ var Lang = {
       "text.report.availability.h16" : "16:00 - 16:59",
       "schema.chart.text.user_charts" : "User charts",
       "text.dashboard.show_as_chart" : "Show as chart",
+      "schema.contact_message_services.attr.notification_level" : "Notification level",
       "site.login.login" : "Please login with your username and password:",
       "schema.company.attr.zipcode" : "Zipcode",
       "site.wtrm.attr.status" : "HTTP-Status",
@@ -1105,8 +1103,8 @@ var Lang = {
       "site.wtrm.action.checkIfElementHasNotText" : "Check if an <b>element does <i>NOT</i></b> contain <b>text</b>",
       "schema.service.text.clone_to_the_same_host" : "Clone the service to the same host",
       "schema.host.text.add_host_to_contactgroup" : "Add the host to a contact group",
-      "schema.service.desc.mail_hard_interval" : "With this option you can define a hard interval for email notifications. Even if the status switched from CRITICAL to OK and then back to CRITICAL you will not get an notification until the interval expires.",
       "site.wtrm.desc.ms" : "This is the time in milliseconds to sleep between actions.",
+      "schema.contact_timeperiod.attr.exclude" : "Exclude",
       "text.dashboard.services_flapping" : "Flapping",
       "schema.service.attr.attempt_counter" : "Attempt counter",
       "schema.contactgroup.text.create" : "Create a new contact group",
@@ -1114,7 +1112,6 @@ var Lang = {
       "text.report.title.no_data" : "For the following services are no data available in this time range",
       "schema.company.attr.alt_company_id" : "Real company ID",
       "text.from_now_to_1h" : "From now + 1 hour",
-      "schema.contact.desc.mail_to" : "This is the email address of the contact. Event notifications will be send to this address.",
       "err-815" : "Sorry, but you cannot create more than %s charts!",
       "schema.host.attr.device_class" : "Device class",
       "schema.chart.text.service_charts" : "Service charts",
@@ -1135,7 +1132,6 @@ var Lang = {
       "text.report.availability.h21" : "21:00 - 21:59",
       "schema.service.text.multiple_location_check_button" : "Multiple checks",
       "schema.plugin.attr.plugin" : "Plugin",
-      "schema.service.attr.sms_hard_interval" : "Notification interval for SMS (hard)",
       "action.replace" : "Replace",
       "text.dashboard.map_title" : "Global host status map",
       "schema.chart.text.chart_information" : "Chart information",
@@ -1165,6 +1161,7 @@ var Lang = {
       "schema.hs_downtime.text.create" : "Create a scheduled downtime",
       "schema.company.attr.surname" : "Surname",
       "schema.chart.text.load_view" : "Load view",
+      "schema.notification.attr.subject" : "Subject",
       "word.Relative" : "Relative",
       "site.wtrm.action.doFill" : "Fill data into a <b>input</b> field or <b>textarea</b>",
       "schema.host.desc.max_sms" : "In this field you can define the maximum number of SMS that can be sent per month.",
@@ -1172,9 +1169,7 @@ var Lang = {
       "schema.company.attr.max_sms" : "Max SMS",
       "site.wtrm.placeholder.html" : "<span>Loren ipsum...</span>",
       "site.wtrm.placeholder.password" : "Secret",
-      "schema.service.desc.sms_soft_interval" : "This is the notification interval for SMS. If a service is in a non OK status then you will be re-notified after this time if the service doesn't change to status OK.",
       "schema.service.desc.description" : "This is a short description of the check.",
-      "schema.contact.text.escalation_level_event.x" : "active after <b>%s</b> notifications",
       "schema.host.attr.hw_manufacturer" : "HW manufacturer",
       "text.dashboard.one_service_acknowledged" : "%s service status is acknowledged",
       "schema.user.desc.phone" : "The phone number can be very helpful for colleagues or the Bloonix support in emergency situations.",
@@ -1217,24 +1212,23 @@ var Lang = {
       "text.from_now_to_7d" : "From now + 7 days",
       "schema.host_template.text.delete_service_warning" : "Please note that the service will be deleted from all hosts that gets the service inherited from this template.",
       "site.wtrm.action.checkIfElementIsChecked" : "Check if a <b>radio button</b> or <b>checkbox</b> is <b>checked</b>",
-      "schema.sms_send.attr.time" : "Timestamp",
       "nav.sub.services" : "Services",
       "schema.service.desc.failover_check_type_locations" : "Select a fixed and two failover checkpoints",
       "schema.dependency.text.dependencies" : "Dependencies",
       "schema.company.desc.data_retention" : "The retention in days of all data of hosts and services. If a host has a higher data retention configured then the data retention of the company is used.",
       "schema.service.attr.scheduled" : "Has downtime",
-      "schema.service.desc.timeout" : "This is the timeout of the service. If the status of the service is not updated in this time then a critical status is set for the service with the information that it seems that the Bloonix agent is not working. If no value is set, then the timeout of the host is inherited.",
+      "schema.service.desc.timeout" : "This is the timeout of the service and begins to count after the interval. If the status of the service is not updated in this time then a critical status is set for the service with the information that it seems that the Bloonix agent is not working. If no value is set, then the timeout of the host is inherited.",
       "schema.contactgroup.text.selected_hosts" : "Selected hosts",
       "err-633" : "The parameter sort_by must begin with a character of a-z and only characters from a-z, 0-9 and a underscore are allowed. The maximum length is 63 characters.",
       "err-825" : "Sorry, but you cannot create more than %s host templates!",
       "site.wtrm.command.doWaitForElement" : "Wait for element <b>%s</b>",
       "schema.user.attr.role" : "Role",
       "site.wtrm.action.doSwitchToNewPage" : "<b>Switch</b> to new created page",
+      "schema.service.attr.notification_interval" : "Notification interval",
       "site.login.documentation" : "The Bloonix documentation",
       "schema.chart.text.select" : "Chart selection for host %s",
       "text.max_value" : "Max value: <b>%s</b>",
       "schema.service.desc.volatile_retain" : "Set a time after the volatile status is automatically cleared.",
-      "schema.service.attr.last_sms_time" : "Last notification per SMS",
       "schema.dependency.attr.timeslice" : "Timeslice",
       "schema.timeperiod.text.examples" : "Timeperiod examples",
       "schema.host.desc.add_host_to_contactgroup" : "Add the host to a contact group to get event notifications via email or sms.",
@@ -1277,13 +1271,12 @@ var Lang = {
       "schema.contactgroup.attr.description" : "Description",
       "word.inactive" : "inactive",
       "schema.company.attr.max_dashboards_per_user" : "Max dashboards per user",
-      "schema.user.text.select_language" : "Select your preferred language",
       "site.login.welcome" : "Welcome to Bloonix! Please log in.",
+      "schema.user.text.select_language" : "Select your preferred language",
       "schema.host.info.inactive" : "The host is not active.",
       "schema.service.action.multiple_force_next_check" : "Reset the interval and force the next check of the service",
       "schema.service.info.inactive" : "The service is inactive.",
       "site.wtrm.attr.userAgent" : "User-Agent",
-      "schema.service.attr.sms_soft_interval" : "Notification interval for SMS (soft)",
       "schema.user_chart.desc.subtitle" : "The title of the chart.",
       "site.wtrm.command.doFill" : "Fill element <b>%s</b> with value <b>%s</b>",
       "schema.host.desc.coordinates" : "Select the location of the host by country code.",
@@ -1294,6 +1287,7 @@ var Lang = {
       "text.report.availability.AV-W" : "Time slice in percent in which the service was in status WARNING.",
       "schema.hs_downtime.attr.username" : "Added by",
       "schema.service.action.deactivate_multiple" : "Deactivate the selected services",
+      "schema.contact_timeperiod.attr.message_service" : "Message service",
       "text.command" : "Command",
       "site.wtrm.attr.url" : "URL",
       "site.help.doc.how-does-bloonix-checks-your-hosts-and-services" : "Wie überwacht Bloonix Hosts und Services",
@@ -1305,6 +1299,7 @@ var Lang = {
       "text.report.availability.timeout" : "Timeout",
       "word.From" : "From",
       "text.from_now_to_2h" : "From now + 2 hours",
+      "schema.contact_message_services.text.remove" : "Remove a message service",
       "schema.chart.desc.charts" : "<b>Select multiple charts with</b><br/><br/>\n<i>CTRL + click</i><br/>or<br/><i>press + hold left mouse button + move pointer</i>",
       "nav.main.dashboard" : "DASHBOARD",
       "schema.contact.desc.company_id" : "Select the company the contact belongs to.",
@@ -1314,22 +1309,19 @@ var Lang = {
       "schema.user.attr.phone" : "Phone",
       "schema.contactgroup.attr.id" : "Contactgroup ID",
       "site.login.request_password" : "Request a new password.",
-      "schema.service.attr.sms_warnings" : "Send WARNINGS per SMS",
-      "site.wtrm.attr.name" : "Name",
       "schema.group.text.create" : "Create a new group",
       "schema.contact.text.delete" : "Delete contact",
-      "schema.service.attr.last_sms" : "Last notification per SMS",
+      "site.wtrm.attr.name" : "Name",
       "schema.host.attr.hw_product" : "HW product",
       "schema.timeslice.attr.timeslice" : "Timeslice",
+      "schema.notification.attr.send_to" : "Receipient",
       "schema.dependency.text.workflow_to_host_status" : "Select the status of the parent host that avoids a notification",
       "schema.plugin_stats.attr.statkey" : "Key",
       "text.report.availability.h03" : "03:00 - 03:59",
       "site.wtrm.command.checkIfElementHasNotText" : "Check if the element <b>%s</b> does <i>NOT</i> contain <b>%s</b>",
       "schema.host_template.attr.name" : "Template name",
-      "schema.contact.text.escalation_level_event.0" : "permanent active",
       "site.wtrm.attr.contentType" : "Content-Type",
       "schema.host_downtime.text.title" : "Scheduled downtimes for host %s",
-      "schema.sms_send.attr.message" : "Message",
       "schema.company.attr.city" : "City",
       "schema.dependency.text.workflow_timeslice" : "Set the timeslice when the dependency is active",
       "schema.dependency.attr.on_service_id" : "Depends on service ID",
@@ -1347,10 +1339,10 @@ var Lang = {
       "schema.service.attr.attempt_max" : "Notify after X attempts",
       "site.wtrm.attr.ms" : "Milliseconds",
       "err-500" : "An internal error occured! Please contact the administrator!",
-      "schema.contactgroup.text.host_nonmembers" : "Hosts in group",
+      "schema.contactgroup.text.host_nonmembers" : "Hosts not in group",
       "site.wtrm.attr.value" : "Value",
+      "schema.notification.attr.message_service" : "Type",
       "schema.host.desc.interval" : "This is the check interval of all services of the host.",
-      "schema.service.desc.sms_ok" : "This option enables or disables notifications if the service is in status OK.",
       "err-705" : "The new and the old password cannot be the same!",
       "text.dashboard.reconfigure_dashlet" : "Configure dashlet",
       "schema.company.attr.active" : "Active",
@@ -1359,7 +1351,7 @@ var Lang = {
       "schema.hs_downtime.attr.timezone" : "Timezone",
       "schema.company.desc.max_charts_per_user" : "The maximum number of user-charts that can be created by a user.",
       "text.from_now_to_8h" : "From now + 8 hours",
-      "schema.service.attr.mail_hard_interval" : "Notification interval for mails (hard)",
+      "schema.notification.text.list" : "Sent notifications for host %s",
       "nav.sub.contactgroups" : "Contactgroups",
       "action.refresh" : "Refresh",
       "info.no_chart_data" : "There are no chart data available.",
@@ -1388,7 +1380,6 @@ var Lang = {
       "site.wtrm.command.doSwitchToParentFrame" : "Switch to parent frame",
       "schema.service.action.disable_notifications_multiple" : "Disable notifications of the selected services",
       "action.redirect" : "Redirect",
-      "schema.sms_send.attr.send_to" : "Receipient",
       "text.dashboard.name" : "Name of the dashboard",
       "schema.timeperiod.desc.description" : "This is a short description of the timeperiod.",
       "text.report.availability.AV-C" : "Time slice in percent in which the service was in status CRITICAL.",
@@ -1397,6 +1388,7 @@ var Lang = {
       "schema.company.attr.country" : "Country",
       "site.wtrm.command.doSleep" : "Sleep <b>%s</b>ms",
       "schema.host.desc.os_manufacturer" : "e.g. Red Hat, Microsoft, CISCO",
+      "schema.contact_message_services.attr.message_service" : "Message service",
       "site.wtrm.action.doSelect" : "<b>Select</b> a value from a selectbox",
       "action.abort" : "Abort",
       "text.report.availability.h08" : "08:00 - 08:59",
@@ -1408,7 +1400,6 @@ var Lang = {
       "site.wtrm.desc.status" : "Enter the expected http status for the URL.",
       "schema.company.attr.max_contacts" : "Max contacts",
       "schema.location.text.create" : "Create a new location",
-      "schema.contact.text.timeperiod_type" : "Include / Exclude",
       "text.report.availability.h15" : "15:00 - 15:59",
       "site.wtrm.placeholder.userAgent" : "User-Agent",
       "nav.sub.contactgroup_host_members" : "Hosts in contact group",
@@ -1421,6 +1412,7 @@ var Lang = {
       "schema.host.desc.variables" : "In this field you can define host variables. These variables can be used for thresholds by the configuration of service checks. Example:<br/><br/>HTTP.PORT=9000<br/><br/>This variable could be used in the format <i>%HTTP.PORT%</i> for thresholds. Please note that two variables are pre-defined: <i>IPADDR</i> and <i>HOSTNAME</i>. These variables are replaced with the IP address and the hostname of the host. For further information read the help.<br/><br/>Allowed signs: a-z, A-Z, 0-9, dot and underscore",
       "schema.contact.attr.mail_notifications_enabled" : "E-Mail global enabled",
       "schema.location.attr.continent" : "Continent",
+      "word.Type" : "Type",
       "schema.host_template.text.clone" : "Clone the template",
       "site.wtrm.placeholder.text" : "Lorem ipsum...",
       "schema.user.attr.last_login" : "Last login",
@@ -1437,11 +1429,11 @@ var Lang = {
       "text.report.availability.GE300" : "Filter events with a status duration greater than 5 hours.",
       "schema.company.attr.max_timeperiods" : "Max timeperiods",
       "schema.service.action.clear_acknowledgement_multiple" : "Clear the acknowledgement of the selected services",
+      "schema.host.attr.notification_interval" : "Notification interval",
       "schema.service.attr.active" : "Active",
       "schema.group.desc.description" : "Enter a short description about the group.",
       "schema.host.attr.notification" : "Notifications enabled",
       "site.wtrm.command.doSwitchToFrame" : "Switch to frame <b>%s</b>",
-      "schema.service.attr.mail_ok" : "Send OK notifications per mail",
       "schema.service.text.multiple_force_next_check" : "Reset the interval and force the next check of the service",
       "site.wtrm.desc.userAgent" : "This is the User-Agent to send for all requests.",
       "schema.chart.attr.from_to" : "From <b>%s</b> to <b>%s</b>",
@@ -1464,7 +1456,7 @@ var Lang = {
       "text.report.availability.h05" : "05:00 - 05:59",
       "text.report.title.number_of_events" : "The total number of events",
       "action.generate" : "Generate",
-      "schema.sms_send.text.search" : "Search for SMS",
+      "schema.service.desc.notification_interval" : "This is the notification interval for emails. As long as the service is not OK you will be re-notified in this interval. If no value is set, then the interval of the host is inherited.",
       "site.wtrm.placeholder.parent" : "#parent-id (optional)",
       "schema.service.attr.default_location" : "Default location",
       "schema.company.desc.active" : "Activate or de-activate all objects of the company.",
@@ -1477,7 +1469,7 @@ var Lang = {
       "site.wtrm.command.doCheck" : "Check the radio button or checkbox of element <b>%s</b> with value <b>%s</b>",
       "schema.dependency.text.workflow_inherit" : "Activate inheritation",
       "schema.dependency.attr.timezone" : "Timezone",
-      "schema.contact.text.remove_timeperiod" : "Remove timeperiod from contact",
+      "schema.contact.text.remove_timeperiod" : "Remove the timeperiod from contact",
       "schema.host_template.text.selected_hosts" : "Selected hosts",
       "action.clone" : "Clone",
       "schema.user.desc.username" : "Enter the username in the format <i>user@domain.test</i>.",
@@ -1488,7 +1480,6 @@ var Lang = {
       "schema.company.desc.max_timeperiods" : "The maximum number of timeperiods that can be created.",
       "text.report.service_has_a_availabilty_of" : "Service <b>%s</b> has a availability of",
       "schema.service.attr.acknowledged" : "Service status acknowledged",
-      "schema.contact.text.timeperiod_type_send_to_all" : "Send as mail and SMS",
       "word.hour" : "hour",
       "schema.host.attr.coordinates" : "Coordinates",
       "site.wtrm.placeholder.url" : "http://www.bloonix.de/",
@@ -1517,7 +1508,6 @@ var Lang = {
       "site.wtrm.action.checkIfElementIsNotChecked" : "Check if a <b>radio button</b> or <b>checkbox is <i>NOT</i> checked</b>",
       "site.wtrm.text.check_it" : "Check it!",
       "schema.user.text.create" : "Create a new user",
-      "schema.service.attr.send_sms" : "Notifications per SMS enabled",
       "site.wtrm.command.checkIfElementHasText" : "Check if the element <b>%s</b> contains <b>%s</b>",
       "schema.chart.text.chart_id" : "Chart-ID: %s",
       "schema.chart.text.save_view" : "Save view",
@@ -1533,10 +1523,10 @@ var Lang = {
       "schema.user_chart.attr.id" : "ID",
       "schema.dependency.text.host_to_host" : "host to host",
       "schema.host_template.text.delete" : "Delete a template",
+      "schema.service.desc.retry_interval" : "This is the retry interval of the service. If a service is not in OK status then the interval is forced to this value. If no value is set, then the retry interval setting of the host is inherited.",
       "schema.group.text.may_delete_services" : "May delete services",
       "schema.host.desc.virt_manufacturer" : "e.g. VMware, Parallels",
       "schema.company.desc.max_metrics_per_chart" : "The maximum number of metrics per user-chart.",
-      "schema.contact.desc.escalation_level" : "Select an escalation level for the contact. With the escalation level it's possible to control when a contact gets a notification. The escalation level <i>permanent active</i> means that the contact gets the event notifications every time. The escalation level <i>active after 3 notifications</i> means that the contact gets a notification first if already 3 notifications were sent and the service is still not OK.",
       "err-620" : "This object already exists!",
       "nav.sub.user_group_settings" : "User group settings",
       "schema.plugin.attr.id" : "Plugin-ID",
@@ -1571,6 +1561,7 @@ var Lang = {
       "schema.group.desc.company" : "Select the company the group belongs to.",
       "err-702" : "The new password is to long (max 128 signs)!",
       "schema.company.attr.state" : "State/Province",
+      "schema.contact.desc.escalation_time" : "Select an escalation level for the contact. With the escalation level it's possible to control when a contact gets a notification. As example the escalation level of 30 minutes means that the contact is notfied if the service is still not OK after 30 minutes.",
       "schema.chart.attr.datetime" : "Date and time",
       "schema.chart.text.delete_view" : "Delete chart view",
       "schema.dependency.text.active_time" : "Active time",
@@ -1586,6 +1577,7 @@ var Lang = {
       "schema.dependency.text.workflow_from_host" : "From host",
       "text.report.availability.h13" : "13:00 - 13:59",
       "word.Settings" : "Settings",
+      "schema.contact_message_services.desc.send_to" : "The receiver of the message.",
       "schema.service.desc.rotate_check_type_title" : "Rotate checkpoints",
       "err-700" : "Please change your password!",
       "text.dashboard.double_click_or_mouse_wheel_to_zoom" : "Double click or use the mouse wheel to zoom in and out.",
@@ -1593,20 +1585,20 @@ var Lang = {
       "err-634" : "For the parameter sort_type only \"asc\" or \"desc\" is allowed as value.",
       "schema.company.desc.max_chart_views_per_user" : "The maximum number of chart views that can be created by a user.",
       "err-816" : "Sorry, but you cannot add more than %s metrics to a chart!",
+      "schema.host.attr.retry_interval" : "Retry interval",
       "site.help.doc.bloonix-webgui" : "Grundlegendes zur Bloonix-WebGUI",
       "schema.service.info.notification" : "Notifications are disabled of the service.",
       "action.genstr" : "Generate string",
       "info.create_success" : "The creation was successful!",
       "schema.service.info.host_alive_check" : "This is a host-alive-check.",
       "action.clear" : "Clear",
-      "schema.service.attr.last_mail" : "Last notification per mail",
       "schema.user.desc.password" : "Enter the users login password.",
       "schema.contactgroup.desc.description" : "Set a short description for the group.",
-      "schema.contact.desc.sms_notification_level" : "Select the status level for which you want to receive notifications.",
       "site.help.doc.add-new-service" : "Einen neuen Service anlegen",
       "schema.hs_downtime.attr.end_time" : "End time",
       "schema.host.desc.ipaddr" : "This is the main IP address of the host.",
       "text.inherited_from_host" : "Inherited from the host",
+      "schema.contact.text.escalation_time_null" : "Notify immediate",
       "schema.contactgroup.desc.name" : "This is the name of the contact group. The name should be unique.",
       "schema.service.attr.volatile_status" : "The current volatile status of the service",
       "schema.company.desc.max_hosts" : "The maximum number of hosts that can be created. Set 0 (null) if unlimited.",
@@ -1625,15 +1617,16 @@ var Lang = {
       "text.report.title.number_of_events_by_tags" : "Number of events by tags",
       "text.report.availability.EV-LT300" : "Number of events with a status duration less than 5 hours.",
       "schema.service.attr.fd_flap_count" : "Notifiy after X status switches",
+      "schema.contact.attr.escalation_time" : "Escalation level",
       "site.wtrm.command.checkIfElementNotExists" : "Check if the element <b>%s</b> does <i>NOT</i> exists",
       "text.dashboard.delete_dashboard" : "Delete the dashboard",
       "schema.company.text.data_retention_info" : "Your account is limited to %s days.",
       "schema.service.text.failover_location_check_button" : "Failover check",
       "text.change_your_password" : "Change your password",
       "text.plugin_info" : "Plugin information",
-      "schema.service.attr.sms_ok" : "Send OK notifications per SMS",
       "schema.host_template.test.host_nonmembers" : "Hosts not in group",
       "site.help.doc.bloonix-agent-installation" : "Den Bloonix-Agenten installieren",
+      "schema.contact_message_services.desc.enabled" : "Enable or disable the message service.",
       "site.wtrm.desc.event" : "Trigger an event.",
       "schema.roster.attr.description" : "Description",
       "nav.sub.host_group_settings" : "Host group settings",
@@ -1655,7 +1648,7 @@ var Lang = {
       "schema.company.text.delete" : "Delete company",
       "schema.user.desc.manage_templates" : "Is the user allowed to manage host templates?",
       "schema.user.attr.allow_from" : "Allow from IP",
-      "schema.host.desc.timeout" : "This is the timeout of all services of the host. If the status of a service is not updated in this time then a critical status is set for the services with the information that it seems that the Bloonix agent is not working.",
+      "schema.host.desc.timeout" : "This is the timeout of all services of the host. The timeout counter begins after the interval. If the status of a service is not updated in this time then a critical status is set for the services with the information that it seems that the Bloonix agent is not working.",
       "schema.service.attr.next_check" : "Next check",
       "schema.company.attr.max_metrics_per_chart" : "Max metrics per chart",
       "site.help.doc.contacts-and-notifications" : "Kontakte und Benachrichtigungen",
@@ -1680,6 +1673,7 @@ var Lang = {
       "site.help.doc.notification-screen" : "Notification Screen",
       "err-841" : "Sorry, but you cannot create more than %s timeslices per object!",
       "action.update" : "Update",
+      "schema.contact.text.remove_message_service" : "Remove the message service from contact",
       "schema.group.attr.company_id" : "Company ID",
       "site.wtrm.action.checkIfElementHasNotHTML" : "Check if an <b>element does <i>NOT</i></b> contain <b>HTML</b>",
       "nav.sub.rosters" : "Rosters",
@@ -1692,8 +1686,7 @@ var Lang = {
       "site.login.sign_up" : "Sign up for a Bloonix account",
       "schema.timeslice.attr.id" : "Timeslice ID",
       "schema.dependency.text.workflow_from_host_status" : "Select the status of the host that activates the dependency flow",
-      "schema.sms_send.text.list" : "Sent SMS for host %s",
-      "schema.service.desc.sms_hard_interval" : "With this option you can define a hard interval for SMS notifications. Even if the status switched from CRITICAL to OK and then back to CRITICAL you will not get an notification until the interval expires.",
+      "schema.contact_message_services.attr.send_to" : "Send to",
       "site.wtrm.action.doAuth" : "Set auth basic <b>username</b> and <b>password</b>",
       "err-600" : "The object you requested does not exist!",
       "site.wtrm.action.doSleep" : "<b>Sleep</b> a while",
@@ -1718,7 +1711,6 @@ var Lang = {
       "schema.service.text.list" : "Service details for all hosts",
       "schema.host.text.multiple_edit" : "Edit the configuration of multiple hosts",
       "text.report.title.total_status_duration" : "The total service status duration",
-      "schema.contact.desc.sms_notifications_enabled" : "With this option it's possible to enable or disable event notifications via SMS.",
       "schema.service.action.activate_multiple" : "Activate the selected services",
       "site.wtrm.command.checkIfElementIsNotChecked" : "Check if the radio button or checkbox <b>%s</b> is <i>NOT</i> checked",
       "schema.chart.text.charts" : "Charts",
@@ -1743,9 +1735,9 @@ var Lang = {
       "schema.host.desc.hw_manufacturer" : "e.g. IBM, HP, Dell, Fujitsu Siemens",
       "schema.user.desc.locked" : "Lock or unlock the user. Locked users cannot login to the monitoring interface.",
       "schema.contactgroup.attr.name" : "Name",
+      "schema.service.attr.retry_interval" : "Retry interval",
       "schema.company.attr.max_groups" : "Max groups",
       "err-703" : "The new password is to short (min 8 signs)!",
-      "schema.service.desc.mail_warnings" : "This option enables or disables notifications if the service is in status WARNING.",
       "action.save" : "Save",
       "schema.service.text.multiple_acknowledge" : "Acknowledge or clear acknowledgements of multiple services",
       "schema.user_chart.attr.title" : "Title",
@@ -1765,7 +1757,6 @@ var Lang = {
       "schema.contact.text.timeperiods" : "Contact timeperiods",
       "text.dashboard.title" : "Dashboard",
       "schema.user.text.list" : "Overview of all users",
-      "schema.service.desc.mail_ok" : "This option enables or disables notifications if the service switched back to status OK.",
       "schema.company.attr.data_retention" : "Data retention",
       "info.extended_search_syntax_for_hosts" : "<p>It's possible to filter the host list by a search query. The syntax is very simple and looks like:</p>\n<pre>key:value</pre>\n<p>The key is the table field to search for the value.</p>\n<p>Search examples:</p>\n<p>- Search for hosts in status CRITICAL or UNKNOWN</p>\n<pre>status:CRITICAL OR status:UNKNOWN</pre>\n<p>- Search for hosts in datacenter 12 with status CRITICAL</p>\n<pre>location:\"Datacenter 12\" AND status:CRITICAL</pre>\n<p>The following keys are available to search for specific fields:</p>",
       "word.Preset" : "Preset",
@@ -1778,11 +1769,11 @@ var Lang = {
       "schema.user_chart.text.create" : "Create a chart",
       "schema.host.text.device_class_help_link" : "Read how this feature works",
       "schema.user.text.session_expires" : "Session expires",
+      "schema.notification.text.search" : "Search for notifications",
       "text.dashboard.top_hosts_events" : "Top events of all hosts",
       "text.report.availability.h22" : "22:00 - 22:59",
       "nav.sub.reports" : "Reports",
       "site.wtrm.command.doSwitchToNewPage" : "Switch to new created page",
-      "schema.service.desc.sms_warnings" : "This option enables or disables notifications if the service is in status WARNING.",
       "schema.chart.text.selected_max_reached" : "(max) selected",
       "schema.service.text.settings" : "Settings of service <b>%s</b>",
       "site.wtrm.action.checkIfElementHasValue" : "Check the <b>value</b> of an <b>input</b> field or <b>textarea</b>",
@@ -1790,23 +1781,23 @@ var Lang = {
       "schema.user_chart.text.title" : "User charts",
       "site.wtrm.desc.contentType" : "Enter content type that is expeced for the URL.",
       "schema.company.desc.max_dashboards_per_user" : "The maximum number of dashboards that can be created by a user.",
-      "text.from_now_to_4h" : "From now + 4 hours",
       "action.no_abort" : "<b>No, abort!</b>",
-      "schema.host.text.multiple_activate" : "Activate or deactivate multiple hosts",
-      "action.members" : "List members",
+      "text.from_now_to_4h" : "From now + 4 hours",
       "schema.group.attr.groupname" : "Groupname",
-      "schema.host.attr.company_id" : "Company ID",
+      "action.members" : "List members",
+      "schema.host.text.multiple_activate" : "Activate or deactivate multiple hosts",
       "word.active" : "active",
+      "schema.host.attr.company_id" : "Company ID",
       "schema.host.attr.comment" : "Comment",
       "schema.user.attr.comment" : "Comment",
       "schema.user.desc.allow_from" : "It's possible to set a comma separated list of ip addresses from which the user is restricted to login. With the keyword <i>all</i> the login has no restriction.",
-      "schema.contact.desc.mail_notifications_enabled" : "With this option it's possible to enable or disable event notifications via email.",
       "schema.company.desc.max_services" : "The maximum number of services that can be created. Set 0 (null) if unlimited.",
       "text.report.availability.h02" : "02:00 - 02:59",
       "site.wtrm.attr.html" : "Inner HTML",
       "schema.host.text.list_device_classes" : "Device classes",
       "schema.host_template.text.delete_service" : "Delete a service from the template",
       "word.hours" : "hours",
+      "schema.contact_message_services.text.add" : "Add a message service to the contact",
       "schema.host_template.text.list" : "Overview of all host templates",
       "schema.service.attr.is_volatile" : "Is the service volatile",
       "word.days" : "days",
@@ -1822,10 +1813,10 @@ var Lang = {
       "schema.service.text.view_wtrm_report" : "View web transaction report",
       "site.help.doc.device-classes" : "Bauklasse von Hosts",
       "schema.service.attr.comment" : "Comment",
+      "schema.contact_message_services.desc.message_service" : "The message service.",
       "text.dashboard.hosts_availability" : "Availability of all hosts",
       "schema.user.attr.manage_templates" : "Manage templates?",
       "text.last_60d" : "Last 60 days",
-      "schema.contact.text.escalation_level_event.1" : "active after 1 notification",
       "site.help.doc.host-alive-check" : "Was ist ein Host-Alive-Check?",
       "schema.company.attr.company" : "Company",
       "site.wtrm.command.doUserAgent" : "Set the user agent to <b>%s</b>",
@@ -1834,7 +1825,9 @@ var Lang = {
       "schema.location.text.delete" : "Delete location %s",
       "action.help" : "Help",
       "schema.event.text.host_service" : "Host / Service",
+      "schema.notification.attr.message" : "Message",
       "schema.event.attr.tags" : "Tags",
+      "schema.contact_message_services.desc.notification_level" : "Select the status level for which you want to receive notifications.",
       "schema.user.attr.timezone" : "Timezone",
       "site.wtrm.desc.hidden" : "Do you want to hide the value because it's a password or a secret string?",
       "schema.host_template.text.clone_title" : "Clone template %s",
@@ -1866,6 +1859,7 @@ var Lang = {
       "text.change_nav_to_vertical" : "Verticale Navigation",
       "schema.dependency.text.workflow_timezone" : "Gebe eine Zeitzone für den Zeitabschnitt an",
       "schema.service.attr.message" : "Status Informationen",
+      "schema.contact_message_services.attr.enabled" : "Aktiviert",
       "schema.host.desc.company_id" : "Wähle ein Unternehmen zu dem der Host gehört",
       "schema.company.desc.max_contacts" : "Die maximale Anzahl an Kontakten die erstellt werden dürfen.",
       "schema.host.desc.status" : "Der Status des Hosts. Mögliche Werte sind OK, INFO, WARNING, CRITICAL oder UNKNOWN.",
@@ -1873,6 +1867,7 @@ var Lang = {
       "schema.host.attr.os_product" : "OS Produkt",
       "info.last-year" : "Letztes Jahr",
       "action.overview" : "Übersicht",
+      "word.resize" : "Größe anpassen",
       "text.change_the_language" : "Ändere die Sprache",
       "schema.user_chart.text.add_metric" : "Metrik hinzufügen",
       "site.wtrm.command.checkIfElementIsChecked" : "Check if the radio button or checkbox <b>%s</b> is checked",
@@ -1901,7 +1896,6 @@ var Lang = {
       "schema.company.text.list" : "Übersicht über alle Unternehmen",
       "err-701" : "Das Passwort ist ungültig!",
       "schema.event.attr.last_status" : "Letzter Status",
-      "schema.contact.text.timeperiod_type_send_only_mail" : "Nur Mails versenden",
       "schema.event.text.filter_message" : "Nachrichtenfilter",
       "site.wtrm.action.checkIfElementHasNotValue" : "Check if an <b>input</b> field or <b>textarea has <i>NOT</i></b> a specified <b>value</b>",
       "schema.location.attr.id" : "ID",
@@ -1928,6 +1922,7 @@ var Lang = {
       "schema.service.attr.id" : "Service ID",
       "text.report.availability.EV-LT180" : "Anzahl von Ereignissen mit einer Statusdauer kleiner als 3 Stunden. ",
       "site.help.doc.service-parameter" : "Service Parameter im Detail",
+      "schema.contact.text.message_services" : "Nachrichtendienste",
       "site.wtrm.desc.element" : "The element you want to select. As example: #id, .class, name<br/><br/>\nIt's also possible to search for tags and attributes. Example:<br/><br/>\n&lt;a&gt; - get the first 'a' tag<br/><br/>\n&lt;a[5]&gt; - get the fifth 'a' tag<br/><br/>\n&lt;a a=\"hello\" b=\"world\"&gt; - search for a 'a' tag with the specified attributes and values",
       "schema.user_chart.attr.yaxis_label" : "Label der Y-Achse",
       "schema.host_template.text.setting" : "Einstellungen des Template",
@@ -1942,7 +1937,6 @@ var Lang = {
       "site.wtrm.placeholder.status" : "200",
       "site.wtrm.text.click_for_details" : "Click on a row to get a detailed report",
       "schema.service.text.select_location_check_type" : "Wähle den Typ des Checks",
-      "schema.service.desc.send_sms" : "Diese Option aktiviert oder deaktiviert das Versenden von SMS für diesen Service.",
       "err-601" : "Die angeforderten Objekte existieren nicht!",
       "schema.chart.attr.preset" : "Vorauswahl",
       "site.wtrm.command.doUrl" : "Go to URL <b>%s</b>",
@@ -1960,7 +1954,6 @@ var Lang = {
       "schema.host.text.mtr_chart" : "MTR Chart",
       "schema.service.text.sla_requirements" : "Bitte beachten Sie das für freie Accounts nur der Standardcheck zur Verfügung steht!",
       "schema.timeslice.text.delete" : "Den Zeitabschnitt löschen",
-      "schema.contact.text.timeperiod_type_exclude" : "Exkludieren",
       "nav.sub.contactgroup_service_members" : "Services in der Kontaktgruppe",
       "text.browsers_heap_size" : "Anzeige der Auslastung der Heap-size in Ihrem Browser",
       "site.help.doc.users-and-groups" : "Die Benutzer- und Gruppenverwaltung",
@@ -1968,6 +1961,7 @@ var Lang = {
       "site.wtrm.action.doUserAgent" : "Set the <b>user agent</b> for the request",
       "schema.hs_downtime.attr.timeslice" : "Zeitraum",
       "err-810" : "Sorry, aber Sie können nicht mehr als %s Dashlets zu einem Dashboard hinzufügen!",
+      "schema.notification.text.filter_message" : "Nachrichtenfilter",
       "site.wtrm.placeholder.hidden" : "Hide this value?",
       "schema.service.text.multiple" : "Service Aktionen",
       "site.wtrm.command.doAuth" : "Use auth basic with username <b>%s</b> and password <b>%s</b>",
@@ -1981,8 +1975,8 @@ var Lang = {
       "site.wtrm.attr.event" : "Event",
       "schema.plugin_stats.attr.datatype" : "Datentyp",
       "schema.timeperiod.text.list" : "Übersicht über alle Zeitpläne",
-      "schema.plugin_stats.attr.alias" : "Name",
       "schema.service.text.clone" : "Den Service klonen",
+      "schema.plugin_stats.attr.alias" : "Name",
       "nav.sub.companies" : "Unternehmen",
       "schema.user.desc.manage_contacts" : "Darf der Benutzer Kontakte verwalten?",
       "text.report.availability.lt180" : "Zwischen 1 und 3 Stunden",
@@ -1990,7 +1984,6 @@ var Lang = {
       "text.report.availability.lt60" : "Zwischen 30 und 60 Minuten",
       "nav.sub.events" : "Ereignisse",
       "site.wtrm.action.checkIfElementIsNotSelected" : "Check if a <b>value is <i>NOT</i> selected</b> in a selectbox",
-      "schema.service.attr.last_mail_time" : "Letzte Benachrichtigung per E-Mail",
       "text.radial_graph" : "Radial graph",
       "schema.service.desc.host_alive_check" : "Ein Host-Alive-Check ist ein Check der feststellt, ob ein Host UP oder DOWN ist. Wenn dieser Service Check einen kritischen Status liefert erhalten Sie eine besondere Nachricht. Wenn andere Services des Hosts ebenfalls in einem kritischen Status sind, während der Host-Alive-Check kritisch ist, dann werden die Benachrichtiungen anderer Services unterdrückt. Es wird empfohlen einen Ping-Check als Host-Alive-Check zu definieren.",
       "schema.host.desc.virt_product" : "z.B. VMware-Server, Virtuozzo",
@@ -2014,7 +2007,6 @@ var Lang = {
       "text.dashboard.remove_dashlet" : "Das Dashlet entfernen",
       "schema.company.attr.title" : "Titel",
       "schema.service.desc.multiple_check_concurrency_title" : "Konkurrierende Checks",
-      "schema.contact.desc.mail_notification_level" : "Wähle die Status Level für die der Konakt eine Benachrichtigung per E-Mail erhalten soll.",
       "err-847" : "Sorry, aber Sie dürfen nicht mehr als %s Abhängigkeiten pro Host erstellen!",
       "schema.service.text.rotate_location_check_button" : "Rotierende Checks",
       "schema.location.attr.hostname" : "Hostname",
@@ -2023,7 +2015,6 @@ var Lang = {
       "text.dashboard.one_service_downtime" : "%s Service mit einer Downtime",
       "action.resize" : "Größe ändern",
       "text.report.availability.LT60" : "Filterung von Ereignissen mit einer Statusdauer kleiner als 60 Minuten.",
-      "schema.service.attr.mail_warnings" : "Benachrichtigungen für Warnmeldungen per E-Mail versenden",
       "text.report.availability.EV-C" : "Anzahl von Ereignissen mit Status CRITICAL. ",
       "err-835" : "Sorry, aber Sie dürfen nicht mehr als %s Kontakte erstellen!",
       "word.seconds" : "Sekunden",
@@ -2052,7 +2043,6 @@ var Lang = {
       "schema.service.desc.comment" : "Dies ist ein beliebiges Kommentar zum Service.",
       "schema.chart.text.multiselect" : "Chartauswahl für mehrere Hosts",
       "schema.location.attr.ipaddr" : "IP Adresse",
-      "schema.contact.attr.escalation_level" : "Eskalationslevel",
       "site.wtrm.action.doCheck" : "Check a <b>radio button</b> or <b>checkbox</b>",
       "schema.location.text.view" : "Lokation %s",
       "schema.host.text.multiple_selection_help" : "<h4>Diese Aktion erfordert, dass mindestens ein Host ausgewählt ist.</h4>\nUm einen einzelnen Host zu markieren, klicken Sie auf die entsprechende Zeile.\nWenn Sie mehrere Hosts markieren möchten, halten Sie einfach die Taste <i>STRG</i>\nauf Ihrer Tastatur gedrückt. Beim Drücken und Halten der der linken Maustaste und dem\nBewegen des Mauszeigers kann ein größerer Bereich von Hosts gewählt werden.",
@@ -2068,7 +2058,6 @@ var Lang = {
       "action.timeslices" : "Zeitpläne auflisten",
       "schema.service.text.notification_settings" : "Einstellungen zur Benachrichtigung",
       "schema.host_template.attr.id" : "Template ID",
-      "schema.contact.text.timeperiod_type_send_only_sms" : "Nur SMS versenden",
       "schema.company.attr.sla" : "SLA",
       "text.report.availability.h18" : "18:00 - 18:59",
       "action.reload" : "Reload",
@@ -2078,6 +2067,7 @@ var Lang = {
       "site.login.contact" : "Haben Sie Fragen?",
       "nav.sub.dependencies" : "Abhängigkeiten",
       "text.report.availability.h04" : "04:00 - 04:59",
+      "schema.contact_timeperiod.text.add" : "Eine Timeperiod dem Kontakt hinzufügen",
       "word.minute" : "Minute",
       "site.wtrm.action.checkUrl" : "Check the <b>URL</b> in the address bar",
       "schema.contact.attr.company_id" : "Firmen ID",
@@ -2112,19 +2102,20 @@ var Lang = {
       "schema.service.text.multiple_volatile" : "Den flüchtigen Status mehrerer Services aufheben",
       "schema.host.attr.id" : "Host ID",
       "schema.service.attr.agent_id" : "Standort des Agenten",
-      "schema.service.desc.default_check_type_title" : "Standard Messpunkt",
       "schema.user_chart.text.user_chart" : "User charts",
+      "schema.service.desc.default_check_type_title" : "Standard Messpunkt",
       "site.wtrm.desc.name" : "This is the name of the element.",
       "schema.chart.attr.subtitle" : "Chart Untertitel",
       "nav.sub.contactgroup_settings" : "Kontaktgruppen Einstellungen",
       "schema.service.text.delete" : "Den Service löschen",
+      "schema.notification.attr.time" : "Zeitstempel",
       "schema.service.desc.service_name" : "Dies ist der Anzeigename des Service.",
       "text.dashboard.choose_content_box" : "Wähle ein Dashlet aus",
       "schema.company.text.view" : "Unternehmen %s",
-      "schema.service.desc.mail_soft_interval" : "Dies ist der Benachrichtigungsintervall für Services. Solange der Service nicht OK ist, erhalten Sie in diesem Intervall erneut Benachrichtigungen.",
       "word.no" : "nein",
       "schema.host.desc.password" : "Dieses Passwort wird für den Bloonix Agenten benötigt. Wenn der Agent Statistiken für einen Host zum Bloonix Server senden möchte dann ist dies nur möglich wenn der Agent die Host-ID und das Passwort kennt.",
       "schema.event.text.list" : "Ereignisse von Host %s",
+      "schema.host.desc.retry_interval" : "Das ist der Prüfintervall aller Services des Hosts, aber nur, wenn ein Service nicht im Status OK ist.",
       "schema.host.text.delete" : "Den Host löschen",
       "text.hypertree" : "Hypertree",
       "schema.service.text.clone_service" : "Service %s klonen",
@@ -2144,16 +2135,15 @@ var Lang = {
       "word.Timeslice" : "Zeitscheibe",
       "schema.dependency.text.list" : "Abhängigkeiten für Host %s",
       "site.wtrm.action.doSwitchToMainPage" : "<b>Switch</b> to main page",
-      "schema.service.attr.mail_soft_interval" : "Benachrichtigungsintervall für E-Mails (soft)",
       "text.selected_locations_costs" : "itte beachten Sie, dass jeder Kontrollpunkt extra berechnet wird.",
       "text.fixed_checkpoint" : "Fixer Messpunkt",
       "schema.user_chart.attr.subtitle" : "Untertitel",
-      "schema.contact.desc.sms_to" : "Dies ist die Mobilfunknummer des Konakts. Benachrichtigung über Ereignisse werden an diese Rufnummer per SMS gesendet.",
       "schema.group.text.host_nonmembers" : "Nicht-Mitglieder der Gruppe",
       "site.wtrm.command.doSubmit" : "Submit form <b>%s</b>",
       "schema.service.text.wtrm_result_steps" : "Web-Transaktion - Step Ergebnis",
       "schema.host.attr.description" : "Beschreibung",
       "word.minutes" : "Minuten",
+      "schema.notification.text.filter_message_service" : "sms, mail, ...",
       "schema.hs_downtime.text.preset" : "Voreinstellung",
       "site.wtrm.command.checkIfElementHasNotHTML" : "Check if the element <b>%s</b> does <i>NOT</i> contain <b>%s</b>",
       "schema.host.desc.location" : "z.B. Hamburg, Rechenzentrum 3, Raum 6, Schrank A29",
@@ -2185,6 +2175,7 @@ var Lang = {
       "text.report.availability.h16" : "16:00 - 16:59",
       "schema.chart.text.user_charts" : "User charts",
       "text.dashboard.show_as_chart" : "Zeige die Daten als Chart",
+      "schema.contact_message_services.attr.notification_level" : "Benachrichtigungslevel",
       "site.login.login" : "Bitte loggen Sie sich mit Ihrem Benutzernamen und Passwort ein:",
       "schema.company.attr.zipcode" : "Postleitzahl",
       "site.wtrm.attr.status" : "HTTP-Status",
@@ -2196,8 +2187,8 @@ var Lang = {
       "site.wtrm.action.checkIfElementHasNotText" : "Check if an <b>element does <i>NOT</i></b> contain <b>text</b>",
       "schema.service.text.clone_to_the_same_host" : "Den Service zum selben Host klonen",
       "schema.host.text.add_host_to_contactgroup" : "Den Host einer Kontaktgruppe hinzufügen",
-      "schema.service.desc.mail_hard_interval" : "Mit dieser Option können Sie einen harten Benachrichtigungsintervall setzen. Auch wenn der Service zu OK und dann wieder zu CRITICAL wechselt, so erhalten Sie erst nach Ablauf dieses Intervalls erneut eine Benachrichtigung.",
       "site.wtrm.desc.ms" : "This is the time in milliseconds to sleep between actions.",
+      "schema.contact_timeperiod.attr.exclude" : "Exkludieren",
       "text.dashboard.services_flapping" : "Flapping",
       "schema.service.attr.attempt_counter" : "Prüfzähler",
       "schema.contactgroup.text.create" : "Eine neue Kontaktgruppe erstellen",
@@ -2205,7 +2196,6 @@ var Lang = {
       "text.report.title.no_data" : "Für die folgenden Services stehen keine Daten in diesem Zeitbereich zur Verfügung",
       "schema.company.attr.alt_company_id" : "Reale Firmen ID",
       "text.from_now_to_1h" : "Von jetzt + 1 Stunde",
-      "schema.contact.desc.mail_to" : "Dies ist die E-Mail Adresse des Konakts. Benachrichtigung über Ereignisse werden an diese Adresse gesendet.",
       "err-815" : "Sorry, aber Sie dürfen nicht mehr als %s Charts erstellen!",
       "schema.host.attr.device_class" : "Bauklasse",
       "schema.chart.text.service_charts" : "Service charts",
@@ -2226,7 +2216,6 @@ var Lang = {
       "text.report.availability.h21" : "21:00 - 21:59",
       "schema.service.text.multiple_location_check_button" : "Mehrfache Checks",
       "schema.plugin.attr.plugin" : "Plugin",
-      "schema.service.attr.sms_hard_interval" : "Benachrichtigungsintervall für SMS (hart)",
       "action.replace" : "Ersetzen",
       "text.dashboard.map_title" : "Globale Host Status Karte",
       "schema.chart.text.chart_information" : "Chart Informationen",
@@ -2256,6 +2245,7 @@ var Lang = {
       "schema.hs_downtime.text.create" : "Erstelle eine geplante Wartungsarbeit",
       "schema.company.attr.surname" : "Vorname",
       "schema.chart.text.load_view" : "Ansicht laden",
+      "schema.notification.attr.subject" : "Betreff",
       "word.Relative" : "Relativ",
       "site.wtrm.action.doFill" : "Fill data into a <b>input</b> field or <b>textarea</b>",
       "schema.host.desc.max_sms" : "In diesem Feld kann die maximale Anzahl von SMS pro Monat für diesen Host gesetzt werden.",
@@ -2263,9 +2253,7 @@ var Lang = {
       "schema.company.attr.max_sms" : "Maximale SMS pro Monat",
       "site.wtrm.placeholder.html" : "<span>Loren ipsum...</span>",
       "site.wtrm.placeholder.password" : "Secret",
-      "schema.service.desc.sms_soft_interval" : "Dies ist der Benachrichtigungsintervall für Services. Solange der Service nicht OK ist, erhalten Sie in diesem Intervall erneut Benachrichtigungen.",
       "schema.service.desc.description" : "Dies ist eine kurze Beschreibung zum Service.",
-      "schema.contact.text.escalation_level_event.x" : "aktiv nach %s Benachrichtiungen",
       "schema.host.attr.hw_manufacturer" : "HW Hersteller",
       "text.dashboard.one_service_acknowledged" : "%s Service Status ist bestätigt",
       "schema.user.desc.phone" : "Die Rufnummer kann sehr hilfreich für Kollegen oder dem Bloonix-Support in dringenden Notfällen sein.",
@@ -2308,24 +2296,23 @@ var Lang = {
       "text.from_now_to_7d" : "Von jetzt + 7 Tage",
       "schema.host_template.text.delete_service_warning" : "Bitte beachte dass dieser Service von allen Hosts gelöscht wird, die diesen Service über das Template vererbt bekommen!",
       "site.wtrm.action.checkIfElementIsChecked" : "Check if a <b>radio button</b> or <b>checkbox</b> is <b>checked</b>",
-      "schema.sms_send.attr.time" : "Zeitstempel",
       "nav.sub.services" : "Services",
       "schema.service.desc.failover_check_type_locations" : "Bitte wählen Sie einen festen und zwei Failover Messpunkte aus",
       "schema.dependency.text.dependencies" : "Abhängigkeiten",
       "schema.company.desc.data_retention" : "Die Aufbewahrungszeit in Tagen aller Daten von Hosts und der Services. Wenn ein Host eine höhere Aufbewahrungszeit konfiguriert hat, dann wird die Aufbewahrungszeit der Firma verwendet.",
       "schema.service.attr.scheduled" : "Hat eine Downtime",
-      "schema.service.desc.timeout" : "Das ist der Timeout des Service. Wenn in dieser Zeit der Status des Service nicht aktualisiert wurde, dann wird ein kritischer Status gesetzt mit der Information, dass der Bloonix-Agent wohlmöglich ausgefallen ist. Wenn kein Wert gesetzt ist, dann wird der Timeout des Hosts vererbt.",
+      "schema.service.desc.timeout" : "Das ist der Timeout des Service. Der Timeoutzähler beginnt nach dem Intervall. Wenn in dieser Zeit der Status des Service nicht aktualisiert wurde, dann wird ein kritischer Status gesetzt mit der Information, dass der Bloonix-Agent wohlmöglich ausgefallen ist. Wenn kein Wert gesetzt ist, dann wird der Timeout des Hosts vererbt.",
       "schema.contactgroup.text.selected_hosts" : "Ausgewählte Hosts",
       "err-633" : "Der Parameter sort_by muss mit einem Zeichen von a-z beginnen und nur Zeichen von a-z, 0-9 und ein Unterstrich sind erlaubt. Die maximale Länge beträgt 63 Zeichen.",
       "err-825" : "Sorry, aber Sie dürfen nicht mehr als %s Host-Templates erstellen!",
       "site.wtrm.command.doWaitForElement" : "Wait for element <b>%s</b>",
       "schema.user.attr.role" : "Rolle",
       "site.wtrm.action.doSwitchToNewPage" : "<b>Switch</b> to new created page",
+      "schema.service.attr.notification_interval" : "Benachrichtigungsintervall",
       "site.login.documentation" : "Die Bloonix Dokumentation",
       "schema.chart.text.select" : "Chartauswahl für Host %s",
       "text.max_value" : "Höchstwert: %s",
       "schema.service.desc.volatile_retain" : "Mit dieser Option kann konfiguriert werden, ob der flüchtige Status eines Services nach einer bestimmten Zeit automatisch aufgehoben wird.",
-      "schema.service.attr.last_sms_time" : "Letzte Benachrichtigung per SMSRNUNGEN per E-Mail versenden",
       "schema.dependency.attr.timeslice" : "Zeitabschnitt",
       "schema.timeperiod.text.examples" : "Beispiel für Zeitpläne",
       "schema.host.desc.add_host_to_contactgroup" : "Füge den Host einer Kontaktgruppe hinzu",
@@ -2368,13 +2355,12 @@ var Lang = {
       "schema.contactgroup.attr.description" : "Beschreibung",
       "word.inactive" : "inaktiv",
       "schema.company.attr.max_dashboards_per_user" : "Maximale Dashboards pro Benutzer",
-      "schema.user.text.select_language" : "Wähle deine bevorzugte Sprache aus",
       "site.login.welcome" : "Willkommen bei Bloonix!",
+      "schema.user.text.select_language" : "Wähle deine bevorzugte Sprache aus",
       "schema.host.info.inactive" : "Der Host ist deaktiviert.",
       "schema.service.action.multiple_force_next_check" : "Erzwinge den nächsten Check des Service",
       "schema.service.info.inactive" : "Der Service ist inaktiv.",
       "site.wtrm.attr.userAgent" : "User-Agent",
-      "schema.service.attr.sms_soft_interval" : "Benachrichtigungsintervall für SMS (soft)",
       "schema.user_chart.desc.subtitle" : "Der Untertitle des Chart.",
       "site.wtrm.command.doFill" : "Fill element <b>%s</b> with value <b>%s</b>",
       "schema.host.desc.coordinates" : "Der Standort des Hosts nach Länderkürzel.",
@@ -2385,6 +2371,7 @@ var Lang = {
       "text.report.availability.AV-W" : "Der Zeitbereich in Prozent in dem der Service im Status WARNING war.",
       "schema.hs_downtime.attr.username" : "Erstellt von",
       "schema.service.action.deactivate_multiple" : "Selektierte Services deaktivieren",
+      "schema.contact_timeperiod.attr.message_service" : "Nachrichtendienst",
       "text.command" : "Kommando",
       "site.wtrm.attr.url" : "URL",
       "site.help.doc.how-does-bloonix-checks-your-hosts-and-services" : "Wie überwacht Bloonix Hosts und Services",
@@ -2395,6 +2382,7 @@ var Lang = {
       "text.report.availability.timeout" : "Timeout",
       "word.From" : "Von",
       "text.from_now_to_2h" : "Von jetzt + 2 Stunden",
+      "schema.contact_message_services.text.remove" : "Einen Nachrichtendienst entfernen",
       "schema.chart.desc.charts" : "<b>Mehrere Charts können ausgewählt werden mittels</b><br/><br/>\n<i>STRG + Klick</i><br/>oder<br/><i>linke Maustaste drücken + halten + Mauszeiger bewegen</i>",
       "nav.main.dashboard" : "DASHBOARD",
       "schema.contact.desc.company_id" : "Wähle ein Unternehmen zu dem der Kontakt gehört",
@@ -2404,22 +2392,19 @@ var Lang = {
       "schema.user.attr.phone" : "Telefon",
       "schema.contactgroup.attr.id" : "Kontaktgruppen ID",
       "site.login.request_password" : "Fordern Sie ein neues Passwort an.",
-      "schema.service.attr.sms_warnings" : "Benachrichtigungen für Warnmeldungen per SMS versenden",
-      "site.wtrm.attr.name" : "Name",
       "schema.group.text.create" : "Eine neue Gruppe erstellen",
       "schema.contact.text.delete" : "Kontakt löschen",
-      "schema.service.attr.last_sms" : "Letzte Benachrichtigung per SMS",
+      "site.wtrm.attr.name" : "Name",
       "schema.host.attr.hw_product" : "HW Produkt",
       "schema.timeslice.attr.timeslice" : "Zeitabschnitt",
+      "schema.notification.attr.send_to" : "Empfänger",
       "schema.dependency.text.workflow_to_host_status" : "Wähle den Status des übergeordneten Hosts, welcher die Benachrichtigung untertrückt",
       "schema.plugin_stats.attr.statkey" : "Schlüssel",
       "text.report.availability.h03" : "03:00 - 03:59",
       "site.wtrm.command.checkIfElementHasNotText" : "Check if the element <b>%s</b> does <i>NOT</i> contain <b>%s</b>",
       "schema.host_template.attr.name" : "Template Name",
-      "schema.contact.text.escalation_level_event.0" : "Permanent aktiv",
       "site.wtrm.attr.contentType" : "Content-Type",
       "schema.host_downtime.text.title" : "Geplante Wartungsarbeiten für Host %s",
-      "schema.sms_send.attr.message" : "Nachricht",
       "schema.company.attr.city" : "Stadt",
       "schema.dependency.text.workflow_timeslice" : "Gebe einen Zeitabschnitt an, in dem die Abhängigkeit aktiv ist",
       "schema.dependency.attr.on_service_id" : "Depends on service ID",
@@ -2439,8 +2424,8 @@ var Lang = {
       "err-500" : "Ein interner Fehler ist aufgetreten! Bitten kontaktieren Sie den Administrator!",
       "schema.contactgroup.text.host_nonmembers" : "Hosts, die der Kontaktgruppe nicht angehören",
       "site.wtrm.attr.value" : "Value",
+      "schema.notification.attr.message_service" : "Typ",
       "schema.host.desc.interval" : "Das ist der Prüfungsintervall aller Services des Hosts.",
-      "schema.service.desc.sms_ok" : "Diese Option aktiviert oder deaktiviert das Versenden von Nachrichten per SMS für Services die in den Status OK zurückwechseln.",
       "err-705" : "Das neue und alte Passwort dürfen nicht übereinstimmen!",
       "text.dashboard.reconfigure_dashlet" : "Dashlet konfigurieren",
       "schema.company.attr.active" : "Aktiv",
@@ -2449,7 +2434,7 @@ var Lang = {
       "schema.hs_downtime.attr.timezone" : "Zeitzone",
       "schema.company.desc.max_charts_per_user" : "Die maximale Anzahl an Benutzer-Charts die pro Benutzer erstellt werden dürfen.",
       "text.from_now_to_8h" : "Von jetzt + 8 Stunden",
-      "schema.service.attr.mail_hard_interval" : "Benachrichtigungsintervall für E-Mails (hart)",
+      "schema.notification.text.list" : "Gesendete Nachrichten für Host %s",
       "nav.sub.contactgroups" : "Kontaktgruppen",
       "action.refresh" : "Aktualisieren",
       "info.no_chart_data" : "Es sind keine Chartdaten verfügbar.",
@@ -2478,7 +2463,6 @@ var Lang = {
       "site.wtrm.command.doSwitchToParentFrame" : "Switch to parent frame",
       "schema.service.action.disable_notifications_multiple" : "Benachrichtigungen ausschalten für die selektierten Services",
       "action.redirect" : "Umleiten",
-      "schema.sms_send.attr.send_to" : "Empfänger",
       "text.dashboard.name" : "Name des Dashboards",
       "schema.timeperiod.desc.description" : "Dies ist eine kurze Beschreibung zum Zeitplan.",
       "text.report.availability.AV-C" : "Der Zeitbereich in Prozent in dem der Service im Status CRITICAL war.",
@@ -2487,6 +2471,7 @@ var Lang = {
       "schema.company.attr.country" : "Land",
       "site.wtrm.command.doSleep" : "Sleep <b>%s</b>ms",
       "schema.host.desc.os_manufacturer" : "z.B. Red Hat, Microsoft, CISCO",
+      "schema.contact_message_services.attr.message_service" : "Nachrichtendienst",
       "site.wtrm.action.doSelect" : "<b>Select</b> a value from a selectbox",
       "action.abort" : "Abbrechen",
       "text.report.availability.h08" : "08:00 - 08:59",
@@ -2498,7 +2483,6 @@ var Lang = {
       "site.wtrm.desc.status" : "Enter the expected http status for the URL.",
       "schema.company.attr.max_contacts" : "Maximale Kontakte",
       "schema.location.text.create" : "Eine neue Lokation erstellen",
-      "schema.contact.text.timeperiod_type" : "Inkludieren / Exkludieren",
       "text.report.availability.h15" : "15:00 - 15:59",
       "site.wtrm.placeholder.userAgent" : "User-Agent",
       "nav.sub.contactgroup_host_members" : "Hosts in der Kontaktgruppe",
@@ -2511,6 +2495,7 @@ var Lang = {
       "schema.host.desc.variables" : "In diesem Feld können Host Variablen definiert werden. Diese Variablen können für Schwellwerten bei der Konfiguration von Service-Checks verwendet werden. Beispiel:<br/><br/><b>HTTP.PORT=9000</b><br/><br/>Diese Variable kann dann im Format <i>%HTTP.PORT%</i> für Schwellwerte eingesetzt werden. Bitte beachten Sie das zwei Variablen vordefiniert sind: <i>IPADDR</i> und <i>HOSTNAME</i>. Diese Variablen werden mit der IP-Adresse und dem Hostnamen ersetzt. Weitere Informationen hierzu finden Sie in der Hilfe.<br/><br/>Erlaubte Zeichen: a-z, A-Z, 0-9, Punkt und Unterstrich",
       "schema.contact.attr.mail_notifications_enabled" : "E-Mail global aktiv",
       "schema.location.attr.continent" : "Kontinent",
+      "word.Type" : "Typ",
       "schema.host_template.text.clone" : "Das Template klonen",
       "site.wtrm.placeholder.text" : "Lorem ipsum...",
       "schema.user.attr.last_login" : "Letzter Login",
@@ -2527,11 +2512,11 @@ var Lang = {
       "text.report.availability.GE300" : "Filterung von Ereignissen mit einer Statusdauer größer als 5 Stunden.",
       "schema.company.attr.max_timeperiods" : "Maximale Timeperiods",
       "schema.service.action.clear_acknowledgement_multiple" : "Die Bestätigung des Status der selektierten Services aufheben",
+      "schema.host.attr.notification_interval" : "Benachrichtigungsintervall",
       "schema.service.attr.active" : "Aktiv",
       "schema.group.desc.description" : "Gebe eine kleine Beschreibung zum Unternehmen ein.",
       "schema.host.attr.notification" : "Benachrichtigungen aktiv",
       "site.wtrm.command.doSwitchToFrame" : "Switch to frame <b>%s</b>",
-      "schema.service.attr.mail_ok" : "Benachrichtigungen für OK Meldungen per E-Mail versenden",
       "schema.service.text.multiple_force_next_check" : "Erzwinge einen Check aller Services so bald wie möglich",
       "site.wtrm.desc.userAgent" : "This is the User-Agent to send for all requests.",
       "schema.chart.attr.from_to" : "Von %s bis %s",
@@ -2554,7 +2539,7 @@ var Lang = {
       "text.report.availability.h05" : "05:00 - 05:59",
       "text.report.title.number_of_events" : "Die totale Anzahl von Ereignissen",
       "action.generate" : "Generieren",
-      "schema.sms_send.text.search" : "Suche nach SMS",
+      "schema.service.desc.notification_interval" : "Dies ist der Benachrichtigungsintervall für Services. Solange der Service nicht OK ist, erhalten Sie in diesem Intervall erneut Benachrichtigungen. Wenn kein Wert gesetzt ist, dann wird der Intervall des Hosts vererbt.",
       "site.wtrm.placeholder.parent" : "#parent-id (optional)",
       "schema.service.attr.default_location" : "Standard Standort",
       "schema.company.desc.active" : "Aktivierung oder Deaktivierung aller Objekte dieser Firma.",
@@ -2578,7 +2563,6 @@ var Lang = {
       "schema.company.desc.max_timeperiods" : "Die maximale Anzahl an Timeperiods die erstellt werden dürfen.",
       "text.report.service_has_a_availabilty_of" : "Service %s hat eine Verfügbarkeit von",
       "schema.service.attr.acknowledged" : "Bestätigt",
-      "schema.contact.text.timeperiod_type_send_to_all" : "E-Mails und SMS versenden",
       "word.hour" : "Stunde",
       "schema.host.attr.coordinates" : "Koordinaten",
       "site.wtrm.placeholder.url" : "http://www.bloonix.de/",
@@ -2606,7 +2590,6 @@ var Lang = {
       "site.wtrm.action.checkIfElementIsNotChecked" : "Check if a <b>radio button</b> or <b>checkbox is <i>NOT</i> checked</b>",
       "site.wtrm.text.check_it" : "Check it!",
       "schema.user.text.create" : "Einen neuen Benutzer erstellen",
-      "schema.service.attr.send_sms" : "Benachrichtigungen für SMS eingeschaltet",
       "site.wtrm.command.checkIfElementHasText" : "Check if the element <b>%s</b> contains <b>%s</b>",
       "schema.chart.text.chart_id" : "Chart-ID: %s",
       "schema.chart.text.save_view" : "Ansicht speichern",
@@ -2622,10 +2605,10 @@ var Lang = {
       "schema.user_chart.attr.id" : "ID",
       "schema.dependency.text.host_to_host" : "Host zu Host",
       "schema.host_template.text.delete" : "Ein Template löschen",
+      "schema.service.desc.retry_interval" : "Das ist der Prüfintervall des Service, aber nur, wenn ein Service nicht im Status OK ist. Wenn kein Wert gesetzt ist, dann wird der Intervall des Hosts vererbt.",
       "schema.group.text.may_delete_services" : "Darf Services löschen",
       "schema.host.desc.virt_manufacturer" : "z.B. VMware, Parallels",
       "schema.company.desc.max_metrics_per_chart" : "Die maximale Anzahl an Metriken die pro Benutzer-Chart hinzugefügt werden dürfen.",
-      "schema.contact.desc.escalation_level" : "Wähle ein Eskalationslevel für den Kontakt. Mit dem Eskalationslevel kann kontrolliert werden wann ein Kontakt eine Benachrichtigung erhält. Das Level <i>Permanent aktiv</i> bedeuted, dass der Konakt immer benachrichtigt wird. Das Level <i>aktiv nach 3 Benachrichtiungen</i> bedeuted, dass der Kontakt erst benachrichtigt wird, wenn für den Service bereits 3 Benachrichtigungen versendet wurden und noch immer in einem niht-OK Status ist.",
       "err-620" : "Das Objekt existiert bereits!",
       "nav.sub.user_group_settings" : "Gruppeneinstellungen für Services",
       "schema.plugin.attr.id" : "Plugin-ID",
@@ -2660,6 +2643,7 @@ var Lang = {
       "schema.group.desc.company" : "Wähle ein Unternehmen zu der die Gruppe gehört",
       "err-702" : "Das Passwort ist zu lang (maximal 128 Zeichen)!",
       "schema.company.attr.state" : "Staat/Bundesland",
+      "schema.contact.desc.escalation_time" : "Wähle ein Eskalationslevel für den Kontakt. Mit dem Eskalationslevel kann kontrolliert werden wann ein Kontakt eine Benachrichtigung erhält. Das Level <i>30 Minuten</i> bedeuted, dass der Konakt nach 30 Minuten benachrichtigt wird, wenn der Service nach 30 Minuten noch immer nicht OK ist.",
       "schema.chart.attr.datetime" : "Datum und Uhrzeit",
       "schema.chart.text.delete_view" : "Chartansicht löschen",
       "schema.dependency.text.active_time" : "Aktive Zeit",
@@ -2675,6 +2659,7 @@ var Lang = {
       "schema.dependency.text.workflow_from_host" : "Von Host",
       "text.report.availability.h13" : "13:00 - 13:59",
       "word.Settings" : "Einstellungen",
+      "schema.contact_message_services.desc.send_to" : "Der Empfänger der Nachricht.",
       "schema.service.desc.rotate_check_type_title" : "Rotierende Messpunkte",
       "err-700" : "Bitte ändern Sie Ihr Passwort!",
       "text.dashboard.double_click_or_mouse_wheel_to_zoom" : "Doppelklick oder nutze das Mausrad um zu Zoomen",
@@ -2682,20 +2667,20 @@ var Lang = {
       "err-634" : "Für den Paramter sort_by sind nur die Werte \"asc\" und \"desc\" erlaubt.",
       "schema.company.desc.max_chart_views_per_user" : "Die maximale Anzahl an Chart-Views die pro Benutzer erstellt werden dürfen.",
       "err-816" : "Sorry, aber Sie dürfen nicht mehr als %s Metriken zu einem Chart hinzufügen!",
+      "schema.host.attr.retry_interval" : "Wiederholungsintervall",
       "site.help.doc.bloonix-webgui" : "Grundlegendes zur Bloonix-WebGUI",
       "schema.service.info.notification" : "Benachrichtigungen sind ausgeschaltet.",
       "action.genstr" : "Zeichenkette generieren",
       "info.create_success" : "Das Erstellen war erfolgreich!",
       "schema.service.info.host_alive_check" : "Dies ist ein Host-Alive-Check.",
       "action.clear" : "Zurücksetzen",
-      "schema.service.attr.last_mail" : "Letzte Benachrichtigung per E-Mail",
       "schema.user.desc.password" : "Geben Sie das Passwort des Benutzers ein.",
       "schema.contactgroup.desc.description" : "Gebe eine kurze Beschreibung der Gruppe an.",
-      "schema.contact.desc.sms_notification_level" : "Wähle die Status Level für die der Konakt eine Benachrichtigung per SMS erhalten soll.",
       "site.help.doc.add-new-service" : "Einen neuen Service anlegen",
       "schema.hs_downtime.attr.end_time" : "Endzeit",
       "schema.host.desc.ipaddr" : "Das ist die Haupt-IP-Adresse des Hosts.",
       "text.inherited_from_host" : "Vererbt vom Host",
+      "schema.contact.text.escalation_time_null" : "Sofort benachrichtigen",
       "schema.contactgroup.desc.name" : "Dies ist der Name der Kontaktgruppe. Der Name sollte einzigartig sein.",
       "schema.service.attr.volatile_status" : "Der aktuelle flüchtige Status (volatile)",
       "schema.company.desc.max_hosts" : "Die maximale Anzahl an Hosts die erstellt werden dürfen. Setze 0 (null) wenn es kein Limit gibt.",
@@ -2714,15 +2699,16 @@ var Lang = {
       "text.report.title.number_of_events_by_tags" : "Anzahl der Ereignisse nach Tags",
       "text.report.availability.EV-LT300" : "Anzahl von Ereignissen mit einer Statusdauer kleiner als 5 Stunden.",
       "schema.service.attr.fd_flap_count" : "Maximale Anzahl von Statuswechsel",
+      "schema.contact.attr.escalation_time" : "Eskalationslevel",
       "site.wtrm.command.checkIfElementNotExists" : "Check if the element <b>%s</b> does <i>NOT</i> exists",
       "text.dashboard.delete_dashboard" : "Das Dashboard löschen",
       "schema.company.text.data_retention_info" : "Ihr Account ist limitiert auf %s Tage.",
       "schema.service.text.failover_location_check_button" : "Ausfall Checks",
       "text.change_your_password" : "Ändere dein Passwort",
       "text.plugin_info" : "Plugin Informationen",
-      "schema.service.attr.sms_ok" : "Benachrichtigungen für OK Meldungen per SMS versenden",
       "schema.host_template.test.host_nonmembers" : "Hosts nicht in der Gruppe",
       "site.help.doc.bloonix-agent-installation" : "Den Bloonix-Agenten installieren",
+      "schema.contact_message_services.desc.enabled" : "Den Dienst aktivieren oder deaktivieren.",
       "site.wtrm.desc.event" : "Trigger an event.",
       "schema.roster.attr.description" : "Beschreibung",
       "nav.sub.host_group_settings" : "Gruppeneinstellungen für Hosts",
@@ -2744,7 +2730,7 @@ var Lang = {
       "schema.company.text.delete" : "Unternehmen löschen",
       "schema.user.desc.manage_templates" : "Darf der Benutzer Host-Templates verwalten?",
       "schema.user.attr.allow_from" : "Erlaubter IP-Zugriff",
-      "schema.host.desc.timeout" : "Das ist der Timeout aller Services des Hosts. Wenn in dieser Zeit der Status eines Service nicht aktualisiert wurde, dann wird ein kritischer Status gesetzt mit der Information, dass der Bloonix-Agent wohlmöglich ausgefallen ist.",
+      "schema.host.desc.timeout" : "Das ist der Timeout aller Services des Hosts. Der Timeoutzähler beginnt nach dem Intervall. Wenn in dieser Zeit der Status eines Service nicht aktualisiert wurde, dann wird ein kritischer Status gesetzt mit der Information, dass der Bloonix-Agent wohlmöglich ausgefallen ist.",
       "schema.service.attr.next_check" : "Nächste Prüfung",
       "schema.company.attr.max_metrics_per_chart" : "Maximale Metriken pro Chart",
       "site.help.doc.contacts-and-notifications" : "Kontakte und Benachrichtigungen",
@@ -2769,6 +2755,7 @@ var Lang = {
       "site.help.doc.notification-screen" : "Notification Screen",
       "err-841" : "Sorry, aber Sie dürfen nicht mehr als %s Timeslices per objec erstellent!",
       "action.update" : "Aktualisieren",
+      "schema.contact.text.remove_message_service" : "Den Nachrichtendienst vom Konakt entfernen",
       "schema.group.attr.company_id" : "Firmen ID",
       "site.wtrm.action.checkIfElementHasNotHTML" : "Check if an <b>element does <i>NOT</i></b> contain <b>HTML</b>",
       "nav.sub.rosters" : "Bereitschaftsplan",
@@ -2781,8 +2768,7 @@ var Lang = {
       "site.login.sign_up" : "Registrieren Sie sich für einen Bloonix Account",
       "schema.timeslice.attr.id" : "ID",
       "schema.dependency.text.workflow_from_host_status" : "Wähle den Status des Hosts, welcher den Abhängigkeitsfluss aktiviert",
-      "schema.sms_send.text.list" : "Gesendete SMS für Host %s",
-      "schema.service.desc.sms_hard_interval" : "Mit dieser Option können Sie einen harten Benachrichtigungsintervall setzen. Auch wenn der Service zu OK und dann wieder zu CRITICAL wechselt, so erhalten Sie erst nach Ablauf dieses Intervalls erneut eine Benachrichtigung.",
+      "schema.contact_message_services.attr.send_to" : "Sende zu",
       "site.wtrm.action.doAuth" : "Set auth basic <b>username</b> and <b>password</b>",
       "err-600" : "Das angeforderte Objekt existiert nicht!",
       "site.wtrm.action.doSleep" : "<b>Sleep</b> a while",
@@ -2807,7 +2793,6 @@ var Lang = {
       "schema.service.text.list" : "Übersicht über alle Services",
       "schema.host.text.multiple_edit" : "Die Konfiguration mehrerer Hosts editieren",
       "text.report.title.total_status_duration" : "Die Dauer der Ereignisse nach Status",
-      "schema.contact.desc.sms_notifications_enabled" : "Mit dieser Option ist es möglich die Benachrichtigung per SMS ein- oder auszuschalten.",
       "schema.service.action.activate_multiple" : "Selektierte Services aktivieren",
       "site.wtrm.command.checkIfElementIsNotChecked" : "Check if the radio button or checkbox <b>%s</b> is <i>NOT</i> checked",
       "schema.chart.text.charts" : "Charts",
@@ -2832,9 +2817,9 @@ var Lang = {
       "schema.host.desc.hw_manufacturer" : "z.B. IBM, HP, Dell, Fujitsu Siemens",
       "schema.user.desc.locked" : "Darf sich der Benutzer einloggen?",
       "schema.contactgroup.attr.name" : "Name",
+      "schema.service.attr.retry_interval" : "Wiederholungsintervall",
       "schema.company.attr.max_groups" : "Maximale Gruppen",
       "err-703" : "Das Passwort ist zu kurz (minimum 8 Zeichen)!",
-      "schema.service.desc.mail_warnings" : "Diese Option aktiviert oder deaktiviert das Versenden von Nachrichten per E-Mail für Services im Status WARNING.",
       "action.save" : "Speichern",
       "schema.service.text.multiple_acknowledge" : "Den Status mehrerer Services bestätigen",
       "schema.user_chart.attr.title" : "Titel",
@@ -2854,7 +2839,6 @@ var Lang = {
       "schema.contact.text.timeperiods" : "Zeitpläne des Kontakts",
       "text.dashboard.title" : "Dashboard",
       "schema.user.text.list" : "Übersicht über alle Benutzer",
-      "schema.service.desc.mail_ok" : "Diese Option aktiviert oder deaktiviert das Versenden von Nachrichten per E-Mail für Services die in den Status OK zurückwechseln.",
       "schema.company.attr.data_retention" : "Daten Aufbewahrungszeit",
       "info.extended_search_syntax_for_hosts" : "<p>Es ist möglich die Hostliste durch eine Suchabfrage zu filtern. Die Syntax ist sehr einfach und sieht wie folgt aus::</p>\n<pre>Schlüssel:Wert</pre>\n<p>Der Schlüssel ist das Tabellenfeld, in dem nach dem Wert gesucht werden solll.</p>\n<p>Suchbeispiele:</p>\n<p>- Suche nach Hosts mit Status CRITICAL oder UNKNOWN</p>\n<pre>status:CRITICAL OR status:UNKNOWN</pre>\n<p>- Suche nach Hosts im Datacenter 12 mit Status CRITICAL</p>\n<pre>location:\"Datacenter 12\" AND status:CRITICAL</pre>\n<p>Die folgenden Schlüssel sind für die spezifische Suche verfügbar:</p>",
       "word.Preset" : "Voreinstellung",
@@ -2867,11 +2851,11 @@ var Lang = {
       "schema.user_chart.text.create" : "Einen Chart erstellen",
       "schema.host.text.device_class_help_link" : "Lesen Sie wie dieses Feature funktioniert",
       "schema.user.text.session_expires" : "Session läuft ab",
+      "schema.notification.text.search" : "Suche nach Nachrichten",
       "text.dashboard.top_hosts_events" : "Anzeige der Top-Events aller Hosts",
       "text.report.availability.h22" : "22:00 - 22:59",
       "nav.sub.reports" : "Berichte",
       "site.wtrm.command.doSwitchToNewPage" : "Switch to new created page",
-      "schema.service.desc.sms_warnings" : "Diese Option aktiviert oder deaktiviert das Versenden von Nachrichten per SMS für Services im Status WARNING.",
       "schema.chart.text.selected_max_reached" : "(max) selektiert",
       "schema.service.text.settings" : "Einstellung des Service %s",
       "site.wtrm.action.checkIfElementHasValue" : "Check the <b>value</b> of an <b>input</b> field or <b>textarea</b>",
@@ -2879,23 +2863,23 @@ var Lang = {
       "schema.user_chart.text.title" : "Benutzer Charts",
       "site.wtrm.desc.contentType" : "Enter content type that is expeced for the URL.",
       "schema.company.desc.max_dashboards_per_user" : "Die maximale Anzahl an Dashboards die pro Benutzer erstellt werden dürfen.",
-      "text.from_now_to_4h" : "Von jetzt + 4 Stunden",
       "action.no_abort" : "<b>Nein, abbrechen!</b>",
-      "schema.host.text.multiple_activate" : "Mehrere Hosts aktivieren oder deaktivieren",
-      "action.members" : "Mitglieder auflisten",
+      "text.from_now_to_4h" : "Von jetzt + 4 Stunden",
       "schema.group.attr.groupname" : "Gruppenname",
-      "schema.host.attr.company_id" : "Firmen ID",
+      "action.members" : "Mitglieder auflisten",
+      "schema.host.text.multiple_activate" : "Mehrere Hosts aktivieren oder deaktivieren",
       "word.active" : "aktiv",
+      "schema.host.attr.company_id" : "Firmen ID",
       "schema.host.attr.comment" : "Kommentar",
       "schema.user.attr.comment" : "Kommentar",
       "schema.user.desc.allow_from" : "Es ist möglich eine Komma-separierte Liste von IP-Adressen anzugeben, von denen sich der Benutzer einloggen darf. Das Schlüsselwort <i>all</i> heißt von überall.",
-      "schema.contact.desc.mail_notifications_enabled" : "Mit dieser Option ist es möglich die Benachrichtigung per E-Mail ein- oder auszuschalten.",
       "schema.company.desc.max_services" : "Die maximale Anzahl an Services die überwacht werden dürfen. Setze 0 (null) wenn es kein Limit gibt.",
       "text.report.availability.h02" : "02:00 - 02:59",
       "site.wtrm.attr.html" : "Inner HTML",
       "schema.host.text.list_device_classes" : "Device Klassen",
       "schema.host_template.text.delete_service" : "Einen Service aus dem Template löschen",
       "word.hours" : "Stunden",
+      "schema.contact_message_services.text.add" : "Einen Nachrichtendienst dem Kontakt hinzufügen",
       "schema.host_template.text.list" : "Übersicht über alle Host-Templates",
       "schema.service.attr.is_volatile" : "Ist der Service flüchtig (volatile)",
       "word.days" : "Tage",
@@ -2911,10 +2895,10 @@ var Lang = {
       "schema.service.text.view_wtrm_report" : "Web-Transaktionsreport einsehen",
       "site.help.doc.device-classes" : "Bauklasse von Hosts",
       "schema.service.attr.comment" : "Kommentar",
+      "schema.contact_message_services.desc.message_service" : "Der Nachrichtendienst.",
       "text.dashboard.hosts_availability" : "Verfügbarkeit aller Hosts",
       "schema.user.attr.manage_templates" : "Verwaltung von Vorlagen?",
       "text.last_60d" : "Die letzten 60 Tage",
-      "schema.contact.text.escalation_level_event.1" : "aktiv nach 1er Benachrichtiung",
       "site.help.doc.host-alive-check" : "Was ist ein Host-Alive-Check?",
       "schema.company.attr.company" : "Firma",
       "site.wtrm.command.doUserAgent" : "Set the user agent to <b>%s</b>",
@@ -2923,7 +2907,9 @@ var Lang = {
       "schema.location.text.delete" : "Lokation %s löschen",
       "action.help" : "Hilfe",
       "schema.event.text.host_service" : "Host / Service",
+      "schema.notification.attr.message" : "Nachricht",
       "schema.event.attr.tags" : "Hinweise",
+      "schema.contact_message_services.desc.notification_level" : "Wähle die Status Level für die der Konakt eine Benachrichtigung erhalten soll.",
       "schema.user.attr.timezone" : "Zeitzone",
       "site.wtrm.desc.hidden" : "Do you want to hide the value because it's a password or a secret string?",
       "schema.host_template.text.clone_title" : "Das Template %s klonen",
@@ -6696,6 +6682,18 @@ var Table = function(o) {
         });
     }
 
+    if (this.columnSwitcher === false) {
+        this.columnSwitcher = { enabled: false };
+    } else if (this.columnSwitcher === true) {
+        this.columnSwitcher = { enabled: true };
+    }
+    if (this.columnSwitcher.enabled === undefined) {
+        this.columnSwitcher.enabled = true;
+    }
+    if (this.columnSwitcher.config === undefined) {
+        this.columnSwitcher.config = {};
+    }
+
     this.cache = { data: {}, selected: {} };
 };
 
@@ -6706,6 +6704,11 @@ Table.prototype = {
     appendTo: "#content",
     appendPagerTo: false,
     type: "default",
+    /* columnSwitcher:
+    **   - true
+    **   - false
+    **   - { table: "table-name", config: { column: "show|hide" }, callback: function(){} }
+    */
     columnSwitcher: false,
     values: false,
     header: false,
@@ -6720,6 +6723,7 @@ Table.prototype = {
 Table.prototype.init = function() {
     this.container = Utils.create("div");
     this.table = Utils.create("table").appendTo(this.container);
+    this.pagerBox = Utils.create("div").appendTo(this.container);
  
     if (this.type == "default") {
         this.table.addClass(this.addClass || "maintab");
@@ -6886,9 +6890,7 @@ Table.prototype.createStruct = function() {
             });
         }
 
-        if (col.hide == true) {
-            th.hide();
-        }
+        self.hideOrShowColumn(th, col);
     });
 
     if (this.deletable != undefined || self.rowHoverIcons) {
@@ -6902,11 +6904,27 @@ Table.prototype.createStruct = function() {
         .appendTo(this.container);
 };
 
-Table.prototype.createColumnSwitcher = function() {
-    var self = this;
+Table.prototype.hideOrShowColumn = function(obj, col) {
+    if (this.columnSwitcher !== false && this.columnSwitcher.config[col.name]) {
+        if (this.columnSwitcher.config[col.name] === "hide") {
+            obj.hide();
+        }
+    } else if (col.hide === true) {
+        obj.hide();
+    }
+};
 
-    if (!this.columnSwitcher) {
+Table.prototype.createColumnSwitcher = function() {
+    var self = this,
+        callback, switchTable, config;
+
+    if (this.columnSwitcher === false) {
         return false;
+    }
+
+    if (this.columnSwitcher.callback) {
+        callback = this.columnSwitcher.callback;
+        switchTable = this.columnSwitcher.table;
     }
 
     var container = Utils.create("div")
@@ -6936,7 +6954,7 @@ Table.prototype.createColumnSwitcher = function() {
         .appendTo(infobox);
 
     $.each(this.columns, function(i, col) {
-        if (col.icons) {
+        if (col.icons || col.switchable === false) {
             return true;
         }
 
@@ -6955,15 +6973,25 @@ Table.prototype.createColumnSwitcher = function() {
             .attr("name", col.name)
             .appendTo(td);
 
-        if (col.hide != true) {
+        if (self.columnSwitcher !== false && self.columnSwitcher.config[col.name]) {
+            if (self.columnSwitcher.config[col.name] == "show") {
+                input.attr("checked", "checked");
+            }
+        } else if (col.hide != true) {
             input.attr("checked", "checked");
         }
 
         input.click(function() {
-            if (this.checked == true) {
+            if (this.checked === true) {
+                if (callback) {
+                    callback({ table: switchTable, column: col.name, action: "show" });
+                }
                 self.table.find("[data-col='"+ col.name +"']").fadeIn();
                 self.colsByKey[col.name].hide = false;
             } else {
+                if (callback) {
+                    callback({ table: switchTable, column: col.name, action: "hide" });
+                }
                 self.table.find("[data-col='"+ col.name +"']").fadeOut();
                 self.colsByKey[col.name].hide = true;
             }
@@ -7016,10 +7044,21 @@ Table.prototype.getData = function(o) {
                     ? self.pager.appendTo
                     : self.header.pager;
 
-                self.pagerObject = new Pager({
+                new Pager({
                     data: result,
                     postdata: postdata,
                     appendTo: appendPagerTo,
+                    callback: function(req) {
+                        self.postdata = req.postdata;
+                        self.getData();
+                    }
+                }).create();
+
+                new Pager({
+                    data: result,
+                    postdata: postdata,
+                    appendTo: self.pagerBox,
+                    start: 10,
                     callback: function(req) {
                         self.postdata = req.postdata;
                         self.getData();
@@ -7081,10 +7120,7 @@ Table.prototype.createRows = function(rows) {
 
         $.each(self.columns, function(y, col) {
             var td = self.createColumn(tr, row, col);
-
-            if (col.hide == true) {
-                td.hide();
-            }
+            self.hideOrShowColumn(td, col);
         });
 
         var rowHoverIcons, rowHoverIconsWidth = 0;
@@ -7443,8 +7479,9 @@ Table.prototype.createColumn = function(tr, row, col) {
     }
 
     if (col.onClick) {
-        value.click(col.onClick);
-        value.css({ cursor: "pointer" });
+        value = Utils.create("a")
+            .html(value)
+            .click(function() { col.onClick(row) });
 
         if (col.link == undefined && col.call == undefined) {
             value.hover(
@@ -7452,12 +7489,6 @@ Table.prototype.createColumn = function(tr, row, col) {
                 function() { $(this).css({ "text-decoration": "none" }) }
             );
         }
-    }
-
-    if (col.linkCallback) {
-        value = Utils.create("a")
-            .html(value)
-            .click(function() { col.linkCallback(row) });
     }
 
     if (col.title) {
@@ -8321,7 +8352,9 @@ Pager.prototype = {
     pagerClass: "pager",
     pagerTextClass: false,
     data: false,
-    postdata: false
+    postdata: false,
+    bottom: false,
+    start: 0
 };
 
 Pager.prototype.getPagerTextClass = function() {
@@ -8384,6 +8417,10 @@ Pager.prototype.create = function() {
     var container = $(this.appendTo)
         .addClass(this.pagerClass)
         .html("");
+
+    if (this.start > 0 && total < this.start) {
+        return;
+    }
 
     if (offset > 0) {
         Utils.create("div")
@@ -12284,10 +12321,10 @@ Bloonix.dashboard = function(o) {
         var self = this,
             content = Utils.create("div"),
             opts = box.outer.data("opts"),
-            typeValue = opts.type;
-
-        if (typeValue === undefined) {
             typeValue = 1;
+
+        if (typeof opts == "object" && opts.type !== undefined) {
+            typeValue = opts.type;
         }
 
         var overlay = new Overlay({
@@ -13356,7 +13393,11 @@ Bloonix.listHosts = function(o) {
 
                 return text;
             },
-            columnSwitcher: true,
+            columnSwitcher: {
+                table: "host",
+                callback: Bloonix.saveUserTableConfig,
+                config: Bloonix.getUserTableConfig("host")
+            },
             columns: [
                 {
                     name: "id",
@@ -13365,7 +13406,8 @@ Bloonix.listHosts = function(o) {
                 },{
                     name: "hostname",
                     text: Text.get("schema.host.attr.hostname"),
-                    call: function(row) { return Bloonix.call("monitoring/hosts/"+ row.id, row.hostname) }
+                    call: function(row) { return Bloonix.call("monitoring/hosts/"+ row.id, row.hostname) },
+                    switchable: false
                 },{
                     icons: [
                         {
@@ -13390,7 +13432,8 @@ Bloonix.listHosts = function(o) {
                 },{
                     name: "company",
                     text: Text.get("schema.company.attr.company"),
-                    hide: Bloonix.user.role == "admin" ? false : true
+                    hide: Bloonix.user.role == "admin" ? false : true,
+                    switchable: false
                 },{
                     name: "description",
                     text: Text.get("schema.host.attr.description")
@@ -13401,7 +13444,8 @@ Bloonix.listHosts = function(o) {
                 },{
                     name: "status",
                     text: Text.get("schema.host.attr.status"),
-                    wrapValueClass: true
+                    wrapValueClass: true,
+                    switchable: false
                 },{
                     name: "last_check",
                     text: Text.get("schema.host.attr.last_check"),
@@ -13449,6 +13493,10 @@ Bloonix.listHosts = function(o) {
                 },{
                     name: "interval",
                     text: Text.get("schema.host.attr.interval"),
+                    hide: true
+                },{
+                    name: "retry_interval",
+                    text: Text.get("schema.host.attr.retry_interval"),
                     hide: true
                 },{
                     name: "data_retention",
@@ -13686,6 +13734,13 @@ Bloonix.getHostFormElements = function(o) {
             nullString: Text.get("text.inherited_from_host")
         },{
             element: "slider",
+            name: "retry_interval",
+            text: Text.get("schema.host.attr.retry_interval"),
+            desc: Text.get("schema.host.desc.retry_interval"),
+            secondsToFormValues: true,
+            nullString: Text.get("text.inherited_from_host")
+        },{
+            element: "slider",
             name: "timeout",
             text: Text.get("schema.host.attr.timeout"),
             desc: Text.get("schema.host.desc.timeout"),
@@ -13700,7 +13755,7 @@ Bloonix.getHostFormElements = function(o) {
             minValue: 0,
             maxValue: 32767,
             required: true,
-            elementInfo: Text.get("schema.company.text.data_retention_info", o.data_retention)
+            elementInfo: o ? Text.get("schema.company.text.data_retention_info", o.data_retention) : false
         },{
             element: "input",
             type: "text",
@@ -14905,7 +14960,7 @@ Bloonix.viewHostNotifications = function(o) {
         Bloonix.showHostSubNavigation("notifications", this.id, this.host.hostname);
 
         this.header = new Header({
-            title: Bloonix.setTitle("schema.sms_send.text.list", this.host.hostname, true),
+            title: Bloonix.setTitle("schema.notification.text.list", this.host.hostname, true),
             pager: true
         }).create();
 
@@ -14925,7 +14980,7 @@ Bloonix.viewHostNotifications = function(o) {
             format: "medium",
             showButton: false,
             appendTo: this.boxes.left,
-            title: Text.get("schema.sms_send.text.search"),
+            title: Text.get("schema.notification.text.search"),
             onSuccess: function() { self.table.getData() }
         }).create();
 
@@ -14943,7 +14998,13 @@ Bloonix.viewHostNotifications = function(o) {
 
         var query = this.form.input({
             name: "query",
-            placeholder: Text.get("word.Filter"),
+            placeholder: Text.get("schema.notification.text.filter_message"),
+            appendTo: this.form.form
+        });
+
+        var type = this.form.input({
+            name: "type",
+            placeholder: Text.get("schema.notification.text.filter_message_service"),
             appendTo: this.form.form
         });
 
@@ -14969,21 +15030,27 @@ Bloonix.viewHostNotifications = function(o) {
         var self = this;
 
         this.table = new Table({
-            url: "/hosts/"+ this.id +"/sms-notifications",
+            url: "/hosts/"+ this.id +"/notifications",
             bindForm: this.form,
             appendTo: this.boxes.right,
             headerObject: this.header,
             columns: [
                 {
                     name: "time",
-                    text: Text.get("schema.sms_send.attr.time"),
+                    text: Text.get("schema.notification.attr.time"),
                     convertFromUnixTime: true
                 },{
+                    name: "message_service",
+                    text: Text.get("schema.notification.attr.message_service")
+                },{
                     name: "send_to",
-                    text: Text.get("schema.sms_send.attr.send_to")
+                    text: Text.get("schema.notification.attr.send_to")
+                },{
+                    name: "subject",
+                    text: Text.get("schema.notification.attr.subject")
                 },{
                     name: "message",
-                    text: Text.get("schema.sms_send.attr.message")
+                    text: Text.get("schema.notification.attr.message")
                 }
             ]
         }).create();
@@ -16999,11 +17066,13 @@ Bloonix.createServiceForm = function(o) {
         });
 
         var intervalNullStrText = Text.get("text.inherited_from_host"),
+            retryIntervalNullStrText = Text.get("text.inherited_from_host"),
             timeoutNullStrText = Text.get("text.inherited_from_host");
 
         // if it's a template, then this.host is undefined
         if (this.host) {
             intervalNullStrText += " ("+ Utils.secondsToStringShortReadable(this.host.interval) +")";
+            retryIntervalNullStrText += " ("+ Utils.secondsToStringShortReadable(this.host.retry_interval) +")";
             timeoutNullStrText += " ("+ Utils.secondsToStringShortReadable(this.host.timeout) +")";
         }
 
@@ -17016,6 +17085,17 @@ Bloonix.createServiceForm = function(o) {
             checked: this.values.interval,
             secondsToFormValues: true,
             nullString: intervalNullStrText
+        });
+
+        this.form.createElement({
+            text: Text.get("schema.service.attr.retry_interval"),
+            desc: Text.get("schema.service.desc.retry_interval"),
+            element: "slider",
+            name: "retry_interval",
+            options: this.options.retry_interval,
+            checked: this.values.retry_interval,
+            secondsToFormValues: true,
+            nullString: retryIntervalNullStrText
         });
 
         this.form.createElement({
@@ -17353,87 +17433,14 @@ Bloonix.createServiceForm = function(o) {
         });
 
         this.form.createElement({
-            text: Text.get("schema.service.attr.mail_soft_interval"),
-            desc: Text.get("schema.service.desc.mail_soft_interval"),
+            text: Text.get("schema.service.attr.notification_interval"),
+            desc: Text.get("schema.service.desc.notification_interval"),
             element: "slider",
-            name: "mail_soft_interval",
-            options: this.options.mail_soft_interval,
-            checked: this.values.mail_soft_interval,
+            name: "notification_interval",
+            options: this.options.notification_interval,
+            checked: this.values.notification_interval,
             secondsToFormValues: true,
             nullString: Text.get("text.undefined")
-        });
-
-        this.form.createElement({
-            text: Text.get("schema.service.attr.mail_hard_interval"),
-            desc: Text.get("schema.service.desc.mail_hard_interval"),
-            element: "slider",
-            name: "mail_hard_interval",
-            options: this.options.mail_hard_interval,
-            checked: this.values.mail_hard_interval,
-            secondsToFormValues: true,
-            nullString: Text.get("text.undefined")
-        });
-
-        this.form.createElement({
-            text: Text.get("schema.service.attr.mail_warnings"),
-            desc: Text.get("schema.service.desc.mail_warnings"),
-            element: "radio-yes-no",
-            name: "mail_warnings",
-            checked: this.values.mail_warnings
-        });
-
-        this.form.createElement({
-            text: Text.get("schema.service.attr.mail_ok"),
-            desc: Text.get("schema.service.desc.mail_ok"),
-            element: "radio-yes-no",
-            name: "mail_ok",
-            checked: this.values.mail_ok
-        });
-
-        this.form.createElement({
-            text: Text.get("schema.service.attr.send_sms"),
-            desc: Text.get("schema.service.desc.send_sms"),
-            element: "radio-yes-no",
-            name: "send_sms",
-            checked: this.values.send_sms
-        });
-
-        this.form.createElement({
-            text: Text.get("schema.service.attr.sms_soft_interval"),
-            desc: Text.get("schema.service.desc.sms_soft_interval"),
-            element: "slider",
-            name: "sms_soft_interval",
-            options: this.options.sms_soft_interval,
-            checked: this.values.sms_soft_interval,
-            secondsToFormValues: true,
-            nullString: Text.get("text.undefined")
-        });
-
-        this.form.createElement({
-            text: Text.get("schema.service.attr.sms_hard_interval"),
-            desc: Text.get("schema.service.desc.sms_hard_interval"),
-            element: "slider",
-            name: "sms_hard_interval",
-            options: this.options.sms_hard_interval,
-            checked: this.values.sms_hard_interval,
-            secondsToFormValues: true,
-            nullString: Text.get("text.undefined")
-        });
-
-        this.form.createElement({
-            text: Text.get("schema.service.attr.sms_warnings"),
-            desc: Text.get("schema.service.desc.sms_warnings"),
-            element: "radio-yes-no",
-            name: "sms_warnings",
-            checked: this.values.sms_warnings
-        });
-
-        this.form.createElement({
-            text: Text.get("schema.service.attr.sms_ok"),
-            desc: Text.get("schema.service.desc.sms_ok"),
-            element: "radio-yes-no",
-            name: "sms_ok",
-            checked: this.values.sms_ok
         });
     };
 
@@ -18141,7 +18148,6 @@ Bloonix.listLocations = function() {
             result: [ "id", "continent", "country", "city" ]
         },
         reloadable: true,
-        columnSwitcher: true,
         columns: [
             {
                 name: "id",
@@ -18163,14 +18169,6 @@ Bloonix.listLocations = function() {
             },{
                 name: "city",
                 text: Text.get("schema.location.attr.city")
-            },{
-                name: "coordinates",
-                text: Text.get("schema.location.attr.coordinates"),
-                hide: true
-            },{
-                name: "description",
-                text: Text.get("schema.location.attr.description"),
-                hide: true
             }
         ]
     }).create();
@@ -18178,7 +18176,6 @@ Bloonix.listLocations = function() {
 
 Bloonix.editLocation = function(o) {
     var location = Bloonix.get("/administration/locations/"+ o.id +"/options/");
-console.log(location);
 
     new Header({ title: Text.get("schema.location.text.view", location.values.hostname, true) }).create();
     Bloonix.setMetaTitle(Text.get("schema.location.text.view", location.values.hostname));
@@ -18854,7 +18851,11 @@ Bloonix.listServices = function(o) {
             },
             reloadable: true,
             sortable: true,
-            columnSwitcher: true,
+            columnSwitcher: {
+                table: "service",
+                callback: Bloonix.saveUserTableConfig,
+                config: Bloonix.getUserTableConfig("service")
+            },
             rowHoverIcons: [{
                 title: Text.get("schema.service.text.clone"),
                 icon: "share",
@@ -18868,10 +18869,12 @@ Bloonix.listServices = function(o) {
                 },{
                     name: "hostname",
                     text: Text.get("schema.host.attr.hostname"),
-                    call: function(row) { return Bloonix.call("monitoring/hosts/"+ row.host_id, row.hostname) }
+                    call: function(row) { return Bloonix.call("monitoring/hosts/"+ row.host_id, row.hostname) },
+                    switchable: false
                 },{
                     name: "service_name",
                     text: Text.get("schema.service.attr.service_name"),
+                    switchable: false
                 },{
                     icons: this.getStatusIcons()
                 },{
@@ -18917,14 +18920,16 @@ Bloonix.listServices = function(o) {
                 },{
                     name: "status",
                     text: Text.get("schema.service.attr.status"),
-                    wrapValueClass: true
+                    wrapValueClass: true,
+                    switchable: false
                 },{
                     name: "last_check",
                     text: Text.get("schema.service.attr.last_check"),
                     convertFromUnixTime: true
                 },{
                     text: Text.get("schema.service.text.attempt"),
-                    call: function(row) { return [ row.attempt_counter, row.attempt_max ].join("/") }
+                    call: function(row) { return [ row.attempt_counter, row.attempt_max ].join("/") },
+                    switchable: false
                 },{
                     name: "message",
                     text: Text.get("schema.service.attr.message")
@@ -19006,7 +19011,11 @@ Bloonix.listServices = function(o) {
                 result: [ "id", "service_name", "plugin" ],
                 check: function(row) { return row.host_template_name ? false : true }
             },
-            columnSwitcher: true,
+            columnSwitcher: {
+                table: "service",
+                callback: Bloonix.saveUserTableConfig,
+                config: Bloonix.user.stash.table_config.service
+            },
             rowHoverIcons: [{
                 title: Text.get("schema.service.text.clone"),
                 icon: "share",
@@ -20507,7 +20516,6 @@ Bloonix.listUserCharts = function(o) {
                 url: "/user/charts/:id/delete",
                 result: [ "id", "title" ]
             },
-            columnSwitcher: true,
             columns: [
                 {
                     name: "id",
@@ -20750,7 +20758,6 @@ Bloonix.createUserChart = function(o) {
                 result: [ "plugin", "command", "category", "description" ],
                 resultWidth: "900px"
             },
-            columnSwitcher: true,
             onClick: function(row) { self.listPluginStats(row) },
             columns: [
                 {
@@ -20760,10 +20767,6 @@ Bloonix.createUserChart = function(o) {
                 },{
                     name: "plugin",
                     text: Text.get("schema.plugin.attr.plugin")
-                },{
-                    name: "command",
-                    text: Text.get("schema.plugin.attr.command"),
-                    hide: true
                 },{
                     name: "category",
                     text: Text.get("schema.plugin.attr.categories")
@@ -20798,21 +20801,12 @@ Bloonix.createUserChart = function(o) {
                     }
                 }]
             },
-            columnSwitcher: true,
             onClick: function(row) { self.listServices(row) },
             columns: [
                 {
                     name: "alias",
                     text: Text.get("schema.plugin_stats.attr.alias"),
                     value: function(row) { return row.alias && row.alias.length ? row.alias : row.statkey }
-                },{
-                    name: "statkey",
-                    text: Text.get("schema.plugin_stats.attr.statkey"),
-                    hide: true
-                },{
-                    name: "datatype",
-                    text: Text.get("schema.plugin_stats.attr.datatype"),
-                    hide: true
                 },{
                     name: "description",
                     text: Text.get("schema.plugin_stats.attr.description")
@@ -20867,7 +20861,6 @@ Bloonix.createUserChart = function(o) {
                 url: "/plugin-stats/"+ plugin.plugin_id +"/"+ plugin.statkey +"/services",
                 result: [ "id", "hostname", "service_name" ]
             },
-            columnSwitcher: true,
             onClick: function(row) {
                 $("#int-chart-selection-services-selected").removeClass("rwb");
 
@@ -20890,15 +20883,8 @@ Bloonix.createUserChart = function(o) {
                     name: "hostname",
                     text: Text.get("schema.host.attr.hostname")
                 },{
-                    name: "ipaddr",
-                    text: Text.get("schema.host.attr.ipaddr")
-                },{
                     name: "service_name",
                     text: Text.get("schema.service.attr.service_name"),
-                },{
-                    name: "description",
-                    text: Text.get("schema.service.attr.description"),
-                    hide: true
                 }
             ]
         }).create();
@@ -21012,7 +20998,6 @@ Bloonix.listHostTemplates = function(o) {
             result: [ "id", "name", "description" ]
         },
         reloadable: true,
-        columnSwitcher: true,
         rowHoverIcons: [{
             title: Text.get("schema.host_template.text.clone"),
             icon: "share",
@@ -21153,7 +21138,6 @@ Bloonix.listHostTemplateServices = function(o) {
             result: [ "ref_id", "service_name", "description" ],
             warning: Text.get("schema.host_template.text.delete_service_warning")
         },
-        columnSwitcher: true,
         columns: [
             {
                 name: "ref_id",
@@ -21164,19 +21148,11 @@ Bloonix.listHostTemplateServices = function(o) {
                 text: Text.get("schema.service.attr.service_name"),
                 call: function(row) { return Bloonix.call("monitoring/templates/"+ o.id +"/services/"+ row.ref_id +"/edit", row.service_name) }
             },{
-                name: "command",
-                text: Text.get("schema.service.attr.command"),
-                hide: true
-            },{
                 name: "plugin",
                 text: Text.get("schema.service.attr.plugin")
             },{
                 name: "agent_id",
                 text: Text.get("schema.service.attr.agent_id")
-            },{
-                name: "description",
-                text: Text.get("schema.service.attr.description"),
-                hide: true
             },{
                 name: "attempt_max",
                 text: Text.get("schema.service.attr.attempt_max")
@@ -21269,7 +21245,6 @@ Bloonix.listContactgroups = function(o) {
         },
         appendTo: "#content",
         reloadable: true,
-        columnSwitcher: true,
         columns: [
             {
                 name: "id",
@@ -21287,7 +21262,7 @@ Bloonix.listContactgroups = function(o) {
                         "administration/companies/"+ row.company_id +"/edit", row.company
                     );
                 },
-                hide: true
+                hide: Bloonix.user.role == "admin" ? false : true
             },{
                 name: "description",
                 text: Text.get("schema.contactgroup.attr.description")
@@ -21532,16 +21507,15 @@ Bloonix.listContacts = function(o) {
         },
         searchable: {
             url: "/contacts/search",
-            result: [ "id", "name", "mail_to", "sms_to" ]
+            result: [ "id", "name" ]
         },
         deletable: {
             title: Text.get("schema.contact.text.delete"),
             url: "/contacts/:id/delete",
-            result: [ "id", "name", "mail_to" ]
+            result: [ "id", "name" ]
         },
         appendTo: "#content",
         reloadable: true,
-        columnSwitcher: true,
         columns: [
             {
                 name: "id",
@@ -21559,13 +21533,7 @@ Bloonix.listContacts = function(o) {
                         "administration/companies/"+ row.company_id +"/edit", row.company
                     );
                 },
-                hide: true
-            },{
-                name: "mail_to",
-                text: Text.get("schema.contact.attr.mail_to")
-            },{
-                name: "sms_to",
-                text: Text.get("schema.contact.attr.sms_to")
+                hide: Bloonix.user.role == "admin" ? false : true
             }
         ]
     });
@@ -21589,7 +21557,7 @@ Bloonix.createContact = function() {
         action: "create",
         values: contact.values,
         options: contact.options,
-        elements: Bloonix.getContactFormElements()
+        elements: Bloonix.getContactFormElements(contact)
     }).create();
 };
 
@@ -21608,29 +21576,93 @@ Bloonix.editContact = function(o) {
         title: Text.get("schema.contact.attr.id") + ": "+ o.id,
         values: contact.values,
         options: contact.options,
-        elements: Bloonix.getContactFormElements()
+        elements: Bloonix.getContactFormElements(contact)
     }).create();
 
     new Header({
-        title: Text.get("schema.contact.text.timeperiods"),
-        border: true
+        title: Text.get("schema.contact.text.message_services"),
+        border: true,
+        css: { "margin-top": "20px" }
     }).create();
 
-    var boxes = Bloonix.createSideBySideBoxes({
-        container: $("#content"),
-        width: "300px"
+    var buttonAddMessageServicesToContact = Utils.create("div")
+        .addClass("btn btn-white btn-tall")
+        .css({ "margin-bottom": "10px" })
+        .text(Text.get("schema.contact_message_services.text.add"))
+        .appendTo("#content");
+
+    var messageServicesTable = new Table({
+        url: "/contacts/"+ o.id +"/message-services",
+        width: "inline",
+        appendTo: "#content",
+        selectable: false,
+        searchable: false,
+        deletable: {
+            url: "/contacts/"+ o.id +"/message-services/:id/remove",
+            title: Text.get("schema.contact.text.remove_message_service"),
+            result: [ "message_service", "enabled", "send_to", "notification_level" ],
+            buttonText: Text.get("action.remove")
+        },
+        columns: [
+            {
+                name: "id",
+                text: "ID",
+                hide: true
+            },{
+                name: "message_service",
+                text: Text.get("schema.contact_message_services.attr.message_service")
+            },{
+                name: "send_to",
+                text: Text.get("schema.contact_message_services.attr.send_to"),
+                onClick: function(row) {
+                    Bloonix.addOrUpdateContactMessageService({
+                        contact_id: o.id,
+                        contact_message_services_id: row.id,
+                        reloadTable: messageServicesTable,
+                        action: "update"
+                    });
+                }
+            },{
+                name: "notification_level",
+                text: Text.get("schema.contact_message_services.attr.notification_level")
+            },{
+                name: "enabled",
+                text: Text.get("schema.contact_message_services.attr.enabled"),
+                bool: "yn"
+            }
+        ]
+    }).create();
+
+    buttonAddMessageServicesToContact.click(function() {
+        Bloonix.addOrUpdateContactMessageService({
+            contact_id: o.id,
+            reloadTable: messageServicesTable,
+            action: "add"
+        });
     });
+
+    new Header({
+        title: Text.get("schema.contact.text.timeperiods"),
+        border: true,
+        css: { "margin-top": "40px" }
+    }).create();
+
+    var buttonAddTimeperiodToContact = Utils.create("div")
+        .addClass("btn btn-white btn-tall")
+        .css({ "margin-bottom": "10px" })
+        .text(Text.get("schema.contact_timeperiod.text.add"))
+        .appendTo("#content");
 
     var timeperiodTable = new Table({
         url: "/contacts/"+ o.id +"/timeperiods",
         width: "inline",
-        appendTo: boxes.right,
+        appendTo: "#content",
         selectable: false,
         searchable: false,
         deletable: {
             url: "/contacts/"+ o.id +"/timeperiods/:id/remove",
             title: Text.get("schema.contact.text.remove_timeperiod"),
-            result: [ "name", "description", "type", "timezone" ],
+            result: [ "name", "description", "message_service", "exclude", "timezone" ],
             buttonText: Text.get("action.remove")
         },
         columns: [
@@ -21645,70 +21677,171 @@ Bloonix.editContact = function(o) {
                 name: "description",
                 text: Text.get("schema.timeperiod.attr.description")
             },{
-                name: "type",
-                text: Text.get("schema.contact.text.timeperiod_type"),
-                value: function(row) {
-                    return Text.get("schema.contact.text.timeperiod_type_"+ row.type);
-                }
+                name: "message_service",
+                text: Text.get("schema.contact_timeperiod.attr.message_service")
+            },{
+                name: "exclude",
+                text: Text.get("schema.contact_timeperiod.attr.exclude"),
+                bool: "yn"
             },{
                 name: "timezone",
                 text: Text.get("word.Timezone")
             }
         ]
+    }).create();
+
+    buttonAddTimeperiodToContact.click(function() {
+        Bloonix.addTimeperiodToContact({
+            id: o.id,
+            reloadTable: timeperiodTable
+        });
     });
-
-    var timeperiodContainer = Utils.create("div").appendTo("#content");
-
-    var timeperiodForm = new Form({
-        url: { submit: "/contacts/"+ o.id +"/timeperiods/add" },
-        format: "medium",
-        appendTo: boxes.left,
-        showButton: false,
-        onSuccess: function() { timeperiodTable.getData() }
-    });     
-
-    timeperiodForm.create();
-
-    var options = Bloonix.get("/contacts/"+ o.id +"/timeperiods/options/");
-
-    timeperiodForm.select({
-        name: "timeperiod_id",
-        placeholder: Text.get("schema.timeperiod.attr.name"),
-        options: options.options.timeperiod_id,
-        selected: options.values.timeperiod_id,
-        appendTo: timeperiodForm.form
-    });
-
-    timeperiodForm.select({
-        name: "type",
-        placeholder: Text.get("schema.contact.text.timeperiod_type"),
-        options: options.options.type,
-        selected: options.values.type,
-        appendTo: timeperiodForm.form,
-        getValueName: function(value) {
-            return Text.get("schema.contact.text.timeperiod_type_"+ value);
-        }
-    });
-
-    timeperiodForm.select({
-        name: "timezone",
-        placeholder: Text.get("word.Timezone"),
-        options: options.options.timezone,
-        selected: options.values.timezone,
-        appendTo: timeperiodForm.form
-    });
-
-    timeperiodForm.button({
-        css: { "margin-right": "10px" },
-        text: Text.get("action.add"),
-        appendTo: timeperiodForm.form,
-        onSuccess: function() { timeperiodTable.getData() }
-    });         
-
-    timeperiodTable.create();
 };
 
-Bloonix.getContactFormElements = function() {
+Bloonix.addTimeperiodToContact = function(o) {
+    var options = Bloonix.get("/contacts/"+ o.id +"/timeperiods/options/"),
+        content = Utils.create("div");
+
+    var overlay = new Overlay({
+        title: Text.get("schema.contact_timeperiod.text.add"),
+        content: content
+    });
+
+    var form = new Form({
+        url: { submit: "/contacts/"+ o.id +"/timeperiods/add" },
+        appendTo: content,
+        showButton: false,
+        onSuccess: function() {
+            overlay.close();
+            o.reloadTable.getData();
+        }
+    }).init();
+
+    form.table = new Table({
+        type: "form",
+        appendTo: form.form
+    }).init().getTable();
+
+    form.createElement({
+        element: "select",
+        name: "timezone",
+        text: Text.get("word.Timezone"),
+        options: options.options.timezone,
+        selected: options.values.timezone
+    });
+
+    form.createElement({
+        element: "select",
+        name: "timeperiod_id",
+        text: Text.get("schema.timeperiod.attr.name"),
+        options: options.options.timeperiod_id,
+        selected: options.values.timeperiod_id
+    });
+
+    form.createElement({
+        element: "select",
+        name: "message_service",
+        text: Text.get("schema.contact_timeperiod.attr.message_service"),
+        options: options.options.message_service,
+        selected: options.values.message_service
+    });
+
+    form.createElement({
+        element: "radio-yes-no",
+        name: "exclude",
+        text: Text.get("schema.contact_timeperiod.attr.exclude"),
+        checked: options.values.exclude
+    });
+
+    form.button({
+        css: { "margin-right": "10px", "margin-bottom": "50px" },
+        text: Text.get("action.add"),
+        appendTo: form.form
+    });
+
+    overlay.create();
+};
+
+Bloonix.addOrUpdateContactMessageService = function(o) {
+    var content = Utils.create("div");
+
+    var overlay = new Overlay({
+        title: Text.get("schema.contact_message_services.text.add"),
+        content: content
+    });
+
+    var options = o.action === "add"
+        ? Bloonix.get("/contacts/"+ o.contact_id +"/message-services/options/")
+        : Bloonix.get("/contacts/"+ o.contact_id +"/message-services/"+ o.contact_message_services_id +"/options/");
+
+    var submit = o.action === "add"
+        ? "/contacts/"+ o.contact_id +"/message-services/add"
+        : "/contacts/"+ o.contact_id +"/message-services/"+ o.contact_message_services_id +"/update";
+
+    var form = new Form({
+        url: { submit: submit },
+        appendTo: content,
+        showButton: false,
+        onSuccess: function() {
+            overlay.close();
+            o.reloadTable.getData();
+        }
+    }).init();
+
+    form.table = new Table({
+        type: "form",
+        appendTo: form.form
+    }).init().getTable();
+
+    form.createElement({
+        element: "select",
+        name: "message_service",
+        text: Text.get("schema.contact_message_services.attr.message_service"),
+        desc: Text.get("schema.contact_message_services.desc.message_service"),
+        options: options.options.message_service,
+        selected: options.values.message_service
+    });
+
+    form.createElement({
+        element: "radio-yes-no",
+        name: "enabled",
+        text: Text.get("schema.contact_message_services.attr.enabled"),
+        desc: Text.get("schema.contact_message_services.desc.enabled"),
+        checked: options.values.enabled
+    });
+
+    form.createElement({
+        element: "input",
+        type: "text",
+        name: "send_to",
+        text: Text.get("schema.contact_message_services.attr.send_to"),
+        desc: Text.get("schema.contact_message_services.desc.send_to"),
+        maxlength: 100,
+        required: true,
+        value: options.values.send_to
+    });
+
+    form.createElement({
+        element: "checkbox",
+        name: "notification_level",
+        text: Text.get("schema.contact_message_services.attr.notification_level"),
+        desc: Text.get("schema.contact_message_services.desc.notification_level"),
+        commaSeparatedList: true,
+        required: true,
+        options: options.options.notification_level,
+        checked: options.values.notification_level
+    });
+
+    form.button({
+        css: { "margin-right": "10px", "margin-bottom": "50px" },
+        text: o.action === "add" ? Text.get("action.add") : Text.get("action.update"),
+        appendTo: form.form
+    });
+
+    overlay.create();
+};
+
+Bloonix.getContactFormElements = function(o) {
     return [
         {
             element: "input",
@@ -21719,61 +21852,14 @@ Bloonix.getContactFormElements = function() {
             maxlength: 100,
             required: true
         },{
-            element: "input",
-            type: "email",
-            name: "mail_to",
-            text: Text.get("schema.contact.attr.mail_to"),
-            desc: Text.get("schema.contact.desc.mail_to"),
-            maxlength: 100,
-            required: true
-        },{
-            element: "radio-yes-no",
-            name: "mail_notifications_enabled",
-            text: Text.get("schema.contact.attr.mail_notifications_enabled"),
-            desc: Text.get("schema.contact.desc.mail_notifications_enabled"),
-            required: true
-        },{
-            element: "checkbox",
-            name: "mail_notification_level",
-            text: Text.get("schema.contact.attr.mail_notification_level"),
-            desc: Text.get("schema.contact.desc.mail_notification_level"),
-            commaSeparatedList: true,
-            required: true
-        },{
-            element: "input",
-            type: "tel",
-            name: "sms_to",
-            text: Text.get("schema.contact.attr.sms_to"),
-            desc: Text.get("schema.contact.desc.sms_to"),
-            maxlength: 100
-        },{
-            element: "radio-yes-no",
-            name: "sms_notifications_enabled",
-            text: Text.get("schema.contact.attr.sms_notifications_enabled"),
-            desc: Text.get("schema.contact.desc.sms_notifications_enabled"),
-            required: true
-        },{
-            element: "checkbox",
-            name: "sms_notification_level",
-            text: Text.get("schema.contact.attr.sms_notification_level"),
-            desc: Text.get("schema.contact.desc.sms_notification_level"),
-            commaSeparatedList: true,
-            required: true
-        },{
-            element: "select",
-            name: "escalation_level",
-            text: Text.get("schema.contact.attr.escalation_level"),
-            desc: Text.get("schema.contact.desc.escalation_level"),
-            getValueName: function(value) {
-                if (value == 0) {
-                    return Text.get("schema.contact.text.escalation_level_event.0");
-                }
-                if (value == 1) {
-                    return Text.get("schema.contact.text.escalation_level_event.1");
-                }
-                return Text.get("schema.contact.text.escalation_level_event.x", value);
-            },
-            required: true
+            element: "slider",
+            name: "escalation_time",
+            text: Text.get("schema.contact.attr.escalation_time"),
+            desc: Text.get("schema.contact.desc.escalation_time"),
+            options: o.options.escalation_time,
+            checked: o.values.escalation_time,
+            secondsToFormValues: true,
+            nullString: Text.get("schema.contact.text.escalation_time_null")
         }
     ];
 };
@@ -21803,7 +21889,6 @@ Bloonix.listTimeperiods = function() {
         },
         appendTo: "#content",
         reloadable: true,
-        columnSwitcher: true,
         columns: [
             {
                 name: "id",
@@ -21821,7 +21906,7 @@ Bloonix.listTimeperiods = function() {
                         "administration/companies/settings/"+ row.company_id, row.company
                     );
                 },
-                hide: true
+                hide: Bloonix.user.role == "admin" ? false : true
             },{
                 name: "description",
                 text: Text.get("schema.timeperiod.attr.description")
@@ -21978,7 +22063,11 @@ Bloonix.listUsers = function() {
         },
         sortable: true,
         reloadable: true,
-        columnSwitcher: true,
+        columnSwitcher: {
+            table: "user",
+            callback: Bloonix.saveUserTableConfig,
+            config: Bloonix.getUserTableConfig("user")
+        },
         columns: [
             {
                 name: "id",
@@ -21987,7 +22076,8 @@ Bloonix.listUsers = function() {
             },{
                 name: "username",
                 text: Text.get("schema.user.attr.username"),
-                call: function(row) { return Bloonix.call("administration/users/"+ row.id +"/edit", row.username) }
+                call: function(row) { return Bloonix.call("administration/users/"+ row.id +"/edit", row.username) },
+                swtichable: false
             },{
                 name: "company",
                 text: Text.get("schema.company.attr.company"),
@@ -21996,7 +22086,8 @@ Bloonix.listUsers = function() {
                         "administration/companies/"+ row.company_id +"/edit", row.company
                     )
                 },
-                hide: Bloonix.user.role == "admin" ? false : true
+                hide: Bloonix.user.role == "admin" ? false : true,
+                swtichable: false
             },{
                 name: "name",
                 text: Text.get("schema.user.attr.name")
@@ -22204,7 +22295,7 @@ Bloonix.saveUserConfig = function(key, data) {
         data: { key: key, data: data },
         async: false,
         success: function(result) {
-            if (data.status == "ok") {
+            if (result.status == "ok") {
                 if (key === "dashboard") {
                     Bloonix.user.stash[key][data.name] = data.data;
                 } else {
@@ -22218,6 +22309,36 @@ Bloonix.saveUserConfig = function(key, data) {
             }
         }
     });
+};
+
+Bloonix.saveUserTableConfig = function(o) {
+    Ajax.post({
+        url: "/user/config/save-table-config",
+        data: o,
+        async: false,
+        success: function(result) {
+            if (result.status == "ok") {
+                if (typeof Bloonix.user.stash.table_config != "object") {
+                    Bloonix.user.stash.table_config = {};
+                }
+                if (typeof Bloonix.user.stash.table_config[o.table] != "object") {
+                    Bloonix.user.stash.table_config[o.table] = {};
+                }
+                Bloonix.user.stash.table_config[o.table][o.column] = o.action;
+                Bloonix.createNoteBox({
+                    infoClass: "info-ok",
+                    text: Text.get("info.update_success"),
+                    autoClose: true
+                });
+            }
+        }
+    });
+};
+
+Bloonix.getUserTableConfig = function(table) {
+    if (Bloonix.user.stash.table_config) {
+        return Bloonix.user.stash.table_config[table];
+    }
 };
 
 Bloonix.changeUserPassword = function(o) {
@@ -22370,7 +22491,6 @@ Bloonix.listGroups = function() {
         },
         sortable: true,
         reloadable: true,
-        columnSwitcher: true,
         columns: [
             {
                 name: "id",
@@ -22697,7 +22817,11 @@ Bloonix.listCompanies = function() {
         },
         sortable: true,
         reloadable: true,
-        columnSwitcher: true,
+        columnSwitcher: {
+            table: "company",
+            callback: Bloonix.saveUserTableConfig,
+            config: Bloonix.getUserTableConfig("company")
+        },
         columns: [
             {
                 name: "id",
@@ -22710,7 +22834,8 @@ Bloonix.listCompanies = function() {
             },{
                 name: "company",
                 text: Text.get("schema.company.attr.company"),
-                call: function(row) { return Bloonix.call("administration/companies/"+ row.id +"/edit", row.company) }
+                call: function(row) { return Bloonix.call("administration/companies/"+ row.id +"/edit", row.company) },
+                switchable: false
             },{
                 name: "sla",
                 text: Text.get("schema.company.attr.sla"),

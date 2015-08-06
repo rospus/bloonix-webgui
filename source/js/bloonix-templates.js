@@ -29,7 +29,6 @@ Bloonix.listHostTemplates = function(o) {
             result: [ "id", "name", "description" ]
         },
         reloadable: true,
-        columnSwitcher: true,
         rowHoverIcons: [{
             title: Text.get("schema.host_template.text.clone"),
             icon: "share",
@@ -170,7 +169,6 @@ Bloonix.listHostTemplateServices = function(o) {
             result: [ "ref_id", "service_name", "description" ],
             warning: Text.get("schema.host_template.text.delete_service_warning")
         },
-        columnSwitcher: true,
         columns: [
             {
                 name: "ref_id",
@@ -181,19 +179,11 @@ Bloonix.listHostTemplateServices = function(o) {
                 text: Text.get("schema.service.attr.service_name"),
                 call: function(row) { return Bloonix.call("monitoring/templates/"+ o.id +"/services/"+ row.ref_id +"/edit", row.service_name) }
             },{
-                name: "command",
-                text: Text.get("schema.service.attr.command"),
-                hide: true
-            },{
                 name: "plugin",
                 text: Text.get("schema.service.attr.plugin")
             },{
                 name: "agent_id",
                 text: Text.get("schema.service.attr.agent_id")
-            },{
-                name: "description",
-                text: Text.get("schema.service.attr.description"),
-                hide: true
             },{
                 name: "attempt_max",
                 text: Text.get("schema.service.attr.attempt_max")

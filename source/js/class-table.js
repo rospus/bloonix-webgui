@@ -34,6 +34,18 @@ var Table = function(o) {
         });
     }
 
+    if (this.columnSwitcher === false) {
+        this.columnSwitcher = { enabled: false };
+    } else if (this.columnSwitcher === true) {
+        this.columnSwitcher = { enabled: true };
+    }
+    if (this.columnSwitcher.enabled === undefined) {
+        this.columnSwitcher.enabled = true;
+    }
+    if (this.columnSwitcher.config === undefined) {
+        this.columnSwitcher.config = {};
+    }
+
     this.cache = { data: {}, selected: {} };
 };
 
@@ -44,6 +56,11 @@ Table.prototype = {
     appendTo: "#content",
     appendPagerTo: false,
     type: "default",
+    /* columnSwitcher:
+    **   - true
+    **   - false
+    **   - { table: "table-name", config: { column: "show|hide" }, callback: function(){} }
+    */
     columnSwitcher: false,
     values: false,
     header: false,
@@ -58,6 +75,7 @@ Table.prototype = {
 Table.prototype.init = function() {
     this.container = Utils.create("div");
     this.table = Utils.create("table").appendTo(this.container);
+    this.pagerBox = Utils.create("div").appendTo(this.container);
  
     if (this.type == "default") {
         this.table.addClass(this.addClass || "maintab");
@@ -224,9 +242,7 @@ Table.prototype.createStruct = function() {
             });
         }
 
-        if (col.hide == true) {
-            th.hide();
-        }
+        self.hideOrShowColumn(th, col);
     });
 
     if (this.deletable != undefined || self.rowHoverIcons) {
@@ -240,11 +256,27 @@ Table.prototype.createStruct = function() {
         .appendTo(this.container);
 };
 
-Table.prototype.createColumnSwitcher = function() {
-    var self = this;
+Table.prototype.hideOrShowColumn = function(obj, col) {
+    if (this.columnSwitcher !== false && this.columnSwitcher.config[col.name]) {
+        if (this.columnSwitcher.config[col.name] === "hide") {
+            obj.hide();
+        }
+    } else if (col.hide === true) {
+        obj.hide();
+    }
+};
 
-    if (!this.columnSwitcher) {
+Table.prototype.createColumnSwitcher = function() {
+    var self = this,
+        callback, switchTable, config;
+
+    if (this.columnSwitcher === false) {
         return false;
+    }
+
+    if (this.columnSwitcher.callback) {
+        callback = this.columnSwitcher.callback;
+        switchTable = this.columnSwitcher.table;
     }
 
     var container = Utils.create("div")
@@ -274,7 +306,7 @@ Table.prototype.createColumnSwitcher = function() {
         .appendTo(infobox);
 
     $.each(this.columns, function(i, col) {
-        if (col.icons) {
+        if (col.icons || col.switchable === false) {
             return true;
         }
 
@@ -293,15 +325,25 @@ Table.prototype.createColumnSwitcher = function() {
             .attr("name", col.name)
             .appendTo(td);
 
-        if (col.hide != true) {
+        if (self.columnSwitcher !== false && self.columnSwitcher.config[col.name]) {
+            if (self.columnSwitcher.config[col.name] == "show") {
+                input.attr("checked", "checked");
+            }
+        } else if (col.hide != true) {
             input.attr("checked", "checked");
         }
 
         input.click(function() {
-            if (this.checked == true) {
+            if (this.checked === true) {
+                if (callback) {
+                    callback({ table: switchTable, column: col.name, action: "show" });
+                }
                 self.table.find("[data-col='"+ col.name +"']").fadeIn();
                 self.colsByKey[col.name].hide = false;
             } else {
+                if (callback) {
+                    callback({ table: switchTable, column: col.name, action: "hide" });
+                }
                 self.table.find("[data-col='"+ col.name +"']").fadeOut();
                 self.colsByKey[col.name].hide = true;
             }
@@ -354,10 +396,21 @@ Table.prototype.getData = function(o) {
                     ? self.pager.appendTo
                     : self.header.pager;
 
-                self.pagerObject = new Pager({
+                new Pager({
                     data: result,
                     postdata: postdata,
                     appendTo: appendPagerTo,
+                    callback: function(req) {
+                        self.postdata = req.postdata;
+                        self.getData();
+                    }
+                }).create();
+
+                new Pager({
+                    data: result,
+                    postdata: postdata,
+                    appendTo: self.pagerBox,
+                    start: 10,
                     callback: function(req) {
                         self.postdata = req.postdata;
                         self.getData();
@@ -419,10 +472,7 @@ Table.prototype.createRows = function(rows) {
 
         $.each(self.columns, function(y, col) {
             var td = self.createColumn(tr, row, col);
-
-            if (col.hide == true) {
-                td.hide();
-            }
+            self.hideOrShowColumn(td, col);
         });
 
         var rowHoverIcons, rowHoverIconsWidth = 0;
@@ -781,8 +831,9 @@ Table.prototype.createColumn = function(tr, row, col) {
     }
 
     if (col.onClick) {
-        value.click(col.onClick);
-        value.css({ cursor: "pointer" });
+        value = Utils.create("a")
+            .html(value)
+            .click(function() { col.onClick(row) });
 
         if (col.link == undefined && col.call == undefined) {
             value.hover(
@@ -790,12 +841,6 @@ Table.prototype.createColumn = function(tr, row, col) {
                 function() { $(this).css({ "text-decoration": "none" }) }
             );
         }
-    }
-
-    if (col.linkCallback) {
-        value = Utils.create("a")
-            .html(value)
-            .click(function() { col.linkCallback(row) });
     }
 
     if (col.title) {

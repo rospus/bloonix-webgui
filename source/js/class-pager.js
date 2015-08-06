@@ -11,7 +11,9 @@ Pager.prototype = {
     pagerClass: "pager",
     pagerTextClass: false,
     data: false,
-    postdata: false
+    postdata: false,
+    bottom: false,
+    start: 0
 };
 
 Pager.prototype.getPagerTextClass = function() {
@@ -74,6 +76,10 @@ Pager.prototype.create = function() {
     var container = $(this.appendTo)
         .addClass(this.pagerClass)
         .html("");
+
+    if (this.start > 0 && total < this.start) {
+        return;
+    }
 
     if (offset > 0) {
         Utils.create("div")

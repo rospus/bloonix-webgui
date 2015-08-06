@@ -21,16 +21,15 @@ Bloonix.listContacts = function(o) {
         },
         searchable: {
             url: "/contacts/search",
-            result: [ "id", "name", "mail_to", "sms_to" ]
+            result: [ "id", "name" ]
         },
         deletable: {
             title: Text.get("schema.contact.text.delete"),
             url: "/contacts/:id/delete",
-            result: [ "id", "name", "mail_to" ]
+            result: [ "id", "name" ]
         },
         appendTo: "#content",
         reloadable: true,
-        columnSwitcher: true,
         columns: [
             {
                 name: "id",
@@ -48,13 +47,7 @@ Bloonix.listContacts = function(o) {
                         "administration/companies/"+ row.company_id +"/edit", row.company
                     );
                 },
-                hide: true
-            },{
-                name: "mail_to",
-                text: Text.get("schema.contact.attr.mail_to")
-            },{
-                name: "sms_to",
-                text: Text.get("schema.contact.attr.sms_to")
+                hide: Bloonix.user.role == "admin" ? false : true
             }
         ]
     });
@@ -78,7 +71,7 @@ Bloonix.createContact = function() {
         action: "create",
         values: contact.values,
         options: contact.options,
-        elements: Bloonix.getContactFormElements()
+        elements: Bloonix.getContactFormElements(contact)
     }).create();
 };
 
@@ -97,29 +90,93 @@ Bloonix.editContact = function(o) {
         title: Text.get("schema.contact.attr.id") + ": "+ o.id,
         values: contact.values,
         options: contact.options,
-        elements: Bloonix.getContactFormElements()
+        elements: Bloonix.getContactFormElements(contact)
     }).create();
 
     new Header({
-        title: Text.get("schema.contact.text.timeperiods"),
-        border: true
+        title: Text.get("schema.contact.text.message_services"),
+        border: true,
+        css: { "margin-top": "20px" }
     }).create();
 
-    var boxes = Bloonix.createSideBySideBoxes({
-        container: $("#content"),
-        width: "300px"
+    var buttonAddMessageServicesToContact = Utils.create("div")
+        .addClass("btn btn-white btn-tall")
+        .css({ "margin-bottom": "10px" })
+        .text(Text.get("schema.contact_message_services.text.add"))
+        .appendTo("#content");
+
+    var messageServicesTable = new Table({
+        url: "/contacts/"+ o.id +"/message-services",
+        width: "inline",
+        appendTo: "#content",
+        selectable: false,
+        searchable: false,
+        deletable: {
+            url: "/contacts/"+ o.id +"/message-services/:id/remove",
+            title: Text.get("schema.contact.text.remove_message_service"),
+            result: [ "message_service", "enabled", "send_to", "notification_level" ],
+            buttonText: Text.get("action.remove")
+        },
+        columns: [
+            {
+                name: "id",
+                text: "ID",
+                hide: true
+            },{
+                name: "message_service",
+                text: Text.get("schema.contact_message_services.attr.message_service")
+            },{
+                name: "send_to",
+                text: Text.get("schema.contact_message_services.attr.send_to"),
+                onClick: function(row) {
+                    Bloonix.addOrUpdateContactMessageService({
+                        contact_id: o.id,
+                        contact_message_services_id: row.id,
+                        reloadTable: messageServicesTable,
+                        action: "update"
+                    });
+                }
+            },{
+                name: "notification_level",
+                text: Text.get("schema.contact_message_services.attr.notification_level")
+            },{
+                name: "enabled",
+                text: Text.get("schema.contact_message_services.attr.enabled"),
+                bool: "yn"
+            }
+        ]
+    }).create();
+
+    buttonAddMessageServicesToContact.click(function() {
+        Bloonix.addOrUpdateContactMessageService({
+            contact_id: o.id,
+            reloadTable: messageServicesTable,
+            action: "add"
+        });
     });
+
+    new Header({
+        title: Text.get("schema.contact.text.timeperiods"),
+        border: true,
+        css: { "margin-top": "40px" }
+    }).create();
+
+    var buttonAddTimeperiodToContact = Utils.create("div")
+        .addClass("btn btn-white btn-tall")
+        .css({ "margin-bottom": "10px" })
+        .text(Text.get("schema.contact_timeperiod.text.add"))
+        .appendTo("#content");
 
     var timeperiodTable = new Table({
         url: "/contacts/"+ o.id +"/timeperiods",
         width: "inline",
-        appendTo: boxes.right,
+        appendTo: "#content",
         selectable: false,
         searchable: false,
         deletable: {
             url: "/contacts/"+ o.id +"/timeperiods/:id/remove",
             title: Text.get("schema.contact.text.remove_timeperiod"),
-            result: [ "name", "description", "type", "timezone" ],
+            result: [ "name", "description", "message_service", "exclude", "timezone" ],
             buttonText: Text.get("action.remove")
         },
         columns: [
@@ -134,70 +191,171 @@ Bloonix.editContact = function(o) {
                 name: "description",
                 text: Text.get("schema.timeperiod.attr.description")
             },{
-                name: "type",
-                text: Text.get("schema.contact.text.timeperiod_type"),
-                value: function(row) {
-                    return Text.get("schema.contact.text.timeperiod_type_"+ row.type);
-                }
+                name: "message_service",
+                text: Text.get("schema.contact_timeperiod.attr.message_service")
+            },{
+                name: "exclude",
+                text: Text.get("schema.contact_timeperiod.attr.exclude"),
+                bool: "yn"
             },{
                 name: "timezone",
                 text: Text.get("word.Timezone")
             }
         ]
+    }).create();
+
+    buttonAddTimeperiodToContact.click(function() {
+        Bloonix.addTimeperiodToContact({
+            id: o.id,
+            reloadTable: timeperiodTable
+        });
     });
-
-    var timeperiodContainer = Utils.create("div").appendTo("#content");
-
-    var timeperiodForm = new Form({
-        url: { submit: "/contacts/"+ o.id +"/timeperiods/add" },
-        format: "medium",
-        appendTo: boxes.left,
-        showButton: false,
-        onSuccess: function() { timeperiodTable.getData() }
-    });     
-
-    timeperiodForm.create();
-
-    var options = Bloonix.get("/contacts/"+ o.id +"/timeperiods/options/");
-
-    timeperiodForm.select({
-        name: "timeperiod_id",
-        placeholder: Text.get("schema.timeperiod.attr.name"),
-        options: options.options.timeperiod_id,
-        selected: options.values.timeperiod_id,
-        appendTo: timeperiodForm.form
-    });
-
-    timeperiodForm.select({
-        name: "type",
-        placeholder: Text.get("schema.contact.text.timeperiod_type"),
-        options: options.options.type,
-        selected: options.values.type,
-        appendTo: timeperiodForm.form,
-        getValueName: function(value) {
-            return Text.get("schema.contact.text.timeperiod_type_"+ value);
-        }
-    });
-
-    timeperiodForm.select({
-        name: "timezone",
-        placeholder: Text.get("word.Timezone"),
-        options: options.options.timezone,
-        selected: options.values.timezone,
-        appendTo: timeperiodForm.form
-    });
-
-    timeperiodForm.button({
-        css: { "margin-right": "10px" },
-        text: Text.get("action.add"),
-        appendTo: timeperiodForm.form,
-        onSuccess: function() { timeperiodTable.getData() }
-    });         
-
-    timeperiodTable.create();
 };
 
-Bloonix.getContactFormElements = function() {
+Bloonix.addTimeperiodToContact = function(o) {
+    var options = Bloonix.get("/contacts/"+ o.id +"/timeperiods/options/"),
+        content = Utils.create("div");
+
+    var overlay = new Overlay({
+        title: Text.get("schema.contact_timeperiod.text.add"),
+        content: content
+    });
+
+    var form = new Form({
+        url: { submit: "/contacts/"+ o.id +"/timeperiods/add" },
+        appendTo: content,
+        showButton: false,
+        onSuccess: function() {
+            overlay.close();
+            o.reloadTable.getData();
+        }
+    }).init();
+
+    form.table = new Table({
+        type: "form",
+        appendTo: form.form
+    }).init().getTable();
+
+    form.createElement({
+        element: "select",
+        name: "timezone",
+        text: Text.get("word.Timezone"),
+        options: options.options.timezone,
+        selected: options.values.timezone
+    });
+
+    form.createElement({
+        element: "select",
+        name: "timeperiod_id",
+        text: Text.get("schema.timeperiod.attr.name"),
+        options: options.options.timeperiod_id,
+        selected: options.values.timeperiod_id
+    });
+
+    form.createElement({
+        element: "select",
+        name: "message_service",
+        text: Text.get("schema.contact_timeperiod.attr.message_service"),
+        options: options.options.message_service,
+        selected: options.values.message_service
+    });
+
+    form.createElement({
+        element: "radio-yes-no",
+        name: "exclude",
+        text: Text.get("schema.contact_timeperiod.attr.exclude"),
+        checked: options.values.exclude
+    });
+
+    form.button({
+        css: { "margin-right": "10px", "margin-bottom": "50px" },
+        text: Text.get("action.add"),
+        appendTo: form.form
+    });
+
+    overlay.create();
+};
+
+Bloonix.addOrUpdateContactMessageService = function(o) {
+    var content = Utils.create("div");
+
+    var overlay = new Overlay({
+        title: Text.get("schema.contact_message_services.text.add"),
+        content: content
+    });
+
+    var options = o.action === "add"
+        ? Bloonix.get("/contacts/"+ o.contact_id +"/message-services/options/")
+        : Bloonix.get("/contacts/"+ o.contact_id +"/message-services/"+ o.contact_message_services_id +"/options/");
+
+    var submit = o.action === "add"
+        ? "/contacts/"+ o.contact_id +"/message-services/add"
+        : "/contacts/"+ o.contact_id +"/message-services/"+ o.contact_message_services_id +"/update";
+
+    var form = new Form({
+        url: { submit: submit },
+        appendTo: content,
+        showButton: false,
+        onSuccess: function() {
+            overlay.close();
+            o.reloadTable.getData();
+        }
+    }).init();
+
+    form.table = new Table({
+        type: "form",
+        appendTo: form.form
+    }).init().getTable();
+
+    form.createElement({
+        element: "select",
+        name: "message_service",
+        text: Text.get("schema.contact_message_services.attr.message_service"),
+        desc: Text.get("schema.contact_message_services.desc.message_service"),
+        options: options.options.message_service,
+        selected: options.values.message_service
+    });
+
+    form.createElement({
+        element: "radio-yes-no",
+        name: "enabled",
+        text: Text.get("schema.contact_message_services.attr.enabled"),
+        desc: Text.get("schema.contact_message_services.desc.enabled"),
+        checked: options.values.enabled
+    });
+
+    form.createElement({
+        element: "input",
+        type: "text",
+        name: "send_to",
+        text: Text.get("schema.contact_message_services.attr.send_to"),
+        desc: Text.get("schema.contact_message_services.desc.send_to"),
+        maxlength: 100,
+        required: true,
+        value: options.values.send_to
+    });
+
+    form.createElement({
+        element: "checkbox",
+        name: "notification_level",
+        text: Text.get("schema.contact_message_services.attr.notification_level"),
+        desc: Text.get("schema.contact_message_services.desc.notification_level"),
+        commaSeparatedList: true,
+        required: true,
+        options: options.options.notification_level,
+        checked: options.values.notification_level
+    });
+
+    form.button({
+        css: { "margin-right": "10px", "margin-bottom": "50px" },
+        text: o.action === "add" ? Text.get("action.add") : Text.get("action.update"),
+        appendTo: form.form
+    });
+
+    overlay.create();
+};
+
+Bloonix.getContactFormElements = function(o) {
     return [
         {
             element: "input",
@@ -208,61 +366,14 @@ Bloonix.getContactFormElements = function() {
             maxlength: 100,
             required: true
         },{
-            element: "input",
-            type: "email",
-            name: "mail_to",
-            text: Text.get("schema.contact.attr.mail_to"),
-            desc: Text.get("schema.contact.desc.mail_to"),
-            maxlength: 100,
-            required: true
-        },{
-            element: "radio-yes-no",
-            name: "mail_notifications_enabled",
-            text: Text.get("schema.contact.attr.mail_notifications_enabled"),
-            desc: Text.get("schema.contact.desc.mail_notifications_enabled"),
-            required: true
-        },{
-            element: "checkbox",
-            name: "mail_notification_level",
-            text: Text.get("schema.contact.attr.mail_notification_level"),
-            desc: Text.get("schema.contact.desc.mail_notification_level"),
-            commaSeparatedList: true,
-            required: true
-        },{
-            element: "input",
-            type: "tel",
-            name: "sms_to",
-            text: Text.get("schema.contact.attr.sms_to"),
-            desc: Text.get("schema.contact.desc.sms_to"),
-            maxlength: 100
-        },{
-            element: "radio-yes-no",
-            name: "sms_notifications_enabled",
-            text: Text.get("schema.contact.attr.sms_notifications_enabled"),
-            desc: Text.get("schema.contact.desc.sms_notifications_enabled"),
-            required: true
-        },{
-            element: "checkbox",
-            name: "sms_notification_level",
-            text: Text.get("schema.contact.attr.sms_notification_level"),
-            desc: Text.get("schema.contact.desc.sms_notification_level"),
-            commaSeparatedList: true,
-            required: true
-        },{
-            element: "select",
-            name: "escalation_level",
-            text: Text.get("schema.contact.attr.escalation_level"),
-            desc: Text.get("schema.contact.desc.escalation_level"),
-            getValueName: function(value) {
-                if (value == 0) {
-                    return Text.get("schema.contact.text.escalation_level_event.0");
-                }
-                if (value == 1) {
-                    return Text.get("schema.contact.text.escalation_level_event.1");
-                }
-                return Text.get("schema.contact.text.escalation_level_event.x", value);
-            },
-            required: true
+            element: "slider",
+            name: "escalation_time",
+            text: Text.get("schema.contact.attr.escalation_time"),
+            desc: Text.get("schema.contact.desc.escalation_time"),
+            options: o.options.escalation_time,
+            checked: o.values.escalation_time,
+            secondsToFormValues: true,
+            nullString: Text.get("schema.contact.text.escalation_time_null")
         }
     ];
 };

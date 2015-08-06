@@ -17,6 +17,7 @@ word.inactive: inactive
 word.active: active
 word.Timezone: Timezone
 word.Timeslice: Timeslice
+word.Type: Type
 word.Days: Days
 word.days: days
 word.day: day
@@ -29,6 +30,7 @@ word.minute: minute
 word.Seconds: Seconds
 word.seconds: seconds
 word.second: second
+word.resize: Resize
 
 nav.main.dashboard: DASHBOARD
 nav.main.monitoring: MONITORING
@@ -580,8 +582,10 @@ schema.host.attr.allow_from: Allow from
 schema.host.attr.max_sms: Max SMS per month
 schema.host.attr.status: Status
 schema.host.attr.interval: Interval
+schema.host.attr.retry_interval: Retry interval
 schema.host.attr.timeout: Timeout
 schema.host.attr.notification: Notifications enabled
+schema.host.attr.notification_interval: Notification interval
 schema.host.attr.last_check: Last check
 schema.host.attr.max_services: Max services
 schema.host.attr.variables: Host variables
@@ -608,7 +612,8 @@ schema.host.desc.active: Active or de-activate the host and all services.
 schema.host.desc.allow_from: With this field it's possible to set a comma separated list of IP addresses from which the Bloonix agents are allowed to deliver host statistics. Set the keyword <i>all</i> to allow all IP addresses.
 schema.host.desc.max_sms: In this field you can define the maximum number of SMS that can be sent per month.
 schema.host.desc.interval: This is the check interval of all services of the host.
-schema.host.desc.timeout: This is the timeout of all services of the host. If the status of a service is not updated in this time then a critical status is set for the services with the information that it seems that the Bloonix agent is not working.
+schema.host.desc.retry_interval: This is the retry interval of all services of the host. If a service is not in OK status then the interval is forced to this value.
+schema.host.desc.timeout: This is the timeout of all services of the host. The timeout counter begins after the interval. If the status of a service is not updated in this time then a critical status is set for the services with the information that it seems that the Bloonix agent is not working.
 schema.host.desc.notification: Enable or disable the notifications of all services.
 schema.host.desc.max_services: Set the maximum number of services that can be configured for the host. 0 means unlimited.
 schema.host.desc.variables: In this field you can define host variables. These variables can be used for thresholds by the configuration of service checks. Example:<br/><br/>HTTP.PORT=9000<br/><br/>This variable could be used in the format <i>%HTTP.PORT%</i> for thresholds. Please note that two variables are pre-defined: <i>IPADDR</i> and <i>HOSTNAME</i>. These variables are replaced with the IP address and the hostname of the host. For further information read the help.<br/><br/>Allowed signs: a-z, A-Z, 0-9, dot and underscore
@@ -723,30 +728,32 @@ schema.contact.attr.mail_notification_level: Mail notification level
 schema.contact.attr.sms_to: Mobil number
 schema.contact.attr.sms_notifications_enabled: SMS global enabled
 schema.contact.attr.sms_notification_level: SMS notification level
-schema.contact.attr.escalation_level: Escalation level
+schema.contact.attr.escalation_time: Escalation level
 schema.contact.desc.company_id: Select the company the contact belongs to.
 schema.contact.desc.name: This is the full name of the contact.
-schema.contact.desc.mail_to: This is the email address of the contact. Event notifications will be send to this address.
-schema.contact.desc.mail_notifications_enabled: With this option it's possible to enable or disable event notifications via email.
-schema.contact.desc.mail_notification_level: Select the status level for which you want to receive notifications.
-schema.contact.desc.sms_to: This is the mobil number of the contact. Event notifications will be send via SMS to this number.
-schema.contact.desc.sms_notifications_enabled: With this option it's possible to enable or disable event notifications via SMS.
-schema.contact.desc.sms_notification_level: Select the status level for which you want to receive notifications.
-schema.contact.desc.escalation_level: Select an escalation level for the contact. With the escalation level it's possible to control when a contact gets a notification. The escalation level <i>permanent active</i> means that the contact gets the event notifications every time. The escalation level <i>active after 3 notifications</i> means that the contact gets a notification first if already 3 notifications were sent and the service is still not OK.
+schema.contact.desc.escalation_time: Select an escalation level for the contact. With the escalation level it's possible to control when a contact gets a notification. As example the escalation level of 30 minutes means that the contact is notfied if the service is still not OK after 30 minutes.
 schema.contact.text.list: Overview of all contacts
 schema.contact.text.create: Create a new contact
 schema.contact.text.delete: Delete contact
 schema.contact.text.settings: Contact settings
 schema.contact.text.timeperiods: Contact timeperiods
-schema.contact.text.remove_timeperiod: Remove timeperiod from contact
-schema.contact.text.timeperiod_type: Include / Exclude
-schema.contact.text.timeperiod_type_send_to_all: Send as mail and SMS
-schema.contact.text.timeperiod_type_send_only_mail: Send only mail
-schema.contact.text.timeperiod_type_send_only_sms: Send only SMS
-schema.contact.text.timeperiod_type_exclude: Exclude
-schema.contact.text.escalation_level_event.0: permanent active
-schema.contact.text.escalation_level_event.1: active after 1 notification
-schema.contact.text.escalation_level_event.x: active after <b>%s</b> notifications
+schema.contact.text.message_services: Contact message services
+schema.contact.text.remove_timeperiod: Remove the timeperiod from contact
+schema.contact.text.remove_message_service: Remove the message service from contact
+schema.contact.text.escalation_time_null: Notify immediate
+schema.contact_timeperiod.attr.message_service: Message service
+schema.contact_timeperiod.attr.exclude: Exclude
+schema.contact_timeperiod.text.add: Add a timeperiod to the contact
+schema.contact_message_services.attr.message_service: Message service
+schema.contact_message_services.attr.enabled: Enabled
+schema.contact_message_services.attr.send_to: Send to
+schema.contact_message_services.attr.notification_level: Notification level
+schema.contact_message_services.desc.message_service: The message service.
+schema.contact_message_services.desc.enabled: Enable or disable the message service.
+schema.contact_message_services.desc.send_to: The receiver of the message.
+schema.contact_message_services.desc.notification_level: Select the status level for which you want to receive notifications.
+schema.contact_message_services.text.add: Add a message service to the contact
+schema.contact_message_services.text.remove: Remove a message service
 
 schema.contactgroup.attr.id: Contactgroup ID
 schema.contactgroup.attr.name: Name
@@ -760,18 +767,22 @@ schema.contactgroup.text.settings: Contact group settings
 schema.contactgroup.text.contact_members: Contacts in contact group
 schema.contactgroup.text.group_members: Members of contact group '<b>%s</b>'
 schema.contactgroup.text.host_members: Hosts in group
-schema.contactgroup.text.host_nonmembers: Hosts in group
+schema.contactgroup.text.host_nonmembers: Hosts not in group
 schema.contactgroup.text.selected_hosts: Selected hosts
 
 schema.contactgroup.text.service_members: Services in contact group
 schema.contactgroup.text.service_nonmembers: Services not in contact group
 schema.contactgroup.text.selected_services: Selected services
 
-schema.sms_send.attr.time: Timestamp
-schema.sms_send.attr.send_to: Receipient
-schema.sms_send.attr.message: Message
-schema.sms_send.text.list: Sent SMS for host %s
-schema.sms_send.text.search: Search for SMS
+schema.notification.attr.time: Timestamp
+schema.notification.attr.send_to: Receipient
+schema.notification.attr.subject: Subject
+schema.notification.attr.message: Message
+schema.notification.attr.message_service: Type
+schema.notification.text.list: Sent notifications for host %s
+schema.notification.text.search: Search for notifications
+schema.notification.text.filter_message: Filter message
+schema.notification.text.filter_message_service: sms, mail, ...
 
 schema.chart.attr.id: Chart ID
 schema.chart.attr.title: Chart title
@@ -866,6 +877,7 @@ schema.service.attr.command: Command
 schema.service.attr.command_options: Check settings
 schema.service.attr.timeout: Timeout
 schema.service.attr.interval: Interval
+schema.service.attr.retry_interval: Retry interval
 schema.service.attr.description: Description
 schema.service.attr.plugin: Plugin
 schema.service.attr.comment: Comment
@@ -875,19 +887,7 @@ schema.service.attr.attempt_max: Notify after X attempts
 schema.service.attr.active: Active
 schema.service.attr.acknowledged: Service status acknowledged
 schema.service.attr.notification: Notifications enabled
-schema.service.attr.mail_soft_interval: Notification interval for mails (soft)
-schema.service.attr.mail_hard_interval: Notification interval for mails (hard)
-schema.service.attr.mail_warnings: Send WARNINGS per mail
-schema.service.attr.mail_ok: Send OK notifications per mail
-schema.service.attr.last_mail: Last notification per mail
-schema.service.attr.last_mail_time: Last notification per mail
-schema.service.attr.send_sms: Notifications per SMS enabled
-schema.service.attr.sms_soft_interval: Notification interval for SMS (soft)
-schema.service.attr.sms_hard_interval: Notification interval for SMS (hard)
-schema.service.attr.sms_warnings: Send WARNINGS per SMS
-schema.service.attr.sms_ok: Send OK notifications per SMS
-schema.service.attr.last_sms: Last notification per SMS
-schema.service.attr.last_sms_time: Last notification per SMS
+schema.service.attr.notification_interval: Notification interval
 schema.service.attr.last_check: Last check
 schema.service.attr.fd_enabled: Flap detection enabled
 schema.service.attr.fd_time_range: Flap detection time range
@@ -915,21 +915,14 @@ schema.service.desc.service_name: This is the display name of the service.
 schema.service.desc.description: This is a short description of the check.
 schema.service.desc.comment: This is a short internal comment to the check.
 schema.service.desc.interval: This is the check interval of the service. If no value is set, then the interval of the host is inherited.
-schema.service.desc.timeout: This is the timeout of the service. If the status of the service is not updated in this time then a critical status is set for the service with the information that it seems that the Bloonix agent is not working. If no value is set, then the timeout of the host is inherited.
+schema.service.desc.retry_interval: This is the retry interval of the service. If a service is not in OK status then the interval is forced to this value. If no value is set, then the retry interval setting of the host is inherited.
+schema.service.desc.timeout: This is the timeout of the service and begins to count after the interval. If the status of the service is not updated in this time then a critical status is set for the service with the information that it seems that the Bloonix agent is not working. If no value is set, then the timeout of the host is inherited.
 schema.service.desc.attempt_warn2crit: This option is useful if you want that the status of the service upgrades to CRITICAL if the real status is WARNING and maximum attempts were reached.
 schema.service.desc.attempt_max: This option controls when you gets a notification of services that are not in status OK. As example a value of 3 means that you get a notification first if the service check returns 3 times in a row a not OK status.
 schema.service.desc.active: This option activates or de-activates the service check.
 schema.service.desc.acknowledged: This option is useful if a service is not OK and if you want to disable the notifications temporary. The notifications will be enabled again if the services switched to the status OK.
 schema.service.desc.notification: This option activates or de-activates the notifications per email or SMS.
-schema.service.desc.mail_soft_interval: This is the notification interval for emails. As long as the service is not OK you will be re-notified in this interval.
-schema.service.desc.mail_hard_interval: With this option you can define a hard interval for email notifications. Even if the status switched from CRITICAL to OK and then back to CRITICAL you will not get an notification until the interval expires.
-schema.service.desc.mail_warnings: This option enables or disables notifications if the service is in status WARNING.
-schema.service.desc.mail_ok: This option enables or disables notifications if the service switched back to status OK.
-schema.service.desc.send_sms: This option enables or disables notifications per SMS.
-schema.service.desc.sms_soft_interval: This is the notification interval for SMS. If a service is in a non OK status then you will be re-notified after this time if the service doesn't change to status OK.
-schema.service.desc.sms_hard_interval: With this option you can define a hard interval for SMS notifications. Even if the status switched from CRITICAL to OK and then back to CRITICAL you will not get an notification until the interval expires.
-schema.service.desc.sms_warnings: This option enables or disables notifications if the service is in status WARNING.
-schema.service.desc.sms_ok: This option enables or disables notifications if the service is in status OK.
+schema.service.desc.notification_interval: This is the notification interval for emails. As long as the service is not OK you will be re-notified in this interval. If no value is set, then the interval of the host is inherited.
 schema.service.desc.fd_enabled: This option enables or disables the flap detection. The flap detection is very useful to detect services that switches between OK and not OK in a very short time and when the counter of <i>attempt max</i> is never reached. The flap detection checkes how many times a service switched between different states in a given time. If the status switched to many times, then a notification will be triggered.
 schema.service.desc.fd_time_range: This is the period the flap detection checks for status switches.
 schema.service.desc.fd_flap_count: This is the threshold for the flap detection. If more than x-times the status switched in a given time a notificaton is triggered.

@@ -33,41 +33,9 @@ sub set {
             options => [ 0, 1 ],
             default => 0
         },
-        mail_soft_interval => {
+        notification_interval => {
             options => [ 0, 300, 900, 1800, 2700, 3600, 7200, 14400, 28800, 43200, 57600, 86400, 172800 ],
             default => 3600
-        },
-        mail_hard_interval => {
-            options => [ 0, 300, 900, 1800, 2700, 3600, 7200, 14400, 28800, 43200, 57600, 86400, 172800 ],
-            default => 0
-        },
-        mail_warnings => {
-            options => [ 0, 1 ],
-            default => 1
-        },
-        mail_ok => {
-            options => [ 0, 1 ],
-            default => 1
-        },
-        send_sms => {
-            options => [ 0, 1 ],
-            default => 1
-        },
-        sms_warnings => {
-            options => [ 0, 1 ],
-            default => 0
-        },
-        sms_ok => {
-            options => [ 0, 1 ],
-            default => 1
-        },
-        sms_soft_interval => {
-            options => [ 0, 300, 900, 1800, 2700, 3600, 7200, 14400, 28800, 43200, 57600, 86400, 172800 ],
-            default => 3600
-        },
-        sms_hard_interval => {
-            options => [ 0, 300, 900, 1800, 2700, 3600, 7200, 14400, 28800, 43200, 57600, 86400, 172800 ],
-            default => 0
         },
         attempt_max => {
             options => [ 1 .. 20 ],
@@ -102,6 +70,10 @@ sub set {
                 ? [ "localhost", "intranet", "remote" ]
                 : [ "localhost" ],
             default => $plugin->{prefer}
+        },
+        retry_interval => {
+            options => [ 0, 15, 30, 60, 120, 180, 300, 600, 900, 1800, 3600 ],
+            default => 0
         }
     );
 
@@ -743,7 +715,7 @@ sub count_by_company_id {
 sub warnings_by_user_id {
     my ($self, $user_id) = @_;
 
-    my $hosts = $self->schema->host->warnings_by_user_id($user_id);
+    my $hosts = $self->schema->host->warnings_by_user_id($user_id, 0, 100);
     my @host_ids = (0, map { $_->{id} } @$hosts);
 
     my ($stmt, @bind) = $self->sql->select(
@@ -1151,7 +1123,10 @@ sub update_service {
     my ($self, $service_id, $service_parameter_id, $service_parameter_options) = @_;
     my $service_options = {};
 
-    foreach my $key (qw/active active_comment acknowledged acknowledged_comment notification notification_comment volatile_comment/) {
+    foreach my $key (qw/
+        active active_comment acknowledged acknowledged_comment notification notification_comment volatile_comment
+        next_check next_timeout
+    /) {
         if (defined $service_parameter_options->{$key}) {
             $service_options->{$key} = delete $service_parameter_options->{$key};
         }

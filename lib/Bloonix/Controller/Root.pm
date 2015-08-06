@@ -55,6 +55,7 @@ sub auto {
         $c->log->set_pattern("%Y", "username", "$user->{username} ($addr)");
         $c->stash->{meta}->{servertime} = $c->plugin->util->timestamp(time, $user->{timezone});
         $user->{stash} = $c->json->decode($user->{stash});
+        $user->{stash}->{table_config} //= {};
 
         my $company = $c->model->database->company->get($user->{company_id});
 

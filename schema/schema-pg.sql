@@ -195,6 +195,7 @@ CREATE TABLE "host" (
     "status_since"          BIGINT DEFAULT 0 NOT NULL,
     "status_nok_since"      BIGINT DEFAULT 0 NOT NULL,
     "interval"              INTEGER NOT NULL DEFAULT 60,
+    "retry_interval"        INTEGER NOT NULL DEFAULT 60,
     "timeout"               INTEGER NOT NULL DEFAULT 300,
     "notification"          CHAR(1) NOT NULL DEFAULT 1,
     "last_check"            BIGINT NOT NULL DEFAULT 0,
@@ -371,23 +372,17 @@ CREATE TABLE "service_parameter" (
     "description"               VARCHAR(100) NOT NULL DEFAULT '',
     "comment"                   VARCHAR(200) NOT NULL DEFAULT '',
     "interval"                  INTEGER NOT NULL DEFAULT 0,
+    "retry_interval"            INTEGER NOT NULL DEFAULT 0,
     "timeout"                   INTEGER NOT NULL DEFAULT 0,
     "attempt_warn2crit"         CHAR(1) NOT NULL DEFAULT 0,
     "attempt_max"               SMALLINT NOT NULL DEFAULT 3,
-    "mail_soft_interval"        INTEGER NOT NULL DEFAULT 3600,
-    "mail_hard_interval"        INTEGER NOT NULL DEFAULT 0,
-    "mail_warnings"             CHAR(1) NOT NULL DEFAULT 1,
-    "mail_ok"                   CHAR(1) NOT NULL DEFAULT 1,
-    "send_sms"                  CHAR(1) NOT NULL DEFAULT 1,
-    "sms_soft_interval"         INTEGER NOT NULL DEFAULT 3600,
-    "sms_hard_interval"         INTEGER NOT NULL DEFAULT 0,
-    "sms_warnings"              CHAR(1) NOT NULL DEFAULT 0,
-    "sms_ok"                    CHAR(1) NOT NULL DEFAULT 1,
+    "notification_interval"     INTEGER NOT NULL DEFAULT 3600,
     "fd_enabled"                CHAR(1) NOT NULL DEFAULT 1,
     "fd_time_range"             INTEGER NOT NULL DEFAULT 1800,
     "fd_flap_count"             INTEGER NOT NULL DEFAULT 8,
     "is_volatile"               CHAR(1) NOT NULL DEFAULT 0, -- is this a volatile status
-    "volatile_retain"           INTEGER NOT NULL DEFAULT 0  -- the volatile retain time
+    "volatile_retain"           INTEGER NOT NULL DEFAULT 0, -- the volatile retain time
+    "version"                   BIGINT NOT NULL DEFAULT 1   -- the version is updated if interval or timeout is updated
 );
 
 CREATE INDEX "service_parameter_ref_id_index" ON "service_parameter" ("ref_id");
@@ -413,16 +408,13 @@ CREATE TABLE "service" (
     "notification_comment"      VARCHAR(400) DEFAULT 'no comment',  -- who enabled/disabled the notifications of the service
     "volatile_comment"          VARCHAR(400) DEFAULT 'no comment',  -- who cleared the status of the service
     "attempt_counter"           SMALLINT NOT NULL DEFAULT 1,        -- attempt counter
-    "last_mail"                 BIGINT NOT NULL DEFAULT 0,          -- the last time a email was send in seconds
-    "last_mail_time"            BIGINT NOT NULL DEFAULT 0,          -- the last time a email was send in seconds
-    "last_sms"                  BIGINT NOT NULL DEFAULT 0,          -- the last time a sms was send in seconds
-    "last_sms_time"             BIGINT NOT NULL DEFAULT 0,          -- the last time a sms was send in seconds
+    "last_notification"         BIGINT NOT NULL DEFAULT 0,          -- the last time a notification was send
     "last_check"                BIGINT NOT NULL DEFAULT 0,          -- last check timestamp
     "highest_attempt_status"    VARCHAR(10) NOT NULL DEFAULT 'OK',  -- save the highest status
     "flapping"                  CHAR(1) NOT NULL DEFAULT 0,         -- is the services flapping or not
     "scheduled"                 CHAR(1) NOT NULL DEFAULT 0,         -- has the service a scheduled downtime or not
-    "next_check_id"             VARCHAR(50) NOT NULL DEFAULT 0,     -- id for the process who check the service
-    "next_check_timeout"        BIGINT NOT NULL DEFAULT 0,          -- next check plus timeout in seconds since epoch
+    "next_check"                BIGINT NOT NULL DEFAULT 0,          -- next check of the service
+    "next_timeout"              BIGINT NOT NULL DEFAULT 0,          -- next timeout of the service
     "last_event"                BIGINT NOT NULL DEFAULT date_part('epoch', now()), -- when the last event was stored
     "status_since"              BIGINT NOT NULL DEFAULT 0,          -- timestamp since the status is OK or not OK
     "status_nok_since"          BIGINT NOT NULL DEFAULT 0,          -- timestamp since the service is in the given status
@@ -513,16 +505,20 @@ CREATE TABLE "contact" (
     "id"                            BIGINT PRIMARY KEY DEFAULT nextval('contact_id_seq'),
     "company_id"                    BIGINT NOT NULL REFERENCES "company"("id") ON DELETE CASCADE,
     "name"                          VARCHAR(100) NOT NULL,
-    "escalation_level"              VARCHAR(8) NOT NULL DEFAULT 'e0',
-    -- mail
-    "mail_to"                       VARCHAR(100),
-    "mail_notifications_enabled"    CHAR(1) NOT NULL DEFAULT 1,
-    "mail_notification_level"       VARCHAR(40) NOT NULL DEFAULT 'all',
-    -- sms
-    "sms_to"                        VARCHAR(100),
-    "sms_notifications_enabled"     CHAR(1) NOT NULL DEFAULT 1,
-    "sms_notification_level"        VARCHAR(40) NOT NULL DEFAULT 'all',
+    "escalation_time"               INTEGER NOT NULL DEFAULT '0',
     "creation_time"                 TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE SEQUENCE "contact_message_services_id_seq" START WITH 1 INCREMENT BY 1 NO MAXVALUE NO MINVALUE CACHE 1;
+
+CREATE TABLE "contact_message_services" (
+    "id"                 BIGINT PRIMARY KEY DEFAULT nextval('contact_message_services_id_seq'),
+    "contact_id"         BIGINT NOT NULL REFERENCES "contact"("id") ON DELETE CASCADE,
+    "message_service"    VARCHAR(20) NOT NULL,
+    "enabled"            CHAR(1) NOT NULL DEFAULT 1,
+    "send_to"            VARCHAR(100),
+    "notification_level" VARCHAR(40) NOT NULL DEFAULT 'all',
+    "creation_time"      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE "contact_contactgroup" (
@@ -593,12 +589,12 @@ values (3, 'Monday - Friday 17:01 - 23:59'),
 CREATE SEQUENCE "contact_timeperiod_id_seq" START WITH 1 INCREMENT BY 1 NO MAXVALUE NO MINVALUE CACHE 1;
 
 CREATE TABLE "contact_timeperiod" (
-    "id"            BIGINT PRIMARY KEY DEFAULT nextval('contact_timeperiod_id_seq'),
-    "contact_id"    BIGINT NOT NULL REFERENCES "contact"("id") ON DELETE CASCADE,
-    "timeperiod_id" BIGINT NOT NULL REFERENCES "timeperiod"("id") ON DELETE CASCADE,
-    "type"          VARCHAR(20) NOT NULL DEFAULT 'send all',
-    "timezone"      VARCHAR(40) NOT NULL DEFAULT 'Europe/Berlin',
-    UNIQUE("timeperiod_id", "contact_id", "timezone")
+    "id"                BIGINT PRIMARY KEY DEFAULT nextval('contact_timeperiod_id_seq'),
+    "contact_id"        BIGINT NOT NULL REFERENCES "contact"("id") ON DELETE CASCADE,
+    "timeperiod_id"     BIGINT NOT NULL REFERENCES "timeperiod"("id") ON DELETE CASCADE,
+    "message_service"   VARCHAR(20) NOT NULL DEFAULT 'all',
+    "exclude"           CHAR(1) NOT NULL DEFAULT '0',
+    "timezone"          VARCHAR(40) NOT NULL DEFAULT 'Europe/Berlin'
 );
 
 -- Store host downtimes
@@ -638,74 +634,22 @@ CREATE TABLE "service_downtime" (
 
 CREATE INDEX "service_downtime_index" ON "service_downtime" ("host_id", "begin", "end");
 
--- Table sms_send is used to store all sms that were send
+-- Table notification is used to store all mails that were send
 
-CREATE TABLE "sms_send" (
-    -- No reference to host.id and service.id because this line shouldn't be deleted
-    -- if the host or service will be deleted
-    "time"          BIGINT DEFAULT 0,
-    "company_id"    BIGINT NOT NULL DEFAULT 0,
-    "host_id"       BIGINT NOT NULL,
-    "send_to"       VARCHAR(20) NOT NULL,
-    "message"       TEXT NOT NULL DEFAULT 'n/a'
-);
-
-CREATE INDEX "sms_send_time_host_id_index" ON "sms_send" ("time", "host_id");
-CREATE INDEX "sms_send_time_company_id_index" ON "sms_send" ("time", "company_id");
-
--- Table mail_send is used to store all mails that were send
-
-CREATE TABLE "mail_send" (
+CREATE TABLE "notification" (
     -- No referenc to host.id and service.id because this line shouldn't be deleted
     -- if the host or service will be deleted
-    "time"       BIGINT DEFAULT 0,
-    "host_id"    BIGINT NOT NULL REFERENCES "host"("id") ON DELETE CASCADE,
-    "company_id" BIGINT NOT NULL DEFAULT 0,
-    "send_to"    VARCHAR(100) NOT NULL,
-    "subject"    VARCHAR(200) NOT NULL,
-    "message"    TEXT NOT NULL DEFAULT 'n/a'
+    "time"              BIGINT DEFAULT 0,
+    "host_id"           BIGINT NOT NULL REFERENCES "host"("id") ON DELETE CASCADE,
+    "company_id"        BIGINT NOT NULL DEFAULT 0,
+    "message_service"   VARCHAR(20) NOT NULL DEFAULT 'n/a',
+    "send_to"           VARCHAR(100) NOT NULL,
+    "subject"           VARCHAR(200) NOT NULL,
+    "message"           TEXT NOT NULL DEFAULT 'n/a'
 );
 
-CREATE INDEX "mail_send_time_host_id_index" ON "mail_send" ("time", "host_id");
-CREATE INDEX "mail_send_time_company_id_index" ON "mail_send" ("time", "company_id");
-
--- Schema roster
-
-CREATE SEQUENCE "roster_id_seq" START WITH 1 INCREMENT BY 1 NO MAXVALUE NO MINVALUE CACHE 1;
-
-CREATE TABLE "roster" (
-    "id"            BIGINT PRIMARY KEY DEFAULT nextval('roster_id_seq'),
-    "company_id"    BIGINT NOT NULL REFERENCES "company"("id") ON DELETE CASCADE,
-    "roster"        VARCHAR(100) NOT NULL,
-    "description"   VARCHAR(100),
-    "active"        CHAR(1) NOT NULL DEFAULT 1
-);
-
-CREATE TABLE "roster_host" (
-    "roster_id" BIGINT NOT NULL REFERENCES "roster"("id") ON DELETE CASCADE,
-    "host_id"   BIGINT NOT NULL REFERENCES "host"("id") ON DELETE CASCADE
-);
-
-CREATE SEQUENCE "roster_entry_id_seq" START WITH 1 INCREMENT BY 1 NO MAXVALUE NO MINVALUE CACHE 1;
-
-CREATE TABLE "roster_entry" (
-    "id"        BIGINT PRIMARY KEY DEFAULT nextval('roster_entry_id_seq'),
-    "roster_id" BIGINT NOT NULL REFERENCES "roster"("id") ON DELETE CASCADE,
-    "from_time" TIMESTAMP NOT NULL,
-    "to_time"   TIMESTAMP NOT NULL,
-    "timezone"  VARCHAR(40) NOT NULL DEFAULT 'Europe/Berlin'
-);
-
-CREATE SEQUENCE "roster_contact_id_seq" START WITH 1 INCREMENT BY 1 NO MAXVALUE NO MINVALUE CACHE 1;
-
-CREATE TABLE "roster_contact" (
-    "id"                BIGINT PRIMARY KEY DEFAULT nextval('roster_contact_id_seq'),
-    "roster_entry_id"   BIGINT NOT NULL REFERENCES "roster_entry"("id") ON DELETE CASCADE,
-    "contact_id"        BIGINT NOT NULL REFERENCES "contact"("id") ON DELETE CASCADE,
-    "send_mail"         CHAR(1) NOT NULL DEFAULT 1,
-    "send_sms"          CHAR(1) NOT NULL DEFAULT 1,
-    "escalation_level"  SMALLINT NOT NULL DEFAULT 0
-);
+CREATE INDEX "notification_time_host_id_index" ON "notification" ("time", "host_id");
+CREATE INDEX "notification_time_company_id_index" ON "notification" ("time", "company_id");
 
 -- User actions
 

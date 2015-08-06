@@ -17,6 +17,7 @@ word.inactive: inaktiv
 word.active: aktiv
 word.Timezone: Zeitzone
 word.Timeslice: Zeitscheibe
+word.Type: Typ
 word.Days: Tage
 word.days: Tage
 word.day: Tage
@@ -29,6 +30,7 @@ word.minute: Minute
 word.Seconds: Sekunden
 word.seconds: Sekunden
 word.second: Sekunde
+word.resize: Größe anpassen
 
 nav.main.dashboard: DASHBOARD
 nav.main.monitoring: MONITORING
@@ -580,8 +582,10 @@ schema.host.attr.allow_from: Erlaubter Zugriff
 schema.host.attr.max_sms: Maximale SMS pro Monat
 schema.host.attr.status: Status
 schema.host.attr.interval: Intervall
+schema.host.attr.retry_interval: Wiederholungsintervall
 schema.host.attr.timeout: Timeout
 schema.host.attr.notification: Benachrichtigungen aktiv
+schema.host.attr.notification_interval: Benachrichtigungsintervall
 schema.host.attr.last_check: Letzter Check
 schema.host.attr.max_services: Maximal konfigurierbare Services
 schema.host.attr.variables: Host Variablen
@@ -608,7 +612,8 @@ schema.host.desc.active: Aktiviere oder deaktiviere den Host und alle Services.
 schema.host.desc.allow_from: Es ist möglich eine Komma-separierte Liste von IP-Adressen anzugeben, von denen statistische Daten für den Host geliefert werden dürfen. Das Schlüsselwort <i>all</i> heißt von überall.
 schema.host.desc.max_sms: In diesem Feld kann die maximale Anzahl von SMS pro Monat für diesen Host gesetzt werden.
 schema.host.desc.interval: Das ist der Prüfungsintervall aller Services des Hosts.
-schema.host.desc.timeout: Das ist der Timeout aller Services des Hosts. Wenn in dieser Zeit der Status eines Service nicht aktualisiert wurde, dann wird ein kritischer Status gesetzt mit der Information, dass der Bloonix-Agent wohlmöglich ausgefallen ist.
+schema.host.desc.retry_interval: Das ist der Prüfintervall aller Services des Hosts, aber nur, wenn ein Service nicht im Status OK ist.
+schema.host.desc.timeout: Das ist der Timeout aller Services des Hosts. Der Timeoutzähler beginnt nach dem Intervall. Wenn in dieser Zeit der Status eines Service nicht aktualisiert wurde, dann wird ein kritischer Status gesetzt mit der Information, dass der Bloonix-Agent wohlmöglich ausgefallen ist.
 schema.host.desc.notification: Aktiere oder deaktiviere die Benachrichtigungen aller Services.
 schema.host.desc.max_services: Konfiguration der maximalen Services, die für diesen Host eingerichtet werden dürfen. 0 heißt unlimitiert.
 schema.host.desc.variables: In diesem Feld können Host Variablen definiert werden. Diese Variablen können für Schwellwerten bei der Konfiguration von Service-Checks verwendet werden. Beispiel:<br/><br/><b>HTTP.PORT=9000</b><br/><br/>Diese Variable kann dann im Format <i>%HTTP.PORT%</i> für Schwellwerte eingesetzt werden. Bitte beachten Sie das zwei Variablen vordefiniert sind: <i>IPADDR</i> und <i>HOSTNAME</i>. Diese Variablen werden mit der IP-Adresse und dem Hostnamen ersetzt. Weitere Informationen hierzu finden Sie in der Hilfe.<br/><br/>Erlaubte Zeichen: a-z, A-Z, 0-9, Punkt und Unterstrich
@@ -724,30 +729,32 @@ schema.contact.attr.mail_notification_level: Benachrichtigungslevel für E-Mails
 schema.contact.attr.sms_to: Mobilfunknummer
 schema.contact.attr.sms_notifications_enabled: SMS global aktiv
 schema.contact.attr.sms_notification_level: Benachrichtigungslevel für SMS
-schema.contact.attr.escalation_level: Eskalationslevel
+schema.contact.attr.escalation_time: Eskalationslevel
 schema.contact.desc.company_id: Wähle ein Unternehmen zu dem der Kontakt gehört
 schema.contact.desc.name: Dies ist der volle Name des Kontakts.
-schema.contact.desc.mail_to: Dies ist die E-Mail Adresse des Konakts. Benachrichtigung über Ereignisse werden an diese Adresse gesendet.
-schema.contact.desc.mail_notifications_enabled: Mit dieser Option ist es möglich die Benachrichtigung per E-Mail ein- oder auszuschalten.
-schema.contact.desc.mail_notification_level: Wähle die Status Level für die der Konakt eine Benachrichtigung per E-Mail erhalten soll.
-schema.contact.desc.sms_to: Dies ist die Mobilfunknummer des Konakts. Benachrichtigung über Ereignisse werden an diese Rufnummer per SMS gesendet.
-schema.contact.desc.sms_notifications_enabled: Mit dieser Option ist es möglich die Benachrichtigung per SMS ein- oder auszuschalten.
-schema.contact.desc.sms_notification_level: Wähle die Status Level für die der Konakt eine Benachrichtigung per SMS erhalten soll.
-schema.contact.desc.escalation_level: Wähle ein Eskalationslevel für den Kontakt. Mit dem Eskalationslevel kann kontrolliert werden wann ein Kontakt eine Benachrichtigung erhält. Das Level <i>Permanent aktiv</i> bedeuted, dass der Konakt immer benachrichtigt wird. Das Level <i>aktiv nach 3 Benachrichtiungen</i> bedeuted, dass der Kontakt erst benachrichtigt wird, wenn für den Service bereits 3 Benachrichtigungen versendet wurden und noch immer in einem niht-OK Status ist.
+schema.contact.desc.escalation_time: Wähle ein Eskalationslevel für den Kontakt. Mit dem Eskalationslevel kann kontrolliert werden wann ein Kontakt eine Benachrichtigung erhält. Das Level <i>30 Minuten</i> bedeuted, dass der Konakt nach 30 Minuten benachrichtigt wird, wenn der Service nach 30 Minuten noch immer nicht OK ist.
 schema.contact.text.list: Übersicht über alle Kontakte
 schema.contact.text.create: Erstelle einen neuen Kontakt
 schema.contact.text.delete: Kontakt löschen
 schema.contact.text.settings: Einstellungen des Kontakts
 schema.contact.text.timeperiods: Zeitpläne des Kontakts
+schema.contact.text.message_services: Nachrichtendienste
 schema.contact.text.remove_timeperiod: Den Zeitplan vom Konakt entfernen
-schema.contact.text.timeperiod_type: Inkludieren / Exkludieren
-schema.contact.text.timeperiod_type_send_to_all: E-Mails und SMS versenden
-schema.contact.text.timeperiod_type_send_only_mail: Nur Mails versenden
-schema.contact.text.timeperiod_type_send_only_sms: Nur SMS versenden
-schema.contact.text.timeperiod_type_exclude: Exkludieren
-schema.contact.text.escalation_level_event.0: Permanent aktiv
-schema.contact.text.escalation_level_event.1: aktiv nach 1er Benachrichtiung
-schema.contact.text.escalation_level_event.x: aktiv nach %s Benachrichtiungen
+schema.contact.text.remove_message_service: Den Nachrichtendienst vom Konakt entfernen
+schema.contact.text.escalation_time_null: Sofort benachrichtigen
+schema.contact_timeperiod.attr.message_service: Nachrichtendienst
+schema.contact_timeperiod.attr.exclude: Exkludieren
+schema.contact_timeperiod.text.add: Eine Timeperiod dem Kontakt hinzufügen
+schema.contact_message_services.attr.message_service: Nachrichtendienst
+schema.contact_message_services.attr.enabled: Aktiviert
+schema.contact_message_services.attr.send_to: Sende zu
+schema.contact_message_services.attr.notification_level: Benachrichtigungslevel
+schema.contact_message_services.desc.message_service: Der Nachrichtendienst.
+schema.contact_message_services.desc.enabled: Den Dienst aktivieren oder deaktivieren.
+schema.contact_message_services.desc.send_to: Der Empfänger der Nachricht.
+schema.contact_message_services.desc.notification_level: Wähle die Status Level für die der Konakt eine Benachrichtigung erhalten soll.
+schema.contact_message_services.text.add: Einen Nachrichtendienst dem Kontakt hinzufügen
+schema.contact_message_services.text.remove: Einen Nachrichtendienst entfernen
 
 schema.contactgroup.attr.id: Kontaktgruppen ID
 schema.contactgroup.attr.name: Name
@@ -768,11 +775,15 @@ schema.contactgroup.text.service_members: Services, die der Kontakgruppe angehö
 schema.contactgroup.text.service_nonmembers: Services, die nicht der Kontaktgruppe angehören
 schema.contactgroup.text.selected_services: Ausgewählte Services
 
-schema.sms_send.attr.time: Zeitstempel
-schema.sms_send.attr.send_to: Empfänger
-schema.sms_send.attr.message: Nachricht
-schema.sms_send.text.list: Gesendete SMS für Host %s
-schema.sms_send.text.search: Suche nach SMS
+schema.notification.attr.time: Zeitstempel
+schema.notification.attr.send_to: Empfänger
+schema.notification.attr.subject: Betreff
+schema.notification.attr.message: Nachricht
+schema.notification.attr.message_service: Typ
+schema.notification.text.list: Gesendete Nachrichten für Host %s
+schema.notification.text.search: Suche nach Nachrichten
+schema.notification.text.filter_message: Nachrichtenfilter
+schema.notification.text.filter_message_service: sms, mail, ...
 
 schema.chart.attr.id: Chart ID
 schema.chart.attr.title: Chart Titel
@@ -866,6 +877,7 @@ schema.service.attr.service_name: Servicename
 schema.service.attr.command: Kommando
 schema.service.attr.command_options: Check Einstellungen
 schema.service.attr.interval: Intervall
+schema.service.attr.retry_interval: Wiederholungsintervall
 schema.service.attr.timeout: Timeout
 schema.service.attr.description: Beschreibung
 schema.service.attr.plugin: Plugin
@@ -876,19 +888,7 @@ schema.service.attr.attempt_max: Benachrichtigung nach X versuchen
 schema.service.attr.active: Aktiv
 schema.service.attr.acknowledged: Bestätigt
 schema.service.attr.notification: Benachrichtigungen eingeschaltet
-schema.service.attr.mail_soft_interval: Benachrichtigungsintervall für E-Mails (soft)
-schema.service.attr.mail_hard_interval: Benachrichtigungsintervall für E-Mails (hart)
-schema.service.attr.mail_warnings: Benachrichtigungen für Warnmeldungen per E-Mail versenden
-schema.service.attr.mail_ok: Benachrichtigungen für OK Meldungen per E-Mail versenden
-schema.service.attr.last_mail: Letzte Benachrichtigung per E-Mail
-schema.service.attr.last_mail_time: Letzte Benachrichtigung per E-Mail
-schema.service.attr.send_sms: Benachrichtigungen für SMS eingeschaltet
-schema.service.attr.sms_soft_interval: Benachrichtigungsintervall für SMS (soft)
-schema.service.attr.sms_hard_interval: Benachrichtigungsintervall für SMS (hart)
-schema.service.attr.sms_warnings: Benachrichtigungen für Warnmeldungen per SMS versenden
-schema.service.attr.sms_ok: Benachrichtigungen für OK Meldungen per SMS versenden
-schema.service.attr.last_sms: Letzte Benachrichtigung per SMS
-schema.service.attr.last_sms_time: Letzte Benachrichtigung per SMSRNUNGEN per E-Mail versenden
+schema.service.attr.notification_interval: Benachrichtigungsintervall
 schema.service.attr.last_check: Letzte Prüfung
 schema.service.attr.fd_enabled: Erkennung von Statuswechseln eingeschaltet
 schema.service.attr.fd_time_range: Zeitraum zur Erkennung von Statuswechsel
@@ -916,21 +916,14 @@ schema.service.desc.service_name: Dies ist der Anzeigename des Service.
 schema.service.desc.description: Dies ist eine kurze Beschreibung zum Service.
 schema.service.desc.comment: Dies ist ein beliebiges Kommentar zum Service.
 schema.service.desc.interval: Das ist der Prüfungsintervall des Service. Wenn kein Wert gesetzt ist, dann wird der Intervall des Hosts vererbt.
-schema.service.desc.timeout: Das ist der Timeout des Service. Wenn in dieser Zeit der Status des Service nicht aktualisiert wurde, dann wird ein kritischer Status gesetzt mit der Information, dass der Bloonix-Agent wohlmöglich ausgefallen ist. Wenn kein Wert gesetzt ist, dann wird der Timeout des Hosts vererbt.
+schema.service.desc.retry_interval: Das ist der Prüfintervall des Service, aber nur, wenn ein Service nicht im Status OK ist. Wenn kein Wert gesetzt ist, dann wird der Intervall des Hosts vererbt.
+schema.service.desc.timeout: Das ist der Timeout des Service. Der Timeoutzähler beginnt nach dem Intervall. Wenn in dieser Zeit der Status des Service nicht aktualisiert wurde, dann wird ein kritischer Status gesetzt mit der Information, dass der Bloonix-Agent wohlmöglich ausgefallen ist. Wenn kein Wert gesetzt ist, dann wird der Timeout des Hosts vererbt.
 schema.service.desc.attempt_warn2crit: Diese Option ist hilfreich, wenn Sie möchten, dass der Status von WARNING zu CRITICAL aufgewertet wird, nach dem der Services die maximale Anzahl von fehlgeschlagenen Versuchen erreicht hat.
 schema.service.desc.attempt_max: Diese Option kontrolliert, wann Sie eine Benachrichtiung erhalten, wenn ein Service nicht OK ist. Ein Wert von 3 bedeuted zum Beispiel, dass eine Serviceprüfung 3 Mal hintereinander fehlschlagen darf, bis Sie eine Benachrichtigung erhalten.
 schema.service.desc.active: Diese Option aktiviert oder deaktiviert den Service.
 schema.service.desc.acknowledged: Diese Option ist hilfreich wenn ein Service nicht OK ist und Sie das Benachrichtiungen temporär ausschalten möchten. Die Benachrichtigungen werden automatisch wieder eingeschaltet, wenn der Service in den Status OK gewechselt ist.
 schema.service.desc.notification: Diese Option aktiviert oder deaktiviert Benachrichtigungen für den Service.
-schema.service.desc.mail_soft_interval: Dies ist der Benachrichtigungsintervall für Services. Solange der Service nicht OK ist, erhalten Sie in diesem Intervall erneut Benachrichtigungen.
-schema.service.desc.mail_hard_interval: Mit dieser Option können Sie einen harten Benachrichtigungsintervall setzen. Auch wenn der Service zu OK und dann wieder zu CRITICAL wechselt, so erhalten Sie erst nach Ablauf dieses Intervalls erneut eine Benachrichtigung.
-schema.service.desc.mail_warnings: Diese Option aktiviert oder deaktiviert das Versenden von Nachrichten per E-Mail für Services im Status WARNING.
-schema.service.desc.mail_ok: Diese Option aktiviert oder deaktiviert das Versenden von Nachrichten per E-Mail für Services die in den Status OK zurückwechseln.
-schema.service.desc.send_sms: Diese Option aktiviert oder deaktiviert das Versenden von SMS für diesen Service.
-schema.service.desc.sms_soft_interval: Dies ist der Benachrichtigungsintervall für Services. Solange der Service nicht OK ist, erhalten Sie in diesem Intervall erneut Benachrichtigungen.
-schema.service.desc.sms_hard_interval: Mit dieser Option können Sie einen harten Benachrichtigungsintervall setzen. Auch wenn der Service zu OK und dann wieder zu CRITICAL wechselt, so erhalten Sie erst nach Ablauf dieses Intervalls erneut eine Benachrichtigung.
-schema.service.desc.sms_warnings: Diese Option aktiviert oder deaktiviert das Versenden von Nachrichten per SMS für Services im Status WARNING.
-schema.service.desc.sms_ok: Diese Option aktiviert oder deaktiviert das Versenden von Nachrichten per SMS für Services die in den Status OK zurückwechseln.
+schema.service.desc.notification_interval: Dies ist der Benachrichtigungsintervall für Services. Solange der Service nicht OK ist, erhalten Sie in diesem Intervall erneut Benachrichtigungen. Wenn kein Wert gesetzt ist, dann wird der Intervall des Hosts vererbt.
 schema.service.desc.fd_enabled: Diese Option aktiviert oder deaktiviert die Erkennung von zu häufigen Statuswechseln (Flap Detection). Wenn ein Service zu häufig in einem kurzen Zeitraum den Status wechselt, ohne das der Prüfzähler für die maximale Anzahl erlaubter Fehlschläge erreicht wird, so greift diese Funtion. Für die Erkennung wird die Anzahl von Statuswechseln in einem bestimmten Zeitraum gemessen. Wenn der Status in diesem Zeitraum zu häufig wechselte, wird ein kritisches Ereignis ausgelöst.
 schema.service.desc.fd_time_range: Dies ist der Zeitbereich, in dem die Statuswechsel gemessen werden.
 schema.service.desc.fd_flap_count: Dies ist die maximale Anzahl von Statuswelchseln, die in einem bestimmten Zeitraum auftreten dürfen.

@@ -73,6 +73,7 @@ sub _init_routes {
     $self->load("Contactgroups");
     $self->load("Contactgroups::Member");
     $self->load("Contacts");
+    $self->load("Contacts::MessageServices");
     $self->load("Contacts::Timeperiods");
     $self->load("Events");
     $self->load("Help");

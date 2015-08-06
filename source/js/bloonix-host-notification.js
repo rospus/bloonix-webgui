@@ -6,7 +6,7 @@ Bloonix.viewHostNotifications = function(o) {
         Bloonix.showHostSubNavigation("notifications", this.id, this.host.hostname);
 
         this.header = new Header({
-            title: Bloonix.setTitle("schema.sms_send.text.list", this.host.hostname, true),
+            title: Bloonix.setTitle("schema.notification.text.list", this.host.hostname, true),
             pager: true
         }).create();
 
@@ -26,7 +26,7 @@ Bloonix.viewHostNotifications = function(o) {
             format: "medium",
             showButton: false,
             appendTo: this.boxes.left,
-            title: Text.get("schema.sms_send.text.search"),
+            title: Text.get("schema.notification.text.search"),
             onSuccess: function() { self.table.getData() }
         }).create();
 
@@ -44,7 +44,13 @@ Bloonix.viewHostNotifications = function(o) {
 
         var query = this.form.input({
             name: "query",
-            placeholder: Text.get("word.Filter"),
+            placeholder: Text.get("schema.notification.text.filter_message"),
+            appendTo: this.form.form
+        });
+
+        var type = this.form.input({
+            name: "type",
+            placeholder: Text.get("schema.notification.text.filter_message_service"),
             appendTo: this.form.form
         });
 
@@ -70,21 +76,27 @@ Bloonix.viewHostNotifications = function(o) {
         var self = this;
 
         this.table = new Table({
-            url: "/hosts/"+ this.id +"/sms-notifications",
+            url: "/hosts/"+ this.id +"/notifications",
             bindForm: this.form,
             appendTo: this.boxes.right,
             headerObject: this.header,
             columns: [
                 {
                     name: "time",
-                    text: Text.get("schema.sms_send.attr.time"),
+                    text: Text.get("schema.notification.attr.time"),
                     convertFromUnixTime: true
                 },{
+                    name: "message_service",
+                    text: Text.get("schema.notification.attr.message_service")
+                },{
                     name: "send_to",
-                    text: Text.get("schema.sms_send.attr.send_to")
+                    text: Text.get("schema.notification.attr.send_to")
+                },{
+                    name: "subject",
+                    text: Text.get("schema.notification.attr.subject")
                 },{
                     name: "message",
-                    text: Text.get("schema.sms_send.attr.message")
+                    text: Text.get("schema.notification.attr.message")
                 }
             ]
         }).create();

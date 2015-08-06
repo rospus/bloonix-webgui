@@ -244,7 +244,11 @@ Bloonix.listServices = function(o) {
             },
             reloadable: true,
             sortable: true,
-            columnSwitcher: true,
+            columnSwitcher: {
+                table: "service",
+                callback: Bloonix.saveUserTableConfig,
+                config: Bloonix.getUserTableConfig("service")
+            },
             rowHoverIcons: [{
                 title: Text.get("schema.service.text.clone"),
                 icon: "share",
@@ -258,10 +262,12 @@ Bloonix.listServices = function(o) {
                 },{
                     name: "hostname",
                     text: Text.get("schema.host.attr.hostname"),
-                    call: function(row) { return Bloonix.call("monitoring/hosts/"+ row.host_id, row.hostname) }
+                    call: function(row) { return Bloonix.call("monitoring/hosts/"+ row.host_id, row.hostname) },
+                    switchable: false
                 },{
                     name: "service_name",
                     text: Text.get("schema.service.attr.service_name"),
+                    switchable: false
                 },{
                     icons: this.getStatusIcons()
                 },{
@@ -307,14 +313,16 @@ Bloonix.listServices = function(o) {
                 },{
                     name: "status",
                     text: Text.get("schema.service.attr.status"),
-                    wrapValueClass: true
+                    wrapValueClass: true,
+                    switchable: false
                 },{
                     name: "last_check",
                     text: Text.get("schema.service.attr.last_check"),
                     convertFromUnixTime: true
                 },{
                     text: Text.get("schema.service.text.attempt"),
-                    call: function(row) { return [ row.attempt_counter, row.attempt_max ].join("/") }
+                    call: function(row) { return [ row.attempt_counter, row.attempt_max ].join("/") },
+                    switchable: false
                 },{
                     name: "message",
                     text: Text.get("schema.service.attr.message")
@@ -396,7 +404,11 @@ Bloonix.listServices = function(o) {
                 result: [ "id", "service_name", "plugin" ],
                 check: function(row) { return row.host_template_name ? false : true }
             },
-            columnSwitcher: true,
+            columnSwitcher: {
+                table: "service",
+                callback: Bloonix.saveUserTableConfig,
+                config: Bloonix.user.stash.table_config.service
+            },
             rowHoverIcons: [{
                 title: Text.get("schema.service.text.clone"),
                 icon: "share",

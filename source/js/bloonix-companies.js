@@ -27,7 +27,11 @@ Bloonix.listCompanies = function() {
         },
         sortable: true,
         reloadable: true,
-        columnSwitcher: true,
+        columnSwitcher: {
+            table: "company",
+            callback: Bloonix.saveUserTableConfig,
+            config: Bloonix.getUserTableConfig("company")
+        },
         columns: [
             {
                 name: "id",
@@ -40,7 +44,8 @@ Bloonix.listCompanies = function() {
             },{
                 name: "company",
                 text: Text.get("schema.company.attr.company"),
-                call: function(row) { return Bloonix.call("administration/companies/"+ row.id +"/edit", row.company) }
+                call: function(row) { return Bloonix.call("administration/companies/"+ row.id +"/edit", row.company) },
+                switchable: false
             },{
                 name: "sla",
                 text: Text.get("schema.company.attr.sla"),

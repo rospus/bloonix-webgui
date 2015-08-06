@@ -24,7 +24,6 @@ Bloonix.listTimeperiods = function() {
         },
         appendTo: "#content",
         reloadable: true,
-        columnSwitcher: true,
         columns: [
             {
                 name: "id",
@@ -42,7 +41,7 @@ Bloonix.listTimeperiods = function() {
                         "administration/companies/settings/"+ row.company_id, row.company
                     );
                 },
-                hide: true
+                hide: Bloonix.user.role == "admin" ? false : true
             },{
                 name: "description",
                 text: Text.get("schema.timeperiod.attr.description")

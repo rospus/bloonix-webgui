@@ -14,7 +14,6 @@ sub set {
 
     $self->validator->set(
         company_id => {
-            #options => $self->schema->company->get_companies_for_selection,
             options => [ $user->{company_id} ],
             default => $user->{company_id}
         },
@@ -22,40 +21,11 @@ sub set {
             min_size => 1,
             max_size => 100,
         },
-        escalation_level => {
-            options => [ 0..10 ],
-            default => "0",
-        },
-        mail_to => {
-            regex => $self->validator->regex->email,
-            max_size => 100,
-            optional => 1,
-        },
-        sms_to => {
-            regex => qr/^\+{0,1}\d{0,99}\z/,
-            max_size => 100,
-            optional => 1,
-        },
-        sms_notifications_enabled => {
-            options => [1,0],
-            default => 1,
-        },
-        mail_notifications_enabled => {
-            options => [1,0],
-            default => 1,
-        },
-        mail_notification_level => {
-            multioptions => [qw(ok warning critical unknown)],
-            default => "ok,warning,critical,unknown",
-            postprod => sub { my $val = shift; $$val = join(",", @$$val); }
-        },
-        sms_notification_level => {
-            multioptions => [qw(ok warning critical unknown)],
-            default => "critical,unknown",
-            postprod => sub { my $val = shift; $$val = join(",", @$$val); }
-        },
+        escalation_time => {
+            options => [ 0, 300, 600, 900, 1200, 1800, 2700, 3600, 5400, 7200, 10800, 14400 ],
+            default => 0
+        }
     );
-
 }
 
 sub by_user {
@@ -81,15 +51,6 @@ sub by_user {
         ]
     );
 
-    #if ($opts{user}{role} ne "admin") {
-    #    push @select, condition => [
-    #        where => {
-    #            column => "company_id",
-    #            value => $opts{user}{company_id}
-    #        }
-    #    ];
-    #}
-
     if ($opts{order}) {
         push @select, order => $opts{order};
     }
@@ -98,7 +59,7 @@ sub by_user {
         offset => $opts{offset},
         limit => $opts{limit},
         query => $opts{query},
-        concat => [ "contact.id", "contact.name", "contact.mail_to", "contact.sms_to" ],
+        concat => [ "contact.id", "contact.name" ],
         delimiter => " ",
         count => "contact.id",
         select => \@select
@@ -114,7 +75,7 @@ sub _is_contactgroup_member {
     my %select = (
         distinct => 1,
         table => "contact",
-        column => [qw(id name mail_to)],
+        column => [qw(id name)],
         join => [
             inner => {
                 table => "contact_contactgroup",
@@ -152,7 +113,7 @@ sub _is_not_contactgroup_member {
     my %select = (
         distinct => 1,
         table => "contact",
-        column => [qw(id name mail_to)],
+        column => [qw(id name)],
         condition => [
             where => {
                 table => "contact",
@@ -200,11 +161,10 @@ sub search_contactgroup_member {
         limit => $opts->{limit},
         query => $opts->{query},
         maps => {
-            name => "contact.name",
-            mail_to => "contact.mail_to"
+            name => "contact.name"
         },
         concat => [
-            "contact.id", "contact.name", "contact.mail_to"
+            "contact.id", "contact.name"
         ],
         delimiter => " ",
         count => "contact.id",
@@ -241,7 +201,7 @@ sub get_timeperiods {
 
     my ($stmt, @bind) = $self->sql->select(
         table => [
-            contact_timeperiod => [ "id", "type", "timezone" ],
+            contact_timeperiod => "*",
             timeperiod => [ "name", "description" ]
         ],
         join => [

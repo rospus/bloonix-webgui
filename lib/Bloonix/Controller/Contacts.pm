@@ -17,11 +17,25 @@ sub startup {
 }
 
 sub auto {
-    my ($self, $c) = @_;
+    my ($self, $c, $opts) = @_;
 
     if (!$c->user->{manage_contacts}) {
         $c->plugin->error->noauth_access;
         return undef;
+    }
+
+    if ($opts && $opts->{id}) {
+        $c->stash->object(
+            $c->model->database->contact->find(
+                condition => [
+                    id => $opts->{id}, company_id => $c->user->{company_id}
+                ]
+            )
+        );
+        if (!$c->stash->object) {
+            $c->plugin->error->object_does_not_exists;
+            return undef;
+        }
     }
 
     return 1;

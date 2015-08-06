@@ -1186,7 +1186,6 @@ Bloonix.listUserCharts = function(o) {
                 url: "/user/charts/:id/delete",
                 result: [ "id", "title" ]
             },
-            columnSwitcher: true,
             columns: [
                 {
                     name: "id",
@@ -1429,7 +1428,6 @@ Bloonix.createUserChart = function(o) {
                 result: [ "plugin", "command", "category", "description" ],
                 resultWidth: "900px"
             },
-            columnSwitcher: true,
             onClick: function(row) { self.listPluginStats(row) },
             columns: [
                 {
@@ -1439,10 +1437,6 @@ Bloonix.createUserChart = function(o) {
                 },{
                     name: "plugin",
                     text: Text.get("schema.plugin.attr.plugin")
-                },{
-                    name: "command",
-                    text: Text.get("schema.plugin.attr.command"),
-                    hide: true
                 },{
                     name: "category",
                     text: Text.get("schema.plugin.attr.categories")
@@ -1477,21 +1471,12 @@ Bloonix.createUserChart = function(o) {
                     }
                 }]
             },
-            columnSwitcher: true,
             onClick: function(row) { self.listServices(row) },
             columns: [
                 {
                     name: "alias",
                     text: Text.get("schema.plugin_stats.attr.alias"),
                     value: function(row) { return row.alias && row.alias.length ? row.alias : row.statkey }
-                },{
-                    name: "statkey",
-                    text: Text.get("schema.plugin_stats.attr.statkey"),
-                    hide: true
-                },{
-                    name: "datatype",
-                    text: Text.get("schema.plugin_stats.attr.datatype"),
-                    hide: true
                 },{
                     name: "description",
                     text: Text.get("schema.plugin_stats.attr.description")
@@ -1546,7 +1531,6 @@ Bloonix.createUserChart = function(o) {
                 url: "/plugin-stats/"+ plugin.plugin_id +"/"+ plugin.statkey +"/services",
                 result: [ "id", "hostname", "service_name" ]
             },
-            columnSwitcher: true,
             onClick: function(row) {
                 $("#int-chart-selection-services-selected").removeClass("rwb");
 
@@ -1569,15 +1553,8 @@ Bloonix.createUserChart = function(o) {
                     name: "hostname",
                     text: Text.get("schema.host.attr.hostname")
                 },{
-                    name: "ipaddr",
-                    text: Text.get("schema.host.attr.ipaddr")
-                },{
                     name: "service_name",
                     text: Text.get("schema.service.attr.service_name"),
-                },{
-                    name: "description",
-                    text: Text.get("schema.service.attr.description"),
-                    hide: true
                 }
             ]
         }).create();

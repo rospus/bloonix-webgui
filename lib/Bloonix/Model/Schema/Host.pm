@@ -142,6 +142,10 @@ sub set {
             ],
             default => 60,
         },
+        retry_interval => {
+            options => [ 15, 30, 60, 120, 180, 300, 600, 900, 1800, 3600 ],
+            default => 60
+        },
         timeout => {
             options => [
                 ($self->c->config->{webapp}->{check_frequency} eq "high" ? (30, 60, 120) : ()),
@@ -833,6 +837,10 @@ sub warnings_by_user_id {
     my ($self, $user_id, $offset, $limit) = @_;
     $offset //= 0;
     $limit //= 40;
+
+    if ($limit > 100) {
+        $limit = 100;
+    }
 
     my ($stmt, @bind) = $self->sql->select(
         distinct => 1,
