@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.57
+Version: 0.58
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -13,6 +13,7 @@ BuildArch: noarch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 Source0: http://download.bloonix.de/sources/%{name}-%{version}.tar.gz
+Requires: bloonix-core >= 0.23
 Requires: bloonix-webgui-core
 AutoReqProv: no
 
@@ -61,6 +62,9 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Thu Aug 06 2015 Jonny Schulz <js@bloonix.de> - 0.58-1
+- Heavy changes in the schema of bloonix and re-designed
+  the notification handling.
 * Wed Jun 24 2015 Jonny Schulz <js@bloonix.de> - 0.57-1
 - Added new WTRM features: doSwitchToNewPage and doSwitchToMainPage.
 * Mon Jun 22 2015 Jonny Schulz <js@bloonix.de> - 0.56-1
