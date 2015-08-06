@@ -229,7 +229,7 @@ sub v8 {
         $self->upgrade(qq{
             CREATE TABLE "notification" (
                 "time"              BIGINT DEFAULT 0,
-                "host_id"           BIGINT NOT NULL REFERENCES "host"("id") ON DELETE CASCADE,
+                "host_id"           BIGINT NOT NULL,
                 "company_id"        BIGINT NOT NULL DEFAULT 0,
                 "message_service"   VARCHAR(20) NOT NULL DEFAULT 'n/a',
                 "send_to"           VARCHAR(100) NOT NULL,
@@ -281,8 +281,7 @@ sub v8 {
                 `message_service`   VARCHAR(20) NOT NULL DEFAULT 'n/a',
                 `send_to`           VARCHAR(100) NOT NULL,
                 `subject`           VARCHAR(200) NOT NULL,
-                `message`           TEXT NOT NULL, -- DEFAULT 'n/a'
-                FOREIGN KEY (`host_id`) REFERENCES `host`(`id`) ON DELETE CASCADE
+                `message`           TEXT NOT NULL -- DEFAULT 'n/a'
             ) ENGINE=InnoDB
         });
         $self->upgrade(qq{

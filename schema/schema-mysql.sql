@@ -662,8 +662,7 @@ CREATE TABLE `notification` (
     `message_service`   VARCHAR(20) NOT NULL DEFAULT 'n/a',
     `send_to`           VARCHAR(100) NOT NULL,
     `subject`           VARCHAR(200) NOT NULL,
-    `message`           TEXT NOT NULL, -- DEFAULT 'n/a'
-    FOREIGN KEY (`host_id`) REFERENCES `host`(`id`) ON DELETE CASCADE
+    `message`           TEXT NOT NULL -- DEFAULT 'n/a'
 ) ENGINE=InnoDB;
 
 CREATE INDEX `notification_time_host_id_index` ON `notification` (`time`, `host_id`);

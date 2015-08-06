@@ -640,7 +640,7 @@ CREATE TABLE "notification" (
     -- No referenc to host.id and service.id because this line shouldn't be deleted
     -- if the host or service will be deleted
     "time"              BIGINT DEFAULT 0,
-    "host_id"           BIGINT NOT NULL REFERENCES "host"("id") ON DELETE CASCADE,
+    "host_id"           BIGINT NOT NULL,
     "company_id"        BIGINT NOT NULL DEFAULT 0,
     "message_service"   VARCHAR(20) NOT NULL DEFAULT 'n/a',
     "send_to"           VARCHAR(100) NOT NULL,
