@@ -17379,6 +17379,17 @@ Bloonix.createServiceForm = function(o) {
         });
 
         this.form.createElement({
+            text: Text.get("schema.service.attr.notification_interval"),
+            desc: Text.get("schema.service.desc.notification_interval"),
+            element: "slider",
+            name: "notification_interval",
+            options: this.options.notification_interval,
+            checked: this.values.notification_interval,
+            secondsToFormValues: true,
+            nullString: Text.get("text.undefined")
+        });
+
+        this.form.createElement({
             text: Text.get("schema.service.attr.attempt_warn2crit"),
             desc: Text.get("schema.service.desc.attempt_warn2crit"),
             element: "radio-yes-no",
@@ -17430,17 +17441,6 @@ Bloonix.createServiceForm = function(o) {
             checked: this.values.volatile_retain,
             secondsToFormValues: true,
             nullString: Text.get("text.never")
-        });
-
-        this.form.createElement({
-            text: Text.get("schema.service.attr.notification_interval"),
-            desc: Text.get("schema.service.desc.notification_interval"),
-            element: "slider",
-            name: "notification_interval",
-            options: this.options.notification_interval,
-            checked: this.values.notification_interval,
-            secondsToFormValues: true,
-            nullString: Text.get("text.undefined")
         });
     };
 

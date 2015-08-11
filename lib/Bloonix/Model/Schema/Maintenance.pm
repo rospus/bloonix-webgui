@@ -385,15 +385,9 @@ sub v8 {
     $self->upgrade("drop table contact_timeperiod_old");
     $self->upgrade("alter table contact add column escalation_time integer not null default '0'");
     $self->upgrade("update contact set escalation_time = 900 where escalation_level = 1");
-    $self->upgrade("update contact set escalation_time = 1800 where escalation_level = 2");
-    $self->upgrade("update contact set escalation_time = 2700 where escalation_level = 3");
-    $self->upgrade("update contact set escalation_time = 3600 where escalation_level = 4");
-    $self->upgrade("update contact set escalation_time = 4500 where escalation_level = 5");
-    $self->upgrade("update contact set escalation_time = 5400 where escalation_level = 6");
-    $self->upgrade("update contact set escalation_time = 6300 where escalation_level = 7");
-    $self->upgrade("update contact set escalation_time = 7200 where escalation_level = 8");
-    $self->upgrade("update contact set escalation_time = 8100 where escalation_level = 9");
-    $self->upgrade("update contact set escalation_time = 9000 where escalation_level = 10");
+    $self->upgrade("update contact set escalation_time = 1200 where escalation_level = 2");
+    $self->upgrade("update contact set escalation_time = 1800 where escalation_level = 3");
+    $self->upgrade("update contact set escalation_time = 3600 where escalation_level >= 4");
     $self->upgrade("alter table contact drop column escalation_level");
     $self->upgrade("alter table contact drop column mail_to");
     $self->upgrade("alter table contact drop column mail_notifications_enabled");
