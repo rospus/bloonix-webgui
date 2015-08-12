@@ -192,6 +192,7 @@ CREATE TABLE `host` (
     `interval`              INTEGER NOT NULL DEFAULT 60,
     `retry_interval`        INTEGER NOT NULL DEFAULT 60,
     `timeout`               INTEGER NOT NULL DEFAULT 300,
+    `notification_interval` INTEGER NOT NULL DEFAULT 3600,
     `notification`          CHAR(1) NOT NULL DEFAULT 1,
     `last_check`            BIGINT NOT NULL DEFAULT 0,
     `max_services`          INTEGER NOT NULL DEFAULT 0,
@@ -384,7 +385,6 @@ CREATE TABLE `service_parameter` (
     `fd_flap_count`             INTEGER NOT NULL DEFAULT 8,
     `is_volatile`               CHAR(1) NOT NULL DEFAULT 0, -- is this a volatile status
     `volatile_retain`           INTEGER NOT NULL DEFAULT 0, -- the volatile retain time
-    `version`                   BIGINT NOT NULL DEFAULT 1   -- the version is updated if interval or timeout is updated
     FOREIGN KEY (`host_template_id`) REFERENCES `host_template`(`id`) ON DELETE CASCADE,
     FOREIGN KEY (`plugin_id`) REFERENCES `plugin`(`id`)
 ) ENGINE=InnoDB;
@@ -410,7 +410,8 @@ CREATE TABLE `service` (
     `notification_comment`      VARCHAR(400) DEFAULT 'no comment',  -- who enabled/disabled the notifications of the service
     `volatile_comment`          VARCHAR(400) DEFAULT 'no comment',  -- who cleared the status of the service
     `attempt_counter`           SMALLINT NOT NULL DEFAULT 1,        -- attempt counter
-    `last_notification`         BIGINT NOT NULL DEFAULT 0,          -- the last time a notification was send in seconds
+    `last_notification_1`       BIGINT NOT NULL DEFAULT 0,          -- the last time a notification was send in seconds
+    `last_notification_2`       BIGINT NOT NULL DEFAULT 0,          -- the last time a notification was send in seconds
     `last_check`                BIGINT NOT NULL DEFAULT 0,          -- last check timestamp
     `highest_attempt_status`    VARCHAR(10) NOT NULL DEFAULT 'OK',  -- save the highest status
     `flapping`                  CHAR(1) NOT NULL DEFAULT 0,         -- is the services flapping or not
@@ -635,21 +636,6 @@ CREATE TABLE `service_downtime` (
 ) ENGINE=InnoDB;
 
 CREATE INDEX `service_downtime_index` ON `service_downtime` (`host_id`, `begin`, `end`);
-
--- Table sms_send is used to store all sms that were send
-
-CREATE TABLE `sms_send` (
-    -- No reference to host.id and service.id because this line shouldn't be deleted
-    -- if the host or service will be deleted
-    `time`          BIGINT DEFAULT 0,
-    `company_id`    BIGINT NOT NULL DEFAULT 0,
-    `host_id`       BIGINT NOT NULL,
-    `send_to`       VARCHAR(20) NOT NULL,
-    `message`       TEXT NOT NULL -- DEFAULT 'n/a'
-) ENGINE=InnoDB;
-
-CREATE INDEX `sms_send_time_host_id_index` ON `sms_send` (`time`, `host_id`);
-CREATE INDEX `sms_send_time_company_id_index` ON `sms_send` (`time`, `company_id`);
 
 -- Table notification is used to store all mails that were send
 

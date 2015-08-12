@@ -197,6 +197,7 @@ CREATE TABLE "host" (
     "interval"              INTEGER NOT NULL DEFAULT 60,
     "retry_interval"        INTEGER NOT NULL DEFAULT 60,
     "timeout"               INTEGER NOT NULL DEFAULT 300,
+    "notification_interval" INTEGER NOT NULL DEFAULT 3600,
     "notification"          CHAR(1) NOT NULL DEFAULT 1,
     "last_check"            BIGINT NOT NULL DEFAULT 0,
     "max_services"          INTEGER NOT NULL DEFAULT 0,
@@ -376,13 +377,12 @@ CREATE TABLE "service_parameter" (
     "timeout"                   INTEGER NOT NULL DEFAULT 0,
     "attempt_warn2crit"         CHAR(1) NOT NULL DEFAULT 0,
     "attempt_max"               SMALLINT NOT NULL DEFAULT 3,
-    "notification_interval"     INTEGER NOT NULL DEFAULT 3600,
+    "notification_interval"     INTEGER NOT NULL DEFAULT 0,
     "fd_enabled"                CHAR(1) NOT NULL DEFAULT 1,
     "fd_time_range"             INTEGER NOT NULL DEFAULT 1800,
     "fd_flap_count"             INTEGER NOT NULL DEFAULT 8,
     "is_volatile"               CHAR(1) NOT NULL DEFAULT 0, -- is this a volatile status
-    "volatile_retain"           INTEGER NOT NULL DEFAULT 0, -- the volatile retain time
-    "version"                   BIGINT NOT NULL DEFAULT 1   -- the version is updated if interval or timeout is updated
+    "volatile_retain"           INTEGER NOT NULL DEFAULT 0  -- the volatile retain time
 );
 
 CREATE INDEX "service_parameter_ref_id_index" ON "service_parameter" ("ref_id");
@@ -408,7 +408,8 @@ CREATE TABLE "service" (
     "notification_comment"      VARCHAR(400) DEFAULT 'no comment',  -- who enabled/disabled the notifications of the service
     "volatile_comment"          VARCHAR(400) DEFAULT 'no comment',  -- who cleared the status of the service
     "attempt_counter"           SMALLINT NOT NULL DEFAULT 1,        -- attempt counter
-    "last_notification"         BIGINT NOT NULL DEFAULT 0,          -- the last time a notification was send
+    "last_notification_1"       BIGINT NOT NULL DEFAULT 0,          -- the last time a notification was send
+    "last_notification_2"       BIGINT NOT NULL DEFAULT 0,          -- the last time a notification was send
     "last_check"                BIGINT NOT NULL DEFAULT 0,          -- last check timestamp
     "highest_attempt_status"    VARCHAR(10) NOT NULL DEFAULT 'OK',  -- save the highest status
     "flapping"                  CHAR(1) NOT NULL DEFAULT 0,         -- is the services flapping or not

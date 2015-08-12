@@ -10,10 +10,10 @@ sub init {
 
     $self->{schema_version} = 8;
 
-    $self->log->warning("start upgrade database schema");
+    $self->log->warning("start database upgrade");
     $self->dbi->reconnect;
     $self->run_upgrade;
-    $self->log->warning("upgrade finished");
+    $self->log->warning("database upgrade finished");
     $self->dbi->disconnect;
 }
 
@@ -411,7 +411,6 @@ sub v8 {
     $self->upgrade("alter table service_parameter drop column sms_warnings");
     $self->upgrade("alter table service_parameter drop column sms_ok");
     $self->upgrade("alter table service_parameter add column retry_interval integer not null default 0");
-    $self->upgrade("alter table service_parameter add column version bigint not null default 1");
     $self->upgrade("alter table host add column notification_interval integer not null default 3600");
     $self->upgrade("alter table host add column retry_interval integer not null default 60");
     $self->upgrade("update service_parameter set notification_interval = 0 where notification_interval = 3600");
