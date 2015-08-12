@@ -188,42 +188,14 @@ Für das manuelle Zurücksetzen des volatile Status gibt es einen Link, den Sie 
 </p>
 </div>
 
-<h2>Formularfeld: %%schema.service.attr.mail_soft_interval%%, %%schema.service.attr.mail_hard_interval%%</h2>
+<h2>Formularfeld: %%schema.service.attr.notification_interval%%</h2>
 <div>
 <p>
-Bitte beachten Sie den Abschnitt <i>%%schema.service.attr.sms_soft_interval%%</i> und <i>%%schema.service.attr.sms_hard_interval%%</i>, da sich die Technik zum Versenden von Benachrichtungen nicht unterscheidet.
-</p>
-</div>
-
-<h2>Formularfeld: %%schema.service.attr.mail_warnings%%</h2>
-<div>
-<p>
-Mit dieser Option kann festgelegt werden, ob Meldungen mit dem Status WARNING per E-Mail versendet werden sollen. Standardmäßig steht die Option auf <i>no</i>.
-</p>
-</div>
-
-<h2>Formularfeld: %%schema.service.attr.mail_ok%%</h2>
-<div>
-<p>
-Mit dieser Option kann festgelegt werden, ob Benachrichtigungen für Services im Status <i>OK</i> per Mail versendet werden. Das bedeutet, wenn ein Service im Status <i>WARNING</i>, <i>CRITICAL</i> oder <i>UNKNOWN</i> war und hierfür eine Notification per Mail versendet wurde, dann wird auch eine Notification versendet, wenn der Service wieder in den Status <i>OK</i> wechselt.
-</p>
-</div>
-
-<h2>Formularfeld: %%schema.service.attr.send_sms%%</h2>
-<div>
-<p>
-Mit dieser Option kann das Versenden von Warnmeldungen aktiviert oder deaktiert werden. Standardmäßig ist die Option auf <i>yes</i> gesetzt.
-</p>
-</div>
-
-<h2>Formularfeld: %%schema.service.attr.sms_soft_interval%%</h2>
-<div>
-<p>
-Ein Softintervall beeinflußt das erneute Versenden von Warnmeldungen. Wenn ein Service aus dem Status <i>OK</i> in den Status <i>WARNING</i> wechselt, dann wird für den betroffenen Service eine Benachrichtigung per E-Mail und/oder SMS versendet. Wenn der Status des Services sich in der angegeben Zeit des Softintervalls nicht ändert, dann wird eine erneute Benachrichtigung versendet. Auf diese Weise werden Sie als Administrator in einem regelmäßigen Intervall daran erinnert, in welchem Status sich ein Service befindet.
+Der Benachrichtigungsintervall beeinflußt das erneute Versenden von Warnmeldungen. Wenn ein Service aus dem Status <i>OK</i> in den Status <i>WARNING</i> wechselt, dann wird für den betroffenen Service eine Benachrichtigung per E-Mail und/oder SMS versendet. Wenn der Status des Services sich in der angegeben Zeit des Benachrichtigungsintervalls nicht ändert, dann wird eine erneute Benachrichtigung versendet. Auf diese Weise werden Sie als Administrator in einem regelmäßigen Intervall daran erinnert, in welchem Status sich ein Service befindet.
 </p>
 
 <p>
-Zu beachten ist hierbei jedoch, dass wenn der Status des Service zurück auf <i>OK</i> und dann wieder auf <i>WARNING</i> wechselt, der Softintervall sofort verfällt. So verhält es sich auch, wenn sich der Status von <i>WARNING</i> zu <i>CRITICAL</i> oder von <i>CRITICAL</i> zu <i>UNKNOWN</i> ändert, also zu einem höheren Status wechselt.
+Zu beachten ist hierbei jedoch, dass wenn der Status des Service zurück auf <i>OK</i> und dann wieder auf <i>WARNING</i> wechselt, der Benachrichtigungsintervall sofort verfällt. So verhält es sich auch, wenn sich der Status von <i>WARNING</i> zu <i>CRITICAL</i> oder von <i>CRITICAL</i> zu <i>UNKNOWN</i> ändert, also zu einem höheren Status wechselt.
 </p>
 
 <p>
@@ -235,35 +207,6 @@ Die gleiche Situation lässt sich auch mit einem Statuswechsel von WARNING zu CR
 </p>
 
 <p>
-Der Standardwert für Softintervalle ist auf 3600 Sekunden gesetzt.
-</p>
-</div>
-
-<h2>Formularfeld: %%schema.service.attr.sms_hard_interval%%</h2>
-<div>
-<p>
-Ein Hartintervall ist im Gegensatz zum Softintervall sehr viel einfacher. Der Hartintervall bestimmt, in welchem Intervall eine Benachrichtigung versendet werden darf, egal wie oft ein Service den Status wechselt und auch in welche Richtung. Das heißt, wenn um 02:00 Uhr nachts eine SMS versendet wurde und der Hartintervall auf 30 Minuten konfiguriert ist, dann wird die nächste SMS erst 02:30 Uhr versendet!
-</p>
-
-<p>
-Mit dieser Option haben Sie die Möglichkeit, das Aufkommen von Benachrichtigungen etwas zu vermindern, natürlich mit dem Nachteil, dass wenn ein Service von <i>CRITICAL</i> zu <i>OK</i> und dann wieder zu <i>CRITICAL</i> wechselt, erst nach Ablauf des Intervalls erneut eine Benachrichtigung versendet wird.
-</p>
-
-<p>
-Der Standardwert für Hartintervalle ist auf 0 Sekunden gesetzt.
-</p>
-</div>
-
-<h2>Formularfeld: %%schema.service.attr.sms_warnings%%</h2>
-<div>
-<p>
-Diese Option funktioniert wie <i>Send WARNINGS per mail</i>. Ist die Option auf <i>no</i> gesetzt, so werden keine Warnmeldungen für den Service per SMS versendet, sondern nur, wenn der Status <i>CRITICAL</i> oder <i>UNKNOWN</i> ist. Standardmäßig ist die Option auf <i>no</i> gesetzt.
-</p>
-</div>
-
-<h2>Formularfeld: %%schema.service.attr.sms_ok%%</h2>
-<div>
-<p>
-Diese Option funktioniert nach dem gleichen Prinzip wie <i>Send OK notifications per mail</i>.
+Der Standardwert des Benachrichtigungsintervalls ist auf 3600 Sekunden gesetzt.
 </p>
 </div>
