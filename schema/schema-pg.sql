@@ -670,6 +670,12 @@ CREATE TABLE "user_tracking" (
 CREATE INDEX "user_tracking_company_id_index" ON "user_tracking"("company_id");
 CREATE INDEX "user_tracking_time_index" ON "user_tracking"("time");
 
+-- Locking table
+
+create table "lock_srvchk" (
+    "locked" char(1)
+);
+
 -- Maintenance
 
 CREATE TABLE "maintenance" (

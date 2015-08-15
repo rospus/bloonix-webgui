@@ -1,3 +1,12 @@
+bloonix-webgui (0.60) released at 2015-08-15
+
+    * Fixed alter/rename syntax for mysql upgrade.
+
+bloonix-webgui (0.59) released at 2015-08-14
+
+    * Bloonix-Agent documentation updated and described how to
+      configure checks to execute via sudo.
+
 bloonix-webgui (0.58) released at 2015-08-06
 
     * Heavy changes in the schema of bloonix and re-designed

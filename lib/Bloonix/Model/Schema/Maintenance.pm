@@ -43,7 +43,13 @@ sub upgrade {
 
     $self->log->warning("upgrade table: $stmt");
     eval { $self->dbi->do($stmt) };
-    return $@ ? 0 : 1;
+
+    if ($@) {
+        $self->log->error($@);
+        return 0;
+    }
+
+    return 1;
 }
 
 sub exist {
@@ -218,14 +224,10 @@ sub v7 {
 sub v8 {
     my $self = shift;
 
-    $self->upgrade("alter table contact_timeperiod rename to contact_timeperiod_old");
-
     if ($self->dbi->driver eq "Pg") {
+        $self->upgrade("alter table contact_timeperiod rename to contact_timeperiod_old");
         $self->upgrade("alter table contact_timeperiod_old alter column id set default '0'");
         $self->upgrade("drop sequence contact_timeperiod_id_seq");
-    }
-
-    if ($self->dbi->driver eq "Pg") {
         $self->upgrade(qq{
             CREATE TABLE "notification" (
                 "time"              BIGINT DEFAULT 0,
@@ -273,6 +275,7 @@ sub v8 {
     }
 
     if ($self->dbi->driver eq "mysql") {
+        $self->upgrade("rename table contact_timeperiod to contact_timeperiod_old");
         $self->upgrade(qq{
             CREATE TABLE `notification` (
                 `time`              BIGINT DEFAULT 0,
@@ -397,11 +400,19 @@ sub v8 {
     $self->upgrade("alter table contact drop column sms_notification_level");
     $self->upgrade("alter table service add column next_check bigint default 0");
     $self->upgrade("alter table service add column next_timeout bigint default 0");
-    $self->upgrade("alter table service rename column last_mail to last_notification_1");
-    $self->upgrade("alter table service rename column last_mail_time to last_notification_2");
     $self->upgrade("alter table service drop column last_sms");
     $self->upgrade("alter table service drop column last_sms_time");
-    $self->upgrade("alter table service_parameter rename column mail_soft_interval to notification_interval");
+
+    if ($self->dbi->{driver} eq "Pg") {
+        $self->upgrade("alter table service rename column last_mail to last_notification_1");
+        $self->upgrade("alter table service rename column last_mail_time to last_notification_2");
+        $self->upgrade("alter table service_parameter rename column mail_soft_interval to notification_interval");
+    } elsif ($self->dbi->{driver} eq "mysql") {
+        $self->upgrade("alter table service change column last_mail last_notification_1 bigint not null default 0");
+        $self->upgrade("alter table service change column last_mail_time last_notification_2 bigint not null default 0");
+        $self->upgrade("alter table service_parameter change column mail_soft_interval notification_interval integer not null default 3600");
+    }
+
     $self->upgrade("alter table service_parameter drop column mail_hard_interval");
     $self->upgrade("alter table service_parameter drop column mail_warnings");
     $self->upgrade("alter table service_parameter drop column mail_ok");
