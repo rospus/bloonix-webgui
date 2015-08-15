@@ -3,4 +3,9 @@ use strict;
 use warnings;
 use lib "/srv/bloonix/webgui/lib";
 use Bloonix;
+
+if (!-x "/usr/sbin/sendmail") {
+    die "no /usr/sbin/sendmail executable found";
+}
+
 Bloonix->run(@ARGV);
