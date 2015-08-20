@@ -65,7 +65,7 @@ if ($opts->{stdin}) {
 } else {
     print "\nGenerate password for user 'bloonix'\n\n";
     $password = do {
-        my @c = ("a".."z", "A".."Z", 0..9, qw(^ ! § $ % & = ? * + _ - ; . : [ ] @ ~ | < > /), ",", "#", "(", ")");
+        my @c = ("a".."z", "A".."Z", 0..9, qw(^ ! § $ % & = ? * + _ - ; . : [ ] @ ~ | < > /), ",", "(", ")");
         my $s = "";
         $s .= $c[int(rand(scalar @c))] for (1..15);
         $s;

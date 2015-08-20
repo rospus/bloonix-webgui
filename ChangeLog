@@ -1,3 +1,8 @@
+bloonix-webgui (0.61) released at 2015-08-20
+
+    * Kicked '#' from the string list for the password generation in
+      init-database.sh
+
 bloonix-webgui (0.60) released at 2015-08-15
 
     * Fixed alter/rename syntax for mysql upgrade.
