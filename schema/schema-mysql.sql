@@ -686,8 +686,4 @@ CREATE TABLE `maintenance` (
 
 INSERT INTO `maintenance` (`version`, `active`) values ('-1', '0');
 
--- Tables that are only used for locking.
-
-create table lock_srvchk (locked char(1));
-
 -- End.

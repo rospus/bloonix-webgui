@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.60
+Version: 0.61
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -62,6 +62,10 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Thu Aug 20 2015 Jonny Schulz <js@bloonix.de> - 0.61-1
+- Kicked '#' from the string list for the password generation in
+  init-database.sh
+- Fixed double creation of table lock_srvchk.
 * Sat Aug 15 2015 Jonny Schulz <js@bloonix.de> - 0.60-1
 - Fixed alter/rename syntax for mysql upgrade.
 * Thu Aug 06 2015 Jonny Schulz <js@bloonix.de> - 0.58-1
