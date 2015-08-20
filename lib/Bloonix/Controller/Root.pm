@@ -108,6 +108,11 @@ sub auto {
             $c->model->database->session->update_by_sid($sid, time + $c->config->{webapp}->{sid_expire_time});
         }
 
+        if ($c->user->{username} eq "demo" && $c->config->{webapp}->{is_demo} && $c->action =~ /^(create|update|delete|add|remove)\z/) {
+            $c->plugin->error->no_privileges;
+            return undef;
+        }
+
         return 1;
     }
 
