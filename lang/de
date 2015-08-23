@@ -237,6 +237,8 @@ text.change_your_password: Ändere dein Passwort
 text.change_the_language: Ändere die Sprache
 text.please_select_objects: Bitte selektieren Sie mindestens ein Objekt!
 text.default: Standard
+text.satellite_hostname: Hostname des Satelliten: %s
+text.target_ip: Ziel IP Adresse: %s
 text.from_now_to_1h: Von jetzt + 1 Stunde
 text.from_now_to_2h: Von jetzt + 2 Stunden
 text.from_now_to_4h: Von jetzt + 4 Stunden

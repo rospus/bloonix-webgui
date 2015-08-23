@@ -655,14 +655,44 @@ Bloonix.showServiceResultData = function(plugin, data) {
 Bloonix.showServiceDebugData = function(data) {
     var content = Utils.create("div");
 
-    if (data.ipaddr) {
+    if (Array.isArray(data) === true) {
+        $.each(data, function(x, d) {
+            content.append(
+                Bloonix.prepareServiceDebugData(d)
+            );
+        });
+    } else {
+        content.append(
+            Bloonix.prepareServiceDebugData(data)
+        );
+    }
+
+    var title = Text.get("schema.service.attr.result");
+
+    new Overlay({
+        title: title,
+        content: content
+    }).create();
+};
+
+Bloonix.prepareServiceDebugData = function(data) {
+    var content = Utils.create("div");
+
+    if (data.satellite) {
         Utils.create("p")
-            .css({ "font-size": "14px", "font-weight": "bold", "margin-bottom": "10px" })
-            .text("Target IP-Address: "+ data.ipaddr)
+            .addClass("service-result-small-title")
+            .text(Text.get("text.satellite_hostname", data.satellite))
             .appendTo(content);
     }
 
-    $.each([ "mtr", "http-header", "html-content" ], function(i, key) {
+    if (data.ipaddr) {
+        Utils.create("p")
+            .addClass("service-result-small-title")
+            .text(Text.get("text.target_ip", data.ipaddr))
+            .appendTo(content);
+    }
+
+    $.each([ "mtr", "http-header", "html-content", "dump" ], function(i, key) {
         var value = data[key];
 
         if (value === undefined || value.length === 0) {
@@ -676,6 +706,10 @@ Bloonix.showServiceDebugData = function(data) {
         var title = Utils.create("h4")
             .css({ padding: "0 0 10px 0" })
             .appendTo(box);
+
+        if (key === "ipaddr" || key === "satellite") {
+            return true;
+        }
 
         if (key === "mtr") {
             box.width("470px");
@@ -703,21 +737,24 @@ Bloonix.showServiceDebugData = function(data) {
         if (key === "html-content") {
             box.width("970px");
             title.text("HTML-Content");
-            //value = Utils.escape(value);
             Utils.create("pre")
                 .css({ color: "green", "font-size": "11px" })
                 .text(value)
                 .appendTo(box);
         }
+
+        if (key === "dump") {
+            box.width("970px");
+            title.text("JSON-Dump");
+            Utils.create("pre")
+                .html( Utils.escapeAndSyntaxHightlightJSON(value) )
+                .appendTo(box);
+        }
+
+        if (key !== "mtr") {
+            Utils.clear(content);
+        }
     });
 
-    var title = Text.get("schema.service.attr.result");
-    if (data.ipaddr) {
-        title += ", IP: "+ data.ipaddr;
-    }
-
-    new Overlay({
-        title: title,
-        content: content
-    }).create();
+    return content;
 };

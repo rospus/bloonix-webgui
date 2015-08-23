@@ -2,6 +2,7 @@ bloonix-webgui (0.62) released at 2015-XX-XX
 
     * If the parameter is_demo is set to true and if the logged in user called "demo",
       then the user has no permissions to call create|update|delete|add|remove actions.
+    * Fixed viewing advanced service data.
 
 bloonix-webgui (0.61) released at 2015-08-20
 
