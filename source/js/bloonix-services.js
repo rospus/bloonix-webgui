@@ -681,21 +681,29 @@ Bloonix.prepareServiceDebugData = function(data) {
     if (data.satellite) {
         Utils.create("p")
             .addClass("service-result-small-title")
-            .text(Text.get("text.satellite_hostname", data.satellite))
+            .html(Text.get("text.satellite_hostname", Utils.escape(data.satellite), true))
             .appendTo(content);
     }
 
     if (data.ipaddr) {
         Utils.create("p")
             .addClass("service-result-small-title")
-            .text(Text.get("text.target_ip", data.ipaddr))
+            .html(Text.get("text.target_ip", Utils.escape(data.ipaddr), true))
             .appendTo(content);
     }
 
-    $.each([ "mtr", "http-header", "html-content", "dump" ], function(i, key) {
+    var order = [ "mtr", "http-header", "html-content", "dump" ];
+
+    $.each(data, function(key) {
+        if (/^(mtr|http-header|html-content|dump)$/.test(key) === false) {
+            order.push(key);
+        }
+    });
+
+    $.each(order, function(i, key) {
         var value = data[key];
 
-        if (value === undefined || value.length === 0) {
+        if (key === "ipaddr" || key === "satellite" || value === undefined || value.length === 0) {
             return true;
         }
 
@@ -707,10 +715,6 @@ Bloonix.prepareServiceDebugData = function(data) {
             .css({ padding: "0 0 10px 0" })
             .appendTo(box);
 
-        if (key === "ipaddr" || key === "satellite") {
-            return true;
-        }
-
         if (key === "mtr") {
             box.width("470px");
             title.text("MTR-Result");
@@ -719,9 +723,7 @@ Bloonix.prepareServiceDebugData = function(data) {
                 data: value.result,
                 showChart: false
             });
-        }
-
-        if (key === "http-header") {
+        } else if (key === "http-header") {
             box.width("470px");
             title.text("HTTP-Header");
             var table = new Table({
@@ -732,20 +734,16 @@ Bloonix.prepareServiceDebugData = function(data) {
             $.each(value, function(headerKey, headerValue) {
                 table.createRow([ headerKey, headerValue ]);
             });
-        }
-
-        if (key === "html-content") {
+        } else if (key === "html-content") {
             box.width("970px");
             title.text("HTML-Content");
             Utils.create("pre")
                 .css({ color: "green", "font-size": "11px" })
                 .text(value)
                 .appendTo(box);
-        }
-
-        if (key === "dump") {
+        } else {
             box.width("970px");
-            title.text("JSON-Dump");
+            title.text(key === "dump" ? "JSON-Dump" : key);
             Utils.create("pre")
                 .html( Utils.escapeAndSyntaxHightlightJSON(value) )
                 .appendTo(box);
