@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.61
+Version: 0.62
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -62,6 +62,10 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Sun Aug 23 2015 Jonny Schulz <js@bloonix.de> - 0.62-1
+- If the parameter is_demo is set to true and if the logged in user called "demo",
+  then the user has no permissions to call create|update|delete|add|remove actions.
+- Fixed viewing advanced service data.
 * Thu Aug 20 2015 Jonny Schulz <js@bloonix.de> - 0.61-1
 - Kicked '#' from the string list for the password generation in
   init-database.sh

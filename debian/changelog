@@ -1,3 +1,11 @@
+bloonix-webgui (0.62-1) unstable; urgency=low
+
+    * If the parameter is_demo is set to true and if the logged in user called "demo",
+      then the user has no permissions to call create|update|delete|add|remove actions.
+    * Fixed viewing advanced service data.
+
+ -- Jonny Schulz <js@bloonix.de>  Sun, 23 Aug 2015 22:49:48 +0200
+
 bloonix-webgui (0.61-1) unstable; urgency=low
 
     * Kicked '#' from the string list for the password generation in
