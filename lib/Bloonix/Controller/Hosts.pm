@@ -58,6 +58,10 @@ sub services {
         foreach my $key (qw/result debug command_options location_options/) {
             if ($service->{$key} && $service->{$key} =~ /^[\[\{].*[\]\}]$/) {
                 $service->{$key} = $c->json->decode($service->{$key});
+                if ($key eq "result" && ref $service->{result} eq "ARRAY" && ref $service->{result}->[0] eq "ARRAY") {
+                    # bug fix for check-by-satellite from bloonix-plugins-basic 0.42
+                    $service->{result} = $service->{result}->[0];
+                }
             }
         }
         my $host_template_id = $service->{host_template_id};

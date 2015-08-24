@@ -19249,7 +19249,9 @@ Bloonix.showServiceResultData = function(plugin, data) {
     table.addHeadColumn(Text.get("schema.service.attr.status"));
     table.addHeadColumn(Text.get("schema.service.attr.message"));
 
+console.log("DATA", data);
     $.each(data, function(i, row) {
+console.log("ROW", row, row.hostname);
         table.createRow([
             row.hostname,
             Utils.create("span").addClass("status-base status-"+ row.status).text(row.status),
