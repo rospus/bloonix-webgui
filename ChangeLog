@@ -1,3 +1,7 @@
+bloonix-webgui (0.64) released at 2015-08-XX
+
+    * The description field of host template can now be empty.
+
 bloonix-webgui (0.63) released at 2015-08-24
 
     * Fixed: result data are not empty any more.
