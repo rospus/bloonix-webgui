@@ -38,7 +38,7 @@ sub set {
             default => 3600
         },
         attempt_max => {
-            options => [ 1 .. 20 ],
+            options => [ 0 .. 20 ],
             default => 3
         },
         attempt_warn2crit => {
