@@ -1357,6 +1357,7 @@ var Lang = {
       "nav.sub.contactgroups" : "Contactgroups",
       "action.refresh" : "Refresh",
       "info.no_chart_data" : "There are no chart data available.",
+      "schema.host.info.notification_disabled_short" : "Notifications disabled",
       "schema.chart.text.chart_type" : "Select the chart type",
       "text.report.availability.EV-U" : "Number of events with status UNKNOWN.",
       "bool.yesno.1" : "yes",
@@ -1785,9 +1786,9 @@ var Lang = {
       "schema.company.desc.max_dashboards_per_user" : "The maximum number of dashboards that can be created by a user.",
       "action.no_abort" : "<b>No, abort!</b>",
       "text.from_now_to_4h" : "From now + 4 hours",
+      "schema.host.text.multiple_activate" : "Activate or deactivate multiple hosts",
       "schema.group.attr.groupname" : "Groupname",
       "action.members" : "List members",
-      "schema.host.text.multiple_activate" : "Activate or deactivate multiple hosts",
       "schema.host.attr.company_id" : "Company ID",
       "word.active" : "active",
       "schema.host.attr.comment" : "Comment",
@@ -2442,6 +2443,7 @@ var Lang = {
       "nav.sub.contactgroups" : "Kontaktgruppen",
       "action.refresh" : "Aktualisieren",
       "info.no_chart_data" : "Es sind keine Chartdaten verfügbar.",
+      "schema.host.info.notification_disabled_short" : "Benachrichtigungen ausgeschaltet",
       "schema.chart.text.chart_type" : "Wähle den Charttyp",
       "text.report.availability.EV-U" : "Anzahl von Ereignissen mit Status UNKNOWN. ",
       "bool.yesno.1" : "Ja",
@@ -2872,8 +2874,8 @@ var Lang = {
       "schema.group.attr.groupname" : "Gruppenname",
       "action.members" : "Mitglieder auflisten",
       "schema.host.text.multiple_activate" : "Mehrere Hosts aktivieren oder deaktivieren",
-      "word.active" : "aktiv",
       "schema.host.attr.company_id" : "Firmen ID",
+      "word.active" : "aktiv",
       "schema.host.attr.comment" : "Kommentar",
       "schema.user.attr.comment" : "Kommentar",
       "schema.user.desc.allow_from" : "Es ist möglich eine Komma-separierte Liste von IP-Adressen anzugeben, von denen sich der Benutzer einloggen darf. Das Schlüsselwort <i>all</i> heißt von überall.",
@@ -5658,6 +5660,10 @@ Form.prototype.slider = function(o) {
                 value = option.value;
                 label = option.label || option.name || option.option || option.key;
                 checked = self.checked == value ? true : option.checked;
+            }
+
+            if (typeof self.mapValueToLabel == "object" && self.mapValueToLabel[value] !== undefined) {
+                label = self.mapValueToLabel[value];
             }
 
             if (self.getValueName) {
@@ -17379,7 +17385,8 @@ Bloonix.createServiceForm = function(o) {
             element: "slider",
             name: "attempt_max",
             options: this.options.attempt_max,
-            checked: this.values.attempt_max
+            checked: this.values.attempt_max,
+            mapValueToLabel: { "0": Text.get("schema.host.info.notification_disabled_short") }
         });
 
         this.form.createElement({

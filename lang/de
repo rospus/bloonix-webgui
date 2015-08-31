@@ -656,6 +656,7 @@ schema.host.text.remove_template_warning: Bitte beachte das alle Services des Te
 schema.host.text.templates_not_assigned: Nicht zugeordnete Templates
 schema.host.action.add_template: Template hinzufügen
 schema.host.info.notification_disabled: Benachrichtigungen sind für diesen Host ausgeschaltet
+schema.host.info.notification_disabled_short: Benachrichtigungen ausgeschaltet
 schema.host.info.inactive: Der Host ist deaktiviert.
 schema.host.info.sysinfo: Externe Informationen sind verfügbar.
 

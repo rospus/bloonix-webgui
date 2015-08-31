@@ -1,4 +1,4 @@
-bloonix-webgui (0.64) released at 2015-08-XX
+bloonix-webgui (0.64) released at 2015-08-31
 
     * The description field of host template can now be empty.
     * Max attempts can be set to 0 to disable notifications.

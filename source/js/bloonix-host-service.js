@@ -1574,7 +1574,8 @@ Bloonix.createServiceForm = function(o) {
             element: "slider",
             name: "attempt_max",
             options: this.options.attempt_max,
-            checked: this.values.attempt_max
+            checked: this.values.attempt_max,
+            mapValueToLabel: { "0": Text.get("schema.host.info.notification_disabled_short") }
         });
 
         this.form.createElement({

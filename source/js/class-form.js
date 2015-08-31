@@ -999,6 +999,10 @@ Form.prototype.slider = function(o) {
                 checked = self.checked == value ? true : option.checked;
             }
 
+            if (typeof self.mapValueToLabel == "object" && self.mapValueToLabel[value] !== undefined) {
+                label = self.mapValueToLabel[value];
+            }
+
             if (self.getValueName) {
                 label = self.getValueName(value);
             }
