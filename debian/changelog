@@ -1,3 +1,10 @@
+bloonix-webgui (0.65-1) unstable; urgency=low
+
+    * Fixed Elasticsearch template: dynamic_templates includes now
+      double, float, long and integer.
+
+ -- Jonny Schulz <js@bloonix.de>  Tue, 01 Sep 2015 02:52:44 +0200
+
 bloonix-webgui (0.64-1) unstable; urgency=low
 
     * The description field of host template can now be empty.
