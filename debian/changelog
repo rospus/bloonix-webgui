@@ -2,6 +2,7 @@ bloonix-webgui (0.65-1) unstable; urgency=low
 
     * Fixed Elasticsearch template: dynamic_templates includes now
       double, float, long and integer.
+    * The Elasticsearch template is now updated automatically.
 
  -- Jonny Schulz <js@bloonix.de>  Tue, 01 Sep 2015 02:52:44 +0200
 

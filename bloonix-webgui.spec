@@ -65,6 +65,7 @@ rm -rf %{buildroot}
 * Tue Sep 01 2015 Jonny Schulz <js@bloonix.de> - 0.65-1
 - Fixed Elasticsearch template: dynamic_templates includes now
   double, float, long and integer.
+- The Elasticsearch template is now updated automatically.
 * Mon Aug 31 2015 Jonny Schulz <js@bloonix.de> - 0.64-1
 - The description field of host template can now be empty.
 - Max attempts can be set to 0 to disable notifications.
