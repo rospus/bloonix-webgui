@@ -2,6 +2,7 @@ bloonix-webgui (0.65) released at 2015-09-01
 
     * Fixed Elasticsearch template: dynamic_templates includes now
       double, float, long and integer.
+    * The Elasticsearch template is now updated automatically.
 
 bloonix-webgui (0.64) released at 2015-08-31
 

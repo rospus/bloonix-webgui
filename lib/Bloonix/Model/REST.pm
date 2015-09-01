@@ -3,6 +3,7 @@ package Bloonix::Model::REST;
 use strict;
 use warnings;
 use Bloonix::REST;
+use JSON;
 use base qw(Bloonix::Accessor);
 
 sub new {
@@ -23,6 +24,20 @@ sub new {
         stats => "Bloonix::Model::REST::Stats",
         results => "Bloonix::Model::REST::Results",
     );
+
+    if (open my $fh, "<", "/srv/bloonix/webgui/schema/es-template.json") {
+        my $es_template = do { local $/; <$fh> };
+        close $fh;
+        eval {
+            $self->{rest}->put(
+                path => "_template/template_bloonix/",
+                data => JSON->new->decode($es_template)
+            );
+        };
+        if ($@) {
+            $self->log->error("unable to update elasticsearch template", $@);
+        }
+    }
 
     return $self;
 }
