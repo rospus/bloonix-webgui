@@ -8,7 +8,7 @@ use base qw(Bloonix::DBI::CRUD);
 sub init {
     my $self = shift;
 
-    $self->{schema_version} = 8;
+    $self->{schema_version} = 9;
 
     $self->log->warning("start database upgrade");
     $self->dbi->reconnect;
@@ -126,6 +126,10 @@ sub run_upgrade {
 
     if ($version <= 7) {
         $self->v8;
+    }
+
+    if ($version <= 8) {
+        $self->v9;
     }
 
     $self->update_version;
@@ -460,6 +464,12 @@ sub v8 {
             }
         }
     };
+}
+
+sub v9 {
+    my $self = shift;
+
+    $self->upgrade("alter table service add column force_event char(1) not null default '0'");
 }
 
 1;

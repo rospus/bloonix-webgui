@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.63
+Version: 0.64
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -62,6 +62,9 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Mon Aug 31 2015 Jonny Schulz <js@bloonix.de> - 0.64-1
+- The description field of host template can now be empty.
+- Max attempts can be set to 0 to disable notifications.
 * Mon Aug 24 2015 Jonny Schulz <js@bloonix.de> - 0.63-1
 - Fixed: result data are not empty any more.
 * Sun Aug 23 2015 Jonny Schulz <js@bloonix.de> - 0.62-1

@@ -21,15 +21,48 @@ curl -XPUT "http://$HOST/_template/template_bloonix/" -d '{
     },
     "mappings": {
         "stats" : {
-            "dynamic_templates" : [{
-                "thisnamedoesnotmatter": {
-                    "match_mapping_type" : "long",
-                    "mapping" : {
-                        "type": "string",
-                        "index" : "no"
+            "dynamic_templates" : [
+                {
+                    "match_1": {
+                        "match": "*",
+                        "match_mapping_type" : "double",
+                        "mapping" : {
+                            "type": "string",
+                            "index" : "no"
+                        }
+                    }
+                },
+                {
+                    "match_2": {
+                        "match": "*",
+                        "match_mapping_type" : "float",
+                        "mapping" : {
+                            "type": "string",
+                            "index" : "no"
+                        }
+                    }
+                },
+                {
+                    "match_3": {
+                        "match": "*",
+                        "match_mapping_type" : "long",
+                        "mapping" : {
+                            "type": "string",
+                            "index" : "no"
+                        }
+                    }
+                },
+                {
+                    "match_4": {
+                        "match": "*",
+                        "match_mapping_type" : "int",
+                        "mapping" : {
+                            "type": "string",
+                            "index" : "no"
+                        }
                     }
                 }
-            }],
+            ],
             "properties" : {
                 "time" : { "type" : "date", "index" : "not_analyzed" },
                 "host_id" : { "type" : "long", "index" : "not_analyzed" },
@@ -46,15 +79,48 @@ curl -XPUT "http://$HOST/_template/template_bloonix/" -d '{
             }
         },
         "event" : {
-            "dynamic_templates" : [{
-                "thisnamedoesnotmatter": {
-                    "match_mapping_type" : "long",
-                    "mapping" : {
-                        "type": "string",
-                        "index" : "no"
+            "dynamic_templates" : [
+                {
+                    "match_1": {
+                        "match": "*",
+                        "match_mapping_type" : "double",
+                        "mapping" : {
+                            "type": "string",
+                            "index" : "no"
+                        }
+                    }
+                },
+                {
+                    "match_2": {
+                        "match": "*",
+                        "match_mapping_type" : "float",
+                        "mapping" : {
+                            "type": "string",
+                            "index" : "no"
+                        }
+                    }
+                },
+                {
+                    "match_3": {
+                        "match": "*",
+                        "match_mapping_type" : "long",
+                        "mapping" : {
+                            "type": "string",
+                            "index" : "no"
+                        }
+                    }
+                },
+                {
+                    "match_4": {
+                        "match": "*",
+                        "match_mapping_type" : "int",
+                        "mapping" : {
+                            "type": "string",
+                            "index" : "no"
+                        }
                     }
                 }
-            }],
+            ],
             "properties" : {
                 "time" : { "type" : "date", "index" : "not_analyzed" },
                 "host_id" : { "type" : "long", "index" : "not_analyzed" },
@@ -84,15 +150,48 @@ curl -XPUT "http://$HOST/_template/template_bloonix/" -d '{
             }
         },
         "results" : {
-            "dynamic_templates" : [{
-                "thisnamedoesnotmatter": {
-                    "match_mapping_type" : "long",
-                    "mapping" : {
-                        "type": "string",
-                        "index" : "no"
+            "dynamic_templates" : [
+                {
+                    "match_1": {
+                        "match": "*",
+                        "match_mapping_type" : "double",
+                        "mapping" : {
+                            "type": "string",
+                            "index" : "no"
+                        }
+                    }
+                },
+                {
+                    "match_2": {
+                        "match": "*",
+                        "match_mapping_type" : "float",
+                        "mapping" : {
+                            "type": "string",
+                            "index" : "no"
+                        }
+                    }
+                },
+                {
+                    "match_3": {
+                        "match": "*",
+                        "match_mapping_type" : "long",
+                        "mapping" : {
+                            "type": "string",
+                            "index" : "no"
+                        }
+                    }
+                },
+                {
+                    "match_4": {
+                        "match": "*",
+                        "match_mapping_type" : "int",
+                        "mapping" : {
+                            "type": "string",
+                            "index" : "no"
+                        }
                     }
                 }
-            }],
+            ],
             "properties" : {
                 "time" : { "type" : "date", "index" : "not_analyzed" },
                 "host_id" : { "type" : "long", "index" : "not_analyzed" },

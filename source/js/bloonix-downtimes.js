@@ -222,10 +222,14 @@ Bloonix.createScheduledDowntime = function(o) {
                 { value: "2h", title: Text.get("text.from_now_to_2h") },
                 { value: "4h", title: Text.get("text.from_now_to_4h") },
                 { value: "8h", title: Text.get("text.from_now_to_8h") },
+                { value: "12h", title: Text.get("text.from_now_to_12h") },
+                { value: "16h", title: Text.get("text.from_now_to_16h") },
+                { value: "20h", title: Text.get("text.from_now_to_20h") },
                 { value: "1d", title: Text.get("text.from_now_to_1d") },
                 { value: "2d", title: Text.get("text.from_now_to_2d") },
                 { value: "4d", title: Text.get("text.from_now_to_4d") },
-                { value: "7d", title: Text.get("text.from_now_to_7d") }
+                { value: "7d", title: Text.get("text.from_now_to_7d") },
+                { value: "14d", title: Text.get("text.from_now_to_14d") }
             ]
         });
 

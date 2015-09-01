@@ -243,10 +243,14 @@ text.from_now_to_1h: Von jetzt + 1 Stunde
 text.from_now_to_2h: Von jetzt + 2 Stunden
 text.from_now_to_4h: Von jetzt + 4 Stunden
 text.from_now_to_8h: Von jetzt + 8 Stunden
+text.from_now_to_12h: Von jetzt + 12 Stunden
+text.from_now_to_16h: Von jetzt + 16 Stunden
+text.from_now_to_20h: Von jetzt + 20 Stunden
 text.from_now_to_1d: Von jetzt + 1 Tag
 text.from_now_to_2d: Von jetzt + 2 Tage
 text.from_now_to_4d: Von jetzt + 4 Tage
 text.from_now_to_7d: Von jetzt + 7 Tage
+text.from_now_to_14d: Von jetzt + 14 Tage
 text.last_30d: Die letzten 30 Tage
 text.last_60d: Die letzten 60 Tage
 text.last_90d: Die letzten 90 Tage

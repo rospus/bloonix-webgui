@@ -1,3 +1,10 @@
+bloonix-webgui (0.64-1) unstable; urgency=low
+
+    * The description field of host template can now be empty.
+    * Max attempts can be set to 0 to disable notifications.
+
+ -- Jonny Schulz <js@bloonix.de>  Mon, 31 Aug 2015 18:02:10 +0200
+
 bloonix-webgui (0.63-1) unstable; urgency=low
 
     * Fixed: result data are not empty any more.
