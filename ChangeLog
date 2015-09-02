@@ -1,3 +1,7 @@
+bloonix-webgui (0.66) released at 2015-XX-XX
+
+    * Increased chart alignment from 3 to 8.
+
 bloonix-webgui (0.65) released at 2015-09-01
 
     * Fixed Elasticsearch template: dynamic_templates includes now

@@ -37,7 +37,7 @@ sub begin {
             max_size => 200
         },
         alignment => {
-            options => [ 1, 2, 3 ],
+            options => [ 1, 2, 3, 4, 5, 6, 7, 8 ],
             default => 1
         },
         public => {

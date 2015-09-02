@@ -216,9 +216,14 @@ Bloonix.listCharts = function(o) {
         this.alignmentFormOptions = this.form.iconList({
             name: "alignment",
             options: [
-                { value: 3, icon: "hicons-white hicons th" },
+                { value: 1, icon: "hicons-white hicons align-justify" },
                 { value: 2, icon: "hicons-white hicons th-large" },
-                { value: 1, icon: "hicons-white hicons align-justify" }
+                { value: 3, icon: "hicons-white hicons th" },
+                { value: 4, icon: "hicons-white hicons col4" },
+                { value: 5, label: "V" },
+                { value: 6, label: "VI" },
+                { value: 7, label: "VII" },
+                { value: 8, label: "VIII" }
             ],
             appendTo: this.leftContainer,
             even: true,
@@ -1091,12 +1096,9 @@ Bloonix.listCharts = function(o) {
         } else if (this.chartFormOptions.alignment == 1) {
             chartWidth = Math.floor( $(this.container).width() );
             this.countChartColumns = 1;
-        } else if (this.chartFormOptions.alignment == 2) {
-            chartWidth = Math.floor( $(this.container).width() / 2 );
-            this.countChartColumns = 2;
-        } else if (this.chartFormOptions.alignment == 3) {
-            chartWidth = Math.floor( $(this.container).width() / 3 );
-            this.countChartColumns = 3;
+        } else if (this.chartFormOptions.alignment >= 2) {
+            chartWidth = Math.floor( $(this.container).width() / this.chartFormOptions.alignment);
+            this.countChartColumns = this.chartFormOptions.alignment;
         }
 
         chartWidth -= 20; // -20px scrollbar
@@ -1110,8 +1112,10 @@ Bloonix.listCharts = function(o) {
             chartHeight = Math.floor( (chartWidth / 3) - (chartMargin * 2) );
         }
 
-        if (chartHeight < 250) {
-            chartHeight = 270;
+        if (chartHeight > chartWidth) {
+            chartHeight = chartWidth;
+        } else if (chartHeight < 300) {
+            chartHeight = 300;
         }
 
         this.sortableChartColumns = {
