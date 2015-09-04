@@ -16,6 +16,8 @@ sub startup {
     $c->route->map("/hosts/:id/update")->to("update");
     $c->route->map("/administration/hosts/:id/delete")->to("delete");
     $c->route->map("/hosts/:id/delete")->to("delete");
+    $c->route->map("/administration/hosts/:id")->to("view");
+    $c->route->map("/hosts/:id")->to("view");
 }
 
 sub auto {
@@ -47,6 +49,12 @@ sub begin {
     $c->model->database->host->set($c->user);
 
     return 1;
+}
+
+sub view {
+    my ($self, $c, $opts) = @_;
+
+    return $self->options($c, $opts, 1);
 }
 
 sub options {
@@ -108,15 +116,18 @@ sub options {
         }
     }
 
-    $c->plugin->util->json_to_pv(variables => $host);
-    $c->stash->data(values => $host);
-    $c->stash->data(options => $options);
-    $c->stash->data(mandatory => $c->model->database->host->validator->mandatory);
-    $c->stash->data(optional => $c->model->database->host->validator->optional);
-    $c->stash->data(limits => { data_retention => $c->user->{company_data_retention} });
+    if ($view) {
+        $c->stash->data($host);
+    } else {
+        $c->stash->data(values => $host);
+        $c->stash->data(options => $options);
+        $c->stash->data(mandatory => $c->model->database->host->validator->mandatory);
+        $c->stash->data(optional => $c->model->database->host->validator->optional);
+        $c->stash->data(limits => { data_retention => $c->user->{company_data_retention} });
 
-    if (!grep /group_id/, @{$c->stash->data->{mandatory}}) {
-        push @{$c->stash->data->{mandatory}}, "group_id";
+        if (!grep /group_id/, @{$c->stash->data->{mandatory}}) {
+            push @{$c->stash->data->{mandatory}}, "group_id";
+        }
     }
 
     $c->view->render->json;
