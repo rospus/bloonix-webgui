@@ -166,7 +166,7 @@ Bloonix.listHostTemplateServices = function(o) {
         deletable: {
             title: Text.get("schema.host_template.text.delete_service"),
             url: "/templates/hosts/:host_template_id/services/:ref_id/delete",
-            result: [ "ref_id", "service_name", "description" ],
+            result: [ "ref_id", "service_name" ],
             warning: Text.get("schema.host_template.text.delete_service_warning")
         },
         columns: [

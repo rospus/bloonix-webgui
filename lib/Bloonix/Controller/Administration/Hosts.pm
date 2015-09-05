@@ -58,7 +58,7 @@ sub view {
 }
 
 sub options {
-    my ($self, $c, $opts) = @_;
+    my ($self, $c, $opts, $view) = @_;
 
     my $options = $c->model->database->host->validator->options;
     my $host;

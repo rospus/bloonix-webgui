@@ -570,6 +570,7 @@ Bloonix.listCharts = function(o) {
             {
                 name: "id",
                 hide: true,
+                text: Text.get("schema.chart.attr.id"),
                 value: function(row) { return row.service_id +":"+ row.chart_id }
             },{
                 name: "hostname",

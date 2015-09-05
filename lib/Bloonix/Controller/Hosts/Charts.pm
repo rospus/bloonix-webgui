@@ -67,7 +67,9 @@ sub list {
     );
 
     foreach my $chart (@$data) {
-        $chart->{options} = $c->json->decode($chart->{options});
+        if ($chart->{options}) {
+            $chart->{options} = $c->json->decode($chart->{options});
+        }
     }
 
     $c->stash->offset($request->{offset});

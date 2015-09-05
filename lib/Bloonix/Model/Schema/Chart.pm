@@ -59,12 +59,6 @@ sub by_user_chart_and_service_id {
 
     my ($join, $condition) = $self->_by_user_id($user_id);
 
-    #push @$join, inner => {
-    #    table => "plugin",
-    #    left  => "service_parameter.plugin_id",
-    #    right => "plugin.id"
-    #};
-
     push @$condition, and => {
         table => "service",
         column => "id",

@@ -19958,6 +19958,7 @@ Bloonix.listCharts = function(o) {
             {
                 name: "id",
                 hide: true,
+                text: Text.get("schema.chart.attr.id"),
                 value: function(row) { return row.service_id +":"+ row.chart_id }
             },{
                 name: "hostname",
@@ -21197,7 +21198,7 @@ Bloonix.listHostTemplateServices = function(o) {
         deletable: {
             title: Text.get("schema.host_template.text.delete_service"),
             url: "/templates/hosts/:host_template_id/services/:ref_id/delete",
-            result: [ "ref_id", "service_name", "description" ],
+            result: [ "ref_id", "service_name" ],
             warning: Text.get("schema.host_template.text.delete_service_warning")
         },
         columns: [
