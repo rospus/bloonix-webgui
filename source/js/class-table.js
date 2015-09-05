@@ -52,7 +52,8 @@ var Table = function(o) {
 Table.prototype = {
     width: "full",
     addClass: false,
-    iconsClass: "table-icons-column",
+    //iconsClass: "table-icons-column",
+    iconsClass: "",
     appendTo: "#content",
     appendPagerTo: false,
     type: "default",
@@ -671,7 +672,13 @@ Table.prototype.createColumn = function(tr, row, col) {
 
         $.each(col.icons, function(i, obj) {
             if (obj.check == undefined || obj.check(row) == true) {
-                var icon = Utils.create("span").addClass(obj.icon)
+                var icon;
+
+                if (obj.hicon) {
+                    icon = Utils.createInfoIcon(obj.hicon);
+                } else {
+                    icon = Utils.create("span").addClass(obj.icon);
+                }
 
                 if (obj.link) {
                     var link = Utils.replacePattern(obj.link, row, row.username);
@@ -736,6 +743,10 @@ Table.prototype.createColumn = function(tr, row, col) {
         } else {
             value = col.call(row);
         }
+    }
+
+    if (col.func) {
+        value = col.func(row);
     }
 
     if (col.activeFlag) {
@@ -809,7 +820,7 @@ Table.prototype.createColumn = function(tr, row, col) {
     }
 
     if (col.wrapIconClass === true) {
-        value = Bloonix.createInfoIcon({ type: value });
+        value = Utils.createInfoIcon({ type: value });
     }
 
     if (col.wrapValueClass === true) {

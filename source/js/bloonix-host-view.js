@@ -75,7 +75,7 @@ Bloonix.viewHost = function(host) {
     });
 
     var table = Utils.create("table")
-        .addClass("vtable")
+        .addClass("vtable fixed")
         .appendTo("#b2x-left");
 
     $.each([
@@ -97,26 +97,25 @@ Bloonix.viewHost = function(host) {
             .html(Text.get(text))
             .appendTo(row);
 
+        var td = Utils.create("td")
+            .appendTo(row);
+
         if (item == "last_check") {
             var date = new Date(host[item] * 1000);
-            Utils.create("td")
-                .html(DateFormat(date, DateFormat.masks.bloonix))
-                .appendTo(row);
+            td.html(DateFormat(date, DateFormat.masks.bloonix));
         } else if (item == "active" || item == "notification") {
             var word = host[item] == "0" ? "word.no" : "word.yes";
-            Utils.create("td")
-                .html(Text.get(word))
-                .appendTo(row);
+            td.html(Text.get(word));
         } else if (item == "status") {
-            Utils.create("td").html(
+            td.html(
                 Utils.create("div")
                     .addClass("status-base status-"+ host.status +" inline")
                     .text(host.status)
-            ).appendTo(row);
+            );
+        } else if (item == "sysinfo") {
+            td.html(Bloonix.createSysInfoLink(host[item]));
         } else {
-            Utils.create("td")
-                .text(host[item])
-                .appendTo(row);
+            td.text(host[item]);
         }
 
         row.appendTo(table);

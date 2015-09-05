@@ -229,7 +229,7 @@ Bloonix.viewHostDependencies = function(o) {
                 var tdStatus = Utils.create("td").appendTo(tr);
 
                 $.each(obj.split(","), function(y, s) {
-                    Bloonix.createInfoIcon({ type: s })
+                    Utils.createInfoIcon({ type: s })
                         .css({ "margin-right": "1px" })
                         .attr("title", s)
                         .tooltip({ track: true })

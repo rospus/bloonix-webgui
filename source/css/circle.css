@@ -7,9 +7,10 @@
     padding: 4px 4px 2px 4px;
     margin: 0;
     line-height: 16px;
+    cursor: default;
 }
 .circle-small {
-    padding: 2px 2px 0 2px;
+    padding: 2px 3px 1px 3px;
 }
 .circle.green {
     background-color: #5ec15e;

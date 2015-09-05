@@ -1403,7 +1403,7 @@ Bloonix.dashboard = function(o) {
                             var tr = table.createRow([
                                 Bloonix.call("monitoring/hosts/"+ row.id, row.hostname),
                                 row.ipaddr,
-                                Bloonix.createInfoIcon({ type: row.status }),
+                                Utils.createInfoIcon({ type: row.status }),
                                 Utils.escape(row.last_check)
                             ]);
 
@@ -1467,7 +1467,7 @@ Bloonix.dashboard = function(o) {
                             table.createRow([
                                 Bloonix.call("monitoring/hosts/"+ item.host_id, item.hostname),
                                 item.service_name,
-                                Bloonix.createInfoIcon({ type: item.status }),
+                                Utils.createInfoIcon({ type: item.status }),
                                 Utils.escape(item.last_check)
                             ]).attr("title", Utils.escape(item.message)).tooltip({ track: true });
                         });
@@ -1508,7 +1508,7 @@ Bloonix.dashboard = function(o) {
                         $.each(result.data, function(index, item) {
                             table.createRow([
                                 item.time,
-                                Bloonix.createInfoIcon({ type: item.status }),
+                                Utils.createInfoIcon({ type: item.status }),
                                 Bloonix.call("monitoring/hosts/"+ item.host_id, item.hostname),
                                 item.service_name
                             ]).attr("title", Utils.escape(item.message)).tooltip({ track: true });

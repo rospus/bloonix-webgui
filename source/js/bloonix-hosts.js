@@ -227,7 +227,7 @@ Bloonix.listHosts = function(o) {
             var li = Utils.create("li")
                 .appendTo(ul);
 
-            Bloonix.createInfoIcon({ type: statusColor, size: "small" })
+            Utils.createInfoIcon({ type: statusColor, size: "small" })
                 .appendTo(li);
 
             var statusString = statusColor === "OK"
@@ -467,6 +467,7 @@ Bloonix.listHosts = function(o) {
                 },{
                     name: "sysinfo",
                     text: Text.get("schema.host.attr.sysinfo"),
+                    func: function(row) { return Bloonix.createSysInfoLink(row.sysinfo) },
                     hide: true
                 },{
                     name: "device_class",

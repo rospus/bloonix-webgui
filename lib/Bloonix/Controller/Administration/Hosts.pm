@@ -119,6 +119,7 @@ sub options {
     if ($view) {
         $c->stash->data($host);
     } else {
+        $c->plugin->util->json_to_pv(variables => $host);
         $c->stash->data(values => $host);
         $c->stash->data(options => $options);
         $c->stash->data(mandatory => $c->model->database->host->validator->mandatory);

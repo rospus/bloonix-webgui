@@ -413,3 +413,44 @@ Utils.linebreak = function(o) {
     Utils.create("br")
         .appendTo(o);
 };
+
+Utils.createInfoIcon = function(o) {
+    var span = Utils.create("span"),
+        icon = Utils.create("span")
+            .addClass("hicons-white hicons")
+            .appendTo(span);
+
+    if (o.type != undefined) {
+        if (o.type == "OK") {
+            span.addClass("circle green");
+            icon.addClass("ok");
+        } else if (o.type == "INFO") {
+            span.addClass("circle blue");
+            icon.addClass("info-sign");
+        } else if (o.type == "WARNING") {
+            span.addClass("circle yellow");
+            icon.addClass("warning-sign");
+        } else if (o.type == "CRITICAL") {
+            span.addClass("circle red");
+            icon.addClass("fire");
+        } else if (o.type == "UNKNOWN") {
+            span.addClass("circle orange");
+            icon.addClass("question-sign");
+        }
+    } else {
+        span.addClass("circle");
+        if (o.color) {
+            span.addClass(o.color);
+        }
+        if (o.backgroundColor) {
+            span.css({ "background-color": o.backgroundColor });
+        }
+        icon.addClass(o.icon);
+    }
+
+    if (o.size === "small") {
+        span.addClass("circle-small");
+    }
+
+    return span;
+};

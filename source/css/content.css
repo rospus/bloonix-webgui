@@ -300,6 +300,16 @@
     font-size: 13px;
     line-height: 13px;
 }
+.vtable.fixed {
+    table-layout: fixed;
+}
+.vtable.fixed th {
+    width: 40%;
+}
+.vtable.fixed td {
+    width: 60%;
+    overflow-x: hidden;
+}
 .dependency-table tr th {
     width: 300px;
     vertical-align: middle;

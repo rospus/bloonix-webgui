@@ -184,7 +184,7 @@ Bloonix.viewServiceLocationReport = function(o) {
 
         $.each(this.stats.events, function(x, row) {
             $.each(row.data, function(y, item) {
-                var span = Bloonix.createInfoIcon({ type: item.status }),
+                var span = Utils.createInfoIcon({ type: item.status }),
                     loc = self.locations[item.hostname],
                     date = DateFormat(row.time * 1, DateFormat.masks.bloonix),
                     stats;

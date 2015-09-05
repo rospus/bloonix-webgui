@@ -66,7 +66,7 @@ sub set {
             optional => 1,
         },
         sysinfo => {
-            regex => qr!^(?:|https{0,1}://[\w\.\-]+(?:/|/[^"'<>\\]+))\z!,
+            regex => qr!^(?:|([\w\-\.\s]+=){0,1}https{0,1}://[\w\.\-]+(?:/|/[^"'<>\\]+))\z!,
             max_size => 200,
             optional => 1,
         },

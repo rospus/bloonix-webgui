@@ -615,6 +615,47 @@ Utils.linebreak = function(o) {
     Utils.create("br")
         .appendTo(o);
 };
+
+Utils.createInfoIcon = function(o) {
+    var span = Utils.create("span"),
+        icon = Utils.create("span")
+            .addClass("hicons-white hicons")
+            .appendTo(span);
+
+    if (o.type != undefined) {
+        if (o.type == "OK") {
+            span.addClass("circle green");
+            icon.addClass("ok");
+        } else if (o.type == "INFO") {
+            span.addClass("circle blue");
+            icon.addClass("info-sign");
+        } else if (o.type == "WARNING") {
+            span.addClass("circle yellow");
+            icon.addClass("warning-sign");
+        } else if (o.type == "CRITICAL") {
+            span.addClass("circle red");
+            icon.addClass("fire");
+        } else if (o.type == "UNKNOWN") {
+            span.addClass("circle orange");
+            icon.addClass("question-sign");
+        }
+    } else {
+        span.addClass("circle");
+        if (o.color) {
+            span.addClass(o.color);
+        }
+        if (o.backgroundColor) {
+            span.css({ "background-color": o.backgroundColor });
+        }
+        icon.addClass(o.icon);
+    }
+
+    if (o.size === "small") {
+        span.addClass("circle-small");
+    }
+
+    return span;
+};
 var Is = function() {};
 var IsNot = function() {};
 
@@ -6720,7 +6761,8 @@ var Table = function(o) {
 Table.prototype = {
     width: "full",
     addClass: false,
-    iconsClass: "table-icons-column",
+    //iconsClass: "table-icons-column",
+    iconsClass: "",
     appendTo: "#content",
     appendPagerTo: false,
     type: "default",
@@ -7339,7 +7381,13 @@ Table.prototype.createColumn = function(tr, row, col) {
 
         $.each(col.icons, function(i, obj) {
             if (obj.check == undefined || obj.check(row) == true) {
-                var icon = Utils.create("span").addClass(obj.icon)
+                var icon;
+
+                if (obj.hicon) {
+                    icon = Utils.createInfoIcon(obj.hicon);
+                } else {
+                    icon = Utils.create("span").addClass(obj.icon);
+                }
 
                 if (obj.link) {
                     var link = Utils.replacePattern(obj.link, row, row.username);
@@ -7404,6 +7452,10 @@ Table.prototype.createColumn = function(tr, row, col) {
         } else {
             value = col.call(row);
         }
+    }
+
+    if (col.func) {
+        value = col.func(row);
     }
 
     if (col.activeFlag) {
@@ -7477,7 +7529,7 @@ Table.prototype.createColumn = function(tr, row, col) {
     }
 
     if (col.wrapIconClass === true) {
-        value = Bloonix.createInfoIcon({ type: value });
+        value = Utils.createInfoIcon({ type: value });
     }
 
     if (col.wrapValueClass === true) {
@@ -9533,36 +9585,6 @@ Bloonix.dropDownToggle = function(caller) {
     }
 };
 
-Bloonix.createInfoIcon = function(o) {
-    var span = Utils.create("span"),
-        icon = Utils.create("span")
-            .addClass("hicons-white hicons")
-            .appendTo(span);
-
-    if (o.type == "OK") {
-        span.addClass("circle green");
-        icon.addClass("ok");
-    } else if (o.type == "INFO") {
-        span.addClass("circle blue");
-        icon.addClass("info-sign");
-    } else if (o.type == "WARNING") {
-        span.addClass("circle yellow");
-        icon.addClass("warning-sign");
-    } else if (o.type == "CRITICAL") {
-        span.addClass("circle red");
-        icon.addClass("fire");
-    } else if (o.type == "UNKNOWN") {
-        span.addClass("circle orange");
-        icon.addClass("question-sign");
-    }
-
-    if (o.size === "small") {
-        span.addClass("circle-small");
-    }
-
-    return span;
-};
-
 Bloonix.redirect = function(path) {
     Log.debug("redirect()");
     window.location.href = "/#"+ path;
@@ -10139,6 +10161,34 @@ Bloonix.createFooterIcon = function(o) {
     span.appendTo("#footer-left")
 
     return span;
+};
+
+Bloonix.createSysInfoLink = function(o) {
+    if (!o || o.length == 0) {
+        return "";
+    }
+
+    var match = Bloonix.splitSysInfo(o);
+
+    return Utils.create("a")
+        .attr("href", match[1])
+        .attr("target", "_blank")
+        .text(match[0]);
+};
+
+Bloonix.splitSysInfo = function(o) {
+    var text, href;
+
+    if (o && /^[^=]+=http/.test(o)) {
+        var matches = /^([^=]+)=(http.+)/.exec(o);
+        text = matches[1];
+        href = matches[2];
+    } else {
+        text = Text.get("schema.host.attr.sysinfo");
+        href = o;
+    }
+
+    return [ text, href ];
 };
 Bloonix.init = function(o) {
     Bloonix.initAjax();
@@ -12646,7 +12696,7 @@ Bloonix.dashboard = function(o) {
                             var tr = table.createRow([
                                 Bloonix.call("monitoring/hosts/"+ row.id, row.hostname),
                                 row.ipaddr,
-                                Bloonix.createInfoIcon({ type: row.status }),
+                                Utils.createInfoIcon({ type: row.status }),
                                 Utils.escape(row.last_check)
                             ]);
 
@@ -12710,7 +12760,7 @@ Bloonix.dashboard = function(o) {
                             table.createRow([
                                 Bloonix.call("monitoring/hosts/"+ item.host_id, item.hostname),
                                 item.service_name,
-                                Bloonix.createInfoIcon({ type: item.status }),
+                                Utils.createInfoIcon({ type: item.status }),
                                 Utils.escape(item.last_check)
                             ]).attr("title", Utils.escape(item.message)).tooltip({ track: true });
                         });
@@ -12751,7 +12801,7 @@ Bloonix.dashboard = function(o) {
                         $.each(result.data, function(index, item) {
                             table.createRow([
                                 item.time,
-                                Bloonix.createInfoIcon({ type: item.status }),
+                                Utils.createInfoIcon({ type: item.status }),
                                 Bloonix.call("monitoring/hosts/"+ item.host_id, item.hostname),
                                 item.service_name
                             ]).attr("title", Utils.escape(item.message)).tooltip({ track: true });
@@ -13246,7 +13296,7 @@ Bloonix.listHosts = function(o) {
             var li = Utils.create("li")
                 .appendTo(ul);
 
-            Bloonix.createInfoIcon({ type: statusColor, size: "small" })
+            Utils.createInfoIcon({ type: statusColor, size: "small" })
                 .appendTo(li);
 
             var statusString = statusColor === "OK"
@@ -13486,6 +13536,7 @@ Bloonix.listHosts = function(o) {
                 },{
                     name: "sysinfo",
                     text: Text.get("schema.host.attr.sysinfo"),
+                    func: function(row) { return Bloonix.createSysInfoLink(row.sysinfo) },
                     hide: true
                 },{
                     name: "device_class",
@@ -14061,7 +14112,7 @@ Bloonix.viewHostDependencies = function(o) {
                 var tdStatus = Utils.create("td").appendTo(tr);
 
                 $.each(obj.split(","), function(y, s) {
-                    Bloonix.createInfoIcon({ type: s })
+                    Utils.createInfoIcon({ type: s })
                         .css({ "margin-right": "1px" })
                         .attr("title", s)
                         .tooltip({ track: true })
@@ -17674,7 +17725,7 @@ Bloonix.viewServiceLocationReport = function(o) {
 
         $.each(this.stats.events, function(x, row) {
             $.each(row.data, function(y, item) {
-                var span = Bloonix.createInfoIcon({ type: item.status }),
+                var span = Utils.createInfoIcon({ type: item.status }),
                     loc = self.locations[item.hostname],
                     date = DateFormat(row.time * 1, DateFormat.masks.bloonix),
                     stats;
@@ -18036,7 +18087,7 @@ Bloonix.viewHost = function(host) {
     });
 
     var table = Utils.create("table")
-        .addClass("vtable")
+        .addClass("vtable fixed")
         .appendTo("#b2x-left");
 
     $.each([
@@ -18058,26 +18109,25 @@ Bloonix.viewHost = function(host) {
             .html(Text.get(text))
             .appendTo(row);
 
+        var td = Utils.create("td")
+            .appendTo(row);
+
         if (item == "last_check") {
             var date = new Date(host[item] * 1000);
-            Utils.create("td")
-                .html(DateFormat(date, DateFormat.masks.bloonix))
-                .appendTo(row);
+            td.html(DateFormat(date, DateFormat.masks.bloonix));
         } else if (item == "active" || item == "notification") {
             var word = host[item] == "0" ? "word.no" : "word.yes";
-            Utils.create("td")
-                .html(Text.get(word))
-                .appendTo(row);
+            td.html(Text.get(word));
         } else if (item == "status") {
-            Utils.create("td").html(
+            td.html(
                 Utils.create("div")
                     .addClass("status-base status-"+ host.status +" inline")
                     .text(host.status)
-            ).appendTo(row);
+            );
+        } else if (item == "sysinfo") {
+            td.html(Bloonix.createSysInfoLink(host[item]));
         } else {
-            Utils.create("td")
-                .text(host[item])
-                .appendTo(row);
+            td.text(host[item]);
         }
 
         row.appendTo(table);

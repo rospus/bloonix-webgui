@@ -68,36 +68,6 @@ Bloonix.dropDownToggle = function(caller) {
     }
 };
 
-Bloonix.createInfoIcon = function(o) {
-    var span = Utils.create("span"),
-        icon = Utils.create("span")
-            .addClass("hicons-white hicons")
-            .appendTo(span);
-
-    if (o.type == "OK") {
-        span.addClass("circle green");
-        icon.addClass("ok");
-    } else if (o.type == "INFO") {
-        span.addClass("circle blue");
-        icon.addClass("info-sign");
-    } else if (o.type == "WARNING") {
-        span.addClass("circle yellow");
-        icon.addClass("warning-sign");
-    } else if (o.type == "CRITICAL") {
-        span.addClass("circle red");
-        icon.addClass("fire");
-    } else if (o.type == "UNKNOWN") {
-        span.addClass("circle orange");
-        icon.addClass("question-sign");
-    }
-
-    if (o.size === "small") {
-        span.addClass("circle-small");
-    }
-
-    return span;
-};
-
 Bloonix.redirect = function(path) {
     Log.debug("redirect()");
     window.location.href = "/#"+ path;
@@ -674,4 +644,32 @@ Bloonix.createFooterIcon = function(o) {
     span.appendTo("#footer-left")
 
     return span;
+};
+
+Bloonix.createSysInfoLink = function(o) {
+    if (!o || o.length == 0) {
+        return "";
+    }
+
+    var match = Bloonix.splitSysInfo(o);
+
+    return Utils.create("a")
+        .attr("href", match[1])
+        .attr("target", "_blank")
+        .text(match[0]);
+};
+
+Bloonix.splitSysInfo = function(o) {
+    var text, href;
+
+    if (o && /^[^=]+=http/.test(o)) {
+        var matches = /^([^=]+)=(http.+)/.exec(o);
+        text = matches[1];
+        href = matches[2];
+    } else {
+        text = Text.get("schema.host.attr.sysinfo");
+        href = o;
+    }
+
+    return [ text, href ];
 };
