@@ -995,6 +995,7 @@ schema.service.info.has_result: Dieser Service-Check hat erweiterte Statusinform
 schema.service.info.inactive: Der Service ist inaktiv.
 schema.service.info.notification_disabled: Die Benachrichtigungen sind ausgeschaltet.
 schema.service.info.inherits_from_host_template: Dieser Service wird von Host Template '%s' vererbt.
+schema.service.info.status_nok_since: Der Service war innerhalb der letzten 60 Minuten nicht OK.
 schema.service.desc.agent_tooltip: <h3>Installation des Bloonix-Agenten</h3>
  <p>
  Dieser Check wird direkt auf dem Server ausgeführt und erfordert die Installation des Bloonix-Agenten

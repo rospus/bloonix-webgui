@@ -55,6 +55,7 @@ sub services {
     my %seen;
 
     foreach my $service (@$services) {
+        $service->{nok_time_delta} = time - $service->{status_nok_since};
         foreach my $key (qw/result debug command_options location_options/) {
             if ($service->{$key} && $service->{$key} =~ /^[\[\{].*[\]\}]$/) {
                 $service->{$key} = $c->json->decode($service->{$key});
@@ -150,6 +151,7 @@ sub list {
     my @host_ids = (0);
 
     foreach my $host (@$data) {
+        $host->{nok_time_delta} = time - $host->{status_nok_since};
         $c->plugin->util->json_to_pv(variables => $host);
         $self->_de_serialize($c, $host);
 
@@ -185,14 +187,15 @@ sub top {
         limit => 100,
         query => $c->req->param("query"),
         order => [
-            desc => "priority",
-            desc => "last_check"
+            desc => [ "priority", "status_nok_since" ],
+            #desc => "last_check"
         ]
     );
 
     my @host_ids = (0);
 
     foreach my $host (@$hosts) {
+
         $self->_de_serialize($c, $host);
 
         $host->{last_check} = $c->plugin->util->timestamp(

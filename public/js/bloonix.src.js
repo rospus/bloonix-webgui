@@ -1018,6 +1018,7 @@ var Lang = {
       "text.click_to_delete_seletion" : "Click to delete the selection",
       "info.add-further-options" : "Add further options",
       "schema.service.text.multiple_volatile" : "Clear the volatile status of multiple services",
+      "schema.service.info.status_nok_since" : "The service was not OK within the the last 60 minutes.",
       "schema.host.attr.id" : "Host ID",
       "schema.service.attr.agent_id" : "Agent location",
       "schema.service.desc.default_check_type_title" : "Default checkpoint",
@@ -2109,6 +2110,7 @@ var Lang = {
       "text.click_to_delete_seletion" : "Klicken um die Auswahl zu löschen",
       "info.add-further-options" : "Weiter Optionen hinzufügen",
       "schema.service.text.multiple_volatile" : "Den flüchtigen Status mehrerer Services aufheben",
+      "schema.service.info.status_nok_since" : "Der Service war innerhalb der letzten 60 Minuten nicht OK.",
       "schema.host.attr.id" : "Host ID",
       "schema.service.attr.agent_id" : "Standort des Agenten",
       "schema.service.desc.default_check_type_title" : "Standard Messpunkt",
@@ -2877,8 +2879,8 @@ var Lang = {
       "schema.user_chart.text.title" : "Benutzer Charts",
       "site.wtrm.desc.contentType" : "Enter content type that is expeced for the URL.",
       "schema.company.desc.max_dashboards_per_user" : "Die maximale Anzahl an Dashboards die pro Benutzer erstellt werden dürfen.",
-      "action.no_abort" : "<b>Nein, abbrechen!</b>",
       "text.from_now_to_4h" : "Von jetzt + 4 Stunden",
+      "action.no_abort" : "<b>Nein, abbrechen!</b>",
       "schema.host.text.multiple_activate" : "Mehrere Hosts aktivieren oder deaktivieren",
       "action.members" : "Mitglieder auflisten",
       "schema.group.attr.groupname" : "Gruppenname",
@@ -13442,7 +13444,17 @@ Bloonix.listHosts = function(o) {
                             link: ":sysinfo",
                             blank: true,
                             title: Text.get("schema.host.info.sysinfo")
-                        }
+                        },{
+                            check: function(row) {
+                                var delta = parseInt(row.nok_time_delta);
+                                if (row.status == "OK" && delta > 0 && delta < 3600) {
+                                    return true;
+                                }
+                                return false;
+                            },
+                            icon: "cicons lightning2",
+                            title: Text.get("schema.service.info.status_nok_since")
+                        },
                     ]
                 },{
                     name: "ipaddr",
@@ -19196,6 +19208,16 @@ Bloonix.listServices = function(o) {
                 check: function(row) { return row.host_alive_check == "1" ? true : false },
                 icon: "cicons host",
                 title: Text.get("schema.service.info.host_alive_check")
+            },{
+                check: function(row) {
+                    var delta = parseInt(row.nok_time_delta);
+                    if (row.status == "OK" && delta > 0 && delta < 3600) {
+                        return true;
+                    }
+                    return false;
+                },
+                icon: "cicons lightning2",
+                title: Text.get("schema.service.info.status_nok_since")
             },{
                 check: function(row) {
                     if (row.plugin_id == "58") {

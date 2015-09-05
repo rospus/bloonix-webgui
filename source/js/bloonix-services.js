@@ -568,6 +568,16 @@ Bloonix.listServices = function(o) {
                 title: Text.get("schema.service.info.host_alive_check")
             },{
                 check: function(row) {
+                    var delta = parseInt(row.nok_time_delta);
+                    if (row.status == "OK" && delta > 0 && delta < 3600) {
+                        return true;
+                    }
+                    return false;
+                },
+                icon: "cicons lightning2",
+                title: Text.get("schema.service.info.status_nok_since")
+            },{
+                check: function(row) {
                     if (row.plugin_id == "58") {
                         return false;
                     }

@@ -425,7 +425,17 @@ Bloonix.listHosts = function(o) {
                             link: ":sysinfo",
                             blank: true,
                             title: Text.get("schema.host.info.sysinfo")
-                        }
+                        },{
+                            check: function(row) {
+                                var delta = parseInt(row.nok_time_delta);
+                                if (row.status == "OK" && delta > 0 && delta < 3600) {
+                                    return true;
+                                }
+                                return false;
+                            },
+                            icon: "cicons lightning2",
+                            title: Text.get("schema.service.info.status_nok_since")
+                        },
                     ]
                 },{
                     name: "ipaddr",
