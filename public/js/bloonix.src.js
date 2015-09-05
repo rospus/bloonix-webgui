@@ -924,7 +924,7 @@ var Lang = {
       "site.wtrm.command.doAuth" : "Use auth basic with username <b>%s</b> and password <b>%s</b>",
       "schema.host.text.list_templates" : "Host %s has the following templates configured",
       "schema.host.text.multiple_downtimes" : "Schedule a downtime for multiple hosts",
-      "schema.host.desc.sysinfo" : "This field allows you to set an external link to you own host documentation, e.g.: https://mysite.test/?id=12345.<br/><br/>Not allowed characters: \"\\",
+      "schema.host.desc.sysinfo" : "This field allows you to set an external link to you own host documentation, e.g.: Linktext=https://mysite.test/?id=12345.<br/><br/>Not allowed characters: \"\\",
       "schema.service.attr.passive_check" : "Is this a passive check?",
       "schema.chart.text.multiple_view" : "Chart view",
       "schema.plugin.attr.info" : "Information",
@@ -2016,7 +2016,7 @@ var Lang = {
       "site.wtrm.command.doAuth" : "Use auth basic with username <b>%s</b> and password <b>%s</b>",
       "schema.host.text.list_templates" : "Host %s hat folgende Templates konfiguriert",
       "schema.host.text.multiple_downtimes" : "Eine geplante Wartungsarbeit für mehrere Hosts einrichten",
-      "schema.host.desc.sysinfo" : "Hier können Sie einen externen Link zu Ihrer Host-Dokumentation eintragen, zum Beispiel: https://mysite.test/?id=12345.<br/><br/>Nicht erlaubte Zeichen: \"\\",
+      "schema.host.desc.sysinfo" : "Hier können Sie einen externen Link zu Ihrer Host-Dokumentation eintragen, zum Beispiel: Linktext=https://mysite.test/?id=12345.<br/><br/>Nicht erlaubte Zeichen: \"\\",
       "schema.service.attr.passive_check" : "Ist dies ein passiver Check?",
       "schema.chart.text.multiple_view" : "Chart Ansicht",
       "schema.plugin.attr.info" : "Information",
@@ -13488,12 +13488,6 @@ Bloonix.listHosts = function(o) {
                             check: function(row) { return row.active == "0" ? true : false },
                             icon: "cicons disabled",
                             title: Text.get("schema.host.info.inactive")
-                        },{
-                            check: function(row) { return row.sysinfo ? true : false },
-                            icon: "cicons arrow-right-orange",
-                            link: ":sysinfo",
-                            blank: true,
-                            title: Text.get("schema.host.info.sysinfo")
                         },{
                             check: function(row) {
                                 var delta = parseInt(row.nok_time_delta);

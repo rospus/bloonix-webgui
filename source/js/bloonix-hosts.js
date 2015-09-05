@@ -420,12 +420,6 @@ Bloonix.listHosts = function(o) {
                             icon: "cicons disabled",
                             title: Text.get("schema.host.info.inactive")
                         },{
-                            check: function(row) { return row.sysinfo ? true : false },
-                            icon: "cicons arrow-right-orange",
-                            link: ":sysinfo",
-                            blank: true,
-                            title: Text.get("schema.host.info.sysinfo")
-                        },{
                             check: function(row) {
                                 var delta = parseInt(row.nok_time_delta);
                                 if (row.status == "OK" && delta > 0 && delta < 3600) {

@@ -604,7 +604,7 @@ schema.host.desc.description: This is a short description of the host.
 schema.host.desc.ipaddr: This is the main IP address of the host.
 schema.host.desc.comment: This field can be used to set a short comment to the host.
 schema.host.desc.sysgroup: This is a complete free to use field with no restrictions.
-schema.host.desc.sysinfo: This field allows you to set an external link to you own host documentation, e.g.: https://mysite.test/?id=12345.<br/><br/>Not allowed characters: "\
+schema.host.desc.sysinfo: This field allows you to set an external link to you own host documentation, e.g.: Linktext=https://mysite.test/?id=12345.<br/><br/>Not allowed characters: "\
 schema.host.desc.device_class: e.g.<br/>/Server/Linux/Debian<br/>/Server/Windows/Windows 2008<br/>/Network/Router<br/>/Network/Switch<br/>/Printer
 schema.host.desc.hw_manufacturer: e.g. IBM, HP, Dell, Fujitsu Siemens
 schema.host.desc.hw_product: e.g. Dell Power Edge 2950
