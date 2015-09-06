@@ -38,7 +38,7 @@ sub new {
             role comment allow_from timezone operate_as
         )],
         host => [qw(
-            id ipaddr description comment status last_check sysgroup sysinfo device_class hw_manufacturer hw_product
+            id ipaddr description comment status last_check sysgroup sysinfo host_class hw_manufacturer hw_product
             os_manufacturer os_product virt_manufacturer virt_product location coordinates interval retry_interval data_retention
         )],
         service => [qw(

@@ -8,7 +8,7 @@ use base qw(Bloonix::DBI::CRUD);
 sub init {
     my $self = shift;
 
-    $self->{schema_version} = 9;
+    $self->{schema_version} = 10;
 
     $self->log->warning("start database upgrade");
     $self->dbi->reconnect;
@@ -130,6 +130,10 @@ sub run_upgrade {
 
     if ($version <= 8) {
         $self->v9;
+    }
+
+    if ($version <= 9) {
+        $self->v10;
     }
 
     $self->update_version;
@@ -470,6 +474,19 @@ sub v9 {
     my $self = shift;
 
     $self->upgrade("alter table service add column force_event char(1) not null default '0'");
+}
+
+sub v10 {
+    my $self = shift;
+
+    if ($self->dbi->{driver} eq "Pg") {
+        $self->upgrade("alter table host rename column device_class to host_class");
+    } elsif ($self->dbi->{driver} eq "mysql") {
+        $self->upgrade("alter table host change column device_class host_class varchar(100) not null default ''");
+    }
+
+    $self->upgrade("alter table host add column system_class varchar(100) not null default '");
+    $self->upgrade("alter table host add column location_class varchar(100) not null default ''");
 }
 
 1;

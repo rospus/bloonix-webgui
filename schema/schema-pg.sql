@@ -180,7 +180,9 @@ CREATE TABLE "host" (
     "facts"                 TEXT NOT NULL DEFAULT '{}',
     "sysgroup"              VARCHAR(50) NOT NULL DEFAULT '',
     "sysinfo"               VARCHAR(200) NOT NULL DEFAULT '',
-    "device_class"          VARCHAR(100) NOT NULL DEFAULT '/Server',
+    "host_class"            VARCHAR(100) NOT NULL DEFAULT '',
+    "system_class"          VARCHAR(100) NOT NULL DEFAULT '',
+    "location_class"        VARCHAR(100) NOT NULL DEFAULT '',
     "hw_manufacturer"       VARCHAR(50) NOT NULL DEFAULT '',
     "hw_product"            VARCHAR(50) NOT NULL DEFAULT '',
     "os_manufacturer"       VARCHAR(50) NOT NULL DEFAULT '',
@@ -429,7 +431,8 @@ CREATE TABLE "service" (
     "creation_time"             TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated"                   CHAR(1) DEFAULT '0',                -- used for software updates
     "last_status"               VARCHAR DEFAULT 'INFO',             -- the last status of the service
-    "force_check"               CHAR(1) DEFAULT '0'                 -- force the next check of the service
+    "force_check"               CHAR(1) DEFAULT '0',                -- force the next check of the service
+    "force_event"               CHAR(1) DEFAULT '0'                 -- force to store a event
 );
 
 CREATE INDEX "service_id_index" ON "service" ("id");

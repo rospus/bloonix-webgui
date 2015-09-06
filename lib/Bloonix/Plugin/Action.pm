@@ -61,8 +61,6 @@ sub store {
         }
     }
 
-$c->log->dump(notice => $form->data);
-
     my $result = $object
         ? $c->model->database->$schema->update_unique($object->{id} => $form->data)
         : $c->model->database->$schema->create_unique($form->data);

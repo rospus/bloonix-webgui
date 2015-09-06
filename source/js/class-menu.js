@@ -101,6 +101,11 @@ SimpleMenu.prototype.create = function() {
 SimpleMenu.prototype.add = function(item) {
     var self = this;
 
+    if (item.container === undefined) {
+        item.container = Utils.create("div")
+            .appendTo(this.appendTo);
+    }
+
     if (Utils.objectSize(this.boxes) > 0) {
         Utils.create("span")
             .addClass(this.separatorClass)
@@ -114,12 +119,16 @@ SimpleMenu.prototype.add = function(item) {
         .appendTo(this.container)
         .click(function() { self.switchItem(item.value) });
 
-    if (item.show == true) {
+    if (item.show === true || item.init === true) {
         item.container.show();
         this.active = item.value;
+        this.activeBox = item.container;
         link.addClass(this.activeClass);
         if (this.store) {
             this.store.to[this.store.as] = item.value;
+        }
+        if (item.init === true) {
+            this.callback(this, item.value);
         }
     } else {
         item.container.hide();
@@ -138,10 +147,11 @@ SimpleMenu.prototype.switchItem = SimpleMenu.prototype.switchTo = function(value
     this.links[value].addClass(this.activeClass);
     this.boxes[value].show(200);
     this.active = value;
+    this.activeBox = this.boxes[value];
     if (this.store) {
         this.store.to[this.store.as] = value;
     }
     if (this.callback) {
-        this.callback(value);
+        this.callback(this, value);
     }
 };

@@ -915,7 +915,7 @@ Bloonix.dashboard = function(o) {
             appendTo: help
         }).init();
 
-        $.each([ "hostname", "ipaddr", "status", "sysgroup", "location", "coordinates", "device_class" ], function(i, key) {
+        $.each([ "hostname", "ipaddr", "status", "sysgroup", "location", "coordinates", "host_class" ], function(i, key) {
             table.createSimpleRow([
                 key,
                 Text.get("schema.host.desc."+ key)

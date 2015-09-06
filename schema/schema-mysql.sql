@@ -175,7 +175,9 @@ CREATE TABLE `host` (
     `facts`                 TEXT NOT NULL, -- DEFAULT '{}'
     `sysgroup`              VARCHAR(50) NOT NULL DEFAULT '',
     `sysinfo`               VARCHAR(200) NOT NULL DEFAULT '',
-    `device_class`          VARCHAR(100) NOT NULL DEFAULT '/Server',
+    `host_class`            VARCHAR(100) NOT NULL DEFAULT '',
+    `system_class`          VARCHAR(100) NOT NULL DEFAULT '',
+    `location_class`        VARCHAR(100) NOT NULL DEFAULT '',
     `hw_manufacturer`       VARCHAR(50) NOT NULL DEFAULT '',
     `hw_product`            VARCHAR(50) NOT NULL DEFAULT '',
     `os_manufacturer`       VARCHAR(50) NOT NULL DEFAULT '',
@@ -432,6 +434,7 @@ CREATE TABLE `service` (
     `updated`                   CHAR(1) DEFAULT '0',                -- used for software updates
     `last_status`               VARCHAR(10) DEFAULT 'INFO',         -- the last status of the service
     `force_check`               CHAR(1) DEFAULT '0',                -- force the next check of the service
+    `force_event`               CHAR(1) DEFAULT '0',                -- force to store a event
     FOREIGN KEY (`host_id`) REFERENCES `host`(`id`) ON DELETE CASCADE,
     FOREIGN KEY (`service_parameter_id`) REFERENCES `service_parameter`(`ref_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB;

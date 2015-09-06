@@ -163,7 +163,7 @@ Bloonix.initEventList = function(o) {
     });
 
     new Menu({
-        title: "Filter by status",
+        title: Text.get("schema.event.text.filter_by_status"),
         content: statusFilterBox.getContainer(),
         hide: true,
         appendTo: searchBox
@@ -183,7 +183,7 @@ Bloonix.initEventList = function(o) {
     });
 
     new Menu({
-        title: "Filter by duration",
+        title: Text.get("schema.event.text.filter_by_duration"),
         content: durationFilterBox.getContainer(),
         hide: true,
         appendTo: searchBox
@@ -201,7 +201,7 @@ Bloonix.initEventList = function(o) {
     });
 
     new Menu({
-        title: "Filter messages by query",
+        title: Text.get("schema.event.text.filter_by_query"),
         content: [ messageBoxOuter, searchButton2 ],
         hide: true,
         appendTo: searchBox
@@ -224,7 +224,7 @@ Bloonix.initEventList = function(o) {
     });
 
     new Menu({
-        title: "Filter by services",
+        title: Text.get("schema.event.text.filter_by_service"),
         content: serviceFilterBox.getContainer(),
         hide: true,
         appendTo: searchBox

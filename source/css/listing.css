@@ -1,28 +1,28 @@
-.device-class-listing {
+.host-class-listing {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
-.device-class-listing li {
+.host-class-listing li {
     font-size: 12px;
     font-weight: normal;
     line-height: 12px;
     padding: 10px 0 0 20px;
 }
-.device-class-listing-hover {
+.host-class-listing-hover {
     cursor: pointer;
     margin-left: 4px;
 }
-.device-class-listing-hover:hover {
+.host-class-listing-hover:hover {
     text-decoration: underline;
 }
-.device-class-listing-link {
+.host-class-listing-link {
     display: block;
     font-size: 13px;
     margin: 30px 0 0 0;
     color: #009ac8;
     text-decoration: none;
 }
-.device-class-listing-link:hover {
+.host-class-listing-link:hover {
     text-decoration: underline;
 }

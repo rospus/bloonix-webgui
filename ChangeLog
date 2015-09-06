@@ -6,6 +6,8 @@ bloonix-webgui (0.66) released at 2015-XX-XX
     * A lightning icon will be displayed if a host or service was not
       OK within the last 60 minutes.
     * Fixed link and text of sysinfo.
+    * Renamed device_class to host_class.
+    * Implemented system_class and location_class.
 
 bloonix-webgui (0.65) released at 2015-09-01
 

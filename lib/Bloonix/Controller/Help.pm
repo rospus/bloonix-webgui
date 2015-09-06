@@ -21,7 +21,7 @@ sub new {
         "host-parameter",
         "host-variables",
         "host-templates",
-        "device-classes",
+        "host-classes",
         "add-new-service",
         "service-parameter",
         "host-alive-check",

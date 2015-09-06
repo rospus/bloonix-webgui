@@ -70,10 +70,18 @@ sub set {
             max_size => 200,
             optional => 1,
         },
-        device_class => {
+        host_class => {
             max_size => 100,
             regex => qr!^/.+!,
             default => "/Server"
+        },
+        system_class => {
+            max_size => 100,
+            regex => qr!^(|/.+)\z!
+        },
+        location_class => {
+            max_size => 100,
+            regex => qr!^(|/.+)\z!
         },
         hw_manufacturer => {
             max_size => 50,
@@ -266,7 +274,9 @@ sub by_user_id {
             g => "host.sysgroup", sysgroup => "host.sysgroup",
             l => "host.location", location => "host.location",
             c => "host.coordinates", coordinates => "host.coordinates",
-            d => "host.device_class", device_class => "host.device_class"
+            host_class => "host.host_class",
+            system_class => "host.system_class",
+            location_class => "host.location_class"
         },
         concat => [
             "host.id", "host.hostname", "host.ipaddr", "host.description",
@@ -963,7 +973,8 @@ sub system_categories {
     my %data;
 
     my @cols = qw(
-        sysgroup sysinfo device_class hw_manufacturer hw_product os_manufacturer
+        sysgroup sysinfo host_class system_class location_class
+        hw_manufacturer hw_product os_manufacturer
         os_product virt_manufacturer virt_product location
     );
 
@@ -986,11 +997,11 @@ sub system_categories {
         }
     }
 
-    my %device_classes = map { $_ => 0 } (
-        @{$data{device_class}}, "/Server", "/vServer", "/Printer", "/Network", "/Database", "/Power"
+    my %host_classes = map { $_ => 0 } (
+        @{$data{host_class}}, "/Server", "/vServer", "/Printer", "/Network", "/Database", "/Power"
     );
 
-    $data{device_class} = [ keys %device_classes ];
+    $data{host_class} = [ keys %host_classes ];
 
     return \%data;
 }
@@ -1049,13 +1060,14 @@ sub get_template_groups {
     };
 }
 
-sub group_by_device_class {
-    my ($self, $user_id) = @_;
+sub group_by_host_class {
+    my ($self, $user_id, $class) = @_;
+    my $column = "${class}_class";
 
     my ($stmt, @bind) = $self->sql->select(
         table => "host",
         column => [
-            "device_class", "status",
+            "$column as class", "status",
             { function => "count", column => "id", "alias" => "count" }
         ],
         condition => [
@@ -1089,7 +1101,7 @@ sub group_by_device_class {
                 }
             }
         ],
-        group_by => [ "device_class", "status" ]
+        group_by => [ "class", "status" ]
     );
 
     return $self->dbi->fetch($stmt, @bind);

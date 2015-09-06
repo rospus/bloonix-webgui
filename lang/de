@@ -395,7 +395,7 @@ site.help.doc.how-does-bloonix-checks-your-hosts-and-services: Wie überwacht Bl
 site.help.doc.add-new-host: Einen neuen Host anlegen
 site.help.doc.host-parameter: Host Parameter im Detail
 site.help.doc.host-variables: Host Variablen
-site.help.doc.device-classes: Bauklasse von Hosts
+site.help.doc.host-classes: Bauklasse von Hosts
 site.help.doc.add-new-service: Einen neuen Service anlegen
 site.help.doc.service-parameter: Service Parameter im Detail
 site.help.doc.host-alive-check: Was ist ein Host-Alive-Check?
@@ -574,7 +574,9 @@ schema.host.attr.ipaddr: IP-Adresse
 schema.host.attr.comment: Kommentar
 schema.host.attr.sysgroup: Systemgruppe
 schema.host.attr.sysinfo: System Informationen
-schema.host.attr.device_class: Bauklasse
+schema.host.attr.host_class: Hostklasse
+schema.host.attr.system_class: Systemklasse
+schema.host.attr.location_class: Standortklasse
 schema.host.attr.hw_manufacturer: HW Hersteller
 schema.host.attr.hw_product: HW Produkt
 schema.host.attr.os_manufacturer: OS Hersteller
@@ -605,7 +607,9 @@ schema.host.desc.ipaddr: Das ist die Haupt-IP-Adresse des Hosts.
 schema.host.desc.comment: Dieses Feld kann für Kommentare verwendet werden.
 schema.host.desc.sysgroup: Dies ist ein Feld das zur freien Verwendung steht.
 schema.host.desc.sysinfo: Hier können Sie einen externen Link zu Ihrer Host-Dokumentation eintragen, zum Beispiel:<br/><br/>Linktext=https://mysite.test/?id=12345.<br/><br/>Nicht erlaubte Zeichen: "\
-schema.host.desc.device_class: z.B.<br/>/Server/Linux/Debian<br/>/Server/Windows/Windows 2008<br/>/Network/Router<br/>/Network/Switch<br/>/Printer
+schema.host.desc.host_class: z.B.<br/>/Server/Linux/Debian<br/>/Server/Windows/Windows 2008<br/>/Network/Router<br/>/Network/Switch<br/>/Printer
+schema.host.desc.system_class: Siehe Parameter Hostklasss.
+schema.host.desc.location_class: Siehe Parameter Hostklasse.
 schema.host.desc.hw_manufacturer: z.B. IBM, HP, Dell, Fujitsu Siemens
 schema.host.desc.hw_product: z.B. Dell Power Edge 2950
 schema.host.desc.os_manufacturer: z.B. Red Hat, Microsoft, CISCO
@@ -629,8 +633,8 @@ schema.host.text.view: Host %s
 schema.host.text.create: Einen neuen Host erstellen
 schema.host.text.delete: Den Host löschen
 schema.host.text.settings: Einstellungen des Hosts
-schema.host.text.list_device_classes: Device Klassen
-schema.host.text.device_class_help_link: Lesen Sie wie dieses Feature funktioniert
+schema.host.text.list_host_classes: Hostklassen
+schema.host.text.host_class_help_link: Lesen Sie wie dieses Feature funktioniert
 schema.host.text.multiple_selection_help: <h4>Diese Aktion erfordert, dass mindestens ein Host ausgewählt ist.</h4>
  Um einen einzelnen Host zu markieren, klicken Sie auf die entsprechende Zeile.
  Wenn Sie mehrere Hosts markieren möchten, halten Sie einfach die Taste <i>STRG</i>
@@ -663,6 +667,9 @@ schema.host.info.notification_disabled: Benachrichtigungen sind für diesen Host
 schema.host.info.notification_disabled_short: Benachrichtigungen ausgeschaltet
 schema.host.info.inactive: Der Host ist deaktiviert.
 schema.host.info.sysinfo: Externe Informationen sind verfügbar.
+schema.host.menu.host_class: Host
+schema.host.menu.system_class: System
+schema.host.menu.location_class: Standort
 
 schema.timeperiod.attr.id: Zeitplan ID
 schema.timeperiod.attr.name: Zeitplan
@@ -876,6 +883,10 @@ schema.event.attr.tags: Hinweise
 schema.event.text.list: Ereignisse von Host %s
 schema.event.text.filter_message: Nachrichtenfilter
 schema.event.text.host_service: Host / Service
+schema.event.text.filter_by_status: Nach Status filtern
+schema.event.text.filter_by_duration: Nach Dauer filtern
+schema.event.text.filter_by_query: Nach Abfrage filtern
+schema.event.text.filter_by_service: Nach Services filtern
 
 schema.service.attr.id: Service ID
 schema.service.attr.ref_id: ID

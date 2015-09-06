@@ -910,6 +910,7 @@ var Lang = {
       "schema.host.attr.status" : "Status",
       "schema.host.text.mtr_chart" : "MTR chart",
       "schema.service.text.sla_requirements" : "Please note that for free accounts only the default check is available!",
+      "site.help.doc.host-classes" : "Bauklasse von Hosts",
       "schema.timeslice.text.delete" : "Delete timeslice",
       "nav.sub.contactgroup_service_members" : "Services in contact group",
       "text.browsers_heap_size" : "Display of the heap size in your browser",
@@ -924,7 +925,7 @@ var Lang = {
       "site.wtrm.command.doAuth" : "Use auth basic with username <b>%s</b> and password <b>%s</b>",
       "schema.host.text.list_templates" : "Host %s has the following templates configured",
       "schema.host.text.multiple_downtimes" : "Schedule a downtime for multiple hosts",
-      "schema.host.desc.sysinfo" : "This field allows you to set an external link to you own host documentation, e.g.: Linktext=https://mysite.test/?id=12345.<br/><br/>Not allowed characters: \"\\",
+      "schema.host.desc.sysinfo" : "This field allows you to set an external link to you own host documentation, e.g.:<br/><br/>Linktext=https://mysite.test/?id=12345.<br/><br/>Not allowed characters: \"\\",
       "schema.service.attr.passive_check" : "Is this a passive check?",
       "schema.chart.text.multiple_view" : "Chart view",
       "schema.plugin.attr.info" : "Information",
@@ -982,6 +983,7 @@ var Lang = {
       "schema.service.desc.is_volatile" : "With this option you can define if the check is <i>volatile</i>. Some checks has the peculiarity that they are only for a very short time in a CRITICAL status. As example if you check a logfile for specific strings, like <i>possible break-in attempt</i> and the check returns a CRITICAL status because the string were found, then it's possible that the next check does not find the string any more and would return the status OK. In this case maybe you would never notice that someone tried to break in. For this purpose you can define that the service is <i>volatile</i>. That means that the service stays in a CRITICAL or WARNING state until you clear the volatile status manually.",
       "err-630" : "Invalid parameter settings found!",
       "text.report.availability.h00" : "00:00 - 00:59",
+      "schema.host.attr.system_class" : "System class",
       "schema.company.desc.max_services_per_host" : "The maximum number of services that can be created for a host.",
       "action.configure" : "Configure",
       "text.report.availability.EV-GE300" : "Number of events with a status duration greater than 5 hours.",
@@ -1007,6 +1009,7 @@ var Lang = {
       "text.report.availability.h10" : "10:00 - 10:59",
       "action.action" : "Action",
       "schema.group.text.group_members" : "Members of group <b>%s</b>",
+      "schema.event.text.filter_by_duration" : "Filter by duration",
       "schema.timeperiod.attr.description" : "Description",
       "schema.chart.attr.refresh" : "Refresh",
       "text.dashboard.list_top_hosts" : "Overview of the top hosts",
@@ -1158,8 +1161,8 @@ var Lang = {
       "schema.company.attr.alt_company_id" : "Real company ID",
       "text.from_now_to_1h" : "From now + 1 hour",
       "err-815" : "Sorry, but you cannot create more than %s charts!",
-      "schema.host.attr.device_class" : "Device class",
       "schema.chart.text.service_charts" : "Service charts",
+      "schema.host.menu.host_class" : "Host",
       "schema.company.attr.max_services" : "Max services",
       "schema.timeperiod.examples" : "<p><b>Syntax: DAY-RANGE TIME-RANGE</b></p></br>\n<pre>\nDAY RANGE                       EXAMPLES\n------------------------------------------------------------\nWeekday                         Monday\nWeekday - Weekday               Monday - Friday\nMonth                           Januar\nMonth - Month                   Januar - July\nMonth Day                       Januar 1\nMonth Day - Month Day           Januar 1 - July 15\nYear                            2010\nYear - Year                     2010 - 2012\nYYYY-MM-DD                      2010-01-01\nYYYY-MM-DD - YYYY-MM-DD         2010-01-01 - 2012-06-15\n</pre></br>\n<pre>\nTIME RANGE                      EXAMPLES\n------------------------------------------------------------\nHH:MM - HH:MM                   09:00 - 17:00\nHH:MM - HH:MM, HH:MM - HH:MM    00:00 - 08:59, 17:01 - 23:59\n</pre></br>\n<p><b>Examples:</b></p></br>\n<pre>\nMonday - Friday     09:00 - 17:00\nMonday - Friday     00:00 - 08:59, 17:01 - 23:59\nSaturday - Sunday   00:00 - 23:59\n</pre></br>",
       "schema.host.attr.timeout" : "Timeout",
@@ -1190,6 +1193,7 @@ var Lang = {
       "schema.company.attr.max_downtimes_per_host" : "Max downtimes per host",
       "action.create" : "Create",
       "schema.host_template.desc.name" : "This is the name of the template.",
+      "schema.host.attr.host_class" : "Host class",
       "site.wtrm.placeholder.element" : "#element-id OR .class-name OR name",
       "schema.chart.text.view" : "Charts for host <b>%s</b>",
       "schema.chart.text.multiview" : "View multiple charts",
@@ -1264,6 +1268,7 @@ var Lang = {
       "schema.company.desc.data_retention" : "The retention in days of all data of hosts and services. If a host has a higher data retention configured then the data retention of the company is used.",
       "schema.service.attr.scheduled" : "Has downtime",
       "schema.service.desc.timeout" : "This is the timeout of the service and begins to count after the interval. If the status of the service is not updated in this time then a critical status is set for the service with the information that it seems that the Bloonix agent is not working. If no value is set, then the timeout of the host is inherited.",
+      "schema.event.text.filter_by_query" : "Filter messages by query",
       "schema.contactgroup.text.selected_hosts" : "Selected hosts",
       "err-633" : "The parameter sort_by must begin with a character of a-z and only characters from a-z, 0-9 and a underscore are allowed. The maximum length is 63 characters.",
       "err-825" : "Sorry, but you cannot create more than %s host templates!",
@@ -1313,8 +1318,8 @@ var Lang = {
       "schema.host_template.text.create" : "Create a new template",
       "site.help.doc.scheduled-downtimes" : "Geplante Wartungsarbeiten einrichten",
       "action.display_from_to_rows" : "Displaying <b>%s</b>-<b>%s</b> of <b>%s</b> hits",
-      "site.wtrm.placeholder.ms" : "5000",
       "schema.contactgroup.attr.description" : "Description",
+      "site.wtrm.placeholder.ms" : "5000",
       "word.inactive" : "inactive",
       "schema.company.attr.max_dashboards_per_user" : "Max dashboards per user",
       "schema.user.text.select_language" : "Select your preferred language",
@@ -1487,6 +1492,7 @@ var Lang = {
       "schema.plugin.attr.command" : "Command",
       "text.report.availability.LT300" : "Filter events with a status duration less than 5 hours.",
       "word.second" : "second",
+      "schema.host.menu.location_class" : "Location",
       "schema.hs_downtime.attr.description" : "Description",
       "schema.service.text.host_alive_check" : "Host-Alive-Check",
       "site.wtrm.desc.parent" : "It's possible to set a parent ID. The ID, class or name is searched within the element of the parent ID.",
@@ -1533,6 +1539,7 @@ var Lang = {
       "site.help.doc.user-charts" : "Eigene Charts erstellen",
       "text.second_failover_checkpoint" : "Second failover checkpoint",
       "text.dashboard.services_availability" : "Availability of all services",
+      "schema.event.text.filter_by_service" : "Filter by services",
       "schema.company.attr.max_dashlets_per_dashboard" : "Max dashlets per dashboard",
       "schema.host.desc.description" : "This is a short description of the host.",
       "schema.service.text.multiple_activate" : "Activate or deactivate multiple services",
@@ -1557,6 +1564,7 @@ var Lang = {
       "schema.user.text.create" : "Create a new user",
       "site.wtrm.command.checkIfElementHasText" : "Check if the element <b>%s</b> contains <b>%s</b>",
       "schema.chart.text.chart_id" : "Chart-ID: %s",
+      "schema.host.menu.system_class" : "System",
       "schema.chart.text.save_view" : "Save view",
       "text.min_value" : "Min value: <b>%s</b>",
       "text.report.availability.h20" : "20:00 - 20:59",
@@ -1580,6 +1588,7 @@ var Lang = {
       "schema.user.attr.username" : "Username",
       "schema.chart.attr.options" : "Chart options",
       "schema.company.desc.max_sms" : "The maximum number of SMS that can be sent per month. Set 0 (null) if unlimited.",
+      "schema.host.desc.system_class" : "See parameter host class.",
       "site.wtrm.command.doClick" : "Click on element <b>%s</b>",
       "err-836" : "Sorry, but you cannot create more than %s contact groups!",
       "schema.service.desc.agent_tooltip" : "<h3>Installation of the Bloonix-Agent</h3>\n<p>\nThis check is executed on your server and requires that you install the Bloonix-Agent\nand the plugin on your server.\n</p>",
@@ -1660,6 +1669,7 @@ var Lang = {
       "schema.dependency.text.host_to_service" : "host to service",
       "text.from_now_to_14d" : "From now + 14 days",
       "text.report.availability.EV-LT60" : "Number of events with a status duration less than 60 minutes.",
+      "schema.host.text.host_class_help_link" : "Read how this feature works",
       "schema.service.text.services" : "Services",
       "text.report.availability.LT180" : "Filter events with a status duration less than 3 hours.",
       "text.report.title.number_of_events_by_tags" : "Number of events by tags",
@@ -1678,7 +1688,6 @@ var Lang = {
       "site.wtrm.desc.event" : "Trigger an event.",
       "schema.roster.attr.description" : "Description",
       "nav.sub.host_group_settings" : "Host group settings",
-      "schema.host.desc.device_class" : "e.g.<br/>/Server/Linux/Debian<br/>/Server/Windows/Windows 2008<br/>/Network/Router<br/>/Network/Switch<br/>/Printer",
       "action.extsearch" : "Extended search",
       "schema.company.attr.max_services_per_host" : "Max services per host",
       "site.wtrm.action.checkIfElementExists" : "Check if an <b>element exists</b>",
@@ -1688,6 +1697,7 @@ var Lang = {
       "schema.hs_downtime.attr.begin_time" : "Begin time",
       "err-831" : "Sorry, but you cannot create more than %s hosts!",
       "schema.service.desc.agent_options.timeout" : "This is the global execution timeout of the check itself. After the timeout the check is killed and a CRITICAL status is triggered. This is very useful for checks that hangs and are unable to stop itself.<br/><br/>Default: 30 seconds",
+      "schema.host.text.list_host_classes" : "Host classes",
       "schema.service.text.create" : "Create a new service",
       "site.wtrm.attr.password" : "Password",
       "site.wtrm.attr.text" : "Inner text",
@@ -1727,6 +1737,7 @@ var Lang = {
       "nav.sub.rosters" : "Rosters",
       "schema.service_downtime.text.title" : "Scheduled service downtimes for host %s",
       "schema.event.attr.duration" : "Duration",
+      "schema.host.desc.location_class" : "See parameter host class.",
       "schema.contact.text.settings" : "Contact settings",
       "schema.chart.attr.to" : "To",
       "schema.group.text.list" : "Overview of all groups",
@@ -1742,8 +1753,8 @@ var Lang = {
       "schema.chart.text.selected" : "selected",
       "schema.user_chart.text.delete" : "Delete chart",
       "site.login.follow" : "Follow Bloonix",
-      "schema.company.desc.max_contactgroups" : "The maximum number of contactgroups that can be created.",
       "site.wtrm.attr.username" : "Username",
+      "schema.company.desc.max_contactgroups" : "The maximum number of contactgroups that can be created.",
       "text.report.availability.h19" : "19:00 - 19:59",
       "schema.company.attr.address2" : "Address 2",
       "text.report.availability.EV-I" : "Number of events with status INFO.",
@@ -1816,15 +1827,14 @@ var Lang = {
       "site.wtrm.text.wtrm_workflow" : "Web Transaction Workflow",
       "text.report.availability.agent_dead" : "Agent dead",
       "schema.user_chart.text.create" : "Create a chart",
-      "schema.host.text.device_class_help_link" : "Read how this feature works",
       "schema.user.text.session_expires" : "Session expires",
       "schema.notification.text.search" : "Search for notifications",
-      "text.dashboard.top_hosts_events" : "Top events of all hosts",
       "text.report.availability.h22" : "22:00 - 22:59",
+      "text.dashboard.top_hosts_events" : "Top events of all hosts",
       "nav.sub.reports" : "Reports",
       "site.wtrm.command.doSwitchToNewPage" : "Switch to new created page",
-      "schema.chart.text.selected_max_reached" : "(max) selected",
       "schema.service.text.settings" : "Settings of service <b>%s</b>",
+      "schema.chart.text.selected_max_reached" : "(max) selected",
       "site.wtrm.action.checkIfElementHasValue" : "Check the <b>value</b> of an <b>input</b> field or <b>textarea</b>",
       "schema.plugin.attr.description" : "Description",
       "schema.user_chart.text.title" : "User charts",
@@ -1843,7 +1853,6 @@ var Lang = {
       "schema.company.desc.max_services" : "The maximum number of services that can be created. Set 0 (null) if unlimited.",
       "text.report.availability.h02" : "02:00 - 02:59",
       "site.wtrm.attr.html" : "Inner HTML",
-      "schema.host.text.list_device_classes" : "Device classes",
       "schema.host_template.text.delete_service" : "Delete a service from the template",
       "word.hours" : "hours",
       "schema.contact_message_services.text.add" : "Add a message service to the contact",
@@ -1853,6 +1862,8 @@ var Lang = {
       "word.debug" : "Debug",
       "schema.service.desc.acknowledged" : "This option is useful if a service is not OK and if you want to disable the notifications temporary. The notifications will be enabled again if the services switched to the status OK.",
       "text.report.availability.LT15" : "Filter events with a status duration less than 15 minutes.",
+      "schema.event.text.filter_by_status" : "Filter by status",
+      "schema.host.attr.location_class" : "Location class",
       "nav.sub.mtr" : "MTR",
       "site.wtrm.desc.value" : "The value of the element you wish to fill or check.",
       "schema.company.attr.max_charts_per_user" : "Max charts per user",
@@ -1860,7 +1871,6 @@ var Lang = {
       "schema.user_chart.text.update" : "Update a chart",
       "schema.roster.text.list" : "Overview of all rosters",
       "schema.service.text.view_wtrm_report" : "View web transaction report",
-      "site.help.doc.device-classes" : "Bauklasse von Hosts",
       "schema.service.attr.comment" : "Comment",
       "schema.contact_message_services.desc.message_service" : "The message service.",
       "text.dashboard.hosts_availability" : "Availability of all hosts",
@@ -1886,6 +1896,7 @@ var Lang = {
       "schema.user.text.delete" : "Delete user",
       "schema.service.attr.notification" : "Notifications enabled",
       "schema.service.desc.failover_check_type_title" : "Failover checkpoints",
+      "schema.host.desc.host_class" : "e.g.<br/>/Server/Linux/Debian<br/>/Server/Windows/Windows 2008<br/>/Network/Router<br/>/Network/Switch<br/>/Printer",
       "text.undefined" : "Undefined",
       "word.Days" : "Days",
       "schema.service.desc.active" : "This option activates or de-activates the service check.",
@@ -2002,6 +2013,7 @@ var Lang = {
       "schema.host.attr.status" : "Status",
       "schema.host.text.mtr_chart" : "MTR Chart",
       "schema.service.text.sla_requirements" : "Bitte beachten Sie das für freie Accounts nur der Standardcheck zur Verfügung steht!",
+      "site.help.doc.host-classes" : "Bauklasse von Hosts",
       "schema.timeslice.text.delete" : "Den Zeitabschnitt löschen",
       "nav.sub.contactgroup_service_members" : "Services in der Kontaktgruppe",
       "text.browsers_heap_size" : "Anzeige der Auslastung der Heap-size in Ihrem Browser",
@@ -2016,7 +2028,7 @@ var Lang = {
       "site.wtrm.command.doAuth" : "Use auth basic with username <b>%s</b> and password <b>%s</b>",
       "schema.host.text.list_templates" : "Host %s hat folgende Templates konfiguriert",
       "schema.host.text.multiple_downtimes" : "Eine geplante Wartungsarbeit für mehrere Hosts einrichten",
-      "schema.host.desc.sysinfo" : "Hier können Sie einen externen Link zu Ihrer Host-Dokumentation eintragen, zum Beispiel: Linktext=https://mysite.test/?id=12345.<br/><br/>Nicht erlaubte Zeichen: \"\\",
+      "schema.host.desc.sysinfo" : "Hier können Sie einen externen Link zu Ihrer Host-Dokumentation eintragen, zum Beispiel:<br/><br/>Linktext=https://mysite.test/?id=12345.<br/><br/>Nicht erlaubte Zeichen: \"\\",
       "schema.service.attr.passive_check" : "Ist dies ein passiver Check?",
       "schema.chart.text.multiple_view" : "Chart Ansicht",
       "schema.plugin.attr.info" : "Information",
@@ -2074,6 +2086,7 @@ var Lang = {
       "schema.service.desc.is_volatile" : "Mit dieser Option können Sie bestimmen, ob es sich bei diesem Service um einen flüchten Services handelt. Einige Services haben die Besonderheit, dass Sie nur für einen sehr kurzen Zeitraum kritisch sind. Dies können zum Beispiel Logdateien-Checks sein, in denen nach dem Vorhandensein bestimmter Strings gesucht wird, zum Beispiel Strings wie <i>possible break-in attempt</i>. Wenn beim nächsten Logdateien Check dieser String nicht mehr vorhanden ist, würde der Service wieder in den OK Status wechseln und man würde den Einbruch-Versuch nicht bemerken. Ein Service, der dagegen als ein flüchtiger Service konfiguriert ist, bleibt solange in einem nicht-OK Status, bis der Status aufgehoben wurde.",
       "err-630" : "Ungültige Parametereinstellungen gefunden!",
       "text.report.availability.h00" : "00:00 - 00:59",
+      "schema.host.attr.system_class" : "Systemklasse",
       "schema.company.desc.max_services_per_host" : "Die maximale Anzahl an sSrvices die pro Host erstellt werden dürfen.",
       "action.configure" : "Konfigurieren",
       "text.report.availability.EV-GE300" : "Anzahl von Ereignissen mit einer Statusdauer größer als 5 Stunden. ",
@@ -2099,6 +2112,7 @@ var Lang = {
       "text.report.availability.h10" : "10:00 - 10:59",
       "action.action" : "Aktion",
       "schema.group.text.group_members" : "Mitglieder der Gruppe %s",
+      "schema.event.text.filter_by_duration" : "Nach Dauer filtern",
       "schema.timeperiod.attr.description" : "Beschreibung",
       "schema.chart.attr.refresh" : "Aktualisierungsrate",
       "text.dashboard.list_top_hosts" : "Anzeigen der Top-Hosts",
@@ -2250,8 +2264,8 @@ var Lang = {
       "schema.company.attr.alt_company_id" : "Reale Firmen ID",
       "text.from_now_to_1h" : "Von jetzt + 1 Stunde",
       "err-815" : "Sorry, aber Sie dürfen nicht mehr als %s Charts erstellen!",
-      "schema.host.attr.device_class" : "Bauklasse",
       "schema.chart.text.service_charts" : "Service charts",
+      "schema.host.menu.host_class" : "Host",
       "schema.company.attr.max_services" : "Maximale Services",
       "schema.timeperiod.examples" : "<p><b>Syntax: TAG-BEREICH ZEIT-BEREICH</b></p></br>\n<pre>\nTAG BEREICH                     BEISPIELE\n------------------------------------------------------------\nWeekday                         Monday\nWeekday - Weekday               Monday - Friday\nMonth                           Januar\nMonth - Month                   Januar - July\nMonth Day                       Januar 1\nMonth Day - Month Day           Januar 1 - July 15\nYear                            2010\nYear - Year                     2010 - 2012\nYYYY-MM-DD                      2010-01-01\nYYYY-MM-DD - YYYY-MM-DD         2010-01-01 - 2012-06-15\n</pre></br>\n<pre>\nZEIT BEREICH                    BEISPIELE\n------------------------------------------------------------\nHH:MM - HH:MM                   09:00 - 17:00\nHH:MM - HH:MM, HH:MM - HH:MM    00:00 - 08:59, 17:01 - 23:59\n</pre></br>\n<p><b>Bespiele:</b></p></br>\n<pre>\nMonday - Friday     09:00 - 17:00\nMonday - Friday     00:00 - 08:59, 17:01 - 23:59\nSaturday - Sunday   00:00 - 23:59\n</pre></br>",
       "schema.host.attr.timeout" : "Timeout",
@@ -2282,6 +2296,7 @@ var Lang = {
       "schema.company.attr.max_downtimes_per_host" : "Maximale Downtimes pro Host",
       "action.create" : "Erstellen",
       "schema.host_template.desc.name" : "Dies ist der Name des Templates.",
+      "schema.host.attr.host_class" : "Hostklasse",
       "site.wtrm.placeholder.element" : "#element-id OR .class-name OR name",
       "schema.chart.text.view" : "Charts für Host %s",
       "schema.chart.text.multiview" : "Anzeige mehrerer Charts",
@@ -2356,6 +2371,7 @@ var Lang = {
       "schema.company.desc.data_retention" : "Die Aufbewahrungszeit in Tagen aller Daten von Hosts und der Services. Wenn ein Host eine höhere Aufbewahrungszeit konfiguriert hat, dann wird die Aufbewahrungszeit der Firma verwendet.",
       "schema.service.attr.scheduled" : "Hat eine Downtime",
       "schema.service.desc.timeout" : "Das ist der Timeout des Service. Der Timeoutzähler beginnt nach dem Intervall. Wenn in dieser Zeit der Status des Service nicht aktualisiert wurde, dann wird ein kritischer Status gesetzt mit der Information, dass der Bloonix-Agent wohlmöglich ausgefallen ist. Wenn kein Wert gesetzt ist, dann wird der Timeout des Hosts vererbt.",
+      "schema.event.text.filter_by_query" : "Nach Abfrage filtern",
       "schema.contactgroup.text.selected_hosts" : "Ausgewählte Hosts",
       "err-633" : "Der Parameter sort_by muss mit einem Zeichen von a-z beginnen und nur Zeichen von a-z, 0-9 und ein Unterstrich sind erlaubt. Die maximale Länge beträgt 63 Zeichen.",
       "err-825" : "Sorry, aber Sie dürfen nicht mehr als %s Host-Templates erstellen!",
@@ -2405,8 +2421,8 @@ var Lang = {
       "schema.host_template.text.create" : "Ein neues Template erstellen",
       "site.help.doc.scheduled-downtimes" : "Geplante Wartungsarbeiten einrichten",
       "action.display_from_to_rows" : "Anzeige %s-%s von %s Treffern",
-      "site.wtrm.placeholder.ms" : "5000",
       "schema.contactgroup.attr.description" : "Beschreibung",
+      "site.wtrm.placeholder.ms" : "5000",
       "word.inactive" : "inaktiv",
       "schema.company.attr.max_dashboards_per_user" : "Maximale Dashboards pro Benutzer",
       "schema.user.text.select_language" : "Wähle deine bevorzugte Sprache aus",
@@ -2578,6 +2594,7 @@ var Lang = {
       "schema.plugin.attr.command" : "Kommando",
       "text.report.availability.LT300" : "Filterung von Ereignissen mit einer Statusdauer kleiner als 5 Stunden.",
       "word.second" : "Sekunde",
+      "schema.host.menu.location_class" : "Standort",
       "schema.hs_downtime.attr.description" : "Beschreibung",
       "schema.service.text.host_alive_check" : "Host-Alive-Check",
       "site.wtrm.desc.parent" : "It's possible to set a parent ID. The ID, class or name is searched within the element of the parent ID.",
@@ -2624,6 +2641,7 @@ var Lang = {
       "site.help.doc.user-charts" : "Eigene Charts erstellen",
       "text.second_failover_checkpoint" : "Zweiter Ausfallmesspunkt",
       "text.dashboard.services_availability" : "Verfügbarkeit aller Services",
+      "schema.event.text.filter_by_service" : "Nach Services filtern",
       "schema.company.attr.max_dashlets_per_dashboard" : "Maximale Dashlets pro Dashboard",
       "schema.host.desc.description" : "Das ist eine kurze Beschreibung zum Host.",
       "schema.service.text.multiple_activate" : "Mehrere Services aktivieren oder deaktivieren",
@@ -2647,6 +2665,7 @@ var Lang = {
       "schema.user.text.create" : "Einen neuen Benutzer erstellen",
       "site.wtrm.command.checkIfElementHasText" : "Check if the element <b>%s</b> contains <b>%s</b>",
       "schema.chart.text.chart_id" : "Chart-ID: %s",
+      "schema.host.menu.system_class" : "System",
       "schema.chart.text.save_view" : "Ansicht speichern",
       "text.min_value" : "Mindestwert: %s",
       "text.report.availability.h20" : "20:00 - 20:59",
@@ -2670,6 +2689,7 @@ var Lang = {
       "schema.user.attr.username" : "Benutzername",
       "schema.chart.attr.options" : "Chart Optionen",
       "schema.company.desc.max_sms" : "Die maximale Anzahl SMS, die pro Monat versendet werden dürfen. Setze 0 (null) wenn es kein Limit gibt.",
+      "schema.host.desc.system_class" : "Siehe Parameter Hostklasss.",
       "site.wtrm.command.doClick" : "Click on element <b>%s</b>",
       "err-836" : "Sorry, aber Sie dürfen nicht mehr als %s Kontaktgruppen erstellen!",
       "schema.service.desc.agent_tooltip" : "<h3>Installation des Bloonix-Agenten</h3>\n<p>\nDieser Check wird direkt auf dem Server ausgeführt und erfordert die Installation des Bloonix-Agenten\nsowie das Plugin auf dem Server.\n</p>",
@@ -2750,6 +2770,7 @@ var Lang = {
       "schema.dependency.text.host_to_service" : "Host zu Service",
       "text.from_now_to_14d" : "Von jetzt + 14 Tage",
       "text.report.availability.EV-LT60" : "Anzahl von Ereignissen mit einer Statusdauer kleiner als 60 Minuten. ",
+      "schema.host.text.host_class_help_link" : "Lesen Sie wie dieses Feature funktioniert",
       "schema.service.text.services" : "Services",
       "text.report.availability.LT180" : "Filterung von Ereignissen mit einer Statusdauer kleiner als 3 Stunden.",
       "text.report.title.number_of_events_by_tags" : "Anzahl der Ereignisse nach Tags",
@@ -2768,7 +2789,6 @@ var Lang = {
       "site.wtrm.desc.event" : "Trigger an event.",
       "schema.roster.attr.description" : "Beschreibung",
       "nav.sub.host_group_settings" : "Gruppeneinstellungen für Hosts",
-      "schema.host.desc.device_class" : "z.B.<br/>/Server/Linux/Debian<br/>/Server/Windows/Windows 2008<br/>/Network/Router<br/>/Network/Switch<br/>/Printer",
       "action.extsearch" : "Erweiterte Suche",
       "schema.company.attr.max_services_per_host" : "Maximale Services pro Host",
       "site.wtrm.action.checkIfElementExists" : "Check if an <b>element exists</b>",
@@ -2778,6 +2798,7 @@ var Lang = {
       "schema.hs_downtime.attr.begin_time" : "Anfangszeit",
       "err-831" : "Sorry, aber Sie dürfen nicht mehr als %s Hosts erstellen!",
       "schema.service.desc.agent_options.timeout" : "Das ist der globale Timeout zur Ausführung des Checks. Nach dem Timeout wird der Check hart beendet und der Status des Servcice auf CRITICAL gesetzt. Dies kann sehr sinnvoll für Checks sein die hängen und sich selbst nicht mehr beenden können.<br/><br/>Standard: 30 Sekunden",
+      "schema.host.text.list_host_classes" : "Hostklassen",
       "schema.service.text.create" : "Einen neuen Service erstellen",
       "site.wtrm.attr.password" : "Password",
       "site.wtrm.attr.text" : "Inner text",
@@ -2817,6 +2838,7 @@ var Lang = {
       "nav.sub.rosters" : "Bereitschaftsplan",
       "schema.service_downtime.text.title" : "Geplante Service-Wartungsarbeiten für Host %s",
       "schema.event.attr.duration" : "Dauer",
+      "schema.host.desc.location_class" : "Siehe Parameter Hostklasse.",
       "schema.contact.text.settings" : "Einstellungen des Kontakts",
       "schema.chart.attr.to" : "Bis",
       "schema.group.text.list" : "Übersicht über alle Gruppen",
@@ -2832,8 +2854,8 @@ var Lang = {
       "schema.chart.text.selected" : "selektiert",
       "schema.user_chart.text.delete" : "Chart löschen",
       "site.login.follow" : "Folgen Sie Bloonix",
-      "schema.company.desc.max_contactgroups" : "Die maximale Anzahl an Kontaktgruppen die erstellt werden dürfen.",
       "site.wtrm.attr.username" : "Username",
+      "schema.company.desc.max_contactgroups" : "Die maximale Anzahl an Kontaktgruppen die erstellt werden dürfen.",
       "text.report.availability.h19" : "19:00 - 19:59",
       "schema.company.attr.address2" : "Adresse 2",
       "text.report.availability.EV-I" : "Anzahl von Ereignissen mit Status INFO. ",
@@ -2906,15 +2928,14 @@ var Lang = {
       "site.wtrm.text.wtrm_workflow" : "Web Transaction Workflow",
       "text.report.availability.agent_dead" : "Agent tot",
       "schema.user_chart.text.create" : "Einen Chart erstellen",
-      "schema.host.text.device_class_help_link" : "Lesen Sie wie dieses Feature funktioniert",
       "schema.user.text.session_expires" : "Session läuft ab",
       "schema.notification.text.search" : "Suche nach Nachrichten",
       "text.dashboard.top_hosts_events" : "Anzeige der Top-Events aller Hosts",
       "text.report.availability.h22" : "22:00 - 22:59",
       "nav.sub.reports" : "Berichte",
       "site.wtrm.command.doSwitchToNewPage" : "Switch to new created page",
-      "schema.chart.text.selected_max_reached" : "(max) selektiert",
       "schema.service.text.settings" : "Einstellung des Service %s",
+      "schema.chart.text.selected_max_reached" : "(max) selektiert",
       "site.wtrm.action.checkIfElementHasValue" : "Check the <b>value</b> of an <b>input</b> field or <b>textarea</b>",
       "schema.plugin.attr.description" : "Beschreibung",
       "schema.user_chart.text.title" : "Benutzer Charts",
@@ -2933,7 +2954,6 @@ var Lang = {
       "schema.company.desc.max_services" : "Die maximale Anzahl an Services die überwacht werden dürfen. Setze 0 (null) wenn es kein Limit gibt.",
       "text.report.availability.h02" : "02:00 - 02:59",
       "site.wtrm.attr.html" : "Inner HTML",
-      "schema.host.text.list_device_classes" : "Device Klassen",
       "schema.host_template.text.delete_service" : "Einen Service aus dem Template löschen",
       "word.hours" : "Stunden",
       "schema.contact_message_services.text.add" : "Einen Nachrichtendienst dem Kontakt hinzufügen",
@@ -2943,6 +2963,8 @@ var Lang = {
       "word.debug" : "Debug",
       "schema.service.desc.acknowledged" : "Diese Option ist hilfreich wenn ein Service nicht OK ist und Sie das Benachrichtiungen temporär ausschalten möchten. Die Benachrichtigungen werden automatisch wieder eingeschaltet, wenn der Service in den Status OK gewechselt ist.",
       "text.report.availability.LT15" : "Filterung von Ereignissen mit einer Statusdauer kleiner als 15 Minuten.",
+      "schema.event.text.filter_by_status" : "Nach Status filtern",
+      "schema.host.attr.location_class" : "Standortklasse",
       "nav.sub.mtr" : "MTR",
       "site.wtrm.desc.value" : "The value of the element you wish to fill or check.",
       "schema.company.attr.max_charts_per_user" : "Maximale Charts pro Benutzer",
@@ -2950,7 +2972,6 @@ var Lang = {
       "schema.user_chart.text.update" : "Einen Chart aktualisieren",
       "schema.roster.text.list" : "Übersicht über alle Bereitschaftspläne",
       "schema.service.text.view_wtrm_report" : "Web-Transaktionsreport einsehen",
-      "site.help.doc.device-classes" : "Bauklasse von Hosts",
       "schema.service.attr.comment" : "Kommentar",
       "schema.contact_message_services.desc.message_service" : "Der Nachrichtendienst.",
       "text.dashboard.hosts_availability" : "Verfügbarkeit aller Hosts",
@@ -2976,6 +2997,7 @@ var Lang = {
       "schema.user.text.delete" : "Den Benutzer löschen",
       "schema.service.attr.notification" : "Benachrichtigungen eingeschaltet",
       "schema.service.desc.failover_check_type_title" : "Failover Messpunkt",
+      "schema.host.desc.host_class" : "z.B.<br/>/Server/Linux/Debian<br/>/Server/Windows/Windows 2008<br/>/Network/Router<br/>/Network/Switch<br/>/Printer",
       "text.undefined" : "Nicht definiert",
       "word.Days" : "Tage",
       "schema.service.desc.active" : "Diese Option aktiviert oder deaktiviert den Service.",
@@ -8367,6 +8389,11 @@ SimpleMenu.prototype.create = function() {
 SimpleMenu.prototype.add = function(item) {
     var self = this;
 
+    if (item.container === undefined) {
+        item.container = Utils.create("div")
+            .appendTo(this.appendTo);
+    }
+
     if (Utils.objectSize(this.boxes) > 0) {
         Utils.create("span")
             .addClass(this.separatorClass)
@@ -8380,12 +8407,16 @@ SimpleMenu.prototype.add = function(item) {
         .appendTo(this.container)
         .click(function() { self.switchItem(item.value) });
 
-    if (item.show == true) {
+    if (item.show === true || item.init === true) {
         item.container.show();
         this.active = item.value;
+        this.activeBox = item.container;
         link.addClass(this.activeClass);
         if (this.store) {
             this.store.to[this.store.as] = item.value;
+        }
+        if (item.init === true) {
+            this.callback(this, item.value);
         }
     } else {
         item.container.hide();
@@ -8404,11 +8435,12 @@ SimpleMenu.prototype.switchItem = SimpleMenu.prototype.switchTo = function(value
     this.links[value].addClass(this.activeClass);
     this.boxes[value].show(200);
     this.active = value;
+    this.activeBox = this.boxes[value];
     if (this.store) {
         this.store.to[this.store.as] = value;
     }
     if (this.callback) {
-        this.callback(value);
+        this.callback(this, value);
     }
 };
 var Pager = function(o) {
@@ -12208,7 +12240,7 @@ Bloonix.dashboard = function(o) {
             appendTo: help
         }).init();
 
-        $.each([ "hostname", "ipaddr", "status", "sysgroup", "location", "coordinates", "device_class" ], function(i, key) {
+        $.each([ "hostname", "ipaddr", "status", "sysgroup", "location", "coordinates", "host_class" ], function(i, key) {
             table.createSimpleRow([
                 key,
                 Text.get("schema.host.desc."+ key)
@@ -13174,7 +13206,9 @@ Bloonix.listHosts = function(o) {
                     e.name === "comment" ||
                     e.name === "sysinfo" ||
                     e.name === "sysgroup" ||
-                    e.name === "device_class" ||
+                    e.name === "host_class" ||
+                    e.name === "system_class" ||
+                    e.name === "location_class" ||
                     e.name === "hw_manufacturer" ||
                     e.name === "hw_product" ||
                     e.name === "os_manufacturer" ||
@@ -13223,7 +13257,7 @@ Bloonix.listHosts = function(o) {
 
     object.create = function() {
         this.createBoxes();
-        this.listDeviceClasses();
+        this.listClasses();
         this.listHosts();
     };
 
@@ -13240,28 +13274,51 @@ Bloonix.listHosts = function(o) {
         });
     };
 
-    object.listDeviceClasses = function() {
+    object.listClasses = function() {
         var self = this;
 
-        Bloonix.replaceWithLoading(this.boxes.left);
+        var getClasses = function(menu, classType) {
+            Bloonix.replaceWithLoading(menu.activeBox);
 
-        Ajax.post({
-            url: "/hosts/devices",
-            success: function(result) {
-                self.deviceClasses = result.data;
-                Bloonix.removeLoading(self.boxes.left);
+            Ajax.post({
+                url: "/hosts/classes/" + classType,
+                success: function(result) {
+                    Bloonix.removeLoading(menu.activeBox);
 
-                var ul = Utils.create("ul")
-                    .addClass("device-class-listing")
-                    .appendTo(self.boxes.left);
+                    var ul = Utils.create("ul")
+                        .addClass("host-class-listing")
+                        .appendTo(menu.activeBox);
 
-                self.listDeviceStructure(ul, self.deviceClasses, "", false);
-            }
+                    self.listClassStructure(classType, ul, result.data, "", false);
+                }
+            });
+        };
+
+        this.menu = new SimpleMenu({
+            appendTo: this.boxes.left,
+            callback: getClasses
+        }).create();
+
+        this.menu.add({
+            text: Text.get("schema.host.menu.host_class"),
+            value: "host",
+            init: true,
+        });
+
+        this.menu.add({
+            text: Text.get("schema.host.menu.system_class"),
+            value: "system"
+        });
+
+        this.menu.add({
+            text: Text.get("schema.host.menu.location_class"),
+            value: "location"
         });
     };
 
-    object.listDeviceStructure = function(ul, data, path, hide) {
+    object.listClassStructure = function(classType, ul, data, path, hide) {
         var self = this;
+        // FOO
 
         $.each(Bloonix.sortObject(data), function(i, className) {
             var obj = data[className],
@@ -13305,24 +13362,24 @@ Bloonix.listHosts = function(o) {
 
             var span = Utils.create("span")
                 .attr("data-path", currentPath)
-                .addClass("device-class-listing-hover")
-                .addClass("device-class-path")
+                .addClass("host-class-listing-hover")
+                .addClass("host-class-path")
                 .text(className +" ("+ statusString +")")
                 .appendTo(li);
 
             span.click(function() {
                 var search = currentPath === ""
                     ? { search: currentPath }
-                    : { search: "d:"+ currentPath };
+                    : { search: classType +"_class:"+ currentPath };
 
                 self.table.getData(search);
             });
 
             if (currentPath === "") {
                 Utils.create("a")
-                    .attr("href", "#help/device-classes")
+                    .attr("href", "#help/host-classes")
                     .attr("target", "_blank")
-                    .attr("title", Text.get("schema.host.text.device_class_help_link"))
+                    .attr("title", Text.get("schema.host.text.host_class_help_link"))
                     .addClass("hicons-btn")
                     .css({ "margin-left": "15px" })
                     .html(Utils.create("span").addClass("hicons info-sign"))
@@ -13332,7 +13389,7 @@ Bloonix.listHosts = function(o) {
 
             if (Utils.objectSize(obj.classes)) {
                 var newUl = Utils.create("ul")
-                    .addClass("device-class-listing")
+                    .addClass("host-class-listing")
                     .appendTo(li);
 
                 if (hide === true) {
@@ -13346,14 +13403,14 @@ Bloonix.listHosts = function(o) {
                     } else {
                         self.hideItems[currentPath] = true;
                         newUl.find("ul").hide();
-                        newUl.find(".device-class-path").each(function() {
+                        newUl.find(".host-class-path").each(function() {
                             self.hideItems[ $(this).data("path") ] = true;
                         });
                         newUl.hide(200);
                     }
                 });
 
-                self.listDeviceStructure(newUl, obj.classes, currentPath, true);
+                self.listClassStructure(classType, newUl, obj.classes, currentPath, true);
             }
         });
     };
@@ -13444,7 +13501,7 @@ Bloonix.listHosts = function(o) {
                 value: this.postdata.query
             },
             reloadable: {
-                before: function() { self.listDeviceClasses() }
+                before: function() { self.listClasses() }
             },
             deletable: {
                 title: Text.get("schema.host.text.delete"),
@@ -13533,8 +13590,16 @@ Bloonix.listHosts = function(o) {
                     func: function(row) { return Bloonix.createSysInfoLink(row.sysinfo) },
                     hide: true
                 },{
-                    name: "device_class",
-                    text: Text.get("schema.host.attr.device_class")
+                    name: "host_class",
+                    text: Text.get("schema.host.attr.host_class")
+                },{
+                    name: "system_class",
+                    text: Text.get("schema.host.attr.system_class"),
+                    hide: true
+                },{
+                    name: "location_class",
+                    text: Text.get("schema.host.attr.location_class"),
+                    hide: true
                 },{
                     name: "hw_manufacturer",
                     text: Text.get("schema.host.attr.hw_manufacturer"),
@@ -13721,9 +13786,23 @@ Bloonix.getHostFormElements = function(o) {
         },{
             element: "input",
             type: "text",
-            name: "device_class",
-            text: Text.get("schema.host.attr.device_class"),
-            desc: Text.get("schema.host.desc.device_class"),
+            name: "host_class",
+            text: Text.get("schema.host.attr.host_class"),
+            desc: Text.get("schema.host.desc.host_class"),
+            maxlength: 100
+        },{
+            element: "input",
+            type: "text",
+            name: "system_class",
+            text: Text.get("schema.host.attr.system_class"),
+            desc: Text.get("schema.host.desc.system_class"),
+            maxlength: 100
+        },{
+            element: "input",
+            type: "text",
+            name: "location_class",
+            text: Text.get("schema.host.attr.location_class"),
+            desc: Text.get("schema.host.desc.location_class"),
             maxlength: 100
         },{
             element: "input",
@@ -14597,7 +14676,7 @@ Bloonix.initEventList = function(o) {
     });
 
     new Menu({
-        title: "Filter by status",
+        title: Text.get("schema.event.text.filter_by_status"),
         content: statusFilterBox.getContainer(),
         hide: true,
         appendTo: searchBox
@@ -14617,7 +14696,7 @@ Bloonix.initEventList = function(o) {
     });
 
     new Menu({
-        title: "Filter by duration",
+        title: Text.get("schema.event.text.filter_by_duration"),
         content: durationFilterBox.getContainer(),
         hide: true,
         appendTo: searchBox
@@ -14635,7 +14714,7 @@ Bloonix.initEventList = function(o) {
     });
 
     new Menu({
-        title: "Filter messages by query",
+        title: Text.get("schema.event.text.filter_by_query"),
         content: [ messageBoxOuter, searchButton2 ],
         hide: true,
         appendTo: searchBox
@@ -14658,7 +14737,7 @@ Bloonix.initEventList = function(o) {
     });
 
     new Menu({
-        title: "Filter by services",
+        title: Text.get("schema.event.text.filter_by_service"),
         content: serviceFilterBox.getContainer(),
         hide: true,
         appendTo: searchBox
@@ -18087,7 +18166,7 @@ Bloonix.viewHost = function(host) {
     $.each([
         "id", "company", "hostname", "ipaddr", "description", "comment", "status", "last_check",
         "active", "notification", "interval", "timeout", "max_sms", "max_services", "allow_from",
-        "location", "sysgroup", "sysinfo", "device_class", "hw_manufacturer", "hw_product",
+        "location", "sysgroup", "sysinfo", "host_class", "hw_manufacturer", "hw_product",
         "os_manufacturer", "os_product", "virt_manufacturer", "virt_product"
     ], function(index, item) {
         if (host[item] == "") {

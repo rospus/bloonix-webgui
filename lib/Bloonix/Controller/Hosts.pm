@@ -10,7 +10,7 @@ sub startup {
     $c->route->map("/hosts/search")->to("search");
     $c->route->map("/hosts/top")->to("top");
     $c->route->map("/hosts/cats")->to("cats");
-    $c->route->map("/hosts/devices")->to("devices");
+    $c->route->map("/hosts/classes/:class(host|system|location)")->to("classes");
     $c->route->map("/hosts/stats/status")->to("stats_status");
     $c->route->map("/hosts/stats/country")->to("stats_country");
     $c->route->map("/hosts/:id")->to("view");
@@ -78,10 +78,12 @@ sub services {
     $c->view->render->json;
 }
 
-sub devices {
-    my ($self, $c) = @_;
+sub classes {
+    my ($self, $c, $opts) = @_;
 
-    my $devices = $c->model->database->host->group_by_device_class($c->user->{id});
+    my $classes = $c->model->database->host->group_by_host_class(
+        $c->user->{id}, $opts->{class}
+    );
 
     my $grouped = {
         All => {
@@ -92,11 +94,21 @@ sub devices {
     };
 
     # Default classes
-    foreach my $class ("/Server", "/vServer", "/Printer", "/Network", "/Database", "/Power") {
-        push @$devices, { count => 0, device_class => $class };
+    my @default_classes;
+
+    if ($opts->{class} eq "host") {
+        @default_classes = ("/Server", "/vServer", "/Printer", "/Network", "/Database", "/Power");
+    } elsif ($opts->{class} eq "system") {
+        #@default_classes = ("/Linux", "/Windows");
+    } elsif ($opts->{class} eq "location") {
+        @default_classes = ("/AF", "/AN", "/AS", "/EU", "/NA", "/OC", "/SA");
     }
 
-    foreach my $row (@$devices) {
+    foreach my $class (@default_classes) {
+        push @$classes, { count => 0, class => $class };
+    }
+
+    foreach my $row (@$classes) {
         $grouped->{All}->{total} += $row->{count};
 
         if ($row->{status}) {
@@ -104,9 +116,9 @@ sub devices {
         }
 
         my $classes = $grouped->{All}->{classes};
-        $row->{device_class} =~ s!^/!!;
+        $row->{class} =~ s!^/!!;
 
-        foreach my $part (split m!/!, $row->{device_class}) {
+        foreach my $part (split m!/!, $row->{class}) {
             if (!exists $classes->{$part}) {
                 $classes->{$part} = {
                     total => 0,

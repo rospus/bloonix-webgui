@@ -105,7 +105,9 @@ Bloonix.listHosts = function(o) {
                     e.name === "comment" ||
                     e.name === "sysinfo" ||
                     e.name === "sysgroup" ||
-                    e.name === "device_class" ||
+                    e.name === "host_class" ||
+                    e.name === "system_class" ||
+                    e.name === "location_class" ||
                     e.name === "hw_manufacturer" ||
                     e.name === "hw_product" ||
                     e.name === "os_manufacturer" ||
@@ -154,7 +156,7 @@ Bloonix.listHosts = function(o) {
 
     object.create = function() {
         this.createBoxes();
-        this.listDeviceClasses();
+        this.listClasses();
         this.listHosts();
     };
 
@@ -171,28 +173,51 @@ Bloonix.listHosts = function(o) {
         });
     };
 
-    object.listDeviceClasses = function() {
+    object.listClasses = function() {
         var self = this;
 
-        Bloonix.replaceWithLoading(this.boxes.left);
+        var getClasses = function(menu, classType) {
+            Bloonix.replaceWithLoading(menu.activeBox);
 
-        Ajax.post({
-            url: "/hosts/devices",
-            success: function(result) {
-                self.deviceClasses = result.data;
-                Bloonix.removeLoading(self.boxes.left);
+            Ajax.post({
+                url: "/hosts/classes/" + classType,
+                success: function(result) {
+                    Bloonix.removeLoading(menu.activeBox);
 
-                var ul = Utils.create("ul")
-                    .addClass("device-class-listing")
-                    .appendTo(self.boxes.left);
+                    var ul = Utils.create("ul")
+                        .addClass("host-class-listing")
+                        .appendTo(menu.activeBox);
 
-                self.listDeviceStructure(ul, self.deviceClasses, "", false);
-            }
+                    self.listClassStructure(classType, ul, result.data, "", false);
+                }
+            });
+        };
+
+        this.menu = new SimpleMenu({
+            appendTo: this.boxes.left,
+            callback: getClasses
+        }).create();
+
+        this.menu.add({
+            text: Text.get("schema.host.menu.host_class"),
+            value: "host",
+            init: true,
+        });
+
+        this.menu.add({
+            text: Text.get("schema.host.menu.system_class"),
+            value: "system"
+        });
+
+        this.menu.add({
+            text: Text.get("schema.host.menu.location_class"),
+            value: "location"
         });
     };
 
-    object.listDeviceStructure = function(ul, data, path, hide) {
+    object.listClassStructure = function(classType, ul, data, path, hide) {
         var self = this;
+        // FOO
 
         $.each(Bloonix.sortObject(data), function(i, className) {
             var obj = data[className],
@@ -236,24 +261,24 @@ Bloonix.listHosts = function(o) {
 
             var span = Utils.create("span")
                 .attr("data-path", currentPath)
-                .addClass("device-class-listing-hover")
-                .addClass("device-class-path")
+                .addClass("host-class-listing-hover")
+                .addClass("host-class-path")
                 .text(className +" ("+ statusString +")")
                 .appendTo(li);
 
             span.click(function() {
                 var search = currentPath === ""
                     ? { search: currentPath }
-                    : { search: "d:"+ currentPath };
+                    : { search: classType +"_class:"+ currentPath };
 
                 self.table.getData(search);
             });
 
             if (currentPath === "") {
                 Utils.create("a")
-                    .attr("href", "#help/device-classes")
+                    .attr("href", "#help/host-classes")
                     .attr("target", "_blank")
-                    .attr("title", Text.get("schema.host.text.device_class_help_link"))
+                    .attr("title", Text.get("schema.host.text.host_class_help_link"))
                     .addClass("hicons-btn")
                     .css({ "margin-left": "15px" })
                     .html(Utils.create("span").addClass("hicons info-sign"))
@@ -263,7 +288,7 @@ Bloonix.listHosts = function(o) {
 
             if (Utils.objectSize(obj.classes)) {
                 var newUl = Utils.create("ul")
-                    .addClass("device-class-listing")
+                    .addClass("host-class-listing")
                     .appendTo(li);
 
                 if (hide === true) {
@@ -277,14 +302,14 @@ Bloonix.listHosts = function(o) {
                     } else {
                         self.hideItems[currentPath] = true;
                         newUl.find("ul").hide();
-                        newUl.find(".device-class-path").each(function() {
+                        newUl.find(".host-class-path").each(function() {
                             self.hideItems[ $(this).data("path") ] = true;
                         });
                         newUl.hide(200);
                     }
                 });
 
-                self.listDeviceStructure(newUl, obj.classes, currentPath, true);
+                self.listClassStructure(classType, newUl, obj.classes, currentPath, true);
             }
         });
     };
@@ -375,7 +400,7 @@ Bloonix.listHosts = function(o) {
                 value: this.postdata.query
             },
             reloadable: {
-                before: function() { self.listDeviceClasses() }
+                before: function() { self.listClasses() }
             },
             deletable: {
                 title: Text.get("schema.host.text.delete"),
@@ -464,8 +489,16 @@ Bloonix.listHosts = function(o) {
                     func: function(row) { return Bloonix.createSysInfoLink(row.sysinfo) },
                     hide: true
                 },{
-                    name: "device_class",
-                    text: Text.get("schema.host.attr.device_class")
+                    name: "host_class",
+                    text: Text.get("schema.host.attr.host_class")
+                },{
+                    name: "system_class",
+                    text: Text.get("schema.host.attr.system_class"),
+                    hide: true
+                },{
+                    name: "location_class",
+                    text: Text.get("schema.host.attr.location_class"),
+                    hide: true
                 },{
                     name: "hw_manufacturer",
                     text: Text.get("schema.host.attr.hw_manufacturer"),
@@ -652,9 +685,23 @@ Bloonix.getHostFormElements = function(o) {
         },{
             element: "input",
             type: "text",
-            name: "device_class",
-            text: Text.get("schema.host.attr.device_class"),
-            desc: Text.get("schema.host.desc.device_class"),
+            name: "host_class",
+            text: Text.get("schema.host.attr.host_class"),
+            desc: Text.get("schema.host.desc.host_class"),
+            maxlength: 100
+        },{
+            element: "input",
+            type: "text",
+            name: "system_class",
+            text: Text.get("schema.host.attr.system_class"),
+            desc: Text.get("schema.host.desc.system_class"),
+            maxlength: 100
+        },{
+            element: "input",
+            type: "text",
+            name: "location_class",
+            text: Text.get("schema.host.attr.location_class"),
+            desc: Text.get("schema.host.desc.location_class"),
             maxlength: 100
         },{
             element: "input",
