@@ -485,7 +485,7 @@ sub v10 {
         $self->upgrade("alter table host change column device_class host_class varchar(100) not null default ''");
     }
 
-    $self->upgrade("alter table host add column system_class varchar(100) not null default '");
+    $self->upgrade("alter table host add column system_class varchar(100) not null default ''");
     $self->upgrade("alter table host add column location_class varchar(100) not null default ''");
 }
 
