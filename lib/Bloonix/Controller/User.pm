@@ -38,8 +38,9 @@ sub new {
             role comment allow_from timezone operate_as
         )],
         host => [qw(
-            id ipaddr description comment status last_check sysgroup sysinfo host_class hw_manufacturer hw_product
-            os_manufacturer os_product virt_manufacturer virt_product location coordinates interval retry_interval data_retention
+            id ipaddr description comment status last_check sysgroup sysinfo host_class system_class location_class
+            hw_manufacturer hw_product os_manufacturer os_product virt_manufacturer virt_product location coordinates
+            interval retry_interval data_retention
         )],
         service => [qw(
             id command plugin agent_id description active acknowledged notification flapping scheduled message
