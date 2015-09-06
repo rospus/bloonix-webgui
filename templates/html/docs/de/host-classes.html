@@ -4,10 +4,20 @@
 
 <div>
 <p>
-Im Formular zur Konfiguration von Hosts gibt es die Felder <i>%%schema.host.attr.host_class%%</i>, <i>%%schema.host.attr.system_class%%</i> und <i>%%schema.host.attr.location_class%%</i>. In diesen Felden haben Sie die Möglichkeit, einen Host zu klassifizieren. Der Grundlegende Gedanke der Klassen ist, bei größeren Ausfällen schnell und zielführend eine ausgefallene Gruppe von Hosts anhand ihrer Klasse ausfindig zu machen. Je besser die Klassifierungen sind, desto genauer sind die Informationen.
+Im Formular zur Konfiguration von Hosts gibt es die Felder <i>%%schema.host.attr.host_class%%</i>, <i>%%schema.host.attr.system_class%%</i> und <i>%%schema.host.attr.location_class%%</i>. In diesen Felden haben Sie die Möglichkeit, einen Host zu klassifizieren. Der Grundlegende Gedanke der Klassen ist, bei größeren Ausfällen schnell und zielführend eine ausgefallene Gruppe von Hosts anhand ihrer Klasse ausfindig zu machen.
 </p>
 
 <p>
+Die Felder können frei verwendet werden. Hier ist ein Beispiel je Klasse, wie diese verwendet werden könnten:
+</p>
+
+<table style="width: 500px;">
+    <tr><td><i>%%schema.host.attr.host_class%%</i>:</td><td>/Server/Dell/R730</td></tr>
+    <tr><td><i>%%schema.host.attr.system_class%%</i>:</td><td>/Linux/Debian/Wheezy</td></tr>
+    <tr><td><i>%%schema.host.attr.location_class%%</i>:</td><td>/EU/DE/Hamburg/DC-2/Rack-14</td></tr>
+</table>
+
+<p style="margin-top: 30px;">
 Beispielszenario: in einem Rechenzentrum fällt ein Schrank komplett aus. In dem Schrank gibt es 20 Server mit der Klasse <i>/EU/Germany/DC 1/Room 4/Rack 14</i>. Nun könnten Sie sich im Bereich <i>%%schema.host.attr.location_class%%</i> bis zu der ausgefallenen Klasse von Hosts herunterklicken:
 </p>
 
