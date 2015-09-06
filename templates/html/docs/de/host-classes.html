@@ -1,0 +1,64 @@
+<h1>%%site.help.doc.host-classes%%</h1>
+
+<h2>Wie funktioniert dieses Feature</h2>
+
+<div>
+<p>
+Im Formular zur Konfiguration von Hosts gibt es die Felder <i>%%schema.host.attr.host_class%%</i>, <i>%%schema.host.attr.system_class%%</i> und <i>%%schema.host.attr.location_class%%</i>. In diesen Felden haben Sie die Möglichkeit, einen Host zu klassifizieren. Der Grundlegende Gedanke der Klassen ist, bei größeren Ausfällen schnell und zielführend eine ausgefallene Gruppe von Hosts anhand ihrer Klasse ausfindig zu machen. Je besser die Klassifierungen sind, desto genauer sind die Informationen.
+</p>
+
+<p>
+Beispielszenario: in einem Rechenzentrum fällt ein Schrank komplett aus. In dem Schrank gibt es 20 Server mit der Klasse <i>/EU/Germany/DC 1/Room 4/Rack 14</i>. Nun könnten Sie sich im Bereich <i>%%schema.host.attr.location_class%%</i> bis zu der ausgefallenen Klasse von Hosts herunterklicken:
+</p>
+
+<pre>
+  All (1000)
+    EU (800)
+      Germany (800)
+        DC 1 (400)
+          Room 4 (400)
+            Rack 14 (20)
+        DC 2 (400)
+          Room 3 (400)
+            Rack 18 (16)
+</pre>
+</div>
+
+<h2>Einrichtung von Klassen</h2>
+<div>
+<p>
+Wenn Sie zum Beispiel einen Linux Server auf Basis von Debian einrichten möchten, so können Sie als Klasse folgenden Eintrag tätigen:
+</p>
+
+<pre>
+/Server/Linux/Debian/Wheezy
+</pre>
+
+<p>
+Der Server würde dann in der Hierarchie wie folgt auftauchen:
+</p>
+
+<pre>
+  All (1)
+    Server (1)
+      Linux (1)
+        Debian (1)
+          Wheezy (1)
+</pre>
+
+<p>
+In der folgenden Grafik erhalten Sie ein Beispiel, wie die Hierarchie der Klassen ausschaut:
+</p>
+
+<img class="image noscale noauto" src="/public/img/docs/host-classes-1.png" alt="" />
+
+<p>
+Auf jeder Ebene der Hierarchie wird ein Icon angezeigt, dass Ihnen den höchsten Status aller Hosts in dieser Ebene anzeigt. Ist beispielsweise ein Host im Status CRITICAL, so wird die Ebene mit einem roten Icon markiert. Zusätzlich wird die Anzahl der Hosts angezeigt, die sich nicht im Status OK befinden.
+</p>
+
+<p>
+In der folgenden Grafik sehen Sie zum Beispiel, dass es 146 Hosts mit der Klasse <i>/Server</i> gibt und davon ist 1 Host nicht OK. Hat ein Host weitere Subklassen, so können Sie sich weiter durch die Ebenen klicken. Letztendlich befindet sich der Host, der sich im Status UNKNOWN befindet, auf der Ebene <i>/Server/Linux/Debian/Wheezy</i>.
+</p>
+
+<img class="image noscale noauto" src="/public/img/docs/host-classes-2.png" alt="" />
+</div>
