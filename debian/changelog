@@ -1,3 +1,16 @@
+bloonix-webgui (0.66-1) unstable; urgency=low
+
+    * Increased chart alignment from 3 to 8.
+    * Added route /administration/hosts/$id.
+    * Fixed the issue that services in templates couldn't be deleted.
+    * A lightning icon will be displayed if a host or service was not
+      OK within the last 60 minutes.
+    * Fixed link and text of sysinfo.
+    * Renamed device_class to host_class.
+    * Implemented system_class and location_class.
+
+ -- Jonny Schulz <js@bloonix.de>  Sun, 06 Sep 2015 19:11:55 +0200
+
 bloonix-webgui (0.65-1) unstable; urgency=low
 
     * Fixed Elasticsearch template: dynamic_templates includes now

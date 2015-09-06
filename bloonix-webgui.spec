@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.65
+Version: 0.66
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -62,6 +62,15 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Sun Sep 06 2015 Jonny Schulz <js@bloonix.de> - 0.66-1
+- Increased chart alignment from 3 to 8.
+- Added route /administration/hosts/$id.
+- Fixed the issue that services in templates couldn't be deleted.
+- A lightning icon will be displayed if a host or service was not
+  OK within the last 60 minutes.
+- Fixed link and text of sysinfo.
+- Renamed device_class to host_class.
+- Implemented system_class and location_class.
 * Tue Sep 01 2015 Jonny Schulz <js@bloonix.de> - 0.65-1
 - Fixed Elasticsearch template: dynamic_templates includes now
   double, float, long and integer.

@@ -1,4 +1,4 @@
-bloonix-webgui (0.66) released at 2015-XX-XX
+bloonix-webgui (0.66) released at 2015-09-06
 
     * Increased chart alignment from 3 to 8.
     * Added route /administration/hosts/$id.
