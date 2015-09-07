@@ -136,7 +136,7 @@ sub stats_notes {
 sub warnings {
     my ($self, $c) = @_;
 
-    $c->stash->data($c->model->database->service->warnings_by_user_id($c->user->{id}));
+    $c->stash->data($c->model->database->service->warnings_by_user_id(user_id => $c->user->{id}));
     $c->view->render->json;
 }
 

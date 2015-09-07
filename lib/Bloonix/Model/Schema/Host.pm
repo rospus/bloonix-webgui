@@ -77,11 +77,13 @@ sub set {
         },
         system_class => {
             max_size => 100,
-            regex => qr!^(|/.+)\z!
+            regex => qr!^(|/.+)\z!,
+            default => ""
         },
         location_class => {
             max_size => 100,
-            regex => qr!^(|/.+)\z!
+            regex => qr!^(|/.+)\z!,
+            default => ""
         },
         hw_manufacturer => {
             max_size => 50,
@@ -844,18 +846,27 @@ sub count_by_company_id {
 }
 
 sub warnings_by_user_id {
-    my ($self, $user_id, $offset, $limit) = @_;
-    $offset //= 0;
-    $limit //= 40;
+    my ($self, %opts) = @_;
+
+    my $user_id = $opts{user_id};
+    my $offset = $opts{offset} // 0;
+    my $limit = $opts{limit} // 40;
+    my $sort_by_sla = $opts{sort_by_sla};
+    my @order = (desc => "status_priority.priority");
 
     if ($limit > 100) {
         $limit = 100;
+    }
+
+    if ($sort_by_sla && $sort_by_sla =~ /^(asc|desc)\z/) {
+        push @order, $sort_by_sla => "sla";
     }
 
     my ($stmt, @bind) = $self->sql->select(
         distinct => 1,
         table => [
             host => [ "id", "hostname", "ipaddr", "status", "last_check" ],
+            company => [ "company", "sla" ],
             status_priority => "priority"
         ],
         join => [
@@ -874,6 +885,11 @@ sub warnings_by_user_id {
                 left  => "host.status",
                 right => "status_priority.status",
             },
+            inner => {
+                table => "company",
+                left  => "host.company_id",
+                right => "company.id"
+            }
         ],
         condition => [
             where => {
@@ -887,9 +903,7 @@ sub warnings_by_user_id {
                 value => 1,
             },
         ],
-        order => [
-            desc => [ "status_priority.priority", "host.last_check" ]
-        ],
+        order => \@order,
         offset => 0,
         limit => $limit
     );

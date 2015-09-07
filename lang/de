@@ -1228,3 +1228,28 @@ site.wtrm.command.checkIfElementIsChecked: Check if the radio button or checkbox
 site.wtrm.command.checkIfElementIsNotChecked: Check if the radio button or checkbox <b>%s</b> is <i>NOT</i> checked
 site.wtrm.command.checkIfElementIsSelected: Check if the value <b>%s</b> of the selectbox <b>%s</b> is selected
 site.wtrm.command.checkIfElementIsNotSelected: Check if the value <b>%s</b> of the selectbox <b>%s</b> is <i>NOT</i> selected
+
+site.screen.configure.title: Screen Konfiguration
+site.screen.attr.scale: Skalierung
+site.screen.attr.show_hostname: Zeige Hostname
+site.screen.attr.show_ipaddr: Zeige IP Adresse
+site.screen.attr.show_company: Zeige Firma
+site.screen.attr.show_sla: Zeige SLA
+site.screen.attr.show_services: Zeige Services
+site.screen.attr.show_service_summary: Zeige Service Zusammenfassung
+site.screen.attr.show_acknowledged: Zeige bestätigte Services
+site.screen.attr.sort_by_sla: Sortiert nach SLA
+site.screen.attr.bg_color: Hintergrundfarbe
+site.screen.attr.bg_color_ok: Hintergrundfarbe OK
+site.screen.attr.text_color_ok: Textfarbe OK
+site.screen.attr.bg_color_info: Hintergrundfarbe INFO
+site.screen.attr.text_color_info: Textfarbe INFO
+site.screen.attr.bg_color_warning: Hintergrundfarbe WARNING
+site.screen.attr.text_color_warning: Textfarbe WARNING
+site.screen.attr.bg_color_critical: Hintergrundfarbe CRITICAL
+site.screen.attr.text_color_critical: Textfarbe CRITICAL
+site.screen.attr.bg_color_unknown: Hintergrundfarbe UNKNOWN
+site.screen.attr.text_color_unknown: Textfarbe UNKNOWN
+site.screen.attr.bg_color_time: Hintergrundfarbe ZEIT
+site.screen.attr.text_color_time: Textfarbe ZEIT
+

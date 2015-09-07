@@ -1,6 +1,33 @@
 Bloonix.viewScreen = function(o) {
     var object = Utils.extend({ opts: {} }, o);
 
+    object.orgOpts = o;
+
+    object.defaultScreenOpts = {
+        show_hostname: 1,
+        show_ipaddr: 1,
+        show_company: 0,
+        show_sla: 0,
+        show_services: 1,
+        show_service_summary: 0,
+        sort_by_sla: "none"
+    };
+
+    object.getScreenOpts = function() {
+        Bloonix.initUser(this.postdata);
+
+        var self = this,
+            stash = Bloonix.user.stash.screen || {};
+
+        $.each(this.defaultScreenOpts, function(key, value) {
+            if (stash[key] === undefined) {
+                stash[key] = value;
+            }
+        });
+
+        return stash;
+    };
+
     object.create = function() {
         this.checkUser();
         this.hideElements();
@@ -27,6 +54,7 @@ Bloonix.viewScreen = function(o) {
                         username: this.opts.username,
                         authkey: this.opts.authkey
                     };
+                    Bloonix.initUser(this.postdata);
                 }
             }
         }
@@ -58,7 +86,7 @@ Bloonix.viewScreen = function(o) {
     };
 
     object.goBack = function(site, args) {
-        if (Bloonix.user == undefined) {
+        if (Bloonix.forceScreen == "1") {
             location.href = "/login/";
         }
 
@@ -132,6 +160,17 @@ Bloonix.viewScreen = function(o) {
             .addClass("screen-timestamp")
             .appendTo(this.screenCounterContent);
 
+        if (Bloonix.forceScreen !== 1) {
+            this.configButton = Utils.create("div")
+                .addClass("screen-config-button")
+                .appendTo(this.screenCounterContent)
+                .click(function(){ self.configureScreen() });
+
+            Utils.create("div")
+                .addClass("gicons-white gicons cogwheels")
+                .appendTo(this.configButton);
+        }
+
         Utils.create("div")
             .addClass("clear")
             .appendTo(this.screenCounterContent);
@@ -146,7 +185,8 @@ Bloonix.viewScreen = function(o) {
     };
 
     object.refreshStatusDashboard = function() {
-        var self = this;
+        var self = this,
+            stash = this.getScreenOpts();
 
         this.timestamp
             .html(DateFormat(new Date, DateFormat.masks.bloonix))
@@ -171,17 +211,21 @@ Bloonix.viewScreen = function(o) {
                 $.each(data.data.service_status_by_host, function(x, host) {
                     if (host.services.length) {
                         var outerBox = Utils.create("a")
-                            .addClass("screen-box-remove screen-box-1-1-outer screen-box-"+ host["status"])
+                            .addClass("screen-box-remove screen-box-outer screen-box-"+ host["status"])
                             .click(function() { self.goBack("monitoring/hosts/"+ host.id) })
                             .appendTo(self.screenBoxContent);
 
                         var box = Utils.create("div")
-                            .addClass("screen-box-1-1")
+                            .addClass("screen-box")
                             .appendTo(outerBox);
 
-                        var messages = [];
+                        var messages = [],
+                            status = [],
+                            statusCount = { OK:0, WARNING:0, CRITICAL:0, UNKNOWN:0 };
 
                         $.each(host.services, function(y, service) {
+                            statusCount[service.status] = statusCount[service.status] + 1;
+
                             if (host.services.length > 1) {
                                 messages.push(service.service_name);
                             } else {
@@ -191,21 +235,47 @@ Bloonix.viewScreen = function(o) {
 
                         messages = messages.join(", ");
 
-                        if (messages.length > 200) {
-                            messages = messages.substring(0,197) + "...";
+                        $.each([ "UNKNOWN", "CRITICAL", "WARNING", "INFO", "OK" ], function(i, s) {
+                            if (statusCount[s] > 0) {
+                                status.push(statusCount[s] +" "+ s);
+                            }
+                        });
+
+                        if (stash.show_hostname == "1") {
+                            var h1 = Utils.create("h1")
+                                .text(host.hostname)
+                                .appendTo(box);
+                            if (stash.show_company == "0" && stash.show_sla == "1") {
+                                h1.append(" (SLA " + host.sla +")");
+                            }
                         }
 
-                        Utils.create("h1")
-                            .text(host.hostname)
-                            .appendTo(box);
+                        if (stash.show_ipaddr == "1") {
+                            Utils.create("h2")
+                                .text(host.ipaddr)
+                                .appendTo(box);
+                        }
 
-                        Utils.create("h2")
-                            .text(host.ipaddr)
-                            .appendTo(box);
+                        if (stash.show_company == "1") {
+                            var p = Utils.create("h2")
+                                .text(host.company)
+                                .appendTo(box);
+                            if (stash.show_sla == "1") {
+                                p.append(" (SLA " + host.sla +")");
+                            }
+                        }
 
-                        Utils.create("p")
-                            .text(messages)
-                            .appendTo(box);
+                        if (stash.show_services == "1") {
+                            if (stash.show_service_summary == "1") {
+                                Utils.create("h2")
+                                    .text(status.join(", "))
+                                    .appendTo(box);
+                            } else {
+                                Utils.create("p")
+                                    .text(messages)
+                                    .appendTo(box);
+                            }
+                        }
                     }
                 });
 
@@ -214,6 +284,244 @@ Bloonix.viewScreen = function(o) {
                     .appendTo(self.screenCounterContent);
             }
         });
+    };
+
+    object.configureScreen = function() {
+        var self = this,
+            stash = this.getScreenOpts(),
+            formOuter = Utils.create("div");
+
+        var form = new Form({
+            format: "medium",
+            url: { submit: "/user/config/save" },
+            processDataCallback: function(data) {
+                data = { key: "screen", data: data };
+                return data;
+            },
+            appendTo: formOuter,
+            onSuccess: function() {
+                overlay.close();
+                location.reload();
+            }
+        }).init();
+
+        var overlay = new Overlay({
+            title: Text.get("site.screen.configure.title"),
+            content: formOuter,
+            buttons: [{
+                content: Text.get("action.save"),
+                callback: function() { form.submit() }
+            }]
+        });
+
+        var table = new Table({
+            type: "form",
+            appendTo: form.getContainer()
+        }).init();
+
+        form.table = table.getTable();
+
+        /*
+        form.createElement({
+            element: "slider",
+            name: "scale",
+            options: [ 1, 2, 3 ],
+            checked: stash.scale,
+            text: Text.get("site.screen.attr.scale"),
+            placeholder: ""
+        });
+        */
+
+        form.createElement({
+            element: "radio-yes-no",
+            type: "text",
+            name: "show_hostname",
+            checked: stash.show_hostname,
+            text: Text.get("site.screen.attr.show_hostname")
+        });
+
+        form.createElement({
+            element: "radio-yes-no",
+            type: "text",
+            name: "show_ipaddr",
+            checked: stash.show_ipaddr,
+            text: Text.get("site.screen.attr.show_ipaddr")
+        });
+
+        form.createElement({
+            element: "radio-yes-no",
+            name: "show_company",
+            checked: stash.show_company,
+            text: Text.get("site.screen.attr.show_company")
+        });
+
+        form.createElement({
+            element: "radio-yes-no",
+            name: "show_sla",
+            checked: stash.show_sla,
+            text: Text.get("site.screen.attr.show_sla")
+        });
+
+        form.createElement({
+            element: "radio-yes-no",
+            name: "show_services",
+            checked: stash.show_services,
+            text: Text.get("site.screen.attr.show_services")
+        });
+
+        form.createElement({
+            element: "radio-yes-no",
+            name: "show_service_summary",
+            checked: stash.show_service_summary,
+            text: Text.get("site.screen.attr.show_service_summary")
+        });
+
+        form.createElement({
+            element: "radio",
+            name: "sort_by_sla",
+            options: [
+                {
+                    hicon: "ban-circle",
+                    value: "none"
+                },{
+                    hicon: "chevron-down",
+                    value: "asc"
+                },{
+                    hicon: "chevron-up",
+                    value: "desc"
+                }
+            ],
+            checked: stash.sort_by_sla,
+            text: Text.get("site.screen.attr.sort_by_sla")
+        });
+
+        /*
+        form.createElement({
+            element: "radio-yes-no",
+            name: "show_acknowledged",
+            checked: stash.show_acknowledged,
+            text: Text.get("site.screen.attr.show_acknowledged"),
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "bg_color",
+            value: "",
+            text: Text.get("site.screen.attr.bg_color"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "bg_color_ok",
+            value: "",
+            text: Text.get("site.screen.attr.bg_color_ok"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "text_color_ok",
+            value: "",
+            text: Text.get("site.screen.attr.text_color_ok"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "bg_color_info",
+            value: "",
+            text: Text.get("site.screen.attr.bg_color_info"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "text_color_info",
+            value: "",
+            text: Text.get("site.screen.attr.text_color_info"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "bg_color_warning",
+            value: "",
+            text: Text.get("site.screen.attr.bg_color_warning"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "text_color_warning",
+            value: "",
+            text: Text.get("site.screen.attr.text_color_warning"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "bg_color_critical",
+            value: "",
+            text: Text.get("site.screen.attr.bg_color_critical"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "text_color_critical",
+            value: "",
+            text: Text.get("site.screen.attr.text_color_critical"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "bg_color_unknown",
+            value: "",
+            text: Text.get("site.screen.attr.bg_color_unknown"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "text_color_unknown",
+            value: "",
+            text: Text.get("site.screen.attr.text_color_unknown"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "bg_color_time",
+            value: "",
+            text: Text.get("site.screen.attr.bg_color_time"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "text_color_time",
+            value: "",
+            text: Text.get("site.screen.attr.text_color_time"),
+            placeholder: ""
+        });
+        */
+
+        overlay.create();
     };
 
     object.create();

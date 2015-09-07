@@ -746,7 +746,7 @@ Form.prototype.radio = function(o) {
                 label, value, checked;
 
             if (typeof item == "object") {
-                label = item.label || item.name || item.option || item.key;
+                label = item.label || item.name || item.option || item.key || item.icon || item.hicon;
                 value = item.value;
                 checked = item.checked;
             } else {
@@ -782,15 +782,26 @@ Form.prototype.radio = function(o) {
                 radio.click(function() { self.onClick(value) });
             }
 
-            var label = Utils.create("label")
+            var labelObject = Utils.create("label")
                 .attr("for", attrID)
-                .text(label)
                 .appendTo(self.container);
 
+            if (item.icon) {
+                labelObject.html(label)
+            } else if (item.hicon) {
+                labelObject.html(
+                    Utils.create("span")
+                        .addClass("hicons hicons-white "+ item.hicon)
+                        .css({ "margin-top": "3px" })
+                );
+            } else {
+                labelObject.text(label);
+            }
+
             if (item.title) {
-                label.attr("title", item.title).tooltip();
+                labelObject.attr("title", item.title).tooltip();
             } else if (self.title && self.bool && value == 1) {
-                label.attr("title", self.title).tooltip();
+                labelObject.attr("title", self.title).tooltip();
             }
 
             if (self.itemsPerRow) {
@@ -1501,6 +1512,10 @@ Form.prototype.submit = function() {
     if (this.submitCallback) {
         this.submitCallback(data);
         return false;
+    }
+
+    if (this.processDataCallback) {
+        data = this.processDataCallback(data);
     }
 
     Ajax.post({

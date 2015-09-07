@@ -29,6 +29,15 @@
     line-height: 30px;
     cursor: pointer;
 }
+.screen-config-button {
+    display: inline-block;
+    margin: 2px;
+    padding: 4px 8px;
+    background-color: #c025ed;
+    color: #ffffff;
+    cursor: pointer;
+    vertical-align: top;
+}
 .screen-unknown-counter {
     background-color: #ec663c;
     color: #ffffff;
@@ -86,7 +95,7 @@
 
 /* screen-box-width-height */
 
-.screen-box-1-1-outer {
+.screen-box-outer {
     width: 520px;
     height: 190px;
     margin: 2px;
@@ -95,12 +104,12 @@
     display: inline-block; /* float: left; */
     vertical-align: top;
 }
-.screen-box-1-1 {
+.screen-box {
     width: 520px;
     height: 190px;
     overflow: hidden;
 }
-.screen-box-1-1 h1 {
+.screen-box h1 {
     width: 520px;
     height: 32px;
     overflow: hidden;
@@ -113,7 +122,7 @@
     margin: 0;
     padding: 4px 0;
 }
-.screen-box-1-1 h2 {
+.screen-box h2 {
     width: 520px;
     height: 26px;
     overflow: hidden;
@@ -126,9 +135,8 @@
     margin: 0;
     padding: 4px 0;
 }
-.screen-box-1-1 p {
-    width: 520px;
-    height: 108px;
+.screen-box p {
+    width: 100%;
     overflow: hidden;
     line-height: 22px;
     font-size: 20px;
@@ -136,13 +144,4 @@
     text-align: center;
     padding: 4px 0;
     color: #ffffff;
-}
-.screen-box-1-2-outer {
-    width: 520px;
-    height: 404px;
-    margin: 2px;
-    padding: 10px;
-    cursor: pointer;
-    display: inline-block; /* float: left; */
-    vertical-align: top;
 }

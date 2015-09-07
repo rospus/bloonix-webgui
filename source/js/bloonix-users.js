@@ -261,6 +261,7 @@ Bloonix.saveUserConfig = function(key, data) {
         url: "/user/config/save",
         data: { key: key, data: data },
         async: false,
+        token: true,
         success: function(result) {
             if (result.status == "ok") {
                 if (key === "dashboard") {

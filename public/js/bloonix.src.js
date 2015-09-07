@@ -878,6 +878,7 @@ var Lang = {
       "site.wtrm.command.checkIfElementExists" : "Check if the element <b>%s</b> exists",
       "schema.service.attr.id" : "Service ID",
       "text.report.availability.EV-LT180" : "Number of events with a status duration less than 3 hours.",
+      "site.screen.attr.show_company" : "Show company",
       "site.help.doc.service-parameter" : "Service Parameter im Detail",
       "schema.contact.text.message_services" : "Contact message services",
       "site.wtrm.desc.element" : "The element you want to select. As example: #id, .class, name<br/><br/>\nIt's also possible to search for tags and attributes. Example:<br/><br/>\n&lt;a&gt; - get the first 'a' tag<br/><br/>\n&lt;a[5]&gt; - get the fifth 'a' tag<br/><br/>\n&lt;a a=\"hello\" b=\"world\"&gt; - search for a 'a' tag with the specified attributes and values",
@@ -1103,6 +1104,7 @@ var Lang = {
       "text.fixed_checkpoint" : "Fixed checkpoint",
       "schema.user_chart.attr.subtitle" : "Subtitle",
       "schema.group.text.host_nonmembers" : "Non group members",
+      "site.screen.attr.text_color_warning" : "Text color WARNING",
       "site.wtrm.command.doSubmit" : "Submit form <b>%s</b>",
       "schema.service.text.wtrm_result_steps" : "Web transaction - step results",
       "schema.host.attr.description" : "Description",
@@ -1129,6 +1131,7 @@ var Lang = {
       "schema.chart.attr.chart_size" : "Size",
       "schema.company.desc.max_dependencies_per_host" : "The maximum number of dependencies that can be create for a host.",
       "schema.user.desc.authentication_key" : "With this key it's possible to visit the notification screen without password authentification. The query string to visit the notification screen looks like<br/><br/><b>/screen/?username=XXX;authkey=XXX</b>",
+      "site.screen.attr.text_color_unknown" : "Text color UNKNOWN",
       "schema.host.desc.notification" : "Enable or disable the notifications of all services.",
       "err-823" : "Sorry, but you cannot create more than %s host downtimes for host id %s!",
       "text.dashboard.add_new_dashlet" : "Add a new dashlet",
@@ -1138,6 +1141,7 @@ var Lang = {
       "schema.dependency.text.workflow_from_service" : "and from service",
       "text.report.availability.h16" : "16:00 - 16:59",
       "schema.chart.text.user_charts" : "User charts",
+      "site.screen.attr.show_acknowledged" : "Show acknowledged services",
       "text.dashboard.show_as_chart" : "Show as chart",
       "schema.contact_message_services.attr.notification_level" : "Notification level",
       "site.login.login" : "Please login with your username and password:",
@@ -1199,6 +1203,7 @@ var Lang = {
       "schema.chart.text.multiview" : "View multiple charts",
       "text.dashboard.list_top_services" : "Overview of the top services",
       "schema.company.desc.max_templates" : "The maximum number of template that can be created.",
+      "site.screen.attr.text_color_info" : "Text color INFO",
       "schema.group.text.settings" : "Group settings",
       "schema.host.attr.hostname" : "Hostname",
       "schema.host.attr.sysgroup" : "System group",
@@ -1244,6 +1249,7 @@ var Lang = {
       "schema.service.attr.ref_id" : "ID",
       "schema.dependency.attr.status" : "Status",
       "schema.host.text.mtr_output" : "MTR result of host %s",
+      "site.screen.attr.show_sla" : "Show SLA",
       "site.wtrm.desc.url" : "This is the full URL to request. As example: http://www.bloonix.de/",
       "schema.host.desc.comment" : "This field can be used to set a short comment to the host.",
       "schema.dependency.text.workflow_to_service" : "and to service",
@@ -1311,11 +1317,11 @@ var Lang = {
       "schema.contact.attr.id" : "Contact ID",
       "schema.company.desc.max_timeslices_per_object" : "The maximum number of timeslices that can be created for a timeperiod.",
       "nav.sub.hosts" : "Hosts",
-      "nav.main.notifications" : "NOTIFICATIONS",
       "site.help.doc.json-api" : "Die Bloonix JSON API",
+      "nav.main.notifications" : "NOTIFICATIONS",
       "schema.contact.attr.mail_to" : "E-Mail",
-      "schema.chart.attr.preset_last" : "Preset: last",
       "schema.host_template.text.create" : "Create a new template",
+      "schema.chart.attr.preset_last" : "Preset: last",
       "site.help.doc.scheduled-downtimes" : "Geplante Wartungsarbeiten einrichten",
       "action.display_from_to_rows" : "Displaying <b>%s</b>-<b>%s</b> of <b>%s</b> hits",
       "schema.contactgroup.attr.description" : "Description",
@@ -1363,6 +1369,7 @@ var Lang = {
       "site.wtrm.attr.name" : "Name",
       "schema.group.text.create" : "Create a new group",
       "schema.contact.text.delete" : "Delete contact",
+      "site.screen.attr.bg_color_info" : "Background color INFO",
       "schema.host.attr.hw_product" : "HW product",
       "schema.timeslice.attr.timeslice" : "Timeslice",
       "schema.notification.attr.send_to" : "Receipient",
@@ -1371,6 +1378,7 @@ var Lang = {
       "text.report.availability.h03" : "03:00 - 03:59",
       "site.wtrm.command.checkIfElementHasNotText" : "Check if the element <b>%s</b> does <i>NOT</i> contain <b>%s</b>",
       "schema.host_template.attr.name" : "Template name",
+      "site.screen.attr.show_service_summary" : "Show service summary",
       "site.wtrm.attr.contentType" : "Content-Type",
       "schema.host_downtime.text.title" : "Scheduled downtimes for host %s",
       "schema.company.attr.city" : "City",
@@ -1412,8 +1420,10 @@ var Lang = {
       "bool.yesno.1" : "yes",
       "text.selected_locations_counter" : "You have <b>%s</b> checkpoints selected.",
       "schema.service.desc.default_check_type" : "A default check has a pre-defined checkpoint.\nFrom this checkpoint your service is checked.",
+      "site.screen.attr.show_hostname" : "Show hostname",
       "schema.host.attr.interval" : "Interval",
       "schema.service.text.multiple_downtimes" : "Schedule a downtime for multiple services",
+      "site.screen.attr.sort_by_sla" : "Sort by SLA",
       "text.services" : "services",
       "schema.service.desc.interval" : "This is the check interval of the service. If no value is set, then the interval of the host is inherited.",
       "action.view" : "View",
@@ -1487,6 +1497,7 @@ var Lang = {
       "schema.host.attr.notification" : "Notifications enabled",
       "site.wtrm.command.doSwitchToFrame" : "Switch to frame <b>%s</b>",
       "schema.service.text.multiple_force_next_check" : "Reset the interval and force the next check of the service",
+      "site.screen.attr.show_ipaddr" : "Show IP address",
       "site.wtrm.desc.userAgent" : "This is the User-Agent to send for all requests.",
       "schema.chart.attr.from_to" : "From <b>%s</b> to <b>%s</b>",
       "schema.plugin.attr.command" : "Command",
@@ -1501,6 +1512,7 @@ var Lang = {
       "text.report.availability.h01" : "01:00 - 01:59",
       "nav.sub.timeperiods" : "Timeperiods",
       "text.dashboard.show_as_text" : "Show as text",
+      "site.screen.attr.text_color_time" : "Text color TIME",
       "nav.sub.groups" : "Groups",
       "text.dashboard.num_services_flapping" : "%s services are flapping",
       "site.wtrm.action.checkIfElementNotExists" : "Check if an <b>element does <i>NOT</i> exists</b>",
@@ -1512,7 +1524,9 @@ var Lang = {
       "schema.service.desc.notification_interval" : "This is the notification interval for emails. As long as the service is not OK you will be re-notified in this interval. If no value is set, then the interval of the host is inherited.",
       "site.wtrm.placeholder.parent" : "#parent-id (optional)",
       "schema.service.attr.default_location" : "Default location",
+      "site.screen.configure.title" : "Configure screen",
       "schema.company.desc.active" : "Activate or de-activate all objects of the company.",
+      "site.screen.attr.bg_color_time" : "Background color TIME",
       "schema.host_template.test.host_members" : "Hosts in group",
       "schema.company.desc.max_groups" : "The maximum number of groups that can be created.",
       "site.wtrm.action.checkIfElementHasHTML" : "Check if an <b>element</b> contains <b>HTML</b>",
@@ -1585,6 +1599,7 @@ var Lang = {
       "err-620" : "This object already exists!",
       "nav.sub.user_group_settings" : "User group settings",
       "schema.plugin.attr.id" : "Plugin-ID",
+      "site.screen.attr.scale" : "Scale",
       "schema.user.attr.username" : "Username",
       "schema.chart.attr.options" : "Chart options",
       "schema.company.desc.max_sms" : "The maximum number of SMS that can be sent per month. Set 0 (null) if unlimited.",
@@ -1611,6 +1626,7 @@ var Lang = {
       "text.dashboard.clone_dashboard" : "Clone the dashboard",
       "schema.company.desc.max_downtimes_per_host" : "The maximum number of downtimes that can be created for a host.",
       "schema.user.attr.id" : "User ID",
+      "site.screen.attr.text_color_ok" : "Text color OK",
       "schema.roster.attr.active" : "Active",
       "schema.service.desc.failover_check_type" : "With failover checks it's possible to select a fixed\ncheckpoint from which the service is checked. In addition it's possible to select two\nfailover checkpoints, from which the service is checked if the check from the fixed checkpoint\nreturns a status that is not OK. If the status of all 3 checkpoints is not OK, the counter\nof <i>attempt max</i> is increased.",
       "site.wtrm.action.doWaitForElement" : "Wait for element",
@@ -1629,6 +1645,7 @@ var Lang = {
       "schema.contact.text.list" : "Overview of all contacts",
       "text.click_me" : "Click me",
       "site.wtrm.command.checkUrlWithContentType" : "Check if the URL <b>%s</b> has content type %s",
+      "site.screen.attr.bg_color_warning" : "Background color WARNING",
       "text.report.availability.LT30" : "Filter events with a status duration less than 30 minutes.",
       "schema.dependency.text.workflow_from_host" : "From host",
       "text.report.availability.h13" : "13:00 - 13:59",
@@ -1697,6 +1714,7 @@ var Lang = {
       "schema.hs_downtime.attr.begin_time" : "Begin time",
       "err-831" : "Sorry, but you cannot create more than %s hosts!",
       "schema.service.desc.agent_options.timeout" : "This is the global execution timeout of the check itself. After the timeout the check is killed and a CRITICAL status is triggered. This is very useful for checks that hangs and are unable to stop itself.<br/><br/>Default: 30 seconds",
+      "site.screen.attr.text_color_critical" : "Text color CRITICAL",
       "schema.host.text.list_host_classes" : "Host classes",
       "schema.service.text.create" : "Create a new service",
       "site.wtrm.attr.password" : "Password",
@@ -1730,6 +1748,7 @@ var Lang = {
       "err-840" : "Sorry, but you cannot create more than %s timeperiods!",
       "site.help.doc.notification-screen" : "Notification Screen",
       "err-841" : "Sorry, but you cannot create more than %s timeslices per object!",
+      "site.screen.attr.bg_color_critical" : "Background color CRITICAL",
       "action.update" : "Update",
       "schema.contact.text.remove_message_service" : "Remove the message service from contact",
       "schema.group.attr.company_id" : "Company ID",
@@ -1745,6 +1764,7 @@ var Lang = {
       "site.login.sign_up" : "Sign up for a Bloonix account",
       "schema.timeslice.attr.id" : "Timeslice ID",
       "schema.dependency.text.workflow_from_host_status" : "Select the status of the host that activates the dependency flow",
+      "site.screen.attr.show_services" : "Show services",
       "schema.contact_message_services.attr.send_to" : "Send to",
       "site.wtrm.action.doAuth" : "Set auth basic <b>username</b> and <b>password</b>",
       "err-600" : "The object you requested does not exist!",
@@ -1809,20 +1829,20 @@ var Lang = {
       "site.help.doc.add-new-host" : "Einen neuen Host anlegen",
       "err-419" : "You do not have enough privileges to delete the objects!",
       "schema.service.attr.flapping" : "Flapping",
-      "text.dashboard.dashlet_select_chart" : "Select a chart",
-      "text.first_failover_checkpoint" : "First failover checkpoint",
       "schema.service.desc.agent_id" : "This is the location from where the check is executed.",
+      "text.first_failover_checkpoint" : "First failover checkpoint",
+      "text.dashboard.dashlet_select_chart" : "Select a chart",
       "schema.service.desc.rotate_check_type_locations" : "Your service is checked from the following checkpoints:",
       "text.dashboard.services_notification" : "Notification status of all services",
       "schema.contact.text.timeperiods" : "Contact timeperiods",
       "text.dashboard.title" : "Dashboard",
       "schema.user.text.list" : "Overview of all users",
-      "schema.company.attr.data_retention" : "Data retention",
       "info.extended_search_syntax_for_hosts" : "<p>It's possible to filter the host list by a search query. The syntax is very simple and looks like:</p>\n<pre>key:value</pre>\n<p>The key is the table field to search for the value.</p>\n<p>Search examples:</p>\n<p>- Search for hosts in status CRITICAL or UNKNOWN</p>\n<pre>status:CRITICAL OR status:UNKNOWN</pre>\n<p>- Search for hosts in datacenter 12 with status CRITICAL</p>\n<pre>location:\"Datacenter 12\" AND status:CRITICAL</pre>\n<p>The following keys are available to search for specific fields:</p>",
+      "schema.company.attr.data_retention" : "Data retention",
       "word.Preset" : "Preset",
       "action.quicksearch" : "Quick search",
-      "schema.group.attr.id" : "Group ID",
       "schema.chart.attr.id" : "Chart ID",
+      "schema.group.attr.id" : "Group ID",
       "schema.company.attr.max_contactgroups" : "Max contactgroups",
       "site.wtrm.text.wtrm_workflow" : "Web Transaction Workflow",
       "text.report.availability.agent_dead" : "Agent dead",
@@ -1850,6 +1870,7 @@ var Lang = {
       "schema.host.attr.comment" : "Comment",
       "schema.user.attr.comment" : "Comment",
       "schema.user.desc.allow_from" : "It's possible to set a comma separated list of ip addresses from which the user is restricted to login. With the keyword <i>all</i> the login has no restriction.",
+      "site.screen.attr.bg_color_unknown" : "Background color UNKNOWN",
       "schema.company.desc.max_services" : "The maximum number of services that can be created. Set 0 (null) if unlimited.",
       "text.report.availability.h02" : "02:00 - 02:59",
       "site.wtrm.attr.html" : "Inner HTML",
@@ -1875,6 +1896,7 @@ var Lang = {
       "schema.contact_message_services.desc.message_service" : "The message service.",
       "text.dashboard.hosts_availability" : "Availability of all hosts",
       "schema.user.attr.manage_templates" : "Manage templates?",
+      "site.screen.attr.bg_color_ok" : "Background color OK",
       "text.last_60d" : "Last 60 days",
       "site.help.doc.host-alive-check" : "Was ist ein Host-Alive-Check?",
       "schema.company.attr.company" : "Company",
@@ -1886,6 +1908,7 @@ var Lang = {
       "schema.event.text.host_service" : "Host / Service",
       "schema.notification.attr.message" : "Message",
       "schema.event.attr.tags" : "Tags",
+      "site.screen.attr.bg_color" : "Background color",
       "schema.contact_message_services.desc.notification_level" : "Select the status level for which you want to receive notifications.",
       "schema.user.attr.timezone" : "Timezone",
       "site.wtrm.desc.hidden" : "Do you want to hide the value because it's a password or a secret string?",
@@ -1981,6 +2004,7 @@ var Lang = {
       "site.wtrm.command.checkIfElementExists" : "Check if the element <b>%s</b> exists",
       "schema.service.attr.id" : "Service ID",
       "text.report.availability.EV-LT180" : "Anzahl von Ereignissen mit einer Statusdauer kleiner als 3 Stunden. ",
+      "site.screen.attr.show_company" : "Zeige Firma",
       "site.help.doc.service-parameter" : "Service Parameter im Detail",
       "schema.contact.text.message_services" : "Nachrichtendienste",
       "site.wtrm.desc.element" : "The element you want to select. As example: #id, .class, name<br/><br/>\nIt's also possible to search for tags and attributes. Example:<br/><br/>\n&lt;a&gt; - get the first 'a' tag<br/><br/>\n&lt;a[5]&gt; - get the fifth 'a' tag<br/><br/>\n&lt;a a=\"hello\" b=\"world\"&gt; - search for a 'a' tag with the specified attributes and values",
@@ -2206,6 +2230,7 @@ var Lang = {
       "text.fixed_checkpoint" : "Fixer Messpunkt",
       "schema.user_chart.attr.subtitle" : "Untertitel",
       "schema.group.text.host_nonmembers" : "Nicht-Mitglieder der Gruppe",
+      "site.screen.attr.text_color_warning" : "Textfarbe WARNING",
       "site.wtrm.command.doSubmit" : "Submit form <b>%s</b>",
       "schema.service.text.wtrm_result_steps" : "Web-Transaktion - Step Ergebnis",
       "schema.host.attr.description" : "Beschreibung",
@@ -2232,6 +2257,7 @@ var Lang = {
       "schema.chart.attr.chart_size" : "Größe",
       "schema.company.desc.max_dependencies_per_host" : "Die maximale Anzahl an Abhängigkeiten die pro Host erstellt werden dürfen.",
       "schema.user.desc.authentication_key" : "Mit diesem Schlüssel ist es möglich den Nachrichtenbildschirm ohne Passwortauthentifizierung aufzurufen. Ein Aufruf des Nachrichtenbildschirm erfolgt über den Query-String<br/><br/><b>/screen/?username=XXX;authkey=XXX</b>",
+      "site.screen.attr.text_color_unknown" : "Textfarbe UNKNOWN",
       "schema.host.desc.notification" : "Aktiere oder deaktiviere die Benachrichtigungen aller Services.",
       "err-823" : "Sorry, aber Sie dürfen nicht mehr als %s Host-Downtimes for host id %s erstellen!",
       "text.dashboard.add_new_dashlet" : "Ein neues Dashlet hinzufügen",
@@ -2241,6 +2267,7 @@ var Lang = {
       "schema.dependency.text.workflow_from_service" : "und von Service",
       "text.report.availability.h16" : "16:00 - 16:59",
       "schema.chart.text.user_charts" : "User charts",
+      "site.screen.attr.show_acknowledged" : "Zeige bestätigte Services",
       "text.dashboard.show_as_chart" : "Zeige die Daten als Chart",
       "schema.contact_message_services.attr.notification_level" : "Benachrichtigungslevel",
       "site.login.login" : "Bitte loggen Sie sich mit Ihrem Benutzernamen und Passwort ein:",
@@ -2302,6 +2329,7 @@ var Lang = {
       "schema.chart.text.multiview" : "Anzeige mehrerer Charts",
       "text.dashboard.list_top_services" : "Anzeige der Top-Services",
       "schema.company.desc.max_templates" : "Die maximale Anzahl an Templates die erstellt werden dürfen.",
+      "site.screen.attr.text_color_info" : "Textfarbe INFO",
       "schema.group.text.settings" : "Einstellungen der Gruppe",
       "schema.host.attr.hostname" : "Hostname",
       "schema.host.attr.sysgroup" : "Systemgruppe",
@@ -2347,6 +2375,7 @@ var Lang = {
       "schema.service.attr.ref_id" : "ID",
       "schema.dependency.attr.status" : "Status",
       "schema.host.text.mtr_output" : "MTR Ergebis von Host %s",
+      "site.screen.attr.show_sla" : "Zeige SLA",
       "site.wtrm.desc.url" : "This is the full URL to request. As example: http://www.bloonix.de/",
       "schema.host.desc.comment" : "Dieses Feld kann für Kommentare verwendet werden.",
       "schema.dependency.text.workflow_to_service" : "und zu Service",
@@ -2414,11 +2443,11 @@ var Lang = {
       "schema.contact.attr.id" : "Kontakt ID",
       "schema.company.desc.max_timeslices_per_object" : "Die maximale Anzahl an Timeslices die pro Timeperiod erstellt werden dürfen.",
       "nav.sub.hosts" : "Hosts",
-      "nav.main.notifications" : "BENACHRICHTIGUNGEN",
       "site.help.doc.json-api" : "Die Bloonix JSON API",
+      "nav.main.notifications" : "BENACHRICHTIGUNGEN",
       "schema.contact.attr.mail_to" : "E-Mail",
-      "schema.chart.attr.preset_last" : "Vorauswahl: letzte",
       "schema.host_template.text.create" : "Ein neues Template erstellen",
+      "schema.chart.attr.preset_last" : "Vorauswahl: letzte",
       "site.help.doc.scheduled-downtimes" : "Geplante Wartungsarbeiten einrichten",
       "action.display_from_to_rows" : "Anzeige %s-%s von %s Treffern",
       "schema.contactgroup.attr.description" : "Beschreibung",
@@ -2465,6 +2494,7 @@ var Lang = {
       "site.wtrm.attr.name" : "Name",
       "schema.group.text.create" : "Eine neue Gruppe erstellen",
       "schema.contact.text.delete" : "Kontakt löschen",
+      "site.screen.attr.bg_color_info" : "Hintergrundfarbe INFO",
       "schema.host.attr.hw_product" : "HW Produkt",
       "schema.timeslice.attr.timeslice" : "Zeitabschnitt",
       "schema.notification.attr.send_to" : "Empfänger",
@@ -2473,6 +2503,7 @@ var Lang = {
       "text.report.availability.h03" : "03:00 - 03:59",
       "site.wtrm.command.checkIfElementHasNotText" : "Check if the element <b>%s</b> does <i>NOT</i> contain <b>%s</b>",
       "schema.host_template.attr.name" : "Template Name",
+      "site.screen.attr.show_service_summary" : "Zeige Service Zusammenfassung",
       "site.wtrm.attr.contentType" : "Content-Type",
       "schema.host_downtime.text.title" : "Geplante Wartungsarbeiten für Host %s",
       "schema.company.attr.city" : "Stadt",
@@ -2514,8 +2545,10 @@ var Lang = {
       "bool.yesno.1" : "Ja",
       "text.selected_locations_counter" : "Sie haben %s Messpunkte ausgewählt.",
       "schema.service.desc.default_check_type" : "Standard-Checks haben einen vordefinierten Messpunkt. Von diesem Messpunkt aus wird Ihr Service geprüft. Der Messpunkt für Standardchecks ist:",
+      "site.screen.attr.show_hostname" : "Zeige Hostname",
       "schema.host.attr.interval" : "Intervall",
       "schema.service.text.multiple_downtimes" : "Eine geplante Wartungsarbeit für mehrere Services einrichten",
+      "site.screen.attr.sort_by_sla" : "Sortiert nach SLA",
       "text.services" : "Services",
       "schema.service.desc.interval" : "Das ist der Prüfungsintervall des Service. Wenn kein Wert gesetzt ist, dann wird der Intervall des Hosts vererbt.",
       "action.view" : "Einsehen",
@@ -2589,6 +2622,7 @@ var Lang = {
       "schema.host.attr.notification" : "Benachrichtigungen aktiv",
       "site.wtrm.command.doSwitchToFrame" : "Switch to frame <b>%s</b>",
       "schema.service.text.multiple_force_next_check" : "Erzwinge einen Check aller Services so bald wie möglich",
+      "site.screen.attr.show_ipaddr" : "Zeige IP Adresse",
       "site.wtrm.desc.userAgent" : "This is the User-Agent to send for all requests.",
       "schema.chart.attr.from_to" : "Von %s bis %s",
       "schema.plugin.attr.command" : "Kommando",
@@ -2603,6 +2637,7 @@ var Lang = {
       "text.report.availability.h01" : "01:00 - 01:59",
       "nav.sub.timeperiods" : "Zeitplan",
       "text.dashboard.show_as_text" : "Zeige die Daten als Text",
+      "site.screen.attr.text_color_time" : "Textfarbe ZEIT",
       "nav.sub.groups" : "Gruppen",
       "text.dashboard.num_services_flapping" : "%s Services flappen",
       "site.wtrm.action.checkIfElementNotExists" : "Check if an <b>element does <i>NOT</i> exists</b>",
@@ -2614,7 +2649,9 @@ var Lang = {
       "schema.service.desc.notification_interval" : "Dies ist der Benachrichtigungsintervall für Services. Solange der Service nicht OK ist, erhalten Sie in diesem Intervall erneut Benachrichtigungen. Wenn kein Wert gesetzt ist, dann wird der Intervall des Hosts vererbt.",
       "site.wtrm.placeholder.parent" : "#parent-id (optional)",
       "schema.service.attr.default_location" : "Standard Standort",
+      "site.screen.configure.title" : "Screen Konfiguration",
       "schema.company.desc.active" : "Aktivierung oder Deaktivierung aller Objekte dieser Firma.",
+      "site.screen.attr.bg_color_time" : "Hintergrundfarbe ZEIT",
       "schema.host_template.test.host_members" : "Hosts in der Gruppe",
       "schema.company.desc.max_groups" : "Die maximale Anzahl an Gruppen die erstellt werden dürfen.",
       "site.wtrm.action.checkIfElementHasHTML" : "Check if an <b>element</b> contains <b>HTML</b>",
@@ -2686,6 +2723,7 @@ var Lang = {
       "err-620" : "Das Objekt existiert bereits!",
       "nav.sub.user_group_settings" : "Gruppeneinstellungen für Services",
       "schema.plugin.attr.id" : "Plugin-ID",
+      "site.screen.attr.scale" : "Skalierung",
       "schema.user.attr.username" : "Benutzername",
       "schema.chart.attr.options" : "Chart Optionen",
       "schema.company.desc.max_sms" : "Die maximale Anzahl SMS, die pro Monat versendet werden dürfen. Setze 0 (null) wenn es kein Limit gibt.",
@@ -2712,6 +2750,7 @@ var Lang = {
       "text.dashboard.clone_dashboard" : "Das Dashboard klonen",
       "schema.company.desc.max_downtimes_per_host" : "Die maximale Anzahl an Downtimes die pro Host erstellt werden dürfen.",
       "schema.user.attr.id" : "Benutzer ID",
+      "site.screen.attr.text_color_ok" : "Textfarbe OK",
       "schema.roster.attr.active" : "Aktiv",
       "schema.service.desc.failover_check_type" : "Bei Failover-Checks haben Sie die Möglichkeit,\neinen festen Messpunkt für die Serviceprüfungen auszuwählen. Zusätzlich können Sie zwei Messpunkte\nauswählen, von denen eine Prüfung vorgenommen wird, wenn die Prüfung vom festen Messpunkt\neinen Wert liefert, der nicht OK ist. Erst wenn das Resultat aller drei Messpunkte nicht OK ist,\nwird der Zähler für die maximalen Fehlversuche eines Service um eins erhöht.",
       "site.wtrm.action.doWaitForElement" : "Wait for element",
@@ -2730,6 +2769,7 @@ var Lang = {
       "schema.contact.text.list" : "Übersicht über alle Kontakte",
       "text.click_me" : "Klick mich",
       "site.wtrm.command.checkUrlWithContentType" : "Check if the URL <b>%s</b> has content type %s",
+      "site.screen.attr.bg_color_warning" : "Hintergrundfarbe WARNING",
       "text.report.availability.LT30" : "Filterung von Ereignissen mit einer Statusdauer kleiner als 30 Minuten.",
       "schema.dependency.text.workflow_from_host" : "Von Host",
       "text.report.availability.h13" : "13:00 - 13:59",
@@ -2798,6 +2838,7 @@ var Lang = {
       "schema.hs_downtime.attr.begin_time" : "Anfangszeit",
       "err-831" : "Sorry, aber Sie dürfen nicht mehr als %s Hosts erstellen!",
       "schema.service.desc.agent_options.timeout" : "Das ist der globale Timeout zur Ausführung des Checks. Nach dem Timeout wird der Check hart beendet und der Status des Servcice auf CRITICAL gesetzt. Dies kann sehr sinnvoll für Checks sein die hängen und sich selbst nicht mehr beenden können.<br/><br/>Standard: 30 Sekunden",
+      "site.screen.attr.text_color_critical" : "Textfarbe CRITICAL",
       "schema.host.text.list_host_classes" : "Hostklassen",
       "schema.service.text.create" : "Einen neuen Service erstellen",
       "site.wtrm.attr.password" : "Password",
@@ -2831,6 +2872,7 @@ var Lang = {
       "err-840" : "Sorry, aber Sie dürfen nicht mehr als %s Timeperiods erstellen!",
       "site.help.doc.notification-screen" : "Notification Screen",
       "err-841" : "Sorry, aber Sie dürfen nicht mehr als %s Timeslices per objec erstellent!",
+      "site.screen.attr.bg_color_critical" : "Hintergrundfarbe CRITICAL",
       "action.update" : "Aktualisieren",
       "schema.contact.text.remove_message_service" : "Den Nachrichtendienst vom Konakt entfernen",
       "schema.group.attr.company_id" : "Firmen ID",
@@ -2846,6 +2888,7 @@ var Lang = {
       "site.login.sign_up" : "Registrieren Sie sich für einen Bloonix Account",
       "schema.timeslice.attr.id" : "ID",
       "schema.dependency.text.workflow_from_host_status" : "Wähle den Status des Hosts, welcher den Abhängigkeitsfluss aktiviert",
+      "site.screen.attr.show_services" : "Zeige Services",
       "schema.contact_message_services.attr.send_to" : "Sende zu",
       "site.wtrm.action.doAuth" : "Set auth basic <b>username</b> and <b>password</b>",
       "err-600" : "Das angeforderte Objekt existiert nicht!",
@@ -2910,28 +2953,28 @@ var Lang = {
       "site.help.doc.add-new-host" : "Einen neuen Host anlegen",
       "err-419" : "Sie haben nicht genügend Rechte um das Objekt zu löschen!",
       "schema.service.attr.flapping" : "Flapping",
+      "schema.service.desc.agent_id" : "Standort der Prüfung",
       "text.dashboard.dashlet_select_chart" : "Wähle einen Chart",
       "text.first_failover_checkpoint" : "Erster Ausfallmesspunkt",
-      "schema.service.desc.agent_id" : "Standort der Prüfung",
       "schema.service.desc.rotate_check_type_locations" : "Ihr Service wird von folgenden Messpunkten überprüft:",
       "text.dashboard.services_notification" : "Benachrichtigungsstatus aller Services",
       "schema.contact.text.timeperiods" : "Zeitpläne des Kontakts",
       "text.dashboard.title" : "Dashboard",
       "schema.user.text.list" : "Übersicht über alle Benutzer",
-      "schema.company.attr.data_retention" : "Daten Aufbewahrungszeit",
       "info.extended_search_syntax_for_hosts" : "<p>Es ist möglich die Hostliste durch eine Suchabfrage zu filtern. Die Syntax ist sehr einfach und sieht wie folgt aus::</p>\n<pre>Schlüssel:Wert</pre>\n<p>Der Schlüssel ist das Tabellenfeld, in dem nach dem Wert gesucht werden solll.</p>\n<p>Suchbeispiele:</p>\n<p>- Suche nach Hosts mit Status CRITICAL oder UNKNOWN</p>\n<pre>status:CRITICAL OR status:UNKNOWN</pre>\n<p>- Suche nach Hosts im Datacenter 12 mit Status CRITICAL</p>\n<pre>location:\"Datacenter 12\" AND status:CRITICAL</pre>\n<p>Die folgenden Schlüssel sind für die spezifische Suche verfügbar:</p>",
+      "schema.company.attr.data_retention" : "Daten Aufbewahrungszeit",
       "word.Preset" : "Voreinstellung",
       "action.quicksearch" : "Schnellsuche",
-      "schema.group.attr.id" : "Gruppen ID",
       "schema.chart.attr.id" : "Chart ID",
+      "schema.group.attr.id" : "Gruppen ID",
       "schema.company.attr.max_contactgroups" : "Maximale Kontaktgruppen",
       "site.wtrm.text.wtrm_workflow" : "Web Transaction Workflow",
       "text.report.availability.agent_dead" : "Agent tot",
       "schema.user_chart.text.create" : "Einen Chart erstellen",
       "schema.user.text.session_expires" : "Session läuft ab",
       "schema.notification.text.search" : "Suche nach Nachrichten",
-      "text.dashboard.top_hosts_events" : "Anzeige der Top-Events aller Hosts",
       "text.report.availability.h22" : "22:00 - 22:59",
+      "text.dashboard.top_hosts_events" : "Anzeige der Top-Events aller Hosts",
       "nav.sub.reports" : "Berichte",
       "site.wtrm.command.doSwitchToNewPage" : "Switch to new created page",
       "schema.service.text.settings" : "Einstellung des Service %s",
@@ -2951,6 +2994,7 @@ var Lang = {
       "schema.host.attr.comment" : "Kommentar",
       "schema.user.attr.comment" : "Kommentar",
       "schema.user.desc.allow_from" : "Es ist möglich eine Komma-separierte Liste von IP-Adressen anzugeben, von denen sich der Benutzer einloggen darf. Das Schlüsselwort <i>all</i> heißt von überall.",
+      "site.screen.attr.bg_color_unknown" : "Hintergrundfarbe UNKNOWN",
       "schema.company.desc.max_services" : "Die maximale Anzahl an Services die überwacht werden dürfen. Setze 0 (null) wenn es kein Limit gibt.",
       "text.report.availability.h02" : "02:00 - 02:59",
       "site.wtrm.attr.html" : "Inner HTML",
@@ -2976,6 +3020,7 @@ var Lang = {
       "schema.contact_message_services.desc.message_service" : "Der Nachrichtendienst.",
       "text.dashboard.hosts_availability" : "Verfügbarkeit aller Hosts",
       "schema.user.attr.manage_templates" : "Verwaltung von Vorlagen?",
+      "site.screen.attr.bg_color_ok" : "Hintergrundfarbe OK",
       "text.last_60d" : "Die letzten 60 Tage",
       "site.help.doc.host-alive-check" : "Was ist ein Host-Alive-Check?",
       "schema.company.attr.company" : "Firma",
@@ -2987,6 +3032,7 @@ var Lang = {
       "schema.event.text.host_service" : "Host / Service",
       "schema.notification.attr.message" : "Nachricht",
       "schema.event.attr.tags" : "Hinweise",
+      "site.screen.attr.bg_color" : "Hintergrundfarbe",
       "schema.contact_message_services.desc.notification_level" : "Wähle die Status Level für die der Konakt eine Benachrichtigung erhalten soll.",
       "schema.user.attr.timezone" : "Zeitzone",
       "site.wtrm.desc.hidden" : "Do you want to hide the value because it's a password or a secret string?",
@@ -5482,7 +5528,7 @@ Form.prototype.radio = function(o) {
                 label, value, checked;
 
             if (typeof item == "object") {
-                label = item.label || item.name || item.option || item.key;
+                label = item.label || item.name || item.option || item.key || item.icon || item.hicon;
                 value = item.value;
                 checked = item.checked;
             } else {
@@ -5518,15 +5564,26 @@ Form.prototype.radio = function(o) {
                 radio.click(function() { self.onClick(value) });
             }
 
-            var label = Utils.create("label")
+            var labelObject = Utils.create("label")
                 .attr("for", attrID)
-                .text(label)
                 .appendTo(self.container);
 
+            if (item.icon) {
+                labelObject.html(label)
+            } else if (item.hicon) {
+                labelObject.html(
+                    Utils.create("span")
+                        .addClass("hicons hicons-white "+ item.hicon)
+                        .css({ "margin-top": "3px" })
+                );
+            } else {
+                labelObject.text(label);
+            }
+
             if (item.title) {
-                label.attr("title", item.title).tooltip();
+                labelObject.attr("title", item.title).tooltip();
             } else if (self.title && self.bool && value == 1) {
-                label.attr("title", self.title).tooltip();
+                labelObject.attr("title", self.title).tooltip();
             }
 
             if (self.itemsPerRow) {
@@ -6237,6 +6294,10 @@ Form.prototype.submit = function() {
     if (this.submitCallback) {
         this.submitCallback(data);
         return false;
+    }
+
+    if (this.processDataCallback) {
+        data = this.processDataCallback(data);
     }
 
     Ajax.post({
@@ -8757,6 +8818,20 @@ DateFormat.i18n = Text.dateFormat[Text.lang];
 Date.prototype.format = function (mask, utc) {
     return DateFormat(this, mask, utc);
 };
+/*
+    new Overlay({
+        title: "Title of the overlay",
+        content: "<div>Hello World!</div>",
+        buttons: [
+            {
+                content: "<span>Submit</span>",
+                close: false, // do not close the overlay
+                callback: function() {}
+            }
+        ]
+    }).create();
+*/
+
 var Overlay = function(o) {
     Utils.extend(this, o);
 };
@@ -10355,6 +10430,11 @@ Bloonix.initRoutes = function() {
             Utils.extend({ dashboard: true }, req)
         );
     });
+    route.add("monitoring/screen/:opts", function(req) {
+        Bloonix.viewScreen(
+            Utils.extend({ dashboard: true }, req)
+        );
+    });
     route.add("notification/contacts", function(req) {
         Bloonix.listContacts(req);
     });
@@ -10503,11 +10583,12 @@ Bloonix.initAjax = function() {
     };
 };
 
-Bloonix.initUser = function() {
+Bloonix.initUser = function(postdata) {
     Log.debug("initUser()");
     Ajax.post({
         url: "/whoami/",
         async: false,
+        data: postdata,
         success: function(result) {
             Bloonix.user = result.data;
             if (Bloonix.user.password_changed == "0") {
@@ -22502,6 +22583,7 @@ Bloonix.saveUserConfig = function(key, data) {
         url: "/user/config/save",
         data: { key: key, data: data },
         async: false,
+        token: true,
         success: function(result) {
             if (result.status == "ok") {
                 if (key === "dashboard") {
@@ -23424,6 +23506,33 @@ Bloonix.editCompanyVariables = function(o) {
 Bloonix.viewScreen = function(o) {
     var object = Utils.extend({ opts: {} }, o);
 
+    object.orgOpts = o;
+
+    object.defaultScreenOpts = {
+        show_hostname: 1,
+        show_ipaddr: 1,
+        show_company: 0,
+        show_sla: 0,
+        show_services: 1,
+        show_service_summary: 0,
+        sort_by_sla: "none"
+    };
+
+    object.getScreenOpts = function() {
+        Bloonix.initUser(this.postdata);
+
+        var self = this,
+            stash = Bloonix.user.stash.screen || {};
+
+        $.each(this.defaultScreenOpts, function(key, value) {
+            if (stash[key] === undefined) {
+                stash[key] = value;
+            }
+        });
+
+        return stash;
+    };
+
     object.create = function() {
         this.checkUser();
         this.hideElements();
@@ -23450,6 +23559,7 @@ Bloonix.viewScreen = function(o) {
                         username: this.opts.username,
                         authkey: this.opts.authkey
                     };
+                    Bloonix.initUser(this.postdata);
                 }
             }
         }
@@ -23481,7 +23591,7 @@ Bloonix.viewScreen = function(o) {
     };
 
     object.goBack = function(site, args) {
-        if (Bloonix.user == undefined) {
+        if (Bloonix.forceScreen == "1") {
             location.href = "/login/";
         }
 
@@ -23555,6 +23665,17 @@ Bloonix.viewScreen = function(o) {
             .addClass("screen-timestamp")
             .appendTo(this.screenCounterContent);
 
+        if (Bloonix.forceScreen !== 1) {
+            this.configButton = Utils.create("div")
+                .addClass("screen-config-button")
+                .appendTo(this.screenCounterContent)
+                .click(function(){ self.configureScreen() });
+
+            Utils.create("div")
+                .addClass("gicons-white gicons cogwheels")
+                .appendTo(this.configButton);
+        }
+
         Utils.create("div")
             .addClass("clear")
             .appendTo(this.screenCounterContent);
@@ -23569,7 +23690,8 @@ Bloonix.viewScreen = function(o) {
     };
 
     object.refreshStatusDashboard = function() {
-        var self = this;
+        var self = this,
+            stash = this.getScreenOpts();
 
         this.timestamp
             .html(DateFormat(new Date, DateFormat.masks.bloonix))
@@ -23594,17 +23716,21 @@ Bloonix.viewScreen = function(o) {
                 $.each(data.data.service_status_by_host, function(x, host) {
                     if (host.services.length) {
                         var outerBox = Utils.create("a")
-                            .addClass("screen-box-remove screen-box-1-1-outer screen-box-"+ host["status"])
+                            .addClass("screen-box-remove screen-box-outer screen-box-"+ host["status"])
                             .click(function() { self.goBack("monitoring/hosts/"+ host.id) })
                             .appendTo(self.screenBoxContent);
 
                         var box = Utils.create("div")
-                            .addClass("screen-box-1-1")
+                            .addClass("screen-box")
                             .appendTo(outerBox);
 
-                        var messages = [];
+                        var messages = [],
+                            status = [],
+                            statusCount = { OK:0, WARNING:0, CRITICAL:0, UNKNOWN:0 };
 
                         $.each(host.services, function(y, service) {
+                            statusCount[service.status] = statusCount[service.status] + 1;
+
                             if (host.services.length > 1) {
                                 messages.push(service.service_name);
                             } else {
@@ -23614,21 +23740,47 @@ Bloonix.viewScreen = function(o) {
 
                         messages = messages.join(", ");
 
-                        if (messages.length > 200) {
-                            messages = messages.substring(0,197) + "...";
+                        $.each([ "UNKNOWN", "CRITICAL", "WARNING", "INFO", "OK" ], function(i, s) {
+                            if (statusCount[s] > 0) {
+                                status.push(statusCount[s] +" "+ s);
+                            }
+                        });
+
+                        if (stash.show_hostname == "1") {
+                            var h1 = Utils.create("h1")
+                                .text(host.hostname)
+                                .appendTo(box);
+                            if (stash.show_company == "0" && stash.show_sla == "1") {
+                                h1.append(" (SLA " + host.sla +")");
+                            }
                         }
 
-                        Utils.create("h1")
-                            .text(host.hostname)
-                            .appendTo(box);
+                        if (stash.show_ipaddr == "1") {
+                            Utils.create("h2")
+                                .text(host.ipaddr)
+                                .appendTo(box);
+                        }
 
-                        Utils.create("h2")
-                            .text(host.ipaddr)
-                            .appendTo(box);
+                        if (stash.show_company == "1") {
+                            var p = Utils.create("h2")
+                                .text(host.company)
+                                .appendTo(box);
+                            if (stash.show_sla == "1") {
+                                p.append(" (SLA " + host.sla +")");
+                            }
+                        }
 
-                        Utils.create("p")
-                            .text(messages)
-                            .appendTo(box);
+                        if (stash.show_services == "1") {
+                            if (stash.show_service_summary == "1") {
+                                Utils.create("h2")
+                                    .text(status.join(", "))
+                                    .appendTo(box);
+                            } else {
+                                Utils.create("p")
+                                    .text(messages)
+                                    .appendTo(box);
+                            }
+                        }
                     }
                 });
 
@@ -23637,6 +23789,244 @@ Bloonix.viewScreen = function(o) {
                     .appendTo(self.screenCounterContent);
             }
         });
+    };
+
+    object.configureScreen = function() {
+        var self = this,
+            stash = this.getScreenOpts(),
+            formOuter = Utils.create("div");
+
+        var form = new Form({
+            format: "medium",
+            url: { submit: "/user/config/save" },
+            processDataCallback: function(data) {
+                data = { key: "screen", data: data };
+                return data;
+            },
+            appendTo: formOuter,
+            onSuccess: function() {
+                overlay.close();
+                location.reload();
+            }
+        }).init();
+
+        var overlay = new Overlay({
+            title: Text.get("site.screen.configure.title"),
+            content: formOuter,
+            buttons: [{
+                content: Text.get("action.save"),
+                callback: function() { form.submit() }
+            }]
+        });
+
+        var table = new Table({
+            type: "form",
+            appendTo: form.getContainer()
+        }).init();
+
+        form.table = table.getTable();
+
+        /*
+        form.createElement({
+            element: "slider",
+            name: "scale",
+            options: [ 1, 2, 3 ],
+            checked: stash.scale,
+            text: Text.get("site.screen.attr.scale"),
+            placeholder: ""
+        });
+        */
+
+        form.createElement({
+            element: "radio-yes-no",
+            type: "text",
+            name: "show_hostname",
+            checked: stash.show_hostname,
+            text: Text.get("site.screen.attr.show_hostname")
+        });
+
+        form.createElement({
+            element: "radio-yes-no",
+            type: "text",
+            name: "show_ipaddr",
+            checked: stash.show_ipaddr,
+            text: Text.get("site.screen.attr.show_ipaddr")
+        });
+
+        form.createElement({
+            element: "radio-yes-no",
+            name: "show_company",
+            checked: stash.show_company,
+            text: Text.get("site.screen.attr.show_company")
+        });
+
+        form.createElement({
+            element: "radio-yes-no",
+            name: "show_sla",
+            checked: stash.show_sla,
+            text: Text.get("site.screen.attr.show_sla")
+        });
+
+        form.createElement({
+            element: "radio-yes-no",
+            name: "show_services",
+            checked: stash.show_services,
+            text: Text.get("site.screen.attr.show_services")
+        });
+
+        form.createElement({
+            element: "radio-yes-no",
+            name: "show_service_summary",
+            checked: stash.show_service_summary,
+            text: Text.get("site.screen.attr.show_service_summary")
+        });
+
+        form.createElement({
+            element: "radio",
+            name: "sort_by_sla",
+            options: [
+                {
+                    hicon: "ban-circle",
+                    value: "none"
+                },{
+                    hicon: "chevron-down",
+                    value: "asc"
+                },{
+                    hicon: "chevron-up",
+                    value: "desc"
+                }
+            ],
+            checked: stash.sort_by_sla,
+            text: Text.get("site.screen.attr.sort_by_sla")
+        });
+
+        /*
+        form.createElement({
+            element: "radio-yes-no",
+            name: "show_acknowledged",
+            checked: stash.show_acknowledged,
+            text: Text.get("site.screen.attr.show_acknowledged"),
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "bg_color",
+            value: "",
+            text: Text.get("site.screen.attr.bg_color"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "bg_color_ok",
+            value: "",
+            text: Text.get("site.screen.attr.bg_color_ok"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "text_color_ok",
+            value: "",
+            text: Text.get("site.screen.attr.text_color_ok"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "bg_color_info",
+            value: "",
+            text: Text.get("site.screen.attr.bg_color_info"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "text_color_info",
+            value: "",
+            text: Text.get("site.screen.attr.text_color_info"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "bg_color_warning",
+            value: "",
+            text: Text.get("site.screen.attr.bg_color_warning"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "text_color_warning",
+            value: "",
+            text: Text.get("site.screen.attr.text_color_warning"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "bg_color_critical",
+            value: "",
+            text: Text.get("site.screen.attr.bg_color_critical"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "text_color_critical",
+            value: "",
+            text: Text.get("site.screen.attr.text_color_critical"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "bg_color_unknown",
+            value: "",
+            text: Text.get("site.screen.attr.bg_color_unknown"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "text_color_unknown",
+            value: "",
+            text: Text.get("site.screen.attr.text_color_unknown"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "bg_color_time",
+            value: "",
+            text: Text.get("site.screen.attr.bg_color_time"),
+            placeholder: ""
+        });
+
+        form.createElement({
+            element: "input",
+            type: "text",
+            name: "text_color_time",
+            value: "",
+            text: Text.get("site.screen.attr.text_color_time"),
+            placeholder: ""
+        });
+        */
+
+        overlay.create();
     };
 
     object.create();

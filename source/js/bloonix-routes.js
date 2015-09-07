@@ -108,6 +108,11 @@ Bloonix.initRoutes = function() {
             Utils.extend({ dashboard: true }, req)
         );
     });
+    route.add("monitoring/screen/:opts", function(req) {
+        Bloonix.viewScreen(
+            Utils.extend({ dashboard: true }, req)
+        );
+    });
     route.add("notification/contacts", function(req) {
         Bloonix.listContacts(req);
     });

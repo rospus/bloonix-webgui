@@ -1223,3 +1223,28 @@ site.wtrm.command.checkIfElementIsChecked: Check if the radio button or checkbox
 site.wtrm.command.checkIfElementIsNotChecked: Check if the radio button or checkbox <b>%s</b> is <i>NOT</i> checked
 site.wtrm.command.checkIfElementIsSelected: Check if the value <b>%s</b> of the selectbox <b>%s</b> is selected
 site.wtrm.command.checkIfElementIsNotSelected: Check if the value <b>%s</b> of the selectbox <b>%s</b> is <i>NOT</i> selected
+
+site.screen.configure.title: Configure screen
+site.screen.attr.scale: Scale
+site.screen.attr.show_hostname: Show hostname
+site.screen.attr.show_ipaddr: Show IP address
+site.screen.attr.show_company: Show company
+site.screen.attr.show_sla: Show SLA
+site.screen.attr.show_services: Show services
+site.screen.attr.show_service_summary: Show service summary
+site.screen.attr.show_acknowledged: Show acknowledged services
+site.screen.attr.sort_by_sla: Sort by SLA
+site.screen.attr.bg_color: Background color
+site.screen.attr.bg_color_ok: Background color OK
+site.screen.attr.text_color_ok: Text color OK
+site.screen.attr.bg_color_info: Background color INFO
+site.screen.attr.text_color_info: Text color INFO
+site.screen.attr.bg_color_warning: Background color WARNING
+site.screen.attr.text_color_warning: Text color WARNING
+site.screen.attr.bg_color_critical: Background color CRITICAL
+site.screen.attr.text_color_critical: Text color CRITICAL
+site.screen.attr.bg_color_unknown: Background color UNKNOWN
+site.screen.attr.text_color_unknown: Text color UNKNOWN
+site.screen.attr.bg_color_time: Background color TIME
+site.screen.attr.text_color_time: Text color TIME
+

@@ -34,11 +34,12 @@ Bloonix.initAjax = function() {
     };
 };
 
-Bloonix.initUser = function() {
+Bloonix.initUser = function(postdata) {
     Log.debug("initUser()");
     Ajax.post({
         url: "/whoami/",
         async: false,
+        data: postdata,
         success: function(result) {
             Bloonix.user = result.data;
             if (Bloonix.user.password_changed == "0") {

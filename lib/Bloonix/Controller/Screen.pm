@@ -47,6 +47,7 @@ sub index {
 
 sub stats {
     my ($self, $c) = @_;
+    my $stash = $c->user->{stash}->{screen} // {};
 
     my $status = {
         OK => 0,
@@ -69,7 +70,13 @@ sub stats {
         + $status->{INFO};
 
     $c->stash->data(overall_service_status => $status);
-    $c->stash->data(service_status_by_host => $c->model->database->service->warnings_by_user_id($c->user->{id}));
+    $c->stash->data(
+        service_status_by_host => $c->model->database->service->warnings_by_user_id(
+            user_id => $c->user->{id},
+            sort_by_sla => $stash->{sort_by_sla} // "none"
+        )
+    );
+
     $c->view->render->json;
 }
 

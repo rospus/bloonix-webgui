@@ -7,7 +7,7 @@ use Time::HiRes;
 sub auto {
     my ($self, $c) = @_;
 
-    $c->version->{js} = 104;
+    $c->version->{js} = 106;
 
     my $addr = $c->req->remote_addr || "n/a";
     my $lang = $c->req->cookie("lang");
@@ -43,7 +43,7 @@ sub auto {
     my $username = $c->req->param("username");
     my $authkey = $c->req->param("authkey");
 
-    if ($authkey && $username && $c->action_path =~ m!^(screen\z|screen/|hosts/charts/info/)!) {
+    if ($authkey && $username && $c->action_path =~ m!^(screen\z|screen/|hosts/charts/info/|whoami)!) {
         $user = $c->model->database->user->by_authkey($username, $authkey);
         $c->stash->{meta}->{authkey} = $authkey;
     } elsif ($sid) {

@@ -53,6 +53,9 @@ sub new {
 sub save {
     my ($self, $c) = @_;
 
+    $c->plugin->token->check
+        or return 1;
+
     my $jsondata = $c->req->jsondata;
 
     if (ref $jsondata ne "HASH" || !defined $jsondata->{key} || !defined $jsondata->{data}) {
@@ -72,6 +75,8 @@ sub save {
         return $self->delete_dashboard($c, $data);
     } elsif ($key eq "last_open_dashboard") {
         return $self->last_open_dashboard($c, $data);
+    } elsif ($key eq "screen") {
+        return $self->save_screen_config($c, $data);
     }
 
     return $c->plugin->error->form_parse_errors("key");
@@ -393,6 +398,42 @@ sub save_table_config {
             { stash => $c->json->encode($stash) }
         );
     }
+}
+
+sub save_screen_config {
+    my ($self, $c, $data) = @_;
+    my $stash = $c->user->{stash}->{screen} || {};
+
+    foreach my $key (qw/
+        show_hostname
+        show_ipaddr
+        show_company
+        show_sla
+        show_services
+        show_service_summary
+    /) {
+        if (defined $data->{$key} && $data->{$key} =~ /^[01]\z/) {
+            $stash->{$key} = $data->{$key}
+        }
+    }
+
+    if (defined $data->{sort_by_sla} && $data->{sort_by_sla} =~ /^(none|asc|desc)\z/) {
+        $stash->{sort_by_sla} = $data->{sort_by_sla};
+    }
+
+    if (defined $data->{scale} && $data->{scale} =~ /^(123)\z/) {
+        $stash->{scale} = $data->{scale};
+    }
+
+    $c->user->{stash}->{screen} = $stash;
+
+    $c->model->database->user->update(
+        $c->user->{id},
+        { stash => $c->json->encode($c->user->{stash}) }
+    );
+
+    $c->stash->data($data);
+    $c->view->render->json;
 }
 
 sub stash {

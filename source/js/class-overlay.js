@@ -1,3 +1,17 @@
+/*
+    new Overlay({
+        title: "Title of the overlay",
+        content: "<div>Hello World!</div>",
+        buttons: [
+            {
+                content: "<span>Submit</span>",
+                close: false, // do not close the overlay
+                callback: function() {}
+            }
+        ]
+    }).create();
+*/
+
 var Overlay = function(o) {
     Utils.extend(this, o);
 };

@@ -713,14 +713,15 @@ sub count_by_company_id {
 }
 
 sub warnings_by_user_id {
-    my ($self, $user_id) = @_;
+    my ($self, %opts) = @_;
 
-    my $hosts = $self->schema->host->warnings_by_user_id($user_id, 0, 100);
+    my $user_id = $opts{user_id};
+    my $hosts = $self->schema->host->warnings_by_user_id(%opts);
     my @host_ids = (0, map { $_->{id} } @$hosts);
 
     my ($stmt, @bind) = $self->sql->select(
         table => [
-            service => [qw(id host_id last_check message)],
+            service => [qw(id host_id last_check message status)],
             service_parameter => [qw(service_name)]
         ],
         join => [

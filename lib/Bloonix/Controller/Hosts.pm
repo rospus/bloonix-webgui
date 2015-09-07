@@ -94,19 +94,19 @@ sub classes {
     };
 
     # Default classes
-    my @default_classes;
+    #my @default_classes;
 
-    if ($opts->{class} eq "host") {
-        @default_classes = ("/Server", "/vServer", "/Printer", "/Network", "/Database", "/Power");
-    } elsif ($opts->{class} eq "system") {
-        #@default_classes = ("/Linux", "/Windows");
-    } elsif ($opts->{class} eq "location") {
-        @default_classes = ("/AF", "/AN", "/AS", "/EU", "/NA", "/OC", "/SA");
-    }
+    #if ($opts->{class} eq "host") {
+    #    @default_classes = ("/Server", "/vServer", "/Printer", "/Network", "/Database", "/Power");
+    #} elsif ($opts->{class} eq "system") {
+    #    @default_classes = ("/Linux", "/Windows");
+    #} elsif ($opts->{class} eq "location") {
+    #    @default_classes = ("/AF", "/AN", "/AS", "/EU", "/NA", "/OC", "/SA");
+    #}
 
-    foreach my $class (@default_classes) {
-        push @$classes, { count => 0, class => $class };
-    }
+    #foreach my $class (@default_classes) {
+    #    push @$classes, { count => 0, class => $class };
+    #}
 
     foreach my $row (@$classes) {
         $grouped->{All}->{total} += $row->{count};

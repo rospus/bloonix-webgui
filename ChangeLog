@@ -1,5 +1,10 @@
 bloonix-webgui (0.66) released at 2015-09-06
 
+    * Kicked default Host classes.
+    * Added the possibility to configure the monitoring screen.
+
+bloonix-webgui (0.66) released at 2015-09-06
+
     * Increased chart alignment from 3 to 8.
     * Added route /administration/hosts/$id.
     * Fixed the issue that services in templates couldn't be deleted.
