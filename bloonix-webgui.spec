@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.66
+Version: 0.67
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -62,6 +62,9 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Mon Sep 07 2015 Jonny Schulz <js@bloonix.de> - 0.67-1
+- Kicked default Host classes.
+- Added the possibility to configure the monitoring screen.
 * Sun Sep 06 2015 Jonny Schulz <js@bloonix.de> - 0.66-1
 - Increased chart alignment from 3 to 8.
 - Added route /administration/hosts/$id.

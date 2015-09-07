@@ -1,3 +1,10 @@
+bloonix-webgui (0.67-1) unstable; urgency=low
+
+    * Kicked default Host classes.
+    * Added the possibility to configure the monitoring screen.
+
+ -- Jonny Schulz <js@bloonix.de>  Mon, 07 Sep 2015 19:21:22 +0200
+
 bloonix-webgui (0.66-1) unstable; urgency=low
 
     * Increased chart alignment from 3 to 8.
