@@ -1866,6 +1866,7 @@ Form.prototype.group = function(o) {
             pager: {
                 appendTo: o.pagerContainer
             },
+            showBottomPagerBox: false,
             columns: this.columns
         }).create();
     };

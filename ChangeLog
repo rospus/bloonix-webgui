@@ -2,6 +2,7 @@ bloonix-webgui (0.68) released at 2015-XX-XX
 
     * Improved the order for host lists, so that hosts that were not OK
       in the last 60 minutes are displayed before all other hosts.
+    * Fixed duplicate pager at the bottom of some tables.
 
 bloonix-webgui (0.67) released at 2015-09-06
 

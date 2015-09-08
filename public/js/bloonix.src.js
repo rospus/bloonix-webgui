@@ -6648,6 +6648,7 @@ Form.prototype.group = function(o) {
             pager: {
                 appendTo: o.pagerContainer
             },
+            showBottomPagerBox: false,
             columns: this.columns
         }).create();
     };
@@ -7199,16 +7200,18 @@ Table.prototype.getData = function(o) {
                     }
                 }).create();
 
-                new Pager({
-                    data: result,
-                    postdata: postdata,
-                    appendTo: self.pagerBox,
-                    start: 10,
-                    callback: function(req) {
-                        self.postdata = req.postdata;
-                        self.getData();
-                    }
-                }).create();
+                if (self.showBottomPagerBox !== false) {
+                    new Pager({
+                        data: result,
+                        postdata: postdata,
+                        appendTo: self.pagerBox,
+                        start: 10,
+                        callback: function(req) {
+                            self.postdata = req.postdata;
+                            self.getData();
+                        }
+                    }).create();
+                }
             }
 
             self.createRows(result.data);
