@@ -176,6 +176,8 @@ Bloonix.listHosts = function(o) {
     object.listClasses = function() {
         var self = this;
 
+        this.boxes.left.html("");
+
         var getClasses = function(menu, classType) {
             Bloonix.replaceWithLoading(menu.activeBox);
 

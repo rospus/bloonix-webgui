@@ -40,7 +40,7 @@ sub list {
         sort => $request->{sort},
         order => [
             desc => [ "status_priority.priority", "service.status_nok_since" ],
-            #asc  => [ "host.hostname", "service_parameter.service_name" ]
+            asc  => [ "host.hostname", "service_parameter.service_name" ]
         ],
     );
 

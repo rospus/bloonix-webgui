@@ -155,8 +155,10 @@ sub list {
         query => $request->{query},
         sort => $request->{sort},
         order => [
-            desc => "priority",
-            asc  => "hostname",
+            desc => [ "status_priority.priority", "host.status_nok_since" ],
+            asc  => "host.hostname"
+            #desc => "priority",
+            #asc  => "hostname",
         ]
     );
 
