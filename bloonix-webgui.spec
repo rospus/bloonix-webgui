@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.67
+Version: 0.68
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -62,6 +62,12 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Tue Sep 08 2015 Jonny Schulz <js@bloonix.de> - 0.68-1
+- Improved the order for host lists, so that hosts that were not OK
+  in the last 60 minutes are displayed before all other hosts.
+- Fixed duplicate pager at the bottom of some tables.
+- Fixed host form, so that only groups are selectable in which
+  the user is a member.
 * Mon Sep 07 2015 Jonny Schulz <js@bloonix.de> - 0.67-1
 - Kicked default Host classes.
 - Added the possibility to configure the monitoring screen.
