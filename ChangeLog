@@ -1,4 +1,4 @@
-bloonix-webgui (0.68) released at 2015-XX-XX
+bloonix-webgui (0.68) released at 2015-09-08
 
     * Improved the order for host lists, so that hosts that were not OK
       in the last 60 minutes are displayed before all other hosts.
