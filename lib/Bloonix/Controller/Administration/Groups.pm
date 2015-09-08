@@ -7,6 +7,7 @@ sub startup {
     my ($self, $c) = @_;
 
     $c->route->map("/administration/groups")->to("list");
+    $c->route->map("/administration/groups/for-host-creation")->to("groups_for_host_creation");
     $c->route->map("/administration/groups/search")->to("list");
     $c->route->map("/administration/groups/options")->to("options");
     $c->route->map("/administration/groups/create")->to("create");
@@ -52,6 +53,18 @@ sub list {
     $c->stash->offset($request->{offset});
     $c->stash->total($count);
     $c->stash->data($data);
+    $c->view->render->json;
+}
+
+sub groups_for_host_creation {
+    my ($self, $c) = @_;
+
+    $c->stash->data(
+        $c->model->database->group->by_user_id_for_host_creation(
+            $c->user->{id}
+        )
+    );
+
     $c->view->render->json;
 }
 

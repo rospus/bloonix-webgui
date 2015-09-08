@@ -582,9 +582,9 @@ Bloonix.createHost = function() {
         icons: Bloonix.getHostAddEditIcons()
     }).create();
 
-    var elements = Bloonix.getHostFormElements(host.limits),
-        groups = Bloonix.get("/administration/groups"),
-        contactgroups = Bloonix.get("/contactgroups");
+    var elements = Bloonix.getHostFormElements(host.limits);
+        //groups = Bloonix.get("/administration/groups/for-host-creation"),
+        //contactgroups = Bloonix.get("/contactgroups");
 
     elements.splice(1, 0, {
         element: "multiselect",

@@ -73,6 +73,31 @@ sub by_user {
     return ($count, $data);
 }
 
+sub by_user_id_for_host_creation {
+    my ($self, $user_id) = @_;
+
+    my ($stmt, @bind) = $self->sql->select(
+        table => "group",
+        column => "*",
+        join => [
+            inner => {
+                table => "user_group",
+                left => "group.id",
+                right => "user_group.group_id"
+            }
+        ],
+        condition => [
+            where => {
+                table => "user_group",
+                column => "user_id",
+                value => $user_id,
+            }
+        ]
+    );
+
+    return $self->dbi->fetch($stmt, @bind);
+}
+
 sub validate_ids_by_company_id {
     my ($self, $company_id, $group_ids) = @_;
 

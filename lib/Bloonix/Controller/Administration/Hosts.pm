@@ -79,10 +79,11 @@ sub options {
         $options->{contactgroup_id} = [];
         $options->{host_template_id} = [];
 
-        my $groups = $c->model->database->group->search(
-            condition => [ company_id => $c->user->{company_id} ],
-            order => [ asc => "groupname" ]
-        );
+        #my $groups = $c->model->database->group->search(
+        #    condition => [ company_id => $c->user->{company_id} ],
+        #    order => [ asc => "groupname" ]
+        #);
+        my $groups = $c->model->database->group->by_user_id_for_host_creation($c->user->{id});
 
         foreach my $group (@$groups) {
             push @{$options->{group_id}}, {
