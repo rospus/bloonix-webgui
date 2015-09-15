@@ -506,6 +506,10 @@ sub v11 {
         $self->upgrade("alter table dependency alter column on_host_id drop not null");
         $self->upgrade("alter table dependency alter column on_service_id drop not null");
     } elsif ($self->dbi->{driver} eq "mysql") {
+        $self->upgrade("alter table dependency change host_id host_id bigint null");
+        $self->upgrade("alter table dependency change service_id service_id bigint null");
+        $self->upgrade("alter table dependency change on_host_id on_host_id bigint null");
+        $self->upgrade("alter table dependency change on_service_id on_service_id bigint null");
     }
 }
 
