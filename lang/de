@@ -577,6 +577,9 @@ schema.host.attr.sysinfo: System Informationen
 schema.host.attr.host_class: Hostklasse
 schema.host.attr.system_class: Systemklasse
 schema.host.attr.location_class: Standortklasse
+schema.host.attr.os_class: OS Klasse
+schema.host.attr.hw_class: HW Klasse
+schema.host.attr.env_class: ENV Klasse
 schema.host.attr.hw_manufacturer: HW Hersteller
 schema.host.attr.hw_product: HW Produkt
 schema.host.attr.os_manufacturer: OS Hersteller
@@ -608,8 +611,11 @@ schema.host.desc.comment: Dieses Feld kann für Kommentare verwendet werden.
 schema.host.desc.sysgroup: Dies ist ein Feld das zur freien Verwendung steht.
 schema.host.desc.sysinfo: Hier können Sie einen externen Link zu Ihrer Host-Dokumentation eintragen, zum Beispiel:<br/><br/>Linktext=https://mysite.test/?id=12345.<br/><br/>Nicht erlaubte Zeichen: "\
 schema.host.desc.host_class: z.B.<br/>/Server/Linux/Debian<br/>/Server/Windows/Windows 2008<br/>/Network/Router<br/>/Network/Switch<br/>/Printer
-schema.host.desc.system_class: Siehe Parameter Hostklasss.
-schema.host.desc.location_class: Siehe Parameter Hostklasse.
+schema.host.desc.system_class: Systemklasse. Sie Parameter Hostklasse für weitere Informationen.
+schema.host.desc.location_class: Standortklasse. z.B.<br/>/EU/Germany/Hamburg/DC1/Rack10
+schema.host.desc.os_class: Betriebsystemklasse. z.B.<br/>/Linux/CentOS/7<br/>/Windows/Server/2012
+schema.host.desc.hw_class: Hardwareklasse. z.B.<br/>/Server/Dell/R730<br/>/Printer/Canon/ip2770
+schema.host.desc.env_class: Umgebungsklasse. Sie Parameter Hostklasse für weitere Informationen.
 schema.host.desc.hw_manufacturer: z.B. IBM, HP, Dell, Fujitsu Siemens
 schema.host.desc.hw_product: z.B. Dell Power Edge 2950
 schema.host.desc.os_manufacturer: z.B. Red Hat, Microsoft, CISCO
@@ -670,6 +676,9 @@ schema.host.info.sysinfo: Externe Informationen sind verfügbar.
 schema.host.menu.host_class: Host
 schema.host.menu.system_class: System
 schema.host.menu.location_class: Standort
+schema.host.menu.os_class: OS
+schema.host.menu.hw_class: HW
+schema.host.menu.env_class: ENV
 
 schema.timeperiod.attr.id: Zeitplan ID
 schema.timeperiod.attr.name: Zeitplan

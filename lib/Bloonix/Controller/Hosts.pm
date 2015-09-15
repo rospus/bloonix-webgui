@@ -10,7 +10,7 @@ sub startup {
     $c->route->map("/hosts/search")->to("search");
     $c->route->map("/hosts/top")->to("top");
     $c->route->map("/hosts/cats")->to("cats");
-    $c->route->map("/hosts/classes/:class(host|system|location)")->to("classes");
+    $c->route->map("/hosts/classes/:class(host|system|location|os|hw|env)")->to("classes");
     $c->route->map("/hosts/stats/status")->to("stats_status");
     $c->route->map("/hosts/stats/country")->to("stats_country");
     $c->route->map("/hosts/:id")->to("view");

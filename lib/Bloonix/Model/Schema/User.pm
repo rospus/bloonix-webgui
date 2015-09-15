@@ -26,9 +26,16 @@ sub set {
         die "missing user";
     }
 
-    my $username_regex = $self->c->config->{webapp}->{allow_simple_usernames}
-        ? qr/^[^\s].*[^\s]\z/
-        : qr/^(:?[\w\-.]+\@[\w\-.]+\.[a-z]+|admin)\z/;
+    my $username_regex;
+    my $username_min_len;
+
+    if ($self->c->config->{webapp}->{allow_simple_usernames}) {
+        $username_regex = qr/^[^\s].*[^\s]\z/;
+        $username_min_len = 2;
+    } else {
+        $username_regex = qr/^(:?[\w\-.]+\@[\w\-.]+\.[a-z]+|admin)\z/;
+        $username_min_len = 5;
+    }
 
     $self->validator->set(
         company_id => {
@@ -40,7 +47,7 @@ sub set {
             default => "Europe/Berlin",
         },
         username => {
-            min_size => 5,
+            min_size => $username_min_len,
             max_size => 50,
             regex => $username_regex
         },

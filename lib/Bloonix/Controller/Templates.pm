@@ -167,7 +167,8 @@ sub services {
 
     $c->stash->data(
         $c->model->database->service_parameter->search(
-            condition => [ host_template_id => $opts->{id} ]
+            condition => [ host_template_id => $opts->{id} ],
+            order => [ asc => "service_name" ]
         )
     );
 

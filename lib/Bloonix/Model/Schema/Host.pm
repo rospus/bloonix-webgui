@@ -278,7 +278,10 @@ sub by_user_id {
             c => "host.coordinates", coordinates => "host.coordinates",
             host_class => "host.host_class",
             system_class => "host.system_class",
-            location_class => "host.location_class"
+            location_class => "host.location_class",
+            os_class => "host.os_class",
+            hw_class => "host.hw_class",
+            env_class => "host.env_class"
         },
         concat => [
             "host.id", "host.hostname", "host.ipaddr", "host.description",
@@ -988,6 +991,7 @@ sub system_categories {
 
     my @cols = qw(
         sysgroup sysinfo host_class system_class location_class
+        os_class hw_class env_class
         hw_manufacturer hw_product os_manufacturer
         os_product virt_manufacturer virt_product location
     );
@@ -1010,12 +1014,6 @@ sub system_categories {
             }
         }
     }
-
-    my %host_classes = map { $_ => 0 } (
-        @{$data{host_class}}, "/Server", "/vServer", "/Printer", "/Network", "/Database", "/Power"
-    );
-
-    $data{host_class} = [ keys %host_classes ];
 
     return \%data;
 }

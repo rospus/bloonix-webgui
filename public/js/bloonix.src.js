@@ -860,6 +860,7 @@ var Lang = {
       "schema.contactgroup.text.service_members" : "Services in contact group",
       "schema.service.attr.fd_enabled" : "Flap detection enabled",
       "schema.location.attr.country_code" : "Country code",
+      "schema.host.desc.hw_class" : "Hardware class. e.g.<br/>/Server/Dell/R730<br/>/Printer/Canon/ip2770",
       "schema.host.desc.max_services" : "Set the maximum number of services that can be configured for the host. 0 means unlimited.",
       "action.unselect" : "Unselect",
       "schema.dependency.text.service" : "Service",
@@ -986,6 +987,7 @@ var Lang = {
       "text.report.availability.h00" : "00:00 - 00:59",
       "schema.host.attr.system_class" : "System class",
       "schema.company.desc.max_services_per_host" : "The maximum number of services that can be created for a host.",
+      "schema.host.attr.os_class" : "OS class",
       "action.configure" : "Configure",
       "text.report.availability.EV-GE300" : "Number of events with a status duration greater than 5 hours.",
       "schema.host.attr.virt_manufacturer" : "Virtualization manufacturer",
@@ -1059,8 +1061,8 @@ var Lang = {
       "schema.service.attr.plugin" : "Plugin",
       "action.logout" : "Logout",
       "schema.service.action.clear_volatile_multiple" : "Clear the volatile status of the selected services",
-      "text.dashboard.save_dashboard" : "Save dashboard",
       "text.click_to_delete_seletion" : "Click to delete the selection",
+      "text.dashboard.save_dashboard" : "Save dashboard",
       "info.add-further-options" : "Add further options",
       "schema.service.text.multiple_volatile" : "Clear the volatile status of multiple services",
       "schema.service.info.status_nok_since" : "The service was not OK within the the last 60 minutes.",
@@ -1100,6 +1102,7 @@ var Lang = {
       "word.Timeslice" : "Timeslice",
       "schema.dependency.text.list" : "Dependencies for host %s",
       "site.wtrm.action.doSwitchToMainPage" : "<b>Switch</b> to main page",
+      "schema.host.menu.os_class" : "OS",
       "text.selected_locations_costs" : "Please note that each checkpoint will be charged extra.",
       "text.fixed_checkpoint" : "Fixed checkpoint",
       "schema.user_chart.attr.subtitle" : "Subtitle",
@@ -1271,6 +1274,7 @@ var Lang = {
       "nav.sub.services" : "Services",
       "schema.service.desc.failover_check_type_locations" : "Select a fixed and two failover checkpoints",
       "schema.dependency.text.dependencies" : "Dependencies",
+      "schema.host.attr.env_class" : "ENV class",
       "schema.company.desc.data_retention" : "The retention in days of all data of hosts and services. If a host has a higher data retention configured then the data retention of the company is used.",
       "schema.service.attr.scheduled" : "Has downtime",
       "schema.service.desc.timeout" : "This is the timeout of the service and begins to count after the interval. If the status of the service is not updated in this time then a critical status is set for the service with the information that it seems that the Bloonix agent is not working. If no value is set, then the timeout of the host is inherited.",
@@ -1284,6 +1288,7 @@ var Lang = {
       "schema.service.attr.notification_interval" : "Notification interval",
       "site.login.documentation" : "The Bloonix documentation",
       "schema.chart.text.select" : "Chart selection for host %s",
+      "schema.host.desc.env_class" : "Environment class. See parameter host class for further information.",
       "text.max_value" : "Max value: <b>%s</b>",
       "schema.service.desc.volatile_retain" : "Set a time after the volatile status is automatically cleared.",
       "schema.dependency.attr.timeslice" : "Timeslice",
@@ -1408,6 +1413,7 @@ var Lang = {
       "text.dashboard.data_format" : "In which format the data should be shown?",
       "site.wtrm.action.checkIfElementHasText" : "Check if an <b>element</b> contains <b>text</b> ",
       "schema.hs_downtime.attr.timezone" : "Timezone",
+      "schema.host.menu.hw_class" : "HW",
       "schema.company.desc.max_charts_per_user" : "The maximum number of user-charts that can be created by a user.",
       "text.from_now_to_8h" : "From now + 8 hours",
       "schema.notification.text.list" : "Sent notifications for host %s",
@@ -1512,6 +1518,7 @@ var Lang = {
       "text.report.availability.h01" : "01:00 - 01:59",
       "nav.sub.timeperiods" : "Timeperiods",
       "text.dashboard.show_as_text" : "Show as text",
+      "schema.host.attr.hw_class" : "HW class",
       "site.screen.attr.text_color_time" : "Text color TIME",
       "nav.sub.groups" : "Groups",
       "text.dashboard.num_services_flapping" : "%s services are flapping",
@@ -1573,8 +1580,8 @@ var Lang = {
       "action.search" : "Search",
       "text.range_value" : "Range: %s - %s",
       "schema.group.text.update_user" : "Modify access rights",
-      "site.wtrm.action.checkIfElementIsNotChecked" : "Check if a <b>radio button</b> or <b>checkbox is <i>NOT</i> checked</b>",
       "site.wtrm.text.check_it" : "Check it!",
+      "site.wtrm.action.checkIfElementIsNotChecked" : "Check if a <b>radio button</b> or <b>checkbox is <i>NOT</i> checked</b>",
       "schema.user.text.create" : "Create a new user",
       "site.wtrm.command.checkIfElementHasText" : "Check if the element <b>%s</b> contains <b>%s</b>",
       "schema.chart.text.chart_id" : "Chart-ID: %s",
@@ -1603,7 +1610,7 @@ var Lang = {
       "schema.user.attr.username" : "Username",
       "schema.chart.attr.options" : "Chart options",
       "schema.company.desc.max_sms" : "The maximum number of SMS that can be sent per month. Set 0 (null) if unlimited.",
-      "schema.host.desc.system_class" : "See parameter host class.",
+      "schema.host.desc.system_class" : "System class. See parameter host class for further information.",
       "site.wtrm.command.doClick" : "Click on element <b>%s</b>",
       "err-836" : "Sorry, but you cannot create more than %s contact groups!",
       "schema.service.desc.agent_tooltip" : "<h3>Installation of the Bloonix-Agent</h3>\n<p>\nThis check is executed on your server and requires that you install the Bloonix-Agent\nand the plugin on your server.\n</p>",
@@ -1663,6 +1670,7 @@ var Lang = {
       "schema.service.info.notification" : "Notifications are disabled of the service.",
       "action.genstr" : "Generate string",
       "info.create_success" : "The creation was successful!",
+      "schema.host.menu.env_class" : "ENV",
       "schema.service.info.host_alive_check" : "This is a host-alive-check.",
       "action.clear" : "Clear",
       "schema.user.desc.password" : "Enter the users login password.",
@@ -1751,12 +1759,12 @@ var Lang = {
       "site.screen.attr.bg_color_critical" : "Background color CRITICAL",
       "action.update" : "Update",
       "schema.contact.text.remove_message_service" : "Remove the message service from contact",
-      "schema.group.attr.company_id" : "Company ID",
       "site.wtrm.action.checkIfElementHasNotHTML" : "Check if an <b>element does <i>NOT</i></b> contain <b>HTML</b>",
+      "schema.group.attr.company_id" : "Company ID",
       "nav.sub.rosters" : "Rosters",
       "schema.service_downtime.text.title" : "Scheduled service downtimes for host %s",
       "schema.event.attr.duration" : "Duration",
-      "schema.host.desc.location_class" : "See parameter host class.",
+      "schema.host.desc.location_class" : "Location class. e.g.<br/>/EU/Germany/Hamburg/DC1/Rack10",
       "schema.contact.text.settings" : "Contact settings",
       "schema.chart.attr.to" : "To",
       "schema.group.text.list" : "Overview of all groups",
@@ -1800,6 +1808,7 @@ var Lang = {
       "schema.service.info.inherits_from_host_template" : "This service is inherited from host template '%s'.",
       "schema.group.text.may_create_services" : "May create services",
       "schema.dependency.text.workflow_from_service_status" : "Select the status of the service that activates the dependency flow",
+      "schema.host.desc.os_class" : "Operating system class. e.g.<br/>/Linux/CentOS/7<br/>/Windows/Server/2012",
       "schema.company.text.create" : "Create a new company",
       "err-811" : "Sorry, but you cannot create more than %s dashboards!",
       "schema.hs_downtime.attr.id" : "ID",
@@ -1986,6 +1995,7 @@ var Lang = {
       "schema.contactgroup.text.service_members" : "Services, die der Kontakgruppe angehören",
       "schema.service.attr.fd_enabled" : "Erkennung von Statuswechseln eingeschaltet",
       "schema.location.attr.country_code" : "Ländercode",
+      "schema.host.desc.hw_class" : "Hardwareklasse. z.B.<br/>/Server/Dell/R730<br/>/Printer/Canon/ip2770",
       "schema.host.desc.max_services" : "Konfiguration der maximalen Services, die für diesen Host eingerichtet werden dürfen. 0 heißt unlimitiert.",
       "action.unselect" : "Abwählen",
       "schema.dependency.text.service" : "Service",
@@ -2112,6 +2122,7 @@ var Lang = {
       "text.report.availability.h00" : "00:00 - 00:59",
       "schema.host.attr.system_class" : "Systemklasse",
       "schema.company.desc.max_services_per_host" : "Die maximale Anzahl an sSrvices die pro Host erstellt werden dürfen.",
+      "schema.host.attr.os_class" : "OS Klasse",
       "action.configure" : "Konfigurieren",
       "text.report.availability.EV-GE300" : "Anzahl von Ereignissen mit einer Statusdauer größer als 5 Stunden. ",
       "schema.host.attr.virt_manufacturer" : "Virtualisierungshersteller",
@@ -2185,8 +2196,8 @@ var Lang = {
       "schema.service.attr.plugin" : "Plugin",
       "action.logout" : "Ausloggen",
       "schema.service.action.clear_volatile_multiple" : "Den flüchtigen Status aufheben",
-      "text.dashboard.save_dashboard" : "Dashboard speichern",
       "text.click_to_delete_seletion" : "Klicken um die Auswahl zu löschen",
+      "text.dashboard.save_dashboard" : "Dashboard speichern",
       "info.add-further-options" : "Weiter Optionen hinzufügen",
       "schema.service.text.multiple_volatile" : "Den flüchtigen Status mehrerer Services aufheben",
       "schema.service.info.status_nok_since" : "Der Service war innerhalb der letzten 60 Minuten nicht OK.",
@@ -2226,6 +2237,7 @@ var Lang = {
       "word.Timeslice" : "Zeitscheibe",
       "schema.dependency.text.list" : "Abhängigkeiten für Host %s",
       "site.wtrm.action.doSwitchToMainPage" : "<b>Switch</b> to main page",
+      "schema.host.menu.os_class" : "OS",
       "text.selected_locations_costs" : "itte beachten Sie, dass jeder Kontrollpunkt extra berechnet wird.",
       "text.fixed_checkpoint" : "Fixer Messpunkt",
       "schema.user_chart.attr.subtitle" : "Untertitel",
@@ -2397,6 +2409,7 @@ var Lang = {
       "nav.sub.services" : "Services",
       "schema.service.desc.failover_check_type_locations" : "Bitte wählen Sie einen festen und zwei Failover Messpunkte aus",
       "schema.dependency.text.dependencies" : "Abhängigkeiten",
+      "schema.host.attr.env_class" : "ENV Klasse",
       "schema.company.desc.data_retention" : "Die Aufbewahrungszeit in Tagen aller Daten von Hosts und der Services. Wenn ein Host eine höhere Aufbewahrungszeit konfiguriert hat, dann wird die Aufbewahrungszeit der Firma verwendet.",
       "schema.service.attr.scheduled" : "Hat eine Downtime",
       "schema.service.desc.timeout" : "Das ist der Timeout des Service. Der Timeoutzähler beginnt nach dem Intervall. Wenn in dieser Zeit der Status des Service nicht aktualisiert wurde, dann wird ein kritischer Status gesetzt mit der Information, dass der Bloonix-Agent wohlmöglich ausgefallen ist. Wenn kein Wert gesetzt ist, dann wird der Timeout des Hosts vererbt.",
@@ -2410,6 +2423,7 @@ var Lang = {
       "schema.service.attr.notification_interval" : "Benachrichtigungsintervall",
       "site.login.documentation" : "Die Bloonix Dokumentation",
       "schema.chart.text.select" : "Chartauswahl für Host %s",
+      "schema.host.desc.env_class" : "Umgebungsklasse. Sie Parameter Hostklasse für weitere Informationen.",
       "text.max_value" : "Höchstwert: %s",
       "schema.service.desc.volatile_retain" : "Mit dieser Option kann konfiguriert werden, ob der flüchtige Status eines Services nach einer bestimmten Zeit automatisch aufgehoben wird.",
       "schema.dependency.attr.timeslice" : "Zeitabschnitt",
@@ -2533,6 +2547,7 @@ var Lang = {
       "text.dashboard.data_format" : "In welchem Format sollen die Daten gezeigt werden?",
       "site.wtrm.action.checkIfElementHasText" : "Check if an <b>element</b> contains <b>text</b>",
       "schema.hs_downtime.attr.timezone" : "Zeitzone",
+      "schema.host.menu.hw_class" : "HW",
       "schema.company.desc.max_charts_per_user" : "Die maximale Anzahl an Benutzer-Charts die pro Benutzer erstellt werden dürfen.",
       "text.from_now_to_8h" : "Von jetzt + 8 Stunden",
       "schema.notification.text.list" : "Gesendete Nachrichten für Host %s",
@@ -2637,6 +2652,7 @@ var Lang = {
       "text.report.availability.h01" : "01:00 - 01:59",
       "nav.sub.timeperiods" : "Zeitplan",
       "text.dashboard.show_as_text" : "Zeige die Daten als Text",
+      "schema.host.attr.hw_class" : "HW Klasse",
       "site.screen.attr.text_color_time" : "Textfarbe ZEIT",
       "nav.sub.groups" : "Gruppen",
       "text.dashboard.num_services_flapping" : "%s Services flappen",
@@ -2697,8 +2713,8 @@ var Lang = {
       "action.search" : "Suchen",
       "text.range_value" : "Wertebereich: %s - %s",
       "schema.group.text.update_user" : "Die Rechte ändern",
-      "site.wtrm.action.checkIfElementIsNotChecked" : "Check if a <b>radio button</b> or <b>checkbox is <i>NOT</i> checked</b>",
       "site.wtrm.text.check_it" : "Check it!",
+      "site.wtrm.action.checkIfElementIsNotChecked" : "Check if a <b>radio button</b> or <b>checkbox is <i>NOT</i> checked</b>",
       "schema.user.text.create" : "Einen neuen Benutzer erstellen",
       "site.wtrm.command.checkIfElementHasText" : "Check if the element <b>%s</b> contains <b>%s</b>",
       "schema.chart.text.chart_id" : "Chart-ID: %s",
@@ -2727,7 +2743,7 @@ var Lang = {
       "schema.user.attr.username" : "Benutzername",
       "schema.chart.attr.options" : "Chart Optionen",
       "schema.company.desc.max_sms" : "Die maximale Anzahl SMS, die pro Monat versendet werden dürfen. Setze 0 (null) wenn es kein Limit gibt.",
-      "schema.host.desc.system_class" : "Siehe Parameter Hostklasss.",
+      "schema.host.desc.system_class" : "Systemklasse. Sie Parameter Hostklasse für weitere Informationen.",
       "site.wtrm.command.doClick" : "Click on element <b>%s</b>",
       "err-836" : "Sorry, aber Sie dürfen nicht mehr als %s Kontaktgruppen erstellen!",
       "schema.service.desc.agent_tooltip" : "<h3>Installation des Bloonix-Agenten</h3>\n<p>\nDieser Check wird direkt auf dem Server ausgeführt und erfordert die Installation des Bloonix-Agenten\nsowie das Plugin auf dem Server.\n</p>",
@@ -2787,6 +2803,7 @@ var Lang = {
       "schema.service.info.notification" : "Benachrichtigungen sind ausgeschaltet.",
       "action.genstr" : "Zeichenkette generieren",
       "info.create_success" : "Das Erstellen war erfolgreich!",
+      "schema.host.menu.env_class" : "ENV",
       "schema.service.info.host_alive_check" : "Dies ist ein Host-Alive-Check.",
       "action.clear" : "Zurücksetzen",
       "schema.user.desc.password" : "Geben Sie das Passwort des Benutzers ein.",
@@ -2880,7 +2897,7 @@ var Lang = {
       "nav.sub.rosters" : "Bereitschaftsplan",
       "schema.service_downtime.text.title" : "Geplante Service-Wartungsarbeiten für Host %s",
       "schema.event.attr.duration" : "Dauer",
-      "schema.host.desc.location_class" : "Siehe Parameter Hostklasse.",
+      "schema.host.desc.location_class" : "Standortklasse. z.B.<br/>/EU/Germany/Hamburg/DC1/Rack10",
       "schema.contact.text.settings" : "Einstellungen des Kontakts",
       "schema.chart.attr.to" : "Bis",
       "schema.group.text.list" : "Übersicht über alle Gruppen",
@@ -2924,6 +2941,7 @@ var Lang = {
       "schema.service.info.inherits_from_host_template" : "Dieser Service wird von Host Template '%s' vererbt.",
       "schema.group.text.may_create_services" : "Darf Services erstellen",
       "schema.dependency.text.workflow_from_service_status" : "Wähle den Status des Services, welcher den Abhängigkeitsfluss aktiviert",
+      "schema.host.desc.os_class" : "Betriebsystemklasse. z.B.<br/>/Linux/CentOS/7<br/>/Windows/Server/2012",
       "schema.company.text.create" : "Erstelle ein Unternehmen",
       "err-811" : "Sorry, aber Sie dürfen nicht mehr als %s Dashboards erstellen!",
       "schema.hs_downtime.attr.id" : "ID",
@@ -2954,8 +2972,8 @@ var Lang = {
       "err-419" : "Sie haben nicht genügend Rechte um das Objekt zu löschen!",
       "schema.service.attr.flapping" : "Flapping",
       "schema.service.desc.agent_id" : "Standort der Prüfung",
-      "text.dashboard.dashlet_select_chart" : "Wähle einen Chart",
       "text.first_failover_checkpoint" : "Erster Ausfallmesspunkt",
+      "text.dashboard.dashlet_select_chart" : "Wähle einen Chart",
       "schema.service.desc.rotate_check_type_locations" : "Ihr Service wird von folgenden Messpunkten überprüft:",
       "text.dashboard.services_notification" : "Benachrichtigungsstatus aller Services",
       "schema.contact.text.timeperiods" : "Zeitpläne des Kontakts",
@@ -13293,12 +13311,15 @@ Bloonix.listHosts = function(o) {
                     e.name === "host_class" ||
                     e.name === "system_class" ||
                     e.name === "location_class" ||
-                    e.name === "hw_manufacturer" ||
-                    e.name === "hw_product" ||
-                    e.name === "os_manufacturer" ||
-                    e.name === "os_product" ||
-                    e.name === "virt_manufacturer" ||
-                    e.name === "virt_product" ||
+                    e.name === "os_class" ||
+                    e.name === "hw_class" ||
+                    e.name === "env_class" ||
+                    //e.name === "hw_manufacturer" ||
+                    //e.name === "hw_product" ||
+                    //e.name === "os_manufacturer" ||
+                    //e.name === "os_product" ||
+                    //e.name === "virt_manufacturer" ||
+                    //e.name === "virt_product" ||
                     e.name === "location" ||
                     e.name === "allow_from"
                 ) {
@@ -13384,21 +13405,30 @@ Bloonix.listHosts = function(o) {
             appendTo: this.boxes.left,
             callback: getClasses
         }).create();
-
         this.menu.add({
             text: Text.get("schema.host.menu.host_class"),
             value: "host",
             init: true,
         });
-
         this.menu.add({
             text: Text.get("schema.host.menu.system_class"),
             value: "system"
         });
-
         this.menu.add({
             text: Text.get("schema.host.menu.location_class"),
             value: "location"
+        });
+        this.menu.add({
+            text: Text.get("schema.host.menu.os_class"),
+            value: "os"
+        });
+        this.menu.add({
+            text: Text.get("schema.host.menu.hw_class"),
+            value: "hw"
+        });
+        this.menu.add({
+            text: Text.get("schema.host.menu.env_class"),
+            value: "env"
         });
     };
 
@@ -13685,6 +13715,18 @@ Bloonix.listHosts = function(o) {
                 },{
                     name: "location_class",
                     text: Text.get("schema.host.attr.location_class"),
+                    hide: true
+                },{
+                    name: "os_class",
+                    text: Text.get("schema.host.attr.os_class"),
+                    hide: true
+                },{
+                    name: "hw_class",
+                    text: Text.get("schema.host.attr.hw_class"),
+                    hide: true
+                },{
+                    name: "env_class",
+                    text: Text.get("schema.host.attr.env_class"),
                     hide: true
                 },{
                     name: "hw_manufacturer",

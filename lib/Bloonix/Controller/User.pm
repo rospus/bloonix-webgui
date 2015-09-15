@@ -30,20 +30,24 @@ sub new {
 
     $self->{table_config} = {
         company => [qw(
-            id alt_company_id sla email count_hosts_services title name surname address1 address2 zipcode
-            city state country phone fax active max_services sms_enabled comment
+            id alt_company_id sla email count_hosts_services title
+            name surname address1 address2 zipcode city state country
+            phone fax active max_services sms_enabled comment
         )],
         user => [qw(
-            id name phone manage_contacts manage_templates last_login is_logged_in session_expires locked
-            role comment allow_from timezone operate_as
+            id name phone manage_contacts manage_templates last_login
+            is_logged_in session_expires locked role comment allow_from
+            timezone operate_as
         )],
         host => [qw(
-            id ipaddr description comment status last_check sysgroup sysinfo host_class system_class location_class
-            hw_manufacturer hw_product os_manufacturer os_product virt_manufacturer virt_product location coordinates
-            interval retry_interval data_retention
+            id ipaddr description comment status last_check sysgroup sysinfo
+            host_class system_class location_class os_class hw_class env_class
+            hw_manufacturer hw_product os_manufacturer os_product virt_manufacturer
+            virt_product location coordinates interval retry_interval data_retention
         )],
         service => [qw(
-            id command plugin agent_id description active acknowledged notification flapping scheduled message
+            id command plugin agent_id description active acknowledged
+            notification flapping scheduled message
         )],
     };
 

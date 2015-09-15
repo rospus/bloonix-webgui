@@ -5,6 +5,7 @@ bloonix-webgui (0.68) released at 2015-09-08
     * Fixed duplicate pager at the bottom of some tables.
     * Fixed host form, so that only groups are selectable in which
       the user is a member.
+    * Sort services by service name in templates.
 
 bloonix-webgui (0.67) released at 2015-09-06
 

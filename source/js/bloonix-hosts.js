@@ -108,12 +108,15 @@ Bloonix.listHosts = function(o) {
                     e.name === "host_class" ||
                     e.name === "system_class" ||
                     e.name === "location_class" ||
-                    e.name === "hw_manufacturer" ||
-                    e.name === "hw_product" ||
-                    e.name === "os_manufacturer" ||
-                    e.name === "os_product" ||
-                    e.name === "virt_manufacturer" ||
-                    e.name === "virt_product" ||
+                    e.name === "os_class" ||
+                    e.name === "hw_class" ||
+                    e.name === "env_class" ||
+                    //e.name === "hw_manufacturer" ||
+                    //e.name === "hw_product" ||
+                    //e.name === "os_manufacturer" ||
+                    //e.name === "os_product" ||
+                    //e.name === "virt_manufacturer" ||
+                    //e.name === "virt_product" ||
                     e.name === "location" ||
                     e.name === "allow_from"
                 ) {
@@ -199,21 +202,30 @@ Bloonix.listHosts = function(o) {
             appendTo: this.boxes.left,
             callback: getClasses
         }).create();
-
         this.menu.add({
             text: Text.get("schema.host.menu.host_class"),
             value: "host",
             init: true,
         });
-
         this.menu.add({
             text: Text.get("schema.host.menu.system_class"),
             value: "system"
         });
-
         this.menu.add({
             text: Text.get("schema.host.menu.location_class"),
             value: "location"
+        });
+        this.menu.add({
+            text: Text.get("schema.host.menu.os_class"),
+            value: "os"
+        });
+        this.menu.add({
+            text: Text.get("schema.host.menu.hw_class"),
+            value: "hw"
+        });
+        this.menu.add({
+            text: Text.get("schema.host.menu.env_class"),
+            value: "env"
         });
     };
 
@@ -500,6 +512,18 @@ Bloonix.listHosts = function(o) {
                 },{
                     name: "location_class",
                     text: Text.get("schema.host.attr.location_class"),
+                    hide: true
+                },{
+                    name: "os_class",
+                    text: Text.get("schema.host.attr.os_class"),
+                    hide: true
+                },{
+                    name: "hw_class",
+                    text: Text.get("schema.host.attr.hw_class"),
+                    hide: true
+                },{
+                    name: "env_class",
+                    text: Text.get("schema.host.attr.env_class"),
                     hide: true
                 },{
                     name: "hw_manufacturer",
