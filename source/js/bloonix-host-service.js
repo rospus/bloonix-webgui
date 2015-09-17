@@ -1528,6 +1528,16 @@ Bloonix.createServiceForm = function(o) {
                 secondsToFormValues: true,
                 nullString: Text.get("text.default")
             });
+
+            this.form.createElement({
+                text: Text.get("schema.service.attr.agent_options.set_tags"),
+                desc: Text.get("schema.service.desc.agent_options.set_tags"),
+                element: "checkbox",
+                name: "agent_options:set_tags",
+                options: [ "timeout", "fatal", "security" ],
+                checked: this.values.agent_options.set_tags,
+                commaSeparatedList: true
+            });
         }
 
         if (info.thresholds) {

@@ -577,9 +577,9 @@ schema.host.attr.sysinfo: System information
 schema.host.attr.host_class: Host class
 schema.host.attr.system_class: System class
 schema.host.attr.location_class: Location class
-schema.host.attr.os_class: OS class
-schema.host.attr.hw_class: HW class
-schema.host.attr.env_class: ENV class
+schema.host.attr.os_class: Operating system class
+schema.host.attr.hw_class: Hardware class
+schema.host.attr.env_class: Environment class
 schema.host.attr.hw_manufacturer: HW manufacturer
 schema.host.attr.hw_product: HW product
 schema.host.attr.os_manufacturer: OS manufacturer
@@ -675,9 +675,9 @@ schema.host.info.sysinfo: External system information available.
 schema.host.menu.host_class: Host
 schema.host.menu.system_class: System
 schema.host.menu.location_class: Location
-schema.host.menu.os_class: OS
-schema.host.menu.hw_class: HW
-schema.host.menu.env_class: ENV
+schema.host.menu.os_class: Operating system
+schema.host.menu.hw_class: Hardware
+schema.host.menu.env_class: Environment
 
 schema.timeperiod.attr.id: Timeperiod ID
 schema.timeperiod.attr.name: Timeperiod
@@ -937,6 +937,8 @@ schema.service.attr.host_alive_check: Is this a host alive check?
 schema.service.attr.passive_check: Is this a passive check?
 schema.service.attr.agent_options.timeout: Global check timeout
 schema.service.desc.agent_options.timeout: This is the global execution timeout of the check itself. After the timeout the check is killed and a CRITICAL status is triggered. This is very useful for checks that hangs and are unable to stop itself.<br/><br/>Default: 30 seconds
+schema.service.attr.agent_options.set_tags: Set tags
+schema.service.desc.agent_options.set_tags: Which tags should be set if the check returns a WARNING, CRITICAL or UNKNOWN status.
 schema.service.desc.agent_id: This is the location from where the check is executed.
 schema.service.desc.service_name: This is the display name of the service.
 schema.service.desc.description: This is a short description of the check.

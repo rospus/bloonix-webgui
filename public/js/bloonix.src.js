@@ -987,7 +987,7 @@ var Lang = {
       "text.report.availability.h00" : "00:00 - 00:59",
       "schema.host.attr.system_class" : "System class",
       "schema.company.desc.max_services_per_host" : "The maximum number of services that can be created for a host.",
-      "schema.host.attr.os_class" : "OS class",
+      "schema.host.attr.os_class" : "Operating system class",
       "action.configure" : "Configure",
       "text.report.availability.EV-GE300" : "Number of events with a status duration greater than 5 hours.",
       "schema.host.attr.virt_manufacturer" : "Virtualization manufacturer",
@@ -1102,7 +1102,7 @@ var Lang = {
       "word.Timeslice" : "Timeslice",
       "schema.dependency.text.list" : "Dependencies for host %s",
       "site.wtrm.action.doSwitchToMainPage" : "<b>Switch</b> to main page",
-      "schema.host.menu.os_class" : "OS",
+      "schema.host.menu.os_class" : "Operating system",
       "text.selected_locations_costs" : "Please note that each checkpoint will be charged extra.",
       "text.fixed_checkpoint" : "Fixed checkpoint",
       "schema.user_chart.attr.subtitle" : "Subtitle",
@@ -1274,7 +1274,7 @@ var Lang = {
       "nav.sub.services" : "Services",
       "schema.service.desc.failover_check_type_locations" : "Select a fixed and two failover checkpoints",
       "schema.dependency.text.dependencies" : "Dependencies",
-      "schema.host.attr.env_class" : "ENV class",
+      "schema.host.attr.env_class" : "Environment class",
       "schema.company.desc.data_retention" : "The retention in days of all data of hosts and services. If a host has a higher data retention configured then the data retention of the company is used.",
       "schema.service.attr.scheduled" : "Has downtime",
       "schema.service.desc.timeout" : "This is the timeout of the service and begins to count after the interval. If the status of the service is not updated in this time then a critical status is set for the service with the information that it seems that the Bloonix agent is not working. If no value is set, then the timeout of the host is inherited.",
@@ -1413,7 +1413,7 @@ var Lang = {
       "text.dashboard.data_format" : "In which format the data should be shown?",
       "site.wtrm.action.checkIfElementHasText" : "Check if an <b>element</b> contains <b>text</b> ",
       "schema.hs_downtime.attr.timezone" : "Timezone",
-      "schema.host.menu.hw_class" : "HW",
+      "schema.host.menu.hw_class" : "Hardware",
       "schema.company.desc.max_charts_per_user" : "The maximum number of user-charts that can be created by a user.",
       "text.from_now_to_8h" : "From now + 8 hours",
       "schema.notification.text.list" : "Sent notifications for host %s",
@@ -1518,7 +1518,7 @@ var Lang = {
       "text.report.availability.h01" : "01:00 - 01:59",
       "nav.sub.timeperiods" : "Timeperiods",
       "text.dashboard.show_as_text" : "Show as text",
-      "schema.host.attr.hw_class" : "HW class",
+      "schema.host.attr.hw_class" : "Hardware class",
       "site.screen.attr.text_color_time" : "Text color TIME",
       "nav.sub.groups" : "Groups",
       "text.dashboard.num_services_flapping" : "%s services are flapping",
@@ -1670,7 +1670,7 @@ var Lang = {
       "schema.service.info.notification" : "Notifications are disabled of the service.",
       "action.genstr" : "Generate string",
       "info.create_success" : "The creation was successful!",
-      "schema.host.menu.env_class" : "ENV",
+      "schema.host.menu.env_class" : "Environment",
       "schema.service.info.host_alive_check" : "This is a host-alive-check.",
       "action.clear" : "Clear",
       "schema.user.desc.password" : "Enter the users login password.",
@@ -1690,6 +1690,7 @@ var Lang = {
       "nav.main.monitoring" : "MONITORING",
       "schema.user.text.view" : "User %s",
       "schema.host.action.enable_notifications_multiple" : "Enable notifications of the selected hosts",
+      "schema.service.attr.agent_options.set_tags" : "Set tags",
       "schema.user.attr.name" : "Name",
       "schema.dependency.text.host_to_service" : "host to service",
       "text.from_now_to_14d" : "From now + 14 days",
@@ -1892,6 +1893,7 @@ var Lang = {
       "word.debug" : "Debug",
       "schema.service.desc.acknowledged" : "This option is useful if a service is not OK and if you want to disable the notifications temporary. The notifications will be enabled again if the services switched to the status OK.",
       "text.report.availability.LT15" : "Filter events with a status duration less than 15 minutes.",
+      "schema.service.desc.agent_options.set_tags" : "Which tags should be set if the check returns a WARNING, CRITICAL or UNKNOWN status.",
       "schema.event.text.filter_by_status" : "Filter by status",
       "schema.host.attr.location_class" : "Location class",
       "nav.sub.mtr" : "MTR",
@@ -2120,9 +2122,9 @@ var Lang = {
       "schema.service.desc.is_volatile" : "Mit dieser Option können Sie bestimmen, ob es sich bei diesem Service um einen flüchten Services handelt. Einige Services haben die Besonderheit, dass Sie nur für einen sehr kurzen Zeitraum kritisch sind. Dies können zum Beispiel Logdateien-Checks sein, in denen nach dem Vorhandensein bestimmter Strings gesucht wird, zum Beispiel Strings wie <i>possible break-in attempt</i>. Wenn beim nächsten Logdateien Check dieser String nicht mehr vorhanden ist, würde der Service wieder in den OK Status wechseln und man würde den Einbruch-Versuch nicht bemerken. Ein Service, der dagegen als ein flüchtiger Service konfiguriert ist, bleibt solange in einem nicht-OK Status, bis der Status aufgehoben wurde.",
       "err-630" : "Ungültige Parametereinstellungen gefunden!",
       "text.report.availability.h00" : "00:00 - 00:59",
-      "schema.host.attr.system_class" : "Systemklasse",
+      "schema.host.attr.system_class" : "Klasse System",
       "schema.company.desc.max_services_per_host" : "Die maximale Anzahl an sSrvices die pro Host erstellt werden dürfen.",
-      "schema.host.attr.os_class" : "OS Klasse",
+      "schema.host.attr.os_class" : "Klasse Betriebssystem",
       "action.configure" : "Konfigurieren",
       "text.report.availability.EV-GE300" : "Anzahl von Ereignissen mit einer Statusdauer größer als 5 Stunden. ",
       "schema.host.attr.virt_manufacturer" : "Virtualisierungshersteller",
@@ -2237,7 +2239,7 @@ var Lang = {
       "word.Timeslice" : "Zeitscheibe",
       "schema.dependency.text.list" : "Abhängigkeiten für Host %s",
       "site.wtrm.action.doSwitchToMainPage" : "<b>Switch</b> to main page",
-      "schema.host.menu.os_class" : "OS",
+      "schema.host.menu.os_class" : "Betriebssystem",
       "text.selected_locations_costs" : "itte beachten Sie, dass jeder Kontrollpunkt extra berechnet wird.",
       "text.fixed_checkpoint" : "Fixer Messpunkt",
       "schema.user_chart.attr.subtitle" : "Untertitel",
@@ -2335,7 +2337,7 @@ var Lang = {
       "schema.company.attr.max_downtimes_per_host" : "Maximale Downtimes pro Host",
       "action.create" : "Erstellen",
       "schema.host_template.desc.name" : "Dies ist der Name des Templates.",
-      "schema.host.attr.host_class" : "Hostklasse",
+      "schema.host.attr.host_class" : "Klasse Host",
       "site.wtrm.placeholder.element" : "#element-id OR .class-name OR name",
       "schema.chart.text.view" : "Charts für Host %s",
       "schema.chart.text.multiview" : "Anzeige mehrerer Charts",
@@ -2409,7 +2411,7 @@ var Lang = {
       "nav.sub.services" : "Services",
       "schema.service.desc.failover_check_type_locations" : "Bitte wählen Sie einen festen und zwei Failover Messpunkte aus",
       "schema.dependency.text.dependencies" : "Abhängigkeiten",
-      "schema.host.attr.env_class" : "ENV Klasse",
+      "schema.host.attr.env_class" : "Klasse Umgebung",
       "schema.company.desc.data_retention" : "Die Aufbewahrungszeit in Tagen aller Daten von Hosts und der Services. Wenn ein Host eine höhere Aufbewahrungszeit konfiguriert hat, dann wird die Aufbewahrungszeit der Firma verwendet.",
       "schema.service.attr.scheduled" : "Hat eine Downtime",
       "schema.service.desc.timeout" : "Das ist der Timeout des Service. Der Timeoutzähler beginnt nach dem Intervall. Wenn in dieser Zeit der Status des Service nicht aktualisiert wurde, dann wird ein kritischer Status gesetzt mit der Information, dass der Bloonix-Agent wohlmöglich ausgefallen ist. Wenn kein Wert gesetzt ist, dann wird der Timeout des Hosts vererbt.",
@@ -2547,7 +2549,7 @@ var Lang = {
       "text.dashboard.data_format" : "In welchem Format sollen die Daten gezeigt werden?",
       "site.wtrm.action.checkIfElementHasText" : "Check if an <b>element</b> contains <b>text</b>",
       "schema.hs_downtime.attr.timezone" : "Zeitzone",
-      "schema.host.menu.hw_class" : "HW",
+      "schema.host.menu.hw_class" : "Hardware",
       "schema.company.desc.max_charts_per_user" : "Die maximale Anzahl an Benutzer-Charts die pro Benutzer erstellt werden dürfen.",
       "text.from_now_to_8h" : "Von jetzt + 8 Stunden",
       "schema.notification.text.list" : "Gesendete Nachrichten für Host %s",
@@ -2652,7 +2654,7 @@ var Lang = {
       "text.report.availability.h01" : "01:00 - 01:59",
       "nav.sub.timeperiods" : "Zeitplan",
       "text.dashboard.show_as_text" : "Zeige die Daten als Text",
-      "schema.host.attr.hw_class" : "HW Klasse",
+      "schema.host.attr.hw_class" : "Klasse Hardware",
       "site.screen.attr.text_color_time" : "Textfarbe ZEIT",
       "nav.sub.groups" : "Gruppen",
       "text.dashboard.num_services_flapping" : "%s Services flappen",
@@ -2803,7 +2805,7 @@ var Lang = {
       "schema.service.info.notification" : "Benachrichtigungen sind ausgeschaltet.",
       "action.genstr" : "Zeichenkette generieren",
       "info.create_success" : "Das Erstellen war erfolgreich!",
-      "schema.host.menu.env_class" : "ENV",
+      "schema.host.menu.env_class" : "Environment",
       "schema.service.info.host_alive_check" : "Dies ist ein Host-Alive-Check.",
       "action.clear" : "Zurücksetzen",
       "schema.user.desc.password" : "Geben Sie das Passwort des Benutzers ein.",
@@ -2823,6 +2825,7 @@ var Lang = {
       "nav.main.monitoring" : "MONITORING",
       "schema.user.text.view" : "Benutzer %s",
       "schema.host.action.enable_notifications_multiple" : "Benachrichtigungen einschalten für die selektierten Hosts",
+      "schema.service.attr.agent_options.set_tags" : "Flags setzen",
       "schema.user.attr.name" : "Name",
       "schema.dependency.text.host_to_service" : "Host zu Service",
       "text.from_now_to_14d" : "Von jetzt + 14 Tage",
@@ -2892,8 +2895,8 @@ var Lang = {
       "site.screen.attr.bg_color_critical" : "Hintergrundfarbe CRITICAL",
       "action.update" : "Aktualisieren",
       "schema.contact.text.remove_message_service" : "Den Nachrichtendienst vom Konakt entfernen",
-      "schema.group.attr.company_id" : "Firmen ID",
       "site.wtrm.action.checkIfElementHasNotHTML" : "Check if an <b>element does <i>NOT</i></b> contain <b>HTML</b>",
+      "schema.group.attr.company_id" : "Firmen ID",
       "nav.sub.rosters" : "Bereitschaftsplan",
       "schema.service_downtime.text.title" : "Geplante Service-Wartungsarbeiten für Host %s",
       "schema.event.attr.duration" : "Dauer",
@@ -2941,7 +2944,7 @@ var Lang = {
       "schema.service.info.inherits_from_host_template" : "Dieser Service wird von Host Template '%s' vererbt.",
       "schema.group.text.may_create_services" : "Darf Services erstellen",
       "schema.dependency.text.workflow_from_service_status" : "Wähle den Status des Services, welcher den Abhängigkeitsfluss aktiviert",
-      "schema.host.desc.os_class" : "Betriebsystemklasse. z.B.<br/>/Linux/CentOS/7<br/>/Windows/Server/2012",
+      "schema.host.desc.os_class" : "Betriebssystemklasse. z.B.<br/>/Linux/CentOS/7<br/>/Windows/Server/2012",
       "schema.company.text.create" : "Erstelle ein Unternehmen",
       "err-811" : "Sorry, aber Sie dürfen nicht mehr als %s Dashboards erstellen!",
       "schema.hs_downtime.attr.id" : "ID",
@@ -3025,8 +3028,9 @@ var Lang = {
       "word.debug" : "Debug",
       "schema.service.desc.acknowledged" : "Diese Option ist hilfreich wenn ein Service nicht OK ist und Sie das Benachrichtiungen temporär ausschalten möchten. Die Benachrichtigungen werden automatisch wieder eingeschaltet, wenn der Service in den Status OK gewechselt ist.",
       "text.report.availability.LT15" : "Filterung von Ereignissen mit einer Statusdauer kleiner als 15 Minuten.",
+      "schema.service.desc.agent_options.set_tags" : "Welche Flags sollen gesetzt werden, wenn der Check einen WARNING oder CRITICAL Status liefert.",
       "schema.event.text.filter_by_status" : "Nach Status filtern",
-      "schema.host.attr.location_class" : "Standortklasse",
+      "schema.host.attr.location_class" : "Klasse Standort",
       "nav.sub.mtr" : "MTR",
       "site.wtrm.desc.value" : "The value of the element you wish to fill or check.",
       "schema.company.attr.max_charts_per_user" : "Maximale Charts pro Benutzer",
@@ -8382,7 +8386,9 @@ Menu.prototype = {
     iconDownClass: "chevron-down",
     showDelay: 500,
     hideDelay: 500,
-    hide: true
+    onClick: false,
+    hide: true,
+    value: false
 };
 
 Menu.prototype.create = function() {
@@ -8394,9 +8400,12 @@ Menu.prototype.create = function() {
         .addClass(this.titleClass)
         .appendTo(this.outerContainer);
 
-    this.contentContainer = Utils.create("div")
-        .html(this.content)
+    this.container = Utils.create("div")
         .appendTo(this.outerContainer);
+
+    if (this.content) {
+        this.container.html(this.content);
+    }
 
     this.icon = Utils.create("div")
         .addClass(this.iconBaseClass)
@@ -8409,12 +8418,15 @@ Menu.prototype.create = function() {
 
     this.title.click(function() {
         if (self.hide == true) {
-            self.contentContainer.show(self.showDelay);
+            self.container.show(self.showDelay);
             self.hide = false;
             self.icon.addClass(self.iconUpClass);
             self.icon.removeClass(self.iconDownClass);
+            if (self.onClick !== false) {
+                self.onClick(self, self.value);
+            }
         } else {
-            self.contentContainer.hide(self.hideDelay);
+            self.container.hide(self.hideDelay);
             self.hide = true;
             self.icon.addClass(self.iconDownClass);
             self.icon.removeClass(self.iconUpClass);
@@ -8423,7 +8435,7 @@ Menu.prototype.create = function() {
 
     if (this.hide == true) {
         this.icon.addClass(this.iconDownClass);
-        this.contentContainer.hide();
+        this.container.hide();
     } else {
         this.icon.addClass(this.iconUpClass);
     }
@@ -8476,7 +8488,9 @@ SimpleMenu.prototype.add = function(item) {
             .appendTo(this.appendTo);
     }
 
-    if (Utils.objectSize(this.boxes) > 0) {
+    if (item.lineBreak === true) {
+        Utils.create("br").appendTo(this.container);
+    } else if (Utils.objectSize(this.boxes) > 0) {
         Utils.create("span")
             .addClass(this.separatorClass)
             .text("|")
@@ -8512,8 +8526,10 @@ SimpleMenu.prototype.switchItem = SimpleMenu.prototype.switchTo = function(value
     if (this.active == value) {
         return;
     }
-    this.boxes[this.active].hide(200);
-    this.links[this.active].removeClass(this.activeClass);
+    if (this.active) {
+        this.boxes[this.active].hide(200);
+        this.links[this.active].removeClass(this.activeClass);
+    }
     this.links[value].addClass(this.activeClass);
     this.boxes[value].show(200);
     this.active = value;
@@ -13370,11 +13386,11 @@ Bloonix.listHosts = function(o) {
         this.headerContainer = Utils.create("div")
             .appendTo(this.appendTo);
 
-        this.contentContainer = Utils.create("div")
+        this.container = Utils.create("div")
             .appendTo(this.appendTo);
 
         this.boxes = Bloonix.createSideBySideBoxes({
-            container: this.contentContainer,
+            container: this.container,
             width: "250px"
         });
     };
@@ -13386,6 +13402,10 @@ Bloonix.listHosts = function(o) {
 
         var getClasses = function(menu, classType) {
             Bloonix.replaceWithLoading(menu.activeBox);
+
+            if (classType !== Bloonix.user.stash.host_class_view) {
+                Bloonix.saveUserConfig("host_class_view", classType, false);
+            }
 
             Ajax.post({
                 url: "/hosts/classes/" + classType,
@@ -13401,14 +13421,53 @@ Bloonix.listHosts = function(o) {
             });
         };
 
+        /*
+        this.menu = new Menu({
+            title: Text.get("schema.host.menu.host_class"),
+            appendTo: this.boxes.left,
+            onClick: getClasses,
+            value: "host",
+        }).create();
+        this.menu = new Menu({
+            title: Text.get("schema.host.menu.system_class"),
+            appendTo: this.boxes.left,
+            onClick: getClasses,
+            value: "system"
+        }).create();
+        this.menu = new Menu({
+            title: Text.get("schema.host.menu.location_class"),
+            appendTo: this.boxes.left,
+            onClick: getClasses,
+            value: "location"
+        }).create();
+        this.menu = new Menu({
+            title: Text.get("schema.host.menu.os_class"),
+            appendTo: this.boxes.left,
+            onClick: getClasses,
+            value: "os"
+        }).create();
+        this.menu = new Menu({
+            title: Text.get("schema.host.menu.hw_class"),
+            appendTo: this.boxes.left,
+            onClick: getClasses,
+            value: "hw"
+        }).create();
+        this.menu = new Menu({
+            title: Text.get("schema.host.menu.env_class"),
+            appendTo: this.boxes.left,
+            onClick: getClasses,
+            value: "env"
+        }).create();
+        */
+
         this.menu = new SimpleMenu({
             appendTo: this.boxes.left,
             callback: getClasses
         }).create();
+
         this.menu.add({
             text: Text.get("schema.host.menu.host_class"),
-            value: "host",
-            init: true,
+            value: "host"
         });
         this.menu.add({
             text: Text.get("schema.host.menu.system_class"),
@@ -13419,22 +13478,29 @@ Bloonix.listHosts = function(o) {
             value: "location"
         });
         this.menu.add({
-            text: Text.get("schema.host.menu.os_class"),
-            value: "os"
-        });
-        this.menu.add({
             text: Text.get("schema.host.menu.hw_class"),
-            value: "hw"
+            value: "hw",
+            lineBreak: true
         });
         this.menu.add({
             text: Text.get("schema.host.menu.env_class"),
             value: "env"
         });
+        this.menu.add({
+            text: Text.get("schema.host.menu.os_class"),
+            value: "os",
+            lineBreak: true
+        });
+
+        var initItem = Bloonix.user.stash.host_class_view
+            ? Bloonix.user.stash.host_class_view
+            : "host";
+
+        this.menu.switchItem(initItem);
     };
 
     object.listClassStructure = function(classType, ul, data, path, hide) {
         var self = this;
-        // FOO
 
         $.each(Bloonix.sortObject(data), function(i, className) {
             var obj = data[className],
@@ -13728,6 +13794,7 @@ Bloonix.listHosts = function(o) {
                     name: "env_class",
                     text: Text.get("schema.host.attr.env_class"),
                     hide: true
+                /*
                 },{
                     name: "hw_manufacturer",
                     text: Text.get("schema.host.attr.hw_manufacturer"),
@@ -13751,6 +13818,7 @@ Bloonix.listHosts = function(o) {
                     name: "virt_product",
                     text: Text.get("schema.host.attr.virt_product"),
                     hide: true
+                */
                 },{
                     name: "location",
                     text: Text.get("schema.host.attr.location")
@@ -13935,45 +14003,72 @@ Bloonix.getHostFormElements = function(o) {
         },{
             element: "input",
             type: "text",
+            name: "os_class",
+            text: Text.get("schema.host.attr.os_class"),
+            desc: Text.get("schema.host.desc.os_class"),
+            maxlength: 100
+        },{
+            element: "input",
+            type: "text",
+            name: "hw_class",
+            text: Text.get("schema.host.attr.hw_class"),
+            desc: Text.get("schema.host.desc.hw_class"),
+            maxlength: 100
+        },{
+            element: "input",
+            type: "text",
+            name: "env_class",
+            text: Text.get("schema.host.attr.env_class"),
+            desc: Text.get("schema.host.desc.env_class"),
+            maxlength: 100
+        },{
+            element: "input",
+            type: "text",
             name: "hw_manufacturer",
             text: Text.get("schema.host.attr.hw_manufacturer"),
             desc: Text.get("schema.host.desc.hw_manufacturer"),
-            maxlength: 50
+            maxlength: 100,
+            elementInfo: "Deprecated! Please use HW class instead!"
         },{
             element: "input",
             type: "text",
             name: "hw_product",
             text: Text.get("schema.host.attr.hw_product"),
             desc: Text.get("schema.host.desc.hw_product"),
-            maxlength: 50
+            maxlength: 100,
+            elementInfo: "Deprecated! Please use HW class instead!"
         },{
             element: "input",
             type: "text",
             name: "os_manufacturer",
             text: Text.get("schema.host.attr.os_manufacturer"),
             desc: Text.get("schema.host.desc.os_manufacturer"),
-            maxlength: 50
+            maxlength: 100,
+            elementInfo: "Deprecated! Please use OS class instead!"
         },{
             element: "input",
             type: "text",
             name: "os_product",
             text: Text.get("schema.host.attr.os_product"),
             desc: Text.get("schema.host.desc.os_product"),
-            maxlength: 50
+            maxlength: 100,
+            elementInfo: "Deprecated! Please use OS class instead!"
         },{
             element: "input",
             type: "text",
             name: "virt_manufacturer",
             text: Text.get("schema.host.attr.virt_manufacturer"),
             desc: Text.get("schema.host.desc.virt_manufacturer"),
-            maxlength: 50
+            maxlength: 100,
+            elementInfo: "Deprecated! Please use Host/System/ENV class instead!"
         },{
             element: "input",
             type: "text",
             name: "virt_product",
             text: Text.get("schema.host.attr.virt_product"),
             desc: Text.get("schema.host.desc.virt_product"),
-            maxlength: 50
+            maxlength: 100,
+            elementInfo: "Deprecated! Please use Host/System/ENV class instead!"
         },{
             element: "input",
             type: "text",
@@ -17610,6 +17705,16 @@ Bloonix.createServiceForm = function(o) {
                 checked: this.values.agent_options.timeout || 0,
                 secondsToFormValues: true,
                 nullString: Text.get("text.default")
+            });
+
+            this.form.createElement({
+                text: Text.get("schema.service.attr.agent_options.set_tags"),
+                desc: Text.get("schema.service.desc.agent_options.set_tags"),
+                element: "checkbox",
+                name: "agent_options:set_tags",
+                options: [ "timeout", "fatal", "security" ],
+                checked: this.values.agent_options.set_tags,
+                commaSeparatedList: true
             });
         }
 
@@ -22625,7 +22730,7 @@ Bloonix.getUserFormElements = function() {
     ];
 };
 
-Bloonix.saveUserConfig = function(key, data) {
+Bloonix.saveUserConfig = function(key, data, updateInfo) {
     Ajax.post({
         url: "/user/config/save",
         data: { key: key, data: data },
@@ -22638,11 +22743,13 @@ Bloonix.saveUserConfig = function(key, data) {
                 } else {
                     Bloonix.user.stash[key] = result.data;
                 }
-                Bloonix.createNoteBox({
-                    infoClass: "info-ok",
-                    text: Text.get("info.update_success"),
-                    autoClose: true
-                });
+                if (updateInfo !== false) {
+                    Bloonix.createNoteBox({
+                        infoClass: "info-ok",
+                        text: Text.get("info.update_success"),
+                        autoClose: true
+                    });
+                }
             }
         }
     });

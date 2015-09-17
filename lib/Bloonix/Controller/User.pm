@@ -79,6 +79,8 @@ sub save {
         return $self->delete_dashboard($c, $data);
     } elsif ($key eq "last_open_dashboard") {
         return $self->last_open_dashboard($c, $data);
+    } elsif ($key eq "host_class_view") {
+        return $self->host_class_view($c, $data);
     } elsif ($key eq "screen") {
         return $self->save_screen_config($c, $data);
     }
@@ -402,6 +404,21 @@ sub save_table_config {
             { stash => $c->json->encode($stash) }
         );
     }
+}
+
+sub host_class_view {
+    my ($self, $c, $data) = @_;
+
+    if ($data =~ /^(host|system|location|os|hw|env)\z/) {
+        $c->user->{stash}->{host_class_view} = $data;
+        $c->model->database->user->update(
+            $c->user->{id},
+            { stash => $c->json->encode($c->user->{stash}) }
+        );
+    }
+
+    $c->stash->data($data);
+    $c->view->render->json;
 }
 
 sub save_screen_config {

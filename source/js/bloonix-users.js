@@ -256,7 +256,7 @@ Bloonix.getUserFormElements = function() {
     ];
 };
 
-Bloonix.saveUserConfig = function(key, data) {
+Bloonix.saveUserConfig = function(key, data, updateInfo) {
     Ajax.post({
         url: "/user/config/save",
         data: { key: key, data: data },
@@ -269,11 +269,13 @@ Bloonix.saveUserConfig = function(key, data) {
                 } else {
                     Bloonix.user.stash[key] = result.data;
                 }
-                Bloonix.createNoteBox({
-                    infoClass: "info-ok",
-                    text: Text.get("info.update_success"),
-                    autoClose: true
-                });
+                if (updateInfo !== false) {
+                    Bloonix.createNoteBox({
+                        infoClass: "info-ok",
+                        text: Text.get("info.update_success"),
+                        autoClose: true
+                    });
+                }
             }
         }
     });

@@ -167,11 +167,11 @@ Bloonix.listHosts = function(o) {
         this.headerContainer = Utils.create("div")
             .appendTo(this.appendTo);
 
-        this.contentContainer = Utils.create("div")
+        this.container = Utils.create("div")
             .appendTo(this.appendTo);
 
         this.boxes = Bloonix.createSideBySideBoxes({
-            container: this.contentContainer,
+            container: this.container,
             width: "250px"
         });
     };
@@ -183,6 +183,10 @@ Bloonix.listHosts = function(o) {
 
         var getClasses = function(menu, classType) {
             Bloonix.replaceWithLoading(menu.activeBox);
+
+            if (classType !== Bloonix.user.stash.host_class_view) {
+                Bloonix.saveUserConfig("host_class_view", classType, false);
+            }
 
             Ajax.post({
                 url: "/hosts/classes/" + classType,
@@ -198,14 +202,53 @@ Bloonix.listHosts = function(o) {
             });
         };
 
+        /*
+        this.menu = new Menu({
+            title: Text.get("schema.host.menu.host_class"),
+            appendTo: this.boxes.left,
+            onClick: getClasses,
+            value: "host",
+        }).create();
+        this.menu = new Menu({
+            title: Text.get("schema.host.menu.system_class"),
+            appendTo: this.boxes.left,
+            onClick: getClasses,
+            value: "system"
+        }).create();
+        this.menu = new Menu({
+            title: Text.get("schema.host.menu.location_class"),
+            appendTo: this.boxes.left,
+            onClick: getClasses,
+            value: "location"
+        }).create();
+        this.menu = new Menu({
+            title: Text.get("schema.host.menu.os_class"),
+            appendTo: this.boxes.left,
+            onClick: getClasses,
+            value: "os"
+        }).create();
+        this.menu = new Menu({
+            title: Text.get("schema.host.menu.hw_class"),
+            appendTo: this.boxes.left,
+            onClick: getClasses,
+            value: "hw"
+        }).create();
+        this.menu = new Menu({
+            title: Text.get("schema.host.menu.env_class"),
+            appendTo: this.boxes.left,
+            onClick: getClasses,
+            value: "env"
+        }).create();
+        */
+
         this.menu = new SimpleMenu({
             appendTo: this.boxes.left,
             callback: getClasses
         }).create();
+
         this.menu.add({
             text: Text.get("schema.host.menu.host_class"),
-            value: "host",
-            init: true,
+            value: "host"
         });
         this.menu.add({
             text: Text.get("schema.host.menu.system_class"),
@@ -216,22 +259,29 @@ Bloonix.listHosts = function(o) {
             value: "location"
         });
         this.menu.add({
-            text: Text.get("schema.host.menu.os_class"),
-            value: "os"
-        });
-        this.menu.add({
             text: Text.get("schema.host.menu.hw_class"),
-            value: "hw"
+            value: "hw",
+            lineBreak: true
         });
         this.menu.add({
             text: Text.get("schema.host.menu.env_class"),
             value: "env"
         });
+        this.menu.add({
+            text: Text.get("schema.host.menu.os_class"),
+            value: "os",
+            lineBreak: true
+        });
+
+        var initItem = Bloonix.user.stash.host_class_view
+            ? Bloonix.user.stash.host_class_view
+            : "host";
+
+        this.menu.switchItem(initItem);
     };
 
     object.listClassStructure = function(classType, ul, data, path, hide) {
         var self = this;
-        // FOO
 
         $.each(Bloonix.sortObject(data), function(i, className) {
             var obj = data[className],
@@ -525,6 +575,7 @@ Bloonix.listHosts = function(o) {
                     name: "env_class",
                     text: Text.get("schema.host.attr.env_class"),
                     hide: true
+                /*
                 },{
                     name: "hw_manufacturer",
                     text: Text.get("schema.host.attr.hw_manufacturer"),
@@ -548,6 +599,7 @@ Bloonix.listHosts = function(o) {
                     name: "virt_product",
                     text: Text.get("schema.host.attr.virt_product"),
                     hide: true
+                */
                 },{
                     name: "location",
                     text: Text.get("schema.host.attr.location")
@@ -732,45 +784,72 @@ Bloonix.getHostFormElements = function(o) {
         },{
             element: "input",
             type: "text",
+            name: "os_class",
+            text: Text.get("schema.host.attr.os_class"),
+            desc: Text.get("schema.host.desc.os_class"),
+            maxlength: 100
+        },{
+            element: "input",
+            type: "text",
+            name: "hw_class",
+            text: Text.get("schema.host.attr.hw_class"),
+            desc: Text.get("schema.host.desc.hw_class"),
+            maxlength: 100
+        },{
+            element: "input",
+            type: "text",
+            name: "env_class",
+            text: Text.get("schema.host.attr.env_class"),
+            desc: Text.get("schema.host.desc.env_class"),
+            maxlength: 100
+        },{
+            element: "input",
+            type: "text",
             name: "hw_manufacturer",
             text: Text.get("schema.host.attr.hw_manufacturer"),
             desc: Text.get("schema.host.desc.hw_manufacturer"),
-            maxlength: 50
+            maxlength: 100,
+            elementInfo: "Deprecated! Please use HW class instead!"
         },{
             element: "input",
             type: "text",
             name: "hw_product",
             text: Text.get("schema.host.attr.hw_product"),
             desc: Text.get("schema.host.desc.hw_product"),
-            maxlength: 50
+            maxlength: 100,
+            elementInfo: "Deprecated! Please use HW class instead!"
         },{
             element: "input",
             type: "text",
             name: "os_manufacturer",
             text: Text.get("schema.host.attr.os_manufacturer"),
             desc: Text.get("schema.host.desc.os_manufacturer"),
-            maxlength: 50
+            maxlength: 100,
+            elementInfo: "Deprecated! Please use OS class instead!"
         },{
             element: "input",
             type: "text",
             name: "os_product",
             text: Text.get("schema.host.attr.os_product"),
             desc: Text.get("schema.host.desc.os_product"),
-            maxlength: 50
+            maxlength: 100,
+            elementInfo: "Deprecated! Please use OS class instead!"
         },{
             element: "input",
             type: "text",
             name: "virt_manufacturer",
             text: Text.get("schema.host.attr.virt_manufacturer"),
             desc: Text.get("schema.host.desc.virt_manufacturer"),
-            maxlength: 50
+            maxlength: 100,
+            elementInfo: "Deprecated! Please use Host/System/ENV class instead!"
         },{
             element: "input",
             type: "text",
             name: "virt_product",
             text: Text.get("schema.host.attr.virt_product"),
             desc: Text.get("schema.host.desc.virt_product"),
-            maxlength: 50
+            maxlength: 100,
+            elementInfo: "Deprecated! Please use Host/System/ENV class instead!"
         },{
             element: "input",
             type: "text",

@@ -68,6 +68,9 @@ rm -rf %{buildroot}
 - Fixed duplicate pager at the bottom of some tables.
 - Fixed host form, so that only groups are selectable in which
   the user is a member.
+- Sort services by service name in templates.
+- Fixed different column in table dependency and allow null values.
+- Add new host columns os_class, hw_class and env_class.
 * Mon Sep 07 2015 Jonny Schulz <js@bloonix.de> - 0.67-1
 - Kicked default Host classes.
 - Added the possibility to configure the monitoring screen.

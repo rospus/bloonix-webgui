@@ -85,6 +85,21 @@ sub set {
             regex => qr!^(|/.+)\z!,
             default => ""
         },
+        os_class => {
+            max_size => 100,
+            regex => qr!^(|/.+)\z!,
+            default => ""
+        },
+        hw_class => {
+            max_size => 100,
+            regex => qr!^(|/.+)\z!,
+            default => ""
+        },
+        env_class => {
+            max_size => 100,
+            regex => qr!^(|/.+)\z!,
+            default => ""
+        },
         hw_manufacturer => {
             max_size => 50,
             optional => 1,

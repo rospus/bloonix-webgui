@@ -335,10 +335,6 @@ sub validate_agent_options {
     }
 
     foreach my $key (keys %$agent_options) {
-        if ($key ne "timeout") {
-            next;
-        }
-
         if ($key eq "timeout") {
             if ($agent_options->{$key} =~ /^(0|10|15|30|60|90|120)\z/) {
                 if ($agent_options->{$key} == 0) {
@@ -349,6 +345,20 @@ sub validate_agent_options {
             } else {
                 push @errors, "agent_options:timeout";
             }
+        } elsif ($key eq "set_tags") {
+            if (ref $agent_options->{$key} ne "ARRAY") {
+                $agent_options->{$key} = [ split /,/, $agent_options->{$key} ];
+            }
+            my @tags;
+            foreach my $tag (@{$agent_options->{$key}}) {
+                if ($tag =~ /^\w+\z/) {
+                    push @tags, lc($tag);
+                } elsif ($tag) { # ignore empty or false tags
+                    push @errors, "agent_options:set_tags";
+                    last;
+                }
+            }
+            $service_agent_options->{$key} = join(",", @tags);
         }
     }
 

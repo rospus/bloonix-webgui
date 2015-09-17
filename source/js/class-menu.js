@@ -12,7 +12,9 @@ Menu.prototype = {
     iconDownClass: "chevron-down",
     showDelay: 500,
     hideDelay: 500,
-    hide: true
+    onClick: false,
+    hide: true,
+    value: false
 };
 
 Menu.prototype.create = function() {
@@ -24,9 +26,12 @@ Menu.prototype.create = function() {
         .addClass(this.titleClass)
         .appendTo(this.outerContainer);
 
-    this.contentContainer = Utils.create("div")
-        .html(this.content)
+    this.container = Utils.create("div")
         .appendTo(this.outerContainer);
+
+    if (this.content) {
+        this.container.html(this.content);
+    }
 
     this.icon = Utils.create("div")
         .addClass(this.iconBaseClass)
@@ -39,12 +44,15 @@ Menu.prototype.create = function() {
 
     this.title.click(function() {
         if (self.hide == true) {
-            self.contentContainer.show(self.showDelay);
+            self.container.show(self.showDelay);
             self.hide = false;
             self.icon.addClass(self.iconUpClass);
             self.icon.removeClass(self.iconDownClass);
+            if (self.onClick !== false) {
+                self.onClick(self, self.value);
+            }
         } else {
-            self.contentContainer.hide(self.hideDelay);
+            self.container.hide(self.hideDelay);
             self.hide = true;
             self.icon.addClass(self.iconDownClass);
             self.icon.removeClass(self.iconUpClass);
@@ -53,7 +61,7 @@ Menu.prototype.create = function() {
 
     if (this.hide == true) {
         this.icon.addClass(this.iconDownClass);
-        this.contentContainer.hide();
+        this.container.hide();
     } else {
         this.icon.addClass(this.iconUpClass);
     }
@@ -106,7 +114,9 @@ SimpleMenu.prototype.add = function(item) {
             .appendTo(this.appendTo);
     }
 
-    if (Utils.objectSize(this.boxes) > 0) {
+    if (item.lineBreak === true) {
+        Utils.create("br").appendTo(this.container);
+    } else if (Utils.objectSize(this.boxes) > 0) {
         Utils.create("span")
             .addClass(this.separatorClass)
             .text("|")
@@ -142,8 +152,10 @@ SimpleMenu.prototype.switchItem = SimpleMenu.prototype.switchTo = function(value
     if (this.active == value) {
         return;
     }
-    this.boxes[this.active].hide(200);
-    this.links[this.active].removeClass(this.activeClass);
+    if (this.active) {
+        this.boxes[this.active].hide(200);
+        this.links[this.active].removeClass(this.activeClass);
+    }
     this.links[value].addClass(this.activeClass);
     this.boxes[value].show(200);
     this.active = value;

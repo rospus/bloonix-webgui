@@ -574,12 +574,12 @@ schema.host.attr.ipaddr: IP-Adresse
 schema.host.attr.comment: Kommentar
 schema.host.attr.sysgroup: Systemgruppe
 schema.host.attr.sysinfo: System Informationen
-schema.host.attr.host_class: Hostklasse
-schema.host.attr.system_class: Systemklasse
-schema.host.attr.location_class: Standortklasse
-schema.host.attr.os_class: OS Klasse
-schema.host.attr.hw_class: HW Klasse
-schema.host.attr.env_class: ENV Klasse
+schema.host.attr.host_class: Klasse Host
+schema.host.attr.system_class: Klasse System
+schema.host.attr.location_class: Klasse Standort
+schema.host.attr.os_class: Klasse Betriebssystem
+schema.host.attr.hw_class: Klasse Hardware
+schema.host.attr.env_class: Klasse Umgebung
 schema.host.attr.hw_manufacturer: HW Hersteller
 schema.host.attr.hw_product: HW Produkt
 schema.host.attr.os_manufacturer: OS Hersteller
@@ -613,7 +613,7 @@ schema.host.desc.sysinfo: Hier können Sie einen externen Link zu Ihrer Host-Dok
 schema.host.desc.host_class: z.B.<br/>/Server/Linux/Debian<br/>/Server/Windows/Windows 2008<br/>/Network/Router<br/>/Network/Switch<br/>/Printer
 schema.host.desc.system_class: Systemklasse. Sie Parameter Hostklasse für weitere Informationen.
 schema.host.desc.location_class: Standortklasse. z.B.<br/>/EU/Germany/Hamburg/DC1/Rack10
-schema.host.desc.os_class: Betriebsystemklasse. z.B.<br/>/Linux/CentOS/7<br/>/Windows/Server/2012
+schema.host.desc.os_class: Betriebssystemklasse. z.B.<br/>/Linux/CentOS/7<br/>/Windows/Server/2012
 schema.host.desc.hw_class: Hardwareklasse. z.B.<br/>/Server/Dell/R730<br/>/Printer/Canon/ip2770
 schema.host.desc.env_class: Umgebungsklasse. Sie Parameter Hostklasse für weitere Informationen.
 schema.host.desc.hw_manufacturer: z.B. IBM, HP, Dell, Fujitsu Siemens
@@ -676,9 +676,9 @@ schema.host.info.sysinfo: Externe Informationen sind verfügbar.
 schema.host.menu.host_class: Host
 schema.host.menu.system_class: System
 schema.host.menu.location_class: Standort
-schema.host.menu.os_class: OS
-schema.host.menu.hw_class: HW
-schema.host.menu.env_class: ENV
+schema.host.menu.os_class: Betriebssystem
+schema.host.menu.hw_class: Hardware
+schema.host.menu.env_class: Environment
 
 schema.timeperiod.attr.id: Zeitplan ID
 schema.timeperiod.attr.name: Zeitplan
@@ -938,6 +938,8 @@ schema.service.attr.host_alive_check: Ist dies ein Host-Alive-Check?
 schema.service.attr.passive_check: Ist dies ein passiver Check?
 schema.service.attr.agent_options.timeout: Globaler Check Timeout
 schema.service.desc.agent_options.timeout: Das ist der globale Timeout zur Ausführung des Checks. Nach dem Timeout wird der Check hart beendet und der Status des Servcice auf CRITICAL gesetzt. Dies kann sehr sinnvoll für Checks sein die hängen und sich selbst nicht mehr beenden können.<br/><br/>Standard: 30 Sekunden
+schema.service.attr.agent_options.set_tags: Flags setzen
+schema.service.desc.agent_options.set_tags: Welche Flags sollen gesetzt werden, wenn der Check einen WARNING oder CRITICAL Status liefert.
 schema.service.desc.agent_id: Standort der Prüfung
 schema.service.desc.service_name: Dies ist der Anzeigename des Service.
 schema.service.desc.description: Dies ist eine kurze Beschreibung zum Service.
