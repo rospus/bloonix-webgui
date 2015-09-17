@@ -13556,7 +13556,7 @@ Bloonix.listHosts = function(o) {
             span.click(function() {
                 var search = currentPath === ""
                     ? { search: currentPath }
-                    : { search: classType +'_class:"'+ currentPath +'"' };
+                    : { search: classType +'_class:"!'+ currentPath +'"' };
 
                 self.table.getData(search);
             });
