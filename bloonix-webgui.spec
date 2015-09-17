@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.68
+Version: 0.69
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -62,6 +62,9 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Thu Sep 17 2015 Jonny Schulz <js@bloonix.de> - 0.69-1
+- Fixed different column in table dependency and allow null values.
+- Add new host columns os_class, hw_class and env_class.
 * Tue Sep 08 2015 Jonny Schulz <js@bloonix.de> - 0.68-1
 - Improved the order for host lists, so that hosts that were not OK
   in the last 60 minutes are displayed before all other hosts.
