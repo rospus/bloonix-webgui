@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.69
+Version: 0.70
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -62,6 +62,8 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Thu Sep 17 2015 Jonny Schulz <js@bloonix.de> - 0.70-1
+- Fixed class search if whitespaces are in the class name.
 * Thu Sep 17 2015 Jonny Schulz <js@bloonix.de> - 0.69-1
 - Fixed different column in table dependency and allow null values.
 - Add new host columns os_class, hw_class and env_class.

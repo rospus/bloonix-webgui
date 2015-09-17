@@ -615,27 +615,27 @@ schema.host.desc.sysinfo: This field allows you to set an external link to you o
 schema.host.desc.host_class: Host class examples:<br/>
  <br/>/Network/Router
  <br/>/Network/Switch
- <br/><br/>Not allowed characters are double quotes.
+ <br/><br/>Not allowed characters are double quotes: "
 schema.host.desc.system_class: System class examples:<br/>
  <br/>/Physical
  <br/>/Virtual
- <br/><br/>Not allowed characters are double quotes.
+ <br/><br/>Not allowed characters are double quotes: "
 schema.host.desc.location_class: Location class examples:<br/>
  <br/>/EU/Germany/Hamburg/DC1/Rack10
  <br/>/EU/France/Nancy/DC3/Rack12
- <br/><br/>Not allowed characters are double quotes.
+ <br/><br/>Not allowed characters are double quotes: "
 schema.host.desc.os_class: Operating system class examples:<br/>
  <br/>/Linux/CentOS/7
  <br/>/Windows/Server/2012
- <br/><br/>Not allowed characters are double quotes.
+ <br/><br/>Not allowed characters are double quotes: "
 schema.host.desc.hw_class: Hardware class examples:<br/>
  <br/>/Server/Dell/R730
  <br/>/Printer/Canon/ip2770
- <br/><br/>Not allowed characters are double quotes.
+ <br/><br/>Not allowed characters are double quotes: "
 schema.host.desc.env_class: Environment class examples:<br/>
  <br/>/Project A/Subproject A1
  <br/>/Project B/Subproject B1
- <br/><br/>Not allowed characters are double quotes.
+ <br/><br/>Not allowed characters are double quotes: "
 schema.host.desc.hw_manufacturer: e.g. IBM, HP, Dell, Fujitsu Siemens
 schema.host.desc.hw_product: e.g. Dell Power Edge 2950
 schema.host.desc.os_manufacturer: e.g. Red Hat, Microsoft, CISCO
