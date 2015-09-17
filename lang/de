@@ -571,6 +571,7 @@ schema.host.attr.password: Passwort
 schema.host.attr.hostname: Hostname
 schema.host.attr.description: Beschreibung
 schema.host.attr.ipaddr: IP-Adresse
+schema.host.attr.ipaddr6: IPv6-Adresse
 schema.host.attr.comment: Kommentar
 schema.host.attr.sysgroup: Systemgruppe
 schema.host.attr.sysinfo: System Informationen
@@ -607,6 +608,7 @@ schema.host.desc.hostname: Dies ist der vollständig qualifizierte Hostname.
 schema.host.desc.status: Der Status des Hosts. Mögliche Werte sind OK, INFO, WARNING, CRITICAL oder UNKNOWN.
 schema.host.desc.description: Das ist eine kurze Beschreibung zum Host.
 schema.host.desc.ipaddr: Das ist die Haupt-IP-Adresse des Hosts.
+schema.host.desc.ipaddr6: Das ist die Haupt-IPv6-Adresse des Hosts.
 schema.host.desc.comment: Dieses Feld kann für Kommentare verwendet werden.
 schema.host.desc.sysgroup: Dies ist ein Feld das zur freien Verwendung steht.
 schema.host.desc.sysinfo: Hier können Sie einen externen Link zu Ihrer Host-Dokumentation eintragen, zum Beispiel:<br/><br/>Linktext=https://mysite.test/?id=12345.<br/><br/>Nicht erlaubte Zeichen: "\

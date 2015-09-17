@@ -172,7 +172,8 @@ CREATE TABLE "host" (
     "id"                    BIGINT PRIMARY KEY DEFAULT nextval('host_id_seq'),
     "company_id"            BIGINT NOT NULL REFERENCES "company"("id") ON DELETE CASCADE DEFAULT 1,
     "hostname"              VARCHAR(100) NOT NULL,
-    "ipaddr"                VARCHAR(159) NOT NULL,
+    "ipaddr"                VARCHAR(159),
+    "ipaddr6"               VARCHAR(45),
     "description"           VARCHAR(100) NOT NULL,
     "comment"               VARCHAR(100) NOT NULL DEFAULT '', -- for user comments
     "active_comment"        VARCHAR(400) DEFAULT 'no comment', -- add a comment why the service was deactivated

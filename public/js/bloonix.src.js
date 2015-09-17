@@ -915,6 +915,7 @@ var Lang = {
       "site.help.doc.host-classes" : "Bauklasse von Hosts",
       "schema.timeslice.text.delete" : "Delete timeslice",
       "nav.sub.contactgroup_service_members" : "Services in contact group",
+      "schema.host.attr.ipaddr6" : "IP-Address v6",
       "text.browsers_heap_size" : "Display of the heap size in your browser",
       "site.help.doc.users-and-groups" : "Die Benutzer- und Gruppenverwaltung",
       "text.from_now_to_4d" : "From now + 4 days",
@@ -1171,6 +1172,7 @@ var Lang = {
       "schema.chart.text.service_charts" : "Service charts",
       "schema.host.menu.host_class" : "Host",
       "schema.company.attr.max_services" : "Max services",
+      "schema.host.desc.ipaddr6" : "This is the main IP v6 address of the host.",
       "schema.timeperiod.examples" : "<p><b>Syntax: DAY-RANGE TIME-RANGE</b></p></br>\n<pre>\nDAY RANGE                       EXAMPLES\n------------------------------------------------------------\nWeekday                         Monday\nWeekday - Weekday               Monday - Friday\nMonth                           Januar\nMonth - Month                   Januar - July\nMonth Day                       Januar 1\nMonth Day - Month Day           Januar 1 - July 15\nYear                            2010\nYear - Year                     2010 - 2012\nYYYY-MM-DD                      2010-01-01\nYYYY-MM-DD - YYYY-MM-DD         2010-01-01 - 2012-06-15\n</pre></br>\n<pre>\nTIME RANGE                      EXAMPLES\n------------------------------------------------------------\nHH:MM - HH:MM                   09:00 - 17:00\nHH:MM - HH:MM, HH:MM - HH:MM    00:00 - 08:59, 17:01 - 23:59\n</pre></br>\n<p><b>Examples:</b></p></br>\n<pre>\nMonday - Friday     09:00 - 17:00\nMonday - Friday     00:00 - 08:59, 17:01 - 23:59\nSaturday - Sunday   00:00 - 23:59\n</pre></br>",
       "schema.host.attr.timeout" : "Timeout",
       "info.this-year" : "This year",
@@ -1520,9 +1522,9 @@ var Lang = {
       "text.dashboard.show_as_text" : "Show as text",
       "schema.host.attr.hw_class" : "Hardware class",
       "site.screen.attr.text_color_time" : "Text color TIME",
+      "site.wtrm.action.checkIfElementNotExists" : "Check if an <b>element does <i>NOT</i> exists</b>",
       "nav.sub.groups" : "Groups",
       "text.dashboard.num_services_flapping" : "%s services are flapping",
-      "site.wtrm.action.checkIfElementNotExists" : "Check if an <b>element does <i>NOT</i> exists</b>",
       "text.report.availability.AV-O" : "Time slice in percent in which the service was in status OK.",
       "err-610" : "Please fill in the red marked fields correctly!",
       "text.report.availability.h05" : "05:00 - 05:59",
@@ -2052,6 +2054,7 @@ var Lang = {
       "site.help.doc.host-classes" : "Bauklasse von Hosts",
       "schema.timeslice.text.delete" : "Den Zeitabschnitt löschen",
       "nav.sub.contactgroup_service_members" : "Services in der Kontaktgruppe",
+      "schema.host.attr.ipaddr6" : "IPv6-Adresse",
       "text.browsers_heap_size" : "Anzeige der Auslastung der Heap-size in Ihrem Browser",
       "site.help.doc.users-and-groups" : "Die Benutzer- und Gruppenverwaltung",
       "text.from_now_to_4d" : "Von jetzt + 4 Tage",
@@ -2308,6 +2311,7 @@ var Lang = {
       "schema.chart.text.service_charts" : "Service charts",
       "schema.host.menu.host_class" : "Host",
       "schema.company.attr.max_services" : "Maximale Services",
+      "schema.host.desc.ipaddr6" : "Das ist die Haupt-IPv6-Adresse des Hosts.",
       "schema.timeperiod.examples" : "<p><b>Syntax: TAG-BEREICH ZEIT-BEREICH</b></p></br>\n<pre>\nTAG BEREICH                     BEISPIELE\n------------------------------------------------------------\nWeekday                         Monday\nWeekday - Weekday               Monday - Friday\nMonth                           Januar\nMonth - Month                   Januar - July\nMonth Day                       Januar 1\nMonth Day - Month Day           Januar 1 - July 15\nYear                            2010\nYear - Year                     2010 - 2012\nYYYY-MM-DD                      2010-01-01\nYYYY-MM-DD - YYYY-MM-DD         2010-01-01 - 2012-06-15\n</pre></br>\n<pre>\nZEIT BEREICH                    BEISPIELE\n------------------------------------------------------------\nHH:MM - HH:MM                   09:00 - 17:00\nHH:MM - HH:MM, HH:MM - HH:MM    00:00 - 08:59, 17:01 - 23:59\n</pre></br>\n<p><b>Bespiele:</b></p></br>\n<pre>\nMonday - Friday     09:00 - 17:00\nMonday - Friday     00:00 - 08:59, 17:01 - 23:59\nSaturday - Sunday   00:00 - 23:59\n</pre></br>",
       "schema.host.attr.timeout" : "Timeout",
       "info.this-year" : "Dieses Jahr",
@@ -13674,12 +13678,12 @@ Bloonix.listHosts = function(o) {
                 replace: true
             },
             selectable: {
-                result: [ "id", "hostname", "ipaddr", "description" ],
+                result: [ "id", "hostname", "ipaddr", "ipaddr6", "description" ],
                 counter: { update: counterButton }
             },
             searchable: {
                 url: "/hosts/search/",
-                result: [ "id", "hostname", "ipaddr", "description", "status", "sysgroup", "location", "coordinates" ],
+                result: [ "id", "hostname", "ipaddr", "description", "status" ],
                 value: this.postdata.query
             },
             reloadable: {
@@ -13688,7 +13692,7 @@ Bloonix.listHosts = function(o) {
             deletable: {
                 title: Text.get("schema.host.text.delete"),
                 url: "/administration/hosts/:id/delete",
-                result: [ "id", "hostname", "ipaddr" ]
+                result: [ "id", "hostname", "ipaddr", "ipaddr6" ]
             },
             tooltip: function(row) {
                 var text = '';
@@ -13742,6 +13746,10 @@ Bloonix.listHosts = function(o) {
                 },{
                     name: "ipaddr",
                     text:  Text.get("schema.host.attr.ipaddr")
+                },{
+                    name: "ipaddr6",
+                    text:  Text.get("schema.host.attr.ipaddr6"),
+                    hide: true
                 },{
                     name: "company",
                     text: Text.get("schema.company.attr.company"),
@@ -13943,6 +13951,14 @@ Bloonix.getHostFormElements = function(o) {
         },{
             element: "input",
             type: "text",
+            name: "ipaddr6",
+            text: Text.get("schema.host.attr.ipaddr6"),
+            desc: Text.get("schema.host.desc.ipaddr6"),
+            maxlength: 45,
+            required: true
+        },{
+            element: "input",
+            type: "text",
             name: "description",
             text: Text.get("schema.host.attr.description"),
             desc: Text.get("schema.host.desc.description"),
@@ -14075,7 +14091,8 @@ Bloonix.getHostFormElements = function(o) {
             name: "location",
             text: Text.get("schema.host.attr.location"),
             desc: Text.get("schema.host.desc.location"),
-            maxlength: 100
+            maxlength: 100,
+            elementInfo: "Deprecated! Please use Location class instead!"
         },{
             element: "select",
             name: "coordinates",

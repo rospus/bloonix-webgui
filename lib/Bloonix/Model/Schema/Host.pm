@@ -132,7 +132,10 @@ sub set {
             options => $self->c->plugin->ccodes->country,
             default => "DE"
         },
-        ipaddr =>  {
+        ipaddr => {
+            regex => $self->validator->regex->ipaddr
+        },
+        ipaddr6 => {
             regex => $self->validator->regex->ipaddr
         },
         active =>  {

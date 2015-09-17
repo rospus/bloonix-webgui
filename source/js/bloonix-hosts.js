@@ -455,12 +455,12 @@ Bloonix.listHosts = function(o) {
                 replace: true
             },
             selectable: {
-                result: [ "id", "hostname", "ipaddr", "description" ],
+                result: [ "id", "hostname", "ipaddr", "ipaddr6", "description" ],
                 counter: { update: counterButton }
             },
             searchable: {
                 url: "/hosts/search/",
-                result: [ "id", "hostname", "ipaddr", "description", "status", "sysgroup", "location", "coordinates" ],
+                result: [ "id", "hostname", "ipaddr", "description", "status" ],
                 value: this.postdata.query
             },
             reloadable: {
@@ -469,7 +469,7 @@ Bloonix.listHosts = function(o) {
             deletable: {
                 title: Text.get("schema.host.text.delete"),
                 url: "/administration/hosts/:id/delete",
-                result: [ "id", "hostname", "ipaddr" ]
+                result: [ "id", "hostname", "ipaddr", "ipaddr6" ]
             },
             tooltip: function(row) {
                 var text = '';
@@ -523,6 +523,10 @@ Bloonix.listHosts = function(o) {
                 },{
                     name: "ipaddr",
                     text:  Text.get("schema.host.attr.ipaddr")
+                },{
+                    name: "ipaddr6",
+                    text:  Text.get("schema.host.attr.ipaddr6"),
+                    hide: true
                 },{
                     name: "company",
                     text: Text.get("schema.company.attr.company"),
@@ -724,6 +728,14 @@ Bloonix.getHostFormElements = function(o) {
         },{
             element: "input",
             type: "text",
+            name: "ipaddr6",
+            text: Text.get("schema.host.attr.ipaddr6"),
+            desc: Text.get("schema.host.desc.ipaddr6"),
+            maxlength: 45,
+            required: true
+        },{
+            element: "input",
+            type: "text",
             name: "description",
             text: Text.get("schema.host.attr.description"),
             desc: Text.get("schema.host.desc.description"),
@@ -856,7 +868,8 @@ Bloonix.getHostFormElements = function(o) {
             name: "location",
             text: Text.get("schema.host.attr.location"),
             desc: Text.get("schema.host.desc.location"),
-            maxlength: 100
+            maxlength: 100,
+            elementInfo: "Deprecated! Please use Location class instead!"
         },{
             element: "select",
             name: "coordinates",
