@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.70
+Version: 0.71
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -62,6 +62,8 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Fri Sep 18 2015 Jonny Schulz <js@bloonix.de> - 0.71-1
+- Filter by host classes are now case sensitive.
 * Thu Sep 17 2015 Jonny Schulz <js@bloonix.de> - 0.70-1
 - Fixed class search if whitespaces are in the class name.
 * Thu Sep 17 2015 Jonny Schulz <js@bloonix.de> - 0.69-1
