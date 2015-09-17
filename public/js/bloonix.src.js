@@ -13954,8 +13954,7 @@ Bloonix.getHostFormElements = function(o) {
             name: "ipaddr6",
             text: Text.get("schema.host.attr.ipaddr6"),
             desc: Text.get("schema.host.desc.ipaddr6"),
-            maxlength: 45,
-            required: true
+            maxlength: 45
         },{
             element: "input",
             type: "text",
