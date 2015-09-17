@@ -42,6 +42,8 @@ sub set {
         };
     }
 
+    my $class_regex = qr!^(/[^"]+){0,}\z!;
+
     $self->validator->set(
         company_id => {
             options => \@company,
@@ -72,32 +74,32 @@ sub set {
         },
         host_class => {
             max_size => 100,
-            regex => qr!^/.+!,
+            regex => $class_regex,
             default => "/Server"
         },
         system_class => {
             max_size => 100,
-            regex => qr!^(|/.+)\z!,
+            regex => $class_regex,
             default => ""
         },
         location_class => {
             max_size => 100,
-            regex => qr!^(|/.+)\z!,
+            regex => $class_regex,
             default => ""
         },
         os_class => {
             max_size => 100,
-            regex => qr!^(|/.+)\z!,
+            regex => $class_regex,
             default => ""
         },
         hw_class => {
             max_size => 100,
-            regex => qr!^(|/.+)\z!,
+            regex => $class_regex,
             default => ""
         },
         env_class => {
             max_size => 100,
-            regex => qr!^(|/.+)\z!,
+            regex => $class_regex,
             default => ""
         },
         hw_manufacturer => {

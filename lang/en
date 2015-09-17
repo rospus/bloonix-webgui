@@ -612,12 +612,30 @@ schema.host.desc.ipaddr6: This is the main IP v6 address of the host.
 schema.host.desc.comment: This field can be used to set a short comment to the host.
 schema.host.desc.sysgroup: This is a complete free to use field with no restrictions.
 schema.host.desc.sysinfo: This field allows you to set an external link to you own host documentation, e.g.:<br/><br/>Linktext=https://mysite.test/?id=12345.<br/><br/>Not allowed characters: "\
-schema.host.desc.host_class: e.g.<br/>/Server/Linux/Debian<br/>/Server/Windows/Windows 2008<br/>/Network/Router<br/>/Network/Switch<br/>/Printer
-schema.host.desc.system_class: System class. See parameter host class for further information.
-schema.host.desc.location_class: Location class. e.g.<br/>/EU/Germany/Hamburg/DC1/Rack10
-schema.host.desc.os_class: Operating system class. e.g.<br/>/Linux/CentOS/7<br/>/Windows/Server/2012
-schema.host.desc.hw_class: Hardware class. e.g.<br/>/Server/Dell/R730<br/>/Printer/Canon/ip2770
-schema.host.desc.env_class: Environment class. See parameter host class for further information.
+schema.host.desc.host_class: Host class examples:<br/>
+ <br/>/Network/Router
+ <br/>/Network/Switch
+ <br/><br/>Not allowed characters are double quotes.
+schema.host.desc.system_class: System class examples:<br/>
+ <br/>/Physical
+ <br/>/Virtual
+ <br/><br/>Not allowed characters are double quotes.
+schema.host.desc.location_class: Location class examples:<br/>
+ <br/>/EU/Germany/Hamburg/DC1/Rack10
+ <br/>/EU/France/Nancy/DC3/Rack12
+ <br/><br/>Not allowed characters are double quotes.
+schema.host.desc.os_class: Operating system class examples:<br/>
+ <br/>/Linux/CentOS/7
+ <br/>/Windows/Server/2012
+ <br/><br/>Not allowed characters are double quotes.
+schema.host.desc.hw_class: Hardware class examples:<br/>
+ <br/>/Server/Dell/R730
+ <br/>/Printer/Canon/ip2770
+ <br/><br/>Not allowed characters are double quotes.
+schema.host.desc.env_class: Environment class examples:<br/>
+ <br/>/Project A/Subproject A1
+ <br/>/Project B/Subproject B1
+ <br/><br/>Not allowed characters are double quotes.
 schema.host.desc.hw_manufacturer: e.g. IBM, HP, Dell, Fujitsu Siemens
 schema.host.desc.hw_product: e.g. Dell Power Edge 2950
 schema.host.desc.os_manufacturer: e.g. Red Hat, Microsoft, CISCO
