@@ -1,3 +1,7 @@
+bloonix-webgui (0.72) released at 2015-09-18
+
+    * Fixed: ipaddr6 is now a optional field.
+
 bloonix-webgui (0.71) released at 2015-09-18
 
     * Filter by host classes are now case sensitive.

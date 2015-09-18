@@ -43,6 +43,8 @@ sub set {
     }
 
     my $class_regex = qr!^(/[^"]+){0,}\z!;
+    my $ip_regex = $self->validator->regex->ipaddr;
+    my $ip6_regex = qr/^(|$ip_regex)\z/;
 
     $self->validator->set(
         company_id => {
@@ -135,10 +137,11 @@ sub set {
             default => "DE"
         },
         ipaddr => {
-            regex => $self->validator->regex->ipaddr
+            regex => $ip_regex
         },
         ipaddr6 => {
-            regex => $self->validator->regex->ipaddr
+            regex => $ip6_regex,
+            optional => 1
         },
         active =>  {
             options  => [1,0],
