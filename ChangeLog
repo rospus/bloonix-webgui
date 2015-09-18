@@ -1,3 +1,7 @@
+bloonix-webgui (0.73) released at 2015-09-18
+
+    * Updated host view fields.
+
 bloonix-webgui (0.72) released at 2015-09-18
 
     * Fixed: ipaddr6 is now a optional field.
