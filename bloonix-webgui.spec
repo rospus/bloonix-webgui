@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.73
+Version: 0.74
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -63,6 +63,8 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Fri Sep 18 2015 Jonny Schulz <js@bloonix.de> - 0.74-1
+- Fixed null values in host view.
 * Fri Sep 18 2015 Jonny Schulz <js@bloonix.de> - 0.73-1
 - Updated host view fields.
 * Fri Sep 18 2015 Jonny Schulz <js@bloonix.de> - 0.72-1

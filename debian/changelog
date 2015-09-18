@@ -1,3 +1,9 @@
+bloonix-webgui (0.74-1) unstable; urgency=low
+
+    * Fixed null values in host view.
+
+ -- Jonny Schulz <js@bloonix.de>  Fri, 18 Sep 2015 11:04:08 +0200
+
 bloonix-webgui (0.73-1) unstable; urgency=low
 
     * Updated host view fields.
