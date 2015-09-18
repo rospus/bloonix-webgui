@@ -18418,7 +18418,7 @@ Bloonix.viewHost = function(host) {
         "max_services", "allow_from", "location", "sysgroup", "sysinfo",
         "host_class", "system_class", "location_class", "os_class", "hw_class", "env_class"
     ], function(index, item) {
-        if (host[item] == "") {
+        if (host[item] == "" || host[item] === null) {
             return true;
         }
 
