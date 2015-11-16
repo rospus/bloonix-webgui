@@ -84,9 +84,9 @@ Bloonix.initRoutes = function() {
     route.add("monitoring/templates", function(req) {
         Bloonix.listHostTemplates(req);
     });
-    //route.add("monitoring/registration", function(req) {
-    //    Bloonix.listRegisteredHosts(req);
-    //});
+    route.add("monitoring/registration", function(req) {
+        Bloonix.listRegisteredHosts(req);
+    });
     route.add("monitoring/templates/:id", function(req) {
         Bloonix.editHostTemplate(req);
     });

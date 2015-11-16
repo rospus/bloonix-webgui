@@ -28,6 +28,10 @@ sub set {
         variables => {
             constraint => $self->validator->constraint->param_value,
             default => "{}"
+        },
+        tags => {
+            regex => qr/^[^\/]{0,100}\z/,
+            default => ""
         }
     );
 }
@@ -156,6 +160,76 @@ sub get_nonmembers {
     );
 
     return $self->dbi->fetch($stmt, @bind);
+}
+
+sub by_tags {
+    my ($self, $company_id, $tags) = @_;
+    my @pre;
+
+    foreach my $tag (@$tags) {
+        my $cond = @pre ? "or" : "and";
+        push @pre, (
+            $cond => {
+                table => "host_template",
+                column => "tags",
+                op => "like",
+                value => "%/$tag/%"
+            }
+        );
+    }
+
+    my ($stmt, @bind) = $self->sql->select(
+        table => "host_template",
+        column => "id",
+        condition => [
+            where => {
+                table => "host_template",
+                column => "company_id",
+                value => $company_id
+            },
+            pre => \@pre
+        ]
+    );
+
+    my $rows = $self->dbi->fetch($stmt, @bind);
+    my @ids;
+
+    foreach my $row (@$rows) {
+        push @ids, $row->{id};
+    }
+
+    return \@ids;
+}
+
+sub get_names_by_host_id {
+    my ($self, $host_id) = @_;
+
+    my $rows = $self->dbi->fetch(
+        $self->sql->select(
+            table => "host_template",
+            column => "name",
+            join => [
+                inner => {
+                    table => "host_template_host",
+                    left => "host_template.id",
+                    right => "host_template_host.host_template_id"
+                }
+            ],
+            condition => [
+                where => {
+                    table => "host_template_host",
+                    column => "host_id",
+                    value => $host_id
+                }
+            ]
+        )
+    );
+
+    my @names;
+    foreach my $row (@$rows) {
+        push @names, $row->{name};
+    }
+    return join(", ", @names);
 }
 
 1;

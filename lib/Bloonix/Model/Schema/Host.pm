@@ -372,6 +372,11 @@ sub _is_not_group_member {
                     column => "id",
                     %$group_select
                 }
+            },
+            and => {
+                table => "host",
+                column => "register",
+                value => 0
             }
         ]
     );

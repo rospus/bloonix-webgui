@@ -486,6 +486,12 @@ sub v11 {
 sub v12 {
     my $self = shift;
 
+    if ($self->dbi->{driver} eq "Pg") {
+        $self->upgrade("alter table host_template add column tags text not null default ''");
+    } elsif ($self->dbi->{driver} eq "mysql") {
+        $self->upgrade("alter table host_template add column tags text not null");
+    }
+
     $self->upgrade("alter table company add column max_hosts_in_reg_queue bigint not null default 1000");
     $self->upgrade("alter table company add column host_reg_authkey varchar(1000) not null default ''");
     $self->upgrade("alter table company add column host_reg_enabled char(1) not null default '0'");

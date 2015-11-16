@@ -171,7 +171,8 @@ CREATE TABLE "host_template" (
     "company_id"  BIGINT NOT NULL REFERENCES "company"("id") ON DELETE CASCADE,
     "name"        VARCHAR(100) NOT NULL,
     "description" VARCHAR(100) NOT NULL DEFAULT '',
-    "variables"   TEXT NOT NULL DEFAULT '{}'
+    "variables"   TEXT NOT NULL DEFAULT '{}',
+    "tags"        TEXT NOT NULL DEFAULT ''
 );
 
 CREATE INDEX "host_template_name_index" ON "host_template" ("name");

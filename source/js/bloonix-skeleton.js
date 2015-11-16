@@ -71,8 +71,7 @@ Bloonix.initHeader = function() {
         .addClass("btn btn-dark btn-medium")
         .text("0")
         .appendTo(btnGroup)
-        //.click(function() { Bloonix.route.to("#monitoring/registration") })
-        .click(function() { Bloonix.route.to("#monitoring/hosts", {registered: true}) })
+        .click(function() { Bloonix.route.to("#monitoring/registration") })
         .css({ color: "#ff0000" })
         .hide()
         .tooltip();

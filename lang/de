@@ -695,6 +695,7 @@ schema.host.text.delete_reg_hosts: Hosts löschen
 schema.host.text.mtr_output: MTR Ergebis von Host %s
 schema.host.text.mtr_chart: MTR Chart
 schema.host.text.report_title: Bericht für Host %s
+schema.host.text.add_hosts_to_group: Die Hosts einer Gruppe hinzufügen
 schema.host.text.add_host_to_group: Den Host einer Gruppe hinzufügen
 schema.host.desc.add_host_to_group: Füge den Host einer Gruppe hinzu.
 schema.host.text.add_host_to_contactgroup: Den Host einer Kontaktgruppe hinzufügen
@@ -768,8 +769,10 @@ schema.timeslice.text.delete: Den Zeitabschnitt löschen
 schema.host_template.attr.id: Template ID
 schema.host_template.attr.name: Template Name
 schema.host_template.attr.description: Beschreibung
+schema.host_template.attr.tags: Tags
 schema.host_template.desc.name: Dies ist der Name des Templates.
 schema.host_template.desc.description: Gebe eine kurze Beschreibung zum Template an.
+schema.host_template.desc.tags: Tags können verwendet werden um Hosts, die registriert werden, zu Host Templates hinzuzufügen.
 schema.host_template.text.list: Übersicht über alle Host-Templates
 schema.host_template.text.delete: Ein Template löschen
 schema.host_template.text.create: Ein neues Template erstellen
@@ -784,6 +787,7 @@ schema.host_template.test.host_nonmembers: Hosts nicht in der Gruppe
 schema.host_template.text.selected_hosts: Selektierte Hosts
 schema.host_template.text.clone: Das Template klonen
 schema.host_template.text.clone_title: Das Template %s klonen
+schema.host_template.text.templates: Templates
 
 schema.contact.attr.id: Kontakt ID
 schema.contact.attr.company_id: Firmen ID

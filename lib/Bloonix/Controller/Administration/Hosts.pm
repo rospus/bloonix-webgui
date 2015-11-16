@@ -17,8 +17,6 @@ sub startup {
     $c->route->map("/administration/hosts/:id/delete")->to("delete");
     $c->route->map("/hosts/:id/delete")->to("delete");
     $c->route->map("/administration/hosts/:id")->to("view");
-    $c->route->map("/hosts/delete")->to("delete_multiple");
-    $c->route->map("/hosts/update-groups")->to("update_groups");
 }
 
 sub auto {
@@ -290,12 +288,6 @@ sub update {
         $c->plugin->util->pv_to_json(variables => $data);
     }
 
-    if (exists $data->{active}) {
-        if ($data->{active}) {
-            $data->{register} = 0;
-        }
-    }
-
     my $result = $c->model->database->host->update_unique($opts->{id} => $data);
 
     $c->plugin->action->check_crud($result)
@@ -330,120 +322,6 @@ sub delete {
 
     $c->model->database->host->delete($host->{id});
     $c->plugin->log_action(target => "host", data => $host);
-    $c->view->render->json;
-}
-
-sub delete_multiple {
-    my ($self, $c) = @_;
-
-    $c->plugin->token->check
-        or return 1;
-
-    my $host_ids = [ $c->req->param("host_id") ];
-
-    if (
-        @$host_ids &&
-        !$c->model->database->host->validate_host_ids_by_company_id(
-            $c->user->{company_id}, $host_ids
-        )
-    ) {
-        return $c->plugin->error->form_parse_errors("host_id");
-    }
-
-    foreach my $id (@$host_ids) {
-        my $host = $c->model->database->host->get($id);
-        if ($host) {
-            $c->model->database->host->delete(id => $id);
-            $c->plugin->log_action->update(target => "host", data => $host);
-        }
-    }
-
-    $c->view->render->json;
-}
-
-sub update_groups {
-    my ($self, $c) = @_;
-
-    $c->plugin->token->check
-        or return 1;
-
-    my $host_ids = [ $c->req->param("host_id") ];
-    if (
-        @$host_ids &&
-        !$c->model->database->host->validate_host_ids_by_company_id(
-            $c->user->{company_id}, $host_ids
-        )
-    ) {
-        return $c->plugin->error->form_parse_errors("host_id");
-    }
-
-    my $group_ids = [ $c->req->param("group_id") ];
-    if (!$c->model->database->group->validate_ids_by_company_id($c->user->{company_id}, $group_ids)) {
-        return $c->plugin->error->form_parse_errors("group_id");
-    }
-
-    my $contactgroup_ids = [ $c->req->param("contactgroup_id") ];
-    if (
-        @$contactgroup_ids &&
-        !$c->model->database->contactgroup->validate_ids_by_company_id(
-            $c->user->{company_id}, $contactgroup_ids
-        )
-    ) {
-        return $c->plugin->error->form_parse_errors("contactgroup_id");
-    }
-
-    my $host_template_ids = [ $c->req->param("host_template_id") ];
-    if (
-        @$host_template_ids &&
-        !$c->model->database->host_template->validate_ids_by_company_id(
-            $c->user->{company_id}, $host_template_ids
-        )
-    ) {
-        return $c->plugin->error->form_parse_errors("host_template_id");
-    }
-
-    foreach my $group_id (@$group_ids) {
-        foreach my $host_id (@$host_ids) {
-            $c->model->database->host_group->create({
-                host_id => $host_id,
-                group_id => $group_id
-            }) or next;
-
-            $c->plugin->log_action->create(
-                target => "host_group",
-                data => {
-                    host_id => $host_id,
-                    group_id => $group_id
-                }
-            );
-        }
-    }
-
-    if (@$contactgroup_ids) {
-        foreach my $host_id (@$host_ids) {
-            foreach my $group_id (@$contactgroup_ids) {
-                $c->model->database->host_contactgroup->create({
-                    host_id => $host_id,
-                    contactgroup_id => $group_id
-                }) or next;
-
-                $c->plugin->log_action->create(
-                    target => "host_contactgroup",
-                    data => {
-                        host_id => $host_id,
-                        contactgroup_id => $group_id
-                    }
-                );
-            }
-        }
-    }
-
-    if (@$host_template_ids) {
-        foreach my $host_id (@$host_ids) {
-            $c->plugin->template->add_templates_to_host($host_id, $host_template_ids);
-        }
-    }
-
     $c->view->render->json;
 }
 

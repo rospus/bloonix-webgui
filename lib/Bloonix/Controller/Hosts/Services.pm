@@ -12,6 +12,7 @@ sub startup {
     $c->route->map("/hosts/:id/services/:service_id/options")->to("options");
     $c->route->map("/hosts/:id/services/:service_id/update")->to("update");
     $c->route->map("/hosts/:id/services/:service_id/delete")->to("delete");
+
     $c->route->map("/services/options/:plugin_id")->to("options");
     $c->route->map("/services/create")->to("create");
     $c->route->map("/services/:service_id")->to("view");

@@ -168,6 +168,7 @@ CREATE TABLE `host_template` (
     `name`        VARCHAR(100) NOT NULL,
     `description` VARCHAR(100) NOT NULL DEFAULT '',
     `variables`   TEXT NOT NULL, -- DEFAULT '{}'
+    `tags`        TEXT NOT NULL, -- DEFAULT ''
     FOREIGN KEY (`company_id`) REFERENCES `company`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 

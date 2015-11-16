@@ -348,7 +348,13 @@ sub check_host_reg {
     my $company = $self->dbi->unique(
         $self->sql->select(
             table => "company",
-            column => ["host_reg_allow_from", "max_hosts_in_reg_queue"],
+            column => [qw(
+                host_reg_allow_from
+                max_hosts_in_reg_queue
+                max_hosts
+                max_services
+                max_services_per_host
+            )],
             condition => [
                 id => $id,
                 host_reg_authkey => $authkey,

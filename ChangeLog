@@ -1,4 +1,4 @@
-bloonix-webgui (0.75) released at 2015-11-15
+bloonix-webgui (0.75) released at 2015-XX-XX
 
     * Change: Field "description" of hosts is now an optional parameter.
     * New Feature: It's now possible to configure the authkey for each
@@ -6,7 +6,6 @@ bloonix-webgui (0.75) released at 2015-11-15
     * Kicked deprecated host parameters: hw_manufacturer, hw_product
       os_manufacturer, os_product, virt_manufacturer,j virt_product,
       location
-    * Implemented feature to register new hosts over a authkey.
 
 bloonix-webgui (0.74) released at 2015-09-18
 

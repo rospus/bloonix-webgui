@@ -88,6 +88,7 @@ sub _init_routes {
     $self->load("Hosts::Downtimes");
     $self->load("Hosts::Events");
     $self->load("Hosts::Mtr");
+    $self->load("Hosts::Register");
     $self->load("Hosts::Report");
     $self->load("Hosts::Services");
     $self->load("Hosts::Templates");

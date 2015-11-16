@@ -144,6 +144,13 @@ Bloonix.getHostTemplateFormElements = function() {
             name: "variables",
             text: Text.get("schema.host.attr.variables"),
             desc: Text.get("schema.host.desc.variables")
+        },{
+            element: "input",
+            type: "text",
+            name: "tags",
+            text: Text.get("schema.host_template.attr.tags"),
+            desc: Text.get("schema.host_template.desc.tags"),
+            maxlength: 100
         }
     ];
 };

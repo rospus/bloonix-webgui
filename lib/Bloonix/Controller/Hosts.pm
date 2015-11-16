@@ -15,45 +15,21 @@ sub startup {
     $c->route->map("/hosts/stats/country")->to("stats_country");
     $c->route->map("/hosts/:id")->to("view");
     $c->route->map("/hosts/:id/services")->to("services");
-    $c->route->map("/hosts/registered")->to("list");
+    $c->route->map("/hosts/:action(activate|deactivate|enable-notification|disable-notification|update-multiple)")->to("action");
     $c->route->map("/hosts/create-downtime")->to("create_downtime");
     $c->route->map("/hosts/delete-downtime")->to("delete_downtime");
     $c->route->map("/hosts/:id/notifications")->to("notifications");
-    $c->route->map("/hosts/registered/count")->to("count_registered_hosts");
-
-    my $actions = join("|",
-        "activate",
-        "deactivate",
-        "enable-notification",
-        "disable-notification",
-        "update-multiple"
-    );
-
-    $c->route->map("/hosts/:action($actions)")->to("action");
 }
 
 sub auto {
     my ($self, $c, $opts) = @_;
 
     if ($opts && $opts->{id}) {
-        if ($c->user->{role} eq "admin") {
-            $c->stash->object($c->model->database->host->get($opts->{id}));
-        } elsif ($c->user->{role} eq "operator") {
-            $c->stash->object(
-                $c->model->database->host->find(
-                    condition => [
-                        id => $opts->{id},
-                        company_id => $c->user->{company_id}
-                    ]
-                )
-            );
-        } else {
-            $c->stash->object(
-                $c->model->database->host->by_host_and_user_id(
-                    $opts->{id}, $c->user->{id}
-                )
-            );
-        }
+        $c->stash->object(
+            $c->model->database->host->by_host_and_user_id(
+                $opts->{id}, $c->user->{id}
+            )
+        );
         if (!$c->stash->object) {
             $c->plugin->error->object_does_not_exists;
             return undef;
@@ -117,6 +93,21 @@ sub classes {
         }
     };
 
+    # Default classes
+    #my @default_classes;
+
+    #if ($opts->{class} eq "host") {
+    #    @default_classes = ("/Server", "/vServer", "/Printer", "/Network", "/Database", "/Power");
+    #} elsif ($opts->{class} eq "system") {
+    #    @default_classes = ("/Linux", "/Windows");
+    #} elsif ($opts->{class} eq "location") {
+    #    @default_classes = ("/AF", "/AN", "/AS", "/EU", "/NA", "/OC", "/SA");
+    #}
+
+    #foreach my $class (@default_classes) {
+    #    push @$classes, { count => 0, class => $class };
+    #}
+
     foreach my $row (@$classes) {
         $grouped->{All}->{total} += $row->{count};
 
@@ -157,25 +148,20 @@ sub list {
     my $request = $c->plugin->defaults->request
         or return 1;
 
-    my $req = {
+    my ($count, $data) = $c->model->database->host->by_user_id(
         user => $c->user,
         offset => $request->{offset},
         limit => $request->{limit},
         query => $request->{query},
-        sort => $request->{sort}
-    };
-
-    if ($c->action_path eq "hosts/registered") {
-        $req->{registered} = 1;
-        $req->{order} = [ asc => "host.hostname" ];
-    } else {
-        $req->{order} = [
+        sort => $request->{sort},
+        order => [
             desc => [ "status_priority.priority", "host.status_nok_since" ],
             asc  => "host.hostname"
-        ];
-    }
+            #desc => "priority",
+            #asc  => "hostname",
+        ]
+    );
 
-    my ($count, $data) = $c->model->database->host->by_user_id(%$req);
     my @host_ids = (0);
 
     foreach my $host (@$data) {
@@ -338,24 +324,26 @@ sub action {
     }
 
     my ($key, $value, $comment_key, $comment_value, $data);
-    my $data = {};
     my $user_id = $c->user->{admin_id} || $c->user->{user_id};
     my $username = $c->user->{admin_username} || $c->user->{username};
     my $timestamp = $c->plugin->util->timestamp;
 
     if ($opts->{action} eq "activate") {
-        $data->{active} = 1;
-        $data->{active_comment} = "host activated by $username($user_id) at $timestamp";
-        $data->{register} = 0;
+        ($key, $value) = (active => 1);
+        $comment_key = "active_comment";
+        $comment_value = "host activated by $username($user_id) at $timestamp";
     } elsif ($opts->{action} eq "deactivate") {
-        $data->{active} = 0;
-        $data->{active_comment} = "host deactivated by $username($user_id) at $timestamp";
+        ($key, $value) = (active => 0);
+        $comment_key = "active_comment";
+        $comment_value = "host deactivated by $username($user_id) at $timestamp";
     } elsif ($opts->{action} eq "enable-notification") {
-        $data->{notification} = 1;
-        $data->{notification_comment} = "host notification enabled by $username($user_id) at $timestamp";
+        ($key, $value) = (notification => 1);
+        $comment_key = "notification_comment";
+        $comment_value = "host notification enabled by $username($user_id) at $timestamp";
     } elsif ($opts->{action} eq "disable-notification") {
-        $data->{notification} = 0;
-        $data->{notification_comment} = "host notification disabled by $username($user_id) at $timestamp";
+        ($key, $value) = (notification => 0);
+        $comment_key = "notification_comment";
+        $comment_value = "host notification disabled by $username($user_id) at $timestamp";
     } elsif ($opts->{action} eq "update-multiple") {
         $c->model->database->host->set($c->user);
         my $form = $c->plugin->action->check_form(update => "host")
@@ -377,6 +365,16 @@ sub action {
             $c->plugin->log_action->update(
                 target => "host",
                 data => { data => $data, host_ids => $host_ids },
+                old => { }
+            );
+        } elsif (!$data) {
+            $c->model->database->host->update(
+                data => { $key => $value, $comment_key => $comment_value },
+                condition => [ id => $host_ids ]
+            );
+            $c->plugin->log_action->update(
+                target => "host",
+                data => { data => { $key => $value, $comment_key => $comment_value }, host_ids => $host_ids },
                 old => { }
             );
         }
@@ -512,23 +510,6 @@ sub notifications {
     $c->stash->offset($request->{offset});
     $c->stash->total($count);
     $c->stash->data($data);
-    $c->view->render->json;
-}
-
-sub count_registered_hosts {
-    my ($self, $c) = @_;
-
-    if ($c->user->{role} ne "operator") {
-        $c->stash->{data} = 0;
-    } else {
-        $c->stash->{data} = $c->model->database->host->count(
-            "id", condition => [
-                company_id => $c->user->{company_id},
-                register => 1
-            ]
-        );
-    }
-
     $c->view->render->json;
 }
 

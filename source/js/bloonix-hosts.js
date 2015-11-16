@@ -12,108 +12,6 @@ Bloonix.listHosts = function(o) {
         object.postdata.query = object.query;
     }
 
-    object.addSelectedHostsToGroup = function() {
-        var self = this,
-            selectedIds = this.table.getSelectedIds();
-
-        if (selectedIds.length == 0) {
-            Bloonix.createNoteBox({ text: Text.get("schema.host.text.multiple_selection_help") });
-            return;
-        }
-
-        var content = Utils.create("div"),
-            options = Bloonix.get("/administration/hosts/options"),
-            overlay, form;
-
-        overlay = new Overlay({
-            title: Text.get("schema.host.text.add_hosts_to_group"),
-            content: content,
-            closeText: Text.get("action.abort"),
-            buttons: [{
-                content: Text.get("action.add"),
-                close: false,
-                callback: function(content, overlay) {
-                    form.submit();
-                }
-            }]
-        });
-
-        form = new Form({
-            url: { submit: "/hosts/update-groups" },
-            processDataCallback: function(data) {
-                data.host_id = self.table.getSelectedIds();
-                return data;
-            },
-            onSuccess: function() {
-                Bloonix.getRegisteredHostCount();
-                overlay.close();
-            },
-            appendTo: content,
-            showButton: false
-        }).init();
-
-        form.table = new Table({
-            type: "form",
-            appendTo: form.form
-        }).init().getTable();
-
-        form.createElement({
-            element: "multiselect",
-            name: "group_id",
-            text: Text.get("schema.host.text.add_host_to_group"),
-            options: options.options.group_id
-        });
-
-        form.createElement({
-            element: "multiselect",
-            name: "contactgroup_id",
-            text: Text.get("schema.host.text.add_host_to_contactgroup"),
-            options: options.options.contactgroup_id
-        });
-
-        form.createElement({
-            element: "multiselect",
-            name: "host_template_id",
-            text: Text.get("schema.host.text.add_host_to_host_template"),
-            options: options.options.host_template_id
-        });
-
-        overlay.create();
-    };
-
-    object.delSelectedHosts = function() {
-        var self = this,
-            selectedIds = this.table.getSelectedIds();
-
-        if (selectedIds.length == 0) {
-            Bloonix.createNoteBox({ text: Text.get("schema.host.text.multiple_selection_help") });
-            return;
-        }
-
-        var content = Utils.create("div");
-
-        var overlay = new Overlay({
-            title: Text.get("schema.host.text.delete_reg_hosts"),
-            content: content
-        });
-
-        Utils.create("div")
-            .addClass("btn btn-white btn-medium")
-            .html(Text.get("schema.host.action.delete_reg_hosts"))
-            .appendTo(overlay.content)
-            .click(function() {
-                Bloonix.hostServiceAction(
-                    "/hosts/delete",
-                    { host_id: selectedIds }
-                );
-                self.table.getData();
-                Bloonix.getRegisteredHostCount();
-                overlay.close();
-            });
-
-        overlay.create();
-    };
-
     object.action = function(action) {
         var self = this,
             selectedIds = this.table.getSelectedIds();
@@ -543,22 +441,6 @@ Bloonix.listHosts = function(o) {
                 .html(Utils.create("div").addClass("hicons-white hicons wrench"))
                 .appendTo("#footer-left")
                 .click(function() { self.action(3) });
-
-            Utils.create("span")
-                .attr("title", Text.get("schema.host.text.add_hosts_to_group"))
-                .tooltip()
-                .addClass("footer-button")
-                .html(Utils.create("div").addClass("hicons-white hicons plus"))
-                .appendTo("#footer-left")
-                .click(function() { self.addSelectedHostsToGroup() });
-
-            Utils.create("span")
-                .attr("title", Text.get("schema.host.text.delete_reg_hosts"))
-                .tooltip()
-                .addClass("footer-button")
-                .html(Utils.create("div").addClass("hicons-white hicons trash"))
-                .appendTo("#footer-left")
-                .click(function() { self.delSelectedHosts() });
         }
 
         var counterButton = Utils.create("span")
@@ -585,12 +467,8 @@ Bloonix.listHosts = function(o) {
             ];
         }
 
-        var url = this.registered === true
-            ? "/hosts/registered"
-            : "/hosts";
-
         this.table = new Table({
-            url: url,
+            url: "/hosts",
             postdata: this.postdata,
             appendTo: this.boxes.right,
             sortable: true,

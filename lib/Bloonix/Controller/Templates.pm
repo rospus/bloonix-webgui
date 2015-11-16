@@ -22,14 +22,25 @@ sub startup {
     $c->route->map("/templates/hosts/:id/services/:ref_id/options")->to("service_options");
     $c->route->map("/templates/hosts/:id/clone")->to("clone");
 
-    $self->{pv_to_json_callback} = sub {
+    $self->{write_callback} = sub {
         my $data = shift;
         $c->plugin->util->pv_to_json(variables => $data);
+        if ($data->{tags}) {
+            $data->{tags} =~ s!,!/!;
+            $data->{tags} = "/$data->{tags}/";
+        }
     };
 
-    $self->{json_to_pv_callback} = sub {
+    $self->{read_callback} = sub {
         my $data = shift;
         $c->plugin->util->json_to_pv(variables => $data);
+        if ($data->{tags}) {
+            $data->{tags} =~ s!\s!!g;
+            $data->{tags} =~ s!,+!,!g;
+            $data->{tags} =~ s!^/!!;
+            $data->{tags} =~ s!/$!!;
+            $data->{tags} =~ s!/!,!g;
+        }
     };
 }
 
@@ -93,7 +104,7 @@ sub view {
     my ($self, $c) = @_;
 
     $c->stash->data($c->stash->object->{template});
-    &{$self->{json_to_pv_callback}}($c->stash->data);
+    &{$self->{read_callback}}($c->stash->data);
     $c->view->render->json;
 }
 
@@ -126,9 +137,9 @@ sub options {
     my ($self, $c, $opts) = @_;
 
     if ($opts && $opts->{id}) {
-        $c->plugin->action->options(host_template => $c->stash->object->{template}, $self->{json_to_pv_callback});
+        $c->plugin->action->options(host_template => $c->stash->object->{template}, $self->{read_callback});
     } else {
-        $c->plugin->action->options("host_template", undef, $self->{json_to_pv_callback});
+        $c->plugin->action->options("host_template", undef, $self->{read_callback});
     }
 }
 
@@ -143,7 +154,7 @@ sub create {
         return $c->plugin->error->limit_error("err-825" => $c->user->{max_templates});
     }
 
-    $c->plugin->action->store_simple("host_template", undef, $self->{pv_to_json_callback});
+    $c->plugin->action->store_simple("host_template", undef, $self->{write_callback});
 }
 
 sub update {
@@ -151,8 +162,8 @@ sub update {
 
     $c->plugin->action->store_simple(
         host_template => $c->stash->object->{template},
-        $self->{pv_to_json_callback},
-        $self->{json_to_pv_callback}
+        $self->{write_callback},
+        $self->{read_callback}
     );
 }
 
