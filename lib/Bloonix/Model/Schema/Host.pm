@@ -23,11 +23,28 @@ sub init {
 sub set {
     my ($self, $user) = @_;
 
+    $self->validator->set(
+        $self->validator_company_opts($user),
+        $self->validator_host_opts
+    );
+}
+
+sub set_register {
+    my $self = shift;
+
+    $self->validator->set(
+        $self->validator_register_opts,
+        $self->validator_host_opts
+    );
+}
+
+sub validator_company_opts {
+    my ($self, $user) = @_;
+    my (@company, $company);
+
     if (!$user || ref $user ne "HASH") {
         die "no user set";
     }
-
-    my (@company, $company);
 
     if ($user->{role} eq "admin") {
         $company = $self->schema->company->all;
@@ -42,138 +59,113 @@ sub set {
         };
     }
 
-    my $class_regex = qr!^(/[^"]+){0,}\z!;
-    my $ip_regex = $self->validator->regex->ipaddr;
-    my $ip6_regex = qr/^(|$ip_regex)\z/;
-
-    $self->validator->set(
+    return (
         company_id => {
             options => \@company,
             default => $user->{company_id},
         },
         password => {
             regex => qr/^\w{30,128}\z/,
+        }
+    );
+}
+
+sub validator_register_opts {
+    my $self = shift;
+
+    return (
+        company_id => {
+            regex => qr/^\d+\z/
         },
+        company_authkey => {
+            regex => qr/\w/
+        }
+    );
+}
+
+sub validator_host_opts {
+    my $self = shift;
+
+    return (
         hostname =>  {
             regex => qr/^[\w\.\-]{3,64}\z/,
         },
         description => {
-            min_size => 1,
             max_size => 100,
+            default => ""
         },
         comment => {
             max_size => 100,
-            optional => 1,
+            optional => 1
         },
         sysgroup => {
             regex => qr/^.{0,50}\z/,
-            optional => 1,
+            optional => 1
         },
         sysinfo => {
             regex => qr!^(?:|([\w\-\.\s]+=){0,1}https{0,1}://[\w\.\-]+(?:/|/[^"'<>\\]+))\z!,
             max_size => 200,
-            optional => 1,
+            optional => 1
         },
         host_class => {
             max_size => 100,
-            regex => $class_regex,
+            regex => $self->validator->regex->class_path,
             default => "/Server"
         },
         system_class => {
             max_size => 100,
-            regex => $class_regex,
+            regex => $self->validator->regex->class_path,
             default => ""
         },
         location_class => {
             max_size => 100,
-            regex => $class_regex,
+            regex => $self->validator->regex->class_path,
             default => ""
         },
         os_class => {
             max_size => 100,
-            regex => $class_regex,
+            regex => $self->validator->regex->class_path,
             default => ""
         },
         hw_class => {
             max_size => 100,
-            regex => $class_regex,
+            regex => $self->validator->regex->class_path,
             default => ""
         },
         env_class => {
             max_size => 100,
-            regex => $class_regex,
+            regex => $self->validator->regex->class_path,
             default => ""
-        },
-        hw_manufacturer => {
-            max_size => 50,
-            optional => 1,
-        },
-        hw_product => {
-            max_size => 50,
-            optional => 1,
-        },
-        os_manufacturer => {
-            max_size => 50,
-            optional => 1,
-        },
-        os_product => {
-            max_size => 50,
-            optional => 1,
-        },
-        virt_manufacturer => {
-            max_size => 50,
-            optional => 1,
-        },
-        virt_product => {
-            max_size => 50,
-            optional => 1,
-        },
-        location => {
-            max_size => 100,
-            optional => 1,
         },
         coordinates => {
             options => $self->c->plugin->ccodes->country,
             default => "DE"
         },
         ipaddr => {
-            regex => $ip_regex
+            regex => $self->validator->regex->ipaddr
         },
         ipaddr6 => {
-            regex => $ip6_regex,
+            regex => $self->validator->regex->ipaddr,
+            empty_ok => 1,
             optional => 1
         },
         active =>  {
             options  => [1,0],
             default  => 1,
-            optional => 1,
+            optional => 1
         },
         allow_from =>  {
-            constraint => sub {
-                return undef unless $_[0];
-                $_[0] =~ s/\s//g;
-
-                if ($_[0] eq "all") {
-                    return 1;
-                }
-
-                foreach my $ip (split /,/, $_[0]) {
-                    if ($ip !~ $self->validator->regex->ipaddr) {
-                        return 0;
-                    }
-                }
-
-                return 1;
-            },
+            min_size => 3,
             max_size => 300,
-            default  => "all",
+            regexcl => $self->validator->regex->ipaddrnet_all,
+            default => "all"
         },
         interval => {
             options => [
                 ($self->c->config->{webapp}->{check_frequency} eq "high" ? (15, 30) : ()),
                 60, 120, 300, 600, 900, 1800, 3600, 7200, 14400, 28800, 43200, 57600, 86400
             ],
-            default => 60,
+            default => 60
         },
         retry_interval => {
             options => [ 15, 30, 60, 120, 180, 300, 600, 900, 1800, 3600 ],
@@ -184,34 +176,25 @@ sub set {
                 ($self->c->config->{webapp}->{check_frequency} eq "high" ? (30, 60, 120) : ()),
                 180, 300, 600, 900, 1800, 3600
             ],
-            default => 300,
+            default => 300
         },
         max_sms => {
             # 0 is not unlimited
             min_val => 0,
             max_val => 99999,
-            default => 500,
+            default => 500
         },
         notification => {
             options => [1,0],
-            default => 1,
+            default => 1
         },
         max_services => {
             min_val => 0,
             max_val => 9999,
-            default => 0,
+            default => 0
         },
         variables => {
-            constraint => sub {
-                return 1 unless $_[0];
-                foreach my $pv (split /[\r\n]+/, $_[0]) {
-                    next if $pv =~ /^\s*\z/;
-                    if ($pv !~ /^\s*[a-zA-Z_0-9\.]+\s*=\s*([^\s].*)\z/) {
-                        return undef;
-                    }
-                }
-                return 1;
-            },
+            constraint => $self->validator->constraint->param_value,
             default => "{}"
         },
         data_retention => {
@@ -222,65 +205,85 @@ sub set {
     );
 }
 
+sub validate_variables {
+    return 1 unless $_[0];
+    foreach my $pv (split /[\r\n]+/, $_[0]) {
+        next if $pv =~ /^\s*\z/;
+        if ($pv !~ /^\s*[a-zA-Z_0-9\.]+\s*=\s*([^\s].*)\z/) {
+            return undef;
+        }
+    }
+    return 1;
+}
+
 sub by_user_id {
     my $self = shift;
     my $opts = {@_};
     my $user = $opts->{user};
-    my @condition;
+    my @select;
 
-    #if ($user->{role} eq "operator") {
-    #    push @condition, (
-    #        where => {
-    #            table => "host",
-    #            column => "company_id",
-    #            value => $user->{company_id}
-    #        }
-    #    );
-    #} else {
-        push @condition, (
+    if ($opts->{registered}) {
+        @select = (
+            table => "host",
+            column => "*",
+            condition => [
+                where => {
+                    table => "host",
+                    column => "company_id",
+                    value => $user->{company_id}
+                },
+                and => {
+                    table => "host",
+                    column => "register",
+                    value => 1
+                }
+            ]
+        );
+    } else {
+        my @condition = (
             where => {
                 table => "user_group",
                 column => "user_id",
                 value => $user->{id}
             }
         );
-    #}
 
-    if ($opts->{condition}) {
-        push @condition, pre => [ and => @{$opts->{condition}} ];
+        if ($opts->{condition}) {
+            push @condition, pre => [ and => @{$opts->{condition}} ];
+        }
+
+        @select = (
+            distinct => 1,
+            table    => [
+                host => "*",
+                company => [ "id AS company_id", "company" ],
+                status_priority => "priority",
+            ],
+            join => [
+                inner => {
+                    table => "host_group",
+                    left  => "host.id",
+                    right => "host_group.host_id",
+                },
+                inner => {
+                    table => "user_group",
+                    left  => "host_group.group_id",
+                    right => "user_group.group_id",
+                },
+                inner => {
+                    table => "company",
+                    left  => "host.company_id",
+                    right => "company.id",
+                },
+                inner => {
+                    table => "status_priority",
+                    left  => "host.status",
+                    right => "status_priority.status",
+                },
+            ],
+            condition => \@condition
+        );
     }
-
-    my @select = (
-        distinct => 1,
-        table    => [
-            host => "*",
-            company => [ "id AS company_id", "company" ],
-            status_priority => "priority",
-        ],
-        join => [
-            inner => {
-                table => "host_group",
-                left  => "host.id",
-                right => "host_group.host_id",
-            },
-            inner => {
-                table => "user_group",
-                left  => "host_group.group_id",
-                right => "user_group.group_id",
-            },
-            inner => {
-                table => "company",
-                left  => "host.company_id",
-                right => "company.id",
-            },
-            inner => {
-                table => "status_priority",
-                left  => "host.status",
-                right => "status_priority.status",
-            },
-        ],
-        condition => \@condition
-    );
 
     if ($opts->{sort}) {
         push @select, order => [ $opts->{sort}->{type} => $opts->{sort}->{by} ];
@@ -984,23 +987,33 @@ sub get_invalid_host_ids_by_user_id {
 }
 
 sub validate_host_ids_by_company_id {
-    my ($self, $company_id, $host_ids) = @_;
+    my ($self, $company_id, $host_ids, $register) = @_;
+
+    my @condition = (
+        where => {
+            table => "host",
+            column => "company_id",
+            value => $company_id
+        },
+        and => {
+            table => "host",
+            column => "id",
+            value => $host_ids
+        }
+    );
+
+    if ($register) {
+        push @condition, and => {
+            table => "host",
+            column => "register",
+            value => 1
+        };
+    }
 
     my ($stmt, @bind) = $self->sql->select(
         count => "id",
         table => "host",
-        condition => [
-            where => {
-                table => "host",
-                column => "company_id",
-                value => $company_id
-            },
-            and => {
-                table => "host",
-                column => "id",
-                value => $host_ids
-            },
-        ]
+        condition => \@condition
     );
 
     my $count = $self->dbi->count($stmt, @bind);
@@ -1357,6 +1370,21 @@ sub _is_not_template_member {
     );
 
     return %select;
+}
+
+sub get_host_reg_queue_size {
+    my ($self, $company_id) = @_;
+
+    return $self->dbi->count(
+        $self->sql->select(
+            count => "id",
+            table => "host",
+            condition => [
+                company_id => $company_id,
+                register => 1
+            ]
+        )
+    );
 }
 
 1;

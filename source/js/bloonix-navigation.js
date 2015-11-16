@@ -119,6 +119,14 @@ Bloonix.createNav.monitoring = function() {
         text: Text.get("nav.sub.templates")
     }).appendTo(ul);
 
+    if (Bloonix.user.role === "operator") {
+        Bloonix.createNavElem({
+            link: "monitoring/registration",
+            icon: "edit",
+            text: Text.get("nav.sub.registration")
+        }).appendTo(ul);
+    }
+
     Bloonix.createNavElem({
         link: "monitoring/screen",
         icon: "tasks",

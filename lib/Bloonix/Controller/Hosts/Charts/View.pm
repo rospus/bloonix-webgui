@@ -2,7 +2,6 @@ package Bloonix::Controller::Hosts::Charts::View;
 
 use strict;
 use warnings;
-use Bloonix::Validator;
 
 sub startup {
     my ($self, $c) = @_;

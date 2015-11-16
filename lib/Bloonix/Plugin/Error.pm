@@ -29,6 +29,11 @@ sub service_not_available {
     $self->_error("err-411");
 }
 
+sub max_host_req_exceeded {
+    my $self = shift;
+    $self->_error("err-412");
+}
+
 sub noauth_access {
     my $self = shift;
     $self->_error("err-415");

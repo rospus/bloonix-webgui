@@ -42,6 +42,7 @@ nav.sub.hosts: Hosts
 nav.sub.services: Services
 nav.sub.charts: Charts
 nav.sub.templates: Templates
+nav.sub.registration: Registration
 nav.sub.screen: Screen
 nav.sub.contacts: Contacts
 nav.sub.contactgroups: Contactgroups
@@ -70,6 +71,7 @@ err-400: Bad login! Try it again!
 err-405: Your session is expired!
 err-410: The requested URL was not found!
 err-411: The service is not available!
+err-412: The maximum number of allowed hosts in register queue exceeded!
 err-415: Unauthorized access!
 err-416: You do not have enough access privileges for this operation!
 err-417: You do not have enough privileges to create an object!
@@ -164,7 +166,7 @@ action.display_from_to_rows: Displaying <b>%s</b>-<b>%s</b> of <b>%s</b> hits
 action.view_selected_objects: View selected objects
 action.select: Select
 action.unselect: Unselect
-action.operate_as: React as
+action.operate_as: Operate as
 action.generate_string: Generate a random string
 action.redirect: Redirect
 action.save: Save
@@ -198,6 +200,7 @@ info.move_with_mouse: Press and hold down the left mouse button while you move t
 info.new_version: <h4>A new version is available</h4>
  <p>A new version of the Bloonix-WebGUI is available!</p>
  <p>Please reload the website!</p>
+info.hosts_ready_for_registration: Hosts ready for registration
 
 text.dashlet_width: Dashlet width
 text.dashlet_height: Dashlet height
@@ -367,6 +370,12 @@ text.dashboard.name: Name of the dashboard
 text.dashboard.data_format: In which format the data should be shown?
 text.dashboard.show_as_chart: Show as chart
 text.dashboard.show_as_text: Show as text
+text.allow_from_desc: The keyword <i>all</i> is equal to <i>0.0.0.0/0, ::/0</i> and means that the access is allowed from all IP addresses.
+ Examples:
+ <br/><br/>192.168.10.0/24, 192.168.14.10/32
+ <br/><br/>Note that prepend zeros are not allowed:
+ <br/><br/><i>010.005.008.001</i> or <i>0001::0001</i> is not allowed
+ <br/><i>10.5.8.1</i> or <i>1::1</i> is allowed
 
 site.login.welcome: Welcome to Bloonix! Please log in.
 site.login.title: Login to the monitoring system
@@ -444,6 +453,10 @@ schema.company.attr.max_metrics_per_chart: Max metrics per chart
 schema.company.attr.max_dashboards_per_user: Max dashboards per user
 schema.company.attr.max_dashlets_per_dashboard: Max dashlets per dashboard
 schema.company.attr.max_sms: Max SMS
+schema.company.attr.max_hosts_in_reg_queue: Max hosts in queue for registration
+schema.company.attr.host_reg_authkey: Authkey for host registrations
+schema.company.attr.host_reg_enabled: Host registrations enabled
+schema.company.attr.host_reg_allow_from: Allow host registrations from
 schema.company.attr.data_retention: Data retention
 schema.company.attr.sms_enabled: SMS notifications enabled
 schema.company.attr.active: Active
@@ -470,6 +483,10 @@ schema.company.desc.max_metrics_per_chart: The maximum number of metrics per use
 schema.company.desc.max_dashboards_per_user: The maximum number of dashboards that can be created by a user.
 schema.company.desc.max_dashlets_per_dashboard: The maximum number of dashlets that can be added to a dashboard.
 schema.company.desc.max_sms: The maximum number of SMS that can be sent per month. Set 0 (null) if unlimited.
+schema.company.desc.max_hosts_in_reg_queue: The maximum number of hosts that are allowed to wait in the queue for for registration.
+schema.company.desc.host_reg_authkey: This key can be used in combination with the company ID to register new hosts.
+schema.company.desc.host_reg_enabled: With this option it's possible to enable or disable the host registration feature.
+schema.company.desc.host_reg_allow_from: Enter a comma separated list of IPs or networks from which a host registration is allowed.
 schema.company.desc.data_retention: The retention in days of all data of hosts and services. If a host has a higher data retention configured then the data retention of the company is used.
 schema.company.text.edit_variables: Global variables
 schema.company.text.list: Overview of all companies
@@ -478,6 +495,7 @@ schema.company.text.delete: Delete company
 schema.company.text.settings: Company settings
 schema.company.text.view: Company %s
 schema.company.text.data_retention_info: Your account is limited to %s days.
+schema.company.text.simulate_as: Simulate company
 
 schema.user.attr.id: User ID
 schema.user.attr.username: Username
@@ -493,7 +511,7 @@ schema.user.attr.last_login: Last login
 schema.user.attr.locked: Locked
 schema.user.attr.role: Role
 schema.user.attr.comment: Comment
-schema.user.attr.allow_from: Allow from IP
+schema.user.attr.allow_from: Allow from
 schema.user.desc.company: Select the company the user belongs to.
 schema.user.desc.username: Enter the username in the format <i>user@domain.test</i>.
 schema.user.desc.name: This is the users full name.
@@ -655,6 +673,7 @@ schema.host.desc.max_services: Set the maximum number of services that can be co
 schema.host.desc.variables: In this field you can define host variables. These variables can be used for thresholds by the configuration of service checks. Example:<br/><br/>HTTP.PORT=9000<br/><br/>This variable could be used in the format <i>%HTTP.PORT%</i> for thresholds. Please note that two variables are pre-defined: <i>IPADDR</i> and <i>HOSTNAME</i>. These variables are replaced with the IP address and the hostname of the host. For further information read the help.<br/><br/>Allowed signs: a-z, A-Z, 0-9, dot and underscore
 schema.host.desc.data_retention: The retention in days of all data of the host and services. 
 schema.host.text.list: Overview of all hosts
+schema.host.text.registered_host_list: Overview of all hosts ready for registration
 schema.host.text.view: Host %s
 schema.host.text.create: Create a new host
 schema.host.text.delete: Delete host
@@ -670,6 +689,8 @@ schema.host.text.multiple_notification: Enable or disable the notifications of m
 schema.host.text.multiple_activate: Activate or deactivate multiple hosts
 schema.host.text.multiple_edit: Edit the configuration of multiple hosts
 schema.host.text.multiple_edit_info: Note: empty fields will be ignored!
+schema.host.text.add_hosts_to_group: Add selected hosts to a group
+schema.host.text.delete_reg_hosts: Delete hosts
 schema.host.text.mtr_output: MTR result of host %s
 schema.host.text.mtr_chart: MTR chart
 schema.host.text.report_title: Report for host %s
@@ -680,6 +701,7 @@ schema.host.desc.add_host_to_contactgroup: Add the host to a contact group to ge
 schema.host.text.add_host_to_host_template: Add the host to a host template
 schema.host.desc.add_host_to_host_template: The host inherits all services from the host template.
 schema.host.text.list_templates: Host %s has the following templates configured
+schema.host.action.delete_reg_hosts: Delete the selected hosts!
 schema.host.action.disable_notifications_multiple: Disable notifications of the selected hosts
 schema.host.action.enable_notifications_multiple: Enable notifications of the selected hosts
 schema.host.action.activate_multiple: Activate the selected hosts
@@ -807,7 +829,8 @@ schema.contactgroup.text.list: Overview of all contactgroups
 schema.contactgroup.text.create: Create a new contact group
 schema.contactgroup.text.delete: Delete contact group
 schema.contactgroup.text.settings: Contact group settings
-schema.contactgroup.text.contact_members: Contacts in contact group
+schema.contactgroup.text.contact_members: Contacts in group
+schema.contactgroup.text.contact_nonmembers: Contacts not in group
 schema.contactgroup.text.group_members: Members of contact group '<b>%s</b>'
 schema.contactgroup.text.host_members: Hosts in group
 schema.contactgroup.text.host_nonmembers: Hosts not in group
@@ -1136,6 +1159,7 @@ schema.location.attr.country_code: Country code
 schema.location.attr.continent: Continent
 schema.location.attr.coordinates: Coordinates
 schema.location.attr.is_default: Default location
+schema.location.attr.authkey: Authkey
 schema.location.attr.description: Description
 schema.location.text.list: Locations
 schema.location.text.create: Create a new location

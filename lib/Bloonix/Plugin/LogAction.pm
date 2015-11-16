@@ -58,8 +58,8 @@ sub log {
     my ($self, $action, $log) = @_;
     my $c = $self->c;
     my $company_id = $c->user->{company_id};
-    my $user_id = $c->user->{id};
-    my $username = $c->user->{username};
+    my $user_id = $c->user->{admin_id} || $c->user->{id};
+    my $username = $c->user->{admin_username} || $c->user->{username};
     my $timestamp = $c->plugin->util->timestamp;
     my $target = $log->{target} || "n/a";
     my $message = "user action $username($user_id) $action $target";

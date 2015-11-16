@@ -38,12 +38,16 @@ CREATE TABLE "company" (
     "max_metrics_per_chart"      SMALLINT NOT NULL DEFAULT 50,
     "max_dashboards_per_user"    SMALLINT NOT NULL DEFAULT 50,
     "max_dashlets_per_dashboard" SMALLINT NOT NULL DEFAULT 50,
+    "max_hosts_in_reg_queue"     BIGINT NOT NULL DEFAULT 1000,
     "data_retention"             SMALLINT NOT NULL DEFAULT 3650,
     "sms_enabled"                CHAR(1) DEFAULT '1',
     "sms_route"                  VARCHAR(10) DEFAULT 'gold',
     "comment"                    TEXT,
     "creation_time"              TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "expire_time"                BIGINT NOT NULL DEFAULT 0,
+    "host_reg_authkey"           VARCHAR(1000) NOT NULL DEFAULT '',
+    "host_reg_enabled"           CHAR(1) NOT NULL DEFAULT '0',
+    "host_reg_allow_from"        VARCHAR(300) NOT NULL DEFAULT 'all',
     "variables"                  TEXT NOT NULL DEFAULT '{}'
 );
 
@@ -106,6 +110,14 @@ INSERT INTO "user_secret" (
     'H23QZ5c2tBYijITNoz409NNpMr9GiHhF4uE3adX4FyExT6UjWRonye54mSvyOo8V',
     '17775',
     'TYSZ8HM+o8xU05wviSwQUI1avoS816ftBuUy+cxo4n0B3L3SXOC79fARCw2E/Q/2+A9PYgu7MTy3JfluFJS9KA=='
+);
+
+-- Target of table company_user: user X is allowed to manage company Y
+
+CREATE TABLE "company_user" (
+    "company_id" BIGINT NOT NULL REFERENCES "company"("id") ON DELETE CASCADE,
+    "user_id"    BIGINT NOT NULL REFERENCES "user"("id") ON DELETE CASCADE,
+    UNIQUE("company_id", "user_id")
 );
 
 -- Session IDs for each user
@@ -211,6 +223,7 @@ CREATE TABLE "host" (
     "creation_time"         TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "variables"             TEXT NOT NULL DEFAULT '{}',
     "data_retention"        SMALLINT DEFAULT 3650,
+    "register"              CHAR(1) NOT NULL DEFAULT '0',
     UNIQUE("hostname", "company_id")
 );
 
@@ -375,6 +388,7 @@ CREATE TABLE "service_parameter" (
     "command_options"           TEXT NOT NULL DEFAULT '[]',
     "location_options"          TEXT NOT NULL DEFAULT '0',
     "agent_options"             TEXT NOT NULL DEFAULT '{}',
+    "sum_services"              SMALLINT NOT NULL DEFAULT 1,
     "plugin_id"                 BIGINT NOT NULL REFERENCES "plugin"("id"),
     "description"               VARCHAR(100) NOT NULL DEFAULT '',
     "comment"                   VARCHAR(200) NOT NULL DEFAULT '',
@@ -466,7 +480,8 @@ CREATE TABLE "location" (
     "country"      VARCHAR(50) NOT NULL,
     "continent"    VARCHAR(13) NOT NULL,
     "coordinates"  VARCHAR(500) NOT NULL DEFAULT '0,0',
-    "description"  VARCHAR(500)
+    "description"  VARCHAR(500),
+    "authkey"      VARCHAR(1024) NOT NULL DEFAULT ''
 );
 
 -- Host and service dependencies

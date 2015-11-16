@@ -2,6 +2,7 @@ package Bloonix::Plugin::Util;
 
 use strict;
 use warnings;
+use Bloonix::NetAddr;
 use Digest::SHA qw(sha256_hex sha512_hex hmac_sha512);
 use MIME::Base64;
 use MIME::Lite;
@@ -66,11 +67,11 @@ sub pbkdf2_sha512_base64_verify {
 
 sub pwgen {
     my ($self, $num) = @_;
-    $num ||= 20;
+    $num ||= 30;
 
     my @char = ("a".."z", "A".."Z", 0..9);
-    my $len  = scalar @char;
-    my $str  = "";
+    my $len = scalar @char;
+    my $str = "";
 
     for my $i (1..$num) {
         my $n = int(rand($len));
@@ -209,120 +210,6 @@ sub secs2str {
     return wantarray ? ($d, $h, $m, $s) : "$d:$h:$m:$s";
 }
 
-sub pager {
-    my ($self, %page) = @_;
-
-    # Validation
-    foreach my $key (qw/min_entry max_entry current_page entries_per_page/) {
-        if (defined $page{$key} && $page{$key} !~ /^\d+\z/) {
-            die "invalid value for key '$key'";
-        }
-    }
-
-    # Some defaults
-    $page{entries_per_page} //= 40;
-    $page{current_page} //= 1;
-
-    # Check if a array with data are passed
-    if (ref $page{total_entries} eq "ARRAY") {
-        $page{data} = delete $page{total_entries};
-        $page{total_entries} = scalar @{$page{data}};
-    }
-
-    if (defined $page{total_entries}) {
-        $page{min_entry} = 1;
-        $page{max_entry} = $page{total_entries};
-    } elsif (defined $page{min_entry} && defined $page{max_entry}) {
-        $page{total_entries} = $page{max_entry} - $page{min_entry} + 1;
-    } else {
-        die "no number of entries passed";
-    }
-
-    $page{first_page} = 1;
-    $page{last_page}  = int($page{total_entries} / $page{entries_per_page});
-
-    if ($page{last_page} * $page{entries_per_page} < $page{max_entry}) {
-        $page{last_page}++;
-    }
-
-    if ($page{last_page} < 1) {
-        $page{last_page} = 1;
-    }
-
-    if ($page{current_page} < $page{first_page} || $page{current_page} > $page{last_page}) {
-        $page{current_page} = 1;
-    }
-
-    if ($page{current_page} + 1 >= $page{last_page}) {
-        $page{next_page} = 0;
-    } else {
-        $page{next_page} = $page{current_page} + 1;
-    }
-
-    if ($page{current_page} - 1 <= $page{first_page}) {
-        $page{prev_page} = 0;
-    } else {
-        $page{prev_page} = $page{current_page} - 1;
-    }
-
-    if ($page{reverse}) {
-        $page{first_entry} = ($page{max_entry} + 1) - $page{current_page} * $page{entries_per_page};
-        $page{last_entry}  = $page{first_entry} + $page{entries_per_page} - 1;
-
-        if ($page{first_entry} < $page{min_entry}) {
-            $page{first_entry} = $page{min_entry};
-        }
-
-        if ($page{last_entry} < $page{min_entry}) {
-            $page{last_entry} = $page{min_entry};
-        }
-    } else {
-        $page{first_entry} = $page{current_page} * $page{entries_per_page} + $page{min_entry} - $page{entries_per_page};
-        $page{last_entry}  = $page{first_entry} + $page{entries_per_page} - 1;
-
-        if ($page{first_entry} > $page{max_entry}) {
-            $page{first_entry} = $page{max_entry};
-        }
-
-        if ($page{last_entry} > $page{max_entry}) {
-            $page{last_entry} = $page{max_entry};
-        }
-    }
-
-    my @array = ();
-    $page{array} = \@array;
-
-    if ($page{last_page} <= 10) {
-        push @array, (1..$page{last_page});
-    } elsif ($page{current_page} - 2 <= $page{first_page}) {
-        push @array, (1, 2, 3, 4, "...", $page{last_page});
-    } elsif ($page{current_page} + 2 >= $page{last_page}) {
-        push @array, (
-            1, "...",
-            $page{last_page} - 3,
-            $page{last_page} - 2,
-            $page{last_page} - 1,
-            $page{last_page}
-        );
-    } else {
-        push @array, (
-            1, "...",
-            $page{current_page} - 1,
-            $page{current_page},
-            $page{current_page} + 1,
-            "...", $page{last_page}
-        );
-    }
-
-    if ($page{data} && $page{total_entries}) {
-        my $first = $page{first_entry} - 1;
-        my $last = $page{last_entry} - 1;
-        $page{data} = [ @{$page{data}}[$first..$last] ];
-    }
-
-    return \%page;
-}
-
 sub convert_year_month_to_max_date {
     my ($self, $string) = @_;
     my ($year, $month) = split /-/, $string;
@@ -437,6 +324,12 @@ sub json_to_pv {
     }
 
     return $to_pv;
+}
+
+sub ip_in_range {
+    my ($self, $a, $b) = @_;
+
+    return Bloonix::NetAddr->ip_in_range($a, $b);
 }
 
 1;

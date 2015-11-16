@@ -7,7 +7,7 @@ use Time::HiRes;
 sub auto {
     my ($self, $c) = @_;
 
-    $c->version->{js} = 110;
+    $c->version->{js} = 111;
 
     my $addr = $c->req->remote_addr || "n/a";
     my $lang = $c->req->cookie("lang");
@@ -34,56 +34,68 @@ sub auto {
         $c->view->render->json;
     }
 
-    if ($c->action_path eq "login") {
+    if ($c->action_path eq "login" || $c->action_path eq "register/host") {
         return 1;
     }
 
-    my $user = ();
     my $sid = $c->req->cookie("sid") || $c->req->param("sid");
-    my $username = $c->req->param("username");
-    my $authkey = $c->req->param("authkey");
+    my ($user, $do_not_check_expire_date);
 
-    if ($authkey && $username && $c->action_path =~ m!^(screen\z|screen/|hosts/charts/info/|whoami)!) {
-        $user = $c->model->database->user->by_authkey($username, $authkey);
-        $c->stash->{meta}->{authkey} = $authkey;
-    } elsif ($sid) {
+    if ($sid) {
         $user = $c->model->database->session->get_user($sid, time);
+    } elsif ($c->action_path =~ m!^(screen\z|screen/|hosts/charts/info/|whoami)!) {
+        my $username = $c->req->param("username");
+        my $authkey = $c->req->param("authkey");
+        if ($authkey && $username) {
+            $user = $c->model->database->user->by_authkey($username, $authkey);
+            $c->stash->{meta}->{authkey} = $authkey;
+            $do_not_check_expire_date = 1;
+        }
     }
 
     if ($user) {
-        $c->log->set_pattern("%X", "user_id", $user->{id});
-        $c->log->set_pattern("%Y", "username", "$user->{username} ($addr)");
-        $c->stash->{meta}->{servertime} = $c->plugin->util->timestamp(time, $user->{timezone});
+        my $company = $c->model->database->company->get($user->{company_id});
+        $c->session->set(delete $user->{session_stash});
+
+        if ($c->session->stash->{admin_id}) {
+            my $admin_user = $c->model->database->user->get($c->session->stash->{admin_id});
+            $user->{admin_id} = $admin_user->{id};
+            $user->{admin_username} = $admin_user->{username};
+            $c->log->set_pattern("%X", "user_id", "$user->{admin_id} ACTS AS $user->{id}");
+            $c->log->set_pattern("%Y", "username", "$user->{admin_username} ACTS AS $user->{username} ($addr)");
+            $c->log->notice(
+                "admin user $user->{admin_username}($user->{admin_id})",
+                "acts as $user->{username}($user->{id})"
+            );
+        } else {
+            $c->log->set_pattern("%X", "user_id", $user->{id});
+            $c->log->set_pattern("%Y", "username", "$user->{username} ($addr)");
+
+            if ($company->{active} != 1) {
+                $c->log->notice("company of user $user->{username} not active");
+                $c->plugin->error->noauth_access;
+                $c->res->redirect("/login");
+                return undef;
+            }
+
+            if (!$self->_is_allowed($c, $user)) {
+                $c->log->notice("user $user->{username} is not allowed to access from addr $addr");
+                $c->res->redirect("/login");
+                $c->plugin->error->noauth_access;
+                return undef;
+            }
+        }
+
         $user->{stash} = $c->json->decode($user->{stash});
         $user->{stash}->{table_config} //= {};
-
-        my $company = $c->model->database->company->get($user->{company_id});
-
-        if ($company->{active} != 1) {
-            $c->log->notice("company of user $user->{username} not active");
-            $c->plugin->error->noauth_access;
-            $c->res->redirect("/login");
-            return undef;
-        }
-
-        if (!$self->_is_allowed($c, $user)) {
-            $c->log->notice("user $user->{username} is not allowed to access from addr $addr");
-            $c->res->redirect("/login");
-            $c->plugin->error->noauth_access;
-            return undef;
-        }
+        $user->{company_data_retention} = $company->{data_retention};
 
         # Delete secrets!
         delete $user->{password};
         delete $user->{authkey};
-        $user->{company_data_retention} = $company->{data_retention};
 
         $c->user($user);
         $c->stash->{user} = $user;
-
-        if ($user->{stash}) {
-            $c->session->set($user->{stash});
-        }
 
         $c->log->notice(
             "process path",
@@ -95,7 +107,7 @@ sub auto {
         );
 
         if ($user->{password_changed} == 0 && $c->action_path !~ m!^(?:user/passwd|whoami|index|token/csrf|logout)\z!) {
-            if (!$c->session->stash->{adminlogin}) {
+            if (!$c->session->stash->{admin_id}) {
                 $c->plugin->error->password_must_be_changed;
                 if (!$c->req->is_json) {
                     $c->res->redirect("/");
@@ -104,7 +116,7 @@ sub auto {
             }
         }
 
-        if (!$authkey && $c->user->{expire} - time < $c->config->{webapp}->{sid_refresh_time}) {
+        if (!$do_not_check_expire_date && $c->user->{expire} - time < $c->config->{webapp}->{sid_refresh_time}) {
             $c->model->database->session->update_by_sid($sid, time + $c->config->{webapp}->{sid_expire_time});
         }
 
@@ -241,21 +253,22 @@ sub operateas {
         return $c->res->redirect("/");
     }
 
+    my $user = $c->model->database->user->get($opts->{id});
+
+    if (!$user || $user->{role} eq "admin") {
+        $c->plugin->error->object_does_not_exists;
+        return $c->res->redirect("/");
+    }
+
     $c->model->database->session->update(
         data => {
             user_id => $opts->{id},
+            stash => $c->json->encode({ admin_id => $c->user->{id} })
         },
         condition => [
-            sid => $c->user->{sid},
-        ],
+            sid => $c->user->{sid}
+        ]
     );
-
-    $c->session->store->{adminlogin} = 1;
-    $c->stash->{meta}->{new_user_id} = $opts->{id};
-
-    if ($c->req->is_json) {
-        return $c->view->render->json;
-    }
 
     $c->res->redirect("/");
 }
@@ -475,6 +488,14 @@ sub logout {
     my ($self, $c) = @_;
     my $ipaddr = $c->req->remote_addr || "n/a";
 
+    if ($c->session->stash->{admin_id}) {
+        $c->model->database->session->update(
+            data => { user_id => $c->session->stash->{admin_id}, stash => "" },
+            condition => [ sid => $c->user->{sid} ]
+        );
+        return $c->res->redirect("/");
+    }
+
     $c->model->database->session->delete(
         sid => $c->user->{sid},
         user_id => $c->user->{id},
@@ -494,11 +515,6 @@ sub logout {
         -value   => $c->user->{sid},
         -expires => "-1m"
     );
-    #$c->res->cookie(
-    #    -name    => "lang",
-    #    -value   => "deleted",
-    #    -expires => "-1m"
-    #);
 
     if ($c->req->is_json) {
         return $c->view->render->json;
@@ -510,26 +526,6 @@ sub logout {
 sub end {
     my ($self, $c) = @_;
 
-    if ($c->session->destroy) {
-        $c->log->notice("destroy session stash");
-        $c->model->database->session->update(
-            data => { stash => "" },
-            condition => [ user_id => $c->user->{id}, sid => $c->user->{sid} ],
-        );
-    } elsif ($c->session->refresh) {
-        my $user_id = $c->stash->{meta}->{new_user_id}
-            ? $c->stash->{meta}->{new_user_id}
-            : $c->user->{id};
-
-        my $session_stash = $c->session->get;
-        $c->log->notice("refresh session stash");
-        $c->log->dump(notice => $session_stash);
-        $c->model->database->session->update(
-            data => { stash => $session_stash },
-            condition => [ user_id => $user_id, sid => $c->user->{sid} ],
-        );
-    }
-
     $self->{runtime} = sprintf("%.6f", Time::HiRes::gettimeofday() - $self->{runtime});
     $c->log->notice("process finished (total $self->{runtime})");
 }
@@ -537,21 +533,8 @@ sub end {
 sub _is_allowed {
     my ($self, $c, $user) = @_;
     my $addr = $c->req->remote_addr || "n/a";
-
-    if ($user->{allow_from} eq "all") {
-        return 1;
-    }
-
-    foreach my $ip (split /,/, $user->{allow_from}) {
-        $ip =~ s/^\s+//;
-        $ip =~ s/\s+\z//;
-
-        if ($ip eq $addr) {
-            return 1;
-        }   
-    }   
-
-    return 0;
+    my $allow_from = $user->{allow_from} || "all";
+    return $c->plugin->util->ip_in_range($addr, $allow_from);
 }
 
 1;

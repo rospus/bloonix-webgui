@@ -10,7 +10,7 @@ sub get_user {
 
     my ($stmt, @bind) = $self->sql->select(
         table  => [
-            session => "*",
+            session => ["sid", "user_id", "expire", "stash as session_stash"],
             user    => "*",
             company => [ qw(
                 company sla

@@ -42,6 +42,7 @@ nav.sub.hosts: Hosts
 nav.sub.services: Services
 nav.sub.charts: Charts
 nav.sub.templates: Templates
+nav.sub.registration: Registration
 nav.sub.screen: Bildschirm
 nav.sub.contacts: Kontakte
 nav.sub.contactgroups: Kontaktgruppen
@@ -70,6 +71,7 @@ err-400: Der Login ist fehlgeschlagen. Bitte versuchen Sie es erneut!
 err-405: Ihre Session ist abgelaufen!
 err-410: Die angeforderte Seite wurde nicht gefunden!
 err-411: Der Dienst ist nicht verfügbar!
+err-412: Die maximale Anzahl erlaubter Hosts in der Registerqueue ist erreicht!
 err-415: Nicht authorisierter Zugriff!
 err-416: Sie haben nicht genügend Rechte für diese Operation!
 err-417: Sie haben nicht genügend Rechte um ein Objekt zu erstellen!
@@ -198,6 +200,7 @@ info.move_with_mouse: Drücke und halte den linken Mausbutton während die Box r
 info.new_version: <h4>Eine neue Version ist verfügbar</h4>
  <p>Eine neue Version der Bloonix-WebGUI ist verfügbar!</p>
  <p>Bitte laden Sie die Webseite neu!</p>
+info.hosts_ready_for_registration: Hosts, die registriert werden können
 
 text.dashlet_width: Dashlet Breite
 text.dashlet_height: Dashlet Höhe
@@ -367,6 +370,12 @@ text.dashboard.name: Name des Dashboards
 text.dashboard.data_format: In welchem Format sollen die Daten gezeigt werden?
 text.dashboard.show_as_chart: Zeige die Daten als Chart
 text.dashboard.show_as_text: Zeige die Daten als Text
+text.allow_from_desc: Das Schlüsselwort <i>all</i> ist gleichbedeuted mit <i>0.0.0.0/0, ::/0</i> und heißt, dass ein Zugriff von allen IP-Adressen erlaubt ist.
+ Beispiele:
+ <br/><br/>192.168.10.0/24, 192.168.14.10/32
+ <br/><br/>Bitte beachten Sie dass vorangestellte Nullen nicht erlaubt sind:
+ <br/><br/><i>010.005.008.001</i> oder <i>0001::0001</i> ist nicht erlaubt
+ <br/><i>10.5.8.1</i> oder <i>1::1</i> ist erlaubt
 
 site.login.welcome: Willkommen bei Bloonix!
 site.login.title: Login zum Monitoring-System
@@ -444,6 +453,10 @@ schema.company.attr.max_metrics_per_chart: Maximale Metriken pro Chart
 schema.company.attr.max_dashboards_per_user: Maximale Dashboards pro Benutzer
 schema.company.attr.max_dashlets_per_dashboard: Maximale Dashlets pro Dashboard
 schema.company.attr.max_sms: Maximale SMS pro Monat
+schema.company.attr.max_hosts_in_reg_queue: Maximale Hosts in der Queue für Registrierungen
+schema.company.attr.host_reg_authkey: Authkey für Host Registrierungen
+schema.company.attr.host_reg_enabled: Host Registrierungen eingeschaltet
+schema.company.attr.host_reg_allow_from: Erlaube Host-Registrierungen von
 schema.company.attr.data_retention: Daten Aufbewahrungszeit
 schema.company.attr.sms_enabled: SMS Benachrichtigungen eingeschaltet
 schema.company.attr.active: Aktiv
@@ -470,6 +483,10 @@ schema.company.desc.max_metrics_per_chart: Die maximale Anzahl an Metriken die p
 schema.company.desc.max_dashboards_per_user: Die maximale Anzahl an Dashboards die pro Benutzer erstellt werden dürfen.
 schema.company.desc.max_dashlets_per_dashboard: Die maximale Anzahl an Dashlets die pro Dashboard hinzugefügt werden dürfen.
 schema.company.desc.max_sms: Die maximale Anzahl SMS, die pro Monat versendet werden dürfen. Setze 0 (null) wenn es kein Limit gibt.
+schema.company.desc.max_hosts_in_reg_queue: Die maximale erlaubte Anzahl von Hosts, die in der Queue auf eine Registrierung warten können.
+schema.company.desc.host_reg_authkey: Dieser Schlüssel kann in Kombination mit der Firmen-ID verwendet werden, um neue Hosts zu registrieren.
+schema.company.desc.host_reg_enabled: Mit dieser Option kann die Registrierung von Hosts über den Authkey ein- oder ausgeschaltet werden.
+schema.company.desc.host_reg_allow_from: Eingabe einer Komma separierten Liste mit IP Adressen oder Netzwerken, von denen aus eine Registrierung von Hosts erlaubt ist.
 schema.company.desc.data_retention: Die Aufbewahrungszeit in Tagen aller Daten von Hosts und der Services. Wenn ein Host eine höhere Aufbewahrungszeit konfiguriert hat, dann wird die Aufbewahrungszeit der Firma verwendet.
 schema.company.text.edit_variables: Globale Variablen
 schema.company.text.list: Übersicht über alle Unternehmen
@@ -478,6 +495,7 @@ schema.company.text.delete: Unternehmen löschen
 schema.company.text.settings: Einstellungen des Unternehmens
 schema.company.text.view: Unternehmen %s
 schema.company.text.data_retention_info: Ihr Account ist limitiert auf %s Tage.
+schema.company.text.simulate_as: Simuliere Firma
 
 schema.user.attr.id: Benutzer ID
 schema.user.attr.username: Benutzername
@@ -493,7 +511,7 @@ schema.user.attr.last_login: Letzter Login
 schema.user.attr.locked: Gesperrt
 schema.user.attr.role: Rolle
 schema.user.attr.comment: Kommentar
-schema.user.attr.allow_from: Erlaubter IP-Zugriff
+schema.user.attr.allow_from: Erlaubter Zugriff
 schema.user.desc.company: Wähle ein Unternehmen zu dem der Benutzer gehört.
 schema.user.desc.username: Angabe des Benutzernamens im Format <i>user@domain.test</i>.
 schema.user.desc.name: Das ist der Name des Benutzers.
@@ -655,6 +673,7 @@ schema.host.desc.max_services: Konfiguration der maximalen Services, die für di
 schema.host.desc.variables: In diesem Feld können Host Variablen definiert werden. Diese Variablen können für Schwellwerten bei der Konfiguration von Service-Checks verwendet werden. Beispiel:<br/><br/><b>HTTP.PORT=9000</b><br/><br/>Diese Variable kann dann im Format <i>%HTTP.PORT%</i> für Schwellwerte eingesetzt werden. Bitte beachten Sie das zwei Variablen vordefiniert sind: <i>IPADDR</i> und <i>HOSTNAME</i>. Diese Variablen werden mit der IP-Adresse und dem Hostnamen ersetzt. Weitere Informationen hierzu finden Sie in der Hilfe.<br/><br/>Erlaubte Zeichen: a-z, A-Z, 0-9, Punkt und Unterstrich
 schema.host.desc.data_retention: Die Aufbewahrungszeit in Tagen aller Daten des Host und der Services.
 schema.host.text.list: Übersicht über alle Hosts
+schema.host.text.registered_host_list: Übersicht über alle Hosts die registriert werden können
 schema.host.text.view: Host %s
 schema.host.text.create: Einen neuen Host erstellen
 schema.host.text.delete: Den Host löschen
@@ -671,6 +690,8 @@ schema.host.text.multiple_notification: Die Benachrichtigungen für mehrere Host
 schema.host.text.multiple_activate: Mehrere Hosts aktivieren oder deaktivieren
 schema.host.text.multiple_edit: Die Konfiguration mehrerer Hosts editieren
 schema.host.text.multiple_edit_info: Leere Felder werden ignoriert!
+schema.host.text.add_hosts_to_group: Füge die selektierte Hosts einer Gruppe hinzu
+schema.host.text.delete_reg_hosts: Hosts löschen
 schema.host.text.mtr_output: MTR Ergebis von Host %s
 schema.host.text.mtr_chart: MTR Chart
 schema.host.text.report_title: Bericht für Host %s
@@ -681,6 +702,7 @@ schema.host.desc.add_host_to_contactgroup: Füge den Host einer Kontaktgruppe hi
 schema.host.text.add_host_to_host_template: Den Host Host-Templates zuordnen.
 schema.host.desc.add_host_to_host_template: Der Host erbt alle Services eines Host-Templates.
 schema.host.text.list_templates: Host %s hat folgende Templates konfiguriert
+schema.host.action.delete_reg_hosts: Die selektierten Hosts löschen!
 schema.host.action.disable_notifications_multiple: Benachrichtigungen ausschalten für die selektierten Hosts
 schema.host.action.enable_notifications_multiple: Benachrichtigungen einschalten für die selektierten Hosts
 schema.host.action.activate_multiple: Selektierte Hosts aktivieren
@@ -808,7 +830,8 @@ schema.contactgroup.text.list: Übersicht über alle Kontaktgruppen
 schema.contactgroup.text.create: Eine neue Kontaktgruppe erstellen
 schema.contactgroup.text.delete: Die Kontaktgruppe löschen
 schema.contactgroup.text.settings: Einstellungen der Kontaktgruppe
-schema.contactgroup.text.contact_members: Kontakte, die der Kontaktgruppe angehören
+schema.contactgroup.text.contact_members: Kontakte, die der Gruppe angehören
+schema.contactgroup.text.contact_nonmembers: Kontakte, die nicht der Gruppe angehören
 schema.contactgroup.text.group_members: Mitglieder der Kontaktgruppe
 schema.contactgroup.text.host_members: Hosts, die der Kontaktgruppe angehören
 schema.contactgroup.text.host_nonmembers: Hosts, die der Kontaktgruppe nicht angehören
@@ -1141,6 +1164,7 @@ schema.location.attr.country_code: Ländercode
 schema.location.attr.continent: Kontinent
 schema.location.attr.coordinates: Koordinaten
 schema.location.attr.is_default: Standard Lokation
+schema.location.attr.authkey: Authkey
 schema.location.attr.description: Beschreibung
 schema.location.text.list: Lokationen
 schema.location.text.create: Eine neue Lokation erstellen

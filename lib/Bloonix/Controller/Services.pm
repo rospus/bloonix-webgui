@@ -50,9 +50,6 @@ sub list {
         foreach my $key (qw/result debug command_options location_options/) {
             if ($service->{$key} && $service->{$key} =~ /^[\[\{].*[\]\}]$/) {
                 $service->{$key} = $c->json->decode($service->{$key});
-                #if ($key eq "debug" && ref $service->{$key} eq "HASH") {
-                #    $service->{$key} = [ $service->{$key} ];
-                #}
             }
         }
         my $host_template_id = $service->{host_template_id};
@@ -249,8 +246,8 @@ sub action {
     }
 
     my %update;
-    my $username = $c->user->{username};
-    my $user_id = $c->user->{id};
+    my $user_id = $c->user->{admin_id} || $c->user->{user_id};
+    my $username = $c->user->{admin_username} || $c->user->{username};
     my $timestamp = $c->plugin->util->timestamp;
 
     if ($opts->{action} eq "activate") {

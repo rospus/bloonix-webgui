@@ -232,6 +232,7 @@ Form.prototype.textarea = function(o) {
         bubbleClass: false,
         bubbleCloseIconClass: "i-bubble-close-button",
         bubbleCloseText: "x",
+        genStrIconClass: "gicons-gray gicons refresh gicons-input-icon-default",
         format: this.format,
         form: this,
         css: false
@@ -285,6 +286,15 @@ Form.prototype.textarea = function(o) {
                 self.textarea.attr(key, key);
             }
         });
+
+        if (this.genString) {
+            Utils.create("span")
+                .attr("title", Text.get("action.generate_string"))
+                .tooltip()
+                .addClass(this.genStrIconClass)
+                .appendTo(this.container)
+                .click(function(){ self.textarea.val(Utils.genRandStr(self.genString)) });
+        }
 
         this.form.addInputValidator(this, "textarea", "html");
 
@@ -1367,7 +1377,6 @@ Form.prototype.create = function() {
     }
 
     $.each(this.elements, function(i, e) {
-        self.byKey[e.name] = e;
         self.createElement(e);
     });
 
@@ -1375,6 +1384,8 @@ Form.prototype.create = function() {
 };
 
 Form.prototype.createElement = function(e) {
+    this.byKey[e.name] = e;
+
     var table = e.table || this.table,
         tr = Utils.create("tr").appendTo(table),
         th = Utils.create("th").appendTo(tr),
@@ -1545,10 +1556,6 @@ Form.prototype.submit = function() {
                 if (result.data.failed) {
                     self.markErrors(result.data.failed);
                 }
-                //$.each(result.data.failed, function(i, item) {
-                //    Log.debug("[data-name='" + item + "']");
-                //    var object = self.form.find("[data-name='" + item + "']").addClass("rwb");
-                //});
                 $("#content-outer").scrollTop(0);
             }
         }
@@ -1591,7 +1598,11 @@ Form.prototype.getData = function() {
         var keyOpts = self.byKey[e.name];
 
         // The token is not in list... so skip undefined options
-        if (keyOpts != undefined && (keyOpts.element == "checkbox" || keyOpts.element == "multiselect" || keyOpts.forceArray == true)) {
+        if (keyOpts != undefined &&
+            (keyOpts.element == "checkbox" ||
+            keyOpts.element == "multiselect" ||
+            keyOpts.forceArray == true)
+        ) {
             if (data[e.name] == undefined) {
                 data[e.name] = [ ];
                 // If the first value is empty then it's from

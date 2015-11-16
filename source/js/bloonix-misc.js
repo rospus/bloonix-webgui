@@ -54,13 +54,33 @@ Bloonix.initUser = function(postdata) {
 Bloonix.getStats = function() {
     Log.debug("getStats()");
 
+    Bloonix.getRegisteredHostCount();
     Bloonix.getHostServiceStats();
     Bloonix.getBrowserStats();
+    Bloonix.setStatsTimeout();
+};
+
+Bloonix.setStatsTimeout = function() {
+    setTimeout(function() { Bloonix.getStats() }, 30000);
+};
+
+Bloonix.getRegisteredHostCount = function() {
+    Ajax.post({
+        url: "/hosts/registered/count",
+        async: false,
+        success: function(data) {
+            if (data.data > 0) {
+                Bloonix.registeredHostsInfoIcon.text(data.data);
+                Bloonix.registeredHostsInfoIcon.show();
+            } else {
+                Bloonix.registeredHostsInfoIcon.hide();
+            }
+        }
+    });
 };
 
 Bloonix.getHostServiceStats = function() {
     var hostStats, serviceStats;
-
     Ajax.post({
         url: "/hosts/stats/status/",
         async: false,
@@ -88,14 +108,11 @@ Bloonix.getHostServiceStats = function() {
             DateFormat(new Date, DateFormat.masks.bloonixNoHour)
         );
     }
-
-    setTimeout(function() { Bloonix.getStats() }, 30000);
 };
 
 Bloonix.getBrowserStats = function() {
     if (window.performance) {
         if (window.performance.memory) {
-            Bloonix.objects.footerStats.Browser.show()
             Bloonix.updateBrowserStats();
         }
     }
@@ -107,8 +124,5 @@ Bloonix.updateBrowserStats = function() {
     var usedHeapSize = Utils.bytesToStr(m.usedJSHeapSize),
         totalHeapSize = Utils.bytesToStr(m.totalJSHeapSize);
 
-    Bloonix.objects.footerStats.Browser
-        .text(usedHeapSize +"/"+ totalHeapSize);
-
-    setTimeout(function() { Bloonix.updateBrowserStats() }, 1000);
+    Log.info("Browsers heap size: "+ usedHeapSize +"/"+ totalHeapSize);
 };

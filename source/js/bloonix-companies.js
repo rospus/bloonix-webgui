@@ -391,6 +391,32 @@ Bloonix.getCompanyFormElements = function() {
             name: "comment",
             text: Text.get("schema.company.attr.comment"),
             maxlength: 500
+        },{
+            element: "textarea",
+            name: "host_reg_authkey",
+            text: Text.get("schema.company.attr.host_reg_authkey"),
+            desc: Text.get("schema.company.desc.host_reg_authkey"),
+            minlength: 60,
+            maxlength: 1000,
+            genString: 64
+        },{
+            element: "radio-yes-no",
+            name: "host_reg_enabled",
+            text: Text.get("schema.company.attr.host_reg_enabled"),
+            desc: Text.get("schema.company.desc.host_reg_enabled")
+        },{
+            element: "input",
+            type: "text",
+            name: "max_hosts_in_reg_queue",
+            text: Text.get("schema.company.attr.max_hosts_in_reg_queue"),
+            desc: Text.get("schema.company.desc.max_hosts_in_reg_queue"),
+            minvalue: 0, maxvalue: 9999999999
+        },{
+            element: "textarea",
+            name: "host_reg_allow_from",
+            text: Text.get("schema.company.attr.host_reg_allow_from"),
+            desc: Text.gets(["schema.company.desc.host_reg_allow_from", "text.allow_from_desc"]),
+            maxlength: 300
         }
     ];
 };

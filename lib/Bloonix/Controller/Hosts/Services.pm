@@ -12,7 +12,6 @@ sub startup {
     $c->route->map("/hosts/:id/services/:service_id/options")->to("options");
     $c->route->map("/hosts/:id/services/:service_id/update")->to("update");
     $c->route->map("/hosts/:id/services/:service_id/delete")->to("delete");
-
     $c->route->map("/services/options/:plugin_id")->to("options");
     $c->route->map("/services/create")->to("create");
     $c->route->map("/services/:service_id")->to("view");
@@ -178,6 +177,14 @@ sub update {
     my $service = $c->stash->object->{service};
     my $data = $c->plugin->service->validate($service)
         or return;
+
+    if ($data->{sum_services}) {
+        my $count_services = $c->model->database->service->count_by_company_id($c->user->{company_id}, $service->{id});
+
+        if ($c->user->{max_services} && $count_services + $data->{sum_services} > $c->user->{max_services}) {
+            return $c->plugin->error->limit_error("err-832" => $c->user->{max_services});
+        }
+    }
 
     my $username = $c->user->{username};
     my $user_id = $c->user->{id};

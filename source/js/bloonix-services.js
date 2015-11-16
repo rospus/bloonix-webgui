@@ -320,6 +320,7 @@ Bloonix.listServices = function(o) {
                     text: Text.get("schema.service.attr.last_check"),
                     convertFromUnixTime: true
                 },{
+                    name: "attempt_counter",
                     text: Text.get("schema.service.text.attempt"),
                     call: function(row) { return [ row.attempt_counter, row.attempt_max ].join("/") },
                     switchable: false

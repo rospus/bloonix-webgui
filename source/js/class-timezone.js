@@ -5,24 +5,24 @@ var Timezones = function() {
           "name" : "Africa/Abidjan"
        },
        {
-          "value" : "Africa/Accra",
-          "name" : "Africa/Accra"
+          "name" : "Africa/Accra",
+          "value" : "Africa/Accra"
        },
        {
-          "value" : "Africa/Addis_Ababa",
-          "name" : "Africa/Addis Ababa"
+          "name" : "Africa/Addis Ababa",
+          "value" : "Africa/Addis_Ababa"
        },
        {
           "value" : "Africa/Algiers",
           "name" : "Africa/Algiers"
        },
        {
-          "value" : "Africa/Asmara",
-          "name" : "Africa/Asmara"
+          "name" : "Africa/Asmara",
+          "value" : "Africa/Asmara"
        },
        {
-          "value" : "Africa/Bamako",
-          "name" : "Africa/Bamako"
+          "name" : "Africa/Bamako",
+          "value" : "Africa/Bamako"
        },
        {
           "value" : "Africa/Bangui",
@@ -37,60 +37,60 @@ var Timezones = function() {
           "name" : "Africa/Bissau"
        },
        {
-          "value" : "Africa/Blantyre",
-          "name" : "Africa/Blantyre"
+          "name" : "Africa/Blantyre",
+          "value" : "Africa/Blantyre"
        },
        {
           "value" : "Africa/Brazzaville",
           "name" : "Africa/Brazzaville"
        },
        {
-          "value" : "Africa/Bujumbura",
-          "name" : "Africa/Bujumbura"
+          "name" : "Africa/Bujumbura",
+          "value" : "Africa/Bujumbura"
        },
        {
           "value" : "Africa/Cairo",
           "name" : "Africa/Cairo"
        },
        {
-          "value" : "Africa/Casablanca",
-          "name" : "Africa/Casablanca"
+          "name" : "Africa/Casablanca",
+          "value" : "Africa/Casablanca"
        },
        {
-          "value" : "Africa/Ceuta",
-          "name" : "Africa/Ceuta"
+          "name" : "Africa/Ceuta",
+          "value" : "Africa/Ceuta"
        },
        {
-          "value" : "Africa/Conakry",
-          "name" : "Africa/Conakry"
+          "name" : "Africa/Conakry",
+          "value" : "Africa/Conakry"
        },
        {
-          "value" : "Africa/Dakar",
-          "name" : "Africa/Dakar"
+          "name" : "Africa/Dakar",
+          "value" : "Africa/Dakar"
        },
        {
-          "value" : "Africa/Dar_es_Salaam",
-          "name" : "Africa/Dar es Salaam"
+          "name" : "Africa/Dar es Salaam",
+          "value" : "Africa/Dar_es_Salaam"
        },
        {
-          "value" : "Africa/Djibouti",
-          "name" : "Africa/Djibouti"
+          "name" : "Africa/Djibouti",
+          "value" : "Africa/Djibouti"
        },
        {
           "value" : "Africa/Douala",
           "name" : "Africa/Douala"
        },
        {
-          "value" : "Africa/El_Aaiun",
-          "name" : "Africa/El Aaiun"
+          "name" : "Africa/El Aaiun",
+          "value" : "Africa/El_Aaiun"
        },
        {
-          "value" : "Africa/Freetown",
-          "name" : "Africa/Freetown"
+          "name" : "Africa/Freetown",
+          "value" : "Africa/Freetown"
        },
        {
-          "value" : "Africa/Gaborone",
-          "name" : "Africa/Gaborone"
+          "name" : "Africa/Gaborone",
+          "value" : "Africa/Gaborone"
        },
        {
           "value" : "Africa/Harare",
@@ -145,8 +145,8 @@ var Timezones = function() {
           "name" : "Africa/Malabo"
        },
        {
-          "value" : "Africa/Maputo",
-          "name" : "Africa/Maputo"
+          "name" : "Africa/Maputo",
+          "value" : "Africa/Maputo"
        },
        {
           "value" : "Africa/Maseru",
@@ -157,20 +157,20 @@ var Timezones = function() {
           "name" : "Africa/Mbabane"
        },
        {
-          "value" : "Africa/Mogadishu",
-          "name" : "Africa/Mogadishu"
+          "name" : "Africa/Mogadishu",
+          "value" : "Africa/Mogadishu"
        },
        {
-          "value" : "Africa/Monrovia",
-          "name" : "Africa/Monrovia"
+          "name" : "Africa/Monrovia",
+          "value" : "Africa/Monrovia"
        },
        {
-          "value" : "Africa/Nairobi",
-          "name" : "Africa/Nairobi"
+          "name" : "Africa/Nairobi",
+          "value" : "Africa/Nairobi"
        },
        {
-          "value" : "Africa/Ndjamena",
-          "name" : "Africa/Ndjamena"
+          "name" : "Africa/Ndjamena",
+          "value" : "Africa/Ndjamena"
        },
        {
           "value" : "Africa/Niamey",
@@ -181,8 +181,8 @@ var Timezones = function() {
           "name" : "Africa/Nouakchott"
        },
        {
-          "value" : "Africa/Ouagadougou",
-          "name" : "Africa/Ouagadougou"
+          "name" : "Africa/Ouagadougou",
+          "value" : "Africa/Ouagadougou"
        },
        {
           "value" : "Africa/Porto-Novo",
@@ -193,16 +193,16 @@ var Timezones = function() {
           "name" : "Africa/Sao Tome"
        },
        {
-          "value" : "Africa/Tripoli",
-          "name" : "Africa/Tripoli"
+          "name" : "Africa/Tripoli",
+          "value" : "Africa/Tripoli"
        },
        {
           "value" : "Africa/Tunis",
           "name" : "Africa/Tunis"
        },
        {
-          "value" : "Africa/Windhoek",
-          "name" : "Africa/Windhoek"
+          "name" : "Africa/Windhoek",
+          "value" : "Africa/Windhoek"
        },
        {
           "value" : "America/Adak",
@@ -213,8 +213,8 @@ var Timezones = function() {
           "name" : "America/Anchorage"
        },
        {
-          "value" : "America/Anguilla",
-          "name" : "America/Anguilla"
+          "name" : "America/Anguilla",
+          "value" : "America/Anguilla"
        },
        {
           "value" : "America/Antigua",
@@ -225,32 +225,32 @@ var Timezones = function() {
           "name" : "America/Araguaina"
        },
        {
-          "value" : "America/Argentina/Buenos_Aires",
-          "name" : "America/Argentina/Buenos Aires"
+          "name" : "America/Argentina/Buenos Aires",
+          "value" : "America/Argentina/Buenos_Aires"
        },
        {
           "value" : "America/Argentina/Catamarca",
           "name" : "America/Argentina/Catamarca"
        },
        {
-          "value" : "America/Argentina/Cordoba",
-          "name" : "America/Argentina/Cordoba"
+          "name" : "America/Argentina/Cordoba",
+          "value" : "America/Argentina/Cordoba"
        },
        {
           "value" : "America/Argentina/Jujuy",
           "name" : "America/Argentina/Jujuy"
        },
        {
-          "value" : "America/Argentina/La_Rioja",
-          "name" : "America/Argentina/La Rioja"
+          "name" : "America/Argentina/La Rioja",
+          "value" : "America/Argentina/La_Rioja"
        },
        {
           "value" : "America/Argentina/Mendoza",
           "name" : "America/Argentina/Mendoza"
        },
        {
-          "value" : "America/Argentina/Rio_Gallegos",
-          "name" : "America/Argentina/Rio Gallegos"
+          "name" : "America/Argentina/Rio Gallegos",
+          "value" : "America/Argentina/Rio_Gallegos"
        },
        {
           "value" : "America/Argentina/Salta",
@@ -261,144 +261,144 @@ var Timezones = function() {
           "name" : "America/Argentina/San Juan"
        },
        {
-          "value" : "America/Argentina/San_Luis",
-          "name" : "America/Argentina/San Luis"
+          "name" : "America/Argentina/San Luis",
+          "value" : "America/Argentina/San_Luis"
        },
        {
           "value" : "America/Argentina/Tucuman",
           "name" : "America/Argentina/Tucuman"
        },
        {
-          "value" : "America/Argentina/Ushuaia",
-          "name" : "America/Argentina/Ushuaia"
+          "name" : "America/Argentina/Ushuaia",
+          "value" : "America/Argentina/Ushuaia"
        },
        {
           "value" : "America/Aruba",
           "name" : "America/Aruba"
        },
        {
-          "value" : "America/Asuncion",
-          "name" : "America/Asuncion"
+          "name" : "America/Asuncion",
+          "value" : "America/Asuncion"
        },
        {
           "value" : "America/Atikokan",
           "name" : "America/Atikokan"
        },
        {
-          "value" : "America/Bahia",
-          "name" : "America/Bahia"
+          "name" : "America/Bahia",
+          "value" : "America/Bahia"
        },
        {
-          "value" : "America/Bahia_Banderas",
-          "name" : "America/Bahia Banderas"
+          "name" : "America/Bahia Banderas",
+          "value" : "America/Bahia_Banderas"
        },
        {
-          "value" : "America/Barbados",
-          "name" : "America/Barbados"
+          "name" : "America/Barbados",
+          "value" : "America/Barbados"
        },
        {
-          "value" : "America/Belem",
-          "name" : "America/Belem"
+          "name" : "America/Belem",
+          "value" : "America/Belem"
        },
        {
-          "value" : "America/Belize",
-          "name" : "America/Belize"
+          "name" : "America/Belize",
+          "value" : "America/Belize"
        },
        {
-          "value" : "America/Blanc-Sablon",
-          "name" : "America/Blanc-Sablon"
+          "name" : "America/Blanc-Sablon",
+          "value" : "America/Blanc-Sablon"
        },
        {
           "value" : "America/Boa_Vista",
           "name" : "America/Boa Vista"
        },
        {
-          "value" : "America/Bogota",
-          "name" : "America/Bogota"
+          "name" : "America/Bogota",
+          "value" : "America/Bogota"
        },
        {
           "value" : "America/Boise",
           "name" : "America/Boise"
        },
        {
-          "value" : "America/Cambridge_Bay",
-          "name" : "America/Cambridge Bay"
+          "name" : "America/Cambridge Bay",
+          "value" : "America/Cambridge_Bay"
        },
        {
-          "value" : "America/Campo_Grande",
-          "name" : "America/Campo Grande"
+          "name" : "America/Campo Grande",
+          "value" : "America/Campo_Grande"
        },
        {
-          "value" : "America/Cancun",
-          "name" : "America/Cancun"
+          "name" : "America/Cancun",
+          "value" : "America/Cancun"
        },
        {
-          "value" : "America/Caracas",
-          "name" : "America/Caracas"
+          "name" : "America/Caracas",
+          "value" : "America/Caracas"
        },
        {
           "value" : "America/Cayenne",
           "name" : "America/Cayenne"
        },
        {
-          "value" : "America/Cayman",
-          "name" : "America/Cayman"
+          "name" : "America/Cayman",
+          "value" : "America/Cayman"
        },
        {
           "value" : "America/Chicago",
           "name" : "America/Chicago"
        },
        {
-          "value" : "America/Chihuahua",
-          "name" : "America/Chihuahua"
+          "name" : "America/Chihuahua",
+          "value" : "America/Chihuahua"
        },
        {
           "value" : "America/Costa_Rica",
           "name" : "America/Costa Rica"
        },
        {
-          "value" : "America/Cuiaba",
-          "name" : "America/Cuiaba"
+          "name" : "America/Cuiaba",
+          "value" : "America/Cuiaba"
        },
        {
           "value" : "America/Curacao",
           "name" : "America/Curacao"
        },
        {
-          "value" : "America/Danmarkshavn",
-          "name" : "America/Danmarkshavn"
+          "name" : "America/Danmarkshavn",
+          "value" : "America/Danmarkshavn"
        },
        {
-          "value" : "America/Dawson",
-          "name" : "America/Dawson"
+          "name" : "America/Dawson",
+          "value" : "America/Dawson"
        },
        {
-          "value" : "America/Dawson_Creek",
-          "name" : "America/Dawson Creek"
+          "name" : "America/Dawson Creek",
+          "value" : "America/Dawson_Creek"
        },
        {
           "value" : "America/Denver",
           "name" : "America/Denver"
        },
        {
-          "value" : "America/Detroit",
-          "name" : "America/Detroit"
+          "name" : "America/Detroit",
+          "value" : "America/Detroit"
        },
        {
-          "value" : "America/Dominica",
-          "name" : "America/Dominica"
+          "name" : "America/Dominica",
+          "value" : "America/Dominica"
        },
        {
           "value" : "America/Edmonton",
           "name" : "America/Edmonton"
        },
        {
-          "value" : "America/Eirunepe",
-          "name" : "America/Eirunepe"
+          "name" : "America/Eirunepe",
+          "value" : "America/Eirunepe"
        },
        {
-          "value" : "America/El_Salvador",
-          "name" : "America/El Salvador"
+          "name" : "America/El Salvador",
+          "value" : "America/El_Salvador"
        },
        {
           "value" : "America/Fortaleza",
@@ -413,24 +413,24 @@ var Timezones = function() {
           "name" : "America/Godthab"
        },
        {
-          "value" : "America/Goose_Bay",
-          "name" : "America/Goose Bay"
+          "name" : "America/Goose Bay",
+          "value" : "America/Goose_Bay"
        },
        {
-          "value" : "America/Grand_Turk",
-          "name" : "America/Grand Turk"
+          "name" : "America/Grand Turk",
+          "value" : "America/Grand_Turk"
        },
        {
-          "value" : "America/Grenada",
-          "name" : "America/Grenada"
+          "name" : "America/Grenada",
+          "value" : "America/Grenada"
        },
        {
-          "value" : "America/Guadeloupe",
-          "name" : "America/Guadeloupe"
+          "name" : "America/Guadeloupe",
+          "value" : "America/Guadeloupe"
        },
        {
-          "value" : "America/Guatemala",
-          "name" : "America/Guatemala"
+          "name" : "America/Guatemala",
+          "value" : "America/Guatemala"
        },
        {
           "value" : "America/Guayaquil",
@@ -453,16 +453,16 @@ var Timezones = function() {
           "name" : "America/Hermosillo"
        },
        {
-          "value" : "America/Indiana/Indianapolis",
-          "name" : "America/Indiana/Indianapolis"
+          "name" : "America/Indiana/Indianapolis",
+          "value" : "America/Indiana/Indianapolis"
        },
        {
-          "value" : "America/Indiana/Knox",
-          "name" : "America/Indiana/Knox"
+          "name" : "America/Indiana/Knox",
+          "value" : "America/Indiana/Knox"
        },
        {
-          "value" : "America/Indiana/Marengo",
-          "name" : "America/Indiana/Marengo"
+          "name" : "America/Indiana/Marengo",
+          "value" : "America/Indiana/Marengo"
        },
        {
           "value" : "America/Indiana/Petersburg",
@@ -485,36 +485,36 @@ var Timezones = function() {
           "name" : "America/Indiana/Winamac"
        },
        {
-          "value" : "America/Inuvik",
-          "name" : "America/Inuvik"
+          "name" : "America/Inuvik",
+          "value" : "America/Inuvik"
        },
        {
-          "value" : "America/Iqaluit",
-          "name" : "America/Iqaluit"
+          "name" : "America/Iqaluit",
+          "value" : "America/Iqaluit"
        },
        {
           "value" : "America/Jamaica",
           "name" : "America/Jamaica"
        },
        {
-          "value" : "America/Juneau",
-          "name" : "America/Juneau"
+          "name" : "America/Juneau",
+          "value" : "America/Juneau"
        },
        {
-          "value" : "America/Kentucky/Louisville",
-          "name" : "America/Kentucky/Louisville"
+          "name" : "America/Kentucky/Louisville",
+          "value" : "America/Kentucky/Louisville"
        },
        {
-          "value" : "America/Kentucky/Monticello",
-          "name" : "America/Kentucky/Monticello"
+          "name" : "America/Kentucky/Monticello",
+          "value" : "America/Kentucky/Monticello"
        },
        {
-          "value" : "America/Kralendijk",
-          "name" : "America/Kralendijk"
+          "name" : "America/Kralendijk",
+          "value" : "America/Kralendijk"
        },
        {
-          "value" : "America/La_Paz",
-          "name" : "America/La Paz"
+          "name" : "America/La Paz",
+          "value" : "America/La_Paz"
        },
        {
           "value" : "America/Lima",
@@ -533,72 +533,72 @@ var Timezones = function() {
           "name" : "America/Maceio"
        },
        {
-          "value" : "America/Managua",
-          "name" : "America/Managua"
+          "name" : "America/Managua",
+          "value" : "America/Managua"
        },
        {
-          "value" : "America/Manaus",
-          "name" : "America/Manaus"
+          "name" : "America/Manaus",
+          "value" : "America/Manaus"
        },
        {
-          "value" : "America/Marigot",
-          "name" : "America/Marigot"
+          "name" : "America/Marigot",
+          "value" : "America/Marigot"
        },
        {
-          "value" : "America/Martinique",
-          "name" : "America/Martinique"
+          "name" : "America/Martinique",
+          "value" : "America/Martinique"
        },
        {
           "value" : "America/Matamoros",
           "name" : "America/Matamoros"
        },
        {
-          "value" : "America/Mazatlan",
-          "name" : "America/Mazatlan"
+          "name" : "America/Mazatlan",
+          "value" : "America/Mazatlan"
        },
        {
-          "value" : "America/Menominee",
-          "name" : "America/Menominee"
+          "name" : "America/Menominee",
+          "value" : "America/Menominee"
        },
        {
-          "value" : "America/Merida",
-          "name" : "America/Merida"
+          "name" : "America/Merida",
+          "value" : "America/Merida"
        },
        {
           "value" : "America/Metlakatla",
           "name" : "America/Metlakatla"
        },
        {
-          "value" : "America/Mexico_City",
-          "name" : "America/Mexico City"
+          "name" : "America/Mexico City",
+          "value" : "America/Mexico_City"
        },
        {
           "value" : "America/Miquelon",
           "name" : "America/Miquelon"
        },
        {
-          "value" : "America/Moncton",
-          "name" : "America/Moncton"
+          "name" : "America/Moncton",
+          "value" : "America/Moncton"
        },
        {
-          "value" : "America/Monterrey",
-          "name" : "America/Monterrey"
+          "name" : "America/Monterrey",
+          "value" : "America/Monterrey"
        },
        {
           "value" : "America/Montevideo",
           "name" : "America/Montevideo"
        },
        {
-          "value" : "America/Montreal",
-          "name" : "America/Montreal"
+          "name" : "America/Montreal",
+          "value" : "America/Montreal"
        },
        {
-          "value" : "America/Montserrat",
-          "name" : "America/Montserrat"
+          "name" : "America/Montserrat",
+          "value" : "America/Montserrat"
        },
        {
-          "value" : "America/Nassau",
-          "name" : "America/Nassau"
+          "name" : "America/Nassau",
+          "value" : "America/Nassau"
        },
        {
           "value" : "America/New_York",
@@ -613,12 +613,12 @@ var Timezones = function() {
           "name" : "America/Nome"
        },
        {
-          "value" : "America/Noronha",
-          "name" : "America/Noronha"
+          "name" : "America/Noronha",
+          "value" : "America/Noronha"
        },
        {
-          "value" : "America/North_Dakota/Beulah",
-          "name" : "America/North Dakota/Beulah"
+          "name" : "America/North Dakota/Beulah",
+          "value" : "America/North_Dakota/Beulah"
        },
        {
           "value" : "America/North_Dakota/Center",
@@ -629,12 +629,12 @@ var Timezones = function() {
           "name" : "America/North Dakota/New Salem"
        },
        {
-          "value" : "America/Ojinaga",
-          "name" : "America/Ojinaga"
+          "name" : "America/Ojinaga",
+          "value" : "America/Ojinaga"
        },
        {
-          "value" : "America/Panama",
-          "name" : "America/Panama"
+          "name" : "America/Panama",
+          "value" : "America/Panama"
        },
        {
           "value" : "America/Pangnirtung",
@@ -645,28 +645,28 @@ var Timezones = function() {
           "name" : "America/Paramaribo"
        },
        {
-          "value" : "America/Phoenix",
-          "name" : "America/Phoenix"
+          "name" : "America/Phoenix",
+          "value" : "America/Phoenix"
        },
        {
           "value" : "America/Port-au-Prince",
           "name" : "America/Port-au-Prince"
        },
        {
-          "value" : "America/Port_of_Spain",
-          "name" : "America/Port of Spain"
+          "name" : "America/Port of Spain",
+          "value" : "America/Port_of_Spain"
        },
        {
-          "value" : "America/Porto_Velho",
-          "name" : "America/Porto Velho"
+          "name" : "America/Porto Velho",
+          "value" : "America/Porto_Velho"
        },
        {
           "value" : "America/Puerto_Rico",
           "name" : "America/Puerto Rico"
        },
        {
-          "value" : "America/Rainy_River",
-          "name" : "America/Rainy River"
+          "name" : "America/Rainy River",
+          "value" : "America/Rainy_River"
        },
        {
           "value" : "America/Rankin_Inlet",
@@ -677,8 +677,8 @@ var Timezones = function() {
           "name" : "America/Recife"
        },
        {
-          "value" : "America/Regina",
-          "name" : "America/Regina"
+          "name" : "America/Regina",
+          "value" : "America/Regina"
        },
        {
           "value" : "America/Resolute",
@@ -689,24 +689,24 @@ var Timezones = function() {
           "name" : "America/Rio Branco"
        },
        {
-          "value" : "America/Santa_Isabel",
-          "name" : "America/Santa Isabel"
+          "name" : "America/Santa Isabel",
+          "value" : "America/Santa_Isabel"
        },
        {
-          "value" : "America/Santarem",
-          "name" : "America/Santarem"
+          "name" : "America/Santarem",
+          "value" : "America/Santarem"
        },
        {
-          "value" : "America/Santiago",
-          "name" : "America/Santiago"
+          "name" : "America/Santiago",
+          "value" : "America/Santiago"
        },
        {
-          "value" : "America/Santo_Domingo",
-          "name" : "America/Santo Domingo"
+          "name" : "America/Santo Domingo",
+          "value" : "America/Santo_Domingo"
        },
        {
-          "value" : "America/Sao_Paulo",
-          "name" : "America/Sao Paulo"
+          "name" : "America/Sao Paulo",
+          "value" : "America/Sao_Paulo"
        },
        {
           "value" : "America/Scoresbysund",
@@ -721,16 +721,16 @@ var Timezones = function() {
           "name" : "America/Sitka"
        },
        {
-          "value" : "America/St_Barthelemy",
-          "name" : "America/St Barthelemy"
+          "name" : "America/St Barthelemy",
+          "value" : "America/St_Barthelemy"
        },
        {
-          "value" : "America/St_Johns",
-          "name" : "America/St Johns"
+          "name" : "America/St Johns",
+          "value" : "America/St_Johns"
        },
        {
-          "value" : "America/St_Kitts",
-          "name" : "America/St Kitts"
+          "name" : "America/St Kitts",
+          "value" : "America/St_Kitts"
        },
        {
           "value" : "America/St_Lucia",
@@ -749,20 +749,20 @@ var Timezones = function() {
           "name" : "America/Swift Current"
        },
        {
-          "value" : "America/Tegucigalpa",
-          "name" : "America/Tegucigalpa"
+          "name" : "America/Tegucigalpa",
+          "value" : "America/Tegucigalpa"
        },
        {
           "value" : "America/Thule",
           "name" : "America/Thule"
        },
        {
-          "value" : "America/Thunder_Bay",
-          "name" : "America/Thunder Bay"
+          "name" : "America/Thunder Bay",
+          "value" : "America/Thunder_Bay"
        },
        {
-          "value" : "America/Tijuana",
-          "name" : "America/Tijuana"
+          "name" : "America/Tijuana",
+          "value" : "America/Tijuana"
        },
        {
           "value" : "America/Toronto",
@@ -789,12 +789,12 @@ var Timezones = function() {
           "name" : "America/Yakutat"
        },
        {
-          "value" : "America/Yellowknife",
-          "name" : "America/Yellowknife"
+          "name" : "America/Yellowknife",
+          "value" : "America/Yellowknife"
        },
        {
-          "value" : "Antarctica/Casey",
-          "name" : "Antarctica/Casey"
+          "name" : "Antarctica/Casey",
+          "value" : "Antarctica/Casey"
        },
        {
           "value" : "Antarctica/Davis",
@@ -809,24 +809,24 @@ var Timezones = function() {
           "name" : "Antarctica/Macquarie"
        },
        {
-          "value" : "Antarctica/Mawson",
-          "name" : "Antarctica/Mawson"
+          "name" : "Antarctica/Mawson",
+          "value" : "Antarctica/Mawson"
        },
        {
           "value" : "Antarctica/McMurdo",
           "name" : "Antarctica/McMurdo"
        },
        {
-          "value" : "Antarctica/Palmer",
-          "name" : "Antarctica/Palmer"
+          "name" : "Antarctica/Palmer",
+          "value" : "Antarctica/Palmer"
        },
        {
           "value" : "Antarctica/Rothera",
           "name" : "Antarctica/Rothera"
        },
        {
-          "value" : "Antarctica/South_Pole",
-          "name" : "Antarctica/South Pole"
+          "name" : "Antarctica/South Pole",
+          "value" : "Antarctica/South_Pole"
        },
        {
           "value" : "Antarctica/Syowa",
@@ -845,36 +845,36 @@ var Timezones = function() {
           "name" : "Asia/Aden"
        },
        {
-          "value" : "Asia/Almaty",
-          "name" : "Asia/Almaty"
+          "name" : "Asia/Almaty",
+          "value" : "Asia/Almaty"
        },
        {
           "value" : "Asia/Amman",
           "name" : "Asia/Amman"
        },
        {
-          "value" : "Asia/Anadyr",
-          "name" : "Asia/Anadyr"
+          "name" : "Asia/Anadyr",
+          "value" : "Asia/Anadyr"
        },
        {
-          "value" : "Asia/Aqtau",
-          "name" : "Asia/Aqtau"
+          "name" : "Asia/Aqtau",
+          "value" : "Asia/Aqtau"
        },
        {
-          "value" : "Asia/Aqtobe",
-          "name" : "Asia/Aqtobe"
+          "name" : "Asia/Aqtobe",
+          "value" : "Asia/Aqtobe"
        },
        {
           "value" : "Asia/Ashgabat",
           "name" : "Asia/Ashgabat"
        },
        {
-          "value" : "Asia/Baghdad",
-          "name" : "Asia/Baghdad"
+          "name" : "Asia/Baghdad",
+          "value" : "Asia/Baghdad"
        },
        {
-          "value" : "Asia/Bahrain",
-          "name" : "Asia/Bahrain"
+          "name" : "Asia/Bahrain",
+          "value" : "Asia/Bahrain"
        },
        {
           "value" : "Asia/Baku",
@@ -885,28 +885,28 @@ var Timezones = function() {
           "name" : "Asia/Bangkok"
        },
        {
-          "value" : "Asia/Beirut",
-          "name" : "Asia/Beirut"
+          "name" : "Asia/Beirut",
+          "value" : "Asia/Beirut"
        },
        {
-          "value" : "Asia/Bishkek",
-          "name" : "Asia/Bishkek"
+          "name" : "Asia/Bishkek",
+          "value" : "Asia/Bishkek"
        },
        {
           "value" : "Asia/Brunei",
           "name" : "Asia/Brunei"
        },
        {
-          "value" : "Asia/Choibalsan",
-          "name" : "Asia/Choibalsan"
+          "name" : "Asia/Choibalsan",
+          "value" : "Asia/Choibalsan"
        },
        {
-          "value" : "Asia/Chongqing",
-          "name" : "Asia/Chongqing"
+          "name" : "Asia/Chongqing",
+          "value" : "Asia/Chongqing"
        },
        {
-          "value" : "Asia/Colombo",
-          "name" : "Asia/Colombo"
+          "name" : "Asia/Colombo",
+          "value" : "Asia/Colombo"
        },
        {
           "value" : "Asia/Damascus",
@@ -929,32 +929,32 @@ var Timezones = function() {
           "name" : "Asia/Dushanbe"
        },
        {
-          "value" : "Asia/Gaza",
-          "name" : "Asia/Gaza"
+          "name" : "Asia/Gaza",
+          "value" : "Asia/Gaza"
        },
        {
           "value" : "Asia/Harbin",
           "name" : "Asia/Harbin"
        },
        {
-          "value" : "Asia/Ho_Chi_Minh",
-          "name" : "Asia/Ho Chi Minh"
+          "name" : "Asia/Ho Chi Minh",
+          "value" : "Asia/Ho_Chi_Minh"
        },
        {
-          "value" : "Asia/Hong_Kong",
-          "name" : "Asia/Hong Kong"
+          "name" : "Asia/Hong Kong",
+          "value" : "Asia/Hong_Kong"
        },
        {
           "value" : "Asia/Hovd",
           "name" : "Asia/Hovd"
        },
        {
-          "value" : "Asia/Irkutsk",
-          "name" : "Asia/Irkutsk"
+          "name" : "Asia/Irkutsk",
+          "value" : "Asia/Irkutsk"
        },
        {
-          "value" : "Asia/Jakarta",
-          "name" : "Asia/Jakarta"
+          "name" : "Asia/Jakarta",
+          "value" : "Asia/Jakarta"
        },
        {
           "value" : "Asia/Jayapura",
@@ -965,12 +965,12 @@ var Timezones = function() {
           "name" : "Asia/Jerusalem"
        },
        {
-          "value" : "Asia/Kabul",
-          "name" : "Asia/Kabul"
+          "name" : "Asia/Kabul",
+          "value" : "Asia/Kabul"
        },
        {
-          "value" : "Asia/Kamchatka",
-          "name" : "Asia/Kamchatka"
+          "name" : "Asia/Kamchatka",
+          "value" : "Asia/Kamchatka"
        },
        {
           "value" : "Asia/Karachi",
@@ -981,20 +981,20 @@ var Timezones = function() {
           "name" : "Asia/Kashgar"
        },
        {
-          "value" : "Asia/Kathmandu",
-          "name" : "Asia/Kathmandu"
+          "name" : "Asia/Kathmandu",
+          "value" : "Asia/Kathmandu"
        },
        {
-          "value" : "Asia/Kolkata",
-          "name" : "Asia/Kolkata"
+          "name" : "Asia/Kolkata",
+          "value" : "Asia/Kolkata"
        },
        {
           "value" : "Asia/Krasnoyarsk",
           "name" : "Asia/Krasnoyarsk"
        },
        {
-          "value" : "Asia/Kuala_Lumpur",
-          "name" : "Asia/Kuala Lumpur"
+          "name" : "Asia/Kuala Lumpur",
+          "value" : "Asia/Kuala_Lumpur"
        },
        {
           "value" : "Asia/Kuching",
@@ -1005,16 +1005,16 @@ var Timezones = function() {
           "name" : "Asia/Kuwait"
        },
        {
-          "value" : "Asia/Macau",
-          "name" : "Asia/Macau"
+          "name" : "Asia/Macau",
+          "value" : "Asia/Macau"
        },
        {
           "value" : "Asia/Magadan",
           "name" : "Asia/Magadan"
        },
        {
-          "value" : "Asia/Makassar",
-          "name" : "Asia/Makassar"
+          "name" : "Asia/Makassar",
+          "value" : "Asia/Makassar"
        },
        {
           "value" : "Asia/Manila",
@@ -1033,40 +1033,40 @@ var Timezones = function() {
           "name" : "Asia/Novokuznetsk"
        },
        {
-          "value" : "Asia/Novosibirsk",
-          "name" : "Asia/Novosibirsk"
+          "name" : "Asia/Novosibirsk",
+          "value" : "Asia/Novosibirsk"
        },
        {
-          "value" : "Asia/Omsk",
-          "name" : "Asia/Omsk"
+          "name" : "Asia/Omsk",
+          "value" : "Asia/Omsk"
        },
        {
           "value" : "Asia/Oral",
           "name" : "Asia/Oral"
        },
        {
-          "value" : "Asia/Phnom_Penh",
-          "name" : "Asia/Phnom Penh"
+          "name" : "Asia/Phnom Penh",
+          "value" : "Asia/Phnom_Penh"
        },
        {
-          "value" : "Asia/Pontianak",
-          "name" : "Asia/Pontianak"
+          "name" : "Asia/Pontianak",
+          "value" : "Asia/Pontianak"
        },
        {
-          "value" : "Asia/Pyongyang",
-          "name" : "Asia/Pyongyang"
+          "name" : "Asia/Pyongyang",
+          "value" : "Asia/Pyongyang"
        },
        {
-          "value" : "Asia/Qatar",
-          "name" : "Asia/Qatar"
+          "name" : "Asia/Qatar",
+          "value" : "Asia/Qatar"
        },
        {
-          "value" : "Asia/Qyzylorda",
-          "name" : "Asia/Qyzylorda"
+          "name" : "Asia/Qyzylorda",
+          "value" : "Asia/Qyzylorda"
        },
        {
-          "value" : "Asia/Rangoon",
-          "name" : "Asia/Rangoon"
+          "name" : "Asia/Rangoon",
+          "value" : "Asia/Rangoon"
        },
        {
           "value" : "Asia/Riyadh",
@@ -1077,16 +1077,16 @@ var Timezones = function() {
           "name" : "Asia/Sakhalin"
        },
        {
-          "value" : "Asia/Samarkand",
-          "name" : "Asia/Samarkand"
+          "name" : "Asia/Samarkand",
+          "value" : "Asia/Samarkand"
        },
        {
           "value" : "Asia/Seoul",
           "name" : "Asia/Seoul"
        },
        {
-          "value" : "Asia/Shanghai",
-          "name" : "Asia/Shanghai"
+          "name" : "Asia/Shanghai",
+          "value" : "Asia/Shanghai"
        },
        {
           "value" : "Asia/Singapore",
@@ -1101,12 +1101,12 @@ var Timezones = function() {
           "name" : "Asia/Tashkent"
        },
        {
-          "value" : "Asia/Tbilisi",
-          "name" : "Asia/Tbilisi"
+          "name" : "Asia/Tbilisi",
+          "value" : "Asia/Tbilisi"
        },
        {
-          "value" : "Asia/Tehran",
-          "name" : "Asia/Tehran"
+          "name" : "Asia/Tehran",
+          "value" : "Asia/Tehran"
        },
        {
           "value" : "Asia/Thimphu",
@@ -1129,8 +1129,8 @@ var Timezones = function() {
           "name" : "Asia/Vientiane"
        },
        {
-          "value" : "Asia/Vladivostok",
-          "name" : "Asia/Vladivostok"
+          "name" : "Asia/Vladivostok",
+          "value" : "Asia/Vladivostok"
        },
        {
           "value" : "Asia/Yakutsk",
@@ -1145,92 +1145,92 @@ var Timezones = function() {
           "name" : "Asia/Yerevan"
        },
        {
-          "value" : "Atlantic/Azores",
-          "name" : "Atlantic/Azores"
+          "name" : "Atlantic/Azores",
+          "value" : "Atlantic/Azores"
        },
        {
-          "value" : "Atlantic/Bermuda",
-          "name" : "Atlantic/Bermuda"
+          "name" : "Atlantic/Bermuda",
+          "value" : "Atlantic/Bermuda"
        },
        {
-          "value" : "Atlantic/Canary",
-          "name" : "Atlantic/Canary"
+          "name" : "Atlantic/Canary",
+          "value" : "Atlantic/Canary"
        },
        {
-          "value" : "Atlantic/Cape_Verde",
-          "name" : "Atlantic/Cape Verde"
+          "name" : "Atlantic/Cape Verde",
+          "value" : "Atlantic/Cape_Verde"
        },
        {
-          "value" : "Atlantic/Faroe",
-          "name" : "Atlantic/Faroe"
+          "name" : "Atlantic/Faroe",
+          "value" : "Atlantic/Faroe"
        },
        {
           "value" : "Atlantic/Madeira",
           "name" : "Atlantic/Madeira"
        },
        {
-          "value" : "Atlantic/Reykjavik",
-          "name" : "Atlantic/Reykjavik"
+          "name" : "Atlantic/Reykjavik",
+          "value" : "Atlantic/Reykjavik"
        },
        {
           "value" : "Atlantic/South_Georgia",
           "name" : "Atlantic/South Georgia"
        },
        {
-          "value" : "Atlantic/St_Helena",
-          "name" : "Atlantic/St Helena"
+          "name" : "Atlantic/St Helena",
+          "value" : "Atlantic/St_Helena"
        },
        {
-          "value" : "Atlantic/Stanley",
-          "name" : "Atlantic/Stanley"
+          "name" : "Atlantic/Stanley",
+          "value" : "Atlantic/Stanley"
        },
        {
-          "value" : "Australia/Adelaide",
-          "name" : "Australia/Adelaide"
+          "name" : "Australia/Adelaide",
+          "value" : "Australia/Adelaide"
        },
        {
           "value" : "Australia/Brisbane",
           "name" : "Australia/Brisbane"
        },
        {
-          "value" : "Australia/Broken_Hill",
-          "name" : "Australia/Broken Hill"
+          "name" : "Australia/Broken Hill",
+          "value" : "Australia/Broken_Hill"
        },
        {
-          "value" : "Australia/Currie",
-          "name" : "Australia/Currie"
+          "name" : "Australia/Currie",
+          "value" : "Australia/Currie"
        },
        {
-          "value" : "Australia/Darwin",
-          "name" : "Australia/Darwin"
+          "name" : "Australia/Darwin",
+          "value" : "Australia/Darwin"
        },
        {
-          "value" : "Australia/Eucla",
-          "name" : "Australia/Eucla"
+          "name" : "Australia/Eucla",
+          "value" : "Australia/Eucla"
        },
        {
           "value" : "Australia/Hobart",
           "name" : "Australia/Hobart"
        },
        {
-          "value" : "Australia/Lindeman",
-          "name" : "Australia/Lindeman"
+          "name" : "Australia/Lindeman",
+          "value" : "Australia/Lindeman"
        },
        {
           "value" : "Australia/Lord_Howe",
           "name" : "Australia/Lord Howe"
        },
        {
-          "value" : "Australia/Melbourne",
-          "name" : "Australia/Melbourne"
+          "name" : "Australia/Melbourne",
+          "value" : "Australia/Melbourne"
        },
        {
-          "value" : "Australia/Perth",
-          "name" : "Australia/Perth"
+          "name" : "Australia/Perth",
+          "value" : "Australia/Perth"
        },
        {
-          "value" : "Australia/Sydney",
-          "name" : "Australia/Sydney"
+          "name" : "Australia/Sydney",
+          "value" : "Australia/Sydney"
        },
        {
           "value" : "Europe/Amsterdam",
@@ -1257,16 +1257,16 @@ var Timezones = function() {
           "name" : "Europe/Bratislava"
        },
        {
-          "value" : "Europe/Brussels",
-          "name" : "Europe/Brussels"
+          "name" : "Europe/Brussels",
+          "value" : "Europe/Brussels"
        },
        {
           "value" : "Europe/Bucharest",
           "name" : "Europe/Bucharest"
        },
        {
-          "value" : "Europe/Budapest",
-          "name" : "Europe/Budapest"
+          "name" : "Europe/Budapest",
+          "value" : "Europe/Budapest"
        },
        {
           "value" : "Europe/Chisinau",
@@ -1277,8 +1277,8 @@ var Timezones = function() {
           "name" : "Europe/Copenhagen"
        },
        {
-          "value" : "Europe/Dublin",
-          "name" : "Europe/Dublin"
+          "name" : "Europe/Dublin",
+          "value" : "Europe/Dublin"
        },
        {
           "value" : "Europe/Gibraltar",
@@ -1293,24 +1293,24 @@ var Timezones = function() {
           "name" : "Europe/Helsinki"
        },
        {
-          "value" : "Europe/Isle_of_Man",
-          "name" : "Europe/Isle of Man"
+          "name" : "Europe/Isle of Man",
+          "value" : "Europe/Isle_of_Man"
        },
        {
-          "value" : "Europe/Istanbul",
-          "name" : "Europe/Istanbul"
+          "name" : "Europe/Istanbul",
+          "value" : "Europe/Istanbul"
        },
        {
           "value" : "Europe/Jersey",
           "name" : "Europe/Jersey"
        },
        {
-          "value" : "Europe/Kaliningrad",
-          "name" : "Europe/Kaliningrad"
+          "name" : "Europe/Kaliningrad",
+          "value" : "Europe/Kaliningrad"
        },
        {
-          "value" : "Europe/Kiev",
-          "name" : "Europe/Kiev"
+          "name" : "Europe/Kiev",
+          "value" : "Europe/Kiev"
        },
        {
           "value" : "Europe/Lisbon",
@@ -1321,24 +1321,24 @@ var Timezones = function() {
           "name" : "Europe/Ljubljana"
        },
        {
-          "value" : "Europe/London",
-          "name" : "Europe/London"
+          "name" : "Europe/London",
+          "value" : "Europe/London"
        },
        {
-          "value" : "Europe/Luxembourg",
-          "name" : "Europe/Luxembourg"
+          "name" : "Europe/Luxembourg",
+          "value" : "Europe/Luxembourg"
        },
        {
           "value" : "Europe/Madrid",
           "name" : "Europe/Madrid"
        },
        {
-          "value" : "Europe/Malta",
-          "name" : "Europe/Malta"
+          "name" : "Europe/Malta",
+          "value" : "Europe/Malta"
        },
        {
-          "value" : "Europe/Mariehamn",
-          "name" : "Europe/Mariehamn"
+          "name" : "Europe/Mariehamn",
+          "value" : "Europe/Mariehamn"
        },
        {
           "value" : "Europe/Minsk",
@@ -1349,16 +1349,16 @@ var Timezones = function() {
           "name" : "Europe/Monaco"
        },
        {
-          "value" : "Europe/Moscow",
-          "name" : "Europe/Moscow"
+          "name" : "Europe/Moscow",
+          "value" : "Europe/Moscow"
        },
        {
-          "value" : "Europe/Oslo",
-          "name" : "Europe/Oslo"
+          "name" : "Europe/Oslo",
+          "value" : "Europe/Oslo"
        },
        {
-          "value" : "Europe/Paris",
-          "name" : "Europe/Paris"
+          "name" : "Europe/Paris",
+          "value" : "Europe/Paris"
        },
        {
           "value" : "Europe/Podgorica",
@@ -1369,36 +1369,36 @@ var Timezones = function() {
           "name" : "Europe/Prague"
        },
        {
-          "value" : "Europe/Riga",
-          "name" : "Europe/Riga"
+          "name" : "Europe/Riga",
+          "value" : "Europe/Riga"
        },
        {
           "value" : "Europe/Rome",
           "name" : "Europe/Rome"
        },
        {
-          "value" : "Europe/Samara",
-          "name" : "Europe/Samara"
+          "name" : "Europe/Samara",
+          "value" : "Europe/Samara"
        },
        {
-          "value" : "Europe/San_Marino",
-          "name" : "Europe/San Marino"
+          "name" : "Europe/San Marino",
+          "value" : "Europe/San_Marino"
        },
        {
-          "value" : "Europe/Sarajevo",
-          "name" : "Europe/Sarajevo"
+          "name" : "Europe/Sarajevo",
+          "value" : "Europe/Sarajevo"
        },
        {
-          "value" : "Europe/Simferopol",
-          "name" : "Europe/Simferopol"
+          "name" : "Europe/Simferopol",
+          "value" : "Europe/Simferopol"
        },
        {
-          "value" : "Europe/Skopje",
-          "name" : "Europe/Skopje"
+          "name" : "Europe/Skopje",
+          "value" : "Europe/Skopje"
        },
        {
-          "value" : "Europe/Sofia",
-          "name" : "Europe/Sofia"
+          "name" : "Europe/Sofia",
+          "value" : "Europe/Sofia"
        },
        {
           "value" : "Europe/Stockholm",
@@ -1417,8 +1417,8 @@ var Timezones = function() {
           "name" : "Europe/Uzhgorod"
        },
        {
-          "value" : "Europe/Vaduz",
-          "name" : "Europe/Vaduz"
+          "name" : "Europe/Vaduz",
+          "value" : "Europe/Vaduz"
        },
        {
           "value" : "Europe/Vatican",
@@ -1429,36 +1429,36 @@ var Timezones = function() {
           "name" : "Europe/Vienna"
        },
        {
-          "value" : "Europe/Vilnius",
-          "name" : "Europe/Vilnius"
+          "name" : "Europe/Vilnius",
+          "value" : "Europe/Vilnius"
        },
        {
           "value" : "Europe/Volgograd",
           "name" : "Europe/Volgograd"
        },
        {
-          "value" : "Europe/Warsaw",
-          "name" : "Europe/Warsaw"
+          "name" : "Europe/Warsaw",
+          "value" : "Europe/Warsaw"
        },
        {
-          "value" : "Europe/Zagreb",
-          "name" : "Europe/Zagreb"
+          "name" : "Europe/Zagreb",
+          "value" : "Europe/Zagreb"
        },
        {
-          "value" : "Europe/Zaporozhye",
-          "name" : "Europe/Zaporozhye"
+          "name" : "Europe/Zaporozhye",
+          "value" : "Europe/Zaporozhye"
        },
        {
-          "value" : "Europe/Zurich",
-          "name" : "Europe/Zurich"
+          "name" : "Europe/Zurich",
+          "value" : "Europe/Zurich"
        },
        {
           "value" : "Indian/Antananarivo",
           "name" : "Indian/Antananarivo"
        },
        {
-          "value" : "Indian/Chagos",
-          "name" : "Indian/Chagos"
+          "name" : "Indian/Chagos",
+          "value" : "Indian/Chagos"
        },
        {
           "value" : "Indian/Christmas",
@@ -1473,8 +1473,8 @@ var Timezones = function() {
           "name" : "Indian/Comoro"
        },
        {
-          "value" : "Indian/Kerguelen",
-          "name" : "Indian/Kerguelen"
+          "name" : "Indian/Kerguelen",
+          "value" : "Indian/Kerguelen"
        },
        {
           "value" : "Indian/Mahe",
@@ -1493,60 +1493,60 @@ var Timezones = function() {
           "name" : "Indian/Mayotte"
        },
        {
-          "value" : "Indian/Reunion",
-          "name" : "Indian/Reunion"
+          "name" : "Indian/Reunion",
+          "value" : "Indian/Reunion"
        },
        {
-          "value" : "Pacific/Apia",
-          "name" : "Pacific/Apia"
+          "name" : "Pacific/Apia",
+          "value" : "Pacific/Apia"
        },
        {
           "value" : "Pacific/Auckland",
           "name" : "Pacific/Auckland"
        },
        {
-          "value" : "Pacific/Chatham",
-          "name" : "Pacific/Chatham"
+          "name" : "Pacific/Chatham",
+          "value" : "Pacific/Chatham"
        },
        {
-          "value" : "Pacific/Chuuk",
-          "name" : "Pacific/Chuuk"
+          "name" : "Pacific/Chuuk",
+          "value" : "Pacific/Chuuk"
        },
        {
-          "value" : "Pacific/Easter",
-          "name" : "Pacific/Easter"
+          "name" : "Pacific/Easter",
+          "value" : "Pacific/Easter"
        },
        {
           "value" : "Pacific/Efate",
           "name" : "Pacific/Efate"
        },
        {
-          "value" : "Pacific/Enderbury",
-          "name" : "Pacific/Enderbury"
+          "name" : "Pacific/Enderbury",
+          "value" : "Pacific/Enderbury"
        },
        {
-          "value" : "Pacific/Fakaofo",
-          "name" : "Pacific/Fakaofo"
+          "name" : "Pacific/Fakaofo",
+          "value" : "Pacific/Fakaofo"
        },
        {
-          "value" : "Pacific/Fiji",
-          "name" : "Pacific/Fiji"
+          "name" : "Pacific/Fiji",
+          "value" : "Pacific/Fiji"
        },
        {
           "value" : "Pacific/Funafuti",
           "name" : "Pacific/Funafuti"
        },
        {
-          "value" : "Pacific/Galapagos",
-          "name" : "Pacific/Galapagos"
+          "name" : "Pacific/Galapagos",
+          "value" : "Pacific/Galapagos"
        },
        {
-          "value" : "Pacific/Gambier",
-          "name" : "Pacific/Gambier"
+          "name" : "Pacific/Gambier",
+          "value" : "Pacific/Gambier"
        },
        {
-          "value" : "Pacific/Guadalcanal",
-          "name" : "Pacific/Guadalcanal"
+          "name" : "Pacific/Guadalcanal",
+          "value" : "Pacific/Guadalcanal"
        },
        {
           "value" : "Pacific/Guam",
@@ -1565,40 +1565,40 @@ var Timezones = function() {
           "name" : "Pacific/Kiritimati"
        },
        {
-          "value" : "Pacific/Kosrae",
-          "name" : "Pacific/Kosrae"
+          "name" : "Pacific/Kosrae",
+          "value" : "Pacific/Kosrae"
        },
        {
           "value" : "Pacific/Kwajalein",
           "name" : "Pacific/Kwajalein"
        },
        {
-          "value" : "Pacific/Majuro",
-          "name" : "Pacific/Majuro"
+          "name" : "Pacific/Majuro",
+          "value" : "Pacific/Majuro"
        },
        {
-          "value" : "Pacific/Marquesas",
-          "name" : "Pacific/Marquesas"
+          "name" : "Pacific/Marquesas",
+          "value" : "Pacific/Marquesas"
        },
        {
-          "value" : "Pacific/Midway",
-          "name" : "Pacific/Midway"
+          "name" : "Pacific/Midway",
+          "value" : "Pacific/Midway"
        },
        {
-          "value" : "Pacific/Nauru",
-          "name" : "Pacific/Nauru"
+          "name" : "Pacific/Nauru",
+          "value" : "Pacific/Nauru"
        },
        {
-          "value" : "Pacific/Niue",
-          "name" : "Pacific/Niue"
+          "name" : "Pacific/Niue",
+          "value" : "Pacific/Niue"
        },
        {
-          "value" : "Pacific/Norfolk",
-          "name" : "Pacific/Norfolk"
+          "name" : "Pacific/Norfolk",
+          "value" : "Pacific/Norfolk"
        },
        {
-          "value" : "Pacific/Noumea",
-          "name" : "Pacific/Noumea"
+          "name" : "Pacific/Noumea",
+          "value" : "Pacific/Noumea"
        },
        {
           "value" : "Pacific/Pago_Pago",
@@ -1609,44 +1609,44 @@ var Timezones = function() {
           "name" : "Pacific/Palau"
        },
        {
-          "value" : "Pacific/Pitcairn",
-          "name" : "Pacific/Pitcairn"
+          "name" : "Pacific/Pitcairn",
+          "value" : "Pacific/Pitcairn"
        },
        {
-          "value" : "Pacific/Pohnpei",
-          "name" : "Pacific/Pohnpei"
+          "name" : "Pacific/Pohnpei",
+          "value" : "Pacific/Pohnpei"
        },
        {
           "value" : "Pacific/Port_Moresby",
           "name" : "Pacific/Port Moresby"
        },
        {
-          "value" : "Pacific/Rarotonga",
-          "name" : "Pacific/Rarotonga"
+          "name" : "Pacific/Rarotonga",
+          "value" : "Pacific/Rarotonga"
        },
        {
           "value" : "Pacific/Saipan",
           "name" : "Pacific/Saipan"
        },
        {
-          "value" : "Pacific/Tahiti",
-          "name" : "Pacific/Tahiti"
+          "name" : "Pacific/Tahiti",
+          "value" : "Pacific/Tahiti"
        },
        {
           "value" : "Pacific/Tarawa",
           "name" : "Pacific/Tarawa"
        },
        {
-          "value" : "Pacific/Tongatapu",
-          "name" : "Pacific/Tongatapu"
+          "name" : "Pacific/Tongatapu",
+          "value" : "Pacific/Tongatapu"
        },
        {
-          "value" : "Pacific/Wake",
-          "name" : "Pacific/Wake"
+          "name" : "Pacific/Wake",
+          "value" : "Pacific/Wake"
        },
        {
-          "value" : "Pacific/Wallis",
-          "name" : "Pacific/Wallis"
+          "name" : "Pacific/Wallis",
+          "value" : "Pacific/Wallis"
        }
     ];
 };

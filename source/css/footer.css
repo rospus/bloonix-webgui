@@ -12,24 +12,28 @@
 #footer-inner {
     margin: 0;
     padding: 0 2px;
+    display: -webkit-flex;
+    -webkit-flex-wrap: nowrap;
+    display: flex;
+    flex-wrap: nowrap;
 }
 #footer-left {
-    width: 26%;
+    order: 1;
     text-align: left;
-    margin: 0;
-    display: inline-block;
 }
 #footer-middle {
-    width: 48%;
+    order: 2;
     text-align: center;
-    margin: 0;
-    display: inline-block;
 }
 #footer-right {
-    width: 26%;
+    order: 3;
     text-align: right;
+}
+#footer-left, #footer-middle, #footer-right {
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    white-space: nowrap;
     margin: 0;
-    display: inline-block;
 }
 #footer-left span, #footer-right span {
     font-size: 13px;

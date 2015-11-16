@@ -839,7 +839,6 @@ Bloonix.dashboard = function(o) {
         }
 
         if (saveConfig === true) {
-            console.log("migrate dashboard to", this.config);
             Bloonix.saveUserConfig("dashboard", {
                 name: this.dashboardName,
                 scale: this.config.scale,

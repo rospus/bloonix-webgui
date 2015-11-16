@@ -65,6 +65,18 @@ Bloonix.initHeader = function() {
         .addClass("btn-group")
         .appendTo(headerRightBox);
 
+    Bloonix.registeredHostsInfoIcon = Utils.create("a")
+        .attr("href", "#monitoring/registration")
+        .attr("title", Text.get("info.hosts_ready_for_registration"))
+        .addClass("btn btn-dark btn-medium")
+        .text("0")
+        .appendTo(btnGroup)
+        //.click(function() { Bloonix.route.to("#monitoring/registration") })
+        .click(function() { Bloonix.route.to("#monitoring/hosts", {registered: true}) })
+        .css({ color: "#ff0000" })
+        .hide()
+        .tooltip();
+
     Utils.create("a")
         .attr("href", "#language")
         .attr("title", Text.get("text.change_the_language"))
@@ -237,12 +249,18 @@ Bloonix.initFooter = function() {
         .attr("id", "footer-right")
         .appendTo(footer);
 
-    Bloonix.objects.footerStats.Browser = Utils.create("span")
-        .attr("title", Text.get("text.browsers_heap_size"))
-        .html("")
-        .hide()
+    Bloonix.objects.footerStats.User = Utils.create("span")
+        .attr("title", "Logged in as")
+        .text(Bloonix.user.username)
         .tooltip()
         .appendTo(t);
+
+    if (Bloonix.user.admin_id) {
+        Bloonix.objects.footerStats.User.css({ color: "#ff6666" });
+        Bloonix.objects.footerStats.User.text(
+            "YOU OPERATES AS "+ Bloonix.user.username
+        );
+    }
 
     Bloonix.objects.footerStats.Time = Utils.create("span")
         .attr("title", "Time")

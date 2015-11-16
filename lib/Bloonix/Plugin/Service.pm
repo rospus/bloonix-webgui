@@ -50,10 +50,17 @@ sub validate {
     }
 
     $data->{command_options} = $c->json->encode($command_options);
-    $data->{location_options} = ref $location_options eq "HASH"
-        ? $c->json->encode($location_options)
-        : $location_options;
     $data->{agent_options} = $c->json->encode($agent_options);
+    $data->{sum_services} = 1;
+
+    if (ref $location_options eq "HASH") {
+        $data->{location_options} = $c->json->encode($location_options);
+        if ($location_options->{check_type} eq "multiple") {
+            $data->{sum_services} = @{$location_options->{locations}};
+        }
+    } else {
+        $data->{location_options} = $location_options;
+    }
 
     return $data;
 }

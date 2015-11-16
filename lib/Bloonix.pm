@@ -94,6 +94,7 @@ sub _init_routes {
     $self->load("Locations");
     $self->load("Plugins");
     $self->load("Root");
+    $self->load("Register");
     $self->load("Rosters");
     $self->load("Screen");
     $self->load("Services");

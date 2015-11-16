@@ -13,9 +13,7 @@ BuildArch: noarch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 Source0: http://download.bloonix.de/sources/%{name}-%{version}.tar.gz
-Requires: bloonix-core >= 0.23
-Requires: bloonix-dbi >= 0.11
-Requires: bloonix-webgui-core
+Requires: bloonix-webgui-core >= 0.15
 AutoReqProv: no
 
 %description

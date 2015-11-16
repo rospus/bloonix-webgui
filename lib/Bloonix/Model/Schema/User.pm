@@ -92,25 +92,11 @@ sub set {
             optional => 1,
         },
         allow_from =>  {
-            constraint => sub {
-                return undef unless $_[0];
-                $_[0] =~ s/\s//g;
-
-                if ($_[0] eq "all") {
-                    return 1;
-                }
-
-                foreach my $ip (split /,/, $_[0]) {
-                    if ($ip !~ !$self->validator->regex->ipaddr) {
-                        return 0;
-                    }
-                }
-
-                return 1;
-            },
+            min_size => 3,
             max_size => 300,
-            default  => "all",
-        },
+            regexcl => $self->validator->regex->ipaddrnet_all,
+            default => "all"
+        }
     );
 }
 

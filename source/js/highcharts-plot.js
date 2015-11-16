@@ -1,3 +1,83 @@
+Bloonix.highcharts.findSeriesPoint = function(series, value, axis) {
+    if (axis === undefined) {
+        axis = "x";
+    }
+
+    var lastValue,
+        curValue,
+        lastPoint,
+        curPoint;
+
+    $.each(series.data, function(i, data) {
+        curValue = data[axis];
+        curPoint = data;
+        if (curValue > value) {
+            return false;
+        }
+        lastValue = curValue;
+        lastPoint = curPoint;
+    });
+
+    if (lastValue === undefined && curValue == undefined) {
+        return undefined;
+    }
+
+    if (lastValue === undefined || curValue === value) {
+        return curPoint;
+    }
+
+    var diffCur = curValue - value,
+        diffLast = value - lastValue;
+
+    if (diffCur > diffLast) {
+        return lastPoint;
+    }
+
+    return curPoint;
+};
+
+Bloonix.highcharts.syncTooltip = function(e) {
+    var selContainerId = e.currentTarget.id,
+        selChart = Bloonix.cache.charts[selContainerId];
+
+    if (selChart) {
+        var coordChart = selChart.pointer.normalize(e),
+            selPoint = selChart.series[0].searchPoint(coordChart, true);
+
+        if (selPoint) {
+            $.each(Bloonix.cache.charts, function(id, chart) {
+                if (id !== selContainerId) {
+                    var point = Bloonix.highcharts.findSeriesPoint(chart.series[0], selPoint.x);
+                    if (point) {
+                        chart.tooltip.refresh(point);
+                        chart.xAxis[0].drawCrosshair(e, point);
+                    }
+                }
+            });
+        }
+    }
+};
+
+Bloonix.syncExtremesStatus = false;
+
+Bloonix.highcharts.syncExtremes = function(e) {
+    var thisChart = this.chart;
+
+    if (Bloonix.syncExtremesStatus === false) {
+        Bloonix.syncExtremesStatus = true;
+
+        $.each(Bloonix.cache.charts, function (id, chart) {
+            if (chart !== thisChart) {
+                if (chart.xAxis[0].setExtremes) {
+                    chart.xAxis[0].setExtremes(e.min, e.max);
+                }
+            }
+        });
+
+        Bloonix.syncExtremesStatus = false;
+    }
+};
+
 Bloonix.highcharts.plotChart = function(o) {
     if (Bloonix.checkEmptyChartData(o)) {
         return false;
@@ -9,6 +89,18 @@ Bloonix.highcharts.plotChart = function(o) {
 
     if (o.chart.lineMarker == undefined) {
         o.chart.lineMarker = false;
+    }
+
+    if (o.chart.type === "area" || o.chart.type === "line" || o.chart.type === "spline") {
+        $("#"+ o.chart.container).bind(
+            "mousemove touchmove",
+            Bloonix.highcharts.syncTooltip
+        );
+        $("#"+ o.chart.container).mouseleave(function() {
+            $.each(Bloonix.cache.charts, function(id, chart) {
+                chart.tooltip.hide();
+            });
+        });
     }
 
     var chartOpts = {
@@ -46,6 +138,10 @@ Bloonix.highcharts.plotChart = function(o) {
                     fontWeight: "normal",
                     fontSize: "13px"
                 }
+            },
+            crosshair: true,
+            events: {
+                setExtremes: Bloonix.highcharts.syncExtremes
             }
         },
         yAxis: {
@@ -77,16 +173,21 @@ Bloonix.highcharts.plotChart = function(o) {
         },
         tooltip: {
             crosshairs: true,
-            shared: true,
+            //shared: true,
             valueDecimals: 2,
             formatter: function() {
                 var date = new Date(this.x),
-                    series = "<b>"+ DateFormat(date, "highchartsTooltip") +"</b>";
+                    series = "<b>"+ DateFormat(date, "highchartsTooltip") +"</b>",
+                    index = this.point.index;
 
-                $.each(this.points, function(index, point) {
-                    var name = point.series.name,
-                        color = o.colors[point.series.name] || Utils.rgbToHex(point.series.color),
-                        value = point.y,
+                $.each(this.series.chart.series, function(i, point) {
+                //$.each(this.points, function(index, point) {
+                    //var name = point.series.name,
+                    //    value = point.y,
+                    //    color = o.colors[point.series.name] || Utils.rgbToHex(point.series.color),
+                    var name = point.name,
+                        value = point.data[index].y,
+                        color = o.colors[point.name] || Utils.rgbToHex(point.color),
                         units = o.chart.units || o.units[name];
 
                     if (units) {

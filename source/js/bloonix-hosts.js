@@ -12,6 +12,108 @@ Bloonix.listHosts = function(o) {
         object.postdata.query = object.query;
     }
 
+    object.addSelectedHostsToGroup = function() {
+        var self = this,
+            selectedIds = this.table.getSelectedIds();
+
+        if (selectedIds.length == 0) {
+            Bloonix.createNoteBox({ text: Text.get("schema.host.text.multiple_selection_help") });
+            return;
+        }
+
+        var content = Utils.create("div"),
+            options = Bloonix.get("/administration/hosts/options"),
+            overlay, form;
+
+        overlay = new Overlay({
+            title: Text.get("schema.host.text.add_hosts_to_group"),
+            content: content,
+            closeText: Text.get("action.abort"),
+            buttons: [{
+                content: Text.get("action.add"),
+                close: false,
+                callback: function(content, overlay) {
+                    form.submit();
+                }
+            }]
+        });
+
+        form = new Form({
+            url: { submit: "/hosts/update-groups" },
+            processDataCallback: function(data) {
+                data.host_id = self.table.getSelectedIds();
+                return data;
+            },
+            onSuccess: function() {
+                Bloonix.getRegisteredHostCount();
+                overlay.close();
+            },
+            appendTo: content,
+            showButton: false
+        }).init();
+
+        form.table = new Table({
+            type: "form",
+            appendTo: form.form
+        }).init().getTable();
+
+        form.createElement({
+            element: "multiselect",
+            name: "group_id",
+            text: Text.get("schema.host.text.add_host_to_group"),
+            options: options.options.group_id
+        });
+
+        form.createElement({
+            element: "multiselect",
+            name: "contactgroup_id",
+            text: Text.get("schema.host.text.add_host_to_contactgroup"),
+            options: options.options.contactgroup_id
+        });
+
+        form.createElement({
+            element: "multiselect",
+            name: "host_template_id",
+            text: Text.get("schema.host.text.add_host_to_host_template"),
+            options: options.options.host_template_id
+        });
+
+        overlay.create();
+    };
+
+    object.delSelectedHosts = function() {
+        var self = this,
+            selectedIds = this.table.getSelectedIds();
+
+        if (selectedIds.length == 0) {
+            Bloonix.createNoteBox({ text: Text.get("schema.host.text.multiple_selection_help") });
+            return;
+        }
+
+        var content = Utils.create("div");
+
+        var overlay = new Overlay({
+            title: Text.get("schema.host.text.delete_reg_hosts"),
+            content: content
+        });
+
+        Utils.create("div")
+            .addClass("btn btn-white btn-medium")
+            .html(Text.get("schema.host.action.delete_reg_hosts"))
+            .appendTo(overlay.content)
+            .click(function() {
+                Bloonix.hostServiceAction(
+                    "/hosts/delete",
+                    { host_id: selectedIds }
+                );
+                self.table.getData();
+                Bloonix.getRegisteredHostCount();
+                overlay.close();
+            });
+
+        overlay.create();
+    };
+
     object.action = function(action) {
         var self = this,
             selectedIds = this.table.getSelectedIds();
@@ -278,6 +380,32 @@ Bloonix.listHosts = function(o) {
             : "host";
 
         this.menu.switchItem(initItem);
+
+        /*
+        var serviceFilterBox = Bloonix.createIconList({
+            format: "even-full",
+            items: [
+                { name: "Team Linux A (1)", value: "Team Linux A" },
+                { name: "Team Linux B (1)", value: "Team Linux B" },
+                { name: "Team Linux C (1)", value: "Team Linux C" },
+                { name: "Team Solaris A (1)", value: "Team Solatis A" },
+                { name: "Team Solaris B (1)", value: "Team Solatis B" },
+                { name: "Team Solaris C (1)", value: "Team Solatis C" },
+                { name: "Team Windows A (1)", value: "Team Windows A" },
+                { name: "Team Windows B (1)", value: "Team Windows B" },
+                { name: "Team Windows C (1)", value: "Team Windows C" },
+                { name: "Foobar (1)", value: "Foobar" },
+            ],
+            multiple: true,
+        });
+
+        new Menu({
+            title: "Host by Tags",
+            content: serviceFilterBox.getContainer(),
+            hide: true,
+            appendTo: this.boxes.left
+        }).create();
+        */
     };
 
     object.listClassStructure = function(classType, ul, data, path, hide) {
@@ -415,6 +543,22 @@ Bloonix.listHosts = function(o) {
                 .html(Utils.create("div").addClass("hicons-white hicons wrench"))
                 .appendTo("#footer-left")
                 .click(function() { self.action(3) });
+
+            Utils.create("span")
+                .attr("title", Text.get("schema.host.text.add_hosts_to_group"))
+                .tooltip()
+                .addClass("footer-button")
+                .html(Utils.create("div").addClass("hicons-white hicons plus"))
+                .appendTo("#footer-left")
+                .click(function() { self.addSelectedHostsToGroup() });
+
+            Utils.create("span")
+                .attr("title", Text.get("schema.host.text.delete_reg_hosts"))
+                .tooltip()
+                .addClass("footer-button")
+                .html(Utils.create("div").addClass("hicons-white hicons trash"))
+                .appendTo("#footer-left")
+                .click(function() { self.delSelectedHosts() });
         }
 
         var counterButton = Utils.create("span")
@@ -441,8 +585,12 @@ Bloonix.listHosts = function(o) {
             ];
         }
 
+        var url = this.registered === true
+            ? "/hosts/registered"
+            : "/hosts";
+
         this.table = new Table({
-            url: "/hosts",
+            url: url,
             postdata: this.postdata,
             appendTo: this.boxes.right,
             sortable: true,
@@ -814,62 +962,6 @@ Bloonix.getHostFormElements = function(o) {
             desc: Text.get("schema.host.desc.env_class"),
             maxlength: 100
         },{
-            element: "input",
-            type: "text",
-            name: "hw_manufacturer",
-            text: Text.get("schema.host.attr.hw_manufacturer"),
-            desc: Text.get("schema.host.desc.hw_manufacturer"),
-            maxlength: 100,
-            elementInfo: "Deprecated! Please use HW class instead!"
-        },{
-            element: "input",
-            type: "text",
-            name: "hw_product",
-            text: Text.get("schema.host.attr.hw_product"),
-            desc: Text.get("schema.host.desc.hw_product"),
-            maxlength: 100,
-            elementInfo: "Deprecated! Please use HW class instead!"
-        },{
-            element: "input",
-            type: "text",
-            name: "os_manufacturer",
-            text: Text.get("schema.host.attr.os_manufacturer"),
-            desc: Text.get("schema.host.desc.os_manufacturer"),
-            maxlength: 100,
-            elementInfo: "Deprecated! Please use OS class instead!"
-        },{
-            element: "input",
-            type: "text",
-            name: "os_product",
-            text: Text.get("schema.host.attr.os_product"),
-            desc: Text.get("schema.host.desc.os_product"),
-            maxlength: 100,
-            elementInfo: "Deprecated! Please use OS class instead!"
-        },{
-            element: "input",
-            type: "text",
-            name: "virt_manufacturer",
-            text: Text.get("schema.host.attr.virt_manufacturer"),
-            desc: Text.get("schema.host.desc.virt_manufacturer"),
-            maxlength: 100,
-            elementInfo: "Deprecated! Please use Host/System/ENV class instead!"
-        },{
-            element: "input",
-            type: "text",
-            name: "virt_product",
-            text: Text.get("schema.host.attr.virt_product"),
-            desc: Text.get("schema.host.desc.virt_product"),
-            maxlength: 100,
-            elementInfo: "Deprecated! Please use Host/System/ENV class instead!"
-        },{
-            element: "input",
-            type: "text",
-            name: "location",
-            text: Text.get("schema.host.attr.location"),
-            desc: Text.get("schema.host.desc.location"),
-            maxlength: 100,
-            elementInfo: "Deprecated! Please use Location class instead!"
-        },{
             element: "select",
             name: "coordinates",
             text: Text.get("schema.host.attr.coordinates"),
@@ -892,7 +984,7 @@ Bloonix.getHostFormElements = function(o) {
             type: "text",
             name: "allow_from",
             text: Text.get("schema.host.attr.allow_from"),
-            desc: Text.get("schema.host.desc.allow_from"),
+            desc: Text.gets(["schema.host.desc.allow_from", "text.allow_from_desc"]),
             maxlength: 100,
             required: true
         },{

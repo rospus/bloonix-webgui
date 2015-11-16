@@ -117,13 +117,13 @@ Bloonix.createContactgroupContactMemberForm = function(o) {
         title: Text.get("schema.contactgroup.text.group_members", o.contactgroup.name),
         subtitle: Text.get("schema.contactgroup.attr.id") +": "+ o.id,
         left: {
-            title: Text.get("schema.contactgroup.text.host_members"),
+            title: Text.get("schema.contactgroup.text.contact_members"),
             listURL: "/contactgroups/"+ o.id +"/contacts/in-group",
             searchURL: "/contactgroups/"+ o.id +"/contacts/in-group",
             updateMember: "/contactgroups/"+ o.id +"/contacts/remove"
         },
         right: {
-            title: Text.get("schema.contactgroup.text.host_nonmembers"),
+            title: Text.get("schema.contactgroup.text.contact_nonmembers"),
             listURL: "/contactgroups/"+ o.id +"/contacts/not-in-group",
             searchURL: "/contactgroups/"+ o.id +"/contacts/not-in-group",
             updateMember: "/contactgroups/"+ o.id +"/contacts/add"

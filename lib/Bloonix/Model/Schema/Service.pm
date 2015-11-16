@@ -514,6 +514,9 @@ sub by_user_id {
     );
 
     if ($opts->{sort}) {
+        if ($opts->{sort}->{by} eq "plugin") {
+            $opts->{sort}->{by} = "plugin.plugin";
+        }
         push @select, order => [ $opts->{sort}->{type} => $opts->{sort}->{by} ];
     } elsif ($opts->{order}) {
         push @select, order => $opts->{order};
@@ -694,22 +697,46 @@ sub by_service_and_user_id {
 }
 
 sub count_by_company_id {
-    my ($self, $id) = @_;
+    my ($self, $id, $skip_service_id) = @_;
+
+    my @condition = (
+        where => {
+            table => "host",
+            column => "company_id",
+            value => $id
+        }
+    );
+
+    if ($skip_service_id) {
+        push @condition, (
+            and => {
+                table => "service",
+                column => "id",
+                op => "!=",
+                value => $skip_service_id
+            }
+        );
+    }
 
     my ($stmt, @bind) = $self->sql->select(
-        table => $self->{table},
-        count => "service.id",
+        table => "service",
+        sum => "service_parameter.sum_services",
         join  => [
+            inner => {
+                table => "service_parameter",
+                left => "service.service_parameter_id",
+                right => "service_parameter.ref_id"
+            },
             inner => {
                 table => "host",
                 left  => "service.host_id",
                 right => "host.id",
-            },
+            }
         ],
-        condition => [ "host.company_id" => $id ],
+        condition => \@condition
     );
 
-    return $self->dbi->count($stmt, @bind);
+    return $self->dbi->sum($stmt, @bind);
 }
 
 sub warnings_by_user_id {

@@ -108,9 +108,14 @@ Bloonix.listUsers = function() {
                 name: "operate_as",
                 icons: [
                     {
-                        check: function() { return Bloonix.user.role == "admin" ? true : false },
+                        check: function(row) {
+                            if (Bloonix.user.role != "admin" || row.role == "admin") {
+                                return false;
+                            }
+                            return true;
+                        },
                         icon: "cicons arrow-right-orange",
-                        text: Text.get("action.operate_as"),
+                        title: Text.get("action.operate_as"),
                         link: "operateas/:id"
                     }
                 ]
@@ -243,7 +248,7 @@ Bloonix.getUserFormElements = function() {
             type: "text",
             name: "allow_from",
             text: Text.get("schema.user.attr.allow_from"),
-            desc: Text.get("schema.user.desc.allow_from"),
+            desc: Text.gets(["schema.user.desc.allow_from", "text.allow_from_desc"]),
             maxlength: 300
         },{
             element: "input",

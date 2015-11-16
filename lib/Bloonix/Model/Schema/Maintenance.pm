@@ -8,8 +8,7 @@ use base qw(Bloonix::DBI::CRUD);
 sub init {
     my $self = shift;
 
-    $self->{schema_version} = 11;
-
+    $self->{schema_version} = 12;
     $self->log->warning("start database upgrade");
     $self->dbi->reconnect;
     $self->run_upgrade;
@@ -100,44 +99,12 @@ sub run_upgrade {
         return 1;
     }
 
-    if ($version < 1) {
-        $self->v1;
-    }
-
-    if ($version <= 2) {
-        $self->v3;
-    }
-
-    if ($version <= 3) {
-        $self->v4;
-    }
-
-    if ($version <= 4) {
-        $self->v5;
-    }
-
-    if ($version <= 5) {
-        $self->v6;
-    }
-
-    if ($version <= 6) {
-        $self->v7;
-    }
-
-    if ($version <= 7) {
-        $self->v8;
-    }
-
-    if ($version <= 8) {
-        $self->v9;
-    }
-
-    if ($version <= 9) {
-        $self->v10;
-    }
-
-    if ($version <= 10) {
-        $self->v11;
+    foreach my $v (1 .. $self->{schema_version}) {
+        if ($version < $v) {
+            my $m = "v$v";
+            $self->log->warning("run upgrade $m");
+            $self->$m;
+        }
     }
 
     $self->update_version;
@@ -514,6 +481,38 @@ sub v11 {
         $self->upgrade("alter table dependency change on_service_id on_service_id bigint null");
         $self->upgrade("alter table host change ipaddr ipaddr varchar(159) null");
     }
+}
+
+sub v12 {
+    my $self = shift;
+
+    $self->upgrade("alter table company add column max_hosts_in_reg_queue bigint not null default 1000");
+    $self->upgrade("alter table company add column host_reg_authkey varchar(1000) not null default ''");
+    $self->upgrade("alter table company add column host_reg_enabled char(1) not null default '0'");
+    $self->upgrade("alter table company add column host_reg_allow_from varchar(300) not null default 'all'");
+    $self->upgrade("alter table host add column register char(1) not null default '0'");
+    $self->upgrade("alter table location add column authkey varchar(1024) not null default ''");
+    $self->upgrade("alter table service_parameter add column sum_services smallint not null default '1'");
+
+    my $sth = $self->dbi->dbh->prepare("select ref_id, location_options from service_parameter where location_options != ?");
+    $sth->execute(0);
+
+    while (my $row = $sth->fetchrow_hashref) {
+        if ($row->{location_options}) {
+            my $location_options = $self->c->json->decode($row->{location_options});
+            if ($location_options->{check_type} eq "multiple") {
+                my $sum = @{$location_options->{locations}};
+                if ($sum > 1) {
+                    $self->dbi->dbh->do(
+                        "update service_parameter set sum_services = ? where ref_id = ?",
+                        undef, $sum, $row->{ref_id}
+                    );
+                }
+            }
+        }
+    }
+
+    $sth->finish;
 }
 
 1;

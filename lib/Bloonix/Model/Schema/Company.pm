@@ -4,6 +4,7 @@ use strict;
 use warnings;
 use base qw(Bloonix::DBI::Base);
 use base qw(Bloonix::DBI::CRUD);
+use Bloonix::NetAddr;
 
 sub init {
     my $self = shift;
@@ -24,7 +25,9 @@ sub init {
             default => 0
         },
         email => {
-            regex => $self->validator->regex->email
+            regex => $self->validator->regex->email,
+            empty_ok => 1,
+            optional => 1
         },
         title => {
             max_size => 30,
@@ -164,6 +167,11 @@ sub init {
             max_val => 999_999_999,
             default => 10000
         },
+        max_hosts_in_reg_queue => {
+            min_val => 0,
+            max_val => 9_999_999_999,
+            default => 1000
+        },
         data_retention => {
             min_val => 0,
             max_val => 32767,
@@ -176,6 +184,20 @@ sub init {
         comment => {
             max_size => 500,
             optional => 1
+        },
+        host_reg_authkey => {
+            regex => qr/^(|.{60,1000})\z/,
+            default => $self->c->plugin->util->pwgen(64)
+        },
+        host_reg_enabled => {
+            options => [1,0],
+            default => 0
+        },
+        host_reg_allow_from => {
+            min_size => 3,
+            max_size => 300,
+            regexcl => $self->validator->regex->ipaddrnet_all,
+            default => "all"
         }
     );
 }
@@ -318,6 +340,29 @@ sub create_new_structure {
 
     $self->dbi->autocommit($old);
     return $company;
+}
+
+sub check_host_reg {
+    my ($self, $id, $authkey, $addr) = @_;
+
+    my $company = $self->dbi->unique(
+        $self->sql->select(
+            table => "company",
+            column => ["host_reg_allow_from", "max_hosts_in_reg_queue"],
+            condition => [
+                id => $id,
+                host_reg_authkey => $authkey,
+                host_reg_enabled => 1,
+                active => 1
+            ]
+        )
+    ) or return undef;
+
+    if (!$company->{host_reg_allow_from} || Bloonix::NetAddr->ip_in_range($addr, $company->{host_reg_allow_from})) {
+        return $company;
+    }
+
+    return undef;
 }
 
 1;

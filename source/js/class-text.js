@@ -49,6 +49,30 @@ Text.get = function(key, value, wrap) {
     return text;
 };
 
+Text.gets = function(o) {
+    var text = Utils.create("span"),
+        len = o.length - 1;
+
+    $.each(o, function(i, item) {
+        var t;
+
+        if (typeof item == "string") {
+            t = Text.get(item);
+        } else {
+            t = Text.get(item.key, item.value, item.wrap);
+        }
+
+        if (t) {
+            text.append(t);
+            if (i < len) {
+                text.append("<br/><br/>");
+            }
+        }
+    });
+
+    return text;
+};
+
 Text.dateFormat = {
     en: {
         dayNames: [
