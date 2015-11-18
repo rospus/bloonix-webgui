@@ -57,6 +57,11 @@ sub delete {
 sub log {
     my ($self, $action, $log) = @_;
     my $c = $self->c;
+
+    if (!$c->config->{webapp}->{enable_user_tracking}) {
+        return 1;
+    }
+
     my $company_id = $c->user->{company_id};
     my $user_id = $c->user->{admin_id} || $c->user->{id};
     my $username = $c->user->{admin_username} || $c->user->{username};
@@ -98,7 +103,7 @@ sub log {
         message    => $data
     );
 
-    $c->log->info("$message $data");
+    #$c->log->debug("$message $data");
 }
 
 1;

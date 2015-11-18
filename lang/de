@@ -31,6 +31,7 @@ word.Seconds: Sekunden
 word.seconds: Sekunden
 word.second: Sekunde
 word.resize: Größe anpassen
+word.Message: Nachricht
 
 nav.main.dashboard: DASHBOARD
 nav.main.monitoring: MONITORING
@@ -1312,3 +1313,8 @@ site.screen.attr.text_color_unknown: Textfarbe UNKNOWN
 site.screen.attr.bg_color_time: Hintergrundfarbe ZEIT
 site.screen.attr.text_color_time: Textfarbe ZEIT
 
+site.maintenance.text.tooltip: Den Wartungsmodus aktivieren oder deaktivieren.
+site.maintenance.text.enable: Den Wartungsmodus aktivieren
+site.maintenance.text.disable: Den Wartungsmodus deaktivieren
+site.maintenance.desc.warning: Achtung!<br/><br/>Wenn Sie den Wartungsmodus aktivieren, so wird das gesamte Benachrichtiungssystem deaktiviert und das solange, bis Sie den Wartungsmodus manuell wieder deaktivieren.
+site.maintenance.text.enabled: Achtung!<br/><br/>Der Wartundgmodus von Bloonix ist aktiv und das Benachrichtigungssystem ist deaktiviert. Bitte kontaktieren Sie den Administrator für weitere Informationen.

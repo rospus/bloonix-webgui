@@ -94,6 +94,17 @@ Bloonix.initHeader = function() {
         .click(Bloonix.changeUserSettings)
         .tooltip();
 
+    if (Bloonix.user.role == "admin") {
+        Utils.create("a")
+            .attr("href", "#maintenance")
+            .attr("title", Text.get("site.maintenance.text.tooltip"))
+            .addClass("btn btn-dark btn-medium")
+            .html(Utils.create("span").addClass("hicons-white hicons volume-off"))
+            .appendTo(btnGroup)
+            .click(Bloonix.changeMaintenanceStatus)
+            .tooltip();
+    }
+
     Utils.create("a")
         .attr("href", "/logout/")
         .attr("title", Text.get("action.logout"))

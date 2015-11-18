@@ -167,6 +167,11 @@ sub _validate_webapp {
             type => Params::Validate::SCALAR,
             regex => qr/^(yes|no|0|1)\z/,
             default => 0
+        },
+        enable_user_tracking => {
+            type => Params::Validate::SCALAR,
+            regex => qr/^(yes|no|0|1)\z/,
+            default => 0
         }
     });
 

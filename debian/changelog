@@ -7,8 +7,9 @@ bloonix-webgui (0.75-1) unstable; urgency=low
       os_manufacturer, os_product, virt_manufacturer,j virt_product,
       location.
     * Implemented Bloonix::NetAddr to change IP ranges.
+    * Implemented the feature to set bloonix into maintenance..
 
- -- Jonny Schulz <js@bloonix.de>  Wed, 18 Nov 2015 08:25:08 +0100
+ -- Jonny Schulz <js@bloonix.de>  Wed, 18 Nov 2015 10:08:25 +0100
 
 bloonix-webgui (0.74-1) unstable; urgency=low
 

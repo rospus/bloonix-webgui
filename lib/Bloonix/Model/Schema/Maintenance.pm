@@ -16,6 +16,32 @@ sub init {
     $self->dbi->disconnect;
 }
 
+sub status {
+    my ($self, $status, $message) = @_;
+    my $active = $status eq "disable" ? 0 : 1;
+    my $message ||= "";
+
+    $self->dbi->do(
+        $self->sql->update(
+            table => "maintenance",
+            data => { active => $active }
+        )
+    );
+}
+
+sub get_status {
+    my $self = shift;
+
+    my $row = $self->dbi->unique(
+        $self->sql->select(
+            table => "maintenance",
+            column => "*"
+        )
+    );
+
+    return $row->{active} ? "enabled" : "disabled";
+}
+
 sub get_version {
     my $self = shift;
 

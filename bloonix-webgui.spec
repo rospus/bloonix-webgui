@@ -69,6 +69,7 @@ rm -rf %{buildroot}
   os_manufacturer, os_product, virt_manufacturer,j virt_product,
   location.
 - Implemented Bloonix::NetAddr to change IP ranges.
+- Implemented the feature to set bloonix into maintenance..
 * Fri Sep 18 2015 Jonny Schulz <js@bloonix.de> - 0.74-1
 - Fixed null values in host view.
 * Fri Sep 18 2015 Jonny Schulz <js@bloonix.de> - 0.73-1

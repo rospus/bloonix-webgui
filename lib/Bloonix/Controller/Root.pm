@@ -29,6 +29,7 @@ sub auto {
     $c->stash->{meta}->{ipaddr} = $addr;
     $c->stash->{meta}->{chart_library} = $c->config->{webapp}->{chart_library};
     $c->stash->{meta}->{debugjs} = $c->req->param("debugjs");
+    $c->stash->{meta}->{maintenance} = $c->model->database->maintenance->get_status;
 
     if ($c->req->is_json) {
         $c->view->render->json;
@@ -146,6 +147,7 @@ sub startup {
     $c->route->map("/whoami")->to("whoami");
     $c->route->map("/login")->to("login");
     $c->route->map("/logout")->to("logout");
+    $c->route->map("/maintenance/:action(enable|disable)")->to("maintenance");
 }
 
 sub default {
@@ -218,6 +220,22 @@ sub index {
     }
 
     $c->view->render->template;
+}
+
+sub maintenance {
+    my ($self, $c, $opts) = @_;
+
+    if ($c->user->{role} ne "admin") {
+        return $c->plugin->error->noauth_access;
+    }
+
+    if ($opts->{action} eq "enable") {
+        $c->model->database->maintenance->status("enable", $c->req->param("message"));
+    } elsif ($opts->{action} eq "disable") {
+        $c->model->database->maintenance->status("disable", "");
+    }
+
+    $c->view->render->json;
 }
 
 sub whoami {

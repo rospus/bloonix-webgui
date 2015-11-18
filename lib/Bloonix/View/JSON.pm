@@ -46,6 +46,7 @@ sub process {
     $time =~ s/\.//;
 
     my $data = $self->json->encode({
+        maintenance => $c->stash->{meta}->{maintenance},
         version => $c->version->{js},
         server_time => $time,
         who_am_i => $self->{who_am_i},

@@ -31,6 +31,7 @@ word.Seconds: Seconds
 word.seconds: seconds
 word.second: second
 word.resize: Resize
+word.Message: Message
 
 nav.main.dashboard: DASHBOARD
 nav.main.monitoring: MONITORING
@@ -1307,3 +1308,8 @@ site.screen.attr.text_color_unknown: Text color UNKNOWN
 site.screen.attr.bg_color_time: Background color TIME
 site.screen.attr.text_color_time: Text color TIME
 
+site.maintenance.text.tooltip: Enable or disable maintenance mode.
+site.maintenance.text.enable: Enable the maintenance mode
+site.maintenance.text.disable: Disable the maintenance mode
+site.maintenance.desc.warning: Attention!<br/><br/>If you enable the maintenance mode then the complete notification system is disabled until you disable the maintenance mode manually.
+site.maintenance.text.enabled: Attention!<br/><br/>The maintenance mode of Bloonix is active and the notification system is disabled. Please contact the administrator for more information.

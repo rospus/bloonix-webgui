@@ -46,6 +46,12 @@ Bloonix.initUser = function(postdata) {
                 Bloonix.initHeader();
                 Bloonix.initFooter();
                 Bloonix.changeUserPassword({ force: true });
+            } else if (result.maintenance == "enabled") {
+                Bloonix.createNoteBox({
+                    autoClose: false,
+                    infoClass: "info-err",
+                    text: Text.get("site.maintenance.text.enabled")
+                });
             }
         }
     });
@@ -125,4 +131,33 @@ Bloonix.updateBrowserStats = function() {
         totalHeapSize = Utils.bytesToStr(m.totalJSHeapSize);
 
     Log.info("Browsers heap size: "+ usedHeapSize +"/"+ totalHeapSize);
+};
+
+Bloonix.changeMaintenanceStatus = function() {
+    var content = Utils.create("div");
+
+    var overlay = new Overlay({
+        title: Text.get("site.maintenance.text.tooltip"),
+        content: content
+    });
+
+    Utils.create("div")
+        .addClass("btn btn-white btn-medium")
+        .html(Text.get("site.maintenance.text.enable"))
+        .appendTo(overlay.content)
+        .click(function() {
+            Bloonix.get("/maintenance/enable/");
+            overlay.close();
+        });
+
+    Utils.create("div")
+        .addClass("btn btn-white btn-medium")
+        .html(Text.get("site.maintenance.text.disable"))
+        .appendTo(overlay.content)
+        .click(function() {
+            Bloonix.get("/maintenance/disable/");
+            overlay.close();
+        });
+
+    overlay.create();
 };
