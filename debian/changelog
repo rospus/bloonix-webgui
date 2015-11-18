@@ -1,3 +1,15 @@
+bloonix-webgui (0.75-1) unstable; urgency=low
+
+    * Change: Field "description" of hosts is now an optional parameter.
+    * New Feature: It's now possible to configure the authkey for each
+      location in the webgui.
+    * Kicked deprecated host parameters: hw_manufacturer, hw_product
+      os_manufacturer, os_product, virt_manufacturer,j virt_product,
+      location.
+    * Implemented Bloonix::NetAddr to change IP ranges.
+
+ -- Jonny Schulz <js@bloonix.de>  Wed, 18 Nov 2015 08:25:08 +0100
+
 bloonix-webgui (0.74-1) unstable; urgency=low
 
     * Fixed null values in host view.

@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.74
+Version: 0.75
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -61,6 +61,14 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Wed Nov 18 2015 Jonny Schulz <js@bloonix.de> - 0.75-1
+- Change: Field "description" of hosts is now an optional parameter.
+- New Feature: It's now possible to configure the authkey for each
+  location in the webgui.
+- Kicked deprecated host parameters: hw_manufacturer, hw_product
+  os_manufacturer, os_product, virt_manufacturer,j virt_product,
+  location.
+- Implemented Bloonix::NetAddr to change IP ranges.
 * Fri Sep 18 2015 Jonny Schulz <js@bloonix.de> - 0.74-1
 - Fixed null values in host view.
 * Fri Sep 18 2015 Jonny Schulz <js@bloonix.de> - 0.73-1
