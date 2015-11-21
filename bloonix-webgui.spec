@@ -61,6 +61,15 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Sat Nov 21 2015 Jonny Schulz <js@bloonix.de> - 0.75-1
+- Change: Field "description" of hosts is now an optional parameter.
+- New Feature: It's now possible to configure the authkey for each
+  location in the webgui.
+- Kicked deprecated host parameters: hw_manufacturer, hw_product
+  os_manufacturer, os_product, virt_manufacturer,j virt_product,
+  location.
+- Implemented Bloonix::NetAddr to change IP ranges.
+- Implemented the feature to set bloonix into maintenance.
 * Wed Nov 18 2015 Jonny Schulz <js@bloonix.de> - 0.75-1
 - Change: Field "description" of hosts is now an optional parameter.
 - New Feature: It's now possible to configure the authkey for each

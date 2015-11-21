@@ -7,7 +7,7 @@ bloonix-webgui (0.75) released at 2015-11-15
       os_manufacturer, os_product, virt_manufacturer,j virt_product,
       location.
     * Implemented Bloonix::NetAddr to change IP ranges.
-    * Implemented the feature to set bloonix into maintenance..
+    * Implemented the feature to set bloonix into maintenance.
 
 bloonix-webgui (0.74) released at 2015-09-18
 
