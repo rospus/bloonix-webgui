@@ -1,3 +1,7 @@
+bloonix-webgui (0.76) released at 2015-XX-XX
+
+    * Fixed content type and output for routes /operateas and /logout.
+
 bloonix-webgui (0.75) released at 2015-11-15
 
     * Change: Field "description" of hosts is now an optional parameter.

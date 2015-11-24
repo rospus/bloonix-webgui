@@ -268,14 +268,18 @@ sub operateas {
 
     if ($c->user->{role} ne "admin") {
         $c->plugin->error->site_does_not_exists;
-        return $c->res->redirect("/");
+        $c->res->header(status => "302 Found");
+        $c->res->header(location => "/");
+        return $c->view->render->json;
     }
 
     my $user = $c->model->database->user->get($opts->{id});
 
     if (!$user || $user->{role} eq "admin") {
         $c->plugin->error->object_does_not_exists;
-        return $c->res->redirect("/");
+        $c->res->header(status => "302 Found");
+        $c->res->header(location => "/");
+        return $c->view->render->json;
     }
 
     $c->model->database->session->update(
@@ -288,7 +292,9 @@ sub operateas {
         ]
     );
 
-    $c->res->redirect("/");
+    $c->res->header(status => "302 Found");
+    $c->res->header(location => "/");
+    $c->view->render->json;
 }
 
 sub login {
@@ -511,6 +517,11 @@ sub logout {
             data => { user_id => $c->session->stash->{admin_id}, stash => "" },
             condition => [ sid => $c->user->{sid} ]
         );
+        if ($c->req->is_json) {
+            $c->res->header(status => "302 Found");
+            $c->res->header(location => "/");
+            return $c->view->render->json;
+        }
         return $c->res->redirect("/");
     }
 
@@ -535,6 +546,8 @@ sub logout {
     );
 
     if ($c->req->is_json) {
+        $c->res->header(status => "302 Found");
+        $c->res->header(location => "/login");
         return $c->view->render->json;
     }
 
