@@ -1,4 +1,4 @@
-bloonix-webgui (0.76) released at 2015-XX-XX
+bloonix-webgui (0.76) released at 2015-11-25
 
     * Fixed content type and output for routes /operateas and /logout.
 

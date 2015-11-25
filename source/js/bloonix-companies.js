@@ -122,10 +122,11 @@ Bloonix.listCompanies = function() {
 };
 
 Bloonix.editCompany = function(o) {
-    var company = Bloonix.get("/administration/companies/"+ o.id +"/options/");
+    var company = Bloonix.get("/administration/companies/"+ o.id +"/options/"),
+        companyName = company.values.company +" ("+ company.values.id +")";
 
-    new Header({ title: Text.get("schema.company.text.view", company.values.company, true) }).create();
-    Bloonix.setMetaTitle(Text.get("schema.company.text.view", company.values.company));
+    new Header({ title: Text.get("schema.company.text.view", companyName, true) }).create();
+    Bloonix.setMetaTitle(Text.get("schema.company.text.view", companyName));
 
     new Form({
         url: { submit: "/administration/companies/"+ o.id +"/update/" },

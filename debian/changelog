@@ -1,3 +1,9 @@
+bloonix-webgui (0.76-1) unstable; urgency=low
+
+    * Fixed content type and output for routes /operateas and /logout.
+
+ -- Jonny Schulz <js@bloonix.de>  Wed, 25 Nov 2015 13:53:18 +0100
+
 bloonix-webgui (0.75-1) unstable; urgency=low
 
     * Change: Field "description" of hosts is now an optional parameter.
