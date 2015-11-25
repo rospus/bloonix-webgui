@@ -34,6 +34,11 @@ sub max_host_req_exceeded {
     $self->_error("err-412");
 }
 
+sub host_reg_id_1_not_allowed {
+    my $self = shift;
+    $self->_error("err-413");
+}
+
 sub noauth_access {
     my $self = shift;
     $self->_error("err-415");

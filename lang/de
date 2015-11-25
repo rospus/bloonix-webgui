@@ -73,6 +73,7 @@ err-405: Ihre Session ist abgelaufen!
 err-410: Die angeforderte Seite wurde nicht gefunden!
 err-411: Der Dienst ist nicht verfügbar!
 err-412: Die maximale Anzahl erlaubter Hosts in der Registerqueue ist erreicht!
+err-413: Host Registrierungen für Company ID 1 sind nicht erlaubt!
 err-415: Nicht authorisierter Zugriff!
 err-416: Sie haben nicht genügend Rechte für diese Operation!
 err-417: Sie haben nicht genügend Rechte um ein Objekt zu erstellen!

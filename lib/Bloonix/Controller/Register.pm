@@ -22,6 +22,11 @@ sub host {
     my $authkey = delete $data->{company_authkey};
     my $addr = $c->req->remote_addr;
 
+    if ($id == 1) {
+        $c->log->warning("access denied: host registration for company id 1 is not allowed");
+        return $c->plugin->error->host_reg_id_1_not_allowed;
+    }
+
     my $company = $c->model->database->company->check_host_reg($id, $authkey, $addr);
 
     if (!$company) {

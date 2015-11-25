@@ -73,6 +73,7 @@ err-405: Your session is expired!
 err-410: The requested URL was not found!
 err-411: The service is not available!
 err-412: The maximum number of allowed hosts in register queue exceeded!
+err-413: Host registrations for company id 1 are not allowed!
 err-415: Unauthorized access!
 err-416: You do not have enough access privileges for this operation!
 err-417: You do not have enough privileges to create an object!
