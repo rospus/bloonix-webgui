@@ -16,7 +16,7 @@ sub startup {
 sub auto {
     my ($self, $c) = @_;
 
-    if ($c->user->{role} !~ /^(operator|admin)\z/) {
+    if ($c->user->{role} !~ /^(operator|admin)\z/ && $c->action_path ne "hosts/registered/count") {
         $c->plugin->error->no_privileges;
         return undef;
     }
