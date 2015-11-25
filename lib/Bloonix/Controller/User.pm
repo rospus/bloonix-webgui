@@ -209,11 +209,11 @@ sub save_dashboard_data {
             return $c->plugin->error->form_parse_errors("name");
         }
 
-        if (!defined $row->{width} || $row->{width} !~ /^[1-9]\z/) {
+        if (!defined $row->{width} || $row->{width} !~ /^[1-9][0-2]{0,1}\z/) {
             return $c->plugin->error->form_parse_errors("width");
         }
 
-        if (!defined $row->{height} || $row->{height} !~ /^[1-8]\z/) {
+        if (!defined $row->{height} || $row->{height} !~ /^[1-8]{1,2}\z/) {
             return $c->plugin->error->form_parse_errors("height");
         }
 
