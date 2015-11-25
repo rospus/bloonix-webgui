@@ -1,3 +1,9 @@
+bloonix-webgui (0.77-1) unstable; urgency=low
+
+    * Fixed access to hosts/registered/count for role user.
+
+ -- Jonny Schulz <js@bloonix.de>  Wed, 25 Nov 2015 16:17:51 +0100
+
 bloonix-webgui (0.76-1) unstable; urgency=low
 
     * Fixed content type and output for routes /operateas and /logout.

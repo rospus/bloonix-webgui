@@ -1,6 +1,6 @@
 Summary: Bloonix WebGUI
 Name: bloonix-webgui
-Version: 0.76
+Version: 0.77
 Release: 1%{dist}
 License: Commercial
 Group: Utilities/System
@@ -61,6 +61,8 @@ rm -rf %{buildroot}
 %{srvdir}/*
 
 %changelog
+* Wed Nov 25 2015 Jonny Schulz <js@bloonix.de> - 0.77-1
+- Fixed access to hosts/registered/count for role user.
 * Wed Nov 25 2015 Jonny Schulz <js@bloonix.de> - 0.76-1
 - Fixed content type and output for routes /operateas and /logout.
 * Sat Nov 21 2015 Jonny Schulz <js@bloonix.de> - 0.75-1
