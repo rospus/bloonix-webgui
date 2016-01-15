@@ -83,6 +83,9 @@ Bloonix.listHostTemplates = function(o) {
             },{
                 name: "description",
                 text: Text.get("schema.host_template.attr.description")
+            },{
+                name: "tags",
+                text: Text.get("schema.host_template.attr.tags")
             }
         ]
     });

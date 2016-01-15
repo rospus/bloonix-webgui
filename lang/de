@@ -628,7 +628,13 @@ schema.host.desc.hostname: Dies ist der vollständig qualifizierte Hostname.
 schema.host.desc.status: Der Status des Hosts. Mögliche Werte sind OK, INFO, WARNING, CRITICAL oder UNKNOWN.
 schema.host.desc.description: Das ist eine kurze Beschreibung zum Host.
 schema.host.desc.ipaddr: Das ist die Haupt-IP-Adresse des Hosts.
+ <br/><br/>Bitte beachten Sie dass vorangestellte Nullen nicht erlaubt sind:
+ <br/><br/><i>010.005.008.001</i> oder <i>0001::0001</i> ist nicht erlaubt
+ <br/><i>10.5.8.1</i> oder <i>1::1</i> ist erlaubt
 schema.host.desc.ipaddr6: Das ist die Haupt-IPv6-Adresse des Hosts.
+ <br/><br/>Bitte beachten Sie dass vorangestellte Nullen nicht erlaubt sind:
+ <br/><br/><i>010.005.008.001</i> oder <i>0001::0001</i> ist nicht erlaubt
+ <br/><i>10.5.8.1</i> oder <i>1::1</i> ist erlaubt
 schema.host.desc.comment: Dieses Feld kann für Kommentare verwendet werden.
 schema.host.desc.sysgroup: Dies ist ein Feld das zur freien Verwendung steht.
 schema.host.desc.sysinfo: Hier können Sie einen externen Link zu Ihrer Host-Dokumentation eintragen, zum Beispiel:<br/><br/>Linktext=https://mysite.test/?id=12345.<br/><br/>Nicht erlaubte Zeichen: "\

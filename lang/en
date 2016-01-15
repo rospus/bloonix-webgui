@@ -628,7 +628,13 @@ schema.host.desc.hostname: This is the fully qualified hostname.
 schema.host.desc.status: The status of the host. Possible values are OK, INFO, WARNING, CRITICAL or UNKNOWN.
 schema.host.desc.description: This is a short description of the host.
 schema.host.desc.ipaddr: This is the main IP address of the host.
+ <br/><br/>Note that prepend zeros are not allowed:
+ <br/><br/><i>010.005.008.001</i> or <i>0001::0001</i> is not allowed
+ <br/><i>10.5.8.1</i> or <i>1::1</i> is allowed
 schema.host.desc.ipaddr6: This is the main IP v6 address of the host.
+ <br/><br/>Note that prepend zeros are not allowed:
+ <br/><br/><i>010.005.008.001</i> or <i>0001::0001</i> is not allowed
+ <br/><i>10.5.8.1</i> or <i>1::1</i> is allowed
 schema.host.desc.comment: This field can be used to set a short comment to the host.
 schema.host.desc.sysgroup: This is a complete free to use field with no restrictions.
 schema.host.desc.sysinfo: This field allows you to set an external link to you own host documentation, e.g.:<br/><br/>Linktext=https://mysite.test/?id=12345.<br/><br/>Not allowed characters: "\

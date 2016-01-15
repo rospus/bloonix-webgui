@@ -117,7 +117,7 @@ Bloonix.listHosts = function(o) {
                     //e.name === "os_product" ||
                     //e.name === "virt_manufacturer" ||
                     //e.name === "virt_product" ||
-                    e.name === "location" ||
+                    //e.name === "location" ||
                     e.name === "allow_from"
                 ) {
                     elements.push(e);
@@ -629,10 +629,10 @@ Bloonix.listHosts = function(o) {
                     name: "virt_product",
                     text: Text.get("schema.host.attr.virt_product"),
                     hide: true
-                */
                 },{
                     name: "location",
                     text: Text.get("schema.host.attr.location")
+                */
                 },{
                     name: "coordinates",
                     text: Text.get("schema.host.attr.coordinates"),

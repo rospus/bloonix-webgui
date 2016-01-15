@@ -81,7 +81,7 @@ Bloonix.viewHost = function(host) {
     $.each([
         "id", "company", "hostname", "ipaddr", "ipaddr6", "description", "comment",
         "status", "last_check", "active", "notification", "interval", "timeout", "max_sms",
-        "max_services", "allow_from", "location", "sysgroup", "sysinfo",
+        "max_services", "allow_from", "sysgroup", "sysinfo",
         "host_class", "system_class", "location_class", "os_class", "hw_class", "env_class"
     ], function(index, item) {
         if (host[item] == "" || host[item] === null) {
