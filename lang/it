@@ -1,80 +1,80 @@
 word.Language: Lingua
-word.Settings: Impostazionilan
+word.Settings: Impostazioni
 word.debug: Debug
-word.Preset: Preset
-word.From: From
-word.To: To
-word.yes: yes
+word.Preset: Programmazione
+word.From: Da
+word.To: A
+word.yes: si
 word.no: no
-word.Yes: Yes
+word.Yes: Si
 word.No: No
-word.Hosts: Hosts
-word.Services: Services
-word.Absolute: Absolute
-word.Relative: Relative
-word.Filter: Filter
-word.inactive: inactive
-word.active: active
-word.Timezone: Timezone
-word.Timeslice: Timeslice
-word.Type: Type
-word.Days: Days
-word.days: days
-word.day: day
-word.Hours: Hours
-word.hours: hours
-word.hour: hour
-word.Minutes: Minutes
-word.minutes: minutes
-word.minute: minute
-word.Seconds: Seconds
-word.seconds: seconds
-word.second: second
-word.resize: Resize
-word.Message: Message
+word.Hosts: Host
+word.Services: Servizi
+word.Absolute: Assoluto
+word.Relative: Relativo
+word.Filter: Filtro
+word.inactive: inattivo
+word.active: attivo
+word.Timezone: Fuso orario
+word.Timeslice: Intervallo
+word.Type: Tipo
+word.Days: Giorni
+word.days: giorni
+word.day: giorno
+word.Hours: Ore
+word.hours: ore
+word.hour: ora
+word.Minutes: Minuti
+word.minutes: minuti
+word.minute: minuto
+word.Seconds: Secondi
+word.seconds: secondi
+word.second: secondo
+word.resize: Ridimensiona
+word.Message: Messaggio
 
-nav.main.dashboard: DASHBOARD
-nav.main.monitoring: MONITORING
-nav.main.notifications: NOTIFICATIONS
-nav.main.administration: ADMINISTRATION
+nav.main.dashboard: BACHECA
+nav.main.monitoring: CONTROLLO
+nav.main.notifications: NOTIFICHE
+nav.main.administration: GESTIONE
 nav.main.report: REPORT
-nav.main.help: HELP
-nav.sub.hosts: Hosts
-nav.sub.services: Services
-nav.sub.charts: Charts
-nav.sub.templates: Templates
-nav.sub.registration: Registration
-nav.sub.screen: Screen
-nav.sub.contacts: Contacts
-nav.sub.contactgroups: Contactgroups
-nav.sub.timeperiods: Timeperiods
-nav.sub.rosters: Rosters
-nav.sub.users: Users
-nav.sub.groups: Groups
-nav.sub.companies: Companies
-nav.sub.variables: Variables
-nav.sub.locations: Locations
-nav.sub.events: Events
-nav.sub.reports: Reports
-nav.sub.dependencies: Dependencies
-nav.sub.downtimes: Scheduled downtimes
+nav.main.help: AIUTO
+nav.sub.hosts: Host
+nav.sub.services: Servizi
+nav.sub.charts: Diagrammi
+nav.sub.templates: Template
+nav.sub.registration: Registrazione
+nav.sub.screen: Schermo
+nav.sub.contacts: Contatti
+nav.sub.contactgroups: Gruppo contatti
+nav.sub.timeperiods: Periodi di tempo
+nav.sub.rosters: Elenchi
+nav.sub.users: Utenti
+nav.sub.groups: Gruppi
+nav.sub.companies: Aziende
+nav.sub.variables: Variabili
+nav.sub.locations: Località
+nav.sub.events: Eventi
+nav.sub.reports: Report
+nav.sub.dependencies: Dipendenze
+nav.sub.downtimes: Fuori servizio programmati
 nav.sub.mtr: MTR
-nav.sub.notifications: Notifications
-nav.sub.group_settings: Group settings
-nav.sub.host_group_settings: Host group settings
-nav.sub.user_group_settings: User group settings
-nav.sub.contactgroup_settings: Contact group settings
-nav.sub.contactgroup_members: Contacts in contact group
-nav.sub.contactgroup_host_members: Hosts in contact group
-nav.sub.contactgroup_service_members: Services in contact group
+nav.sub.notifications: Notifiche
+nav.sub.group_settings: Impostazioni gruppo
+nav.sub.host_group_settings: Impostazioni gruppo host
+nav.sub.user_group_settings: Impostazioni gruppo utenti
+nav.sub.contactgroup_settings: Impostazioni gruppo contatti
+nav.sub.contactgroup_members: Contatti in gruppo contatti group
+nav.sub.contactgroup_host_members: Host in gruppo contatti
+nav.sub.contactgroup_service_members: Servizi in gruppo contatti
 
-err-400: Bad login! Try it again!
-err-405: Your session is expired!
-err-410: The requested URL was not found!
-err-411: The service is not available!
-err-412: The maximum number of allowed hosts in register queue exceeded!
-err-413: Host registrations for company id 1 are not allowed!
-err-415: Unauthorized access!
+err-400: Accesso negato, riprovare.
+err-405: La tua sessione è scaduta.
+err-410: L'URL richiesto non è stato trovato.
+err-411: Il servizion non è disponibile.
+err-412: Superato il numero massimo di host permessi nella coda di registrazione.
+err-413: Registrazione di host per l'azienda con id 1 non è permesso.
+err-415: Accesso non autorizzato.
 err-416: You do not have enough access privileges for this operation!
 err-417: You do not have enough privileges to create an object!
 err-418: You do not have enough privileges to modify the objects!
@@ -240,26 +240,26 @@ text.first_failover_checkpoint: First failover checkpoint
 text.second_failover_checkpoint: Second failover checkpoint
 text.change_your_password: Change your password
 text.change_the_language: Cambia la lingua
-text.please_select_objects: Please select at least one object!
+text.please_select_objects: Si prega di selezionare almeno un'oggetto.
 text.default: Default
 text.satellite_hostname: Satellite hostname: %s
 text.target_ip: Target IP address: %s
-text.from_now_to_1h: From now + 1 hour
-text.from_now_to_2h: From now + 2 hours
-text.from_now_to_4h: From now + 4 hours
-text.from_now_to_8h: From now + 8 hours
-text.from_now_to_12h: From now + 12 hours
-text.from_now_to_16h: From now + 16 hours
-text.from_now_to_20h: From now + 20 hours
-text.from_now_to_1d: From now + 1 day
-text.from_now_to_2d: From now + 2 days
-text.from_now_to_4d: From now + 4 days
-text.from_now_to_7d: From now + 7 days
-text.from_now_to_14d: From now + 14 days
-text.last_30d: Last 30 days
-text.last_60d: Last 60 days
-text.last_90d: Last 90 days
-text.last_180d: Last 180 days
+text.from_now_to_1h: Da adesso + 1 ora
+text.from_now_to_2h: Da adesso + 2 ore
+text.from_now_to_4h: Da adesso + 4 ore
+text.from_now_to_8h: Da adesso + 8 ore
+text.from_now_to_12h: Da adesso + 12 ore
+text.from_now_to_16h: Da adesso + 16 ore
+text.from_now_to_20h: Da adesso + 20 ore
+text.from_now_to_1d: Da adesso + 1 giorno
+text.from_now_to_2d: Da adesso + 2 giorni
+text.from_now_to_4d: Da adesso + 4 giorni
+text.from_now_to_7d: Da adesso + 7 giorni
+text.from_now_to_14d: From now + 14 giorni
+text.last_30d: Ultimi 30 giorni
+text.last_60d: Ultimi 60 giorni
+text.last_90d: Ultimi 90 giorni
+text.last_180d: Ultimi 180 giorni
 text.report.title.host_from_to: Report for host <b>%s</b> from <b>%s</b> to <b>%s</b>
 text.report.title.total_availability: The total service availability
 text.report.title.number_of_events: The total number of events
@@ -579,7 +579,7 @@ schema.hs_downtime.attr.username: Added by
 schema.hs_downtime.attr.timezone: Timezone
 schema.hs_downtime.text.create: Create a scheduled downtime
 schema.hs_downtime.text.delete: Delete a scheduled downtime
-schema.hs_downtime.text.preset: Preset
+schema.hs_downtime.text.preset: Programmazione
 schema.hs_downtime.text.select_services: Services<br/><small>Do not select any servives if you want to<br/>create a downtime for the complete host.</small>
 
 schema.host_downtime.text.title: Scheduled downtimes for host %s
@@ -866,12 +866,12 @@ schema.chart.attr.id: Chart ID
 schema.chart.attr.title: Chart title
 schema.chart.attr.subtitle: Chart subtitle
 schema.chart.attr.options: Chart options
-schema.chart.attr.preset_last: Preset: last
+schema.chart.attr.preset_last: Programmazione: ultimo
 schema.chart.attr.refresh: Refresh
-schema.chart.attr.preset: Preset
-schema.chart.attr.chart_size: Size
-schema.chart.attr.from: From
-schema.chart.attr.to: To
+schema.chart.attr.preset: Programmazione
+schema.chart.attr.chart_size: Dimensione
+schema.chart.attr.from: Da
+schema.chart.attr.to: A
 schema.chart.attr.datetime: Date and time
 schema.chart.attr.from_to: From <b>%s</b> to <b>%s</b>
 schema.chart.attr.charts: Charts
