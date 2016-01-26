@@ -1,5 +1,5 @@
-word.Language: Language
-word.Settings: Settings
+word.Language: Lingua
+word.Settings: Impostazionilan
 word.debug: Debug
 word.Preset: Preset
 word.From: From
@@ -239,7 +239,7 @@ text.fixed_checkpoint: Fixed checkpoint
 text.first_failover_checkpoint: First failover checkpoint
 text.second_failover_checkpoint: Second failover checkpoint
 text.change_your_password: Change your password
-text.change_the_language: Change the language
+text.change_the_language: Cambia la lingua
 text.please_select_objects: Please select at least one object!
 text.default: Default
 text.satellite_hostname: Satellite hostname: %s
@@ -398,7 +398,7 @@ site.login.follow: Follow Bloonix
 site.login.sign_up: Sign up for a Bloonix account
 site.login.documentation: The Bloonix documentation
 site.login.contact: Do you have questions?
-site.login.choose_your_language: Select your language
+site.login.choose_your_language: Seleziona la tua lingua
 
 site.help.title: Die Bloonix Hilfe
 site.help.doc.bloonix-webgui: Grundlegendes zur Bloonix-WebGUI
@@ -536,15 +536,15 @@ schema.user.text.password_update: Please enter a new password.
 schema.user.text.current_password: Current password
 schema.user.text.new_password: New password
 schema.user.text.repeat_password: Repeat the new password
-schema.user.text.select_language: Select your preferred language
-schema.user.desc.select_language: Please note that the complete WebGUI is reloaded after the language were selected and you will be redirected to the dashboard!
+schema.user.text.select_language: Seleziona la tua lingua preferita
+schema.user.desc.select_language: Si segnala che selezionando una lingua viene ricaricata l'interfaccia web e si viene reindirizzati alla Bacheca.
 schema.user.text.is_logged_in: Logged in
 schema.user.text.session_expires: Session expires
 
 schema.roster.attr.id: Roster ID
 schema.roster.attr.roster: Roster
-schema.roster.attr.description: Description
-schema.roster.attr.active: Active
+schema.roster.attr.description: Descrizione
+schema.roster.attr.active: Attivo
 schema.roster.text.list: Overview of all rosters
 
 schema.group.attr.id: Group ID
