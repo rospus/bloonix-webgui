@@ -73,43 +73,43 @@ err-405: La tua sessione è scaduta.
 err-410: L'URL richiesto non è stato trovato.
 err-411: Il servizion non è disponibile.
 err-412: Superato il numero massimo di host permessi nella coda di registrazione.
-err-413: Registrazione di host per l'azienda con id 1 non è permesso.
+err-413: Registrazione di host non permessa per l'azienda con id 1.
 err-415: Accesso non autorizzato.
-err-416: You do not have enough access privileges for this operation!
-err-417: You do not have enough privileges to create an object!
-err-418: You do not have enough privileges to modify the objects!
-err-419: You do not have enough privileges to delete the objects!
-err-420: The action failed!
-err-425: Your session token is expired!
-err-426: This action requires a token!
-err-427: Services that are inherited from a host template can't be deleted!
-err-428: The location cannot be deleted because at least one service has the location configured!
-err-500: An internal error occured! Please contact the administrator!
-err-600: The object you requested does not exist!
-err-601: The objects you requested does not exist!
-err-605: Please select at least one object!
-err-610: Please fill in the red marked fields correctly!
-err-620: This object already exists!
-err-630: Invalid parameter settings found!
-err-631: The parameter offset must be an numeric value, min 0.
-err-632: The parameter limit must be an numeric value, min 0, max <b>%s</b>.
-err-633: The parameter sort_by must begin with a character of a-z and only characters from a-z, 0-9 and a underscore are allowed. The maximum length is 63 characters.
-err-634: For the parameter sort_type only "asc" or "desc" is allowed as value.
-err-640: No data available!
-err-700: Please change your password!
-err-701: Incorrect password!
-err-702: The new password is to long (max 128 signs)!
-err-703: The new password is to short (min 8 signs)!
-err-704: The passwords doesn't match!
-err-705: The new and the old password cannot be the same!
-err-802: Sorry, but this feature is not available!
-err-810: Sorry, but you cannot add more than %s dashlets to a dashboard!
-err-811: Sorry, but you cannot create more than %s dashboards!
-err-815: Sorry, but you cannot create more than %s charts!
-err-816: Sorry, but you cannot add more than %s metrics to a chart!
-err-817: Sorry, but you cannot create more than %s chart views!
-err-821: Sorry, but you cannot create more than %s host downtimes!
-err-823: Sorry, but you cannot create more than %s host downtimes for host id %s!
+err-416: Non hai sufficienti privilegi di accesso per questa operazione.
+err-417: Non hai sufficienti privilegi per creare un oggetto.
+err-418: Non hai sufficienti privilegi per modificare gli oggetti.
+err-419: Non hai sufficienti privilegi per eliminare gli oggetti.
+err-420: L'azione è fallita.
+err-425: Il tuo token di sessione è scaduto.
+err-426: Questa azione richiede un token.
+err-427: I servizi ereditati da template di host non possono venir eliminati.
+err-428: La località non può essere rimossa in quanto almeno un servizio è configurato per farne parte.
+err-500: Si è verificato un errore  interno. Si prega di contattare l'amministratore.
+err-600: L'oggetto che hai richiesto non esiste.
+err-601: Gli oggetti che hai richiesto non esistono.
+err-605: Si prega di selezionare almeno un oggetto.
+err-610: Si prega di riempire correttamente i campi marchiati di rosso.
+err-620: Questo oggetto è già esistente.
+err-630: Trovato parametro d'impostazione non valido.
+err-631: La compensazione del parametro dev'essere un valore numerico, minimo 0.
+err-632: Il limite del parametro dev'essere un valore numerico, minimo 0 e massimo <b>%s</b>.
+err-633: Il parametro ordina_per deve cominciare con un carattere a-z. Inoltre può contenere caratteri a-z, numeri 0-9 e trattini bassi. La lunghezza massima dev'essere di 63 caratteri.
+err-634: Il parametro ordina_tipo accetta come valore solo "asc" o "disc".
+err-640: Nessun dato disponibile.
+err-700: Si prega di cambiare la password.
+err-701: Password errata.
+err-702: La password è troppo lunga (massimo 128 tra caratteri e simboli).
+err-703: La password è troppo corta (minimo 8 tra caratteri e simboli).
+err-704: Le password non coincidono.
+err-705: La nuova e la vecchia password non possono essere uguali.
+err-802: Ci dispiace, questa caratteristica non è disponibile.!
+err-810: Ci dispiace, non si possono aggiungere più %s dashlet alla bacheca.
+err-811: Ci dispiace, non si possono creare più di %s bacheche.
+err-815: Ci dispiace, non si possono creare più %s diagrammi.
+err-816: Ci dispiace, non si possono più aggiungere di %s metriche ad un diagramma.
+err-817: Ci dispiace, non si possono creare più di %s viste per diagrammi.
+err-821: Ci dispiace, non si possono creare più di %s fuori servizi per host.
+err-823: Ci dispiace, non si possono creare più di %s fuori servizio di host per l'host con id %s!
 err-825: Sorry, but you cannot create more than %s host templates!
 err-826: Sorry, but you cannot create more than %s services per template!
 err-827: Sorry, but you cannot create more than %s services for template id %s!
