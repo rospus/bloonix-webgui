@@ -125,56 +125,56 @@ err-845: Ci dispiace, non si possono creare più %s gruppi.
 err-846: Ci dispiace, non si possono creare più %s utenti.
 err-847: Ci dispiace, non si possono creare più %s dipendenze per singolo host.
 
-action.action: Action
-action.create: Create
-action.update: Update
-action.settings: Settings
-action.view: View
-action.overview: Overview
-action.edit: Edit
-action.delete: Delete
-action.submit: Submit
-action.cancel: Cancel
-action.clear: Clear
-action.close: Close
-action.abort: Abort
-action.clone: Clone
-action.reload: Reload
-action.resize: Resize
-action.list: List
-action.login: Login
-action.logout: Logout
-action.move_box: Move the box
-action.genstr: Generate string
-action.schedule: Schedule
-action.members: List members
-action.timeslices: List timeslices
-action.add: Add
-action.remove: Remove
-action.generate: Generate
-action.help: Help
-action.search: Search
-action.quicksearch: Quick search
-action.extsearch: Extended search
-action.filter: Filter
-action.refresh: Refresh
-action.replace: Replace
-action.configure: Configure
-action.yes_delete: <b>Yes, delete!</b>
-action.yes_remove: <b>Yes, remove!</b>
-action.no_abort: <b>No, abort!</b>
-action.show_selected_objects: Show selected objects
-action.display_from_to_rows: Displaying <b>%s</b>-<b>%s</b> of <b>%s</b> hits
-action.view_selected_objects: View selected objects
-action.select: Select
-action.unselect: Unselect
-action.operate_as: Operate as
-action.generate_string: Generate a random string
-action.redirect: Redirect
-action.save: Save
+action.action: Azione
+action.create: Crea
+action.update: Aggiorna
+action.settings: Impostazioni
+action.view: Vista
+action.overview: Panoramica
+action.edit: Modifica
+action.delete: Cancella
+action.submit: Invia
+action.cancel: Annulla
+action.clear: Pulisci
+action.close: Chiudi
+action.abort: Abbandona
+action.clone: Clona
+action.reload: Ricarica
+action.resize: Ridimensiona
+action.list: Elenca
+action.login: Accedi
+action.logout: Esci
+action.move_box: Muovi il riquadro
+action.genstr: Genera stringa
+action.schedule: Orario
+action.members: Elenca membri
+action.timeslices: Elenca periodi temporali
+action.add: Aggiungi
+action.remove: Rimuovi
+action.generate: Genera
+action.help: Aiuto
+action.search: Cerca
+action.quicksearch: Ricerca veloce
+action.extsearch: Ricerca estesa
+action.filter: Filtra
+action.refresh: ricarica
+action.replace: Sostituisci
+action.configure: Configura
+action.yes_delete: <b>Si, elimina.</b>
+action.yes_remove: <b>Si, rimuovi.</b>
+action.no_abort: <b>No, abbandona.</b>
+action.show_selected_objects: Mostra gli ogetti selezionati
+action.display_from_to_rows: Visualizzate <b>%s</b>-<b>%s</b> su <b>%s</b> risposte
+action.view_selected_objects: Visualizza gli oggetti selezionati
+action.select: Seleziona
+action.unselect: Deseleziona
+action.operate_as: Opera come
+action.generate_string: Generate una stringa casuale
+action.redirect: Reindirizza
+action.save: Salva
 
 bool.yesno.0: no
-bool.yesno.1: yes
+bool.yesno.1: si
 
 info.no_chart_data: There are no chart data available.
 info.go-back: Go back
