@@ -110,20 +110,20 @@ err-816: Ci dispiace, non si possono più aggiungere di %s metriche ad un diagra
 err-817: Ci dispiace, non si possono creare più di %s viste per diagrammi.
 err-821: Ci dispiace, non si possono creare più di %s fuori servizi per host.
 err-823: Ci dispiace, non si possono creare più di %s fuori servizio di host per l'host con id %s!
-err-825: Sorry, but you cannot create more than %s host templates!
-err-826: Sorry, but you cannot create more than %s services per template!
-err-827: Sorry, but you cannot create more than %s services for template id %s!
-err-831: Sorry, but you cannot create more than %s hosts!
-err-832: Sorry, but you cannot create more than %s services!
-err-833: Sorry, but you cannot create more than %s services per host!
-err-834: Sorry, but you cannot create more than %s services for host id %s!
-err-835: Sorry, but you cannot create more than %s contacts!
-err-836: Sorry, but you cannot create more than %s contact groups!
-err-840: Sorry, but you cannot create more than %s timeperiods!
-err-841: Sorry, but you cannot create more than %s timeslices per object!
-err-845: Sorry, but you cannot create more than %s groups!
-err-846: Sorry, but you cannot create more than %s users!
-err-847: Sorry, but you cannot create more than %s dependencies per host!
+err-825: Ci dispiace, non si possono creare più %s template per host.
+err-826: Ci dispiace, non si possono creare più %s servizi per template.
+err-827: Ci dispiace, non si possono creare più %s servizi per il template id %s.
+err-831: Ci dispiace, non si possono creare più %s host.
+err-832: Ci dispiace, non si possono creare più %s servizi.
+err-833: Ci dispiace, non si possono creare più %s servizi per singolo host.
+err-834: Ci dispiace, non si possono creare più %s serviizi per l'host id %s.
+err-835: Ci dispiace, non si possono creare più %s contatti.
+err-836: Ci dispiace, non si possono creare più %s gruppi di contatti.
+err-840: Ci dispiace, non si possono creare più %s periodi temporali.
+err-841: Ci dispiace, non si possono creare più %s periodi temporali per oggetto.
+err-845: Ci dispiace, non si possono creare più %s gruppi.
+err-846: Ci dispiace, non si possono creare più %s utenti.
+err-847: Ci dispiace, non si possono creare più %s dipendenze per singolo host.
 
 action.action: Action
 action.create: Create
