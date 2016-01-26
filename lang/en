@@ -93,13 +93,13 @@ err-620: This object already exists!
 err-630: Invalid parameter settings found!
 err-631: The parameter offset must be an numeric value, min 0.
 err-632: The parameter limit must be an numeric value, min 0, max <b>%s</b>.
-err-633: The parameter sort_by must begin with a character of a-z and only characters from a-z, 0-9 and a underscore are allowed. The maximum length is 63 characters.
+err-633: The parameter sort_by must begin with a character of a-z and only characters from a-z, 0-9 and an underscore are allowed. The maximum length is 63 characters.
 err-634: For the parameter sort_type only "asc" or "desc" is allowed as value.
 err-640: No data available!
 err-700: Please change your password!
 err-701: Incorrect password!
-err-702: The new password is to long (max 128 signs)!
-err-703: The new password is to short (min 8 signs)!
+err-702: The new password is too long (max 128 signs)!
+err-703: The new password is too short (min 8 signs)!
 err-704: The passwords doesn't match!
 err-705: The new and the old password cannot be the same!
 err-802: Sorry, but this feature is not available!
