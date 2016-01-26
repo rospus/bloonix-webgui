@@ -194,12 +194,12 @@ info.extended_search_syntax_for_hosts: <p>È possibile filtrare l'elenco degli h
  <p>La chiave è il campo della tabella dove ricercare il valore.</p>
  <p>Esempi di ricerca:</p>
  <p>- Ricerca host aventi stato CRITICO o IGNOTO</p>
- <pre>status:CRITICO OR status:IGNOTO</pre>
- <p>- Ricerca host in datacenter 12 con status CRITICO</p>
- <pre>location:"Datacenter 12" AND status:CRITICO</pre>
+ <pre>stato:CRITICO OR stato:IGNOTO</pre>
+ <p>- Ricerca host in datacenter 12 con stato CRITICO</p>
+ <pre>ubicazione:"Datacenter 12" AND stato:CRITICO</pre>
  <p>Le seguenti chiavi sono disponibili per ricerche in campi specifici:</p>
 info.move_with_mouse: Premi e mantieni premuto il pulsante sinistro del mouse per spostare il riquadro in giro./p>
-info.new_version: <h4>Una nuova versione è disponibile</h4>
+info.new_version: <h4>Disponibile una nuova versione</h4>
  <p>Una nuova versione di Bloonix-WebGUI è disponibile.</p>
  <p>Si prega di ricaricare il sito.</p>
 info.hosts_ready_for_registration: Host pronti per esere registrati
