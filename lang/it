@@ -176,33 +176,33 @@ action.save: Salva
 bool.yesno.0: no
 bool.yesno.1: si
 
-info.no_chart_data: There are no chart data available.
-info.go-back: Go back
-info.this-year: This year
-info.last-year: Last year
-info.add-further-options: Add further options
-info.update_success: The update was successful!
-info.update_failed: The update was not successful!
-info.create_success: The creation was successful!
-info.create_failed: The creation was not successful!
-info.search_syntax: <p><b>Search syntax:</b></p>
- <p>planet <i>AND</i> mars</p>
- <p>mars <i>OR</i> pluto</p>
- <p>planet <i>AND</i> mars <i>OR</i> pluto</p>
-info.extended_search_syntax_for_hosts: <p>It's possible to filter the host list by a search query. The syntax is very simple and looks like:</p>
- <pre>key:value</pre>
- <p>The key is the table field to search for the value.</p>
- <p>Search examples:</p>
- <p>- Search for hosts in status CRITICAL or UNKNOWN</p>
- <pre>status:CRITICAL OR status:UNKNOWN</pre>
- <p>- Search for hosts in datacenter 12 with status CRITICAL</p>
- <pre>location:"Datacenter 12" AND status:CRITICAL</pre>
- <p>The following keys are available to search for specific fields:</p>
-info.move_with_mouse: Press and hold down the left mouse button while you move the box up or down.</p>
-info.new_version: <h4>A new version is available</h4>
- <p>A new version of the Bloonix-WebGUI is available!</p>
- <p>Please reload the website!</p>
-info.hosts_ready_for_registration: Hosts ready for registration
+info.no_chart_data: Non sono disponibili dati per diagrammi.
+info.go-back: Torna indietro
+info.this-year: Quest'anno
+info.last-year: L'anno scorso
+info.add-further-options: Aggiungi ulteriori opzioni
+info.update_success: L'aggiornamento è andato a buon fine.
+info.update_failed: L'aggiornamento non è andato a buon fine.
+info.create_success: La creazione ha avuto successo.
+info.create_failed: La creazione non ha avuto successo.
+info.search_syntax: <p><bCerca sintassi:</b></p>
+ <p>pianeta <i>AND</i> marte</p>
+ <p>marte <i>OR</i> plutone</p>
+ <p>pianeta <i>AND</i> marte <i>OR</i> plutone</p>
+info.extended_search_syntax_for_hosts: <p>È possibile filtrare l'elenco degli host tramite un'interrogazione di ricerca. La sintassi è molto semplice:</p>
+ <pre>chiave:valore</pre>
+ <p>La chiave è il campo della tabella dove ricercare il valore.</p>
+ <p>Esempi di ricerca:</p>
+ <p>- Ricerca host aventi stato CRITICO o IGNOTO</p>
+ <pre>status:CRITICO OR status:IGNOTO</pre>
+ <p>- Ricerca host in datacenter 12 con status CRITICO</p>
+ <pre>location:"Datacenter 12" AND status:CRITICO</pre>
+ <p>Le seguenti chiavi sono disponibili per ricerche in campi specifici:</p>
+info.move_with_mouse: Premi e mantieni premuto il pulsante sinistro del mouse per spostare il riquadro in giro./p>
+info.new_version: <h4>Una nuova versione è disponibile</h4>
+ <p>Una nuova versione di Bloonix-WebGUI è disponibile.</p>
+ <p>Si prega di ricaricare il sito.</p>
+info.hosts_ready_for_registration: Host pronti per esere registrati
 
 text.dashlet_width: Dashlet width
 text.dashlet_height: Dashlet height
