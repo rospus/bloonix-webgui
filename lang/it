@@ -204,46 +204,46 @@ info.new_version: <h4>Una nuova versione è disponibile</h4>
  <p>Si prega di ricaricare il sito.</p>
 info.hosts_ready_for_registration: Host pronti per esere registrati
 
-text.dashlet_width: Dashlet width
-text.dashlet_height: Dashlet height
-text.show_legend: Show legend
-text.change_nav_to_horizontal: Move navigation to the top
-text.change_nav_to_vertical: Move navigation to the left
-text.radial_graph: Radial graph
+text.dashlet_width: Larghezza dashlet
+text.dashlet_height: Altezza dashlet
+text.show_legend: Mostra legenda
+text.change_nav_to_horizontal: Sposta navigazione in alto
+text.change_nav_to_vertical: Sposta navigazione a sinistra
+text.radial_graph: Diagramma radiale
 text.hypertree: Hypertree
 text.plugin: Plugin
-text.command: Command
-text.selected_objects: Selected objects
-text.min_length: Min length: <b>%s</b>
-text.max_length: Max length: <b>%s</b>
-text.min_value: Min value: <b>%s</b>
-text.max_value: Max value: <b>%s</b>
-text.range_value: Range: %s - %s
-text.unlimited: Unlimited
-text.undefined: Undefined
-text.inherited_from_host: Inherited from the host
-text.never: Never
-text.click_me: Click me
-text.click_to_delete_seletion: Click to delete the selection
-text.browsers_heap_size: Display of the heap size in your browser
-text.selected_locations_counter: You have <b>%s</b> checkpoints selected.
-text.selected_locations_costs: Please note that each checkpoint will be charged extra.
-text.sort_by_dots: Sort by ...
-text.filter_by_category_dots: Filter by category ...
-text.option_examples: Option examples
-text.services: services
-text.thresholds: Thresholds
-text.plugin_info: Plugin information
-text.chart_info: Chart information
-text.fixed_checkpoint: Fixed checkpoint
-text.first_failover_checkpoint: First failover checkpoint
-text.second_failover_checkpoint: Second failover checkpoint
-text.change_your_password: Change your password
+text.command: Comando
+text.selected_objects: Oggetti selezionati
+text.min_length: Lunghezza minima: <b>%s</b>
+text.max_length: Lunghezza massima: <b>%s</b>
+text.min_value: Valore minimo: <b>%s</b>
+text.max_value: Valore massimo: <b>%s</b>
+text.range_value: Estensione: %s - %s
+text.unlimited: Illimitato
+text.undefined: Indefinito
+text.inherited_from_host: Ereditato dall'host
+text.never: Mai
+text.click_me: Cliccami
+text.click_to_delete_seletion: Cliccare per eliminare la selezione
+text.browsers_heap_size: Mostra dimensione dell'heap nel tuo browser
+text.selected_locations_counter: Hai <b>%s</b> punti di controllo selezionati.
+text.selected_locations_costs: Si prega di notare che ogni punto di controllo verrà addebitato ulteriormente.
+text.sort_by_dots: Ordina per...
+text.filter_by_category_dots: Filtra per categoria...
+text.option_examples: Esempi di opzione
+text.services: servizi
+text.thresholds: Limiti
+text.plugin_info: Informazione plugin
+text.chart_info: Informazione diagramma
+text.fixed_checkpoint: Punto di controllo fisso
+text.first_failover_checkpoint: Primo punto di controllo failover
+text.second_failover_checkpoint: Secondo punto di controllo failover
+text.change_your_password: Cambia la tua password
 text.change_the_language: Cambia la lingua
-text.please_select_objects: Si prega di selezionare almeno un'oggetto.
-text.default: Default
-text.satellite_hostname: Satellite hostname: %s
-text.target_ip: Target IP address: %s
+text.please_select_objects: Si prega di selezionare almeno un oggetto.
+text.default: Predefinito
+text.satellite_hostname: Nomehost Satellite: %s
+text.target_ip: Indirizzo IP obiettivo: %s
 text.from_now_to_1h: Da adesso + 1 ora
 text.from_now_to_2h: Da adesso + 2 ore
 text.from_now_to_4h: Da adesso + 4 ore
@@ -302,11 +302,11 @@ text.report.availability.lt180: Between 1 and 3 hours
 text.report.availability.lt300: Between 3 and 5 hours
 text.report.availability.ge300: Longer than 3 hours
 text.report.availability.flapping: Flapping
-text.report.availability.volatile: Volatile
+text.report.availability.volatile: Instailità
 text.report.availability.timeout: Timeout
-text.report.availability.agent_dead: Agent dead
-text.report.availability.security: Security issue
-text.report.availability.fatal: Fatal issue
+text.report.availability.agent_dead: Agente morto
+text.report.availability.security: Problema di sicurezza
+text.report.availability.fatal: Problema fatale
 text.report.availability.h00: 00:00 - 00:59
 text.report.availability.h01: 01:00 - 01:59
 text.report.availability.h02: 02:00 - 02:59
@@ -331,53 +331,53 @@ text.report.availability.h20: 20:00 - 20:59
 text.report.availability.h21: 21:00 - 21:59
 text.report.availability.h22: 22:00 - 22:59
 text.report.availability.h23: 23:00 - 23:59
-text.dashboard.title: Dashboard
-text.dashboard.choose_content_box: Select a dashlet
-text.dashboard.replace_dashlet: Replace the dashlet
-text.dashboard.remove_dashlet: Remove the dashlet
-text.dashboard.hosts_availability: Availability of all hosts
-text.dashboard.dashlet_configuration: Dashlet configuration
-text.dashboard.dashlet_select_chart_title: Select a chart for the dashlet.
-text.dashboard.dashlet_select_chart: Select a chart
-text.dashboard.reconfigure_dashlet: Configure dashlet
-text.dashboard.services_availability: Availability of all services
-text.dashboard.services_notification: Notification status of all services
+text.dashboard.title: Bacheca
+text.dashboard.choose_content_box: Seleziona una dashlet
+text.dashboard.replace_dashlet: Sostituisci la dashlet
+text.dashboard.remove_dashlet: Rimuovi la dashlet
+text.dashboard.hosts_availability: Disponibilità di tutti gli host
+text.dashboard.dashlet_configuration: Configurazione dashlet
+text.dashboard.dashlet_select_chart_title: Seleziona un diagramma per la dashlet.
+text.dashboard.dashlet_select_chart: Seleziona un diagramma
+text.dashboard.reconfigure_dashlet: Configura dashlet
+text.dashboard.services_availability: Disponibilità di tutti i servizi
+text.dashboard.services_notification: Stato di notifica di tutti i servizi
 text.dashboard.services_flapping: Flapping
-text.dashboard.services_downtimes: Downtimes
-text.dashboard.services_acknowledged: Acknowledged
-text.dashboard.num_services_flapping: %s services are flapping
-text.dashboard.num_services_downtime: %s services with downtime
-text.dashboard.num_services_acknowledged: %s services are acknowledged
-text.dashboard.one_service_flapping: %s service is flapping
-text.dashboard.one_service_downtime: %s service with downtime
-text.dashboard.one_service_acknowledged: %s service status is acknowledged
-text.dashboard.map_title: Global host status map
-text.dashboard.double_click_or_mouse_wheel_to_zoom: Double click or use the mouse wheel to zoom in and out.
-text.dashboard.use_mouse_wheel_to_zoom: Use the mouse wheel to zoom in and out.
-text.dashboard.list_top_hosts: Overview of the top hosts
-text.dashboard.list_top_services: Overview of the top services
-text.dashboard.top_hosts_events: Top events of all hosts
-text.dashboard.service_chart: Service chart
-text.dashboard.user_chart: Self created chart
-text.dashboard.add_new_dashlet: Add a new dashlet
-text.dashboard.save_dashboard: Save dashboard
-text.dashboard.open_dashboard: Open a dashboard
-text.dashboard.create_dashboard: Create an empty dashboard
-text.dashboard.delete_dashboard: Delete the dashboard
-text.dashboard.rename_dashboard: Rename the dashboard
-text.dashboard.clone_dashboard: Clone the dashboard
-text.dashboard.really_delete_dashboard: Do you really want to delete the dashboard %s?
-text.dashboard.default_dashboard_cannot_deleted: The default dashboard cannot be deleted!
-text.dashboard.name: Name of the dashboard
-text.dashboard.data_format: In which format the data should be shown?
-text.dashboard.show_as_chart: Show as chart
-text.dashboard.show_as_text: Show as text
-text.allow_from_desc: The keyword <i>all</i> is equal to <i>0.0.0.0/0, ::/0</i> and means that the access is allowed from all IP addresses.
- Examples:
+text.dashboard.services_downtimes: Fuori servizio
+text.dashboard.services_acknowledged: Riconosciuto
+text.dashboard.num_services_flapping: %s servizi sono in flapping
+text.dashboard.num_services_downtime: %s servizi con tempo d'inattività
+text.dashboard.num_services_acknowledged: %s servizi sono riconosciuti
+text.dashboard.one_service_flapping: %s servizio in flapping
+text.dashboard.one_service_downtime: %s servizio con tempo d'inattività
+text.dashboard.one_service_acknowledged: %s lo stato del servizio è riconosciuto
+text.dashboard.map_title: Mappa globale dello stato degli host
+text.dashboard.double_click_or_mouse_wheel_to_zoom: Fare doppio click o usare la rotella del mouse per ingrandire o rimpicciolire.
+text.dashboard.use_mouse_wheel_to_zoom: Usa la rotella del mouse per ingrandire o rimpicciolire.
+text.dashboard.list_top_hosts: Panoramica degli host principali
+text.dashboard.list_top_services: Panoramica dei servizi principali
+text.dashboard.top_hosts_events: Eventi principali di tutti gli host
+text.dashboard.service_chart: Diagramma servizi
+text.dashboard.user_chart: Diagramma autocreato
+text.dashboard.add_new_dashlet: Aggiungi nuova dashlet
+text.dashboard.save_dashboard: Salva bacheca
+text.dashboard.open_dashboard: Apri una bacheca
+text.dashboard.create_dashboard: Crea una bacheca vuota
+text.dashboard.delete_dashboard: Elimina la bacheca
+text.dashboard.rename_dashboard: Rinomina la bacheca
+text.dashboard.clone_dashboard: Clona la bacheca
+text.dashboard.really_delete_dashboard: Vuoi veramente eliminare la bacheca %s?
+text.dashboard.default_dashboard_cannot_deleted: La bacheca predefinita non può essere eliminata.
+text.dashboard.name: Nome della bacheca
+text.dashboard.data_format: Con quale formato visualizzare i dati?
+text.dashboard.show_as_chart: Visualizza come diagramma
+text.dashboard.show_as_text: Visualizza come testo
+text.allow_from_desc: La parola chiave <i>all</i> è uguale a <i>0.0.0.0/0, ::/0</i> e significa che l'accesso è permesso da tutti gli indirizzi IP.
+ Esempi:
  <br/><br/>192.168.10.0/24, 192.168.14.10/32
- <br/><br/>Note that prepend zeros are not allowed:
- <br/><br/><i>010.005.008.001</i> or <i>0001::0001</i> is not allowed
- <br/><i>10.5.8.1</i> or <i>1::1</i> is allowed
+ <br/><br/>Notare che non è permesso anteporre degli zero:
+ <br/><br/><i>010.005.008.001</i> o <i>0001::0001</i> non sono permessi
+ <br/><i>10.5.8.1</i> o <i>1::1</i> sono permessi
 
 site.login.welcome: Welcome to Bloonix! Please log in.
 site.login.title: Login to the monitoring system
