@@ -16,7 +16,7 @@ word.Filter: Filtro
 word.inactive: inattivo
 word.active: attivo
 word.Timezone: Fuso orario
-word.Timeslice: Intervallo
+word.Timeslice: Intervallo di tempo
 word.Type: Tipo
 word.Days: Giorni
 word.days: giorni
@@ -148,7 +148,7 @@ action.move_box: Muovi il riquadro
 action.genstr: Genera stringa
 action.schedule: Orario
 action.members: Elenca membri
-action.timeslices: Elenca periodi temporali
+action.timeslices: Elenca intervalli di tempo
 action.add: Aggiungi
 action.remove: Rimuovi
 action.generate: Genera
@@ -437,67 +437,67 @@ schema.company.attr.country: Nazione
 schema.company.attr.phone: Telefono
 schema.company.attr.fax: Fax
 schema.company.attr.email: Email
-schema.company.attr.max_templates: Massimo template
-schema.company.attr.max_hosts: Massimo host
-schema.company.attr.max_services: Massimo servizi
-schema.company.attr.max_services_per_host: Massimo servizi per host
-schema.company.attr.max_contacts: Massimo contatti
-schema.company.attr.max_contactgroups: Massimo gruppicontatti
-schema.company.attr.max_timeperiods: Massimo periodi di tempo
-schema.company.attr.max_timeslices_per_object: Massimo timeslices
-schema.company.attr.max_groups: Massimo groups
-schema.company.attr.max_users: Massimo users
-schema.company.attr.max_dependencies_per_host: Massimo dependencies per host
-schema.company.attr.max_downtimes_per_host: Massimo downtimes per host
-schema.company.attr.max_chart_views_per_user: Massimo chart views per user
-schema.company.attr.max_charts_per_user: Massimo charts per user
-schema.company.attr.max_metrics_per_chart: Massimo metrics per chart
-schema.company.attr.max_dashboards_per_user: Massimo dashboards per user
-schema.company.attr.max_dashlets_per_dashboard: Massimo dashlets per dashboard
-schema.company.attr.max_sms: Massimo SMS
-schema.company.attr.max_hosts_in_reg_queue: Massimo hosts in queue for registration
-schema.company.attr.host_reg_authkey: Authkey for host registrations
-schema.company.attr.host_reg_enabled: Host registrations enabled
-schema.company.attr.host_reg_allow_from: Allow host registrations from
-schema.company.attr.data_retention: Data retention
-schema.company.attr.sms_enabled: SMS notifications enabled
-schema.company.attr.active: Active
-schema.company.attr.comment: Comment
+schema.company.attr.max_templates: Numero massimo template
+schema.company.attr.max_hosts: Numero massimo host
+schema.company.attr.max_services: Numero massimo servizi
+schema.company.attr.max_services_per_host: Numero massimo servizi per host
+schema.company.attr.max_contacts: Numero massimo contatti
+schema.company.attr.max_contactgroups: Numero massimo gruppicontatti
+schema.company.attr.max_timeperiods: Numero massimo periodi di tempo
+schema.company.attr.max_timeslices_per_object: Numero massimo intervalli di tempo
+schema.company.attr.max_groups: Numero massimo gruppi
+schema.company.attr.max_users: Numero massimo utenti
+schema.company.attr.max_dependencies_per_host: Numero massimo dipendenze per host
+schema.company.attr.max_downtimes_per_host: Numero massimo fuori servizio per host
+schema.company.attr.max_chart_views_per_user: Numero massimo viste diagramma per utente
+schema.company.attr.max_charts_per_user: Numero massimo diagrammi per utente
+schema.company.attr.max_metrics_per_chart: Numero massimo metriche per diagramma
+schema.company.attr.max_dashboards_per_user: Numero massimo bacheche per utente
+schema.company.attr.max_dashlets_per_dashboard: Numero massimo dashlet per bacheca
+schema.company.attr.max_sms: Numero massimo SMS
+schema.company.attr.max_hosts_in_reg_queue: Numero massimo di hosts in coda per la registrazione
+schema.company.attr.host_reg_authkey: Authkey perla registrazione dell'host
+schema.company.attr.host_reg_enabled: Registrazione host abilitata
+schema.company.attr.host_reg_allow_from: Permetti la registrazione di host da
+schema.company.attr.data_retention: Conservazione dati
+schema.company.attr.sms_enabled: Notifiche SMS abilitate
+schema.company.attr.active: Attivo
+schema.company.attr.comment: Commento
 schema.company.attr.sla: SLA
-schema.company.attr.variables: Global variables
-schema.company.desc.variables: In this field you can define global variables for all hosts. These variables can be used for thresholds by the configuration of service checks. Example:<br/><br/>HTTP.PORT=9000<br/><br/>This variable could be used in the format <i>%HTTP.PORT%</i> for thresholds. Please note that two variables are pre-defined: <i>IPADDR</i> and <i>HOSTNAME</i>. These variables are replaced with the IP address and the hostname of the host. For further information read the help.<br/><br/>Allowed signs: a-z, A-Z, 0-9, dot and underscore
-schema.company.desc.active: Activate or de-activate all objects of the company.
-schema.company.desc.max_templates: The maximum number of template that can be created.
-schema.company.desc.max_hosts: The maximum number of hosts that can be created. Set 0 (null) if unlimited.
-schema.company.desc.max_services: The maximum number of services that can be created. Set 0 (null) if unlimited.
-schema.company.desc.max_services_per_host: The maximum number of services that can be created for a host.
-schema.company.desc.max_contacts: The maximum number of contacts that can be created.
-schema.company.desc.max_contactgroups: The maximum number of contactgroups that can be created.
-schema.company.desc.max_timeperiods: The maximum number of timeperiods that can be created.
-schema.company.desc.max_timeslices_per_object: The maximum number of timeslices that can be created for a timeperiod.
-schema.company.desc.max_groups: The maximum number of groups that can be created.
-schema.company.desc.max_users: The maximum number of users that can be created.
-schema.company.desc.max_dependencies_per_host: The maximum number of dependencies that can be create for a host.
-schema.company.desc.max_downtimes_per_host: The maximum number of downtimes that can be created for a host.
-schema.company.desc.max_chart_views_per_user: The maximum number of chart views that can be created by a user.
-schema.company.desc.max_charts_per_user: The maximum number of user-charts that can be created by a user.
-schema.company.desc.max_metrics_per_chart: The maximum number of metrics per user-chart.
-schema.company.desc.max_dashboards_per_user: The maximum number of dashboards that can be created by a user.
-schema.company.desc.max_dashlets_per_dashboard: The maximum number of dashlets that can be added to a dashboard.
-schema.company.desc.max_sms: The maximum number of SMS that can be sent per month. Set 0 (null) if unlimited.
-schema.company.desc.max_hosts_in_reg_queue: The maximum number of hosts that are allowed to wait in the queue for for registration.
-schema.company.desc.host_reg_authkey: This key can be used in combination with the company ID to register new hosts.
-schema.company.desc.host_reg_enabled: With this option it's possible to enable or disable the host registration feature.
-schema.company.desc.host_reg_allow_from: Enter a comma separated list of IPs or networks from which a host registration is allowed.
-schema.company.desc.data_retention: The retention in days of all data of hosts and services. If a host has a higher data retention configured then the data retention of the company is used.
-schema.company.text.edit_variables: Global variables
-schema.company.text.list: Overview of all companies
-schema.company.text.create: Create a new company
-schema.company.text.delete: Delete company
-schema.company.text.settings: Company settings
-schema.company.text.view: Company %s
-schema.company.text.data_retention_info: Your account is limited to %s days.
-schema.company.text.simulate_as: Simulate company
+schema.company.attr.variables: Variabili globali
+schema.company.desc.variables: In questo campo puoi definire variabili globali per tutti gli host. Queste variabili possono venir usate come soglie per i controlli dei servizi. Per esempio: <br/><br/>HTTP.PORT=9000<br/><br/>Questa variabile può venir usata nel formato <i>%HTTP.PORT%</i> per le soglie. Si prega di notare che due variabili sono predefinite: <i>IPADDR</i> e <i>HOSTNAME</i>. Queste variabili sono sostituite dall'indirizzo IP e hostname dell'host. Per maggiori informazioni consultare l'aiuto. <br/><br/>Caratteri ammessi: a-z, A-Z, 0-9, punti e trattini bassi
+schema.company.desc.active: Attiva o disattiva tutti gli oggetti dell'azienda.
+schema.company.desc.max_templates: Numero massimo di template che si possono creare.
+schema.company.desc.max_hosts: Numero massimo di host che si possono creare. Immettere 0 (null) se illimitati.
+schema.company.desc.max_services: Numero massimo di servizi che si possono creare. Immettere 0 (null) se illimitati.
+schema.company.desc.max_services_per_host: Numero massimo di servizi che si possono creare per host.
+schema.company.desc.max_contacts: Numero massimo di contatti che si possono creare.
+schema.company.desc.max_contactgroups: Numero massimo di gruppicontatti che si possono creare.
+schema.company.desc.max_timeperiods: Numero massimo di periodi di tempo che si possono creare
+schema.company.desc.max_timeslices_per_object: Numero massimo di intervalli che si possono creare per periodo di tempo.
+schema.company.desc.max_groups: Numero massimo di gruppi che si possono creare.
+schema.company.desc.max_users: Numero massimo di utenti che si possono creare.
+schema.company.desc.max_dependencies_per_host: Numero massimo di dipendenze che si possono creare per host.
+schema.company.desc.max_downtimes_per_host: Numero massimo di fuori servizio che si possono creare per host.
+schema.company.desc.max_chart_views_per_user: Numero massimo di viste diagramma che si possono creare per utente.
+schema.company.desc.max_charts_per_user: Numero massimo di diagrammi-utente che si possono creare per utente.
+schema.company.desc.max_metrics_per_chart: Numero massimo di metriche che si possono creare per diagramma-utente.
+schema.company.desc.max_dashboards_per_user: Numero massimo di bacheche che si possono creare per utente.
+schema.company.desc.max_dashlets_per_dashboard: Numero massimo di dashlet che si possono aggiungere ad una bacheca.
+schema.company.desc.max_sms: Numero massimo di SMS che si possono inviare al mese. Immettere 0 (null) se illimitati.
+schema.company.desc.max_hosts_in_reg_queue: Numero massimo di host in attesa permessi nella coda per la registrazione.
+schema.company.desc.host_reg_authkey: Questa chiave può venir usata in combinazione con l'ID dell'azienda per registrare nuovi host.
+schema.company.desc.host_reg_enabled: Con questa opzione è possibile abilitare o disabilitare la funzionalità di registrazione host.
+schema.company.desc.host_reg_allow_from: Inserire una lista di IP o network separati da virgole da cui è permessa la registrazione di un host.
+schema.company.desc.data_retention: Conservazione in giorni dei dati di tutti gli host e servizi. Se un host ha una conservazione di dati troppo alta, verrà usata quella impostata per l'azienda.
+schema.company.text.edit_variables: Variabili globali
+schema.company.text.list: Panoramica di tutte le aziende
+schema.company.text.create: Crea una nuova azienda
+schema.company.text.delete: Elimina azienda
+schema.company.text.settings: Impostazioni azienda
+schema.company.text.view: Azienda %s
+schema.company.text.data_retention_info: La durata del tuo account è limitata a %s giorni.
+schema.company.text.simulate_as: Simula un'azienda
 
 schema.user.attr.id: User ID
 schema.user.attr.username: Username
@@ -933,8 +933,8 @@ schema.dependency.text.workflow_from_service_status: Select the status of the se
 schema.dependency.text.workflow_to_host_status: Select the status of the parent host that avoids a notification
 schema.dependency.text.workflow_to_service_status: Select the status of the parent service that avoids a notification
 schema.dependency.text.workflow_inherit: Activate inheritation
-schema.dependency.text.workflow_timezone: Set the timezone for the timeslice
-schema.dependency.text.workflow_timeslice: Set the timeslice when the dependency is active
+schema.dependency.text.workflow_timezone: Imposta la timezone per l'intervallo di tempo
+schema.dependency.text.workflow_timeslice: Imposta l'intervallo di tempo per quando la dipendenza è attiva
 
 schema.event.attr.id: Event ID
 schema.event.attr.time: Timestamp
