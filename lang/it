@@ -499,47 +499,47 @@ schema.company.text.view: Azienda %s
 schema.company.text.data_retention_info: La durata del tuo account è limitata a %s giorni.
 schema.company.text.simulate_as: Simula un'azienda
 
-schema.user.attr.id: User ID
-schema.user.attr.username: Username
-schema.user.attr.name: Name
-schema.user.attr.phone: Phone
+schema.user.attr.id: ID utente
+schema.user.attr.username: Nomeutente
+schema.user.attr.name: Nome
+schema.user.attr.phone: Telefono
 schema.user.attr.timezone: Timezone
-schema.user.attr.authentication_key: Authentication key
+schema.user.attr.authentication_key: Chiave d'autenticazione
 schema.user.attr.password: Password
-schema.user.attr.password_changed: Password changed?
-schema.user.attr.manage_contacts: Manage contacts?
-schema.user.attr.manage_templates: Manage templates?
-schema.user.attr.last_login: Last login
-schema.user.attr.locked: Locked
-schema.user.attr.role: Role
-schema.user.attr.comment: Comment
-schema.user.attr.allow_from: Allow from
-schema.user.desc.company: Select the company the user belongs to.
-schema.user.desc.username: Enter the username in the format <i>user@domain.test</i>.
-schema.user.desc.name: This is the users full name.
-schema.user.desc.phone: The phone number can be very helpful for colleagues or the Bloonix support in emergency situations.
-schema.user.desc.timezone: Select the timezone of the user.
-schema.user.desc.authentication_key: With this key it's possible to visit the notification screen without password authentification. The query string to visit the notification screen looks like<br/><br/><b>/screen/?username=XXX;authkey=XXX</b>
-schema.user.desc.password: Enter the users login password.
-schema.user.desc.password_changed: Set the value to <i>no</i> if you want to force the user to change the password after the first login.
-schema.user.desc.manage_contacts: Is the user allowed to manage contacts?
-schema.user.desc.manage_templates: Is the user allowed to manage host templates?
-schema.user.desc.locked: Lock or unlock the user. Locked users cannot login to the monitoring interface.
-schema.user.desc.role: Which role does the user have? Users with the role <i>operator</i> are power users and can manage user accounts and user groups. Users with the role <i>user</i> are not allowed to manage other users and groups.
-schema.user.desc.comment: This field can be used for internal comment about the user.
+schema.user.attr.password_changed: Cambiare la password?
+schema.user.attr.manage_contacts: Gestire i contatti?
+schema.user.attr.manage_templates: Gestire i template?
+schema.user.attr.last_login: Ultimo accesso
+schema.user.attr.locked: Bloccato
+schema.user.attr.role: Ruolo
+schema.user.attr.comment: Commento
+schema.user.attr.allow_from: Permetti da
+schema.user.desc.company: Selezionare l'azienda a cui appartiene l'utente.
+schema.user.desc.username: Inserire il nomeutente nella forma <i>utente@dominio.test</i>.
+schema.user.desc.name: Questo è il nome completo dell'utente.
+schema.user.desc.phone: Il numero di telefono può essere di notevole aiuto in caso di emergenza per i colleghi del supporto di Bloonix.
+schema.user.desc.timezone: Seleziona la timezone dell'utente.
+schema.user.desc.authentication_key: Con questa chiave è possibile visitare la schermata delle notifiche senza autenticazione con password. La stringa d'interrogazione per visitare la schermata delle notifiche assomiglia a <br/><br/><b>/screen/?nomeutente=XXX;authkey=XXX</b>
+schema.user.desc.password: Inserire la password d'accesso dell'utente.
+schema.user.desc.password_changed: Imposta il valore a <i>no</i> se vuoi forzare l'utente a cambiare la password al primo accesso.
+schema.user.desc.manage_contacts: L'utente è abilitato a gestire i contatti?
+schema.user.desc.manage_templates: L'utente è abilitato a gestire i template per host?
+schema.user.desc.locked: Blocca o sblocca l'utente. Gli utenti bloccati non possono accedere all'interfaccia di monitoraggio.
+schema.user.desc.role: Qual'é il ruolo dell'utente? Gli utenti con il ruolo <i>operatore</i> sono utenti avanzati che possono gestire sia gli account utente che i gruppi di utenti. Gli utenti con il ruolo <i>utente</i> non sono autorizzati a gestire altri utenti o gruppi.
+schema.user.desc.comment: Questo campo può venir usato per inserire un commento riservato sull'utente.
 schema.user.desc.allow_from: It's possible to set a comma separated list of ip addresses from which the user is restricted to login. With the keyword <i>all</i> the login has no restriction.
-schema.user.text.list: Overview of all users
-schema.user.text.create: Create a new user
-schema.user.text.delete: Delete user
-schema.user.text.view: User %s
-schema.user.text.password_update: Please enter a new password.
-schema.user.text.current_password: Current password
-schema.user.text.new_password: New password
-schema.user.text.repeat_password: Repeat the new password
+schema.user.text.list: Panoramica di tutti gli utenti
+schema.user.text.create: Crea nuovo utente
+schema.user.text.delete: Elimina utente
+schema.user.text.view: Utente %s
+schema.user.text.password_update: Per favore inserire una nuova password.
+schema.user.text.current_password: Password attuale
+schema.user.text.new_password: Nuova password
+schema.user.text.repeat_password: Ripetere la password
 schema.user.text.select_language: Seleziona la tua lingua preferita
 schema.user.desc.select_language: Si segnala che selezionando una lingua viene ricaricata l'interfaccia web e si viene reindirizzati alla Bacheca.
-schema.user.text.is_logged_in: Logged in
-schema.user.text.session_expires: Session expires
+schema.user.text.is_logged_in: Accesso effettuato
+schema.user.text.session_expires: La sessione scade
 
 schema.roster.attr.id: Roster ID
 schema.roster.attr.roster: Roster
