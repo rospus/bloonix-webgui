@@ -485,7 +485,7 @@ schema.company.desc.max_metrics_per_chart: The maximum number of metrics per use
 schema.company.desc.max_dashboards_per_user: The maximum number of dashboards that can be created by a user.
 schema.company.desc.max_dashlets_per_dashboard: The maximum number of dashlets that can be added to a dashboard.
 schema.company.desc.max_sms: The maximum number of SMS that can be sent per month. Set 0 (null) if unlimited.
-schema.company.desc.max_hosts_in_reg_queue: The maximum number of hosts that are allowed to wait in the queue for for registration.
+schema.company.desc.max_hosts_in_reg_queue: The maximum number of hosts that are allowed to wait in the queue for registration.
 schema.company.desc.host_reg_authkey: This key can be used in combination with the company ID to register new hosts.
 schema.company.desc.host_reg_enabled: With this option it's possible to enable or disable the host registration feature.
 schema.company.desc.host_reg_allow_from: Enter a comma separated list of IPs or networks from which a host registration is allowed.
@@ -516,7 +516,7 @@ schema.user.attr.comment: Comment
 schema.user.attr.allow_from: Allow from
 schema.user.desc.company: Select the company the user belongs to.
 schema.user.desc.username: Enter the username in the format <i>user@domain.test</i>.
-schema.user.desc.name: This is the users full name.
+schema.user.desc.name: This is the user full name.
 schema.user.desc.phone: The phone number can be very helpful for colleagues or the Bloonix support in emergency situations.
 schema.user.desc.timezone: Select the timezone of the user.
 schema.user.desc.authentication_key: With this key it's possible to visit the notification screen without password authentification. The query string to visit the notification screen looks like<br/><br/><b>/screen/?username=XXX;authkey=XXX</b>
