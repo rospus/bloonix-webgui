@@ -302,7 +302,7 @@ text.report.availability.lt180: Between 1 and 3 hours
 text.report.availability.lt300: Between 3 and 5 hours
 text.report.availability.ge300: Longer than 3 hours
 text.report.availability.flapping: Flapping
-text.report.availability.volatile: Instailità
+text.report.availability.volatile: Instabilità
 text.report.availability.timeout: Timeout
 text.report.availability.agent_dead: Agente morto
 text.report.availability.security: Problema di sicurezza
@@ -375,29 +375,29 @@ text.dashboard.show_as_text: Visualizza come testo
 text.allow_from_desc: La parola chiave <i>all</i> è uguale a <i>0.0.0.0/0, ::/0</i> e significa che l'accesso è permesso da tutti gli indirizzi IP.
  Esempi:
  <br/><br/>192.168.10.0/24, 192.168.14.10/32
- <br/><br/>Notare che non è permesso anteporre degli zero:
+ <br/><br/>Si segnala che non è permesso anteporre gli zero:
  <br/><br/><i>010.005.008.001</i> o <i>0001::0001</i> non sono permessi
  <br/><i>10.5.8.1</i> o <i>1::1</i> sono permessi
 
-site.login.welcome: Welcome to Bloonix! Please log in.
-site.login.title: Login to the monitoring system
+site.login.welcome: Benvenuto su Bloonix, si prega di accedere.
+site.login.title: Accedi al sistema di monitoraggio
 site.login.username: Email
 site.login.password: Password
-site.login.error: Bad login! Try it again!
-site.login.login: Please login with your username and password:
-site.login.forgot_password: Forgot your password?
-site.login.want_to_login: Do you want to login?
-site.login.request_password: Request a new password.
-site.login.forgot_password_info: Please note that the new password is not send
- automatically to your registered e-mail address. An administrator will check
- your request at first and contact you as soon as possible.
-site.login.request_success: Your request was successful.<br/>
- An administrator will contact you as soon as possible.
-site.login.request_failed: Your request was not successful. Please try it again.
-site.login.follow: Follow Bloonix
-site.login.sign_up: Sign up for a Bloonix account
-site.login.documentation: The Bloonix documentation
-site.login.contact: Do you have questions?
+site.login.error: Accesso errato, riprova.
+site.login.login: Accedi con il tuo nome utente e password:
+site.login.forgot_password: Scordata la password?
+site.login.want_to_login: Vuoi accedere?
+site.login.request_password: Richiedi una nuova password.
+site.login.forgot_password_info: Si prega di notare che la nuova password non verrà spedita
+ automaticamente alla propria casella registrata di email. Un amministratore verificherà
+ prima la richiesta e poi ti contatterà il prima possibile.
+site.login.request_success: La tua richiesta è stata presa in carico.<br/>
+ Un amministratore ti contatterà il prima possibile.
+site.login.request_failed: La tua richiesta non ha avuto esito positivo. Si prega di riprovare.
+site.login.follow: Segui Bloonix
+site.login.sign_up: Registrati per un account Bloonix
+site.login.documentation: Documentazione per Bloonix
+site.login.contact: Ci sono delle domande?
 site.login.choose_your_language: Seleziona la tua lingua
 
 site.help.title: Die Bloonix Hilfe
