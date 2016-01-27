@@ -547,78 +547,78 @@ schema.roster.attr.description: Descrizione
 schema.roster.attr.active: Attivo
 schema.roster.text.list: Panoramica di tutti gli elenchi
 
-schema.group.attr.id: Group ID
-schema.group.attr.company_id: Company ID
+schema.group.attr.id: ID Gruppo
+schema.group.attr.company_id: ID azineda
 schema.group.attr.groupname: Groupname
-schema.group.attr.description: Description
-schema.group.desc.company: Select the company the group belongs to.
-schema.group.desc.groupname: This is the group name. The group name should be unique.
-schema.group.desc.description: Enter a short description about the group.
-schema.group.text.list: Overview of all groups
-schema.group.text.create: Create a new group
-schema.group.text.delete: Delete group
-schema.group.text.settings: Group settings
-schema.group.text.group_members: Members of group <b>%s</b>
-schema.group.text.host_members: Group members
-schema.group.text.host_nonmembers: Non group members
-schema.group.text.selected_hosts: Selected hosts
-schema.group.text.add: Add a new user to the group
-schema.group.text.add_user: Add a user to the group
-schema.group.text.remove_user: Remove user from group
-schema.group.text.update_user: Modify access rights
-schema.group.text.may_create_services: May create services
-schema.group.text.may_modify_services: May modify services
-schema.group.text.may_delete_services: May delete services
+schema.group.attr.description: Descrizione
+schema.group.desc.company: Seleziona l'azienda di cui il gruppo fa parte.
+schema.group.desc.groupname: Questo è il nome del gruppo e dovrebbe essere unico.
+schema.group.desc.description: Inserire una breve descrizione riguardo il gruppo.
+schema.group.text.list: Panoramica di tutti i gruppi
+schema.group.text.create: Crea un nuovo gruppo
+schema.group.text.delete: Elimina gruppo
+schema.group.text.settings: Impostazioni gruppo
+schema.group.text.group_members: Membri del gruppo <b>%s</b>
+schema.group.text.host_members: Membri del gruppo
+schema.group.text.host_nonmembers: Non membri del gruppo
+schema.group.text.selected_hosts: Host selezionati
+schema.group.text.add: Aggiungi un nuovo utente al gruppo
+schema.group.text.add_user: Aggiungi un utente al gruppo
+schema.group.text.remove_user: Rimuovi l'utente dal gruppo
+schema.group.text.update_user: Modifica diritti d'accesso
+schema.group.text.may_create_services: Può creare servizi
+schema.group.text.may_modify_services: Può modificare servizi
+schema.group.text.may_delete_services: Può eliminare servizi
 
 schema.hs_downtime.attr.id: ID
-schema.hs_downtime.attr.begin_time: Begin time
-schema.hs_downtime.attr.end_time: End time
-schema.hs_downtime.attr.timeslice: Timeslice
-schema.hs_downtime.attr.description: Description
-schema.hs_downtime.attr.username: Added by
+schema.hs_downtime.attr.begin_time: Orario d'inizio
+schema.hs_downtime.attr.end_time: Orario di fine
+schema.hs_downtime.attr.timeslice: Intervallo di tempo
+schema.hs_downtime.attr.description: Descrizione
+schema.hs_downtime.attr.username: Aggiunto da
 schema.hs_downtime.attr.timezone: Timezone
-schema.hs_downtime.text.create: Create a scheduled downtime
-schema.hs_downtime.text.delete: Delete a scheduled downtime
-schema.hs_downtime.text.preset: Programmazione
+schema.hs_downtime.text.create: Crea un fuori servizio pianificato
+schema.hs_downtime.text.delete: Elimina un fuori servizio pianificato
+schema.hs_downtime.text.preset: Attività prestabilite
 schema.hs_downtime.text.select_services: Services<br/><small>Do not select any servives if you want to<br/>create a downtime for the complete host.</small>
 
-schema.host_downtime.text.title: Scheduled downtimes for host %s
-schema.service_downtime.text.title: Scheduled service downtimes for host %s
+schema.host_downtime.text.title: Fuori servizo pianificati per l'host %s
+schema.service_downtime.text.title: Inattività di servizio pianificate per l'host %s
 
-schema.host.attr.id: Host ID
-schema.host.attr.company_id: Company ID
+schema.host.attr.id: ID host
+schema.host.attr.company_id: ID azienda
 schema.host.attr.password: Password
 schema.host.attr.hostname: Hostname
-schema.host.attr.description: Description
-schema.host.attr.ipaddr: IP-Address
-schema.host.attr.ipaddr6: IP-Address v6
-schema.host.attr.comment: Comment
-schema.host.attr.sysgroup: System group
-schema.host.attr.sysinfo: System information
-schema.host.attr.host_class: Host class
-schema.host.attr.system_class: System class
-schema.host.attr.location_class: Location class
-schema.host.attr.os_class: Operating system class
-schema.host.attr.hw_class: Hardware class
-schema.host.attr.env_class: Environment class
-schema.host.attr.hw_manufacturer: HW manufacturer
-schema.host.attr.hw_product: HW product
-schema.host.attr.os_manufacturer: OS manufacturer
-schema.host.attr.os_product: OS product
-schema.host.attr.virt_manufacturer: Virtualization manufacturer
-schema.host.attr.virt_product: Virtualization product
-schema.host.attr.location: Location
-schema.host.attr.coordinates: Coordinates
-schema.host.attr.active: Active
-schema.host.attr.allow_from: Allow from
-schema.host.attr.max_sms: Max SMS per month
-schema.host.attr.status: Status
-schema.host.attr.interval: Interval
-schema.host.attr.retry_interval: Retry interval
+schema.host.attr.description: Descrizione
+schema.host.attr.ipaddr: Indirizzo IP
+schema.host.attr.ipaddr6: Indirizzo IP v6
+schema.host.attr.comment: Commento
+schema.host.attr.sysgroup: Gruppo sistema
+schema.host.attr.sysinfo: Informazioni sistema
+schema.host.attr.host_class: Categoria host
+schema.host.attr.system_class: Categoria sistema
+schema.host.attr.location_class: Categoria ubicazione
+schema.host.attr.os_class: Categoria sistema operativo
+schema.host.attr.hw_class: Categoria hardware
+schema.host.attr.env_class: Categoria ambiente
+schema.host.attr.hw_manufacturer: Produttore HW
+schema.host.attr.hw_product: Prodotto HW
+schema.host.attr.os_manufacturer: Produttore OS
+schema.host.attr.os_product: Prodotto OS
+schema.host.attr.virt_manufacturer: Produttore di virtualizzazione
+schema.host.attr.virt_product: Prodotto di virtualizazione
+schema.host.attr.location: Ubicazione
+schema.host.attr.coordinates: Coordinate
+schema.host.attr.active: Attivo
+schema.host.attr.allow_from: Permetti da
+schema.host.attr.max_sms: Massimo numero SMS al mese
+schema.host.attr.status: Stato
+schema.host.attr.interval: Intervallo
+schema.host.attr.retry_interval: Intervallo tentativi
 schema.host.attr.timeout: Timeout
-schema.host.attr.notification: Notifications enabled
-schema.host.attr.notification_interval: Notification interval
-schema.host.attr.last_check: Last check
+schema.host.attr.notification: notifiche abilitate
+schema.host.attr.notification_interval: Intervallo notifiche
+schema.host.attr.last_check: Ultimo controllo
 schema.host.attr.max_services: Max services
 schema.host.attr.variables: Host variables
 schema.host.attr.data_retention: Data retention
