@@ -16,7 +16,7 @@ word.Filter: Filtro
 word.inactive: inattivo
 word.active: attivo
 word.Timezone: Fuso orario
-word.Timeslice: Intervallo di tempo
+word.Timeslice: Intervallo
 word.Type: Tipo
 word.Days: Giorni
 word.days: giorni
@@ -47,7 +47,7 @@ nav.sub.registration: Registrazione
 nav.sub.screen: Schermo
 nav.sub.contacts: Contatti
 nav.sub.contactgroups: Gruppo contatti
-nav.sub.timeperiods: Periodi di tempo
+nav.sub.timeperiods: Periodi
 nav.sub.rosters: Elenchi
 nav.sub.users: Utenti
 nav.sub.groups: Gruppi
@@ -148,7 +148,7 @@ action.move_box: Muovi il riquadro
 action.genstr: Genera stringa
 action.schedule: Orario
 action.members: Elenca membri
-action.timeslices: Elenca intervalli di tempo
+action.timeslices: Elenca intervalli
 action.add: Aggiungi
 action.remove: Rimuovi
 action.generate: Genera
@@ -443,8 +443,8 @@ schema.company.attr.max_services: Numero massimo servizi
 schema.company.attr.max_services_per_host: Numero massimo servizi per host
 schema.company.attr.max_contacts: Numero massimo contatti
 schema.company.attr.max_contactgroups: Numero massimo gruppicontatti
-schema.company.attr.max_timeperiods: Numero massimo periodi di tempo
-schema.company.attr.max_timeslices_per_object: Numero massimo intervalli di tempo
+schema.company.attr.max_timeperiods: Numero massimo periodi
+schema.company.attr.max_timeslices_per_object: Numero massimo intervalli
 schema.company.attr.max_groups: Numero massimo gruppi
 schema.company.attr.max_users: Numero massimo utenti
 schema.company.attr.max_dependencies_per_host: Numero massimo dipendenze per host
@@ -472,9 +472,9 @@ schema.company.desc.max_hosts: Numero massimo di host che si possono creare. Imm
 schema.company.desc.max_services: Numero massimo di servizi che si possono creare. Immettere 0 (null) se illimitati.
 schema.company.desc.max_services_per_host: Numero massimo di servizi che si possono creare per host.
 schema.company.desc.max_contacts: Numero massimo di contatti che si possono creare.
-schema.company.desc.max_contactgroups: Numero massimo di gruppicontatti che si possono creare.
-schema.company.desc.max_timeperiods: Numero massimo di periodi di tempo che si possono creare
-schema.company.desc.max_timeslices_per_object: Numero massimo di intervalli che si possono creare per periodo di tempo.
+schema.company.desc.max_contactgroups: Numero massimo di gruppi-contatti che si possono creare.
+schema.company.desc.max_timeperiods: Numero massimo di periodi che si possono creare
+schema.company.desc.max_timeslices_per_object: Numero massimo di intervalli che si possono creare per periodo.
 schema.company.desc.max_groups: Numero massimo di gruppi che si possono creare.
 schema.company.desc.max_users: Numero massimo di utenti che si possono creare.
 schema.company.desc.max_dependencies_per_host: Numero massimo di dipendenze che si possono creare per host.
@@ -500,7 +500,7 @@ schema.company.text.data_retention_info: La durata del tuo account è limitata a
 schema.company.text.simulate_as: Simula un'azienda
 
 schema.user.attr.id: ID utente
-schema.user.attr.username: Nomeutente
+schema.user.attr.username: Nome-utente
 schema.user.attr.name: Nome
 schema.user.attr.phone: Telefono
 schema.user.attr.timezone: Timezone
@@ -515,11 +515,11 @@ schema.user.attr.role: Ruolo
 schema.user.attr.comment: Commento
 schema.user.attr.allow_from: Permetti da
 schema.user.desc.company: Selezionare l'azienda a cui appartiene l'utente.
-schema.user.desc.username: Inserire il nomeutente nella forma <i>utente@dominio.test</i>.
+schema.user.desc.username: Inserire il nome-utente nella forma <i>utente@dominio.test</i>.
 schema.user.desc.name: Questo è il nome completo dell'utente.
 schema.user.desc.phone: Il numero di telefono può essere di notevole aiuto in caso di emergenza per i colleghi del supporto di Bloonix.
 schema.user.desc.timezone: Seleziona la timezone dell'utente.
-schema.user.desc.authentication_key: Con questa chiave è possibile visitare la schermata delle notifiche senza autenticazione con password. La stringa d'interrogazione per visitare la schermata delle notifiche assomiglia a <br/><br/><b>/screen/?nomeutente=XXX;authkey=XXX</b>
+schema.user.desc.authentication_key: Con questa chiave è possibile visitare la schermata delle notifiche senza autenticazione con password. La stringa d'interrogazione per visitare la schermata delle notifiche assomiglia a <br/><br/><b>/screen/?nome-utente=XXX;authkey=XXX</b>
 schema.user.desc.password: Inserire la password d'accesso dell'utente.
 schema.user.desc.password_changed: Imposta il valore a <i>no</i> se vuoi forzare l'utente a cambiare la password al primo accesso.
 schema.user.desc.manage_contacts: L'utente è abilitato a gestire i contatti?
@@ -573,7 +573,7 @@ schema.group.text.may_delete_services: Può eliminare servizi
 schema.hs_downtime.attr.id: ID
 schema.hs_downtime.attr.begin_time: Orario d'inizio
 schema.hs_downtime.attr.end_time: Orario di fine
-schema.hs_downtime.attr.timeslice: Intervallo di tempo
+schema.hs_downtime.attr.timeslice: Intervallo
 schema.hs_downtime.attr.description: Descrizione
 schema.hs_downtime.attr.username: Aggiunto da
 schema.hs_downtime.attr.timezone: Timezone
@@ -730,42 +730,42 @@ schema.host.menu.os_class: Operating system
 schema.host.menu.hw_class: Hardware
 schema.host.menu.env_class: Environment
 
-schema.timeperiod.attr.id: Timeperiod ID
-schema.timeperiod.attr.name: Timeperiod
-schema.timeperiod.attr.description: Description
-schema.timeperiod.desc.name: This is the name of the timeperiod.
-schema.timeperiod.desc.description: This is a short description of the timeperiod.
-schema.timeperiod.text.list: Overview of all timeperiods
-schema.timeperiod.text.create: Create a new timeperiod
-schema.timeperiod.text.delete: Delete timeperiod
-schema.timeperiod.text.settings: Timeperiod settings
-schema.timeperiod.text.examples: Timeperiod examples
-schema.timeperiod.examples: <p><b>Syntax: DAY-RANGE TIME-RANGE</b></p></br>
+schema.timeperiod.attr.id: ID periodo
+schema.timeperiod.attr.name: Periodo
+schema.timeperiod.attr.description: Descrizione
+schema.timeperiod.desc.name: Questo è il nome del periodo.
+schema.timeperiod.desc.description: Questa è una breve descrizione del periodo.
+schema.timeperiod.text.list: Panoramica di tutti i periodi.
+schema.timeperiod.text.create: Crea un nuovo periodo
+schema.timeperiod.text.delete: Elimina un periodo
+schema.timeperiod.text.settings: Impostazioni periodo
+schema.timeperiod.text.examples: Esempi di periodo
+schema.timeperiod.examples: <p><b>Sintassi: GIORNO-ESTENSIONE TEMPO-ESTENSIONE</b></p></br>
  <pre>
- DAY RANGE                       EXAMPLES
+ INTERVALLO GIORNI               ESEMPI
  ------------------------------------------------------------
- Weekday                         Monday
- Weekday - Weekday               Monday - Friday
- Month                           Januar
- Month - Month                   Januar - July
- Month Day                       Januar 1
- Month Day - Month Day           Januar 1 - July 15
- Year                            2010
- Year - Year                     2010 - 2012
- YYYY-MM-DD                      2010-01-01
- YYYY-MM-DD - YYYY-MM-DD         2010-01-01 - 2012-06-15
+ Giorno                          Lunedì
+ Giorno - Giorno                 Lunedì - Venerdì
+ Mese                            Gennaio
+ Mese - Mese                     Gennaio - Luglio
+ Mese Giorno                     Gennaio 1
+ Mese Giorno - Mese Giorno       Gennaio 1 - Luglio 15
+ Anno                            2010
+ Anno - Anno                     2010 - 2012
+ AAAA-MM-GG                      2010-01-01
+ AAAA-MM-GG - AAAA-MM-GG         2010-01-01 - 2012-06-15
  </pre></br>
  <pre>
- TIME RANGE                      EXAMPLES
+ INTERVALLO ORARI                ESEMPI
  ------------------------------------------------------------
- HH:MM - HH:MM                   09:00 - 17:00
- HH:MM - HH:MM, HH:MM - HH:MM    00:00 - 08:59, 17:01 - 23:59
+ OO:MM - OO:MM                   09:00 - 17:00
+ OO:MM - OO:MM, OO:MM - OO:MM    00:00 - 08:59, 17:01 - 23:59
  </pre></br>
- <p><b>Examples:</b></p></br>
+ <p><b>Esempi:</b></p></br>
  <pre>
- Monday - Friday     09:00 - 17:00
- Monday - Friday     00:00 - 08:59, 17:01 - 23:59
- Saturday - Sunday   00:00 - 23:59
+ Lunedì - Venerdì    09:00 - 17:00
+ Lunedì - Venerdì    00:00 - 08:59, 17:01 - 23:59
+ Sabato - Domenica   00:00 - 23:59
  </pre></br>
 
 schema.timeslice.attr.id: Timeslice ID
@@ -819,12 +819,12 @@ schema.contact.text.remove_timeperiod: Remove the timeperiod from contact
 schema.contact.text.remove_message_service: Remove the message service from contact
 schema.contact.text.escalation_time_null: Notify immediate
 schema.contact_timeperiod.attr.message_service: Message service
-schema.contact_timeperiod.attr.exclude: Exclude
+schema.contact_timeperiod.attr.exclude: Escludi
 schema.contact_timeperiod.text.add: Add a timeperiod to the contact
 schema.contact_message_services.attr.message_service: Message service
-schema.contact_message_services.attr.enabled: Enabled
-schema.contact_message_services.attr.send_to: Send to
-schema.contact_message_services.attr.notification_level: Notification level
+schema.contact_message_services.attr.enabled: Abilitato
+schema.contact_message_services.attr.send_to: Invia a
+schema.contact_message_services.attr.notification_level: Livello di notifica
 schema.contact_message_services.desc.message_service: The message service.
 schema.contact_message_services.desc.enabled: Enable or disable the message service.
 schema.contact_message_services.desc.send_to: The receiver of the message.
@@ -934,7 +934,7 @@ schema.dependency.text.workflow_to_host_status: Select the status of the parent 
 schema.dependency.text.workflow_to_service_status: Select the status of the parent service that avoids a notification
 schema.dependency.text.workflow_inherit: Activate inheritation
 schema.dependency.text.workflow_timezone: Imposta la timezone per l'intervallo di tempo
-schema.dependency.text.workflow_timeslice: Imposta l'intervallo di tempo per quando la dipendenza è attiva
+schema.dependency.text.workflow_timeslice: Imposta l'intervallo quando la dipendenza è attiva
 
 schema.event.attr.id: Event ID
 schema.event.attr.time: Timestamp
