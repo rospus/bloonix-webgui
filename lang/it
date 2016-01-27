@@ -422,40 +422,40 @@ site.help.doc.notification-screen: Notification Screen
 site.help.doc.json-api: Die Bloonix JSON API
 site.help.doc.user-charts: Eigene Charts erstellen
 
-schema.company.attr.alt_company_id: Real company ID
-schema.company.attr.id: Company ID
-schema.company.attr.company: Company
-schema.company.attr.title: Title
-schema.company.attr.name: Name
-schema.company.attr.surname: Surname
-schema.company.attr.address1: Address 1
-schema.company.attr.address2: Address 2
-schema.company.attr.zipcode: Zipcode
-schema.company.attr.city: City
-schema.company.attr.state: State/Province
-schema.company.attr.country: Country
-schema.company.attr.phone: Phone
+schema.company.attr.alt_company_id: ID azienda effettiva
+schema.company.attr.id: ID azienda
+schema.company.attr.company: Azienda
+schema.company.attr.title: Titolo
+schema.company.attr.name: Nome
+schema.company.attr.surname: Cognome
+schema.company.attr.address1: Indirizzo 1
+schema.company.attr.address2: Indirizzo 2
+schema.company.attr.zipcode: CAP
+schema.company.attr.city: Città
+schema.company.attr.state: Stato/Provincia
+schema.company.attr.country: Nazione
+schema.company.attr.phone: Telefono
 schema.company.attr.fax: Fax
-schema.company.attr.email: E-Mail
-schema.company.attr.max_templates: Max templates
-schema.company.attr.max_hosts: Max hosts
-schema.company.attr.max_services: Max services
-schema.company.attr.max_services_per_host: Max services per host
-schema.company.attr.max_contacts: Max contacts
-schema.company.attr.max_contactgroups: Max contactgroups
-schema.company.attr.max_timeperiods: Max timeperiods
-schema.company.attr.max_timeslices_per_object: Max timeslices
-schema.company.attr.max_groups: Max groups
-schema.company.attr.max_users: Max users
-schema.company.attr.max_dependencies_per_host: Max dependencies per host
-schema.company.attr.max_downtimes_per_host: Max downtimes per host
-schema.company.attr.max_chart_views_per_user: Max chart views per user
-schema.company.attr.max_charts_per_user: Max charts per user
-schema.company.attr.max_metrics_per_chart: Max metrics per chart
-schema.company.attr.max_dashboards_per_user: Max dashboards per user
-schema.company.attr.max_dashlets_per_dashboard: Max dashlets per dashboard
-schema.company.attr.max_sms: Max SMS
-schema.company.attr.max_hosts_in_reg_queue: Max hosts in queue for registration
+schema.company.attr.email: Email
+schema.company.attr.max_templates: Massimo template
+schema.company.attr.max_hosts: Massimo host
+schema.company.attr.max_services: Massimo servizi
+schema.company.attr.max_services_per_host: Massimo servizi per host
+schema.company.attr.max_contacts: Massimo contatti
+schema.company.attr.max_contactgroups: Massimo gruppicontatti
+schema.company.attr.max_timeperiods: Massimo periodi di tempo
+schema.company.attr.max_timeslices_per_object: Massimo timeslices
+schema.company.attr.max_groups: Massimo groups
+schema.company.attr.max_users: Massimo users
+schema.company.attr.max_dependencies_per_host: Massimo dependencies per host
+schema.company.attr.max_downtimes_per_host: Massimo downtimes per host
+schema.company.attr.max_chart_views_per_user: Massimo chart views per user
+schema.company.attr.max_charts_per_user: Massimo charts per user
+schema.company.attr.max_metrics_per_chart: Massimo metrics per chart
+schema.company.attr.max_dashboards_per_user: Massimo dashboards per user
+schema.company.attr.max_dashlets_per_dashboard: Massimo dashlets per dashboard
+schema.company.attr.max_sms: Massimo SMS
+schema.company.attr.max_hosts_in_reg_queue: Massimo hosts in queue for registration
 schema.company.attr.host_reg_authkey: Authkey for host registrations
 schema.company.attr.host_reg_enabled: Host registrations enabled
 schema.company.attr.host_reg_allow_from: Allow host registrations from
