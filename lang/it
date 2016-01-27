@@ -260,47 +260,47 @@ text.last_30d: Ultimi 30 giorni
 text.last_60d: Ultimi 60 giorni
 text.last_90d: Ultimi 90 giorni
 text.last_180d: Ultimi 180 giorni
-text.report.title.host_from_to: Report for host <b>%s</b> from <b>%s</b> to <b>%s</b>
-text.report.title.total_availability: The total service availability
-text.report.title.number_of_events: The total number of events
-text.report.title.total_status_duration: The total service status duration
-text.report.title.number_of_events_by_duration: Number of events by duration
-text.report.title.number_of_events_by_tags: Number of events by tags
-text.report.title.status_duration_by_hour: Status duration by time range
-text.report.title.no_data: For the following services are no data available in this time range
-text.report.service_has_a_availabilty_of: Service <b>%s</b> has a availability of
-text.report.availability.detailed_report_onclick: Click on a service to get a detailed availabilty report.
-text.report.availability.Service: Click on the service to get a detailed availabilty report.
-text.report.availability.Availability: The total availability.
-text.report.availability.AV-O: Time slice in percent in which the service was in status OK.
-text.report.availability.AV-I: Time slice in percent in which the service was in status INFO.
-text.report.availability.AV-W: Time slice in percent in which the service was in status WARNING.
-text.report.availability.AV-C: Time slice in percent in which the service was in status CRITICAL.
-text.report.availability.AV-U: Time slice in percent in which the service was in status UNKNOWN.
-text.report.availability.Events: Number of total events.
-text.report.availability.EV-O: Number of events with status OK.
-text.report.availability.EV-I: Number of events with status INFO.
-text.report.availability.EV-W: Number of events with status WARNING.
-text.report.availability.EV-C: Number of events with status CRITICAL.
-text.report.availability.EV-U: Number of events with status UNKNOWN.
-text.report.availability.EV-LT15: Number of events with a status duration less than 15 minutes.
-text.report.availability.EV-LT30: Number of events with a status duration less than 30 minutes.
-text.report.availability.EV-LT60: Number of events with a status duration less than 60 minutes.
-text.report.availability.EV-LT180: Number of events with a status duration less than 3 hours.
-text.report.availability.EV-LT300: Number of events with a status duration less than 5 hours.
-text.report.availability.EV-GE300: Number of events with a status duration greater than 5 hours.
-text.report.availability.LT15: Filter events with a status duration less than 15 minutes.
-text.report.availability.LT30: Filter events with a status duration less than 30 minutes.
-text.report.availability.LT60: Filter events with a status duration less than 60 minutes.
-text.report.availability.LT180: Filter events with a status duration less than 3 hours.
-text.report.availability.LT300: Filter events with a status duration less than 5 hours.
-text.report.availability.GE300: Filter events with a status duration greater than 5 hours.
-text.report.availability.lt15: Between 0 and 15 minutes
-text.report.availability.lt30: Between 15 and 30 minutes
-text.report.availability.lt60: Between 30 and 60 minutes
-text.report.availability.lt180: Between 1 and 3 hours
-text.report.availability.lt300: Between 3 and 5 hours
-text.report.availability.ge300: Longer than 3 hours
+text.report.title.host_from_to: Report per l'host <b>%s</b> da <b>%s</b> a <b>%s</b>
+text.report.title.total_availability: Disponibilità totale dei servizi
+text.report.title.number_of_events: Numero totale degli eventi
+text.report.title.total_status_duration: Durata totale dello stato del servizio
+text.report.title.number_of_events_by_duration: Numero egli eventi per durata
+text.report.title.number_of_events_by_tags: Numero egli eventi per tag
+text.report.title.status_duration_by_hour: Durata degli stati per arco di tempo
+text.report.title.no_data: Non ci sono dati dsponibili in questo arco di tempo per i seguenti servizi
+text.report.service_has_a_availabilty_of: Il servizio <b>%s</b> ha una disponibilità di
+text.report.availability.detailed_report_onclick: Cliccare su un servizio per avere un report dettagliato sulla disponibilità.
+text.report.availability.Service: Cliccare sul servizio per avere un report dettagliato sulla disponibilità.
+text.report.availability.Availability: Disponibilità totale.
+text.report.availability.AV-O: Percentuale del tempo in cui il servizio è in stato OK.
+text.report.availability.AV-I: Percentuale del tempo in cui il servizio è in stato INFO.
+text.report.availability.AV-W: Percentuale del tempo in cui il servizio è in stato ALLERTA.
+text.report.availability.AV-C: Percentuale del tempo in cui il servizio è in stato CRITICO.
+text.report.availability.AV-U: Percentuale del tempo in cui il servizio è in stato SCONOSCIUTO.
+text.report.availability.Events: Numero totale degli eventi.
+text.report.availability.EV-O: Numero degli eventi con stato OK.
+text.report.availability.EV-I: Numero degli eventi con stato INFO.
+text.report.availability.EV-W: Numero degli eventi con stato ALLERTA.
+text.report.availability.EV-C: Numero degli eventi con stato CRITICO.
+text.report.availability.EV-U: Numero degli eventi con stato SCONOSCIUTO.
+text.report.availability.EV-LT15: Numero degli eventi con durata stato inferiore a 15 minuti.
+text.report.availability.EV-LT30: Numero degli eventi con durata stato inferiore a 30 minuti.
+text.report.availability.EV-LT60: Numero degli eventi con durata stato inferiore a 60 minuti.
+text.report.availability.EV-LT180: Numero degli eventi con durata stato inferiore a 3 ore.
+text.report.availability.EV-LT300: Numero degli eventi con durata stato inferiore a 5 ore.
+text.report.availability.EV-GE300: Numero degli eventi con durata stato inferiore a 5 ore.
+text.report.availability.LT15: Filtra eventi con durata stato inferiore a 15 minuti.
+text.report.availability.LT30: Filtra eventi con durata stato inferiore a 30 minuti.
+text.report.availability.LT60: Filtra eventi con durata stato inferiore a 60 minuti.
+text.report.availability.LT180: Filtra eventi con durata stato inferiore a 3 ore.
+text.report.availability.LT300: Filtra eventi con durata stato inferiore a 5 ore.
+text.report.availability.GE300: Filtra eventi con durata stato inferiore a 5 ore.
+text.report.availability.lt15: Tra 0 e 15 minuti
+text.report.availability.lt30: Tra 15 e 30 minuti
+text.report.availability.lt60: Tra 30 e 60 minuti
+text.report.availability.lt180: Tra 1 e 3 ore
+text.report.availability.lt300: Tra 3 e 5 ore
+text.report.availability.ge300: Oltre 3 ore
 text.report.availability.flapping: Flapping
 text.report.availability.volatile: Instabilità
 text.report.availability.timeout: Timeout
