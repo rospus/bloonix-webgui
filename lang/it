@@ -541,11 +541,11 @@ schema.user.desc.select_language: Si segnala che selezionando una lingua viene r
 schema.user.text.is_logged_in: Accesso effettuato
 schema.user.text.session_expires: La sessione scade
 
-schema.roster.attr.id: Roster ID
-schema.roster.attr.roster: Roster
+schema.roster.attr.id: ID elenco
+schema.roster.attr.roster: Elenco
 schema.roster.attr.description: Descrizione
 schema.roster.attr.active: Attivo
-schema.roster.text.list: Overview of all rosters
+schema.roster.text.list: Panoramica di tutti gli elenchi
 
 schema.group.attr.id: Group ID
 schema.group.attr.company_id: Company ID
