@@ -593,10 +593,10 @@ schema.host.attr.description: Descrizione
 schema.host.attr.ipaddr: Indirizzo IP
 schema.host.attr.ipaddr6: Indirizzo IP v6
 schema.host.attr.comment: Commento
-schema.host.attr.sysgroup: Gruppo sistema
-schema.host.attr.sysinfo: Informazioni sistema
+schema.host.attr.sysgroup: Gruppo apparato
+schema.host.attr.sysinfo: Informazioni apparato
 schema.host.attr.host_class: Categoria host
-schema.host.attr.system_class: Categoria sistema
+schema.host.attr.system_class: Categoria apparato
 schema.host.attr.location_class: Categoria ubicazione
 schema.host.attr.os_class: Categoria sistema operativo
 schema.host.attr.hw_class: Categoria hardware
@@ -642,7 +642,7 @@ schema.host.desc.host_class: Esempi categorie di host:<br/>
  <br/>/Network/Router
  <br/>/Network/Switch
  <br/><br/>Caratteri non ammessi le virgolette: "
-schema.host.desc.system_class: Esempi categorie di sistema;<br/>
+schema.host.desc.system_class: Esempi categorie di apparato;<br/>
  <br/>/Fisico
  <br/>/Virtuale
  <br/><br/>Caratteri non ammessi le virgolette: "
@@ -710,25 +710,25 @@ schema.host.desc.add_host_to_contactgroup: Aggiungi l'host ad un gruppo contatti
 schema.host.text.add_host_to_host_template: Aggiungi l'host ad un template per host
 schema.host.desc.add_host_to_host_template: L'host eredita tutti i servizi dal template per host.
 schema.host.text.list_templates: L'host %s ha configurati i seguenti template
-schema.host.action.delete_reg_hosts: Delete the selected hosts!
-schema.host.action.disable_notifications_multiple: Disable notifications of the selected hosts
-schema.host.action.enable_notifications_multiple: Enable notifications of the selected hosts
-schema.host.action.activate_multiple: Activate the selected hosts
-schema.host.action.deactivate_multiple: Deactivate the selected hosts
-schema.host.action.remove_template: Remove template
-schema.host.text.remove_template_warning: Please note that all services of the template will be removed from all hosts that has its services inherited from this template!
-schema.host.text.templates_not_assigned: Not assigned templates
-schema.host.action.add_template: Add template
-schema.host.info.notification_disabled: Notifications are disabled of the host.
-schema.host.info.notification_disabled_short: Notifications disabled
-schema.host.info.inactive: The host is not active.
-schema.host.info.sysinfo: External system information available.
+schema.host.action.delete_reg_hosts: Elimina gli host selezionati.
+schema.host.action.disable_notifications_multiple: Disabilita notifiche per gli host selezionati
+schema.host.action.enable_notifications_multiple: Aabilita notifiche per gli host selezionati
+schema.host.action.activate_multiple: Attiva gli host selezionati
+schema.host.action.deactivate_multiple: Disttiva gli host selezionati
+schema.host.action.remove_template: Rimuovi template
+schema.host.text.remove_template_warning: Si prega di notare che i servizi del template verranno rimossi da tutti gli host che hanno i loro servizi ereditati da questo template.
+schema.host.text.templates_not_assigned: Template non assegnati
+schema.host.action.add_template: Aggiungi template
+schema.host.info.notification_disabled: Notifiche disabilitate per l'host.
+schema.host.info.notification_disabled_short: Notifiche disabilitate
+schema.host.info.inactive: L'host non è attivo.
+schema.host.info.sysinfo: Disponibili informazioni da apparato esterno.
 schema.host.menu.host_class: Host
-schema.host.menu.system_class: System
-schema.host.menu.location_class: Location
-schema.host.menu.os_class: Operating system
+schema.host.menu.system_class: Apparato
+schema.host.menu.location_class: Ubicazione
+schema.host.menu.os_class: Sistema operativo
 schema.host.menu.hw_class: Hardware
-schema.host.menu.env_class: Environment
+schema.host.menu.env_class: Ambiente
 
 schema.timeperiod.attr.id: ID periodo
 schema.timeperiod.attr.name: Periodo
@@ -768,48 +768,48 @@ schema.timeperiod.examples: <p><b>Sintassi: GIORNO-ESTENSIONE TEMPO-ESTENSIONE</
  Sabato - Domenica   00:00 - 23:59
  </pre></br>
 
-schema.timeslice.attr.id: Timeslice ID
-schema.timeslice.attr.timeslice: Timeslice
-schema.timeslice.text.list: Overview of all timeslices
-schema.timeslice.text.delete: Delete timeslice
+schema.timeslice.attr.id: ID intervallo
+schema.timeslice.attr.timeslice: Intervallo
+schema.timeslice.text.list: Panoramica di tutti gli intervalli
+schema.timeslice.text.delete: Elimina intervallo
 
-schema.host_template.attr.id: Template ID
-schema.host_template.attr.name: Template name
-schema.host_template.attr.description: Description
-schema.host_template.attr.tags: Tags
-schema.host_template.desc.name: This is the name of the template.
-schema.host_template.desc.description: Set a short description for the template.
-schema.host_template.desc.tags: Tags are used to add registered hosts to host templates.
-schema.host_template.text.list: Overview of all host templates
-schema.host_template.text.delete: Delete a template
-schema.host_template.text.create: Create a new template
-schema.host_template.text.setting: Template settings
+schema.host_template.attr.id: ID template
+schema.host_template.attr.name: Nome template
+schema.host_template.attr.description: Descrizione
+schema.host_template.attr.tags: Tag
+schema.host_template.desc.name: Questo è il nome del template.
+schema.host_template.desc.description: Inserisci una breve descrizione per il template.
+schema.host_template.desc.tags: I tag sono usati per aggiungere host registrati a template per host.
+schema.host_template.text.list: Panoramica di tutti i template per host
+schema.host_template.text.delete: Elimina un template
+schema.host_template.text.create: Crea un nuovo template
+schema.host_template.text.setting: Impostazioni template
 schema.host_template.text.view: Template %s
-schema.host_template.text.view_services: View services
-schema.host_template.text.view_members: Add / Remove hosts
-schema.host_template.text.delete_service: Delete a service from the template
-schema.host_template.text.delete_service_warning: Please note that the service will be deleted from all hosts that gets the service inherited from this template.
-schema.host_template.test.host_members: Hosts in group
-schema.host_template.test.host_nonmembers: Hosts not in group
-schema.host_template.text.selected_hosts: Selected hosts
-schema.host_template.text.clone: Clone the template
-schema.host_template.text.clone_title: Clone template %s
-schema.host_template.text.templates: Templates
+schema.host_template.text.view_services: VIsualizza servizi
+schema.host_template.text.view_members: Aggiungi / Rimuovi host
+schema.host_template.text.delete_service: Elimina un servizio dal template
+schema.host_template.text.delete_service_warning: Si prega di notare che il servizio verrà eliminato da tutti gli host che lo hanno ereditato da questo template.
+schema.host_template.test.host_members: Host nel gruppo
+schema.host_template.test.host_nonmembers: Hosts non nel gruppo
+schema.host_template.text.selected_hosts: Host selezionati
+schema.host_template.text.clone: Clona il template
+schema.host_template.text.clone_title: Clona template %s
+schema.host_template.text.templates: Template
 
-schema.contact.attr.id: Contact ID
-schema.contact.attr.company_id: Company ID
-schema.contact.attr.name: Name
-schema.contact.attr.mail_to: E-Mail
-schema.contact.attr.mail_notifications_enabled: E-Mail global enabled
-schema.contact.attr.mail_notification_level: Mail notification level
-schema.contact.attr.sms_to: Mobil number
-schema.contact.attr.sms_notifications_enabled: SMS global enabled
-schema.contact.attr.sms_notification_level: SMS notification level
-schema.contact.attr.escalation_time: Escalation level
-schema.contact.desc.company_id: Select the company the contact belongs to.
-schema.contact.desc.name: This is the full name of the contact.
+schema.contact.attr.id: ID contatto
+schema.contact.attr.company_id: ID azienda
+schema.contact.attr.name: Nome
+schema.contact.attr.mail_to: Email
+schema.contact.attr.mail_notifications_enabled: Email abilitato globalmente
+schema.contact.attr.mail_notification_level: Livello notifica email
+schema.contact.attr.sms_to: Cellulare
+schema.contact.attr.sms_notifications_enabled: SMS abilitato globalmente
+schema.contact.attr.sms_notification_level: Livello notifica SMS
+schema.contact.attr.escalation_time: Grado d'incremento
+schema.contact.desc.company_id: Seleziona l'azienda di appartenenza del contatto.
+schema.contact.desc.name: Questo è il nome completo del contatto.
 schema.contact.desc.escalation_time: Select an escalation level for the contact. With the escalation level it's possible to control when a contact gets a notification. As example the escalation level of 30 minutes means that the contact is notfied if the service is still not OK after 30 minutes.
-schema.contact.text.list: Overview of all contacts
+schema.contact.text.list: Panoramica di tutti i contatti
 schema.contact.text.create: Create a new contact
 schema.contact.text.delete: Delete contact
 schema.contact.text.settings: Contact settings
@@ -834,10 +834,10 @@ schema.contact_message_services.text.remove: Remove a message service
 
 schema.contactgroup.attr.id: Contactgroup ID
 schema.contactgroup.attr.name: Name
-schema.contactgroup.attr.description: Description
+schema.contactgroup.attr.description: Descrizione
 schema.contactgroup.desc.name: This is the name of the contact group. The name should be unique.
 schema.contactgroup.desc.description: Set a short description for the group.
-schema.contactgroup.text.list: Overview of all contactgroups
+schema.contactgroup.text.list: Panoramica of all contactgroups
 schema.contactgroup.text.create: Create a new contact group
 schema.contactgroup.text.delete: Delete contact group
 schema.contactgroup.text.settings: Contact group settings
@@ -960,7 +960,7 @@ schema.service.attr.command_options: Check settings
 schema.service.attr.timeout: Timeout
 schema.service.attr.interval: Interval
 schema.service.attr.retry_interval: Retry interval
-schema.service.attr.description: Description
+schema.service.attr.description: Descrizione
 schema.service.attr.plugin: Plugin
 schema.service.attr.comment: Comment
 schema.service.attr.attempt_warn2crit: Switch WARNING to CRITICAL
@@ -1132,7 +1132,7 @@ schema.service.desc.multiple_check_type_locations: Select at least 3 checkpoints
 schema.plugin.attr.id: Plugin-ID
 schema.plugin.attr.plugin: Plugin
 schema.plugin.attr.categories: Categories
-schema.plugin.attr.description: Description
+schema.plugin.attr.description: Descrizione
 schema.plugin.attr.command: Command
 schema.plugin.attr.info: Information
 schema.plugin.text.list: Plugins
@@ -1140,12 +1140,12 @@ schema.plugin.text.list: Plugins
 schema.plugin_stats.attr.alias: Name
 schema.plugin_stats.attr.statkey: Key
 schema.plugin_stats.attr.datatype: Data type
-schema.plugin_stats.attr.description: Description
+schema.plugin_stats.attr.description: Descrizione
 schema.plugin_stats.text.list: Metrics of plugin %s
 
 schema.user_chart.attr.id: ID
-schema.user_chart.attr.description: Description
-schema.user_chart.desc.description: Description of the chart.
+schema.user_chart.attr.description: Descrizione
+schema.user_chart.desc.description: Descrizione del diagramma.
 schema.user_chart.attr.title: Title
 schema.user_chart.desc.title: The title of the chart.
 schema.user_chart.attr.subtitle: Subtitle
@@ -1172,7 +1172,7 @@ schema.location.attr.continent: Continent
 schema.location.attr.coordinates: Coordinates
 schema.location.attr.is_default: Default location
 schema.location.attr.authkey: Authkey
-schema.location.attr.description: Description
+schema.location.attr.description: Descrizione
 schema.location.text.list: Locations
 schema.location.text.create: Create a new location
 schema.location.text.view: Location %s
