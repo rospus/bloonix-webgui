@@ -808,7 +808,7 @@ schema.contact.attr.sms_notification_level: SMS notification level
 schema.contact.attr.escalation_time: Escalation level
 schema.contact.desc.company_id: Select the company the contact belongs to.
 schema.contact.desc.name: This is the full name of the contact.
-schema.contact.desc.escalation_time: Select an escalation level for the contact. With the escalation level it's possible to control when a contact gets a notification. As example the escalation level of 30 minutes means that the contact is notfied if the service is still not OK after 30 minutes.
+schema.contact.desc.escalation_time: Select an escalation level for the contact. With the escalation level it's possible to control when a contact gets a notification. As example the escalation level of 30 minutes means that the contact is notified if the service is still not OK after 30 minutes.
 schema.contact.text.list: Overview of all contacts
 schema.contact.text.create: Create a new contact
 schema.contact.text.delete: Delete contact
@@ -853,7 +853,7 @@ schema.contactgroup.text.service_nonmembers: Services not in contact group
 schema.contactgroup.text.selected_services: Selected services
 
 schema.notification.attr.time: Timestamp
-schema.notification.attr.send_to: Receipient
+schema.notification.attr.send_to: Recipient
 schema.notification.attr.subject: Subject
 schema.notification.attr.message: Message
 schema.notification.attr.message_service: Type
