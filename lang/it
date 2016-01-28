@@ -681,35 +681,35 @@ schema.host.desc.max_services: Imposta il numero massimo di servizi che possono 
 schema.host.desc.variables: In questo campo puoi definire le variabili per l'host. Queste variabili possono venir usate come limiti dalle configurazioni dei controlli sui servizi. Per esempio:<br/><br/>HTTP.PORT=9000<br/><br/>Questa variabile può venir usata nel formato <i>%HTTP.PORT%</i> per i limiti. Si segnala che due variabili sono predefinite: <i>IPADDR</i> e <i>HOSTNAME</i>. Queste variabili sono sostituite con l'inirizzo IP e hostanem dell'host. Per ulteriori informazioni leggere l'aiuto.<br/><br/>Caratteri permessi: a-z, A-Z, 0-9, punti e trattini bassi
 schema.host.desc.data_retention: Conservazione in giorni di tutti i dati dell'host e suoi servizi. 
 schema.host.text.list: Panoramica di tutti gli host
-schema.host.text.registered_host_list: Overview of all hosts ready for registration
+schema.host.text.registered_host_list: Panoramica di tutti gli host pronti per la registrazione
 schema.host.text.view: Host %s
-schema.host.text.create: Create a new host
-schema.host.text.delete: Delete host
-schema.host.text.settings: Host settings
-schema.host.text.list_host_classes: Host classes
-schema.host.text.host_class_help_link: Read how this feature works
-schema.host.text.multiple_selection_help: <h4>This action requires to select at least one host.</h4>
- To mark a single host just click on a row. If you want to mark multiple hosts
- just press and hold <i>CTRL</i> on your keyboard. If you press and hold the left mouse button
- you can mark a range of hosts.
-schema.host.text.multiple_downtimes: Schedule a downtime for multiple hosts
-schema.host.text.multiple_notification: Enable or disable the notifications of multiple hosts
-schema.host.text.multiple_activate: Activate or deactivate multiple hosts
-schema.host.text.multiple_edit: Edit the configuration of multiple hosts
-schema.host.text.multiple_edit_info: Note: empty fields will be ignored!
-schema.host.text.add_hosts_to_group: Add selected hosts to a group
-schema.host.text.delete_reg_hosts: Delete hosts
-schema.host.text.mtr_output: MTR result of host %s
-schema.host.text.mtr_chart: MTR chart
-schema.host.text.report_title: Report for host %s
-schema.host.text.add_hosts_to_group: Add the hosts to a group
-schema.host.text.add_host_to_group: Add the host to a user group
-schema.host.desc.add_host_to_group: Add the host at least to one group.
-schema.host.text.add_host_to_contactgroup: Add the host to a contact group
-schema.host.desc.add_host_to_contactgroup: Add the host to a contact group to get event notifications via email or sms.
-schema.host.text.add_host_to_host_template: Add the host to a host template
-schema.host.desc.add_host_to_host_template: The host inherits all services from the host template.
-schema.host.text.list_templates: Host %s has the following templates configured
+schema.host.text.create: Crea un nuovo host
+schema.host.text.delete: Elimina host
+schema.host.text.settings: Impostazioni host
+schema.host.text.list_host_classes: Categorie host
+schema.host.text.host_class_help_link: Leggi come opera questa funzionalità
+schema.host.text.multiple_selection_help: <h4>Quest'attività richiede che venga selezionato almeno un host.</h4>
+ Per evidenziare un singolo host cliccare sulla riga. Se si vogliono evidenziare più host
+ tenere premuto il tasto <i>CTRL</i> sulla tastiera. Se si tiene premuto il tasto sinistro del mouse
+ si può evidenziare una serie di host.
+schema.host.text.multiple_downtimes: Programma un fuori servizio per più host
+schema.host.text.multiple_notification: Abilita o disabilita le notifiche per più host
+schema.host.text.multiple_activate: Attiva o disattiva più host
+schema.host.text.multiple_edit: Modifica la configurazione per più host
+schema.host.text.multiple_edit_info: Nota: i campi vuoti verranno ignorati.
+schema.host.text.add_hosts_to_group: Aggiungi gli host selezionati ad un gruppo
+schema.host.text.delete_reg_hosts: Elimina host
+schema.host.text.mtr_output: Risultato MTR per l'host %s
+schema.host.text.mtr_chart: Diagramma MTR
+schema.host.text.report_title: Report per l'host %s
+schema.host.text.add_hosts_to_group: Aggiungi gli host ad un gruppo
+schema.host.text.add_host_to_group: Aggiungi l'host ad un gruppo utenti
+schema.host.desc.add_host_to_group: Aggiungi l'host ad almeno un gruppo.
+schema.host.text.add_host_to_contactgroup: Aggiungi l'host ad un gruppo contatti
+schema.host.desc.add_host_to_contactgroup: Aggiungi l'host ad un gruppo contatti per ricevere notifiche sugli eventi via email o SMS.
+schema.host.text.add_host_to_host_template: Aggiungi l'host ad un template per host
+schema.host.desc.add_host_to_host_template: L'host eredita tutti i servizi dal template per host.
+schema.host.text.list_templates: L'host %s ha configurati i seguenti template
 schema.host.action.delete_reg_hosts: Delete the selected hosts!
 schema.host.action.disable_notifications_multiple: Disable notifications of the selected hosts
 schema.host.action.enable_notifications_multiple: Enable notifications of the selected hosts
