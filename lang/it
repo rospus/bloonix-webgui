@@ -375,9 +375,9 @@ text.dashboard.show_as_text: Visualizza come testo
 text.allow_from_desc: La parola chiave <i>all</i> è uguale a <i>0.0.0.0/0, ::/0</i> e significa che l'accesso è permesso da tutti gli indirizzi IP.
  Esempi:
  <br/><br/>192.168.10.0/24, 192.168.14.10/32
- <br/><br/>Si segnala che non è permesso anteporre gli zero:
- <br/><br/><i>010.005.008.001</i> o <i>0001::0001</i> non sono permessi
- <br/><i>10.5.8.1</i> o <i>1::1</i> sono permessi
+ <br/><br/>Si segnala che non è consentito anteporre degli zeri:
+ <br/><br/><i>010.005.008.001</i> o <i>0001::0001</i> non sono consentiti
+ <br/><i>10.5.8.1</i> o <i>1::1</i> sono consentiti
 
 site.login.welcome: Benvenuto su Bloonix, si prega di accedere.
 site.login.title: Accedi al sistema di monitoraggio
@@ -619,68 +619,68 @@ schema.host.attr.timeout: Timeout
 schema.host.attr.notification: notifiche abilitate
 schema.host.attr.notification_interval: Intervallo notifiche
 schema.host.attr.last_check: Ultimo controllo
-schema.host.attr.max_services: Max services
-schema.host.attr.variables: Host variables
-schema.host.attr.data_retention: Data retention
-schema.host.desc.company_id: Select the company the host belongs to.
-schema.host.desc.password: This password is used by the Bloonix Agents. If an agent wants to connect to the Bloonix server to deliver host statistics then this is only possible if the agent knows the host id and the password.
-schema.host.desc.hostname: This is the fully qualified hostname.
-schema.host.desc.status: The status of the host. Possible values are OK, INFO, WARNING, CRITICAL or UNKNOWN.
-schema.host.desc.description: This is a short description of the host.
-schema.host.desc.ipaddr: This is the main IP address of the host.
- <br/><br/>Note that prepend zeros are not allowed:
- <br/><br/><i>010.005.008.001</i> or <i>0001::0001</i> is not allowed
- <br/><i>10.5.8.1</i> or <i>1::1</i> is allowed
-schema.host.desc.ipaddr6: This is the main IP v6 address of the host.
- <br/><br/>Note that prepend zeros are not allowed:
- <br/><br/><i>010.005.008.001</i> or <i>0001::0001</i> is not allowed
- <br/><i>10.5.8.1</i> or <i>1::1</i> is allowed
-schema.host.desc.comment: This field can be used to set a short comment to the host.
-schema.host.desc.sysgroup: This is a complete free to use field with no restrictions.
-schema.host.desc.sysinfo: This field allows you to set an external link to you own host documentation, e.g.:<br/><br/>Linktext=https://mysite.test/?id=12345.<br/><br/>Not allowed characters: "\
-schema.host.desc.host_class: Host class examples:<br/>
+schema.host.attr.max_services: Numero massimo di servizi
+schema.host.attr.variables: Variabili host
+schema.host.attr.data_retention: Conservazione dati
+schema.host.desc.company_id: Selezionare l'azienda a cui appartiene l'host.
+schema.host.desc.password: Questa password è usata dagli agenti Bloonix. Se un agente vuole connettersi al server Bloonix per inoltrare le sue statistiche, può farlo solo se conosce l'id dell'host e la password.
+schema.host.desc.hostname: Questo è il nome completo e abilitato dell'hostname.
+schema.host.desc.status: Stato dell'host. Valori possibili sono OK, INFO, ALLERTA, CRITICO o SCONOSCIUTO.
+schema.host.desc.description: Questa è la descrizione breve dell'host.
+schema.host.desc.ipaddr: Questo è l'indirizzo IP principale dell'host.
+ <br/><br/>Si segnala che non è consentito anteporre degli zeri:
+ <br/><br/><i>010.005.008.001</i> o <i>0001::0001</i> non sono consentiti
+ <br/><i>10.5.8.1</i> o <i>1::1</i> sono consentiti
+schema.host.desc.ipaddr6: Questo è l'indirizzo IP v6 principale dell'host.
+ <br/><br/>Si segnala che non è consentito anteporre degli zeri:
+ <br/><br/><i>010.005.008.001</i> o <i>0001::0001</i> non sono consentiti
+ <br/><i>10.5.8.1</i> o <i>1::1</i> sono consentiti
+schema.host.desc.comment: Questo campo può venir usato per inserire un breve commento sull'host.
+schema.host.desc.sysgroup: Questo è un campo da usare liberamente senza restrizioni.
+schema.host.desc.sysinfo: Questo campo permette d'inserire un link esterno alla tua documentazione per l'host, p.e.: <br/><br/>Testolink=https://miosito.test/?id=12345.<br/><br/>Caratteri non permessi: " e \
+schema.host.desc.host_class: Esempi categorie di host:<br/>
  <br/>/Network/Router
  <br/>/Network/Switch
- <br/><br/>Not allowed characters are double quotes: "
-schema.host.desc.system_class: System class examples:<br/>
- <br/>/Physical
- <br/>/Virtual
- <br/><br/>Not allowed characters are double quotes: "
-schema.host.desc.location_class: Location class examples:<br/>
- <br/>/EU/Germany/Hamburg/DC1/Rack10
- <br/>/EU/France/Nancy/DC3/Rack12
- <br/><br/>Not allowed characters are double quotes: "
-schema.host.desc.os_class: Operating system class examples:<br/>
+ <br/><br/>Caratteri non ammessi le virgolette: "
+schema.host.desc.system_class: Esempi categorie di sistema;<br/>
+ <br/>/Fisico
+ <br/>/Virtuale
+ <br/><br/>Caratteri non ammessi le virgolette: "
+schema.host.desc.location_class: Esempi categorie di ubicazione:<br/>
+ <br/>/EU/Germania/Amburgo/DC1/Rack10
+ <br/>/EU/Francia/Nancy/DC3/Rack12
+ <br/><br/>Caratteri non ammessi le virgolette: "
+schema.host.desc.os_class: Esempi categorie di sistemi operativi:<br/>
  <br/>/Linux/CentOS/7
  <br/>/Windows/Server/2012
- <br/><br/>Not allowed characters are double quotes: "
-schema.host.desc.hw_class: Hardware class examples:<br/>
+ <br/><br/>Caratteri non ammessi le virgolette: "
+schema.host.desc.hw_class: Esempi categorie di hardware:<br/>
  <br/>/Server/Dell/R730
- <br/>/Printer/Canon/ip2770
- <br/><br/>Not allowed characters are double quotes: "
+ <br/>/Stampante/Canon/ip2770
+ <br/><br/>Caratteri non ammessi le virgolette: "
 schema.host.desc.env_class: Environment class examples:<br/>
  <br/>/Project A/Subproject A1
  <br/>/Project B/Subproject B1
- <br/><br/>Not allowed characters are double quotes: "
-schema.host.desc.hw_manufacturer: e.g. IBM, HP, Dell, Fujitsu Siemens
-schema.host.desc.hw_product: e.g. Dell Power Edge 2950
-schema.host.desc.os_manufacturer: e.g. Red Hat, Microsoft, CISCO
-schema.host.desc.os_product: e.g. RHEL5, Debian Lenny, Windows Server 2003
-schema.host.desc.virt_manufacturer: e.g. VMware, Parallels
-schema.host.desc.virt_product: e.g. VMware-Server, Virtuozzo
-schema.host.desc.location: e.g. New York, Datacenter 3, Room 6, Rack A29
-schema.host.desc.coordinates: Select the location of the host by country code.
-schema.host.desc.active: Active or de-activate the host and all services.
-schema.host.desc.allow_from: With this field it's possible to set a comma separated list of IP addresses from which the Bloonix agents are allowed to deliver host statistics. Set the keyword <i>all</i> to allow all IP addresses.
-schema.host.desc.max_sms: In this field you can define the maximum number of SMS that can be sent per month.
-schema.host.desc.interval: This is the check interval of all services of the host.
-schema.host.desc.retry_interval: This is the retry interval of all services of the host. If a service is not in OK status then the interval is forced to this value.
-schema.host.desc.timeout: This is the timeout of all services of the host. The timeout counter begins after the interval. If the status of a service is not updated in this time then a critical status is set for the services with the information that it seems that the Bloonix agent is not working.
-schema.host.desc.notification: Enable or disable the notifications of all services.
-schema.host.desc.max_services: Set the maximum number of services that can be configured for the host. 0 means unlimited.
-schema.host.desc.variables: In this field you can define host variables. These variables can be used for thresholds by the configuration of service checks. Example:<br/><br/>HTTP.PORT=9000<br/><br/>This variable could be used in the format <i>%HTTP.PORT%</i> for thresholds. Please note that two variables are pre-defined: <i>IPADDR</i> and <i>HOSTNAME</i>. These variables are replaced with the IP address and the hostname of the host. For further information read the help.<br/><br/>Allowed signs: a-z, A-Z, 0-9, dot and underscore
-schema.host.desc.data_retention: The retention in days of all data of the host and services. 
-schema.host.text.list: Overview of all hosts
+ <br/><br/>Caratteri non ammessi le virgolette: "
+schema.host.desc.hw_manufacturer: p.e. IBM, HP, Dell, Fujitsu Siemens
+schema.host.desc.hw_product: p.e. Dell Power Edge 2950
+schema.host.desc.os_manufacturer: p.e. Red Hat, Microsoft, CISCO
+schema.host.desc.os_product: p.e. RHEL5, Debian Lenny, Windows Server 2003
+schema.host.desc.virt_manufacturer: p.e. VMware, Parallels
+schema.host.desc.virt_product: p.e. VMware-Server, Virtuozzo
+schema.host.desc.location: p.e. New York, Datacenter 3, Stanza 6, Rack A29
+schema.host.desc.coordinates: Seleziona l'ubicazione dell'host tramite il prefisso internazionale.
+schema.host.desc.active: Attiva o disattiva l'host e tutti i servizi.
+schema.host.desc.allow_from: Con questo campo è possibile impostare una lista d'indirizzi IP, separati da virgole, da cui gli agenti Bloonix sono autorizzati ad inviare statistiche sull'host. Impostare la parola chiave <i>all</i> per autorizzare tutti gli indirizzi IP.
+schema.host.desc.max_sms: In questo campo si può definire il numero massimo di SMS che possono venir inviati al mese.
+schema.host.desc.interval: Questo è l'intervallo di controllo di tutti i servizi dell'host.
+schema.host.desc.retry_interval: Questo è l'intervallo dei tentativi per tutti i servizi dell'host. Se un servizio non è nello stato OK, allora l'intervallo è forzato a questo valore.
+schema.host.desc.timeout: Questo è il timeout per tutti i servizi dell'host. Il contatore del timeout inizia dopo l'intervallo. Se lo stato del servizio non viene aggiornato entro questo tempo, allora viene impostato a critico assieme all'informazione che sembra che un agente Bloonix non sta funzionando.
+schema.host.desc.notification: Abilita o disabilita le notifiche per tutti i servizi.
+schema.host.desc.max_services: Imposta il numero massimo di servizi che possono venir configurati per l'host. 0 significa illimitati.
+schema.host.desc.variables: In questo campo puoi definire le variabili per l'host. Queste variabili possono venir usate come limiti dalle configurazioni dei controlli sui servizi. Per esempio:<br/><br/>HTTP.PORT=9000<br/><br/>Questa variabile può venir usata nel formato <i>%HTTP.PORT%</i> per i limiti. Si segnala che due variabili sono predefinite: <i>IPADDR</i> e <i>HOSTNAME</i>. Queste variabili sono sostituite con l'inirizzo IP e hostanem dell'host. Per ulteriori informazioni leggere l'aiuto.<br/><br/>Caratteri permessi: a-z, A-Z, 0-9, punti e trattini bassi
+schema.host.desc.data_retention: Conservazione in giorni di tutti i dati dell'host e suoi servizi. 
+schema.host.text.list: Panoramica di tutti gli host
 schema.host.text.registered_host_list: Overview of all hosts ready for registration
 schema.host.text.view: Host %s
 schema.host.text.create: Create a new host
