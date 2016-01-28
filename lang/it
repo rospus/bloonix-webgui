@@ -805,101 +805,101 @@ schema.contact.attr.mail_notification_level: Livello notifica email
 schema.contact.attr.sms_to: Cellulare
 schema.contact.attr.sms_notifications_enabled: SMS abilitato globalmente
 schema.contact.attr.sms_notification_level: Livello notifica SMS
-schema.contact.attr.escalation_time: Grado d'incremento
+schema.contact.attr.escalation_time: Livello d'incremento
 schema.contact.desc.company_id: Seleziona l'azienda di appartenenza del contatto.
 schema.contact.desc.name: Questo è il nome completo del contatto.
-schema.contact.desc.escalation_time: Select an escalation level for the contact. With the escalation level it's possible to control when a contact gets a notification. As example the escalation level of 30 minutes means that the contact is notified if the service is still not OK after 30 minutes.
+schema.contact.desc.escalation_time: Seleziona un livello d'incremento per il contatto. Attraverso i livelli d'incremento è possibile controllare quando un contatto riceverà una notifica. Per esempio un livello d'incremento di 30 minuti significa che il contatto verrà notificato se il servizio non è ancora in stato di OK dopo 30 minuti.
 schema.contact.text.list: Panoramica di tutti i contatti
-schema.contact.text.create: Create a new contact
-schema.contact.text.delete: Delete contact
-schema.contact.text.settings: Contact settings
-schema.contact.text.timeperiods: Contact timeperiods
-schema.contact.text.message_services: Contact message services
-schema.contact.text.remove_timeperiod: Remove the timeperiod from contact
-schema.contact.text.remove_message_service: Remove the message service from contact
-schema.contact.text.escalation_time_null: Notify immediate
-schema.contact_timeperiod.attr.message_service: Message service
+schema.contact.text.create: Crea un nuovo contatto
+schema.contact.text.delete: Elimina contatto
+schema.contact.text.settings: Impostazioni contatto
+schema.contact.text.timeperiods: Periodi contatto
+schema.contact.text.message_services: Servizi messaggistica contatto
+schema.contact.text.remove_timeperiod: Rimuovi i periodi dal contatto
+schema.contact.text.remove_message_service: Rimuovi il servizio di messaggistica dal contatto
+schema.contact.text.escalation_time_null: Notifica immediatamente
+schema.contact_timeperiod.attr.message_service: Servizio di messaggistica
 schema.contact_timeperiod.attr.exclude: Escludi
-schema.contact_timeperiod.text.add: Add a timeperiod to the contact
-schema.contact_message_services.attr.message_service: Message service
+schema.contact_timeperiod.text.add: Aggiungi un periodo al contatto
+schema.contact_message_services.attr.message_service: Servizio di messaggistica
 schema.contact_message_services.attr.enabled: Abilitato
 schema.contact_message_services.attr.send_to: Invia a
 schema.contact_message_services.attr.notification_level: Livello di notifica
-schema.contact_message_services.desc.message_service: The message service.
-schema.contact_message_services.desc.enabled: Enable or disable the message service.
-schema.contact_message_services.desc.send_to: The receiver of the message.
-schema.contact_message_services.desc.notification_level: Select the status level for which you want to receive notifications.
-schema.contact_message_services.text.add: Add a message service to the contact
-schema.contact_message_services.text.remove: Remove a message service
+schema.contact_message_services.desc.message_service: Il servizio di messaggistica.
+schema.contact_message_services.desc.enabled: Abilita o disabilita il servizio di messaggistica.
+schema.contact_message_services.desc.send_to: Il destinatario del messaggio.
+schema.contact_message_services.desc.notification_level: Seleziona il livello di stato per cui si vuole ricevere notifiche.
+schema.contact_message_services.text.add: Aggiungi un servizio di messaggistica al contatto
+schema.contact_message_services.text.remove: Rimuovi un servizio di messaggistica
 
-schema.contactgroup.attr.id: Contactgroup ID
-schema.contactgroup.attr.name: Name
+schema.contactgroup.attr.id: ID gruppo-contatti
+schema.contactgroup.attr.name: Nome
 schema.contactgroup.attr.description: Descrizione
-schema.contactgroup.desc.name: This is the name of the contact group. The name should be unique.
-schema.contactgroup.desc.description: Set a short description for the group.
-schema.contactgroup.text.list: Panoramica of all contactgroups
-schema.contactgroup.text.create: Create a new contact group
-schema.contactgroup.text.delete: Delete contact group
-schema.contactgroup.text.settings: Contact group settings
-schema.contactgroup.text.contact_members: Contacts in group
-schema.contactgroup.text.contact_nonmembers: Contacts not in group
-schema.contactgroup.text.group_members: Members of contact group '<b>%s</b>'
-schema.contactgroup.text.host_members: Hosts in group
-schema.contactgroup.text.host_nonmembers: Hosts not in group
-schema.contactgroup.text.selected_hosts: Selected hosts
+schema.contactgroup.desc.name: Questo è il nome del gruppo di contatti. Il nome dev'essere unico.
+schema.contactgroup.desc.description: Inserisci una breve descrizione per il gruppo.
+schema.contactgroup.text.list: Panoramica di tutti i gruppo-contatti
+schema.contactgroup.text.create: Crea un nuovo gruppo contatti
+schema.contactgroup.text.delete: Elimina gruppo contatti
+schema.contactgroup.text.settings: Impostazioni gruppo contatti
+schema.contactgroup.text.contact_members: Contatti nel gruppo
+schema.contactgroup.text.contact_nonmembers: Contatti non nel gruppo
+schema.contactgroup.text.group_members: Membri del gruppo contatti '<b>%s</b>'
+schema.contactgroup.text.host_members: Host nel gruppo
+schema.contactgroup.text.host_nonmembers: Host non nel gruppo
+schema.contactgroup.text.selected_hosts: Host selezionati
 
-schema.contactgroup.text.service_members: Services in contact group
-schema.contactgroup.text.service_nonmembers: Services not in contact group
-schema.contactgroup.text.selected_services: Selected services
+schema.contactgroup.text.service_members: Servizi nel gruppo contatti
+schema.contactgroup.text.service_nonmembers: Servizi non nel gruppo
+schema.contactgroup.text.selected_services: Servizi selezionati
 
 schema.notification.attr.time: Timestamp
-schema.notification.attr.send_to: Recipient
-schema.notification.attr.subject: Subject
-schema.notification.attr.message: Message
-schema.notification.attr.message_service: Type
-schema.notification.text.list: Sent notifications for host %s
-schema.notification.text.search: Search for notifications
-schema.notification.text.filter_message: Filter message
-schema.notification.text.filter_message_service: sms, mail, ...
+schema.notification.attr.send_to: Destinatario
+schema.notification.attr.subject: Oggetto
+schema.notification.attr.message: Messaggio
+schema.notification.attr.message_service: Tipo
+schema.notification.text.list: Notifiche inviate per l'host %s
+schema.notification.text.search: Cerca notifiche
+schema.notification.text.filter_message: Filtra messaggio
+schema.notification.text.filter_message_service: SMS, mail, ...
 
-schema.chart.attr.id: Chart ID
-schema.chart.attr.title: Chart title
+schema.chart.attr.id: ID diagramma
+schema.chart.attr.title: Titolo diagramma
 schema.chart.attr.subtitle: Chart subtitle
-schema.chart.attr.options: Chart options
-schema.chart.attr.preset_last: Programmazione: ultimo
-schema.chart.attr.refresh: Refresh
-schema.chart.attr.preset: Programmazione
+schema.chart.attr.options: Opzioni diagramma
+schema.chart.attr.preset_last: Programmato: ultimo
+schema.chart.attr.refresh: Aggiorna
+schema.chart.attr.preset: Programmato
 schema.chart.attr.chart_size: Dimensione
 schema.chart.attr.from: Da
 schema.chart.attr.to: A
-schema.chart.attr.datetime: Date and time
-schema.chart.attr.from_to: From <b>%s</b> to <b>%s</b>
-schema.chart.attr.charts: Charts
-schema.chart.desc.charts: <b>Select multiple charts with</b><br/><br/>
- <i>CTRL + click</i><br/>or<br/><i>press + hold left mouse button + move pointer</i>
-schema.chart.text.multiple_view: Chart view
-schema.chart.text.view: Charts for host <b>%s</b>
-schema.chart.text.multiview: View multiple charts
-schema.chart.text.select: Chart selection for host %s
-schema.chart.text.multiselect: Select charts for multiple hosts
-schema.chart.text.alignment: Chart alignment
-schema.chart.text.chart_views: Chart views
-schema.chart.text.save_view: Save view
-schema.chart.text.load_view: Load view
-schema.chart.text.delete_view: Delete chart view
+schema.chart.attr.datetime: Data e ora
+schema.chart.attr.from_to: Da <b>%s</b> a <b>%s</b>
+schema.chart.attr.charts: Diagrammi
+schema.chart.desc.charts: <b>Seleziona più diagrammi con</b><br/><br/>
+ <i>CTRL + click</i><br/>o<br/><i>premi + mantieni il pulsante sinistro del mouse + muovi il puntatore</i>
+schema.chart.text.multiple_view: Vista diagramma
+schema.chart.text.view: Diagrammi per l'host <b>%s</b>
+schema.chart.text.multiview: Visualizza più diagrammi
+schema.chart.text.select: Selezione diagrammi per l'host %s
+schema.chart.text.multiselect: Seleziona diagrammi per più host
+schema.chart.text.alignment: Allineamento diagrammi
+schema.chart.text.chart_views: Viste diagramma
+schema.chart.text.save_view: Salva vista
+schema.chart.text.load_view: Carica vista
+schema.chart.text.delete_view: Elimina vista diagramma
 schema.chart.text.really_delete_view: Do you really want to delete chart view <b><b>%s</b></b>?
-schema.chart.text.selected: selected
-schema.chart.text.selected_max_reached: (max) selected
+schema.chart.text.selected: selezionato
+schema.chart.text.selected_max_reached: (massimo) selezionati
 schema.chart.text.back_to_selection: Back to the chart selection
-schema.chart.text.chart_information: Chart information
-schema.chart.text.chart_id: Chart-ID: %s
-schema.chart.text.service_charts: Service charts
-schema.chart.text.user_charts: User charts
-schema.chart.text.chart_type: Select the chart type
-schema.chart.text.charts: Charts
+schema.chart.text.chart_information: Informazioni diagramma
+schema.chart.text.chart_id: ID-diagramma: %s
+schema.chart.text.service_charts: Diagrammi servizio
+schema.chart.text.user_charts: Diagrammi utente
+schema.chart.text.chart_type: Seleziona il tipo di diagramma
+schema.chart.text.charts: Diagrammi
 
-schema.dependency.attr.id: Dependency ID
-schema.dependency.attr.host_id: Host ID
+schema.dependency.attr.id: ID dipendenza
+schema.dependency.attr.host_id: ID host
 schema.dependency.attr.service_id: Service ID
 schema.dependency.attr.on_host_id: Depends on host ID
 schema.dependency.attr.on_service_id: Depends on service ID
