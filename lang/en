@@ -94,7 +94,7 @@ err-630: Invalid parameter settings found!
 err-631: The parameter offset must be an numeric value, min 0.
 err-632: The parameter limit must be an numeric value, min 0, max <b>%s</b>.
 err-633: The parameter sort_by must begin with a character of a-z and only characters from a-z, 0-9 and an underscore are allowed. The maximum length is 63 characters.
-err-634: For the parameter sort_type only "asc" or "desc" is allowed as value.
+err-634: For the parameter sort_type only "asc" or "desc" are allowed as values.
 err-640: No data available!
 err-700: Please change your password!
 err-701: Incorrect password!
@@ -376,8 +376,8 @@ text.allow_from_desc: The keyword <i>all</i> is equal to <i>0.0.0.0/0, ::/0</i> 
  Examples:
  <br/><br/>192.168.10.0/24, 192.168.14.10/32
  <br/><br/>Note that prepend zeros are not allowed:
- <br/><br/><i>010.005.008.001</i> or <i>0001::0001</i> is not allowed
- <br/><i>10.5.8.1</i> or <i>1::1</i> is allowed
+ <br/><br/><i>010.005.008.001</i> or <i>0001::0001</i> are not allowed
+ <br/><i>10.5.8.1</i> or <i>1::1</i> are allowed
 
 site.login.welcome: Welcome to Bloonix! Please log in.
 site.login.title: Login to the monitoring system
@@ -629,12 +629,12 @@ schema.host.desc.status: The status of the host. Possible values are OK, INFO, W
 schema.host.desc.description: This is a short description of the host.
 schema.host.desc.ipaddr: This is the main IP address of the host.
  <br/><br/>Note that prepend zeros are not allowed:
- <br/><br/><i>010.005.008.001</i> or <i>0001::0001</i> is not allowed
- <br/><i>10.5.8.1</i> or <i>1::1</i> is allowed
+ <br/><br/><i>010.005.008.001</i> or <i>0001::0001</i> are not allowed
+ <br/><i>10.5.8.1</i> or <i>1::1</i> are allowed
 schema.host.desc.ipaddr6: This is the main IP v6 address of the host.
  <br/><br/>Note that prepend zeros are not allowed:
- <br/><br/><i>010.005.008.001</i> or <i>0001::0001</i> is not allowed
- <br/><i>10.5.8.1</i> or <i>1::1</i> is allowed
+ <br/><br/><i>010.005.008.001</i> or <i>0001::0001</i> are not allowed
+ <br/><i>10.5.8.1</i> or <i>1::1</i> are allowed
 schema.host.desc.comment: This field can be used to set a short comment to the host.
 schema.host.desc.sysgroup: This is a complete free to use field with no restrictions.
 schema.host.desc.sysinfo: This field allows you to set an external link to you own host documentation, e.g.:<br/><br/>Linktext=https://mysite.test/?id=12345.<br/><br/>Not allowed characters: "\
@@ -716,7 +716,7 @@ schema.host.action.enable_notifications_multiple: Enable notifications of the se
 schema.host.action.activate_multiple: Activate the selected hosts
 schema.host.action.deactivate_multiple: Deactivate the selected hosts
 schema.host.action.remove_template: Remove template
-schema.host.text.remove_template_warning: Please note that all services of the template will be removed from all hosts that has its services inherited from this template!
+schema.host.text.remove_template_warning: Please note that all services of the template will be removed from all hosts that have their services inherited from this template!
 schema.host.text.templates_not_assigned: Not assigned templates
 schema.host.action.add_template: Add template
 schema.host.info.notification_disabled: Notifications are disabled of the host.
