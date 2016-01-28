@@ -719,7 +719,7 @@ schema.host.action.remove_template: Remove template
 schema.host.text.remove_template_warning: Please note that all services of the template will be removed from all hosts that have their services inherited from this template!
 schema.host.text.templates_not_assigned: Not assigned templates
 schema.host.action.add_template: Add template
-schema.host.info.notification_disabled: Notifications are disabled of the host.
+schema.host.info.notification_disabled: Notifications of the host are disabled .
 schema.host.info.notification_disabled_short: Notifications disabled
 schema.host.info.inactive: The host is not active.
 schema.host.info.sysinfo: External system information available.
