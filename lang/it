@@ -16,7 +16,7 @@ word.Filter: Filtro
 word.inactive: inattivo
 word.active: attivo
 word.Timezone: Fuso orario
-word.Timeslice: Intervallo
+word.Timeslice: Timeslice
 word.Type: Tipo
 word.Days: Giorni
 word.days: giorni
@@ -148,7 +148,7 @@ action.move_box: Muovi il riquadro
 action.genstr: Genera stringa
 action.schedule: Orario
 action.members: Elenca membri
-action.timeslices: Elenca intervalli
+action.timeslices: Elenca timeslice
 action.add: Aggiungi
 action.remove: Rimuovi
 action.generate: Genera
@@ -437,23 +437,23 @@ schema.company.attr.country: Nazione
 schema.company.attr.phone: Telefono
 schema.company.attr.fax: Fax
 schema.company.attr.email: Email
-schema.company.attr.max_templates: Numero massimo template
-schema.company.attr.max_hosts: Numero massimo host
-schema.company.attr.max_services: Numero massimo servizi
-schema.company.attr.max_services_per_host: Numero massimo servizi per host
-schema.company.attr.max_contacts: Numero massimo contatti
-schema.company.attr.max_contactgroups: Numero massimo gruppicontatti
-schema.company.attr.max_timeperiods: Numero massimo periodi
-schema.company.attr.max_timeslices_per_object: Numero massimo intervalli
-schema.company.attr.max_groups: Numero massimo gruppi
-schema.company.attr.max_users: Numero massimo utenti
-schema.company.attr.max_dependencies_per_host: Numero massimo dipendenze per host
-schema.company.attr.max_downtimes_per_host: Numero massimo fuori servizio per host
-schema.company.attr.max_chart_views_per_user: Numero massimo viste diagramma per utente
-schema.company.attr.max_charts_per_user: Numero massimo diagrammi per utente
-schema.company.attr.max_metrics_per_chart: Numero massimo metriche per diagramma
-schema.company.attr.max_dashboards_per_user: Numero massimo bacheche per utente
-schema.company.attr.max_dashlets_per_dashboard: Numero massimo dashlet per bacheca
+schema.company.attr.max_templates: Massimo template
+schema.company.attr.max_hosts: Massimo host
+schema.company.attr.max_services: Massimo servizi
+schema.company.attr.max_services_per_host: Massimo servizi per host
+schema.company.attr.max_contacts: Massimo contatti
+schema.company.attr.max_contactgroups: Massimo gruppicontatti
+schema.company.attr.max_timeperiods: Massimo periodi
+schema.company.attr.max_timeslices_per_object: Massimo timeslice
+schema.company.attr.max_groups: Massimo gruppi
+schema.company.attr.max_users: Massimo utenti
+schema.company.attr.max_dependencies_per_host: Massimo dipendenze per host
+schema.company.attr.max_downtimes_per_host: Massimo fuori servizio per host
+schema.company.attr.max_chart_views_per_user: Massimo viste diagramma per utente
+schema.company.attr.max_charts_per_user: Massimo diagrammi per utente
+schema.company.attr.max_metrics_per_chart: Massimo metriche per diagramma
+schema.company.attr.max_dashboards_per_user: Massimo bacheche per utente
+schema.company.attr.max_dashlets_per_dashboard: Massimo dashlet per bacheca
 schema.company.attr.max_sms: Numero massimo SMS
 schema.company.attr.max_hosts_in_reg_queue: Numero massimo di hosts in coda per la registrazione
 schema.company.attr.host_reg_authkey: Authkey perla registrazione dell'host
@@ -474,7 +474,7 @@ schema.company.desc.max_services_per_host: Numero massimo di servizi che si poss
 schema.company.desc.max_contacts: Numero massimo di contatti che si possono creare.
 schema.company.desc.max_contactgroups: Numero massimo di gruppi-contatti che si possono creare.
 schema.company.desc.max_timeperiods: Numero massimo di periodi che si possono creare
-schema.company.desc.max_timeslices_per_object: Numero massimo di intervalli che si possono creare per periodo.
+schema.company.desc.max_timeslices_per_object: Numero massimo di timeslice che si possono creare per periodo.
 schema.company.desc.max_groups: Numero massimo di gruppi che si possono creare.
 schema.company.desc.max_users: Numero massimo di utenti che si possono creare.
 schema.company.desc.max_dependencies_per_host: Numero massimo di dipendenze che si possono creare per host.
@@ -573,7 +573,7 @@ schema.group.text.may_delete_services: Può eliminare servizi
 schema.hs_downtime.attr.id: ID
 schema.hs_downtime.attr.begin_time: Orario d'inizio
 schema.hs_downtime.attr.end_time: Orario di fine
-schema.hs_downtime.attr.timeslice: Intervallo
+schema.hs_downtime.attr.timeslice: Timeslice
 schema.hs_downtime.attr.description: Descrizione
 schema.hs_downtime.attr.username: Aggiunto da
 schema.hs_downtime.attr.timezone: Timezone
@@ -768,10 +768,10 @@ schema.timeperiod.examples: <p><b>Sintassi: GIORNO-ESTENSIONE TEMPO-ESTENSIONE</
  Sabato - Domenica   00:00 - 23:59
  </pre></br>
 
-schema.timeslice.attr.id: ID intervallo
-schema.timeslice.attr.timeslice: Intervallo
-schema.timeslice.text.list: Panoramica di tutti gli intervalli
-schema.timeslice.text.delete: Elimina intervallo
+schema.timeslice.attr.id: ID timeslice
+schema.timeslice.attr.timeslice: Timeslice
+schema.timeslice.text.list: Panoramica di tutti i timeslice
+schema.timeslice.text.delete: Elimina timeslice
 
 schema.host_template.attr.id: ID template
 schema.host_template.attr.name: Nome template
@@ -900,104 +900,104 @@ schema.chart.text.charts: Diagrammi
 
 schema.dependency.attr.id: ID dipendenza
 schema.dependency.attr.host_id: ID host
-schema.dependency.attr.service_id: Service ID
-schema.dependency.attr.on_host_id: Depends on host ID
-schema.dependency.attr.on_service_id: Depends on service ID
-schema.dependency.attr.status: Status
-schema.dependency.attr.on_status: Parent status
-schema.dependency.attr.inherit: Inheritance
+schema.dependency.attr.service_id: ID Servizio
+schema.dependency.attr.on_host_id: Dipende dall'ID host
+schema.dependency.attr.on_service_id: Dipende dall'ID servizio
+schema.dependency.attr.status: Stato
+schema.dependency.attr.on_status: Stato padre
+schema.dependency.attr.inherit: Eredità
 schema.dependency.attr.timeslice: Timeslice
 schema.dependency.attr.timezone: Timezone
-schema.dependency.text.list: Dependencies for host %s
-schema.dependency.text.create_from: Create a new dependency from
-schema.dependency.text.create: Create a new dependency for host <b>%s</b>
-schema.dependency.text.really_delete: Do you really want to delete dependency <b>%s</b>?
-schema.dependency.text.host_to_host: host to host
-schema.dependency.text.host_to_service: host to service
-schema.dependency.text.service_to_host: service to host
-schema.dependency.text.service_to_service: service to service
-schema.dependency.text.for_node: Dependencies for node <b>%s</b>
-schema.dependency.text.no_dependencies: There are no dependencies configured!
-schema.dependency.text.dependencies: Dependencies
+schema.dependency.text.list: Dipendenze per l'host %s
+schema.dependency.text.create_from: Crea una nuova dipendenza da
+schema.dependency.text.create: Crea una nuova dipendenza per l'host <b>%s</b>
+schema.dependency.text.really_delete: Vuoi veramente eliminare la dipendenza <b>%s</b>?
+schema.dependency.text.host_to_host: host ad host
+schema.dependency.text.host_to_service: host a servizio
+schema.dependency.text.service_to_host: servizio ad host
+schema.dependency.text.service_to_service: servizio a servizio
+schema.dependency.text.for_node: Dipendenze per il nodo <b>%s</b>
+schema.dependency.text.no_dependencies: Non ci sono dipendenze configurate.
+schema.dependency.text.dependencies: Dipendenze
 schema.dependency.text.host: Host
-schema.dependency.text.service: Service
-schema.dependency.text.depends_on_host: depends on host
-schema.dependency.text.depends_on_service: depends on service
-schema.dependency.text.active_time: Active time
-schema.dependency.text.workflow_from_host: From host
-schema.dependency.text.workflow_from_service: and from service
-schema.dependency.text.workflow_to_host: to host
-schema.dependency.text.workflow_to_service: and to service
-schema.dependency.text.workflow_from_host_status: Select the status of the host that activates the dependency flow
-schema.dependency.text.workflow_from_service_status: Select the status of the service that activates the dependency flow
-schema.dependency.text.workflow_to_host_status: Select the status of the parent host that avoids a notification
-schema.dependency.text.workflow_to_service_status: Select the status of the parent service that avoids a notification
-schema.dependency.text.workflow_inherit: Activate inheritation
-schema.dependency.text.workflow_timezone: Imposta la timezone per l'intervallo di tempo
-schema.dependency.text.workflow_timeslice: Imposta l'intervallo quando la dipendenza è attiva
+schema.dependency.text.service: Servizio
+schema.dependency.text.depends_on_host: dipende dall'host
+schema.dependency.text.depends_on_service: dipende dal servizio
+schema.dependency.text.active_time: Tempo attività
+schema.dependency.text.workflow_from_host: Da host
+schema.dependency.text.workflow_from_service: e da servizio
+schema.dependency.text.workflow_to_host: ad host
+schema.dependency.text.workflow_to_service: e a servizio
+schema.dependency.text.workflow_from_host_status: Seleziona lo stato dell'host che attiva il flusso di dipendenza
+schema.dependency.text.workflow_from_service_status: Seleziona lo stato del servizio che attiva il flusso di dipendenza
+schema.dependency.text.workflow_to_host_status: Seleziona lo stato dell'host che evita la notifica
+schema.dependency.text.workflow_to_service_status: Seleziona lo stato del servizio padre che evita la notifica
+schema.dependency.text.workflow_inherit: Attiva ereditarietà
+schema.dependency.text.workflow_timezone: Imposta la timezone per il timeslice
+schema.dependency.text.workflow_timeslice: Imposta il timeslice quando la dipendenza è attiva
 
-schema.event.attr.id: Event ID
+schema.event.attr.id: ID evento
 schema.event.attr.time: Timestamp
-schema.event.attr.last_status: Last status
-schema.event.attr.status: Status
-schema.event.attr.duration: Duration
-schema.event.attr.attempts: Attempts
-schema.event.attr.tags: Tags
-schema.event.text.list: Events of host %s
-schema.event.text.filter_message: Filter message
-schema.event.text.host_service: Host / Service
-schema.event.text.filter_by_status: Filter by status
-schema.event.text.filter_by_duration: Filter by duration
-schema.event.text.filter_by_query: Filter messages by query
-schema.event.text.filter_by_service: Filter by services
+schema.event.attr.last_status: Ultimo stato
+schema.event.attr.status: Stato
+schema.event.attr.duration: Durata
+schema.event.attr.attempts: Tentativi
+schema.event.attr.tags: Tag
+schema.event.text.list: Eventi dell'host %s
+schema.event.text.filter_message: Filtra messaggio
+schema.event.text.host_service: Host / Servizio
+schema.event.text.filter_by_status: Filtra per stato
+schema.event.text.filter_by_duration: Filtra per durata
+schema.event.text.filter_by_query: Filtra messaggi per interrogazione
+schema.event.text.filter_by_service: Filtra per servizi
 
-schema.service.attr.id: Service ID
+schema.service.attr.id: ID servizio
 schema.service.attr.ref_id: ID
-schema.service.attr.agent_id: Agent location
-schema.service.attr.service_name: Service name
-schema.service.attr.command: Command
-schema.service.attr.command_options: Check settings
+schema.service.attr.agent_id: Ubicazione agente
+schema.service.attr.service_name: Nome servizio
+schema.service.attr.command: Comando
+schema.service.attr.command_options: Controlla impostazioni
 schema.service.attr.timeout: Timeout
-schema.service.attr.interval: Interval
-schema.service.attr.retry_interval: Retry interval
+schema.service.attr.interval: Intervallo
+schema.service.attr.retry_interval: Intervallo nuovo tentativo
 schema.service.attr.description: Descrizione
 schema.service.attr.plugin: Plugin
-schema.service.attr.comment: Comment
-schema.service.attr.attempt_warn2crit: Switch WARNING to CRITICAL
-schema.service.attr.attempt_counter: Attempt counter
-schema.service.attr.attempt_max: Notify after X attempts
-schema.service.attr.active: Active
-schema.service.attr.acknowledged: Service status acknowledged
-schema.service.attr.notification: Notifications enabled
-schema.service.attr.notification_interval: Notification interval
-schema.service.attr.last_check: Last check
-schema.service.attr.fd_enabled: Flap detection enabled
-schema.service.attr.fd_time_range: Flap detection time range
-schema.service.attr.fd_flap_count: Notifiy after X status switches
-schema.service.attr.next_check: Next check
-schema.service.attr.last_event: Last event
-schema.service.attr.is_volatile: Is the service volatile
-schema.service.attr.volatile_status: The current volatile status of the service
-schema.service.attr.volatile_retain: The volatile retain time
-schema.service.attr.volatile_since: Since the status is volatile
-schema.service.attr.status: Status
-schema.service.attr.message: Status information
-schema.service.attr.result: Advanced status information
-schema.service.attr.status_since: Status since
-schema.service.attr.check_by_location: Check by location (agent ID)
-schema.service.attr.default_location: Default location
+schema.service.attr.comment: Commento
+schema.service.attr.attempt_warn2crit: Cambia ALLERTA in CRITICO
+schema.service.attr.attempt_counter: Contatore tentativi
+schema.service.attr.attempt_max: Notifica dopo X tentativi
+schema.service.attr.active: Attivo
+schema.service.attr.acknowledged: Stato servizio accertato
+schema.service.attr.notification: Notifiche abilitate
+schema.service.attr.notification_interval: Intervallo notifiche
+schema.service.attr.last_check: Ultimo controllo
+schema.service.attr.fd_enabled: Rilevamento flapping attivato
+schema.service.attr.fd_time_range: Intervallo rilevamento flapping
+schema.service.attr.fd_flap_count: Notifica dopo X cambi di stato
+schema.service.attr.next_check: Prossimo controllo
+schema.service.attr.last_event: Ultimo evento
+schema.service.attr.is_volatile: Il servizio è instabile
+schema.service.attr.volatile_status: Lo stato corrente d'instabilità del servizio
+schema.service.attr.volatile_retain: Tempo di tenuta instabilità
+schema.service.attr.volatile_since: Da quando lo stato è instabile
+schema.service.attr.status: Stato
+schema.service.attr.message: Informazioni sullo stato
+schema.service.attr.result: Informazioni avanzate sullo stato
+schema.service.attr.status_since: Stato da
+schema.service.attr.check_by_location: Controlla per ubicazione (ID agente)
+schema.service.attr.default_location: Ubicazione predefinita
 schema.service.attr.flapping: Flapping
-schema.service.attr.scheduled: Has downtime
-schema.service.attr.host_alive_check: Is this a host alive check?
-schema.service.attr.passive_check: Is this a passive check?
-schema.service.attr.agent_options.timeout: Global check timeout
-schema.service.desc.agent_options.timeout: This is the global execution timeout of the check itself. After the timeout the check is killed and a CRITICAL status is triggered. This is very useful for checks that hangs and are unable to stop itself.<br/><br/>Default: 30 seconds
-schema.service.attr.agent_options.set_tags: Set tags
-schema.service.desc.agent_options.set_tags: Which tags should be set if the check returns a WARNING, CRITICAL or UNKNOWN status.
-schema.service.desc.agent_id: This is the location from where the check is executed.
-schema.service.desc.service_name: This is the display name of the service.
-schema.service.desc.description: This is a short description of the check.
-schema.service.desc.comment: This is a short internal comment to the check.
+schema.service.attr.scheduled: Indisponibilità
+schema.service.attr.host_alive_check: È questo un controllo di host attivo?
+schema.service.attr.passive_check: È questo un controllo passivo?
+schema.service.attr.agent_options.timeout: Timeout controllo globale
+schema.service.desc.agent_options.timeout: Questo è il timeout globale di esecuzione del controllo: dopo il timeout il controllo viene soppresso e attivato lo stato CRITICO. Questo è molto utile per i controlli appesi che non riescono a fermarsi.<br/><br/>Predefinito: 30 secondi
+schema.service.attr.agent_options.set_tags: Imposta tag
+schema.service.desc.agent_options.set_tags: Quale tag deve venir impostatose il controllo restituisce uno stato ALLERTA, CRITICO o SCONOSCIUTO.
+schema.service.desc.agent_id: Questa è l'ubicazione da dove viene eseguito il controllo.
+schema.service.desc.service_name: Questo è il nome visualizzato del servizio.
+schema.service.desc.description: Questa è una breve descrizione sul controllo.
+schema.service.desc.comment: Questo è un breve riservato commento sul controllo.
 schema.service.desc.interval: This is the check interval of the service. If no value is set, then the interval of the host is inherited.
 schema.service.desc.retry_interval: This is the retry interval of the service. If a service is not in OK status then the interval is forced to this value. If no value is set, then the retry interval setting of the host is inherited.
 schema.service.desc.timeout: This is the timeout of the service and begins to count after the interval. If the status of the service is not updated in this time then a critical status is set for the service with the information that it seems that the Bloonix agent is not working. If no value is set, then the timeout of the host is inherited.
@@ -1014,10 +1014,10 @@ schema.service.desc.is_volatile: With this option you can define if the check is
 schema.service.desc.volatile_retain: Set a time after the volatile status is automatically cleared.
 schema.service.desc.host_alive_check: A host alive check is a check that determines if a host is down or alive. If this check returns a critical status then you get a special notification. If other service checks returns a critical status at the same time then the notifications will be suppressed. It's recommended you use the ping check as host alive check.
 schema.service.desc.passive_check: A passive check is a check which is not checked by Bloonix itself, but by a external service or script. Passive checks has no timeout and are very useful, for example, for SNMP traps. The external service has to report a critical state to the Bloonix-Agent, which in turn reports the state to the Bloonix-Server.
-schema.service.text.services: Services
+schema.service.text.services: Servizi
 schema.service.text.list: Service details for all hosts
-schema.service.text.title: Services
-schema.service.text.create: Create a new service
+schema.service.text.title: Servizi
+schema.service.text.create: Crea un nuovo servizio
 schema.service.text.settings: Settings of service <b>%s</b>
 schema.service.text.delete: Delete service
 schema.service.text.clone: Clone service
@@ -1061,13 +1061,13 @@ schema.service.action.clear_acknowledgement_multiple: Clear the acknowledgement 
 schema.service.action.clear_volatile_multiple: Clear the volatile status of the selected services
 schema.service.action.multiple_force_next_check: Reset the interval and force the next check of the service
 schema.service.info.notification: Notifications are disabled of the service.
-schema.service.info.active: The service is not active.
+schema.service.info.active: Il servizio non è attivo.
 schema.service.info.acknowledged: The service is acknowledged.
 schema.service.info.flapping: The service is flapping.
 schema.service.info.is_volatile: The service is in volatile status.
 schema.service.info.host_alive_check: This is a host-alive-check.
 schema.service.info.has_result: This service check has advanced status information. Click me :-)
-schema.service.info.inactive: The service is inactive.
+schema.service.info.inactive: Il servizio è inattivo.
 schema.service.info.notification_disabled: Notifications are disabled of the service.
 schema.service.info.inherits_from_host_template: This service is inherited from host template '%s'.
 schema.service.info.status_nok_since: The service was not OK within the the last 60 minutes.
