@@ -744,12 +744,12 @@ schema.timeperiod.examples: <p><b>Sintassi: GIORNO-ESTENSIONE TEMPO-ESTENSIONE</
  <pre>
  INTERVALLO GIORNI               ESEMPI
  ------------------------------------------------------------
- Giorno                          Lunedì
- Giorno - Giorno                 Lunedì - Venerdì
- Mese                            Gennaio
- Mese - Mese                     Gennaio - Luglio
- Mese Giorno                     Gennaio 1
- Mese Giorno - Mese Giorno       Gennaio 1 - Luglio 15
+ Giorno                          Monday
+ Giorno - Giorno                 Monday - Friday
+ Mese                            Januar
+ Mese - Mese                     Januar - July
+ Mese Giorno                     Januar 1
+ Mese Giorno - Mese Giorno       Januar 1 - July 15
  Anno                            2010
  Anno - Anno                     2010 - 2012
  AAAA-MM-GG                      2010-01-01
@@ -763,9 +763,9 @@ schema.timeperiod.examples: <p><b>Sintassi: GIORNO-ESTENSIONE TEMPO-ESTENSIONE</
  </pre></br>
  <p><b>Esempi:</b></p></br>
  <pre>
- Lunedì - Venerdì    09:00 - 17:00
- Lunedì - Venerdì    00:00 - 08:59, 17:01 - 23:59
- Sabato - Domenica   00:00 - 23:59
+ Monday - Friday    09:00 - 17:00
+ Monday - Friday    00:00 - 08:59, 17:01 - 23:59
+ Saturday - Sunday  00:00 - 23:59
  </pre></br>
 
 schema.timeslice.attr.id: ID timeslice
