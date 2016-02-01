@@ -302,9 +302,9 @@ text.report.availability.lt180: Tra 1 e 3 ore
 text.report.availability.lt300: Tra 3 e 5 ore
 text.report.availability.ge300: Oltre 3 ore
 text.report.availability.flapping: Flapping
-text.report.availability.volatile: Instabilità
+text.report.availability.volatile: Discontinuità
 text.report.availability.timeout: Timeout
-text.report.availability.agent_dead: Agente morto
+text.report.availability.agent_dead: Agente inattivo
 text.report.availability.security: Problema di sicurezza
 text.report.availability.fatal: Problema fatale
 text.report.availability.h00: 00:00 - 00:59
@@ -976,10 +976,10 @@ schema.service.attr.fd_time_range: Intervallo rilevamento flapping
 schema.service.attr.fd_flap_count: Notifica dopo X cambi di stato
 schema.service.attr.next_check: Prossimo controllo
 schema.service.attr.last_event: Ultimo evento
-schema.service.attr.is_volatile: Il servizio è instabile
-schema.service.attr.volatile_status: Lo stato corrente d'instabilità del servizio
-schema.service.attr.volatile_retain: Tempo di tenuta instabilità
-schema.service.attr.volatile_since: Da quando lo stato è instabile
+schema.service.attr.is_volatile: Il servizio è discontinuo
+schema.service.attr.volatile_status: L'attuale stato discontinuo del servizio
+schema.service.attr.volatile_retain: Tempo ritenuta discontinuità
+schema.service.attr.volatile_since: Da quando lo stato è discontinuo
 schema.service.attr.status: Stato
 schema.service.attr.message: Informazioni sullo stato
 schema.service.attr.result: Informazioni avanzate sullo stato
@@ -1010,36 +1010,36 @@ schema.service.desc.notification_interval: Questo è l'intervallo di notifica pe
 schema.service.desc.fd_enabled: Questa opzione abilita o disabilita il rilevamento del flapping. Il rilevamento del flapping è molto utile per riconoscere i servizi che passano dallo stato OK e non OK in tempi brevi ed il contatore <i>massimo tentativi</i> non viene raggiunto. Il rilevamento del flapping controlla quante volte il servizio ha cambiato stato nel tempo impostato. Se lo stato cambia troppe volte, allora una notifica verrà attivata.
 schema.service.desc.fd_time_range: Questo è il periodo in cui il rilevamento del flapping controlla i cambi di stato.
 schema.service.desc.fd_flap_count: Questa è la soglia per il rilevamento del flapping. Se lo stato cambia più x volte nel dato tempo, una notifica verrà attivata.
-schema.service.desc.is_volatile: With this option you can define if the check is <i>volatile</i>. Some checks has the peculiarity that they are only for a very short time in a CRITICAL status. As example if you check a logfile for specific strings, like <i>possible break-in attempt</i> and the check returns a CRITICAL status because the string were found, then it's possible that the next check does not find the string any more and would return the status OK. In this case maybe you would never notice that someone tried to break in. For this purpose you can define that the service is <i>volatile</i>. That means that the service stays in a CRITICAL or WARNING state until you clear the volatile status manually.
-schema.service.desc.volatile_retain: Set a time after the volatile status is automatically cleared.
-schema.service.desc.host_alive_check: A host alive check is a check that determines if a host is down or alive. If this check returns a critical status then you get a special notification. If other service checks returns a critical status at the same time then the notifications will be suppressed. It's recommended you use the ping check as host alive check.
-schema.service.desc.passive_check: A passive check is a check which is not checked by Bloonix itself, but by a external service or script. Passive checks has no timeout and are very useful, for example, for SNMP traps. The external service has to report a critical state to the Bloonix-Agent, which in turn reports the state to the Bloonix-Server.
+schema.service.desc.is_volatile: Con questa impostazione si può definire se il controllo dev'essere discontinuo. Alcuni controlli hanno la peculiarità di essere nello stato CRITICO solo per un breve periodo. Ad esempio se si cerca in un file di log la presenza di una stringa specifica, tipo <i>possibile tentativo d'intrusione</i> ed il controllo restituisce uno stato CRITICO, sarà molto probabile che nella ricerca successiva non verrà più ritrovata la stringa fornendo quindi uno stato OK. In questo caso probabilmente non ci si accorgerà mai che qualcuno ha cercato d'introdursi. Per questo motivo si può impostare il servizio come <i>discontinuo</i> mantenendo lo stato del servizio in CRITICO o ALLERTA fino a quando non lo si azzeri manualmente.
+schema.service.desc.volatile_retain: Imposta un tempo dopo il quale lo stato discontinuo viene automaticamente azzerato.
+schema.service.desc.host_alive_check: Un controllo di host vivo determina se un host è giù o attivo. Se questo controllo restituisce uno stato critico, allora si riceve una notifica speciale. Se un altro controllo di servizio restituisce uno stato critico nello stesso momento, allora la notifica verrà soppressa. Si raccomanda di usare il controllo del ping come controllo per host vivo.
+schema.service.desc.passive_check: Un controllo passivo è una verifica che non viene effettuata da Bloonix, bensì da un servizio o script esterno. I controlli passivi non hanno timeout e sono molto utili, per esempio nel caso di SNMP trap (notifiche senza ACK). Il servizio esterno deve fornire uno stato critico all'agente Bloonix, che di conseguenza lo girerà al server Bloonix.
 schema.service.text.services: Servizi
-schema.service.text.list: Service details for all hosts
+schema.service.text.list: Dettaglio servizi per tutti gli host
 schema.service.text.title: Servizi
 schema.service.text.create: Crea un nuovo servizio
-schema.service.text.settings: Settings of service <b>%s</b>
-schema.service.text.delete: Delete service
-schema.service.text.clone: Clone service
-schema.service.text.clone_service: Clone service %s
-schema.service.text.clone_to_the_same_host: Clone the service to the same host
-schema.service.text.clone_select_host: Select another host
-schema.service.text.choose_plugin: Select a plugin
-schema.service.text.attempt: Attempts
-schema.service.text.host_alive_check: Host-Alive-Check
-schema.service.text.select_location_check_type: Select the type of the check
-schema.service.text.select_location_check_type_info: Click on the buttons to see a short description of each type
-schema.service.text.multiple_help: <h4>This action requires to select at least one service.</h4>
- To mark a single service just click on a row. If you want to mark multiple services
- just press and hold <i>CTRL</i> on your keyboard. If you press and hold the left mouse button
- you can mark a range of services.
-schema.service.text.multiple_downtimes: Schedule a downtime for multiple services
-schema.service.text.multiple_notification: Enable or disable the notifications of multiple services
-schema.service.text.multiple_activate: Activate or deactivate multiple services
-schema.service.text.multiple_acknowledge: Acknowledge or clear acknowledgements of multiple services
-schema.service.text.multiple_volatile: Clear the volatile status of multiple services
-schema.service.text.multiple: Service actions
-schema.service.text.default_location_check_button: Default check
+schema.service.text.settings: Impostazioni del servizo <b>%s</b>
+schema.service.text.delete: Elimina servizio
+schema.service.text.clone: Clona servizio
+schema.service.text.clone_service: Clona servizio %s
+schema.service.text.clone_to_the_same_host: Clona il servizio sullo stesso host
+schema.service.text.clone_select_host: Seleziona un altro host
+schema.service.text.choose_plugin: Seleziona un plugin
+schema.service.text.attempt: Tentativi
+schema.service.text.host_alive_check: Controllo host vivo
+schema.service.text.select_location_check_type: Seleziona tipo di controllo
+schema.service.text.select_location_check_type_info: Premere sui pulsanti per vedere una breve descrizione per ogni tipo
+schema.service.text.multiple_help: <h4>Quest'azione richiede di selezionare almeno un servizio.</h4>
+ Per selezionare un singolo servizio basta fare click sulla sua riga. Se si vuole effettuare una selezione multipla di servizi
+ premere e mantenere il tasto <i>CTRL</i> sulla tastiera. Se premi e mantieni il pulsante sinistro del mouse
+ puoi evidenziare una serie di servizi.
+schema.service.text.multiple_downtimes: Programma un fuori servizio per più servizi
+schema.service.text.multiple_notification: Abilita o disabilita le notifiche per più servizi
+schema.service.text.multiple_activate: Abilita o disabilita più servizi
+schema.service.text.multiple_acknowledge: Riconosci o azzera riconoscimento per più servizi
+schema.service.text.multiple_volatile: Azzera lo stato di discontinuità per più servizi
+schema.service.text.multiple: Azioni servizio
+schema.service.text.default_location_check_button: Controllo predefinito
 schema.service.text.failover_location_check_button: Failover check
 schema.service.text.rotate_location_check_button: Rotate check
 schema.service.text.multiple_location_check_button: Multiple checks
