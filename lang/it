@@ -1089,27 +1089,27 @@ schema.service.desc.agent_id_tooltip: <h3>Da quale ubicazione dev'essere eseguit
  </p>
  <h3>intranet</h3>
  <p>
- The option <i>intranet</i> means your local network. If you want to monitor the service
- from your local network, then it's necessary that you install the Bloonix-Agent on a
- central server in your intranet. The checks will be executed from this server.
- This option is useful if you want to monitor devices that has no direct internet connection
- like router, switches and so on.
+ L'opzione <i>intranet</i> si riferisce alla rete locale. Se si vuole monitorare il servizio
+ dalla propria rete locale, allora è necessario installare l'agente Bloonix su un server
+ centrale nella propria rete. I controlli verranno eseguiti da questo server.
+ Quest'opzione torna utile se si vogliono monitorare apparati che non sono connessi ad internet
+ direttamente come router, switch e così via.
  </p>
  <h3>remote</h3>
  <p>
- With the option <i>remote</i> the check is executed from a external Bloonix-Server. This is
- very useful if you want to monitor your webserver, website, mailserver and other internet services.
+ Con l'opzione <i>remote</i> il controllo viene eseguito da un server Bloonix esterno. Questo è molto
+ utile se si vogliono monitorare il proprio web server, sito, server di posta e altri servizi internet.
  </p>
-schema.service.desc.default_check_type_title: Default checkpoint
-schema.service.desc.default_check_type: A default check has a pre-defined checkpoint.
- From this checkpoint your service is checked.
-schema.service.desc.default_check_type_location: Your service is checked from the following checkpoint:
-schema.service.desc.failover_check_type_title: Failover checkpoints
-schema.service.desc.failover_check_type: With failover checks it's possible to select a fixed
- checkpoint from which the service is checked. In addition it's possible to select two
- failover checkpoints, from which the service is checked if the check from the fixed checkpoint
- returns a status that is not OK. If the status of all 3 checkpoints is not OK, the counter
- of <i>attempt max</i> is increased.
+schema.service.desc.default_check_type_title: Checkpoint predefinito
+schema.service.desc.default_check_type: Un controllo predefinito ha un checkpoint predefinito.
+ Da questo checkpoint il servizio viene controllato.
+schema.service.desc.default_check_type_location: Il tuo servizio viene controllatodal seguente checkpoint:
+schema.service.desc.failover_check_type_title: Checkpoint failover
+schema.service.desc.failover_check_type: Con i controlli failover è possibile selezionare un checkpoint
+ fisso da cui viene controllato il servizio. In aggiunta è possibile selezionare due checkpoint
+ failover, da cui viene controllato il servizio se il controllo dal primo checkpoint fisso ritorna
+ uno stato che non è OK. Se lo stato di tutti e tre i checkpoint non è OK, il contatore di
+ <i>massimo tentativi</i> viene aumentato.
 schema.service.desc.failover_check_type_locations: Select a fixed and two failover checkpoints
 schema.service.desc.rotate_check_type_title: Rotate checkpoints
 schema.service.desc.rotate_check_type: The rotate check has no fixed checkpoint.
