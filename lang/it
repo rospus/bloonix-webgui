@@ -1051,22 +1051,22 @@ schema.service.text.view_wtrm_report: Visualizza report transazioni web
 schema.service.text.wtrm_result_steps: Transazioni web - Risultato fasi
 schema.service.text.sla_requirements: Si prega di notare che per gli account gratuiti è disponibile solo il controllo predefinito.
 schema.service.text.host_template: Template host
-schema.service.text.multiple_force_next_check: Reset the interval and force the next check of the service
-schema.service.action.activate_multiple: Activate the selected services
-schema.service.action.deactivate_multiple: Deactivate the selected services
-schema.service.action.enable_notifications_multiple: Enable notifications of the selected services
-schema.service.action.disable_notifications_multiple: Disable notifications of the selected services
-schema.service.action.acknowledge_multiple: Acknowledge the status of the selected services
-schema.service.action.clear_acknowledgement_multiple: Clear the acknowledgement of the selected services
-schema.service.action.clear_volatile_multiple: Clear the volatile status of the selected services
-schema.service.action.multiple_force_next_check: Reset the interval and force the next check of the service
-schema.service.info.notification: Notifications are disabled of the service.
+schema.service.text.multiple_force_next_check: Azzera l'intervallo e forza il prossimo controllo del servizio
+schema.service.action.activate_multiple: Attiva i servizi selezionati
+schema.service.action.deactivate_multiple: Disattiva i servizi selezionati
+schema.service.action.enable_notifications_multiple: Abilita le notifiche per i servizi selezionati
+schema.service.action.disable_notifications_multiple: Disabilita le notifiche per i servizi selezionati
+schema.service.action.acknowledge_multiple: Riconosci lo stato dei servizi selezionati
+schema.service.action.clear_acknowledgement_multiple: Azzera il riconoscimento dei servizi selezionati
+schema.service.action.clear_volatile_multiple: Azzera lo stato di discontinuità dei servizi selezionati
+schema.service.action.multiple_force_next_check: Azzera l'intervallo e forza il prossimo controllo del servizio
+schema.service.info.notification: Le notifiche del servizio sono disabilitate.
 schema.service.info.active: Il servizio non è attivo.
-schema.service.info.acknowledged: The service is acknowledged.
-schema.service.info.flapping: The service is flapping.
-schema.service.info.is_volatile: The service is in volatile status.
-schema.service.info.host_alive_check: This is a host-alive-check.
-schema.service.info.has_result: This service check has advanced status information. Click me :-)
+schema.service.info.acknowledged: Il servizio è riconosciuto.
+schema.service.info.flapping: Il servizio è in flapping.
+schema.service.info.is_volatile: Il servizio è in stato di discontinuità.
+schema.service.info.host_alive_check: Questo è il controllo di host vivo.
+schema.service.info.has_result: Questo servizio ha uno informazioni avanzate sullo stato. Cliccami :-)
 schema.service.info.inactive: Il servizio è inattivo.
 schema.service.info.notification_disabled: Notifications are disabled of the service.
 schema.service.info.inherits_from_host_template: This service is inherited from host template '%s'.
