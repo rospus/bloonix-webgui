@@ -1060,7 +1060,7 @@ schema.service.action.acknowledge_multiple: Acknowledge the status of the select
 schema.service.action.clear_acknowledgement_multiple: Clear the acknowledgement of the selected services
 schema.service.action.clear_volatile_multiple: Clear the volatile status of the selected services
 schema.service.action.multiple_force_next_check: Reset the interval and force the next check of the service
-schema.service.info.notification: Notifications are disabled of the service.
+schema.service.info.notification: Notifications of the service are disabled.
 schema.service.info.active: The service is not active.
 schema.service.info.acknowledged: The service is acknowledged.
 schema.service.info.flapping: The service is flapping.
