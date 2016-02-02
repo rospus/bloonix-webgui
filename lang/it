@@ -1068,24 +1068,24 @@ schema.service.info.is_volatile: Il servizio è in stato di discontinuità.
 schema.service.info.host_alive_check: Questo è il controllo di host vivo.
 schema.service.info.has_result: Questo servizio ha uno informazioni avanzate sullo stato. Cliccami :-)
 schema.service.info.inactive: Il servizio è inattivo.
-schema.service.info.notification_disabled: Notifications are disabled of the service.
-schema.service.info.inherits_from_host_template: This service is inherited from host template '%s'.
-schema.service.info.status_nok_since: The service was not OK within the the last 60 minutes.
-schema.service.desc.agent_tooltip: <h3>Installation of the Bloonix-Agent</h3>
+schema.service.info.notification_disabled: Le notifiche del servizio sono disabilitate.
+schema.service.info.inherits_from_host_template: Questo servizio è erediatato dal template host '%s'.
+schema.service.info.status_nok_since: Il servizio non era OK negli ultimi 60 minuti.
+schema.service.desc.agent_tooltip: <h3>Installazione dell'agente Bloonix</h3>
  <p>
- This check is executed on your server and requires that you install the Bloonix-Agent
- and the plugin on your server.
+ Questo controllo viene eseguito sul server e richiede l'installazione dell'agente Bloonix
+ e del plugin sul server stesso.
  </p>
-schema.service.desc.agent_id_tooltip: <h3>From which location should the check be executed?</h3>
+schema.service.desc.agent_id_tooltip: <h3>Da quale ubicazione dev'essere eseguito il controllo?</h3>
  <p>
- You can choose between the options <i>localhost</i>, <i>intranet</i> and <i>remote</i>.
+ Puoi scegliere tra le opzioni <i>localhost</i>, <i>intranet</i> e <i>remote</i>.
  </p>
  <h3>localhost</h3>
  <p>
- With the option <i>localhost</i> the check is executed local on your server.
- For this action it's necessary that the Bloonix-Agent is installed on your server.
- This option is useful if you want to monitor the system performance like CPU,
- memory or disk usage.
+ Con l'opzione <i>localhost</i> il controllo viene eseguito in locale sul server.
+ Per quest'azione è necessario che l'agente Bloonix sia installato sul server.
+ Questa opzione è utile se si vogliono monitorare le prestazioni del sistema come CPU,
+ uso della memoria o del disco.
  </p>
  <h3>intranet</h3>
  <p>
