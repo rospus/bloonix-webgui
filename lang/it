@@ -1108,75 +1108,75 @@ schema.service.desc.failover_check_type_title: Checkpoint failover
 schema.service.desc.failover_check_type: Con i controlli failover è possibile selezionare un checkpoint
  fisso da cui viene controllato il servizio. In aggiunta è possibile selezionare due checkpoint
  failover, da cui viene controllato il servizio se il controllo dal primo checkpoint fisso ritorna
- uno stato che non è OK. Se lo stato di tutti e tre i checkpoint non è OK, il contatore di
- <i>massimo tentativi</i> viene aumentato.
-schema.service.desc.failover_check_type_locations: Select a fixed and two failover checkpoints
-schema.service.desc.rotate_check_type_title: Rotate checkpoints
-schema.service.desc.rotate_check_type: The rotate check has no fixed checkpoint.
- Instead of that the service check rotates over the selected checkpoints. If a check
- of one checkpoint is not OK, then the check jumps immediate to the next checkpoint.
- If the third checkpoint still returns a status that is not OK then the counter of <i>attempt max</i>
- is increased.
-schema.service.desc.rotate_check_type_locations: Your service is checked from the following checkpoints:
-schema.service.desc.multiple_check_type_title: Multiple checkpoints
-schema.service.desc.multiple_check_type: With this option it's possible to select
- multiple checkpoints from which the service is checked. If 3 checkpoints
- returns a critical status then the counter of <i>attempt max</i> is increased.
-schema.service.desc.multiple_check_concurrency_title: Concurrency checks
-schema.service.desc.multiple_check_concurrency: Please note that the checks are executed
- concurrent from multiple checkpoints. To avoid overloading your service, you can specify
- the maximum number of concurrent executions.
-schema.service.desc.multiple_check_select_concurrency: Select the concurrency:
-schema.service.desc.multiple_check_type_locations: Select at least 3 checkpoints:
+ uno stato di non OK. Se lo stato di tutti e tre i checkpoint non è OK, viene aumentato il contatore di
+ <i>massimo tentativi</i>.
+schema.service.desc.failover_check_type_locations: Seleziona un checkpoint fisso e due di failover
+schema.service.desc.rotate_check_type_title: Ruota i checkpoint
+schema.service.desc.rotate_check_type: Il controllo di rotazione non ha un checkpoint fisso.
+ Al suo posto il controllo del servizio ruoterà sui checkpoint selezionati. Se il controllo
+ di un checkpoint non è OK, allora il controllo salterà immediatamente a quello successivo.
+ Se il terzo checkpoint ritorna anch'esso uno stato non OK, allora il contatore <i>massimo tentativi</i>
+ verrà incrementato.
+schema.service.desc.rotate_check_type_locations: Il tuo servizio è controllato dai seguenti checkpoint:
+schema.service.desc.multiple_check_type_title: Checkpoint multipli
+schema.service.desc.multiple_check_type: Con questa opzione è possibile selezionare
+ più checkpoint da cui il servizio verrà controllato. Se tre checkpoint
+ ritornano uno stato critico allora il contatore <i>massimo tentativi</i> verrà incrementato.
+schema.service.desc.multiple_check_concurrency_title: Controlli in contemporanea
+schema.service.desc.multiple_check_concurrency: Si prega di notare che i controlli sono eseguiti
+ contemporaneamente da più checkpoint. Per evitare di sovraccaricare il servizio, si può specificare
+ il numero massimo di esecuzioni in contemporanea.
+schema.service.desc.multiple_check_select_concurrency: Seleziona la contemporaneità:
+schema.service.desc.multiple_check_type_locations: Seleziona almeno tre checkpoint:
 
-schema.plugin.attr.id: Plugin-ID
+schema.plugin.attr.id: ID plugin
 schema.plugin.attr.plugin: Plugin
-schema.plugin.attr.categories: Categories
+schema.plugin.attr.categories: Categorie
 schema.plugin.attr.description: Descrizione
-schema.plugin.attr.command: Command
-schema.plugin.attr.info: Information
-schema.plugin.text.list: Plugins
+schema.plugin.attr.command: Comando
+schema.plugin.attr.info: Informazioni
+schema.plugin.text.list: Plugin
 
-schema.plugin_stats.attr.alias: Name
-schema.plugin_stats.attr.statkey: Key
-schema.plugin_stats.attr.datatype: Data type
+schema.plugin_stats.attr.alias: Nome
+schema.plugin_stats.attr.statkey: Chiave
+schema.plugin_stats.attr.datatype: Tipo dati
 schema.plugin_stats.attr.description: Descrizione
-schema.plugin_stats.text.list: Metrics of plugin %s
+schema.plugin_stats.text.list: Metriche del plugin %s
 
 schema.user_chart.attr.id: ID
 schema.user_chart.attr.description: Descrizione
 schema.user_chart.desc.description: Descrizione del diagramma.
-schema.user_chart.attr.title: Title
-schema.user_chart.desc.title: The title of the chart.
-schema.user_chart.attr.subtitle: Subtitle
-schema.user_chart.desc.subtitle: The title of the chart.
-schema.user_chart.attr.yaxis_label: Y-axis label
-schema.user_chart.desc.yaxis_label: The label of the Y-axis.
-schema.user_chart.text.title: User charts
-schema.user_chart.text.user_chart: Chart editor
-schema.user_chart.text.editor: User chart editor
-schema.user_chart.text.delete: Delete chart
-schema.user_chart.text.create: Create a chart
-schema.user_chart.text.update: Update a chart
-schema.user_chart.text.add_metric: Add metric
-schema.user_chart.text.chart_metrics: Chart metrics
-schema.user_chart.text.click_to_add_metric: Click to add the metric
+schema.user_chart.attr.title: Titolo
+schema.user_chart.desc.title: Il Titolo del diagramma.
+schema.user_chart.attr.subtitle: Sottotitolo
+schema.user_chart.desc.subtitle: Il Titolo del diagramma.
+schema.user_chart.attr.yaxis_label: Etichetta asse delle Y
+schema.user_chart.desc.yaxis_label: L'etichetta dell'asse delle Y.
+schema.user_chart.text.title: Diagrammi utente
+schema.user_chart.text.user_chart: Editor diagramma
+schema.user_chart.text.editor: Editor diagramma utente
+schema.user_chart.text.delete: Elimina diagramma
+schema.user_chart.text.create: Crea un diagramma
+schema.user_chart.text.update: Aggiorna un diagramma
+schema.user_chart.text.add_metric: Aggiungi metrica
+schema.user_chart.text.chart_metrics: Metriche diagramma
+schema.user_chart.text.click_to_add_metric: Clicca per aggiungere una metrica
 
 schema.location.attr.id: ID
-schema.location.attr.ipaddr: IP address
+schema.location.attr.ipaddr: Indirizzo IP
 schema.location.attr.hostname: Hostname
-schema.location.attr.city: City
-schema.location.attr.country: Country
-schema.location.attr.country_code: Country code
-schema.location.attr.continent: Continent
-schema.location.attr.coordinates: Coordinates
-schema.location.attr.is_default: Default location
+schema.location.attr.city: Città
+schema.location.attr.country: Nazione
+schema.location.attr.country_code: Codice nazione
+schema.location.attr.continent: Continente
+schema.location.attr.coordinates: Coordinate
+schema.location.attr.is_default: Ubicazione predefinita
 schema.location.attr.authkey: Authkey
 schema.location.attr.description: Descrizione
-schema.location.text.list: Locations
-schema.location.text.create: Create a new location
-schema.location.text.view: Location %s
-schema.location.text.delete: Delete location %s
+schema.location.text.list: Ubicazioni
+schema.location.text.create: Crea una nuova ubicazione
+schema.location.text.view: Ubicazione %s
+schema.location.text.delete: Elimina ubicazione %s
 
 site.wtrm.action.doAuth: Set auth basic <b>username</b> and <b>password</b>
 site.wtrm.action.doUserAgent: Set the <b>user agent</b> for the request
