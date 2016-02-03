@@ -242,7 +242,7 @@ text.change_your_password: Cambia la tua password
 text.change_the_language: Cambia la lingua
 text.please_select_objects: Si prega di selezionare almeno un oggetto.
 text.default: Predefinito
-text.satellite_hostname: Nomehost Satellite: %s
+text.satellite_hostname: Hostname satellite: %s
 text.target_ip: Indirizzo IP obiettivo: %s
 text.from_now_to_1h: Da adesso + 1 ora
 text.from_now_to_2h: Da adesso + 2 ore
@@ -422,7 +422,7 @@ site.help.doc.notification-screen: Notification Screen
 site.help.doc.json-api: Die Bloonix JSON API
 site.help.doc.user-charts: Eigene Charts erstellen
 
-schema.company.attr.alt_company_id: ID azienda effettiva
+schema.company.attr.alt_company_id: ID azienda reale
 schema.company.attr.id: ID azienda
 schema.company.attr.company: Azienda
 schema.company.attr.title: Titolo
