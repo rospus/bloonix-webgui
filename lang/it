@@ -1178,145 +1178,145 @@ schema.location.text.create: Crea una nuova ubicazione
 schema.location.text.view: Ubicazione %s
 schema.location.text.delete: Elimina ubicazione %s
 
-site.wtrm.action.doAuth: Set auth basic <b>username</b> and <b>password</b>
-site.wtrm.action.doUserAgent: Set the <b>user agent</b> for the request
-site.wtrm.action.doUrl: Go to <b>URL</b>
-site.wtrm.action.doFill: Fill data into a <b>input</b> field or <b>textarea</b>
-site.wtrm.action.doTriggerEvent: Trigger an event on a element
-site.wtrm.action.doClick: <b>Click</b> on a element
-site.wtrm.action.doSubmit: <b>Submit</b> a form
-site.wtrm.action.doCheck: Check a <b>radio button</b> or <b>checkbox</b>
-site.wtrm.action.doUncheck: Uncheck a <b>radio button</b> or <b>checkbox</b>
-site.wtrm.action.doSelect: <b>Select</b> a value from a selectbox
-site.wtrm.action.doWaitForElement: Wait for element
-site.wtrm.action.doSleep: <b>Sleep</b> a while
-site.wtrm.action.doSwitchToFrame: <b>Switch</b> to frame
-site.wtrm.action.doSwitchToParentFrame: <b>Switch</b> to parent frame
-site.wtrm.action.doSwitchToNewPage: <b>Switch</b> to new created page
-site.wtrm.action.doSwitchToMainPage: <b>Switch</b> to main page
-site.wtrm.action.checkUrl: Check the <b>URL</b> in the address bar
-site.wtrm.action.checkIfElementExists: Check if an <b>element exists</b>
-site.wtrm.action.checkIfElementNotExists: Check if an <b>element does <i>NOT</i> exists</b>
-site.wtrm.action.checkIfElementHasText: Check if an <b>element</b> contains <b>text</b> 
-site.wtrm.action.checkIfElementHasNotText: Check if an <b>element does <i>NOT</i></b> contain <b>text</b>
-site.wtrm.action.checkIfElementHasHTML: Check if an <b>element</b> contains <b>HTML</b>
-site.wtrm.action.checkIfElementHasNotHTML: Check if an <b>element does <i>NOT</i></b> contain <b>HTML</b>
-site.wtrm.action.checkIfElementHasValue: Check the <b>value</b> of an <b>input</b> field or <b>textarea</b>
-site.wtrm.action.checkIfElementHasNotValue: Check if an <b>input</b> field or <b>textarea has <i>NOT</i></b> a specified <b>value</b>
-site.wtrm.action.checkIfElementIsChecked: Check if a <b>radio button</b> or <b>checkbox</b> is <b>checked</b>
-site.wtrm.action.checkIfElementIsNotChecked: Check if a <b>radio button</b> or <b>checkbox is <i>NOT</i> checked</b>
-site.wtrm.action.checkIfElementIsSelected: Check if a <b>value</b> is <b>selected</b> in a selectbox
-site.wtrm.action.checkIfElementIsNotSelected: Check if a <b>value is <i>NOT</i> selected</b> in a selectbox
-site.wtrm.text.wtrm_workflow: Web Transaction Workflow
-site.wtrm.text.check_it: Check it!
-site.wtrm.text.quick_check: Quick check!
-site.wtrm.text.service_report: Web transaction report for service %s
-site.wtrm.text.click_for_details: Click on a row to get a detailed report
-site.wtrm.attr.username: Username
+site.wtrm.action.doAuth: Imposta <b>nome utente</b> e <b>password</b> di base per l'autenticazione
+site.wtrm.action.doUserAgent: Imposta lo <b>user agent</b> per la richiesta
+site.wtrm.action.doUrl: Vai all'<b>URL</b>
+site.wtrm.action.doFill: Inserisci i dati nel campo di <b>input</b> o <b>area di testo</b>
+site.wtrm.action.doTriggerEvent: Innesca un evento su un elemento
+site.wtrm.action.doClick: <b>Clicca</b> su un elemento
+site.wtrm.action.doSubmit: <b>Invia</b> un modulo
+site.wtrm.action.doCheck: Seleziona <b>radio button</b> o <b>checkbox</b>
+site.wtrm.action.doUncheck: Deseleziona <b>radio button</b> o <b>checkbox</b>
+site.wtrm.action.doSelect: <b>Seleziona</b> un valore dalla selectbox
+site.wtrm.action.doWaitForElement: Attendi per l'elemento
+site.wtrm.action.doSleep: <b>Attendi</b> un attimo
+site.wtrm.action.doSwitchToFrame: <b>Passa</b> al frame
+site.wtrm.action.doSwitchToParentFrame: <b>Passa</b> al frame padre
+site.wtrm.action.doSwitchToNewPage: <b>Passa</b> alla nuova pagina creata
+site.wtrm.action.doSwitchToMainPage: <b>Passa</b> alla pagina principale
+site.wtrm.action.checkUrl: Controlla l'<b>URL</b> nella barra degli indirizzi
+site.wtrm.action.checkIfElementExists: Controlla se un <b>elemento esiste</b>
+site.wtrm.action.checkIfElementNotExists: Controlla se un <b>elemento <i>NON</i> esiste</b>
+site.wtrm.action.checkIfElementHasText: Controlla se un <b>elemento</b> contiene <b>testo</b> 
+site.wtrm.action.checkIfElementHasNotText: Controlla se un <b>elemento <i>NON</i></b> contiene <b>testo</b>
+site.wtrm.action.checkIfElementHasHTML: Controlla se un <b>elemento</b> contiene <b>HTML</b>
+site.wtrm.action.checkIfElementHasNotHTML: Controlla se un <b>elemento <i>NON</i></b> contiene <b>HTML</b>
+site.wtrm.action.checkIfElementHasValue: Controlla il <b>valore</b> di un campo di <b>input</b> o <b>area di testo</b>
+site.wtrm.action.checkIfElementHasNotValue: Controlla se un campo di <b>input</b> o <b>area di testo <i>NON</i> ha</b> un <b>valore</b> specifico
+site.wtrm.action.checkIfElementIsChecked: Controlla se un <b>radio button</b> o <b>checkbox</b> è <b>selezionata</b>
+site.wtrm.action.checkIfElementIsNotChecked: Controlla se un <b>radio button</b> o <b>checkbox <i>NON</i> è selezionata</b>
+site.wtrm.action.checkIfElementIsSelected: Controlla se un <b>valore</b> è <b>selezionato</b> in una selectbox
+site.wtrm.action.checkIfElementIsNotSelected: Controlla se un <b>valore <i>NON</i> è selezionato</b> in una selectbox
+site.wtrm.text.wtrm_workflow: Workflow transazioni web
+site.wtrm.text.check_it: Controlla.
+site.wtrm.text.quick_check: Controllo veloce.
+site.wtrm.text.service_report: Report transazioni web per il servizio %s
+site.wtrm.text.click_for_details: Cliccare su una riga per ottenere un report dettagliato
+site.wtrm.attr.username: Nome utente
 site.wtrm.attr.password: Password
-site.wtrm.attr.userAgent: User-Agent
+site.wtrm.attr.userAgent: User agent
 site.wtrm.attr.url: URL
 site.wtrm.attr.contentType: Content-Type
-site.wtrm.attr.status: HTTP-Status
-site.wtrm.attr.parent: Parent ID
-site.wtrm.attr.element: Element
-site.wtrm.attr.value: Value
-site.wtrm.attr.hidden: Hide
-site.wtrm.attr.event: Event
-site.wtrm.attr.text: Inner text
-site.wtrm.attr.html: Inner HTML
-site.wtrm.attr.ms: Milliseconds
-site.wtrm.attr.name: Name
-site.wtrm.desc.username: This username for the auth basic authentification.
-site.wtrm.desc.password: This password for the auth basic authentification.
-site.wtrm.desc.userAgent: This is the User-Agent to send for all requests.
-site.wtrm.desc.url: This is the full URL to request. As example: http://www.bloonix.de/
-site.wtrm.desc.contentType: Enter content type that is expeced for the URL.
-site.wtrm.desc.status: Enter the expected http status for the URL.
-site.wtrm.desc.parent: It's possible to set a parent ID. The ID, class or name is searched within the element of the parent ID.
-site.wtrm.desc.element: The element you want to select. As example: #id, .class, name<br/><br/>
- It's also possible to search for tags and attributes. Example:<br/><br/>
- &lt;a&gt; - get the first 'a' tag<br/><br/>
- &lt;a[5]&gt; - get the fifth 'a' tag<br/><br/>
- &lt;a a="hello" b="world"&gt; - search for a 'a' tag with the specified attributes and values
-site.wtrm.desc.value: The value of the element you wish to fill or check.
-site.wtrm.desc.hidden: Do you want to hide the value because it's a password or a secret string?
-site.wtrm.desc.event: Trigger an event.
-site.wtrm.desc.text: The inner text of an element you wish to check.
-site.wtrm.desc.html: The inner HTML of an element you wish to check.
-site.wtrm.desc.ms: This is the time in milliseconds to sleep between actions.
-site.wtrm.desc.name: This is the name of the element.
-site.wtrm.placeholder.username: Username
-site.wtrm.placeholder.password: Secret
+site.wtrm.attr.status: Codice di stato HTTP
+site.wtrm.attr.parent: ID padre
+site.wtrm.attr.element: Elemento
+site.wtrm.attr.value: Valore
+site.wtrm.attr.hidden: Nascondi
+site.wtrm.attr.event: Evento
+site.wtrm.attr.text: Testo interno
+site.wtrm.attr.html: HTML interno
+site.wtrm.attr.ms: Millisecondi
+site.wtrm.attr.name: Nome
+site.wtrm.desc.username: Questo nome utente per l'autenticazione di base.
+site.wtrm.desc.password: Questa password per l'autenticazione di base.
+site.wtrm.desc.userAgent: Questo lo user agent da inviare per tutte le richieste.
+site.wtrm.desc.url: Questo è l'URL completo per la richiesta. Come esempio: http://www.bloonix.org/
+site.wtrm.desc.contentType: Inserire il content-type che ci si aspetta dall'URL.
+site.wtrm.desc.status: Inserire il codice di stato http che ci si aspetta dall'URL.
+site.wtrm.desc.parent: È possibile impostare un ID padre. L'ID, classe o nome vengono cercati all'interno dellìelemento dell'ID padre.
+site.wtrm.desc.element: L'elemento che vuoi selezionare. Come esempio: #id, .classe, nome<br/><br/>
+ È anche possibile effettuare ricerche per tag e attributi. Esempi:<br/><br/>
+ &lt;a&gt; - ottieni il primo tag 'a'<br/><br/>
+ &lt;a[5]&gt; - ottieni il quinto tag 'a'<br/><br/>
+ &lt;a a="hello" b="world"&gt; - cerca un tag 'a' con gli attributi e valori specificati
+site.wtrm.desc.value: Il valore dell'elemento che si desidera riempire o controllare.
+site.wtrm.desc.hidden: Vuoi nascondere il valore perché è una password o stringa segreta?
+site.wtrm.desc.event: Innesca un evento.
+site.wtrm.desc.text: Il testo interno ad un elemento che si desidera controllare.
+site.wtrm.desc.html: L'HTML interno ad un elemento che si desidera controllare.
+site.wtrm.desc.ms: Questo è il tempo di attesa in millisecondi tra le azioni.
+site.wtrm.desc.name: Questo è il nome dell'elemento.
+site.wtrm.placeholder.username: Nome utente
+site.wtrm.placeholder.password: Segreto
 site.wtrm.placeholder.userAgent: User-Agent
-site.wtrm.placeholder.url: http://www.bloonix.de/
+site.wtrm.placeholder.url: http://www.bloonix.org/
 site.wtrm.placeholder.contentType: text/html
 site.wtrm.placeholder.status: 200
-site.wtrm.placeholder.parent: #parent-id (optional)
-site.wtrm.placeholder.element: #element-id OR .class-name OR name
-site.wtrm.placeholder.value: value
-site.wtrm.placeholder.hidden: Hide this value?
+site.wtrm.placeholder.parent: #id-padre (facoltativo)
+site.wtrm.placeholder.element: #id-elemento O .nome-classe O name
+site.wtrm.placeholder.value: valore
+site.wtrm.placeholder.hidden: Nascondi questo valore?
 site.wtrm.placeholder.text: Lorem ipsum...
 site.wtrm.placeholder.html: <span>Loren ipsum...</span>
 site.wtrm.placeholder.ms: 5000
-site.wtrm.command.doAuth: Use auth basic with username <b>%s</b> and password <b>%s</b>
-site.wtrm.command.doUserAgent: Set the user agent to <b>%s</b>
-site.wtrm.command.doUrl: Go to URL <b>%s</b>
-site.wtrm.command.doFill: Fill element <b>%s</b> with value <b>%s</b>
-site.wtrm.command.doTriggerEvent: Trigger event <b>%s</b> on element <b>%s</b>
-site.wtrm.command.doClick: Click on element <b>%s</b>
-site.wtrm.command.doSubmit: Submit form <b>%s</b>
-site.wtrm.command.doCheck: Check the radio button or checkbox of element <b>%s</b> with value <b>%s</b>
-site.wtrm.command.doUncheck: Uncheck the radio button or checkbox <b>%s</b> with value <b>%s</b>
-site.wtrm.command.doSelect: Select the value <b>%s</b> from the selectbox <b>%s</b>
-site.wtrm.command.doWaitForElement: Wait for element <b>%s</b>
-site.wtrm.command.doWaitForElementWithText: Wait for element <b>%s</b> with text <b>%s</b>
-site.wtrm.command.doSleep: Sleep <b>%s</b>ms
-site.wtrm.command.doSwitchToFrame: Switch to frame <b>%s</b>
-site.wtrm.command.doSwitchToParentFrame: Switch to parent frame
-site.wtrm.command.doSwitchToNewPage: Switch to new created page
-site.wtrm.command.doSwitchToMainPage: Switch to main page
-site.wtrm.command.checkUrl: Check if the URL in the address bar is <b>%s</b>
-site.wtrm.command.checkUrlWithContentType: Check if the URL <b>%s</b> has content type %s
-site.wtrm.command.checkIfElementExists: Check if the element <b>%s</b> exists
-site.wtrm.command.checkIfElementNotExists: Check if the element <b>%s</b> does <i>NOT</i> exists
-site.wtrm.command.checkIfElementHasText: Check if the element <b>%s</b> contains <b>%s</b>
-site.wtrm.command.checkIfElementHasNotText: Check if the element <b>%s</b> does <i>NOT</i> contain <b>%s</b>
-site.wtrm.command.checkIfElementHasHTML: Check if the element <b>%s</b> contains <b>%s</b>
-site.wtrm.command.checkIfElementHasNotHTML: Check if the element <b>%s</b> does <i>NOT</i> contain <b>%s</b>
-site.wtrm.command.checkIfElementHasValue: Check if the input field or textarea with element <b>%s</b> contains <b>%s</b>
-site.wtrm.command.checkIfElementHasNotValue: Check if the input field or textarea with element <b>%s</b> does <i>NOT</i> contain <b>%s</b>
-site.wtrm.command.checkIfElementIsChecked: Check if the radio button or checkbox <b>%s</b> is checked
-site.wtrm.command.checkIfElementIsNotChecked: Check if the radio button or checkbox <b>%s</b> is <i>NOT</i> checked
-site.wtrm.command.checkIfElementIsSelected: Check if the value <b>%s</b> of the selectbox <b>%s</b> is selected
-site.wtrm.command.checkIfElementIsNotSelected: Check if the value <b>%s</b> of the selectbox <b>%s</b> is <i>NOT</i> selected
+site.wtrm.command.doAuth: Usa autenticazione di base con nome utente <b>%s</b> e password <b>%s</b>
+site.wtrm.command.doUserAgent: Imposta user agent a <b>%s</b>
+site.wtrm.command.doUrl: Vai all'URL <b>%s</b>
+site.wtrm.command.doFill: Riempi l'elemento <b>%s</b> con il valore <b>%s</b>
+site.wtrm.command.doTriggerEvent: Attiva l'evento <b>%s</b> sull'elemento <b>%s</b>
+site.wtrm.command.doClick: Clicca sull'elemento <b>%s</b>
+site.wtrm.command.doSubmit: Invia modulo <b>%s</b>
+site.wtrm.command.doCheck: Seleziona il radio button o checkbox dell'elemento <b>%s</b> avente valore <b>%s</b>
+site.wtrm.command.doUncheck: Deseleziona il radio button o checkbox <b>%s</b> avente valore <b>%s</b>
+site.wtrm.command.doSelect: Seleziona il valore <b>%s</b> dalla selectbox <b>%s</b>
+site.wtrm.command.doWaitForElement: Attendi per l'elemento <b>%s</b>
+site.wtrm.command.doWaitForElementWithText: Attendi per l'elemento <b>%s</b> con testo <b>%s</b>
+site.wtrm.command.doSleep: Attendi <b>%s</b>ms
+site.wtrm.command.doSwitchToFrame: Passa al frame <b>%s</b>
+site.wtrm.command.doSwitchToParentFrame: Passa al frame padre
+site.wtrm.command.doSwitchToNewPage: Passa alla nuova pagina creata
+site.wtrm.command.doSwitchToMainPage: Passa alla pagina principale
+site.wtrm.command.checkUrl: Controlla se l'URL nella barra è <b>%s</b>
+site.wtrm.command.checkUrlWithContentType: Controlla se l'URL <b>%s</b> ha il content type %s
+site.wtrm.command.checkIfElementExists: Controlla se l'elemento <b>%s</b> esiste
+site.wtrm.command.checkIfElementNotExists: Controlla se l'elemento <b>%s</b> <i>NON</i> esiste
+site.wtrm.command.checkIfElementHasText: Controlla se l'elemento <b>%s</b> contiene <b>%s</b>
+site.wtrm.command.checkIfElementHasNotText: Controlla se l'elemento <b>%s</b> <i>NON</i> contiene <b>%s</b>
+site.wtrm.command.checkIfElementHasHTML: Controlla se l'elemento <b>%s</b> contiene <b>%s</b>
+site.wtrm.command.checkIfElementHasNotHTML: Controlla se l'elemento <b>%s</b> <i>NON</i> contiene <b>%s</b>
+site.wtrm.command.checkIfElementHasValue: Controlla se il campo d'input o area di testo con l'elemento <b>%s</b> contiene <b>%s</b>
+site.wtrm.command.checkIfElementHasNotValue: Controlla se il campo d'input o area di testo con l'elemento <b>%s</b> <i>NON</i> contiene <b>%s</b>
+site.wtrm.command.checkIfElementIsChecked: Controlla se il radio button o checkbox <b>%s</b> è selezionato
+site.wtrm.command.checkIfElementIsNotChecked:Controlla se il radio button o checkbox <b>%s</b> <i>NON</i> è selezionato
+site.wtrm.command.checkIfElementIsSelected: Controlla se il valore <b>%s</b> della selectbox <b>%s</b> è selezionato
+site.wtrm.command.checkIfElementIsNotSelected: Controlla se il valore <b>%s</b> della selectbox <b>%s</b> <i>NON</i> è selezionato
 
-site.screen.configure.title: Configure screen
-site.screen.attr.scale: Scale
-site.screen.attr.show_hostname: Show hostname
-site.screen.attr.show_ipaddr: Show IP address
-site.screen.attr.show_company: Show company
-site.screen.attr.show_sla: Show SLA
-site.screen.attr.show_services: Show services
-site.screen.attr.show_service_summary: Show service summary
-site.screen.attr.show_acknowledged: Show acknowledged services
-site.screen.attr.sort_by_sla: Sort by SLA
-site.screen.attr.bg_color: Background color
-site.screen.attr.bg_color_ok: Background color OK
-site.screen.attr.text_color_ok: Text color OK
-site.screen.attr.bg_color_info: Background color INFO
-site.screen.attr.text_color_info: Text color INFO
-site.screen.attr.bg_color_warning: Background color WARNING
-site.screen.attr.text_color_warning: Text color WARNING
-site.screen.attr.bg_color_critical: Background color CRITICAL
-site.screen.attr.text_color_critical: Text color CRITICAL
-site.screen.attr.bg_color_unknown: Background color UNKNOWN
-site.screen.attr.text_color_unknown: Text color UNKNOWN
-site.screen.attr.bg_color_time: Background color TIME
-site.screen.attr.text_color_time: Text color TIME
+site.screen.configure.title: Configura schermata
+site.screen.attr.scale: Scala
+site.screen.attr.show_hostname: Mostra hostname
+site.screen.attr.show_ipaddr: Mostra indirizzo IP
+site.screen.attr.show_company: Mostra azienda
+site.screen.attr.show_sla: Mostra SLA
+site.screen.attr.show_services: Mostra i servizi
+site.screen.attr.show_service_summary: Mostra riepilogo servizi
+site.screen.attr.show_acknowledged: Mostra servizi riconosciuti
+site.screen.attr.sort_by_sla: Ordina per SLA
+site.screen.attr.bg_color: Colore sfondo
+site.screen.attr.bg_color_ok: Colore sfondo OK
+site.screen.attr.text_color_ok: Colore testo OK
+site.screen.attr.bg_color_info: Colore sfondo INFO
+site.screen.attr.text_color_info: Colore testo INFO
+site.screen.attr.bg_color_warning: Colore sfondo ALLERTA
+site.screen.attr.text_color_warning: Colore testo ALLERTA
+site.screen.attr.bg_color_critical: Colore sfondo CRITICO
+site.screen.attr.text_color_critical: Colore testo CRITICO
+site.screen.attr.bg_color_unknown: Colore sfondo SCONOSCIUTO
+site.screen.attr.text_color_unknown: Colore testo SCONOSCIUTO
+site.screen.attr.bg_color_time: Colore sfondo TEMPO
+site.screen.attr.text_color_time: Colore testo TEMPO
 
-site.maintenance.text.tooltip: Enable or disable maintenance mode.
-site.maintenance.text.enable: Enable the maintenance mode
-site.maintenance.text.disable: Disable the maintenance mode
-site.maintenance.desc.warning: Attention!<br/><br/>If you enable the maintenance mode then the complete notification system is disabled until you disable the maintenance mode manually.
-site.maintenance.text.enabled: Attention!<br/><br/>The maintenance mode of Bloonix is active and the notification system is disabled. Please contact the administrator for more information.
+site.maintenance.text.tooltip: Abilita o disabilita modalità manutenzione.
+site.maintenance.text.enable: Abilita modalità manutenzione
+site.maintenance.text.disable: Disabilita modalità manutenzione
+site.maintenance.desc.warning: Attenzione!<br/><br/>Se si abilita la modalità manutenzione tutto il sistema di notifiche verrà disattivato fino alla disabilitazione manuale della modalità.
+site.maintenance.text.enabled: Attenzione!<br/><br/>La modalità manutenzione di Bloonix è attivaed il sistema di notifiche è disattivato. Si prega di contattare l'amministratore per maggiori informazioni.
