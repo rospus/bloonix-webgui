@@ -1227,8 +1227,8 @@ site.wtrm.attr.text: Inner text
 site.wtrm.attr.html: Inner HTML
 site.wtrm.attr.ms: Milliseconds
 site.wtrm.attr.name: Name
-site.wtrm.desc.username: This username for the auth basic authentification.
-site.wtrm.desc.password: This password for the auth basic authentification.
+site.wtrm.desc.username: This username for the auth basic authentication.
+site.wtrm.desc.password: This password for the auth basic authentication.
 site.wtrm.desc.userAgent: This is the User-Agent to send for all requests.
 site.wtrm.desc.url: This is the full URL to request. As example: http://www.bloonix.de/
 site.wtrm.desc.contentType: Enter content type that is expeced for the URL.
