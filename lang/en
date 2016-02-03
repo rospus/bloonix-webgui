@@ -1231,7 +1231,7 @@ site.wtrm.desc.username: This username for the auth basic authentication.
 site.wtrm.desc.password: This password for the auth basic authentication.
 site.wtrm.desc.userAgent: This is the User-Agent to send for all requests.
 site.wtrm.desc.url: This is the full URL to request. As example: http://www.bloonix.de/
-site.wtrm.desc.contentType: Enter content type that is expeced for the URL.
+site.wtrm.desc.contentType: Enter content type that is expected for the URL.
 site.wtrm.desc.status: Enter the expected http status for the URL.
 site.wtrm.desc.parent: It's possible to set a parent ID. The ID, class or name is searched within the element of the parent ID.
 site.wtrm.desc.element: The element you want to select. As example: #id, .class, name<br/><br/>
