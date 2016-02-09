@@ -893,8 +893,8 @@ schema.chart.text.selected_max_reached: (massimo) selezionati
 schema.chart.text.back_to_selection: Back to the chart selection
 schema.chart.text.chart_information: Informazioni diagramma
 schema.chart.text.chart_id: ID-diagramma: %s
-schema.chart.text.service_charts: Diagrammi servizio
-schema.chart.text.user_charts: Diagrammi utente
+schema.chart.text.service_charts: Diagramma servizio
+schema.chart.text.user_charts: Diagramma utente
 schema.chart.text.chart_type: Seleziona il tipo di diagramma
 schema.chart.text.charts: Diagrammi
 
