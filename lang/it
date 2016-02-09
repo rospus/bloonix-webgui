@@ -202,7 +202,7 @@ info.move_with_mouse: Premi e mantieni premuto il pulsante sinistro del mouse pe
 info.new_version: <h4>Disponibile una nuova versione</h4>
  <p>Una nuova versione di Bloonix-WebGUI è disponibile.</p>
  <p>Si prega di ricaricare il sito.</p>
-info.hosts_ready_for_registration: Host pronti per esere registrati
+info.hosts_ready_for_registration: Host pronti per essere registrati
 
 text.dashlet_width: Larghezza dashlet
 text.dashlet_height: Altezza dashlet
