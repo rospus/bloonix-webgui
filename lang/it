@@ -64,7 +64,7 @@ nav.sub.group_settings: Impostazioni gruppo
 nav.sub.host_group_settings: Impostazioni gruppo host
 nav.sub.user_group_settings: Impostazioni gruppo utenti
 nav.sub.contactgroup_settings: Impostazioni gruppo contatti
-nav.sub.contactgroup_members: Contatti in gruppo contatti group
+nav.sub.contactgroup_members: Contatti in gruppo contatti
 nav.sub.contactgroup_host_members: Host in gruppo contatti
 nav.sub.contactgroup_service_members: Servizi in gruppo contatti
 
@@ -500,7 +500,7 @@ schema.company.text.data_retention_info: La durata del tuo account è limitata a
 schema.company.text.simulate_as: Simula un'azienda
 
 schema.user.attr.id: ID utente
-schema.user.attr.username: Nome-utente
+schema.user.attr.username: Utente
 schema.user.attr.name: Nome
 schema.user.attr.phone: Telefono
 schema.user.attr.timezone: Timezone
@@ -515,11 +515,11 @@ schema.user.attr.role: Ruolo
 schema.user.attr.comment: Commento
 schema.user.attr.allow_from: Permetti da
 schema.user.desc.company: Selezionare l'azienda a cui appartiene l'utente.
-schema.user.desc.username: Inserire il nome-utente nella forma <i>utente@dominio.test</i>.
+schema.user.desc.username: Inserire il l'utente nella forma <i>utente@dominio.test</i>.
 schema.user.desc.name: Questo è il nome completo dell'utente.
 schema.user.desc.phone: Il numero di telefono può essere di notevole aiuto in caso di emergenza per i colleghi del supporto di Bloonix.
 schema.user.desc.timezone: Seleziona la timezone dell'utente.
-schema.user.desc.authentication_key: Con questa chiave è possibile visitare la schermata delle notifiche senza autenticazione con password. La stringa d'interrogazione per visitare la schermata delle notifiche assomiglia a <br/><br/><b>/screen/?nome-utente=XXX;authkey=XXX</b>
+schema.user.desc.authentication_key: Con questa chiave è possibile visitare la schermata delle notifiche senza autenticazione con password. La stringa d'interrogazione per visitare la schermata delle notifiche assomiglia a <br/><br/><b>/screen/?utente=XXX;authkey=XXX</b>
 schema.user.desc.password: Inserire la password d'accesso dell'utente.
 schema.user.desc.password_changed: Imposta il valore a <i>no</i> se vuoi forzare l'utente a cambiare la password al primo accesso.
 schema.user.desc.manage_contacts: L'utente è abilitato a gestire i contatti?
@@ -527,7 +527,7 @@ schema.user.desc.manage_templates: L'utente è abilitato a gestire i template pe
 schema.user.desc.locked: Blocca o sblocca l'utente. Gli utenti bloccati non possono accedere all'interfaccia di monitoraggio.
 schema.user.desc.role: Qual'é il ruolo dell'utente? Gli utenti con il ruolo <i>operatore</i> sono utenti avanzati che possono gestire sia gli account utente che i gruppi di utenti. Gli utenti con il ruolo <i>utente</i> non sono autorizzati a gestire altri utenti o gruppi.
 schema.user.desc.comment: Questo campo può venir usato per inserire un commento riservato sull'utente.
-schema.user.desc.allow_from: It's possible to set a comma separated list of ip addresses from which the user is restricted to login. With the keyword <i>all</i> the login has no restriction.
+schema.user.desc.allow_from: È possibile predisporre una lista di indirizzi IP separati da virgole da cui l'utente è obbligato a collegarsi. Con a parola chiave <i>all</i> non ci sono restrizioni all'accesso.
 schema.user.text.list: Panoramica di tutti gli utenti
 schema.user.text.create: Crea nuovo utente
 schema.user.text.delete: Elimina utente
@@ -549,7 +549,7 @@ schema.roster.text.list: Panoramica di tutti gli elenchi
 
 schema.group.attr.id: ID Gruppo
 schema.group.attr.company_id: ID azineda
-schema.group.attr.groupname: Groupname
+schema.group.attr.groupname: Nome del gruppo
 schema.group.attr.description: Descrizione
 schema.group.desc.company: Seleziona l'azienda di cui il gruppo fa parte.
 schema.group.desc.groupname: Questo è il nome del gruppo e dovrebbe essere unico.
@@ -837,7 +837,7 @@ schema.contactgroup.attr.name: Nome
 schema.contactgroup.attr.description: Descrizione
 schema.contactgroup.desc.name: Questo è il nome del gruppo di contatti. Il nome dev'essere unico.
 schema.contactgroup.desc.description: Inserisci una breve descrizione per il gruppo.
-schema.contactgroup.text.list: Panoramica di tutti i gruppo-contatti
+schema.contactgroup.text.list: Panoramica di tutti i gruppi
 schema.contactgroup.text.create: Crea un nuovo gruppo contatti
 schema.contactgroup.text.delete: Elimina gruppo contatti
 schema.contactgroup.text.settings: Impostazioni gruppo contatti
@@ -993,7 +993,7 @@ schema.service.attr.passive_check: È questo un controllo passivo?
 schema.service.attr.agent_options.timeout: Timeout controllo globale
 schema.service.desc.agent_options.timeout: Questo è il timeout globale di esecuzione del controllo: dopo il timeout il controllo viene soppresso e attivato lo stato CRITICO. Questo è molto utile per i controlli appesi che non riescono a fermarsi.<br/><br/>Predefinito: 30 secondi
 schema.service.attr.agent_options.set_tags: Imposta tag
-schema.service.desc.agent_options.set_tags: Quale tag deve venir impostatose il controllo restituisce uno stato ALLERTA, CRITICO o SCONOSCIUTO.
+schema.service.desc.agent_options.set_tags: Quale tag deve venir impostato se il controllo restituisce uno stato ALLERTA, CRITICO o SCONOSCIUTO.
 schema.service.desc.agent_id: Questa è l'ubicazione da dove viene eseguito il controllo.
 schema.service.desc.service_name: Questo è il nome visualizzato del servizio.
 schema.service.desc.description: Questa è una breve descrizione sul controllo.
