@@ -144,7 +144,7 @@ action.resize: Ridimensiona
 action.list: Elenca
 action.login: Accedi
 action.logout: Esci
-action.move_box: Muovi il riquadro
+action.move_box: Sposta il riquadro
 action.genstr: Genera stringa
 action.schedule: Orario
 action.members: Elenca membri
@@ -164,7 +164,7 @@ action.yes_delete: <b>Si, elimina.</b>
 action.yes_remove: <b>Si, rimuovi.</b>
 action.no_abort: <b>No, abbandona.</b>
 action.show_selected_objects: Mostra gli ogetti selezionati
-action.display_from_to_rows: Visualizzate <b>%s</b>-<b>%s</b> su <b>%s</b> risposte
+action.display_from_to_rows: Visualizzate <b>%s</b>-<b>%s</b> su <b>%s</b> occorrenze
 action.view_selected_objects: Visualizza gli oggetti selezionati
 action.select: Seleziona
 action.unselect: Deseleziona
@@ -238,7 +238,7 @@ text.chart_info: Informazione diagramma
 text.fixed_checkpoint: Punto di controllo fisso
 text.first_failover_checkpoint: Primo punto di controllo failover
 text.second_failover_checkpoint: Secondo punto di controllo failover
-text.change_your_password: Cambia la tua password
+text.change_your_password: Cambia la password
 text.change_the_language: Cambia la lingua
 text.please_select_objects: Si prega di selezionare almeno un oggetto.
 text.default: Predefinito
@@ -354,8 +354,8 @@ text.dashboard.one_service_acknowledged: %s lo stato del servizio è riconosciut
 text.dashboard.map_title: Mappa globale dello stato degli host
 text.dashboard.double_click_or_mouse_wheel_to_zoom: Fare doppio click o usare la rotella del mouse per ingrandire o rimpicciolire.
 text.dashboard.use_mouse_wheel_to_zoom: Usa la rotella del mouse per ingrandire o rimpicciolire.
-text.dashboard.list_top_hosts: Panoramica degli host principali
-text.dashboard.list_top_services: Panoramica dei servizi principali
+text.dashboard.list_top_hosts: Panoramica degli principali host
+text.dashboard.list_top_services: Panoramica dei principali servizi
 text.dashboard.top_hosts_events: Eventi principali di tutti gli host
 text.dashboard.service_chart: Diagramma servizi
 text.dashboard.user_chart: Diagramma autocreato
@@ -867,8 +867,8 @@ schema.chart.attr.title: Titolo diagramma
 schema.chart.attr.subtitle: Chart subtitle
 schema.chart.attr.options: Opzioni diagramma
 schema.chart.attr.preset_last: Programmato: ultimo
-schema.chart.attr.refresh: Aggiorna
-schema.chart.attr.preset: Programmato
+schema.chart.attr.refresh: Aggiornamento
+schema.chart.attr.preset: Programmazione
 schema.chart.attr.chart_size: Dimensione
 schema.chart.attr.from: Da
 schema.chart.attr.to: A
@@ -882,7 +882,7 @@ schema.chart.text.view: Diagrammi per l'host <b>%s</b>
 schema.chart.text.multiview: Visualizza più diagrammi
 schema.chart.text.select: Selezione diagrammi per l'host %s
 schema.chart.text.multiselect: Seleziona diagrammi per più host
-schema.chart.text.alignment: Allineamento diagrammi
+schema.chart.text.alignment: Ordinamento diagrammi
 schema.chart.text.chart_views: Viste diagramma
 schema.chart.text.save_view: Salva vista
 schema.chart.text.load_view: Carica vista
@@ -1066,7 +1066,7 @@ schema.service.info.acknowledged: Il servizio è riconosciuto.
 schema.service.info.flapping: Il servizio è in flapping.
 schema.service.info.is_volatile: Il servizio è in stato di discontinuità.
 schema.service.info.host_alive_check: Questo è il controllo di host vivo.
-schema.service.info.has_result: Questo servizio ha uno informazioni avanzate sullo stato. Cliccami :-)
+schema.service.info.has_result: Questo controllo di servizio ha informazioni avanzate sullo stato. Cliccami :-)
 schema.service.info.inactive: Il servizio è inattivo.
 schema.service.info.notification_disabled: Le notifiche del servizio sono disabilitate.
 schema.service.info.inherits_from_host_template: Questo servizio è erediatato dal template host '%s'.
