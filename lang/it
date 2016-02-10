@@ -42,7 +42,7 @@ nav.main.help: AIUTO
 nav.sub.hosts: Host
 nav.sub.services: Servizi
 nav.sub.charts: Diagrammi
-nav.sub.templates: Template
+nav.sub.templates: Modelli
 nav.sub.registration: Registrazione
 nav.sub.screen: Schermo
 nav.sub.contacts: Contatti
@@ -82,7 +82,7 @@ err-419: Non hai sufficienti privilegi per eliminare gli oggetti.
 err-420: L'azione è fallita.
 err-425: Il tuo token di sessione è scaduto.
 err-426: Questa azione richiede un token.
-err-427: I servizi ereditati da template di host non possono venir eliminati.
+err-427: I servizi ereditati da modelli di host non possono venir eliminati.
 err-428: La località non può essere rimossa in quanto almeno un servizio è configurato per farne parte.
 err-500: Si è verificato un errore  interno. Si prega di contattare l'amministratore.
 err-600: L'oggetto che hai richiesto non esiste.
@@ -102,28 +102,28 @@ err-702: La password è troppo lunga (massimo 128 tra caratteri e simboli).
 err-703: La password è troppo corta (minimo 8 tra caratteri e simboli).
 err-704: Le password non coincidono.
 err-705: La nuova e la vecchia password non possono essere uguali.
-err-802: Ci dispiace, questa caratteristica non è disponibile.!
-err-810: Ci dispiace, non si possono aggiungere più %s dashlet alla bacheca.
+err-802: Ci dispiace, questa caratteristica non è disponibile.
+err-810: Ci dispiace, non si possono aggiungere più di %s dashlet alla bacheca.
 err-811: Ci dispiace, non si possono creare più di %s bacheche.
-err-815: Ci dispiace, non si possono creare più %s diagrammi.
+err-815: Ci dispiace, non si possono creare più di %s diagrammi.
 err-816: Ci dispiace, non si possono più aggiungere di %s metriche ad un diagramma.
 err-817: Ci dispiace, non si possono creare più di %s viste per diagrammi.
 err-821: Ci dispiace, non si possono creare più di %s fuori servizi per host.
 err-823: Ci dispiace, non si possono creare più di %s fuori servizio di host per l'host con id %s!
-err-825: Ci dispiace, non si possono creare più %s template per host.
-err-826: Ci dispiace, non si possono creare più %s servizi per template.
-err-827: Ci dispiace, non si possono creare più %s servizi per il template id %s.
-err-831: Ci dispiace, non si possono creare più %s host.
-err-832: Ci dispiace, non si possono creare più %s servizi.
-err-833: Ci dispiace, non si possono creare più %s servizi per singolo host.
-err-834: Ci dispiace, non si possono creare più %s serviizi per l'host id %s.
-err-835: Ci dispiace, non si possono creare più %s contatti.
-err-836: Ci dispiace, non si possono creare più %s gruppi di contatti.
-err-840: Ci dispiace, non si possono creare più %s periodi temporali.
-err-841: Ci dispiace, non si possono creare più %s periodi temporali per oggetto.
-err-845: Ci dispiace, non si possono creare più %s gruppi.
-err-846: Ci dispiace, non si possono creare più %s utenti.
-err-847: Ci dispiace, non si possono creare più %s dipendenze per singolo host.
+err-825: Ci dispiace, non si possono creare più di %s modelli per host.
+err-826: Ci dispiace, non si possono creare più di %s servizi per modello.
+err-827: Ci dispiace, non si possono creare più di %s servizi per il modello con id %s.
+err-831: Ci dispiace, non si possono creare più di %s host.
+err-832: Ci dispiace, non si possono creare più di %s servizi.
+err-833: Ci dispiace, non si possono creare più di %s servizi per singolo host.
+err-834: Ci dispiace, non si possono creare più di %s servizi per l'host con id %s.
+err-835: Ci dispiace, non si possono creare più di %s contatti.
+err-836: Ci dispiace, non si possono creare più di %s gruppi di contatti.
+err-840: Ci dispiace, non si possono creare più di %s periodi temporali.
+err-841: Ci dispiace, non si possono creare più di %s periodi temporali per oggetto.
+err-845: Ci dispiace, non si possono creare più di %s gruppi.
+err-846: Ci dispiace, non si possono creare più di %s utenti.
+err-847: Ci dispiace, non si possono creare più di %s dipendenze per singolo host.
 
 action.action: Azione
 action.create: Crea
@@ -437,7 +437,7 @@ schema.company.attr.country: Nazione
 schema.company.attr.phone: Telefono
 schema.company.attr.fax: Fax
 schema.company.attr.email: Email
-schema.company.attr.max_templates: Massimo template
+schema.company.attr.max_templates: Massimo modelli
 schema.company.attr.max_hosts: Massimo host
 schema.company.attr.max_services: Massimo servizi
 schema.company.attr.max_services_per_host: Massimo servizi per host
@@ -467,7 +467,7 @@ schema.company.attr.sla: SLA
 schema.company.attr.variables: Variabili globali
 schema.company.desc.variables: In questo campo puoi definire variabili globali per tutti gli host. Queste variabili possono venir usate come soglie per i controlli dei servizi. Per esempio: <br/><br/>HTTP.PORT=9000<br/><br/>Questa variabile può venir usata nel formato <i>%HTTP.PORT%</i> per le soglie. Si prega di notare che due variabili sono predefinite: <i>IPADDR</i> e <i>HOSTNAME</i>. Queste variabili sono sostituite dall'indirizzo IP e hostname dell'host. Per maggiori informazioni consultare l'aiuto. <br/><br/>Caratteri ammessi: a-z, A-Z, 0-9, punti e trattini bassi
 schema.company.desc.active: Attiva o disattiva tutti gli oggetti dell'azienda.
-schema.company.desc.max_templates: Numero massimo di template che si possono creare.
+schema.company.desc.max_templates: Numero massimo di modelli che si possono creare.
 schema.company.desc.max_hosts: Numero massimo di host che si possono creare. Immettere 0 (null) se illimitati.
 schema.company.desc.max_services: Numero massimo di servizi che si possono creare. Immettere 0 (null) se illimitati.
 schema.company.desc.max_services_per_host: Numero massimo di servizi che si possono creare per host.
@@ -508,7 +508,7 @@ schema.user.attr.authentication_key: Chiave d'autenticazione
 schema.user.attr.password: Password
 schema.user.attr.password_changed: Cambio di password?
 schema.user.attr.manage_contacts: Gestire i contatti?
-schema.user.attr.manage_templates: Gestire i template?
+schema.user.attr.manage_templates: Gestire i modelli?
 schema.user.attr.last_login: Ultimo accesso
 schema.user.attr.locked: Bloccato
 schema.user.attr.role: Ruolo
@@ -523,7 +523,7 @@ schema.user.desc.authentication_key: Con questa chiave è possibile visitare la 
 schema.user.desc.password: Inserire la password d'accesso dell'utente.
 schema.user.desc.password_changed: Imposta il valore a <i>no</i> se vuoi forzare l'utente a cambiare la password al primo accesso.
 schema.user.desc.manage_contacts: L'utente è abilitato a gestire i contatti?
-schema.user.desc.manage_templates: L'utente è abilitato a gestire i template per host?
+schema.user.desc.manage_templates: L'utente è abilitato a gestire i modelli per l'host?
 schema.user.desc.locked: Blocca o sblocca l'utente. Gli utenti bloccati non possono accedere all'interfaccia di monitoraggio.
 schema.user.desc.role: Qual'é il ruolo dell'utente? Gli utenti con il ruolo <i>operatore</i> sono utenti avanzati che possono gestire sia gli account utente che i gruppi di utenti. Gli utenti con il ruolo <i>utente</i> non sono autorizzati a gestire altri utenti o gruppi.
 schema.user.desc.comment: Questo campo può venir usato per inserire un commento riservato sull'utente.
@@ -707,18 +707,18 @@ schema.host.text.add_host_to_group: Aggiungi l'host ad un gruppo utenti
 schema.host.desc.add_host_to_group: Aggiungi l'host ad almeno un gruppo.
 schema.host.text.add_host_to_contactgroup: Aggiungi l'host ad un gruppo contatti
 schema.host.desc.add_host_to_contactgroup: Aggiungi l'host ad un gruppo contatti per ricevere notifiche sugli eventi via email o SMS.
-schema.host.text.add_host_to_host_template: Aggiungi l'host ad un template per host
-schema.host.desc.add_host_to_host_template: L'host eredita tutti i servizi dal template per host.
-schema.host.text.list_templates: L'host %s ha configurati i seguenti template
+schema.host.text.add_host_to_host_template: Aggiungi l'host ad un modello per host
+schema.host.desc.add_host_to_host_template: L'host eredita tutti i servizi dal modello per host.
+schema.host.text.list_templates: L'host %s ha configurati i seguenti modelli
 schema.host.action.delete_reg_hosts: Elimina gli host selezionati.
 schema.host.action.disable_notifications_multiple: Disabilita notifiche per gli host selezionati
 schema.host.action.enable_notifications_multiple: Aabilita notifiche per gli host selezionati
 schema.host.action.activate_multiple: Attiva gli host selezionati
 schema.host.action.deactivate_multiple: Disttiva gli host selezionati
-schema.host.action.remove_template: Rimuovi template
-schema.host.text.remove_template_warning: Si prega di notare che i servizi del template verranno rimossi da tutti gli host che hanno i loro servizi ereditati da questo template.
-schema.host.text.templates_not_assigned: Template non assegnati
-schema.host.action.add_template: Aggiungi template
+schema.host.action.remove_template: Rimuovi modello
+schema.host.text.remove_template_warning: Si prega di notare che i servizi del modello verranno rimossi da tutti gli host che hanno ereditato i loro servizi ereditati da questo modello.
+schema.host.text.templates_not_assigned: Modelli non assegnati
+schema.host.action.add_template: Aggiungi modello
 schema.host.info.notification_disabled: Notifiche disabilitate per l'host.
 schema.host.info.notification_disabled_short: Notifiche disabilitate
 schema.host.info.inactive: L'host non è attivo.
@@ -773,28 +773,28 @@ schema.timeslice.attr.timeslice: Timeslice
 schema.timeslice.text.list: Panoramica di tutti i timeslice
 schema.timeslice.text.delete: Elimina timeslice
 
-schema.host_template.attr.id: ID template
-schema.host_template.attr.name: Nome template
+schema.host_template.attr.id: ID modello
+schema.host_template.attr.name: Nome modello
 schema.host_template.attr.description: Descrizione
 schema.host_template.attr.tags: Tag
-schema.host_template.desc.name: Questo è il nome del template.
-schema.host_template.desc.description: Inserisci una breve descrizione per il template.
-schema.host_template.desc.tags: I tag sono usati per aggiungere host registrati a template per host.
-schema.host_template.text.list: Panoramica di tutti i template per host
-schema.host_template.text.delete: Elimina un template
-schema.host_template.text.create: Crea un nuovo template
-schema.host_template.text.setting: Impostazioni template
-schema.host_template.text.view: Template %s
-schema.host_template.text.view_services: VIsualizza servizi
+schema.host_template.desc.name: Questo è il nome del modello.
+schema.host_template.desc.description: Inserisci una breve descrizione per il modello.
+schema.host_template.desc.tags: I tag sono usati per aggiungere host registrati ai modelli per host.
+schema.host_template.text.list: Panoramica di tutti i modelli per host
+schema.host_template.text.delete: Elimina un modello
+schema.host_template.text.create: Crea un nuovo modello
+schema.host_template.text.setting: Impostazioni modello
+schema.host_template.text.view: Modello %s
+schema.host_template.text.view_services: Visualizza servizi
 schema.host_template.text.view_members: Aggiungi / Rimuovi host
-schema.host_template.text.delete_service: Elimina un servizio dal template
-schema.host_template.text.delete_service_warning: Si prega di notare che il servizio verrà eliminato da tutti gli host che lo hanno ereditato da questo template.
+schema.host_template.text.delete_service: Elimina un servizio dal modello
+schema.host_template.text.delete_service_warning: Si prega di notare che il servizio verrà eliminato da tutti gli host che lo hanno ereditato da questo modello.
 schema.host_template.test.host_members: Host nel gruppo
 schema.host_template.test.host_nonmembers: Hosts non nel gruppo
 schema.host_template.text.selected_hosts: Host selezionati
-schema.host_template.text.clone: Clona il template
-schema.host_template.text.clone_title: Clona template %s
-schema.host_template.text.templates: Template
+schema.host_template.text.clone: Clona il modello
+schema.host_template.text.clone_title: Clona modello %s
+schema.host_template.text.templates: Modello
 
 schema.contact.attr.id: ID contatto
 schema.contact.attr.company_id: ID azienda
@@ -1050,7 +1050,7 @@ schema.service.text.view_location_report: Visualizza report ubicazione
 schema.service.text.view_wtrm_report: Visualizza report transazioni web
 schema.service.text.wtrm_result_steps: Transazioni web - Risultato fasi
 schema.service.text.sla_requirements: Si prega di notare che per gli account gratuiti è disponibile solo il controllo predefinito.
-schema.service.text.host_template: Template host
+schema.service.text.host_template: Modello host
 schema.service.text.multiple_force_next_check: Azzera l'intervallo e forza il prossimo controllo del servizio
 schema.service.action.activate_multiple: Attiva i servizi selezionati
 schema.service.action.deactivate_multiple: Disattiva i servizi selezionati
@@ -1069,7 +1069,7 @@ schema.service.info.host_alive_check: Questo è il controllo di host vivo.
 schema.service.info.has_result: Questo controllo di servizio ha informazioni avanzate sullo stato. Cliccami :-)
 schema.service.info.inactive: Il servizio è inattivo.
 schema.service.info.notification_disabled: Le notifiche del servizio sono disabilitate.
-schema.service.info.inherits_from_host_template: Questo servizio è erediatato dal template host '%s'.
+schema.service.info.inherits_from_host_template: Questo servizio è erediatato dal modello host '%s'.
 schema.service.info.status_nok_since: Il servizio non era OK negli ultimi 60 minuti.
 schema.service.desc.agent_tooltip: <h3>Installazione dell'agente Bloonix</h3>
  <p>
