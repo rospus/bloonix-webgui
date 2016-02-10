@@ -156,7 +156,6 @@ action.help: Aiuto
 action.search: Cerca
 action.quicksearch: Ricerca veloce
 action.extsearch: Ricerca estesa
-action.filter: Filtra
 action.refresh: ricarica
 action.replace: Sostituisci
 action.configure: Configura
@@ -593,7 +592,7 @@ schema.host.attr.description: Descrizione
 schema.host.attr.ipaddr: Indirizzo IP
 schema.host.attr.ipaddr6: Indirizzo IP v6
 schema.host.attr.comment: Commento
-schema.host.attr.sysgroup: Gruppo apparato
+schema.host.attr.sysgroup: Gruppo apparati
 schema.host.attr.sysinfo: Informazioni apparato
 schema.host.attr.host_class: Categoria host
 schema.host.attr.system_class: Categoria apparato
@@ -887,7 +886,7 @@ schema.chart.text.chart_views: Viste diagramma
 schema.chart.text.save_view: Salva vista
 schema.chart.text.load_view: Carica vista
 schema.chart.text.delete_view: Elimina vista diagramma
-schema.chart.text.really_delete_view: Do you really want to delete chart view <b><b>%s</b></b>?
+schema.chart.text.really_delete_view: Vuoi veramente eliminare la vista diagramma <b><b>%s</b></b>?
 schema.chart.text.selected: selezionato
 schema.chart.text.selected_max_reached: (massimo) selezionati
 schema.chart.text.back_to_selection: Torna a selezione diagrammi
