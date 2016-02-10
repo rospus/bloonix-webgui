@@ -657,9 +657,9 @@ schema.host.desc.hw_class: Esempi categorie di hardware:<br/>
  <br/>/Server/Dell/R730
  <br/>/Stampante/Canon/ip2770
  <br/><br/>Caratteri non ammessi le virgolette: "
-schema.host.desc.env_class: Environment class examples:<br/>
- <br/>/Project A/Subproject A1
- <br/>/Project B/Subproject B1
+schema.host.desc.env_class: Esempi classi d'ambiente:<br/>
+ <br/>/Progetto A/Sottoprogetto A1
+ <br/>/Progetto B/Sottoprogetto B1
  <br/><br/>Caratteri non ammessi le virgolette: "
 schema.host.desc.hw_manufacturer: p.e. IBM, HP, Dell, Fujitsu Siemens
 schema.host.desc.hw_product: p.e. Dell Power Edge 2950
