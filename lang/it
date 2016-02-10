@@ -607,7 +607,7 @@ schema.host.attr.os_product: Prodotto OS
 schema.host.attr.virt_manufacturer: Produttore di virtualizzazione
 schema.host.attr.virt_product: Prodotto di virtualizazione
 schema.host.attr.location: Ubicazione
-schema.host.attr.coordinates: Coordinate
+schema.host.attr.coordinates: Luogo
 schema.host.attr.active: Attivo
 schema.host.attr.allow_from: Permetti da
 schema.host.attr.max_sms: Massimo numero SMS al mese
