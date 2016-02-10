@@ -47,7 +47,7 @@ nav.sub.registration: Registrazione
 nav.sub.screen: Schermo
 nav.sub.contacts: Contatti
 nav.sub.contactgroups: Gruppi contatti
-nav.sub.timeperiods: Periodi
+nav.sub.timeperiods: Orari
 nav.sub.rosters: Elenchi
 nav.sub.users: Utenti
 nav.sub.groups: Gruppi
@@ -119,8 +119,8 @@ err-833: Ci dispiace, non si possono creare più di %s servizi per singolo host.
 err-834: Ci dispiace, non si possono creare più di %s servizi per l'host con id %s.
 err-835: Ci dispiace, non si possono creare più di %s contatti.
 err-836: Ci dispiace, non si possono creare più di %s gruppi di contatti.
-err-840: Ci dispiace, non si possono creare più di %s periodi temporali.
-err-841: Ci dispiace, non si possono creare più di %s periodi temporali per oggetto.
+err-840: Ci dispiace, non si possono creare più di %s orari.
+err-841: Ci dispiace, non si possono creare più di %s orari per oggetto.
 err-845: Ci dispiace, non si possono creare più di %s gruppi.
 err-846: Ci dispiace, non si possono creare più di %s utenti.
 err-847: Ci dispiace, non si possono creare più di %s dipendenze per singolo host.
@@ -442,7 +442,7 @@ schema.company.attr.max_services: Massimo servizi
 schema.company.attr.max_services_per_host: Massimo servizi per host
 schema.company.attr.max_contacts: Massimo contatti
 schema.company.attr.max_contactgroups: Massimo gruppicontatti
-schema.company.attr.max_timeperiods: Massimo periodi
+schema.company.attr.max_timeperiods: Massimo orari
 schema.company.attr.max_timeslices_per_object: Massimo timeslice
 schema.company.attr.max_groups: Massimo gruppi
 schema.company.attr.max_users: Massimo utenti
@@ -472,8 +472,8 @@ schema.company.desc.max_services: Numero massimo di servizi che si possono crear
 schema.company.desc.max_services_per_host: Numero massimo di servizi che si possono creare per host.
 schema.company.desc.max_contacts: Numero massimo di contatti che si possono creare.
 schema.company.desc.max_contactgroups: Numero massimo di gruppi contatti che si possono creare.
-schema.company.desc.max_timeperiods: Numero massimo di periodi che si possono creare
-schema.company.desc.max_timeslices_per_object: Numero massimo di timeslice che si possono creare per periodo.
+schema.company.desc.max_timeperiods: Numero massimo di orari che si possono creare
+schema.company.desc.max_timeslices_per_object: Numero massimo di timeslice che si possono creare per orario.
 schema.company.desc.max_groups: Numero massimo di gruppi che si possono creare.
 schema.company.desc.max_users: Numero massimo di utenti che si possono creare.
 schema.company.desc.max_dependencies_per_host: Numero massimo di dipendenze che si possono creare per host.
@@ -615,7 +615,7 @@ schema.host.attr.status: Stato
 schema.host.attr.interval: Intervallo
 schema.host.attr.retry_interval: Intervallo tentativi
 schema.host.attr.timeout: Timeout
-schema.host.attr.notification: notifiche abilitate
+schema.host.attr.notification: Notifiche abilitate
 schema.host.attr.notification_interval: Intervallo notifiche
 schema.host.attr.last_check: Ultimo controllo
 schema.host.attr.max_services: Numero massimo di servizi
@@ -729,16 +729,16 @@ schema.host.menu.os_class: Sistema operativo
 schema.host.menu.hw_class: Hardware
 schema.host.menu.env_class: Ambiente
 
-schema.timeperiod.attr.id: ID periodo
-schema.timeperiod.attr.name: Periodo
+schema.timeperiod.attr.id: ID orario
+schema.timeperiod.attr.name: Orario
 schema.timeperiod.attr.description: Descrizione
-schema.timeperiod.desc.name: Questo è il nome del periodo.
-schema.timeperiod.desc.description: Questa è una breve descrizione del periodo.
-schema.timeperiod.text.list: Panoramica di tutti i periodi.
-schema.timeperiod.text.create: Crea un nuovo periodo
-schema.timeperiod.text.delete: Elimina un periodo
-schema.timeperiod.text.settings: Impostazioni periodo
-schema.timeperiod.text.examples: Esempi di periodo
+schema.timeperiod.desc.name: Questo è il nome dell'orario.
+schema.timeperiod.desc.description: Questa è una breve descrizione dell'orario.
+schema.timeperiod.text.list: Panoramica di tutti gli orari.
+schema.timeperiod.text.create: Crea un nuovo orario
+schema.timeperiod.text.delete: Elimina un orario
+schema.timeperiod.text.settings: Impostazioni orario
+schema.timeperiod.text.examples: Esempi di orario
 schema.timeperiod.examples: <p><b>Sintassi: GIORNO-ESTENSIONE TEMPO-ESTENSIONE</b></p></br>
  <pre>
  INTERVALLO GIORNI               ESEMPI
@@ -812,14 +812,14 @@ schema.contact.text.list: Panoramica di tutti i contatti
 schema.contact.text.create: Crea un nuovo contatto
 schema.contact.text.delete: Elimina contatto
 schema.contact.text.settings: Impostazioni contatto
-schema.contact.text.timeperiods: Periodi contatto
+schema.contact.text.timeperiods: Orari contatto
 schema.contact.text.message_services: Servizi messaggistica contatto
-schema.contact.text.remove_timeperiod: Rimuovi i periodi dal contatto
+schema.contact.text.remove_timeperiod: Rimuovi orari dal contatto
 schema.contact.text.remove_message_service: Rimuovi il servizio di messaggistica dal contatto
 schema.contact.text.escalation_time_null: Notifica immediatamente
 schema.contact_timeperiod.attr.message_service: Servizio di messaggistica
 schema.contact_timeperiod.attr.exclude: Escludi
-schema.contact_timeperiod.text.add: Aggiungi un periodo al contatto
+schema.contact_timeperiod.text.add: Aggiungi un orario al contatto
 schema.contact_message_services.attr.message_service: Servizio di messaggistica
 schema.contact_message_services.attr.enabled: Abilitato
 schema.contact_message_services.attr.send_to: Invia a
@@ -1007,8 +1007,8 @@ schema.service.desc.acknowledged: Questa opzione è utile se un servizio non è 
 schema.service.desc.notification: Questa opzione attiva o disattiva le notifiche per email o SMS.
 schema.service.desc.notification_interval: Questo è l'intervallo di notifica per le email. Fino a quando lo stato non è OK si verrà notificati con questo intervallo. Se non è impostato alcun valore, allora l'intervallo dell'host verrà ereditato.
 schema.service.desc.fd_enabled: Questa opzione abilita o disabilita il rilevamento del flapping. Il rilevamento del flapping è molto utile per riconoscere i servizi che passano dallo stato OK e non OK in tempi brevi ed il contatore <i>massimo tentativi</i> non viene raggiunto. Il rilevamento del flapping controlla quante volte il servizio ha cambiato stato nel tempo impostato. Se lo stato cambia troppe volte, allora una notifica verrà attivata.
-schema.service.desc.fd_time_range: Questo è il periodo in cui il rilevamento del flapping controlla i cambi di stato.
-schema.service.desc.fd_flap_count: Questa è la soglia per il rilevamento del flapping. Se lo stato cambia più x volte nel dato tempo, una notifica verrà attivata.
+schema.service.desc.fd_time_range: Questo è l'orario in cui il rilevamento del flapping controlla i cambi di stato.
+schema.service.desc.fd_flap_count: Questa è la soglia per il rilevamento del flapping. Se lo stato cambia più di x volte nell'arco di tempo, una notifica verrà attivata.
 schema.service.desc.is_volatile: Con questa impostazione si può definire se il controllo dev'essere discontinuo. Alcuni controlli hanno la peculiarità di essere nello stato CRITICO solo per un breve periodo. Ad esempio se si cerca in un file di log la presenza di una stringa specifica, tipo <i>possibile tentativo d'intrusione</i> ed il controllo restituisce uno stato CRITICO, sarà molto probabile che nella ricerca successiva non verrà più ritrovata la stringa fornendo quindi uno stato OK. In questo caso probabilmente non ci si accorgerà mai che qualcuno ha cercato d'introdursi. Per questo motivo si può impostare il servizio come <i>discontinuo</i> mantenendo lo stato del servizio in CRITICO o ALLERTA fino a quando non lo si azzeri manualmente.
 schema.service.desc.volatile_retain: Imposta un tempo dopo il quale lo stato discontinuo viene automaticamente azzerato.
 schema.service.desc.host_alive_check: Un controllo di host vivo determina se un host è giù o attivo. Se questo controllo restituisce uno stato critico, allora si riceve una notifica particolare. Se un successivo controllo di servizio restituisce ancora uno stato critico, allora le notifiche vengono soppresse. Si raccomanda di usare il controllo del ping come controllo per host vivo.
