@@ -46,7 +46,7 @@ nav.sub.templates: Modelli
 nav.sub.registration: Registrazione
 nav.sub.screen: Schermo
 nav.sub.contacts: Contatti
-nav.sub.contactgroups: Gruppo contatti
+nav.sub.contactgroups: Gruppi contatti
 nav.sub.timeperiods: Periodi
 nav.sub.rosters: Elenchi
 nav.sub.users: Utenti
@@ -471,7 +471,7 @@ schema.company.desc.max_hosts: Numero massimo di host che si possono creare. Imm
 schema.company.desc.max_services: Numero massimo di servizi che si possono creare. Immettere 0 (null) se illimitati.
 schema.company.desc.max_services_per_host: Numero massimo di servizi che si possono creare per host.
 schema.company.desc.max_contacts: Numero massimo di contatti che si possono creare.
-schema.company.desc.max_contactgroups: Numero massimo di gruppi-contatti che si possono creare.
+schema.company.desc.max_contactgroups: Numero massimo di gruppi contatti che si possono creare.
 schema.company.desc.max_timeperiods: Numero massimo di periodi che si possono creare
 schema.company.desc.max_timeslices_per_object: Numero massimo di timeslice che si possono creare per periodo.
 schema.company.desc.max_groups: Numero massimo di gruppi che si possono creare.
@@ -479,8 +479,8 @@ schema.company.desc.max_users: Numero massimo di utenti che si possono creare.
 schema.company.desc.max_dependencies_per_host: Numero massimo di dipendenze che si possono creare per host.
 schema.company.desc.max_downtimes_per_host: Numero massimo di fuori servizio che si possono creare per host.
 schema.company.desc.max_chart_views_per_user: Numero massimo di viste diagramma che si possono creare per utente.
-schema.company.desc.max_charts_per_user: Numero massimo di diagrammi-utente che si possono creare per utente.
-schema.company.desc.max_metrics_per_chart: Numero massimo di metriche che si possono creare per diagramma-utente.
+schema.company.desc.max_charts_per_user: Numero massimo di diagrammi utente che si possono creare per utente.
+schema.company.desc.max_metrics_per_chart: Numero massimo di metriche che si possono creare per diagramma utente.
 schema.company.desc.max_dashboards_per_user: Numero massimo di bacheche che si possono creare per utente.
 schema.company.desc.max_dashlets_per_dashboard: Numero massimo di dashlet che si possono aggiungere ad una bacheca.
 schema.company.desc.max_sms: Numero massimo di SMS che si possono inviare al mese. Immettere 0 (null) se illimitati.
@@ -831,7 +831,7 @@ schema.contact_message_services.desc.notification_level: Seleziona il livello di
 schema.contact_message_services.text.add: Aggiungi un servizio di messaggistica al contatto
 schema.contact_message_services.text.remove: Rimuovi un servizio di messaggistica
 
-schema.contactgroup.attr.id: ID gruppo-contatti
+schema.contactgroup.attr.id: ID gruppo contatti
 schema.contactgroup.attr.name: Nome
 schema.contactgroup.attr.description: Descrizione
 schema.contactgroup.desc.name: Questo è il nome del gruppo di contatti. Il nome dev'essere unico.
