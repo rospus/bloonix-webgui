@@ -16,7 +16,7 @@ word.Filter: Filtro
 word.inactive: inattivo
 word.active: attivo
 word.Timezone: Fuso orario
-word.Timeslice: Timeslice
+word.Timeslice: Intervallo
 word.Type: Tipo
 word.Days: Giorni
 word.days: giorni
@@ -148,7 +148,7 @@ action.move_box: Sposta il riquadro
 action.genstr: Genera stringa
 action.schedule: Orario
 action.members: Elenca membri
-action.timeslices: Elenca timeslice
+action.timeslices: Elenca intervalli
 action.add: Aggiungi
 action.remove: Rimuovi
 action.generate: Genera
@@ -443,7 +443,7 @@ schema.company.attr.max_services_per_host: Massimo servizi per host
 schema.company.attr.max_contacts: Massimo contatti
 schema.company.attr.max_contactgroups: Massimo gruppicontatti
 schema.company.attr.max_timeperiods: Massimo orari
-schema.company.attr.max_timeslices_per_object: Massimo timeslice
+schema.company.attr.max_timeslices_per_object: Massimo intervalli
 schema.company.attr.max_groups: Massimo gruppi
 schema.company.attr.max_users: Massimo utenti
 schema.company.attr.max_dependencies_per_host: Massimo dipendenze per host
@@ -473,7 +473,7 @@ schema.company.desc.max_services_per_host: Numero massimo di servizi che si poss
 schema.company.desc.max_contacts: Numero massimo di contatti che si possono creare.
 schema.company.desc.max_contactgroups: Numero massimo di gruppi contatti che si possono creare.
 schema.company.desc.max_timeperiods: Numero massimo di orari che si possono creare
-schema.company.desc.max_timeslices_per_object: Numero massimo di timeslice che si possono creare per orario.
+schema.company.desc.max_timeslices_per_object: Numero massimo d'intervalli che si possono creare per orario.
 schema.company.desc.max_groups: Numero massimo di gruppi che si possono creare.
 schema.company.desc.max_users: Numero massimo di utenti che si possono creare.
 schema.company.desc.max_dependencies_per_host: Numero massimo di dipendenze che si possono creare per host.
@@ -570,9 +570,9 @@ schema.group.text.may_modify_services: Può modificare servizi
 schema.group.text.may_delete_services: Può eliminare servizi
 
 schema.hs_downtime.attr.id: ID
-schema.hs_downtime.attr.begin_time: Orario d'inizio
-schema.hs_downtime.attr.end_time: Orario di fine
-schema.hs_downtime.attr.timeslice: Timeslice
+schema.hs_downtime.attr.begin_time: Orario iniziale
+schema.hs_downtime.attr.end_time: Orario finale
+schema.hs_downtime.attr.timeslice: Intervallo
 schema.hs_downtime.attr.description: Descrizione
 schema.hs_downtime.attr.username: Aggiunto da
 schema.hs_downtime.attr.timezone: Timezone
@@ -767,10 +767,10 @@ schema.timeperiod.examples: <p><b>Sintassi: GIORNO-ESTENSIONE TEMPO-ESTENSIONE</
  Saturday - Sunday  00:00 - 23:59
  </pre></br>
 
-schema.timeslice.attr.id: ID timeslice
-schema.timeslice.attr.timeslice: Timeslice
-schema.timeslice.text.list: Panoramica di tutti i timeslice
-schema.timeslice.text.delete: Elimina timeslice
+schema.timeslice.attr.id: ID intervallo
+schema.timeslice.attr.timeslice: Intervallo
+schema.timeslice.text.list: Panoramica di tutti gli intervalli
+schema.timeslice.text.delete: Elimina intervalli
 
 schema.host_template.attr.id: ID modello
 schema.host_template.attr.name: Nome modello
@@ -905,7 +905,7 @@ schema.dependency.attr.on_service_id: Dipende dall'ID servizio
 schema.dependency.attr.status: Stato
 schema.dependency.attr.on_status: Stato padre
 schema.dependency.attr.inherit: Eredità
-schema.dependency.attr.timeslice: Timeslice
+schema.dependency.attr.timeslice: Intervallo
 schema.dependency.attr.timezone: Timezone
 schema.dependency.text.list: Dipendenze per l'host %s
 schema.dependency.text.create_from: Crea una nuova dipendenza da
@@ -932,8 +932,8 @@ schema.dependency.text.workflow_from_service_status: Seleziona lo stato del serv
 schema.dependency.text.workflow_to_host_status: Seleziona lo stato dell'host che evita la notifica
 schema.dependency.text.workflow_to_service_status: Seleziona lo stato del servizio padre che evita la notifica
 schema.dependency.text.workflow_inherit: Attiva ereditarietà
-schema.dependency.text.workflow_timezone: Imposta la timezone per il timeslice
-schema.dependency.text.workflow_timeslice: Imposta il timeslice quando la dipendenza è attiva
+schema.dependency.text.workflow_timezone: Imposta la timezone per l'intervallo
+schema.dependency.text.workflow_timeslice: Imposta l'intervallo quando la dipendenza è attiva
 
 schema.event.attr.id: ID evento
 schema.event.attr.time: Timestamp
