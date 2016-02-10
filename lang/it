@@ -500,13 +500,13 @@ schema.company.text.data_retention_info: La durata del tuo account è limitata a
 schema.company.text.simulate_as: Simula un'azienda
 
 schema.user.attr.id: ID utente
-schema.user.attr.username: Utente
+schema.user.attr.username: Nome utente
 schema.user.attr.name: Nome
 schema.user.attr.phone: Telefono
 schema.user.attr.timezone: Timezone
 schema.user.attr.authentication_key: Chiave d'autenticazione
 schema.user.attr.password: Password
-schema.user.attr.password_changed: Cambiare la password?
+schema.user.attr.password_changed: Cambio di password?
 schema.user.attr.manage_contacts: Gestire i contatti?
 schema.user.attr.manage_templates: Gestire i template?
 schema.user.attr.last_login: Ultimo accesso
@@ -681,7 +681,7 @@ schema.host.desc.max_services: Imposta il numero massimo di servizi che possono 
 schema.host.desc.variables: In questo campo puoi definire le variabili per l'host. Queste variabili possono venir usate come limiti dalle configurazioni dei controlli sui servizi. Per esempio:<br/><br/>HTTP.PORT=9000<br/><br/>Questa variabile può venir usata nel formato <i>%HTTP.PORT%</i> per i limiti. Si segnala che due variabili sono predefinite: <i>IPADDR</i> e <i>HOSTNAME</i>. Queste variabili sono sostituite con l'inirizzo IP e hostanem dell'host. Per ulteriori informazioni leggere l'aiuto.<br/><br/>Caratteri permessi: a-z, A-Z, 0-9, punti e trattini bassi
 schema.host.desc.data_retention: Conservazione in giorni di tutti i dati dell'host e suoi servizi. 
 schema.host.text.list: Panoramica di tutti gli host
-schema.host.text.registered_host_list: Panoramica degli host pronti per la registrazione
+schema.host.text.registered_host_list: Panoramica degli host da registrare
 schema.host.text.view: Host %s
 schema.host.text.create: Crea un nuovo host
 schema.host.text.delete: Elimina host
