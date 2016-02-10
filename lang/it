@@ -1,7 +1,7 @@
 word.Language: Lingua
 word.Settings: Impostazioni
 word.debug: Debug
-word.Preset: Programmazione
+word.Preset: Preimpostato
 word.From: Da
 word.To: A
 word.yes: si
@@ -34,7 +34,7 @@ word.resize: Ridimensiona
 word.Message: Messaggio
 
 nav.main.dashboard: BACHECA
-nav.main.monitoring: CONTROLLO
+nav.main.monitoring: CONTROLLI
 nav.main.notifications: NOTIFICHE
 nav.main.administration: GESTIONE
 nav.main.report: REPORT
@@ -226,7 +226,7 @@ text.click_me: Cliccami
 text.click_to_delete_seletion: Cliccare per eliminare la selezione
 text.browsers_heap_size: Mostra dimensione dell'heap nel tuo browser
 text.selected_locations_counter: Hai <b>%s</b> punti di controllo selezionati.
-text.selected_locations_costs: Si prega di notare che ogni punto di controllo verrà addebitato ulteriormente.
+text.selected_locations_costs: Si prega di notare che ogni punto di controllo verrà ulteriormente addebitato.
 text.sort_by_dots: Ordina per...
 text.filter_by_category_dots: Filtra per categoria...
 text.option_examples: Esempi di opzione
@@ -578,7 +578,7 @@ schema.hs_downtime.attr.username: Aggiunto da
 schema.hs_downtime.attr.timezone: Timezone
 schema.hs_downtime.text.create: Crea un fuori servizio pianificato
 schema.hs_downtime.text.delete: Elimina un fuori servizio pianificato
-schema.hs_downtime.text.preset: Attività prestabilite
+schema.hs_downtime.text.preset: Attività preimpostate
 schema.hs_downtime.text.select_services: Services<br/><small>Do not select any servives if you want to<br/>create a downtime for the complete host.</small>
 
 schema.host_downtime.text.title: Fuori servizo pianificati per l'host %s
