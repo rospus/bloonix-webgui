@@ -159,9 +159,9 @@ action.extsearch: Ricerca estesa
 action.refresh: ricarica
 action.replace: Sostituisci
 action.configure: Configura
-action.yes_delete: <b>Si, elimina.</b>
-action.yes_remove: <b>Si, rimuovi.</b>
-action.no_abort: <b>No, abbandona.</b>
+action.yes_delete: <b>Elimina</b>
+action.yes_remove: <b>Rimuovi</b>
+action.no_abort: <b>Annulla</b>
 action.show_selected_objects: Mostra gli ogetti selezionati
 action.display_from_to_rows: Visualizzate <b>%s</b>-<b>%s</b> su <b>%s</b> occorrenze
 action.view_selected_objects: Visualizza gli oggetti selezionati
@@ -333,7 +333,7 @@ text.report.availability.h23: 23:00 - 23:59
 text.dashboard.title: Bacheca
 text.dashboard.choose_content_box: Seleziona una dashlet
 text.dashboard.replace_dashlet: Sostituisci la dashlet
-text.dashboard.remove_dashlet: Rimuovi la dashlet
+text.dashboard.remove_dashlet: Rimozione dashlet
 text.dashboard.hosts_availability: Disponibilità di tutti gli host
 text.dashboard.dashlet_configuration: Configurazione dashlet
 text.dashboard.dashlet_select_chart_title: Seleziona un diagramma per la dashlet.
@@ -570,8 +570,8 @@ schema.group.text.may_modify_services: Può modificare servizi
 schema.group.text.may_delete_services: Può eliminare servizi
 
 schema.hs_downtime.attr.id: ID
-schema.hs_downtime.attr.begin_time: Orario iniziale
-schema.hs_downtime.attr.end_time: Orario finale
+schema.hs_downtime.attr.begin_time: Orario d'inizio
+schema.hs_downtime.attr.end_time: Orario di fine
 schema.hs_downtime.attr.timeslice: Intervallo
 schema.hs_downtime.attr.description: Descrizione
 schema.hs_downtime.attr.username: Aggiunto da
@@ -1149,7 +1149,6 @@ schema.user_chart.attr.title: Titolo
 schema.user_chart.desc.title: Il Titolo del diagramma.
 schema.user_chart.attr.subtitle: Sottotitolo
 schema.user_chart.desc.subtitle: Il Titolo del diagramma.
-schema.user_chart.attr.yaxis_label: Etichetta asse delle Y
 schema.user_chart.desc.yaxis_label: L'etichetta dell'asse delle Y.
 schema.user_chart.text.title: Diagrammi utente
 schema.user_chart.text.user_chart: Editor diagramma
