@@ -1011,7 +1011,7 @@ schema.service.desc.fd_time_range: Questo è l'orario in cui il rilevamento del 
 schema.service.desc.fd_flap_count: Questa è la soglia per il rilevamento del flapping. Se lo stato cambia più di x volte nell'arco di tempo, una notifica verrà attivata.
 schema.service.desc.is_volatile: Con questa impostazione si può definire se il controllo dev'essere discontinuo. Alcuni controlli hanno la peculiarità di essere nello stato CRITICO solo per un breve periodo. Ad esempio se si cerca in un file di log la presenza di una stringa specifica, tipo <i>possibile tentativo d'intrusione</i> ed il controllo restituisce uno stato CRITICO, sarà molto probabile che nella ricerca successiva non verrà più ritrovata la stringa fornendo quindi uno stato OK. In questo caso probabilmente non ci si accorgerà mai che qualcuno ha cercato d'introdursi. Per questo motivo si può impostare il servizio come <i>discontinuo</i> mantenendo lo stato del servizio in CRITICO o ALLERTA fino a quando non lo si azzeri manualmente.
 schema.service.desc.volatile_retain: Imposta un tempo dopo il quale lo stato discontinuo viene automaticamente azzerato.
-schema.service.desc.host_alive_check: Un controllo di host operativo determina se un host è giù o attivo. Se questo controllo restituisce uno stato critico, allora si riceve una notifica particolare. Se un successivo controllo di servizio restituisce ancora uno stato critico, allora le notifiche vengono soppresse. Si raccomanda di usare il controllo del ping come controllo per host vivo.
+schema.service.desc.host_alive_check: Un controllo di host operativo determina se un host è giù o attivo. Se questo controllo restituisce uno stato critico, allora si riceve una notifica particolare. Se un successivo controllo di servizio restituisce ancora uno stato critico, allora le notifiche vengono soppresse. Si raccomanda di usare il controllo del ping come controllo per host operativo.
 schema.service.desc.passive_check: Un controllo passivo è una verifica che non viene effettuata da Bloonix, bensì da un servizio o script esterno. I controlli passivi non hanno timeout e sono molto utili, per esempio nel caso di SNMP trap (notifiche senza ACK). Il servizio esterno deve fornire uno stato critico all'agente Bloonix, che di conseguenza lo girerà al server Bloonix.
 schema.service.text.services: Servizi
 schema.service.text.list: Dettaglio servizi per tutti gli host
@@ -1025,7 +1025,7 @@ schema.service.text.clone_to_the_same_host: Clona il servizio sullo stesso host
 schema.service.text.clone_select_host: Seleziona un altro host
 schema.service.text.choose_plugin: Seleziona un plugin
 schema.service.text.attempt: Tentativi
-schema.service.text.host_alive_check: Controllo host vivo
+schema.service.text.host_alive_check: Controllo host operativo
 schema.service.text.select_location_check_type: Seleziona tipo di controllo
 schema.service.text.select_location_check_type_info: Premere sui pulsanti per vedere una breve descrizione per ogni tipo
 schema.service.text.multiple_help: <h4>Quest'azione richiede di selezionare almeno un servizio.</h4>
@@ -1064,7 +1064,7 @@ schema.service.info.active: Il servizio non è attivo.
 schema.service.info.acknowledged: Il servizio è riconosciuto.
 schema.service.info.flapping: Il servizio è in flapping.
 schema.service.info.is_volatile: Il servizio è in stato di discontinuità.
-schema.service.info.host_alive_check: Questo è il controllo di host vivo.
+schema.service.info.host_alive_check: Questo è il controllo di host operativo.
 schema.service.info.has_result: Questo controllo di servizio ha informazioni avanzate sullo stato. Cliccami :-)
 schema.service.info.inactive: Il servizio è inattivo.
 schema.service.info.notification_disabled: Le notifiche del servizio sono disabilitate.
